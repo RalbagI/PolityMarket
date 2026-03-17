@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useCallback, lazy, Suspense } from "react";
 import useStore from "./store";
+import ErrorBoundary from "./components/ErrorBoundary";
 import PopularityGauge from "./components/PopularityGauge";
 import ShareOfVoice from "./components/ShareOfVoice";
 import Leaderboard from "./components/Leaderboard";
@@ -33,7 +34,6 @@ export default function App() {
   const panelOpen = useStore((s) => s.panelOpen);
   const selectedPolitician = useStore((s) => s.selectedPolitician);
   const selectedDate = useStore((s) => s.selectedDate);
-  const detailCache = useStore((s) => s.detailCache);
   const detailLoading = useStore((s) => s.detailLoading);
   const openPanel = useStore((s) => s.openPanel);
   const closePanel = useStore((s) => s.closePanel);
@@ -78,7 +78,9 @@ export default function App() {
   );
 
   const activeDate = selectedDate || latestDate;
-  const activeDetail = activeDate ? detailCache[activeDate] : null;
+  // Subscribe only to the specific cache entry for the active date,
+  // not the entire detailCache object — prevents re-renders when other dates are cached
+  const activeDetail = useStore((s) => (activeDate ? s.detailCache[activeDate] : null));
 
   if (loadError) {
     return (
@@ -119,14 +121,16 @@ export default function App() {
           summaryData={summaryData}
         />
 
-        <Suspense fallback={<ChartFallback />}>
-          <TrendlineChart
-            data={summaryData}
-            dates={dates}
-            politicians={politicians}
-            onDateClick={handleDateClick}
-          />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<ChartFallback />}>
+            <TrendlineChart
+              data={summaryData}
+              dates={dates}
+              politicians={politicians}
+              onDateClick={handleDateClick}
+            />
+          </Suspense>
+        </ErrorBoundary>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1">
@@ -144,16 +148,22 @@ export default function App() {
         </div>
       </main>
 
-      <Suspense fallback={null}>
-        <SlidePanel isOpen={panelOpen} onClose={closePanel} title={selectedPolitician || "Details"}>
-          <DetailView
-            todayDetail={activeDetail}
-            selectedPolitician={selectedPolitician}
-            selectedDate={activeDate}
-            loading={detailLoading}
-          />
-        </SlidePanel>
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={null}>
+          <SlidePanel
+            isOpen={panelOpen}
+            onClose={closePanel}
+            title={selectedPolitician || "Details"}
+          >
+            <DetailView
+              todayDetail={activeDetail}
+              selectedPolitician={selectedPolitician}
+              selectedDate={activeDate}
+              loading={detailLoading}
+            />
+          </SlidePanel>
+        </Suspense>
+      </ErrorBoundary>
 
       <footer className="border-t border-gray-800/60 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">

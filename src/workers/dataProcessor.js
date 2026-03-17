@@ -2,6 +2,17 @@
  * Web Worker for heavy data processing.
  * Offloads SMA computation, date range filtering, and sorting
  * from the main UI thread to keep chart animations smooth.
+ *
+ * ACTIVATION: This worker is ready but not wired into TrendlineChart yet.
+ * For the current dataset (14 days × 5 politicians = 70 entries), inline
+ * useMemo computation is fast enough (<1ms). Wire this worker when:
+ *   - Dataset exceeds 365 days (~1,825 entries)
+ *   - SMA computation visibly blocks chart animations
+ *
+ * To activate in TrendlineChart:
+ *   const worker = new Worker(new URL('../workers/dataProcessor.js', import.meta.url));
+ *   worker.postMessage({ type: 'buildChartData', payload: { data, dates, politicians, smaMode } });
+ *   worker.onmessage = (e) => setChartData(e.data.payload);
  */
 
 function computeSMA(values, window) {
