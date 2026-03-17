@@ -1,0 +1,300 @@
+workflow:
+  id: code-review
+  trigger: /code-review
+  mode: read-only
+  agents: 4
+
+metadata:
+  updated: "2026-03-17"
+  review_cycle_days: 365
+  description: >-
+    Security-first code review for React/Vite project.
+    Evaluates branch delta from origin/main plus local
+    changes. Includes automatic recall of relevant prior
+    lessons. Report only.
+  skills: [sec, test, react-best-practices]
+
+constraints:
+  post_merge_work: deny
+  exception_approval: true
+  readonly: true
+
+phases:
+  - id: 0-recall-context
+    name: Recall Context
+    auto: true
+    steps:
+      - name: recall-prior-lessons
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py recall \
+            --workflow code-review \
+            --issue "${INPUT_ID:-}" \
+            --topic "${TOPIC:-code review}" \
+            --limit 6
+        store: RECALL_CONTEXT
+        fail_action: warn
+
+    next_phase: 1-scope-detect
+
+  - id: 1-scope-detect
+    name: Scope Detection
+    auto: true
+    steps:
+      - name: detect-uncommitted
+        type: cmd
+        cmd: |
+          {
+            git diff --name-only --cached
+            git diff --name-only
+            git ls-files --others --exclude-standard
+          } | sed '/^$/d' | sort -u
+        store: UNCOMMITTED
+
+      - name: detect-pr
+        type: cmd
+        cmd: gh pr view 2>/dev/null && echo "yes" || echo "no"
+        store: PR_EXISTS
+
+      - name: decide-mode
+        type: check
+        check: |
+          if [ -n "$UNCOMMITTED" ]; then
+            if [ "$PR_EXISTS" = "yes" ]; then
+              echo "BOTH"
+            else
+              echo "QUICK"
+            fi
+          else
+            if [ "$PR_EXISTS" = "yes" ]; then
+              echo "FULL"
+            else
+              echo "NONE"
+            fi
+          fi
+        store: REVIEW_MODE
+
+    next_phase: 2-static-analysis
+
+  - id: 2-static-analysis
+    name: Static Analysis
+    parallel: 4
+    steps:
+      - name: eslint-check
+        type: check
+        check: npx eslint src/
+        acceptable_failure: [none]
+        fail_action: exit
+
+      - name: prettier-check
+        type: check
+        check: npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}"
+        acceptable_failure: [none]
+        fail_action: warn
+
+      - name: secrets-scan
+        type: check
+        check: |
+          if rg -n --glob '*.{js,jsx,ts,tsx}' --glob '!node_modules/**' \
+            "\b(api[_-]?key|secret|password|token)\b\s*[:=]\s*['\"]" src/; then
+            echo "Potential secret-like assignments found"
+            exit 1
+          else
+            echo "no matches"
+          fi
+        fail_action: warn
+
+      - name: debug-console-logs
+        type: check
+        check: |
+          if grep -rn "console\.\(log\|debug\|warn\|error\)" src/ \
+            --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" \
+            | grep -v "// eslint-disable" | grep -v "test\." | grep -v "spec\."; then
+            echo "Debug console statements found"
+            exit 1
+          else
+            echo "no matches"
+          fi
+        fail_action: warn
+
+    next_phase: 3-security
+
+  - id: 3-security
+    name: Security Checks
+    parallel: 3
+    steps:
+      - name: npm-audit
+        type: check
+        check: npm audit --omit=dev --audit-level=high 2>/dev/null || echo "WARN"
+        fail_action: warn
+
+      - name: env-file-check
+        type: check
+        check: |
+          if git ls-files --cached | grep -E '\.env$|\.env\.local$|credentials'; then
+            echo "FAIL: sensitive files tracked in git"
+            exit 1
+          else
+            echo "PASS"
+          fi
+
+      - name: input-validation
+        type: review
+        review_dimensions: [xss-prevention, injection, unsafe-html]
+        min_confidence: 0.85
+
+    next_phase: 4-project-specific
+
+  - id: 4-project-specific
+    name: Project-Specific Checks
+    parallel: 2
+    steps:
+      - name: build-check
+        type: cmd
+        cmd: npx vite build 2>&1 | tail -5
+        store: BUILD_RESULT
+        fail_action: warn
+
+      - name: file-size-check
+        type: check
+        check: |
+          git fetch origin main >/dev/null 2>&1 || true
+          branch_changed=$(git diff --name-only \
+            origin/main...HEAD -- src/ 2>/dev/null \
+            || git diff --name-only HEAD -- src/)
+          staged_changed=$(git diff --name-only --cached -- src/)
+          unstaged_changed=$(git diff --name-only -- src/)
+          untracked_changed=$(git ls-files --others --exclude-standard -- src/)
+
+          changed_files=$(
+            printf '%s\n%s\n%s\n%s\n' \
+              "$branch_changed" \
+              "$staged_changed" \
+              "$unstaged_changed" \
+              "$untracked_changed" \
+              | sed '/^$/d' \
+              | sort -u
+          )
+
+          candidates=$(printf '%s\n' "$changed_files" \
+            | grep -E '^src/.*\.(js|jsx|ts|tsx)$' || true)
+          if [ -z "$candidates" ]; then
+            echo "no changed source files to size-check"
+            exit 0
+          fi
+
+          oversized=""
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            [ ! -f "$file" ] && continue
+            line_count=$(wc -l < "$file")
+            if [ "$line_count" -gt 400 ]; then
+              oversized="${oversized}${line_count} ${file}\n"
+            fi
+          done < <(printf '%s\n' "$candidates")
+
+          if [ -n "$oversized" ]; then
+            printf "%b" "$oversized"
+            exit 1
+          else
+            echo "no oversized changed files"
+          fi
+        fail_action: warn
+
+    next_phase: 5-deep-review
+
+  - id: 5-deep-review
+    name: Deep Code Review
+    parallel: 1
+    steps:
+      - name: collect-changes
+        type: cmd
+        cmd: |
+          git fetch origin main 2>/dev/null || true
+
+          echo "=== committed_vs_origin_main ==="
+          git diff origin/main...HEAD --stat || true
+
+          echo
+          echo "=== staged_not_committed ==="
+          git diff --cached --stat || true
+
+          echo
+          echo "=== unstaged ==="
+          git diff --stat || true
+
+          echo
+          echo "=== untracked ==="
+          untracked=$(git ls-files --others --exclude-standard)
+          if [ -n "$untracked" ]; then
+            printf "%s\n" "$untracked"
+          else
+            echo "none"
+          fi
+        store: CHANGE_STAT
+
+      - name: issue-analysis
+        type: review
+        review_dimensions: [issue-handling, ui-ux, testing, quality, perf]
+        min_confidence: 0.80
+
+      - name: architecture-check
+        type: review
+        review_dimensions: [patterns, antipatterns, tech-debt, react-hooks]
+        min_confidence: 0.75
+
+    next_phase: 6-report
+
+  - id: 6-report
+    name: Report Generation
+    parallel: false
+    steps:
+      - name: categorize-findings
+        type: cmd
+        cmd: |
+          echo "MUST_FIX_COUNT=0"
+          echo "SHOULD_FIX_COUNT=0"
+          echo "NICE_TO_HAVE_COUNT=0"
+        store: FINDING_COUNTS
+
+      - name: render-report
+        type: doc
+        template: code-review-report
+        target: stdout
+
+    next_phase: null
+
+output:
+  format: structured
+  template: code-review-report-v1
+  sections:
+    - name: memory
+      data: [$RECALL_CONTEXT]
+    - name: scope
+      data: [$REVIEW_MODE]
+    - name: static-analysis
+      data: [eslint, prettier, secrets, console-logs]
+    - name: must-fix
+      data: [security, crashes, blockers]
+    - name: should-fix
+      data: [quality, performance, accessibility]
+    - name: nice-to-have
+      data: [style, naming, optimization]
+    - name: checklist
+      data: [secrets, env-files, npm-audit, build, error-handling]
+  next_workflow: handle-review-results
+
+validation:
+  pre_checks:
+    - "git status --porcelain exists"
+    - "node --version exists"
+
+  post_checks:
+    - "Prior lessons recalled"
+    - "All findings categorized"
+    - "Report generated without errors"
+
+  success_criteria:
+    - "No MUST_FIX items (or BLOCK)"
+    - "1-3 SHOULD_FIX items (or NEEDS_CHANGES)"
+    - "Unlimited NICE_TO_HAVE items (or APPROVE)"

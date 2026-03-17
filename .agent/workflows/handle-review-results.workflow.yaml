@@ -1,0 +1,156 @@
+workflow:
+  id: handle-review-results
+  trigger: /handle-review-results
+  mode: write
+  agents: 1
+
+metadata:
+  updated: "2026-03-17"
+  review_cycle_days: 365
+  description: >-
+    Enforce immediate resolution of all /code-review or
+    /monitor-vite findings with context recall before
+    execution and memory capture after completion.
+  skills: [test, sec, react-best-practices]
+
+constraints:
+  post_merge_work: deny
+  exception_approval: required
+
+input:
+  sources: [code-review, monitor-vite]
+  finding_types: [must-fix, should-fix, nice-to-have]
+
+phases:
+  - id: 0-recall-context
+    name: Recall Context
+    steps:
+      - name: recall-prior-lessons
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py recall \
+            --workflow handle-review-results \
+            --topic "code review findings resolution" \
+            --limit 8
+        store: RECALL_CONTEXT
+        fail_action: warn
+
+      - name: snapshot-start
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py snapshot \
+            --workflow handle-review-results \
+            --phase start \
+            --note "handle-review-results started"
+        fail_action: warn
+
+    next_phase: 1-gather-inputs
+
+  - id: 1-gather-inputs
+    name: Gather Findings
+    steps:
+      - name: get-review-report
+        type: cmd
+        cmd: "echo 'Analyze latest /code-review or /monitor-vite output'"
+        store: REVIEW_SOURCE
+
+      - name: extract-findings
+        type: cmd
+        cmd: |
+          echo "MUST_FIX_ITEMS=0"
+          echo "SHOULD_FIX_ITEMS=0"
+          echo "NICE_TO_HAVE_ITEMS=0"
+        store: FINDING_COUNTS
+
+    next_phase: 2-resolve
+
+  - id: 2-resolve
+    name: Resolve Findings
+    parallel: false
+    steps:
+      - name: run-lint
+        type: check
+        check: npx eslint src/
+        fail_action: exit
+
+      - name: run-tests
+        type: check
+        check: npx vitest run
+        fail_action: exit
+
+      - name: process-findings
+        type: cmd
+        cmd: |
+          echo "Processing all findings..."
+        store: RESOLUTION_SUMMARY
+
+    next_phase: 3-commit
+
+  - id: 3-commit
+    name: Commit Resolutions
+    steps:
+      - name: stage-changes
+        type: cmd
+        cmd: git add .
+        fail_action: warn
+
+      - name: commit-fixes
+        type: cmd
+        cmd: |
+          git commit -m "Resolve code review findings" || \
+          echo "No changes to commit"
+
+    next_phase: 4-verify
+
+  - id: 4-verify
+    name: Verify State
+    steps:
+      - name: check-clean-state
+        type: check
+        check: "test -z \"$(git status --porcelain)\""
+        acceptable_failure: [none]
+        fail_action: exit
+    next_phase: 5-capture-memory
+
+  - id: 5-capture-memory
+    name: Capture Memory
+    steps:
+      - name: snapshot-end
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py snapshot \
+            --workflow handle-review-results \
+            --phase end \
+            --note "handle-review-results completed"
+        fail_action: warn
+
+      - name: learn-from-run
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py learn \
+            --workflow handle-review-results \
+            --topic "code review findings resolution" \
+            --auto
+        store: LEARN_RESULT
+        fail_action: warn
+
+    next_phase: null
+
+output:
+  format: structured
+  sections:
+    - memory: [recalled, captured]
+    - must-fix: [count, status]
+    - should-fix: [count, status]
+    - nice-to-have: [count, status]
+  next_workflow: prepare-for-merge
+
+validation:
+  success_criteria:
+    - "Prior lessons recalled"
+    - "All MUST_FIX items resolved"
+    - "All SHOULD_FIX items resolved or justified"
+    - "All NICE_TO_HAVE items resolved or justified"
+    - "All tests passing"
+    - "Clean git state"
+    - "Workflow memory captured"

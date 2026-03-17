@@ -1,0 +1,111 @@
+workflow:
+  id: get-up-to-speed
+  trigger: /get-up-to-speed
+  mode: read-only
+
+metadata:
+  updated: "2026-03-17"
+  description: >-
+    Get up to speed on branch context, changes, and
+    status with automatic recall of relevant prior
+    lessons. Optional topic arg narrows focus.
+
+input:
+  optional_arg: topic
+
+phases:
+  - id: 0-recall-context
+    name: Recall Context
+    steps:
+      - name: recall-prior-lessons
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py recall \
+            --workflow get-up-to-speed \
+            --issue "${ISSUE_ID:-}" \
+            --topic "${TOPIC:-branch context}" \
+            --limit 8
+        store: RECALL_CONTEXT
+        fail_action: warn
+
+    next_phase: 1-branch-metadata
+
+  - id: 1-branch-metadata
+    name: Branch Metadata
+    steps:
+      - name: current-branch
+        type: cmd
+        cmd: git rev-parse --abbrev-ref HEAD
+        store: CURRENT_BRANCH
+
+      - name: extract-issue-id
+        type: cmd
+        cmd: |
+          echo "$CURRENT_BRANCH" | grep -oE '[0-9]+' | head -1 || \
+          echo "No issue ID in branch"
+        store: ISSUE_ID
+
+      - name: show-recent-commits
+        type: cmd
+        cmd: git log --oneline --graph --decorate -10
+        store: COMMIT_LOG
+
+    next_phase: 2-issue-details
+
+  - id: 2-issue-details
+    name: Issue Details
+    steps:
+      - name: fetch-github-issue
+        type: cmd
+        cmd: |
+          [ -n "$ISSUE_ID" ] && \
+          .agent/bin/gh-issue-view.sh $ISSUE_ID --comments || \
+          echo "No GitHub issue found"
+        store: ISSUE_DESC
+
+      - name: read-project-docs
+        type: cmd
+        cmd: |
+          [ -n "$TOPIC" ] && \
+          grep -r "$TOPIC" src/ data-pipeline/ || \
+          echo "Project: PoliticMarket - Israeli Political Sentiment Tracker"
+        store: PROJECT_CONTEXT
+
+    next_phase: 3-code-changes
+
+  - id: 3-code-changes
+    name: Code Changes
+    steps:
+      - name: diff-stats
+        type: cmd
+        cmd: git diff origin/main --stat
+        store: CHANGE_STAT
+
+      - name: changed-files
+        type: cmd
+        cmd: git diff origin/main --name-only
+        store: CHANGED_FILES
+
+      - name: prioritize-topic
+        type: cmd
+        cmd: |
+          [ -n "$TOPIC" ] && \
+          echo "Prioritizing files matching: $TOPIC" || \
+          echo "No topic filter"
+    next_phase: end
+
+output:
+  format: structured
+  sections:
+    - memory: [recalled]
+    - branch: [name, issue-id]
+    - commits: [recent]
+    - issue: [description]
+    - changes: [file-count, stat]
+
+validation:
+  success_criteria:
+    - "Prior lessons recalled"
+    - "Branch analyzed"
+    - "Issue understood"
+    - "Changes documented"

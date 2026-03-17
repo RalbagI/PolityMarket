@@ -1,0 +1,196 @@
+workflow:
+  id: prepare-for-merge
+  trigger: /prepare-for-merge
+  mode: exec
+  agents: 1
+
+metadata:
+  updated: "2026-03-17"
+  review_cycle_days: 365
+  description: >-
+    Single-pass prepare-for-merge for GitHub PRs. Runs all
+    checks (lint, format, test, build), syncs main, pushes,
+    and generates PR description. Includes workflow memory
+    recall at start and capture at end.
+  skills: [sec, github-actions, test]
+
+constraints:
+  post_merge_work: deny
+  can_push: true
+
+phases:
+  - id: 0-recall-context
+    name: Recall Context
+    steps:
+      - name: recall-prior-lessons
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py recall \
+            --workflow prepare-for-merge \
+            --topic "${TOPIC:-prepare for merge}" \
+            --limit 8
+        store: RECALL_CONTEXT
+        fail_action: warn
+
+      - name: snapshot-start
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py snapshot \
+            --workflow prepare-for-merge \
+            --phase start \
+            --note "prepare-for-merge started"
+        fail_action: warn
+
+    next_phase: 1-preflight
+
+  - id: 1-preflight
+    name: Pre-flight Checks
+    steps:
+      - name: verify-branch
+        type: cmd
+        cmd: |
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          if [ "$BRANCH" = "main" ]; then
+            echo "ERROR: Cannot prepare-for-merge from main branch"
+            exit 1
+          fi
+          echo "Branch: $BRANCH"
+        store: CURRENT_BRANCH
+        fail_action: exit
+
+      - name: sync-main
+        type: cmd
+        cmd: |
+          git fetch origin main
+          git merge origin/main --no-edit || {
+            echo "Merge conflicts detected - resolve manually"
+            exit 1
+          }
+        fail_action: exit
+
+      - name: install-deps
+        type: cmd
+        cmd: npm ci --legacy-peer-deps
+        fail_action: exit
+
+    next_phase: 2-validate
+
+  - id: 2-validate
+    name: Validate
+    parallel: 4
+    steps:
+      - name: eslint
+        type: check
+        check: npx eslint src/
+        fail_action: exit
+
+      - name: prettier
+        type: check
+        check: npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}"
+        fail_action: warn
+
+      - name: vitest
+        type: check
+        check: npx vitest run
+        fail_action: exit
+
+      - name: vite-build
+        type: check
+        check: npx vite build
+        fail_action: exit
+
+    next_phase: 3-push-and-pr
+
+  - id: 3-push-and-pr
+    name: Push & PR
+    steps:
+      - name: push-branch
+        type: cmd
+        cmd: git push -u origin "$(git rev-parse --abbrev-ref HEAD)"
+        fail_action: exit
+
+      - name: gather-context
+        type: cmd
+        cmd: |
+          echo "=== COMMITS ==="
+          git log origin/main..HEAD --no-merges --oneline
+          echo ""
+          echo "=== STAT ==="
+          git diff --stat origin/main..HEAD
+        store: PR_CONTEXT
+
+      - name: create-or-update-pr
+        type: doc
+        template: pr-description-v1
+        notes: >-
+          Agent generates a rich PR description from commits
+          and diff stat, then posts via gh pr create/update.
+          This is the only step that needs LLM intelligence.
+
+    next_phase: 4-self-improve
+
+  - id: 4-self-improve
+    name: Self-Improvement
+    steps:
+      - name: update-lessons
+        type: doc
+        notes: >-
+          If any auto-fixes were applied (format, lint),
+          record a lesson in .agent/lessons_learned.md
+          so /resolve-issue avoids the same mistake next time.
+        template: lessons-from-autofixes
+        target: ".agent/lessons_learned.md"
+
+      - name: commit-lessons
+        type: cmd
+        cmd: |
+          if [ -n "$(git status --porcelain .agent/lessons_learned.md)" ]; then
+            git add .agent/lessons_learned.md
+            git commit -m "docs: add lessons from prepare-for-merge"
+            git push origin "$(git branch --show-current)"
+          fi
+
+    next_phase: 5-verify
+
+  - id: 5-verify
+    name: Final Verification
+    steps:
+      - name: check-clean
+        type: check
+        check: "test -z \"$(git status --porcelain)\""
+        fail_action: exit
+
+    next_phase: 10-capture-memory
+
+  - id: 10-capture-memory
+    name: Capture Memory
+    steps:
+      - name: snapshot-end
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py snapshot \
+            --workflow prepare-for-merge \
+            --phase end \
+            --note "prepare-for-merge completed"
+        fail_action: warn
+
+      - name: learn-from-run
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py learn \
+            --workflow prepare-for-merge \
+            --topic "${TOPIC:-prepare for merge}" \
+            --auto
+        store: LEARN_RESULT
+        fail_action: warn
+
+    next_phase: null
+
+output:
+  format: structured
+  sections:
+    - memory: [recalled, captured]
+    - checks: [lint, format, test, build]
+    - pr: [description-posted]
+    - lessons: [updated-if-needed]
+    - git: [clean-state]

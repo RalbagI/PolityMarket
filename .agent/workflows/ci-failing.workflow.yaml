@@ -1,0 +1,133 @@
+workflow:
+  id: ci-failing
+  trigger: /ci-failing
+  mode: exec
+  agents: 1
+
+metadata:
+  updated: "2026-03-17"
+  description: "Fetch, analyze, and fix failing GitHub Actions CI jobs."
+  skills: [github-actions, test]
+
+phases:
+  - id: 1-fetch-logs
+    name: Fetch Logs
+    steps:
+      - name: find-failed-runs
+        type: cmd
+        cmd: |
+          BRANCH=$(git branch --show-current)
+          echo "Branch: $BRANCH"
+          echo ""
+          echo "=== Recent workflow runs ==="
+          gh run list --branch "$BRANCH" --limit 5 --json status,name,databaseId,conclusion \
+            --jq '.[] | "\(.databaseId) \(.name) status=\(.status) conclusion=\(.conclusion)"'
+        store: FAILED_RUNS
+
+      - name: download-logs
+        type: cmd
+        cmd: |
+          BRANCH=$(git branch --show-current)
+          mkdir -p ci-logs
+          # Get the most recent failed run
+          RUN_ID=$(gh run list --branch "$BRANCH" --limit 5 --json conclusion,databaseId \
+            --jq '[.[] | select(.conclusion == "failure")][0].databaseId // empty')
+          if [ -n "$RUN_ID" ]; then
+            echo "Downloading logs for run $RUN_ID..."
+            gh run view "$RUN_ID" --log-failed > ci-logs/failed.log 2>/dev/null || \
+              gh run view "$RUN_ID" --log > ci-logs/full.log 2>/dev/null || \
+              echo "Could not download logs"
+            ls -lh ci-logs/ 2>/dev/null
+          else
+            echo "No failed runs found"
+          fi
+        store: LOG_FILES
+
+    next_phase: 2-triage
+
+  - id: 2-triage
+    name: Triage Failures
+    steps:
+      - name: categorize-failures
+        type: cmd
+        cmd: |
+          echo "Categories:"
+          echo "- transient: timeout, network, runner failure"
+          echo "- lint_failure: eslint/prettier errors"
+          echo "- test_failure: vitest assertion errors"
+          echo "- build_failure: vite build errors"
+          echo "- dependency: npm install/audit failures"
+        store: FAILURE_TYPES
+
+    next_phase: 3-fix
+
+  - id: 3-fix
+    name: Fix Issues
+    steps:
+      - name: apply-minimal-fix
+        type: cmd
+        cmd: |
+          echo "Applying fixes per category..."
+
+      - name: run-lint
+        type: cmd
+        cmd: npx eslint src/ --fix
+        fail_action: warn
+
+      - name: run-tests
+        type: cmd
+        cmd: npx vitest run
+        fail_action: warn
+
+      - name: verify-build
+        type: cmd
+        cmd: npx vite build
+
+    next_phase: 4-commit
+
+  - id: 4-commit
+    name: Commit & Push
+    steps:
+      - name: stage-changes
+        type: cmd
+        cmd: git add .
+
+      - name: commit-fix
+        type: cmd
+        cmd: |
+          git commit -m "fix(ci): resolve failing jobs" \
+            || echo "No changes"
+
+      - name: push
+        type: cmd
+        cmd: git push
+
+    next_phase: 5-cleanup
+
+  - id: 5-cleanup
+    name: Cleanup
+    steps:
+      - name: remove-logs
+        type: cmd
+        cmd: rm -rf ci-logs/
+
+      - name: verify-clean
+        type: check
+        check: "test -z \"$(git status --porcelain)\""
+
+output:
+  format: structured
+  sections:
+    - failures-analyzed: [categories]
+    - fixes-applied: [count]
+    - tests-passing: [true]
+    - pushed: [true]
+
+validation:
+  success_criteria:
+    - "All failing jobs identified"
+    - "Fixes applied"
+    - "Tests passing locally"
+    - "Build succeeds"
+    - "Changes pushed"
+    - "Clean state"

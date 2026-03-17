@@ -1,0 +1,89 @@
+workflow:
+  id: context-health
+  trigger: /context-health
+  mode: read-only
+  agents: 1
+
+metadata:
+  updated: "2026-03-17"
+  review_cycle_days: 365
+  description: "Audit project structure, instruction files, and workflow health for context-friction signals (report-only)."
+  skills: [react-best-practices]
+
+constraints:
+  post_merge_work: deny
+  exception_approval: true
+  readonly: true
+
+phases:
+  - id: 1-audit
+    name: Run Context Audit
+    auto: true
+    steps:
+      - name: verify-root
+        type: check
+        check: test -d .agent
+        fail_action: exit
+
+      - name: check-workflow-files
+        type: cmd
+        cmd: |
+          echo "=== Workflow Files ==="
+          ls -la .agent/workflows/*.workflow.yaml 2>/dev/null | wc -l
+          echo "workflow files found"
+          echo ""
+          echo "=== Project Structure ==="
+          find src/ -name "*.jsx" -o -name "*.js" -o -name "*.tsx" -o -name "*.ts" | wc -l
+          echo "source files"
+          echo ""
+          echo "=== Data Pipeline ==="
+          ls -la data-pipeline/ 2>/dev/null || echo "No data-pipeline directory"
+          echo ""
+          echo "=== Config Files ==="
+          ls -la package.json vite.config.js .prettierrc .eslintrc* eslint.config.js 2>/dev/null || true
+        store: CONTEXT_HEALTH_REPORT
+        fail_action: warn
+
+      - name: check-lessons
+        type: cmd
+        cmd: |
+          if [ -f .agent/lessons_learned.md ]; then
+            echo "Lessons file exists with $(wc -l < .agent/lessons_learned.md) lines"
+          else
+            echo "No lessons_learned.md yet"
+          fi
+          echo ""
+          echo "=== Memory State ==="
+          if [ -f .agent/state/workflow_memory.jsonl ]; then
+            echo "$(wc -l < .agent/state/workflow_memory.jsonl) memory entries"
+          else
+            echo "No runtime memory yet"
+          fi
+        store: LESSONS_STATUS
+        fail_action: warn
+
+    next_phase: 2-report
+
+  - id: 2-report
+    name: Report Summary
+    steps:
+      - name: print-summary
+        type: cmd
+        cmd: |
+          echo "Context health audit completed (report-only)."
+          echo "Review output for findings and recommendations."
+
+    next_phase: null
+
+output:
+  format: structured
+  sections:
+    - scope: [workflows, source-files, configs]
+    - findings: [signal-counts, examples]
+    - actions: [recommended-fixes]
+
+validation:
+  success_criteria:
+    - "Audit completed"
+    - "Findings report generated"
+    - "No blocking failure in report-only mode"

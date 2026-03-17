@@ -1,0 +1,147 @@
+workflow:
+  id: monitor-vite
+  trigger: /monitor-vite
+  mode: exec
+
+metadata:
+  updated: "2026-03-17"
+  description: "Start Vite dev server, monitor output for errors/warnings (default 30s), generate deduplicated report."
+  skills: [react-best-practices]
+
+input:
+  optional_args:
+    duration: int (seconds, default 30)
+    port: int (default 5173)
+
+phases:
+  - id: 1-preflight
+    name: Pre-flight Checks
+    steps:
+      - name: verify-node
+        type: cmd
+        cmd: node --version
+        fail_action: exit
+
+      - name: verify-deps
+        type: cmd
+        cmd: |
+          if [ ! -d "node_modules" ]; then
+            echo "Installing dependencies..."
+            npm ci --legacy-peer-deps
+          else
+            echo "Dependencies already installed"
+          fi
+        fail_action: exit
+
+    next_phase: 2-setup
+
+  - id: 2-setup
+    name: Setup Monitoring
+    steps:
+      - name: create-scratchpad
+        type: cmd
+        cmd: |
+          SCRATCHPAD_DIR="/tmp/vite-monitor-$(date +%s)"
+          mkdir -p "$SCRATCHPAD_DIR"
+          echo "$SCRATCHPAD_DIR"
+        store: SCRATCHPAD_DIR
+
+      - name: init-logs
+        type: cmd
+        cmd: |
+          echo "Starting Vite dev server monitoring..."
+          echo "Duration: ${DURATION:-30}s"
+          echo "Port: ${PORT:-5173}"
+
+    next_phase: 3-launch
+
+  - id: 3-launch
+    name: Launch & Capture Logs
+    steps:
+      - name: run-dev-server
+        type: cmd
+        cmd: |
+          DURATION="${DURATION:-30}"
+          LOG_FILE="$SCRATCHPAD_DIR/vite_output.log"
+
+          timeout ${DURATION}s npx vite --host 2>&1 | \
+          tee "$LOG_FILE" || true
+
+          echo "Captured $(wc -l < "$LOG_FILE") lines"
+        store: LOG_FILE
+        fail_action: warn
+
+    next_phase: 4-extract
+
+  - id: 4-extract
+    name: Extract Issues
+    steps:
+      - name: grep-errors
+        type: cmd
+        cmd: |
+          ERROR_FILE="$SCRATCHPAD_DIR/errors_warnings.txt"
+
+          grep -Ei "error|warning|exception|fail|crash|fatal|ENOENT|EACCES" \
+            "$LOG_FILE" > "$ERROR_FILE" || true
+
+          echo "Found $(wc -l < "$ERROR_FILE") error/warning lines"
+        store: ERROR_FILE
+
+    next_phase: 5-deduplicate
+
+  - id: 5-deduplicate
+    name: Deduplicate & Categorize
+    steps:
+      - name: unique-issues
+        type: cmd
+        cmd: |
+          UNIQUE_FILE="$SCRATCHPAD_DIR/unique_issues.txt"
+
+          sort "$ERROR_FILE" | uniq -c | sort -rn > "$UNIQUE_FILE"
+
+          echo "Unique issue categories: $(wc -l < "$UNIQUE_FILE")"
+        store: UNIQUE_FILE
+
+      - name: categorize
+        type: cmd
+        cmd: |
+          # Categorize by error type:
+          # - FATAL: build failures, module not found
+          # - APP_ERROR: runtime errors, hook violations
+          # - STYLE: tailwind warnings, deprecations
+          # - CONFIG: vite/plugin config issues
+          echo "Categorizing issues..."
+        store: CATEGORIES
+
+    next_phase: 6-report
+
+  - id: 6-report
+    name: Generate Report
+    steps:
+      - name: render-report
+        type: doc
+        template: monitor-vite-report
+        target: stdout
+        store: REPORT
+
+output:
+  format: structured
+  sections:
+    - duration: [seconds]
+    - log-lines: [count]
+    - unique-issues: [categories]
+    - issue-summary: [fatal, app-error, style, config]
+  next_workflow: handle-review-results
+
+validation:
+  success_criteria:
+    - "Dev server launched"
+    - "Logs captured"
+    - "Issues extracted"
+    - "Report generated"
+
+resolution_types:
+  fatal: "Must fix - build failures, module not found"
+  app-error: "Should fix - runtime errors, hook violations"
+  style: "Nice to have - warnings, deprecations"
+  config: "Should fix - plugin/config issues"

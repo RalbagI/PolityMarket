@@ -1,0 +1,92 @@
+workflow:
+  id: sync-main
+  trigger: /sync-main
+  mode: exec
+
+metadata:
+  updated: "2026-03-17"
+  description: "Sync main into current branch, resolve conflicts, handle compatibility."
+
+phases:
+  - id: 1-verify
+    name: Verify State
+    steps:
+      - name: git-status
+        type: cmd
+        cmd: git status -sb
+        fail_action: exit
+
+      - name: fetch-main
+        type: cmd
+        cmd: git fetch origin main
+
+    next_phase: 2-merge
+
+  - id: 2-merge
+    name: Merge Main
+    steps:
+      - name: merge-main
+        type: cmd
+        cmd: git merge origin/main --no-edit
+        fail_action: warn
+
+    next_phase: 3-resolve-conflicts
+
+  - id: 3-resolve-conflicts
+    name: Resolve Conflicts
+    steps:
+      - name: identify-conflicts
+        type: cmd
+        cmd: git status --short | grep '^UU' || echo "No conflicts"
+        store: CONFLICTED_FILES
+
+      - name: resolve-manually
+        type: cmd
+        cmd: |
+          echo "Manual conflict resolution required."
+          echo "For each conflict, examine markers and resolve."
+
+      - name: verify-merge
+        type: cmd
+        cmd: |
+          npx vitest run || echo "Tests need attention post-merge"
+
+    next_phase: 4-commit
+
+  - id: 4-commit
+    name: Commit Merge
+    steps:
+      - name: stage-merge
+        type: cmd
+        cmd: git add .
+
+      - name: commit-merge
+        type: cmd
+        cmd: |
+          git commit -m "chore: sync main into branch" || \
+          echo "Already merged"
+
+    next_phase: 5-verify
+
+  - id: 5-verify
+    name: Final Verification
+    steps:
+      - name: check-clean
+        type: check
+        check: "test -z \"$(git status --porcelain)\""
+        fail_action: exit
+
+output:
+  format: structured
+  sections:
+    - merge: [completed]
+    - conflicts: [resolved]
+    - tests: [passing]
+
+validation:
+  success_criteria:
+    - "Main merged without unresolved conflicts"
+    - "Tests passing"
+    - "Clean git state"
+
+note: "No push policy. Use /prepare-for-merge to finalize."

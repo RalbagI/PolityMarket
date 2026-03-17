@@ -1,0 +1,179 @@
+workflow:
+  id: resolve-issue
+  trigger: /resolve-issue
+  mode: exec
+  agents: 1
+
+metadata:
+  updated: "2026-03-17"
+  review_cycle_days: 365
+  description: >-
+    End-to-end issue resolution with automatic context
+    recall before execution and memory capture after
+    completion. Uses GitHub Issues via gh CLI.
+  skills: [test, sec, react-best-practices]
+
+input:
+  modes: [github, freetext]
+  github_format: "#NUMBER or NUMBER"
+  freetext_format: "task: <description>"
+
+phases:
+  - id: 0-recall-context
+    name: Recall Context
+    steps:
+      - name: recall-prior-lessons
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py recall \
+            --workflow resolve-issue \
+            --issue "${INPUT_ID:-}" \
+            --topic "${INPUT_DESC:-}" \
+            --limit 8
+        store: RECALL_CONTEXT
+        fail_action: warn
+
+      - name: snapshot-start
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py snapshot \
+            --workflow resolve-issue \
+            --phase start \
+            --issue "${INPUT_ID:-}" \
+            --topic "${INPUT_DESC:-}" \
+            --note "resolve-issue started"
+        fail_action: warn
+
+    next_phase: 1-setup
+
+  - id: 1-setup
+    name: Branch Setup
+    steps:
+      - name: verify-clean
+        type: cmd
+        cmd: git status -sb
+        fail_action: exit
+
+      - name: create-branch
+        type: cmd
+        cmd: |
+          DESC_SLUG=$(echo "${INPUT_DESC:-task}" | \
+            tr '[:upper:]' '[:lower:]' | \
+            sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+          ID_PART="${INPUT_ID:-adhoc}"
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          [ "$BRANCH" = "main" ] && \
+          git checkout -b issue-${ID_PART}-${DESC_SLUG} origin/main || \
+          echo "Already on feature branch"
+        store: CREATED_BRANCH
+
+    next_phase: 2-fetch-issue
+
+  - id: 2-fetch-issue
+    name: Fetch Issue Details
+    steps:
+      - name: get-github-issue
+        type: cmd
+        cmd: |
+          .agent/bin/gh-issue-view.sh $INPUT_ID --comments 2>/dev/null || \
+          echo "Using free-text task: $INPUT_DESC"
+        store: ISSUE_DESC
+
+      - name: extract-acceptance
+        type: cmd
+        cmd: "echo 'Acceptance criteria extracted'"
+
+    next_phase: 3-implement
+
+  - id: 3-implement
+    name: Implement Solution
+    steps:
+      - name: write-code
+        type: cmd
+        cmd: "echo 'Implementing fix...'"
+        store: CODE_CHANGES
+
+      - name: write-tests
+        type: cmd
+        cmd: npx vitest run
+
+      - name: verify-lint
+        type: cmd
+        cmd: npx eslint src/
+        fail_action: exit
+
+    next_phase: 4-commit
+
+  - id: 4-commit
+    name: Commit Changes
+    steps:
+      - name: stage-changes
+        type: cmd
+        cmd: git add .
+
+      - name: write-commit
+        type: cmd
+        cmd: |
+          MSG="chore: resolve issue #${INPUT_ID}"
+          [ -n "$INPUT_DESC" ] && MSG="chore: $INPUT_DESC"
+          git commit -m "$MSG" || echo "No changes"
+
+    next_phase: 5-verify
+
+  - id: 5-verify
+    name: Verify Final State
+    steps:
+      - name: check-clean
+        type: check
+        check: "test -z \"$(git status --porcelain)\""
+        fail_action: exit
+    next_phase: 6-capture-memory
+
+  - id: 6-capture-memory
+    name: Capture Memory
+    steps:
+      - name: snapshot-end
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py snapshot \
+            --workflow resolve-issue \
+            --phase end \
+            --issue "${INPUT_ID:-}" \
+            --topic "${INPUT_DESC:-}" \
+            --note "resolve-issue completed"
+        fail_action: warn
+
+      - name: learn-from-run
+        type: cmd
+        cmd: |
+          python3 .agent/bin/workflow-memory.py learn \
+            --workflow resolve-issue \
+            --issue "${INPUT_ID:-}" \
+            --topic "${INPUT_DESC:-}" \
+            --auto
+        store: LEARN_RESULT
+        fail_action: warn
+
+    next_phase: null
+
+output:
+  format: structured
+  sections:
+    - memory: [recalled, captured]
+    - branch: [created]
+    - issue: [analyzed]
+    - implementation: [code, tests]
+    - commit: [created]
+
+validation:
+  success_criteria:
+    - "Prior lessons recalled"
+    - "Feature branch created"
+    - "Issue analyzed"
+    - "Code implemented"
+    - "Tests passing"
+    - "Lint passing"
+    - "Commit created (not pushed)"
+    - "Workflow memory captured"
+
+note: "No push policy. Use /prepare-for-merge to finalize."

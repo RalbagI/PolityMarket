@@ -1,0 +1,80 @@
+# AI-First Workflow Schema v1.0
+# Optimized for deterministic AI parsing
+# Adapted for PoliticMarket (React/Vite) from Tipi (Flutter)
+
+workflow:
+  id: string                              # unique workflow ID (e.g., code-review)
+  trigger: string                         # slash command (e.g., /code-review)
+  mode: [read-only|write|exec]           # workflow mode
+  agents: int | [string]                  # agent count or types
+
+metadata:
+  updated: date
+  review_cycle_days: int
+  description: string
+  skills: [string]                        # related skills
+
+constraints:
+  post_merge_work: [deny|allow]          # can create post-merge issues?
+  exception_approval: boolean
+  readonly: boolean
+
+phases:
+  - id: string                            # phase ID
+    name: string                          # short name
+    auto: boolean                         # auto-execute?
+    parallel: int | null                  # parallelization count
+    inputs: [string]                      # required inputs
+
+    steps:
+      - name: string                      # step name
+        req: boolean                      # mandatory?
+        type: [cmd|check|review|doc]     # step type
+
+        # For cmd type:
+        cmd: string | [string]            # bash command(s)
+        store: string | null              # variable to store output
+        fail_action: [exit|warn|log]     # on failure
+
+        # For check type:
+        check: string                     # what to validate
+        acceptable_failure: [string]      # acceptable error patterns
+
+        # For review type:
+        review_dimensions: [string]       # code review dimensions
+        min_confidence: float             # confidence threshold (0-1)
+
+        # For doc type:
+        template: string                  # doc section template
+        target: string                    # where to write
+
+    next_phase: string | null             # conditional next phase
+
+output:
+  format: [structured|prose|code]
+  template: string                        # output template name
+  sections: [string]                      # output sections
+  next_workflow: string | null            # next workflow to run
+
+validation:
+  pre_checks: [string]                    # pre-execution checks
+  post_checks: [string]                   # post-execution verification
+  success_criteria: [string]              # success indicators
+
+templates:
+  issue:
+    title: string
+    fields: [string]
+
+  output_section:
+    name: string
+    format: string
+
+abbreviations:
+  sec: security
+  test: testing
+  doc: documentation
+  req: mandatory
+  opt: optional
+  msg: message
+  err: error
