@@ -160,7 +160,9 @@ export default function Leaderboard({
                 >
                   <td className="px-6 py-4 text-sm text-gray-500 font-mono">{i + 1}</td>
                   <td className="px-6 py-4">
-                    <span className="text-sm font-medium text-white">{localizeName(t, entry.name)}</span>
+                    <span className="text-sm font-medium text-white">
+                      {localizeName(t, entry.name)}
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <span
@@ -202,7 +204,9 @@ export default function Leaderboard({
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-gray-500 font-mono w-5">{i + 1}</span>
                   <div>
-                    <div className="text-sm font-medium text-white">{localizeName(t, entry.name)}</div>
+                    <div className="text-sm font-medium text-white">
+                      {localizeName(t, entry.name)}
+                    </div>
                     <span
                       className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium"
                       style={{
