@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowUp, ArrowDown, Minus, ChevronDown, ChevronUp } from "lucide-react";
+import { localizeName, localizeParty } from "../lib/localize";
 
 function ScoreBadge({ score }) {
   let bg, text;
@@ -74,6 +76,7 @@ export default function Leaderboard({
   selectedPolitician,
   onSelect,
 }) {
+  const { t } = useTranslation();
   const [sortKey, setSortKey] = useState("overall_score");
   const [sortDir, setSortDir] = useState("desc");
 
@@ -101,7 +104,7 @@ export default function Leaderboard({
   return (
     <div className="rounded-2xl bg-gray-900 border border-gray-800 overflow-hidden">
       <div className="px-6 py-4 border-b border-gray-800">
-        <h3 className="text-lg font-semibold text-white">Daily Leaderboard</h3>
+        <h3 className="text-lg font-semibold text-white">{t("leaderboard.title")}</h3>
       </div>
 
       {/* Desktop Table */}
@@ -109,37 +112,37 @@ export default function Leaderboard({
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-800">
-              <th className="px-6 py-3 text-left">
+              <th className="px-6 py-3 text-start">
                 <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                  Rank
+                  {t("leaderboard.column.rank")}
                 </span>
               </th>
-              <th className="px-6 py-3 text-left">
+              <th className="px-6 py-3 text-start">
                 <SortHeader
-                  label="Politician"
+                  label={t("leaderboard.column.politician")}
                   field="name"
                   sortKey={sortKey}
                   sortDir={sortDir}
                   onSort={handleSort}
                 />
               </th>
-              <th className="px-6 py-3 text-left">
+              <th className="px-6 py-3 text-start">
                 <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                  Party
+                  {t("leaderboard.column.party")}
                 </span>
               </th>
-              <th className="px-6 py-3 text-right">
+              <th className="px-6 py-3 text-end">
                 <SortHeader
-                  label="Score"
+                  label={t("leaderboard.column.score")}
                   field="overall_score"
                   sortKey={sortKey}
                   sortDir={sortDir}
                   onSort={handleSort}
                 />
               </th>
-              <th className="px-6 py-3 text-right">
+              <th className="px-6 py-3 text-end">
                 <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-                  Change
+                  {t("leaderboard.column.change")}
                 </span>
               </th>
             </tr>
@@ -157,7 +160,9 @@ export default function Leaderboard({
                 >
                   <td className="px-6 py-4 text-sm text-gray-500 font-mono">{i + 1}</td>
                   <td className="px-6 py-4">
-                    <span className="text-sm font-medium text-white">{entry.name}</span>
+                    <span className="text-sm font-medium text-white">
+                      {localizeName(t, entry.name)}
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <span
@@ -167,13 +172,13 @@ export default function Leaderboard({
                         color: partyColors[entry.party],
                       }}
                     >
-                      {entry.party}
+                      {localizeParty(t, entry.party)}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-right">
+                  <td className="px-6 py-4 text-end">
                     <ScoreBadge score={entry.overall_score} />
                   </td>
-                  <td className="px-6 py-4 text-right">
+                  <td className="px-6 py-4 text-end">
                     <DeltaIndicator delta={getDelta(entry.name)} />
                   </td>
                 </tr>
@@ -199,7 +204,9 @@ export default function Leaderboard({
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-gray-500 font-mono w-5">{i + 1}</span>
                   <div>
-                    <div className="text-sm font-medium text-white">{entry.name}</div>
+                    <div className="text-sm font-medium text-white">
+                      {localizeName(t, entry.name)}
+                    </div>
                     <span
                       className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium"
                       style={{
@@ -207,7 +214,7 @@ export default function Leaderboard({
                         color: partyColors[entry.party],
                       }}
                     >
-                      {entry.party}
+                      {localizeParty(t, entry.party)}
                     </span>
                   </div>
                 </div>

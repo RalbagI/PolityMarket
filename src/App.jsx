@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useCallback, lazy, Suspense } from "react";
+import { useTranslation } from "react-i18next";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PopularityGauge from "./components/PopularityGauge";
 import ShareOfVoice from "./components/ShareOfVoice";
 import Leaderboard from "./components/Leaderboard";
 
-// Lazy-load heavy components for code splitting
 const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
@@ -19,15 +19,16 @@ const NEUTRAL_COLORS = {
 };
 
 function ChartFallback() {
+  const { t } = useTranslation();
   return (
     <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 h-80 flex items-center justify-center">
-      <div className="text-gray-500 text-sm">Loading chart...</div>
+      <div className="text-gray-500 text-sm">{t("app.loading.chart")}</div>
     </div>
   );
 }
 
 export default function App() {
-  // Subscribe to specific Zustand slices — no unnecessary re-renders
+  const { t } = useTranslation();
   const summaryData = useStore((s) => s.summaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
@@ -38,12 +39,10 @@ export default function App() {
   const openPanel = useStore((s) => s.openPanel);
   const closePanel = useStore((s) => s.closePanel);
 
-  // Load summary data on mount
   useEffect(() => {
     loadSummary();
   }, [loadSummary]);
 
-  // Derived data — memoized
   const { dates, politicians, todayData, yesterdayData, latestDate } = useMemo(() => {
     if (!summaryData.length)
       return { dates: [], politicians: [], todayData: [], yesterdayData: [], latestDate: null };
@@ -78,14 +77,14 @@ export default function App() {
   );
 
   const activeDate = selectedDate || latestDate;
-  // Subscribe only to the specific cache entry for the active date,
-  // not the entire detailCache object — prevents re-renders when other dates are cached
   const activeDetail = useStore((s) => (activeDate ? s.detailCache[activeDate] : null));
 
   if (loadError) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <div className="text-red-400 text-lg">Failed to load data: {loadError}</div>
+        <div className="text-red-400 text-lg">
+          {t("app.error.failedToLoadData", { error: loadError })}
+        </div>
       </div>
     );
   }
@@ -93,7 +92,7 @@ export default function App() {
   if (!summaryData.length) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <div className="text-gray-400 text-lg">Loading data...</div>
+        <div className="text-gray-400 text-lg">{t("app.loading.data")}</div>
       </div>
     );
   }
@@ -104,13 +103,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-sm">
-              PM
+              {t("app.header.logo")}
             </div>
-            <h1 className="text-xl font-bold tracking-tight">PolityMarket</h1>
+            <h1 className="text-xl font-bold tracking-tight">{t("app.header.title")}</h1>
           </div>
-          <p className="text-sm text-gray-500 hidden sm:block">
-            Israeli Political Sentiment Tracker
-          </p>
+          <p className="text-sm text-gray-500 hidden sm:block">{t("app.header.subtitle")}</p>
         </div>
       </header>
 
@@ -153,7 +150,7 @@ export default function App() {
           <SlidePanel
             isOpen={panelOpen}
             onClose={closePanel}
-            title={selectedPolitician || "Details"}
+            title={selectedPolitician || t("app.panel.defaultTitle")}
           >
             <DetailView
               todayDetail={activeDetail}
@@ -167,8 +164,7 @@ export default function App() {
 
       <footer className="border-t border-gray-800/60 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
-          PolityMarket &middot; Data updates daily at 2:00 AM IST &middot; Powered by AI sentiment
-          analysis
+          {t("app.footer.text")}
         </div>
       </footer>
     </div>

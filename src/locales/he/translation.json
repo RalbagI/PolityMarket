@@ -1,0 +1,130 @@
+{
+  "app": {
+    "loading": {
+      "chart": "טוען תרשים...",
+      "data": "טוען נתונים..."
+    },
+    "error": {
+      "failedToLoadData": "שגיאה בטעינת נתונים: {{error}}"
+    },
+    "header": {
+      "logo": "PM",
+      "title": "PolityMarket",
+      "subtitle": "מעקב סנטימנט פוליטי ישראלי"
+    },
+    "panel": {
+      "defaultTitle": "פרטים"
+    },
+    "footer": {
+      "text": "PolityMarket · הנתונים מתעדכנים מדי יום בשעה 2:00 · מופעל על ידי ניתוח סנטימנט AI"
+    }
+  },
+  "detailView": {
+    "empty": {
+      "selectPolitician": "בחר פוליטיקאי מטבלת הדירוג או לחץ על נקודת נתונים בתרשים"
+    },
+    "loading": "טוען פרטים...",
+    "date": {
+      "fallback": "היום"
+    },
+    "section": {
+      "aiAnalysis": "ניתוח AI",
+      "scoreBreakdown": "פירוט ציון",
+      "sources": "מקורות"
+    },
+    "aiAnalysis": {
+      "empty": "אין ניתוח זמין."
+    },
+    "metric": {
+      "newsSentiment": "סנטימנט חדשותי",
+      "socialSentiment": "סנטימנט חברתי",
+      "mediaVolume": "נפח מדיה"
+    },
+    "breakdown": {
+      "policy": "מדיניות 40%",
+      "hostility": "עוינות 35%",
+      "volume": "נפח 25%"
+    },
+    "rubrics": {
+      "heading": "מדדים ממדיים",
+      "hostility": "עוינות",
+      "policyApproval": "אישור מדיניות",
+      "mediaAmplification": "הגברה תקשורתית"
+    },
+    "sources": {
+      "empty": "ציטוטי מקורות יתמלאו כאשר קליטת נתונים אמיתית תופעל."
+    }
+  },
+  "leaderboard": {
+    "title": "טבלת דירוג יומית",
+    "column": {
+      "rank": "דירוג",
+      "politician": "פוליטיקאי",
+      "party": "מפלגה",
+      "score": "ציון",
+      "change": "שינוי"
+    }
+  },
+  "popularityGauge": {
+    "title": "מדד פופולריות",
+    "label": {
+      "veryNegative": "שלילי מאוד",
+      "negative": "שלילי",
+      "neutral": "ניטרלי",
+      "positive": "חיובי",
+      "veryPositive": "חיובי מאוד"
+    },
+    "comparison": {
+      "yesterday": "אתמול",
+      "lastWeek": "שבוע שעבר",
+      "lastMonth": "חודש שעבר"
+    }
+  },
+  "shareOfVoice": {
+    "title": "נתח קול",
+    "description": "אחוז השיח הפוליטי הכולל לכל פוליטיקאי"
+  },
+  "trendlineChart": {
+    "title": "מגמת סנטימנט",
+    "sma": {
+      "raw": "גולמי",
+      "7d": "ממוצע 7 ימים",
+      "14d": "ממוצע 14 ימים"
+    },
+    "axis": {
+      "volume": "נפח",
+      "score": "ציון"
+    },
+    "tooltip": {
+      "mediaVolume": "נפח מדיה"
+    },
+    "smaNote": {
+      "7d": "מציג ממוצע נע פשוט של 7 ימים",
+      "14d": "מציג ממוצע נע פשוט של 14 ימים"
+    }
+  },
+  "slidePanel": {
+    "defaultTitle": "פרטים",
+    "closeButton": {
+      "ariaLabel": "סגור חלונית"
+    }
+  },
+  "errorBoundary": {
+    "message": "שגיאה בטעינת רכיב",
+    "retry": "נסה שוב"
+  },
+  "politicians": {
+    "Benjamin Netanyahu": "בנימין נתניהו",
+    "Yair Lapid": "יאיר לפיד",
+    "Benny Gantz": "בני גנץ",
+    "Bezalel Smotrich": "בצלאל סמוטריץ׳",
+    "Avigdor Lieberman": "אביגדור ליברמן"
+  },
+  "parties": {
+    "Likud": "הליכוד",
+    "Yesh Atid": "יש עתיד",
+    "National Unity": "המחנה הממלכתי",
+    "Religious Zionism": "הציונות הדתית",
+    "Yisrael Beiteinu": "ישראל ביתנו"
+  }
+}

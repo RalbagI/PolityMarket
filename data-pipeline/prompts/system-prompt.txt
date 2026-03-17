@@ -54,5 +54,7 @@ Input: "Interesting strategy to solve the crisis by doing exactly what caused it
 Output:
 {"chain_of_thought":"Ironic but not overtly sarcastic. The statement implies the politician's approach is circular and ineffective. The word 'interesting' is used dismissively. Moderate hostility — more contemptuous than aggressive. No PDD detected.","hostility_level":0.4,"policy_approval":-0.5,"media_amplification":0.3}
 
+IMPORTANT: Write the "chain_of_thought" field in Hebrew (עברית). The analysis text displayed to end users must be in Hebrew. The numeric field names remain in English.
+
 Respond ONLY with valid JSON matching this exact schema:
-{"chain_of_thought":"string","hostility_level":number,"policy_approval":number,"media_amplification":number}
+{"chain_of_thought":"string (in Hebrew)","hostility_level":number,"policy_approval":number,"media_amplification":number}

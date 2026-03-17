@@ -1,5 +1,7 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import useStore from "../store";
+import { localizeName } from "../lib/localize";
 import {
   ComposedChart,
   Line,
@@ -26,6 +28,7 @@ function computeSMA(values, window) {
 }
 
 export default function TrendlineChart({ data, dates, politicians, onDateClick }) {
+  const { t } = useTranslation();
   const smaMode = useStore((s) => s.smaMode);
   const setSmaMode = useStore((s) => s.setSmaMode);
 
@@ -73,12 +76,12 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
   return (
     <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
-        <h3 className="text-lg font-semibold text-white">Sentiment Trend</h3>
+        <h3 className="text-lg font-semibold text-white">{t("trendlineChart.title")}</h3>
         <div className="flex gap-1 bg-gray-800 rounded-lg p-1">
           {[
-            { key: "raw", label: "Raw" },
-            { key: "sma7", label: "7d SMA" },
-            { key: "sma14", label: "14d SMA" },
+            { key: "raw", label: t("trendlineChart.sma.raw") },
+            { key: "sma7", label: t("trendlineChart.sma.7d") },
+            { key: "sma14", label: t("trendlineChart.sma.14d") },
           ].map(({ key, label }) => (
             <button
               key={key}
@@ -119,7 +122,7 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
               tick={{ fill: "#6b7280", fontSize: 11 }}
               stroke="#4a5568"
               label={{
-                value: "Volume",
+                value: t("trendlineChart.axis.volume"),
                 angle: -90,
                 position: "insideLeft",
                 style: { fill: "#6b7280", fontSize: 11 },
@@ -132,7 +135,7 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
               tick={{ fill: "#9ca3af", fontSize: 12 }}
               stroke="#4a5568"
               label={{
-                value: "Score",
+                value: t("trendlineChart.axis.score"),
                 angle: 90,
                 position: "insideRight",
                 style: { fill: "#9ca3af", fontSize: 11 },
@@ -147,8 +150,9 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
               }}
               labelFormatter={(val) => format(parseISO(val), "MMMM d, yyyy")}
               formatter={(value, name) => {
-                if (name === "totalVolume") return [value.toFixed(1), "Media Volume"];
-                return [value?.toFixed(2), name];
+                if (name === "totalVolume")
+                  return [value.toFixed(1), t("trendlineChart.tooltip.mediaVolume")];
+                return [value?.toFixed(2), localizeName(t, name)];
               }}
             />
             <Legend wrapperStyle={{ fontSize: "12px", color: "#cbd5e0" }} />
@@ -159,7 +163,7 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
               dataKey="totalVolume"
               fill="#4a5568"
               opacity={0.3}
-              name="Media Volume"
+              name={t("trendlineChart.tooltip.mediaVolume")}
               barSize={12}
             />
 
@@ -170,6 +174,7 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
                 yAxisId="right"
                 type="monotone"
                 dataKey={name}
+                name={localizeName(t, name)}
                 stroke={LINE_COLORS[i % LINE_COLORS.length]}
                 strokeWidth={2}
                 dot={false}
@@ -182,8 +187,8 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
       </div>
 
       {smaMode !== "raw" && (
-        <p className="text-xs text-gray-600 mt-2 text-right">
-          Showing {smaMode === "sma7" ? "7" : "14"}-day simple moving average
+        <p className="text-xs text-gray-600 mt-2 text-end">
+          {smaMode === "sma7" ? t("trendlineChart.smaNote.7d") : t("trendlineChart.smaNote.14d")}
         </p>
       )}
     </div>
