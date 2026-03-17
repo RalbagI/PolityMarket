@@ -1,0 +1,834 @@
+[
+  {
+    "id": 1,
+    "category": "neutral_policy",
+    "text": "The Knesset Finance Committee approved the 2026 state budget framework with a narrow majority of 6-5.",
+    "expected_hostility": 0.05,
+    "expected_policy_approval": 0.1,
+    "expected_media_amplification": 0.4
+  },
+  {
+    "id": 2,
+    "category": "neutral_policy",
+    "text": "The Interior Ministry published updated municipal boundary maps following the administrative reform bill's second reading.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.0,
+    "expected_media_amplification": 0.15
+  },
+  {
+    "id": 3,
+    "category": "neutral_policy",
+    "text": "Yesh Atid submitted a private member's bill to extend parental leave to 26 weeks, currently in committee review.",
+    "expected_hostility": 0.03,
+    "expected_policy_approval": 0.3,
+    "expected_media_amplification": 0.35
+  },
+  {
+    "id": 4,
+    "category": "neutral_policy",
+    "text": "The Knesset Education Committee held hearings on the proposed reform to high school civics curriculum standards.",
+    "expected_hostility": 0.04,
+    "expected_policy_approval": 0.05,
+    "expected_media_amplification": 0.25
+  },
+  {
+    "id": 5,
+    "category": "neutral_policy",
+    "text": "Labor party chairperson announced the formation of a new parliamentary working group on affordable housing.",
+    "expected_hostility": 0.03,
+    "expected_policy_approval": 0.2,
+    "expected_media_amplification": 0.3
+  },
+  {
+    "id": 6,
+    "category": "neutral_policy",
+    "text": "The Central Bureau of Statistics released quarterly economic indicators showing 3.2% GDP growth for Q3.",
+    "expected_hostility": 0.01,
+    "expected_policy_approval": 0.15,
+    "expected_media_amplification": 0.4
+  },
+  {
+    "id": 7,
+    "category": "neutral_policy",
+    "text": "The Knesset Constitution, Law and Justice Committee voted to advance the judicial appointments transparency bill to first reading.",
+    "expected_hostility": 0.06,
+    "expected_policy_approval": 0.05,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 8,
+    "category": "neutral_policy",
+    "text": "The Ministry of Transportation published its five-year plan for expanding public transit in the Negev and Galilee regions.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.25,
+    "expected_media_amplification": 0.3
+  },
+  {
+    "id": 9,
+    "category": "neutral_policy",
+    "text": "Coalition and opposition whips agreed on a revised Knesset session schedule to accommodate the upcoming holiday recess.",
+    "expected_hostility": 0.01,
+    "expected_policy_approval": 0.0,
+    "expected_media_amplification": 0.1
+  },
+  {
+    "id": 10,
+    "category": "neutral_policy",
+    "text": "The State Comptroller published an audit report on procurement procedures in the Ministry of Defense.",
+    "expected_hostility": 0.08,
+    "expected_policy_approval": -0.1,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 11,
+    "category": "neutral_policy",
+    "text": "Meretz proposed an amendment to the National Health Insurance Law expanding mental health coverage for young adults.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.35,
+    "expected_media_amplification": 0.3
+  },
+  {
+    "id": 12,
+    "category": "neutral_policy",
+    "text": "The Knesset Immigration and Absorption Committee discussed integration benchmarks for the latest wave of olim from Ethiopia.",
+    "expected_hostility": 0.04,
+    "expected_policy_approval": 0.1,
+    "expected_media_amplification": 0.25
+  },
+  {
+    "id": 13,
+    "category": "neutral_policy",
+    "text": "The Bank of Israel published its monetary policy report recommending a hold on interest rates for the current quarter.",
+    "expected_hostility": 0.01,
+    "expected_policy_approval": 0.05,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 14,
+    "category": "neutral_policy",
+    "text": "Religious Zionism party submitted a bill to increase funding for settlement infrastructure in Area C by 15%.",
+    "expected_hostility": 0.1,
+    "expected_policy_approval": -0.15,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 15,
+    "category": "neutral_policy",
+    "text": "The Knesset Science and Technology Committee approved a NIS 500 million allocation for a national cybersecurity center.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.3,
+    "expected_media_amplification": 0.35
+  },
+  {
+    "id": 16,
+    "category": "sarcasm",
+    "text": "Another coalition crisis resolved in 48 hours. Truly the most stable government in Israel's history. Someone notify the Guinness Book.",
+    "speaker_context": "Political satirist and columnist for a major Israeli news outlet",
+    "expected_hostility": 0.45,
+    "expected_policy_approval": -0.5,
+    "expected_media_amplification": 0.7
+  },
+  {
+    "id": 17,
+    "category": "sarcasm",
+    "text": "The Finance Minister's new economic plan will surely fix everything, just like his last three plans fixed everything.",
+    "speaker_context": "Well-known satirical commentator on Israeli television",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.6,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 18,
+    "category": "sarcasm",
+    "text": "Likud backbenchers bravely voted with the party leader again. Profiles in courage, each and every one.",
+    "speaker_context": "Political satirist writing for Haaretz opinion section",
+    "expected_hostility": 0.55,
+    "expected_policy_approval": -0.45,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 19,
+    "category": "sarcasm",
+    "text": "Great news: the Knesset ethics committee will investigate itself for failing to investigate. Democracy at its finest.",
+    "speaker_context": "Stand-up comedian known for political satire routines",
+    "expected_hostility": 0.6,
+    "expected_policy_approval": -0.55,
+    "expected_media_amplification": 0.75
+  },
+  {
+    "id": 20,
+    "category": "sarcasm",
+    "text": "The opposition leader gave a fiery speech today. I'm sure the coalition was deeply moved as they scrolled through their phones.",
+    "speaker_context": "Satirist and political cartoonist for Yedioth Ahronoth",
+    "expected_hostility": 0.4,
+    "expected_policy_approval": -0.35,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 21,
+    "category": "sarcasm",
+    "text": "The housing minister announced affordable housing will arrive by 2030, which is only five years later than the last promise of affordable housing by 2025.",
+    "speaker_context": "Political satirist with a popular podcast on Israeli politics",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.55,
+    "expected_media_amplification": 0.7
+  },
+  {
+    "id": 22,
+    "category": "sarcasm",
+    "text": "Religious Zionism demands more coalition seats. In other breaking news, water remains wet.",
+    "speaker_context": "Satirical columnist for Maariv newspaper",
+    "expected_hostility": 0.45,
+    "expected_policy_approval": -0.4,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 23,
+    "category": "sarcasm",
+    "text": "Yesh Atid's bold new strategy: do exactly what they did last time, but with more PowerPoint slides.",
+    "speaker_context": "Political satirist and former Knesset staffer turned comedian",
+    "expected_hostility": 0.4,
+    "expected_policy_approval": -0.35,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 24,
+    "category": "sarcasm",
+    "text": "The coalition whip assures us the bill has 61 votes. Just like he assured us last week, before three MKs suddenly had dentist appointments.",
+    "speaker_context": "Veteran satirical journalist on Channel 12 news commentary panel",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.45,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 25,
+    "category": "sarcasm",
+    "text": "The Prime Minister's office released a statement calling the protest 'a handful of anarchists.' The aerial photos show roughly 200,000 handful-members.",
+    "speaker_context": "Satirist known for viral social media commentary on Israeli politics",
+    "expected_hostility": 0.55,
+    "expected_policy_approval": -0.5,
+    "expected_media_amplification": 0.8
+  },
+  {
+    "id": 26,
+    "category": "sarcasm",
+    "text": "Labor party announces yet another rebranding. New logo, new slogan, same 4 seats.",
+    "speaker_context": "Political satirist and stand-up comedian performing in Tel Aviv clubs",
+    "expected_hostility": 0.45,
+    "expected_policy_approval": -0.3,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 27,
+    "category": "sarcasm",
+    "text": "Incredible scenes in the Knesset as MKs debated the nation's future by shouting over each other for three hours. Truly the Westminster of the Middle East.",
+    "speaker_context": "British-Israeli satirical writer covering Knesset proceedings",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.4,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 28,
+    "category": "sarcasm",
+    "text": "The defense budget passed with zero debate. Nothing says robust democracy like rubber-stamping billions in military spending during a cost-of-living crisis.",
+    "speaker_context": "Satirical columnist for The Marker financial newspaper",
+    "expected_hostility": 0.55,
+    "expected_policy_approval": -0.5,
+    "expected_media_amplification": 0.7
+  },
+  {
+    "id": 29,
+    "category": "sarcasm",
+    "text": "Breaking: politician who switched parties three times in two years lectures us on loyalty and values.",
+    "speaker_context": "Political satirist on popular Israeli comedy show Eretz Nehederet",
+    "expected_hostility": 0.6,
+    "expected_policy_approval": -0.45,
+    "expected_media_amplification": 0.7
+  },
+  {
+    "id": 30,
+    "category": "sarcasm",
+    "text": "The newly appointed minister assures the public he is 'fully qualified' for the portfolio. His previous experience includes being the party leader's college roommate.",
+    "speaker_context": "Satirist and investigative journalist hybrid, writing for Israeli news blogs",
+    "expected_hostility": 0.6,
+    "expected_policy_approval": -0.55,
+    "expected_media_amplification": 0.75
+  },
+  {
+    "id": 31,
+    "category": "sarcasm",
+    "text": "The Attorney General warned the government about legal consequences. The government responded by considering replacing the Attorney General. Problem solved.",
+    "speaker_context": "Legal affairs satirist and former law lecturer at Tel Aviv University",
+    "expected_hostility": 0.65,
+    "expected_policy_approval": -0.6,
+    "expected_media_amplification": 0.8
+  },
+  {
+    "id": 32,
+    "category": "sarcasm",
+    "text": "Coalition discipline held firm today. All 61 MKs voted together, proving that parliamentary democracy works best when nobody thinks for themselves.",
+    "speaker_context": "Political satirist for satirical news website in Hebrew",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.45,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 33,
+    "category": "sarcasm",
+    "text": "Meretz released another strongly worded statement. Sources confirm the coalition is absolutely terrified of these four MKs.",
+    "speaker_context": "Political satirist covering left-wing Israeli politics",
+    "expected_hostility": 0.4,
+    "expected_policy_approval": -0.3,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 34,
+    "category": "sarcasm",
+    "text": "The PM's diplomatic trip to Washington was described as 'historic.' This makes it the 47th historic trip to Washington in the last decade.",
+    "speaker_context": "Foreign affairs satirist for Israeli diplomatic correspondents pool",
+    "expected_hostility": 0.45,
+    "expected_policy_approval": -0.35,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 35,
+    "category": "sarcasm",
+    "text": "Ultra-orthodox parties threaten to topple the government over draft law. This threat has been issued every six months since 1948 with consistent follow-through of exactly zero times.",
+    "speaker_context": "Satirist specializing in religion-state dynamics in Israeli politics",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.4,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 36,
+    "category": "pdd",
+    "text": "These self-proclaimed 'defenders of democracy' are nothing but agents of foreign interests trying to dismantle the Jewish character of our state from within.",
+    "expected_hostility": 0.85,
+    "expected_policy_approval": -0.7,
+    "expected_media_amplification": 0.85
+  },
+  {
+    "id": 37,
+    "category": "pdd",
+    "text": "The Supreme Court has become a self-appointed oligarchy, overriding the will of the people exactly as the Weimar Republic's institutions did before they collapsed under their own arrogance.",
+    "expected_hostility": 0.8,
+    "expected_policy_approval": -0.65,
+    "expected_media_amplification": 0.9
+  },
+  {
+    "id": 38,
+    "category": "pdd",
+    "text": "The left-wing NGOs funded by European governments are conducting a systematic campaign to erase our national identity and replace it with a rootless cosmopolitanism.",
+    "expected_hostility": 0.8,
+    "expected_policy_approval": -0.6,
+    "expected_media_amplification": 0.8
+  },
+  {
+    "id": 39,
+    "category": "pdd",
+    "text": "The media establishment is not just biased — it is an organized fifth column working to delegitimize the elected government and install their own preferred regime.",
+    "expected_hostility": 0.85,
+    "expected_policy_approval": -0.7,
+    "expected_media_amplification": 0.9
+  },
+  {
+    "id": 40,
+    "category": "pdd",
+    "text": "Those who wave Israeli flags at protests while coordinating with foreign governments to impose sanctions on us are the true enemies of the state, not its defenders.",
+    "expected_hostility": 0.8,
+    "expected_policy_approval": -0.55,
+    "expected_media_amplification": 0.85
+  },
+  {
+    "id": 41,
+    "category": "pdd",
+    "text": "The academic establishment has been infiltrated by post-Zionist ideologues who teach our children to hate their own country. This is not education; it is national suicide.",
+    "expected_hostility": 0.8,
+    "expected_policy_approval": -0.6,
+    "expected_media_amplification": 0.8
+  },
+  {
+    "id": 42,
+    "category": "pdd",
+    "text": "The opposition does not want elections — they want regime change by any means necessary. They tried the courts, they tried the streets, now they're trying international pressure. This is how democracies die.",
+    "expected_hostility": 0.75,
+    "expected_policy_approval": -0.55,
+    "expected_media_amplification": 0.85
+  },
+  {
+    "id": 43,
+    "category": "pdd",
+    "text": "Just like the Judenrat who collaborated with the enemy, today's 'peace camp' leaders collaborate with those who seek our destruction while claiming to act in our interest.",
+    "expected_hostility": 0.95,
+    "expected_policy_approval": -0.85,
+    "expected_media_amplification": 0.95
+  },
+  {
+    "id": 44,
+    "category": "pdd",
+    "text": "The IDF top brass have become a political faction, selectively leaking intelligence to undermine the government. The deep state is not a conspiracy theory — it sits in the Kirya.",
+    "expected_hostility": 0.8,
+    "expected_policy_approval": -0.65,
+    "expected_media_amplification": 0.85
+  },
+  {
+    "id": 45,
+    "category": "pdd",
+    "text": "They call themselves 'civil society' but they are really a network of well-funded organizations whose sole purpose is to strip the Jewish people of sovereignty in their own homeland.",
+    "expected_hostility": 0.8,
+    "expected_policy_approval": -0.6,
+    "expected_media_amplification": 0.8
+  },
+  {
+    "id": 46,
+    "category": "pdd",
+    "text": "The prosecution's case against the PM is not about law — it is a political assassination carried out by an unelected legal aristocracy that believes it is above the people.",
+    "expected_hostility": 0.8,
+    "expected_policy_approval": -0.6,
+    "expected_media_amplification": 0.9
+  },
+  {
+    "id": 47,
+    "category": "pdd",
+    "text": "This isn't a debate about judicial reform. This is a fight between those who believe in Jewish self-determination and those who would hand our fate to foreign courts and progressive elites.",
+    "expected_hostility": 0.75,
+    "expected_policy_approval": -0.5,
+    "expected_media_amplification": 0.8
+  },
+  {
+    "id": 48,
+    "category": "pdd",
+    "text": "History will remember these so-called 'protest leaders' the way we remember the Hellenizers who sold out Judea to foreign empires for personal gain and cultural approval.",
+    "expected_hostility": 0.85,
+    "expected_policy_approval": -0.7,
+    "expected_media_amplification": 0.85
+  },
+  {
+    "id": 49,
+    "category": "pdd",
+    "text": "The real threat to Israeli democracy is not this government — it is the entrenched bureaucratic elite that has never accepted the results of any election that didn't go their way.",
+    "expected_hostility": 0.7,
+    "expected_policy_approval": -0.45,
+    "expected_media_amplification": 0.75
+  },
+  {
+    "id": 50,
+    "category": "pdd",
+    "text": "They don't just disagree with our policies — they deny our very right to govern. In their eyes, only they are legitimate rulers, and the millions who voted differently are a mob to be managed.",
+    "expected_hostility": 0.75,
+    "expected_policy_approval": -0.55,
+    "expected_media_amplification": 0.8
+  },
+  {
+    "id": 51,
+    "category": "positive",
+    "text": "The new coalition agreement includes significant investment in peripheral communities. Finally, resources flowing beyond the Tel Aviv bubble.",
+    "expected_hostility": 0.05,
+    "expected_policy_approval": 0.65,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 52,
+    "category": "positive",
+    "text": "Minister Gantz showed real leadership today by reaching across the aisle to pass the disability rights amendment unanimously.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.75,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 53,
+    "category": "positive",
+    "text": "Yesh Atid's education reform is already showing results — test scores in underserved communities up 12% in the first year of implementation.",
+    "expected_hostility": 0.03,
+    "expected_policy_approval": 0.7,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 54,
+    "category": "positive",
+    "text": "Credit where it's due: the PM's trade deal with India opens major export markets for Israeli tech companies.",
+    "expected_hostility": 0.03,
+    "expected_policy_approval": 0.7,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 55,
+    "category": "positive",
+    "text": "The cross-party women's caucus in the Knesset just passed the most comprehensive sexual harassment prevention bill in Israel's history. Proud moment.",
+    "expected_hostility": 0.01,
+    "expected_policy_approval": 0.8,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 56,
+    "category": "positive",
+    "text": "Likud's infrastructure plan for the Negev is exactly what Beer Sheva and surrounding towns have needed for decades. Bold and overdue.",
+    "expected_hostility": 0.03,
+    "expected_policy_approval": 0.65,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 57,
+    "category": "positive",
+    "text": "Labor's new chairperson brings a refreshing focus on economic justice. Her speech at the Histadrut convention was genuinely inspiring.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.6,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 58,
+    "category": "positive",
+    "text": "Israel's diplomatic breakthrough with Saudi Arabia is a testament to patient, bipartisan foreign policy work spanning multiple governments.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.8,
+    "expected_media_amplification": 0.85
+  },
+  {
+    "id": 59,
+    "category": "positive",
+    "text": "The Knesset's unanimous vote to increase Holocaust survivor benefits shows that when it matters, Israeli politicians can set aside partisanship.",
+    "expected_hostility": 0.01,
+    "expected_policy_approval": 0.85,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 60,
+    "category": "positive",
+    "text": "Meretz's proposal to expand the national nature reserves network by 20% was adopted by the government. A genuine environmental victory.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.7,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 61,
+    "category": "positive",
+    "text": "The innovation authority's new startup grants program is a model for how government can support entrepreneurship without heavy-handed regulation.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.65,
+    "expected_media_amplification": 0.4
+  },
+  {
+    "id": 62,
+    "category": "positive",
+    "text": "Religious Zionism's education minister surprised everyone by implementing inclusive STEM programs in ultra-orthodox schools. Real progress on integration.",
+    "expected_hostility": 0.04,
+    "expected_policy_approval": 0.7,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 63,
+    "category": "positive",
+    "text": "The new desalination plant approved by the Water Authority will ensure water security for the next generation. Smart, forward-thinking governance.",
+    "expected_hostility": 0.01,
+    "expected_policy_approval": 0.7,
+    "expected_media_amplification": 0.4
+  },
+  {
+    "id": 64,
+    "category": "positive",
+    "text": "The joint Arab-Jewish municipal cooperation initiative launched in the mixed cities is already reducing tensions and improving services.",
+    "expected_hostility": 0.03,
+    "expected_policy_approval": 0.75,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 65,
+    "category": "positive",
+    "text": "Israel's Iron Dome was shared with allied nations under the new defense export agreement. A proud moment for Israeli defense innovation.",
+    "expected_hostility": 0.02,
+    "expected_policy_approval": 0.75,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 66,
+    "category": "ambiguous",
+    "text": "The PM's speech was 'very presidential' today. Make of that what you will in a parliamentary system.",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": -0.15,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 67,
+    "category": "ambiguous",
+    "text": "Interesting timing for the AG to announce corruption indictments two weeks before the election. Just interesting, that's all.",
+    "expected_hostility": 0.4,
+    "expected_policy_approval": -0.25,
+    "expected_media_amplification": 0.7
+  },
+  {
+    "id": 68,
+    "category": "ambiguous",
+    "text": "The coalition's unity is truly inspiring. They agree on everything, as long as you don't ask them about anything specific.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": -0.25,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 69,
+    "category": "ambiguous",
+    "text": "Likud's 'national responsibility' campaign certainly puts things in perspective. Responsibility for what exactly remains an open question.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": -0.2,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 70,
+    "category": "ambiguous",
+    "text": "The defense minister's 'quiet diplomacy' is so quiet that even the cabinet doesn't know what's happening.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": -0.2,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 71,
+    "category": "ambiguous",
+    "text": "One has to admire the opposition's consistency. They've maintained the exact same position through three completely different political realities.",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": -0.15,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 72,
+    "category": "ambiguous",
+    "text": "The Finance Minister says the economy is strong. The people in line at the food bank might have a different data set.",
+    "expected_hostility": 0.45,
+    "expected_policy_approval": -0.35,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 73,
+    "category": "ambiguous",
+    "text": "Both sides claim the proposed land deal serves the national interest. Given that they define 'national interest' in mutually exclusive ways, this should be entertaining.",
+    "expected_hostility": 0.25,
+    "expected_policy_approval": -0.1,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 74,
+    "category": "ambiguous",
+    "text": "The new party chairman promises he's different from the last five chairmen who also promised they were different.",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": -0.15,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 75,
+    "category": "ambiguous",
+    "text": "The PM congratulated the president on a 'productive meeting.' The president described it as 'frank and candid.' Diplomats will understand the gap.",
+    "expected_hostility": 0.25,
+    "expected_policy_approval": -0.1,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 76,
+    "category": "ambiguous",
+    "text": "Yesh Atid describes their election results as 'a strong foundation to build on.' Most architects prefer foundations with more than 11 seats.",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": -0.15,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 77,
+    "category": "ambiguous",
+    "text": "The minister said the policy is 'under review,' which in Knesset language could mean anything from 'we're working on it' to 'we've already buried it.'",
+    "expected_hostility": 0.25,
+    "expected_policy_approval": -0.1,
+    "expected_media_amplification": 0.4
+  },
+  {
+    "id": 78,
+    "category": "ambiguous",
+    "text": "The coalition survived another no-confidence vote. Whether this reflects strength or simply the opposition's inability to organize remains genuinely unclear.",
+    "expected_hostility": 0.2,
+    "expected_policy_approval": -0.05,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 79,
+    "category": "ambiguous",
+    "text": "Reports suggest the PM and the defense minister had a 'constructive dialogue' behind closed doors. The bodyguards say the volume suggested otherwise.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": -0.2,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 80,
+    "category": "ambiguous",
+    "text": "The government's new transparency initiative is itself classified. One assumes this is intentional.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": -0.3,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 81,
+    "category": "hebrew_idiom",
+    "text": "This budget proposal is a real 'balagan' (balagan - total chaos/mess). Nobody in the Finance Committee can explain how the numbers add up.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": -0.4,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 82,
+    "category": "hebrew_idiom",
+    "text": "The PM is playing 'shtuyot b'mitz' (shtuyot b'mitz - nonsense in juice, trivial distractions) with these minor policy announcements while ignoring the real crisis.",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.45,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 83,
+    "category": "hebrew_idiom",
+    "text": "The coalition is holding together on 'protekzia' (protekzia - connections and favoritism) alone. Every minister got their pet project funded in exchange for loyalty.",
+    "expected_hostility": 0.55,
+    "expected_policy_approval": -0.5,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 84,
+    "category": "hebrew_idiom",
+    "text": "After the vote, the opposition leader said 'yihyeh b'seder' (yihyeh b'seder - it will be okay), which is the Israeli way of saying we have no plan but refuse to panic.",
+    "expected_hostility": 0.2,
+    "expected_policy_approval": -0.15,
+    "expected_media_amplification": 0.4
+  },
+  {
+    "id": 85,
+    "category": "hebrew_idiom",
+    "text": "The committee chair ran the hearing like a real 'rosh gadol' (rosh gadol - big head, taking initiative beyond one's role), pushing through reforms no one asked him to handle.",
+    "expected_hostility": 0.2,
+    "expected_policy_approval": 0.3,
+    "expected_media_amplification": 0.4
+  },
+  {
+    "id": 86,
+    "category": "hebrew_idiom",
+    "text": "Everyone's doing 'combina' (combina - under-the-table deal/scheme) in this coalition negotiation. The real agreements are happening in back rooms, not the Knesset floor.",
+    "expected_hostility": 0.5,
+    "expected_policy_approval": -0.45,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 87,
+    "category": "hebrew_idiom",
+    "text": "The new MK is a total 'freier' (freier - sucker/patsy) for accepting that committee assignment. Everyone knows it's a dead-end post with zero influence.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": -0.2,
+    "expected_media_amplification": 0.35
+  },
+  {
+    "id": 88,
+    "category": "hebrew_idiom",
+    "text": "Opposition voters feel 'jobnik' (jobnik - someone doing non-combat desk duty) frustration — they serve democracy dutifully but never see any real action or results.",
+    "expected_hostility": 0.25,
+    "expected_policy_approval": -0.25,
+    "expected_media_amplification": 0.35
+  },
+  {
+    "id": 89,
+    "category": "hebrew_idiom",
+    "text": "The minister pulled a classic 'dugri' (dugri - straight talk, bluntly honest) move, telling the press exactly what the PM didn't want anyone to hear.",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": 0.1,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 90,
+    "category": "hebrew_idiom",
+    "text": "This whole scandal is classic 'chafla' (chafla - a chaotic party/mess). The coalition is falling apart and everyone is blaming everyone else while the music still plays.",
+    "expected_hostility": 0.45,
+    "expected_policy_approval": -0.4,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 91,
+    "category": "mixed",
+    "text": "I genuinely support the new housing bill — it addresses real needs — but watching the minister take credit after opposing it for two years is peak political comedy.",
+    "speaker_context": "Political blogger known for center-left commentary",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": 0.35,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 92,
+    "category": "mixed",
+    "text": "The PM's diplomatic achievement is real and should be acknowledged. That said, the timing — right before indictment hearings — is a 'combina' worthy of a Netflix series.",
+    "speaker_context": "Diplomatic correspondent with satirical tendencies",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": 0.2,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 93,
+    "category": "mixed",
+    "text": "Religious Zionism's community funding bill will help thousands of families, which makes it all the more tragic that it was packaged with a rider that undermines civil rights.",
+    "expected_hostility": 0.4,
+    "expected_policy_approval": -0.1,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 94,
+    "category": "mixed",
+    "text": "Yesh Atid's economic plan is thoughtful and evidence-based. It's also completely irrelevant since they'll never have the coalition seats to implement it. Beautiful policy fiction.",
+    "speaker_context": "Economics professor who consults for multiple parties",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": 0.15,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 95,
+    "category": "mixed",
+    "text": "The education reform is exactly what our kids need. The minister championing it is exactly what our politics doesn't need. Life is full of contradictions.",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": 0.25,
+    "expected_media_amplification": 0.45
+  },
+  {
+    "id": 96,
+    "category": "mixed",
+    "text": "These so-called 'guardians of democracy' have some valid institutional concerns buried under layers of identity-based fearmongering about who is a 'real' Israeli.",
+    "thread_context": [
+      "Thread on protest movement legitimacy",
+      "Previous post: 'The protests represent the true voice of Israeli civil society'"
+    ],
+    "expected_hostility": 0.55,
+    "expected_policy_approval": -0.2,
+    "expected_media_amplification": 0.65
+  },
+  {
+    "id": 97,
+    "category": "mixed",
+    "text": "Likud's security record speaks for itself — genuinely strong. Their economic record also speaks for itself, just in a much quieter, more embarrassed voice.",
+    "speaker_context": "Security affairs journalist with a dry humor style",
+    "expected_hostility": 0.35,
+    "expected_policy_approval": 0.05,
+    "expected_media_amplification": 0.55
+  },
+  {
+    "id": 98,
+    "category": "mixed",
+    "text": "The Arab parties finally got a seat at the coalition table. Historic. The seat happens to be in the corner, facing the wall, with no microphone. But still, historic.",
+    "speaker_context": "Arab-Israeli political commentator writing in both Hebrew and Arabic media",
+    "expected_hostility": 0.4,
+    "expected_policy_approval": 0.1,
+    "expected_media_amplification": 0.6
+  },
+  {
+    "id": 99,
+    "category": "mixed",
+    "text": "The bipartisan cybersecurity bill is genuinely excellent legislation. It passed because both sides wanted to claim credit before elections, but hey — good policy is good policy regardless of motive.",
+    "thread_context": [
+      "Discussion about whether good outcomes excuse cynical political motivations"
+    ],
+    "expected_hostility": 0.15,
+    "expected_policy_approval": 0.5,
+    "expected_media_amplification": 0.5
+  },
+  {
+    "id": 100,
+    "category": "mixed",
+    "text": "Labor's social welfare expansion will change lives for the better. It will also bankrupt the treasury within five years according to every credible economist. Pick your crisis.",
+    "expected_hostility": 0.3,
+    "expected_policy_approval": 0.05,
+    "expected_media_amplification": 0.55
+  }
+]

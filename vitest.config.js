@@ -7,7 +7,7 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./src/test/setup.js"],
-    include: ["src/**/*.{test,spec}.{js,jsx}"],
+    include: ["src/**/*.{test,spec}.{js,jsx}", "data-pipeline/**/*.test.{js,jsx}"],
     coverage: {
       provider: "v8",
       reporter: ["text", "lcov"],

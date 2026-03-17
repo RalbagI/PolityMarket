@@ -31,3 +31,6 @@ ci-logs/
 
 # Coverage
 coverage/
+
+# Drift detection runtime artifacts
+data-pipeline/drift_alerts.json
