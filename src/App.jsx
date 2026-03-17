@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import PopularityGauge from "./components/PopularityGauge";
 import TrendlineChart from "./components/TrendlineChart";
 import Leaderboard from "./components/Leaderboard";
@@ -85,18 +85,21 @@ export default function App() {
     [latestDate, fetchDetail]
   );
 
-  // Open panel from chart click (uses clicked date, first politician)
+  // Ref to avoid stale closure in handleDateClick
+  const selectedPoliticianRef = useRef(selectedPolitician);
+  selectedPoliticianRef.current = selectedPolitician;
+
+  // Open panel from chart click (uses clicked date, keeps current politician or picks first)
   const handleDateClick = useCallback(
     (date) => {
       setSelectedDate(date);
-      // If a politician is already selected, keep them; otherwise pick the first
-      if (!selectedPolitician && politicians.length) {
+      if (!selectedPoliticianRef.current && politicians.length) {
         setSelectedPolitician(politicians[0]);
       }
       setPanelOpen(true);
       fetchDetail(date);
     },
-    [selectedPolitician, politicians, fetchDetail]
+    [politicians, fetchDetail]
   );
 
   const handleClosePanel = useCallback(() => {
