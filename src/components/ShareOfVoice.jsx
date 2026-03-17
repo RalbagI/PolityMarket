@@ -1,8 +1,10 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 const VOICE_COLORS = ["#6366f1", "#8b5cf6", "#a78bfa", "#c4b5fd", "#ddd6fe"];
 
 export default function ShareOfVoice({ todayData }) {
+  const { t } = useTranslation();
   const shares = useMemo(() => {
     if (!todayData.length) return [];
     const totalVolume = todayData.reduce((sum, d) => sum + d.media_volume, 0);
@@ -23,10 +25,8 @@ export default function ShareOfVoice({ todayData }) {
 
   return (
     <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6">
-      <h3 className="text-lg font-semibold text-white mb-4">Share of Voice</h3>
-      <p className="text-xs text-gray-500 mb-4">
-        Percentage of total political discourse per politician
-      </p>
+      <h3 className="text-lg font-semibold text-white mb-4">{t("shareOfVoice.title")}</h3>
+      <p className="text-xs text-gray-500 mb-4">{t("shareOfVoice.description")}</p>
 
       {/* Stacked bar */}
       <div className="flex h-6 rounded-full overflow-hidden mb-4">

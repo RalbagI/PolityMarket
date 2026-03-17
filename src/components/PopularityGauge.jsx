@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 function getGaugeColor(score) {
   if (score <= 2) return "#dc2626";
@@ -8,15 +9,15 @@ function getGaugeColor(score) {
   return "#16a34a";
 }
 
-function getGaugeLabel(score) {
-  if (score <= 2) return "Very Negative";
-  if (score <= 4) return "Negative";
-  if (score <= 6) return "Neutral";
-  if (score <= 8) return "Positive";
-  return "Very Positive";
+function getGaugeLabel(score, t) {
+  if (score <= 2) return t("popularityGauge.label.veryNegative");
+  if (score <= 4) return t("popularityGauge.label.negative");
+  if (score <= 6) return t("popularityGauge.label.neutral");
+  if (score <= 8) return t("popularityGauge.label.positive");
+  return t("popularityGauge.label.veryPositive");
 }
 
-function GaugeArc({ score }) {
+function GaugeArc({ score, t }) {
   const percentage = (score / 10) * 100;
   const color = getGaugeColor(score);
   const circumference = Math.PI * 110;
@@ -47,13 +48,14 @@ function GaugeArc({ score }) {
         {score.toFixed(1)}
       </text>
       <text x="130" y="130" textAnchor="middle" fill="#9ca3af" fontSize="12">
-        {getGaugeLabel(score)}
+        {getGaugeLabel(score, t)}
       </text>
     </svg>
   );
 }
 
 export default function PopularityGauge({ todayData, yesterdayData, summaryData }) {
+  const { t } = useTranslation();
   const gauges = useMemo(() => {
     if (!todayData.length) return [];
 
@@ -86,11 +88,11 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
 
   return (
     <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6">
-      <h3 className="text-lg font-semibold text-white mb-6">Popularity Index</h3>
+      <h3 className="text-lg font-semibold text-white mb-6">{t("popularityGauge.title")}</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {gauges.map((g) => (
           <div key={g.name} className="flex flex-col items-center">
-            <GaugeArc score={g.now} />
+            <GaugeArc score={g.now} t={t} />
             <div className="mt-2 text-center">
               <div className="text-sm font-semibold text-white truncate max-w-[140px]">
                 {g.name.split(" ").pop()}
@@ -100,7 +102,7 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
             <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs text-gray-400">
               {g.yesterday !== null && (
                 <>
-                  <span>Yesterday</span>
+                  <span>{t("popularityGauge.comparison.yesterday")}</span>
                   <span className="text-right font-medium text-gray-300">
                     {g.yesterday.toFixed(1)}
                   </span>
@@ -108,7 +110,7 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
               )}
               {g.lastWeek !== null && (
                 <>
-                  <span>Last Week</span>
+                  <span>{t("popularityGauge.comparison.lastWeek")}</span>
                   <span className="text-right font-medium text-gray-300">
                     {g.lastWeek.toFixed(1)}
                   </span>
@@ -116,7 +118,7 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
               )}
               {g.lastMonth !== null && (
                 <>
-                  <span>Last Month</span>
+                  <span>{t("popularityGauge.comparison.lastMonth")}</span>
                   <span className="text-right font-medium text-gray-300">
                     {g.lastMonth.toFixed(1)}
                   </span>

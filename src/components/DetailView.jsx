@@ -1,4 +1,5 @@
 import { Loader2, Quote, BarChart3, FileText } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
 
 function MetricBar({ label, value, max, color, weight }) {
@@ -24,11 +25,13 @@ function MetricBar({ label, value, max, color, weight }) {
 }
 
 export default function DetailView({ todayDetail, selectedPolitician, selectedDate, loading }) {
+  const { t } = useTranslation();
+
   if (!selectedPolitician) {
     return (
       <div className="flex items-center justify-center min-h-[200px]">
         <p className="text-gray-500 text-sm text-center">
-          Select a politician from the leaderboard or click a chart data point
+          {t("detailView.empty.selectPolitician")}
         </p>
       </div>
     );
@@ -39,7 +42,7 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
       <div className="flex items-center justify-center min-h-[200px]">
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
-          <span className="text-sm text-gray-500">Loading details...</span>
+          <span className="text-sm text-gray-500">{t("detailView.loading")}</span>
         </div>
       </div>
     );
@@ -62,40 +65,46 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
         </div>
         <div className="text-right">
           <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
-          <div className="text-xs text-gray-500">{selectedDate || "Today"}</div>
+          <div className="text-xs text-gray-500">
+            {selectedDate || t("detailView.date.fallback")}
+          </div>
         </div>
       </div>
 
       {/* AI Analysis — expanded by default */}
-      <AccordionSection title="AI Analysis" icon={Quote} defaultOpen={true}>
+      <AccordionSection title={t("detailView.section.aiAnalysis")} icon={Quote} defaultOpen={true}>
         {entry.chain_of_thought || entry.llm_reasoning ? (
           <p className="text-sm text-gray-300 italic leading-relaxed">
             &ldquo;{entry.chain_of_thought || entry.llm_reasoning}&rdquo;
           </p>
         ) : (
-          <p className="text-sm text-gray-500">No analysis available.</p>
+          <p className="text-sm text-gray-500">{t("detailView.aiAnalysis.empty")}</p>
         )}
       </AccordionSection>
 
       {/* Score Breakdown — expanded by default */}
-      <AccordionSection title="Score Breakdown" icon={BarChart3} defaultOpen={true}>
+      <AccordionSection
+        title={t("detailView.section.scoreBreakdown")}
+        icon={BarChart3}
+        defaultOpen={true}
+      >
         <div className="space-y-3">
           <MetricBar
-            label="News Sentiment"
+            label={t("detailView.metric.newsSentiment")}
             value={entry.news_sentiment}
             max={10}
             color="#6366f1"
             weight="40%"
           />
           <MetricBar
-            label="Social Sentiment"
+            label={t("detailView.metric.socialSentiment")}
             value={entry.social_sentiment}
             max={10}
             color="#8b5cf6"
             weight="35%"
           />
           <MetricBar
-            label="Media Volume"
+            label={t("detailView.metric.mediaVolume")}
             value={entry.media_volume}
             max={10}
             color="#a78bfa"
@@ -109,26 +118,31 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
               <div className="bg-violet-300" style={{ width: "25%" }} />
             </div>
             <div className="flex justify-between text-xs text-gray-600 mt-1">
-              <span>Policy 40%</span>
-              <span>Hostility 35%</span>
-              <span>Volume 25%</span>
+              <span>{t("detailView.breakdown.policy")}</span>
+              <span>{t("detailView.breakdown.hostility")}</span>
+              <span>{t("detailView.breakdown.volume")}</span>
             </div>
           </div>
 
           {entry.hostility_level != null && (
             <div className="border-t border-gray-800 pt-3 mt-3 space-y-3">
               <div className="text-xs text-gray-500 uppercase tracking-wider">
-                Dimensional Rubrics
+                {t("detailView.rubrics.heading")}
               </div>
-              <MetricBar label="Hostility" value={entry.hostility_level} max={1} color="#f43f5e" />
               <MetricBar
-                label="Policy Approval"
+                label={t("detailView.rubrics.hostility")}
+                value={entry.hostility_level}
+                max={1}
+                color="#f43f5e"
+              />
+              <MetricBar
+                label={t("detailView.rubrics.policyApproval")}
                 value={entry.policy_approval}
                 max={1}
                 color="#22c55e"
               />
               <MetricBar
-                label="Media Amplification"
+                label={t("detailView.rubrics.mediaAmplification")}
                 value={entry.media_amplification}
                 max={1}
                 color="#f59e0b"
@@ -139,10 +153,8 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
       </AccordionSection>
 
       {/* Sources — collapsed by default */}
-      <AccordionSection title="Sources" icon={FileText} defaultOpen={false}>
-        <p className="text-sm text-gray-500 italic">
-          Source citations will be populated when real data ingestion is enabled.
-        </p>
+      <AccordionSection title={t("detailView.section.sources")} icon={FileText} defaultOpen={false}>
+        <p className="text-sm text-gray-500 italic">{t("detailView.sources.empty")}</p>
       </AccordionSection>
     </div>
   );

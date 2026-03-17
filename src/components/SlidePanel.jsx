@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 
 export default function SlidePanel({ isOpen, onClose, title, children }) {
+  const { t } = useTranslation();
   const panelRef = useRef(null);
   const titleId = "slide-panel-title";
 
@@ -66,11 +68,11 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
         {/* Header */}
         <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 px-6 py-4 flex items-center justify-between">
           <h3 id={titleId} className="text-lg font-semibold text-white truncate">
-            {title || "Details"}
+            {title || t("slidePanel.defaultTitle")}
           </h3>
           <button
             onClick={onClose}
-            aria-label="Close panel"
+            aria-label={t("slidePanel.closeButton.ariaLabel")}
             className="p-1.5 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
           >
             <X className="w-5 h-5" />
