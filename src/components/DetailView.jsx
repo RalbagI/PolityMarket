@@ -1,35 +1,34 @@
-import { Newspaper, MessageCircle, Volume2, Quote, Loader2, Info } from "lucide-react";
+import { Loader2, Quote, BarChart3, FileText } from "lucide-react";
+import AccordionSection from "./AccordionSection";
 
-function MetricBar({ label, value, icon: Icon, color, weight }) {
+function MetricBar({ label, value, max, color, weight }) {
+  const pct = max !== 0 ? (Math.abs(value) / max) * 100 : 0;
+
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-sm text-gray-400">
-          <Icon className="w-4 h-4" />
           <span>{label}</span>
           {weight && <span className="text-xs text-gray-600">({weight})</span>}
         </div>
-        <span className="text-sm font-bold text-white">{value.toFixed(1)}</span>
+        <span className="text-sm font-bold text-white">{value.toFixed(2)}</span>
       </div>
       <div className="w-full bg-gray-800 rounded-full h-2">
         <div
           className="h-2 rounded-full transition-all duration-500"
-          style={{
-            width: `${(value / 10) * 100}%`,
-            backgroundColor: color,
-          }}
+          style={{ width: `${Math.min(pct, 100)}%`, backgroundColor: color }}
         />
       </div>
     </div>
   );
 }
 
-export default function DetailView({ todayDetail, selectedPolitician, loading }) {
+export default function DetailView({ todayDetail, selectedPolitician, selectedDate, loading }) {
   if (!selectedPolitician) {
     return (
-      <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 flex items-center justify-center min-h-[300px]">
+      <div className="flex items-center justify-center min-h-[200px]">
         <p className="text-gray-500 text-sm text-center">
-          Click a politician in the leaderboard to see their detailed breakdown
+          Select a politician from the leaderboard or click a chart data point
         </p>
       </div>
     );
@@ -37,8 +36,11 @@ export default function DetailView({ todayDetail, selectedPolitician, loading })
 
   if (loading || !todayDetail) {
     return (
-      <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 flex items-center justify-center min-h-[300px]">
-        <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
+      <div className="flex items-center justify-center min-h-[200px]">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
+          <span className="text-sm text-gray-500">Loading details...</span>
+        </div>
       </div>
     );
   }
@@ -49,83 +51,99 @@ export default function DetailView({ todayDetail, selectedPolitician, loading })
   if (!entry) return null;
 
   return (
-    <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 space-y-6">
+    <div className="space-y-4">
       {/* Header */}
-      <div>
-        <h3 className="text-xl font-bold text-white mb-1">{entry.name}</h3>
-        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-gray-800 text-gray-300 border border-gray-700">
-          {entry.party}
-        </span>
-      </div>
-
-      {/* Overall Score */}
-      <div className="text-center py-4">
-        <div className="text-5xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
-        <div className="text-sm text-gray-400 mt-1">Overall Score</div>
-      </div>
-
-      {/* Score Breakdown with Component Transparency */}
-      <div className="space-y-4">
-        <div className="flex items-center gap-2">
-          <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wider">
-            Score Breakdown
-          </h4>
-          <div className="group relative">
-            <Info className="w-3.5 h-3.5 text-gray-600 cursor-help" />
-            <div className="hidden group-hover:block absolute left-0 top-5 z-10 bg-gray-800 border border-gray-700 rounded-lg p-3 text-xs text-gray-300 w-56 shadow-lg">
-              Overall score = weighted average of policy approval (40%), inverse hostility (35%),
-              and media amplification (25%). Computed deterministically, not by the AI.
-            </div>
-          </div>
+      <div className="flex items-center justify-between">
+        <div>
+          <h4 className="text-lg font-bold text-white">{entry.name}</h4>
+          <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
+            {entry.party}
+          </span>
         </div>
-
-        <MetricBar
-          label="News Sentiment"
-          value={entry.news_sentiment}
-          icon={Newspaper}
-          color="#6366f1"
-          weight="40%"
-        />
-        <MetricBar
-          label="Social Sentiment"
-          value={entry.social_sentiment}
-          icon={MessageCircle}
-          color="#8b5cf6"
-          weight="35%"
-        />
-        <MetricBar
-          label="Media Volume"
-          value={entry.media_volume}
-          icon={Volume2}
-          color="#a78bfa"
-          weight="25%"
-        />
+        <div className="text-right">
+          <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
+          <div className="text-xs text-gray-500">{selectedDate || "Today"}</div>
+        </div>
       </div>
 
-      {/* Component Transparency Bar */}
-      <div className="flex h-2 rounded-full overflow-hidden">
-        <div className="bg-indigo-500" style={{ width: "40%" }} title="Policy Approval: 40%" />
-        <div className="bg-violet-500" style={{ width: "35%" }} title="Inv. Hostility: 35%" />
-        <div className="bg-violet-300" style={{ width: "25%" }} title="Amplification: 25%" />
-      </div>
-      <div className="flex justify-between text-xs text-gray-600">
-        <span>Policy 40%</span>
-        <span>Hostility 35%</span>
-        <span>Volume 25%</span>
-      </div>
-
-      {/* Chain-of-Thought Analysis */}
-      {(entry.chain_of_thought || entry.llm_reasoning) && (
-        <div className="border-t border-gray-800 pt-4">
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-            <Quote className="w-4 h-4" />
-            <span>AI Analysis</span>
-          </div>
+      {/* AI Analysis — expanded by default */}
+      <AccordionSection title="AI Analysis" icon={Quote} defaultOpen={true}>
+        {entry.chain_of_thought || entry.llm_reasoning ? (
           <p className="text-sm text-gray-300 italic leading-relaxed">
             &ldquo;{entry.chain_of_thought || entry.llm_reasoning}&rdquo;
           </p>
+        ) : (
+          <p className="text-sm text-gray-500">No analysis available.</p>
+        )}
+      </AccordionSection>
+
+      {/* Score Breakdown — expanded by default */}
+      <AccordionSection title="Score Breakdown" icon={BarChart3} defaultOpen={true}>
+        <div className="space-y-3">
+          <MetricBar
+            label="News Sentiment"
+            value={entry.news_sentiment}
+            max={10}
+            color="#6366f1"
+            weight="40%"
+          />
+          <MetricBar
+            label="Social Sentiment"
+            value={entry.social_sentiment}
+            max={10}
+            color="#8b5cf6"
+            weight="35%"
+          />
+          <MetricBar
+            label="Media Volume"
+            value={entry.media_volume}
+            max={10}
+            color="#a78bfa"
+            weight="25%"
+          />
+
+          <div className="mt-2">
+            <div className="flex h-1.5 rounded-full overflow-hidden">
+              <div className="bg-indigo-500" style={{ width: "40%" }} />
+              <div className="bg-violet-500" style={{ width: "35%" }} />
+              <div className="bg-violet-300" style={{ width: "25%" }} />
+            </div>
+            <div className="flex justify-between text-xs text-gray-600 mt-1">
+              <span>Policy 40%</span>
+              <span>Hostility 35%</span>
+              <span>Volume 25%</span>
+            </div>
+          </div>
+
+          {entry.hostility_level != null && (
+            <div className="border-t border-gray-800 pt-3 mt-3 space-y-3">
+              <div className="text-xs text-gray-500 uppercase tracking-wider">
+                Dimensional Rubrics
+              </div>
+              <MetricBar label="Hostility" value={entry.hostility_level} max={1} color="#f43f5e" />
+              <MetricBar
+                label="Policy Approval"
+                value={entry.policy_approval}
+                max={1}
+                color="#22c55e"
+              />
+              <MetricBar
+                label="Media Amplification"
+                value={entry.media_amplification}
+                max={1}
+                color="#f59e0b"
+              />
+            </div>
+          )}
         </div>
-      )}
+      </AccordionSection>
+
+      {/* Sources — collapsed by default */}
+      <AccordionSection title="Sources" icon={FileText} defaultOpen={false}>
+        <p className="text-sm text-gray-500 italic">
+          Source citations will be populated when real data ingestion is enabled.
+        </p>
+      </AccordionSection>
     </div>
   );
 }

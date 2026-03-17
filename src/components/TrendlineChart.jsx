@@ -24,7 +24,7 @@ function computeSMA(values, window) {
   });
 }
 
-export default function TrendlineChart({ data, dates, politicians }) {
+export default function TrendlineChart({ data, dates, politicians, onDateClick }) {
   const [smaMode, setSmaMode] = useState("sma7");
 
   const chartData = useMemo(() => {
@@ -93,7 +93,16 @@ export default function TrendlineChart({ data, dates, politicians }) {
 
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
-          <ComposedChart data={chartData} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
+          <ComposedChart
+            data={chartData}
+            margin={{ top: 5, right: 10, left: -10, bottom: 5 }}
+            onClick={(e) => {
+              if (e?.activePayload?.[0]?.payload?.date && onDateClick) {
+                onDateClick(e.activePayload[0].payload.date);
+              }
+            }}
+            style={{ cursor: onDateClick ? "pointer" : "default" }}
+          >
             <CartesianGrid strokeDasharray="3 3" stroke="#2d3748" />
             <XAxis
               dataKey="date"

@@ -1,12 +1,11 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import PopularityGauge from "./components/PopularityGauge";
 import TrendlineChart from "./components/TrendlineChart";
 import Leaderboard from "./components/Leaderboard";
 import DetailView from "./components/DetailView";
 import ShareOfVoice from "./components/ShareOfVoice";
+import SlidePanel from "./components/SlidePanel";
 
-// Neutral, non-party-affiliated colors to prevent subconscious political bias.
-// Uses desaturated tones that carry no party association.
 const NEUTRAL_COLORS = {
   Likud: "#6b7280",
   "Yesh Atid": "#6b7280",
@@ -17,10 +16,14 @@ const NEUTRAL_COLORS = {
 
 export default function App() {
   const [summaryData, setSummaryData] = useState([]);
-  const [selectedPolitician, setSelectedPolitician] = useState(null);
   const [detailCache, setDetailCache] = useState({});
   const [detailLoading, setDetailLoading] = useState(false);
   const [loadError, setLoadError] = useState(null);
+
+  // Panel state
+  const [panelOpen, setPanelOpen] = useState(false);
+  const [selectedPolitician, setSelectedPolitician] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
     fetch("/data/timeseries_summary.json")
@@ -55,38 +58,56 @@ export default function App() {
 
   const { dates, politicians, todayData, yesterdayData, latestDate } = useMemo(() => {
     if (!summaryData.length)
-      return {
-        dates: [],
-        politicians: [],
-        todayData: [],
-        yesterdayData: [],
-        latestDate: null,
-      };
+      return { dates: [], politicians: [], todayData: [], yesterdayData: [], latestDate: null };
 
     const allDates = [...new Set(summaryData.map((d) => d.date))].sort();
     const latest = allDates[allDates.length - 1];
     const previousDate = allDates[allDates.length - 2];
     const uniqueNames = [...new Set(summaryData.map((d) => d.name))];
 
-    const today = summaryData.filter((d) => d.date === latest);
-    const yesterday = previousDate ? summaryData.filter((d) => d.date === previousDate) : [];
-
     return {
       dates: allDates,
       politicians: uniqueNames,
-      todayData: today,
-      yesterdayData: yesterday,
+      todayData: summaryData.filter((d) => d.date === latest),
+      yesterdayData: previousDate ? summaryData.filter((d) => d.date === previousDate) : [],
       latestDate: latest,
     };
   }, [summaryData]);
 
-  useEffect(() => {
-    if (selectedPolitician && latestDate) {
-      fetchDetail(latestDate);
-    }
-  }, [selectedPolitician, latestDate, fetchDetail]);
+  // Open panel for a politician (from leaderboard — uses today's date)
+  const handleSelectPolitician = useCallback(
+    (name) => {
+      setSelectedPolitician(name);
+      setSelectedDate(latestDate);
+      setPanelOpen(true);
+      if (latestDate) fetchDetail(latestDate);
+    },
+    [latestDate, fetchDetail]
+  );
 
-  const todayDetail = latestDate ? detailCache[latestDate] : null;
+  // Ref to avoid stale closure in handleDateClick
+  const selectedPoliticianRef = useRef(selectedPolitician);
+  selectedPoliticianRef.current = selectedPolitician;
+
+  // Open panel from chart click (uses clicked date, keeps current politician or picks first)
+  const handleDateClick = useCallback(
+    (date) => {
+      setSelectedDate(date);
+      if (!selectedPoliticianRef.current && politicians.length) {
+        setSelectedPolitician(politicians[0]);
+      }
+      setPanelOpen(true);
+      fetchDetail(date);
+    },
+    [politicians, fetchDetail]
+  );
+
+  const handleClosePanel = useCallback(() => {
+    setPanelOpen(false);
+  }, []);
+
+  const activeDate = selectedDate || latestDate;
+  const activeDetail = activeDate ? detailCache[activeDate] : null;
 
   if (loadError) {
     return (
@@ -121,18 +142,20 @@ export default function App() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Popularity Index Gauges — replaces old Biggest Mover hero */}
         <PopularityGauge
           todayData={todayData}
           yesterdayData={yesterdayData}
           summaryData={summaryData}
         />
 
-        {/* Dual-axis trendline with SMA toggle */}
-        <TrendlineChart data={summaryData} dates={dates} politicians={politicians} />
+        <TrendlineChart
+          data={summaryData}
+          dates={dates}
+          politicians={politicians}
+          onDateClick={handleDateClick}
+        />
 
-        {/* Share of Voice + Leaderboard + Detail */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1">
             <ShareOfVoice todayData={todayData} />
           </div>
@@ -142,18 +165,25 @@ export default function App() {
               yesterdayData={yesterdayData}
               partyColors={NEUTRAL_COLORS}
               selectedPolitician={selectedPolitician}
-              onSelect={setSelectedPolitician}
-            />
-          </div>
-          <div className="lg:col-span-1">
-            <DetailView
-              todayDetail={todayDetail}
-              selectedPolitician={selectedPolitician}
-              loading={detailLoading}
+              onSelect={handleSelectPolitician}
             />
           </div>
         </div>
       </main>
+
+      {/* Sliding Detail Panel */}
+      <SlidePanel
+        isOpen={panelOpen}
+        onClose={handleClosePanel}
+        title={selectedPolitician || "Details"}
+      >
+        <DetailView
+          todayDetail={activeDetail}
+          selectedPolitician={selectedPolitician}
+          selectedDate={activeDate}
+          loading={detailLoading}
+        />
+      </SlidePanel>
 
       <footer className="border-t border-gray-800/60 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
