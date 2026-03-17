@@ -310,7 +310,16 @@ async function main() {
   console.log(`\n✅ Pipeline complete for ${today}`);
 }
 
-main().catch((err) => {
-  console.error("Pipeline failed:", err);
-  process.exit(1);
-});
+// ── CLI Flag Handling ──────────────────────────────────────────────────
+// --validate: Run golden dataset evaluation only (no daily score generation)
+if (process.argv.includes("--validate")) {
+  import("./validateDrift.js").catch((err) => {
+    console.error("Drift validation failed:", err);
+    process.exit(1);
+  });
+} else {
+  main().catch((err) => {
+    console.error("Pipeline failed:", err);
+    process.exit(1);
+  });
+}
