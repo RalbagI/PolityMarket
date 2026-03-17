@@ -1,13 +1,8 @@
 import { onSchedule } from "firebase-functions/v2/scheduler";
 import { onRequest } from "firebase-functions/v2/https";
 import { initializeApp } from "firebase-admin/app";
-import { getStorage } from "firebase-admin/storage";
 
 initializeApp();
-
-// ── Configuration ──────────────────────────────────────────────────────
-// Set API keys via: firebase functions:secrets:set ANTHROPIC_API_KEY
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || "";
 
 // ── Score Computation (same formula as data-pipeline) ──────────────────
 const WEIGHT_POLICY = 0.4;
@@ -56,10 +51,41 @@ async function scorePolitician(politician) {
   };
 }
 
+// ── GitHub API helpers ──────────────────────────────────────────────────
+// After scoring, push updated JSON files to the GitHub repo.
+// This triggers the GitHub Actions deploy workflow → Firebase Hosting update.
+// Set token via: firebase functions:secrets:set GITHUB_PAT
+
+async function githubGetFile(path, token) {
+  const url = `https://api.github.com/repos/RalbagI/PolityMarket/contents/${path}`;
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" },
+  });
+  if (!res.ok) return null;
+  return res.json();
+}
+
+async function githubPutFile(path, content, message, token, sha) {
+  const url = `https://api.github.com/repos/RalbagI/PolityMarket/contents/${path}`;
+  const body = { message, content: Buffer.from(content).toString("base64") };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(`GitHub PUT ${path}: ${res.status} ${await res.text()}`);
+  return res.json();
+}
+
 /**
  * Scheduled function: runs daily at 2:00 AM Israel time.
- * Generates scores for all politicians, updates hosting data files
- * via Firebase Storage, then triggers a hosting redeploy.
+ * Generates scores, pushes updated JSON to GitHub repo,
+ * which triggers GitHub Actions → Firebase Hosting redeploy.
  */
 export const dailyPipeline = onSchedule(
   {
@@ -72,6 +98,12 @@ export const dailyPipeline = onSchedule(
   async () => {
     const today = new Date().toISOString().split("T")[0];
     console.log(`📊 PolityMarket Daily Pipeline — ${today}`);
+
+    const githubToken = process.env.GITHUB_PAT || "";
+    if (!githubToken) {
+      console.error("GITHUB_PAT not set — cannot push to repo");
+      return;
+    }
 
     const entries = [];
     for (const politician of POLITICIANS) {
@@ -90,16 +122,11 @@ export const dailyPipeline = onSchedule(
       return;
     }
 
-    // Update summary data
-    const bucket = getStorage().bucket();
-
-    // Read existing summary
+    // Read existing summary from GitHub
     let summary = [];
-    try {
-      const [summaryFile] = await bucket.file("politymarket/timeseries_summary.json").download();
-      summary = JSON.parse(summaryFile.toString());
-    } catch {
-      console.log("No existing summary — starting fresh");
+    const existingSummary = await githubGetFile("public/data/timeseries_summary.json", githubToken);
+    if (existingSummary) {
+      summary = JSON.parse(Buffer.from(existingSummary.content, "base64").toString());
     }
 
     // Append today's entries
@@ -116,13 +143,17 @@ export const dailyPipeline = onSchedule(
     }
     summary.sort((a, b) => a.date.localeCompare(b.date) || a.politician_id.localeCompare(b.politician_id));
 
-    // Write summary
-    await bucket.file("politymarket/timeseries_summary.json").save(
+    // Push updated summary to GitHub
+    await githubPutFile(
+      "public/data/timeseries_summary.json",
       JSON.stringify(summary, null, 2),
-      { contentType: "application/json" }
+      `chore: update daily scores [${today}]`,
+      githubToken,
+      existingSummary?.sha
     );
+    console.log("  → Summary pushed to GitHub");
 
-    // Write daily detail file
+    // Push daily detail file
     const detailEntries = entries.map((e) => ({
       politician_id: e.politician_id,
       name: e.name,
@@ -137,18 +168,24 @@ export const dailyPipeline = onSchedule(
       chain_of_thought: e.chain_of_thought,
     }));
 
-    await bucket.file(`politymarket/details/${today}.json`).save(
+    const existingDetail = await githubGetFile(`public/data/details/${today}.json`, githubToken);
+    await githubPutFile(
+      `public/data/details/${today}.json`,
       JSON.stringify(detailEntries, null, 2),
-      { contentType: "application/json" }
+      `chore: add detail scores [${today}]`,
+      githubToken,
+      existingDetail?.sha
     );
+    console.log("  → Detail pushed to GitHub");
 
-    console.log(`✅ Pipeline complete — ${entries.length} politicians scored`);
+    console.log(`✅ Pipeline complete — ${entries.length} politicians scored, pushed to GitHub`);
   }
 );
 
 /**
  * HTTP trigger to manually run the pipeline (for testing).
- * Call: https://<region>-politymarket.cloudfunctions.net/runPipelineManually
+ * Requires Authorization: Bearer <PIPELINE_AUTH_TOKEN> header.
+ * Set token via: firebase functions:secrets:set PIPELINE_AUTH_TOKEN
  */
 export const runPipelineManually = onRequest(
   { region: "europe-west1", memory: "512MiB", timeoutSeconds: 120 },
@@ -156,6 +193,16 @@ export const runPipelineManually = onRequest(
     if (req.method !== "POST") {
       res.status(405).send("POST only");
       return;
+    }
+
+    // Auth check — reject if token is set and doesn't match
+    const authToken = process.env.PIPELINE_AUTH_TOKEN || "";
+    if (authToken) {
+      const provided = req.headers.authorization?.replace("Bearer ", "");
+      if (provided !== authToken) {
+        res.status(401).json({ error: "Unauthorized" });
+        return;
+      }
     }
 
     const today = new Date().toISOString().split("T")[0];
