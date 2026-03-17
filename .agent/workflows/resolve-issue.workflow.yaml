@@ -156,6 +156,13 @@ phases:
 
     next_phase: null
 
+next_workflow_suggestion:
+  workflow: code-review
+  message: >-
+    IMPORTANT: After completing this workflow, ALWAYS suggest to the user:
+    "Ready for `/code-review` to validate the changes before merge."
+    This must appear as the final line of the workflow output.
+
 output:
   format: structured
   sections:
@@ -164,6 +171,7 @@ output:
     - issue: [analyzed]
     - implementation: [code, tests]
     - commit: [created]
+  next_workflow: code-review
 
 validation:
   success_criteria:
@@ -175,5 +183,6 @@ validation:
     - "Lint passing"
     - "Commit created (not pushed)"
     - "Workflow memory captured"
+    - "Suggested /code-review as next step"
 
 note: "No push policy. Use /prepare-for-merge to finalize."

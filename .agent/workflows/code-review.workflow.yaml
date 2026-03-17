@@ -264,6 +264,13 @@ phases:
 
     next_phase: null
 
+next_workflow_suggestion:
+  workflow: handle-review-results
+  message: >-
+    IMPORTANT: After completing this workflow, ALWAYS suggest to the user:
+    "Ready for `/handle-review-results` to resolve the findings above."
+    This must appear as the final line of the workflow output.
+
 output:
   format: structured
   template: code-review-report-v1
