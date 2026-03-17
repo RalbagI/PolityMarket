@@ -46,9 +46,9 @@ export default function HeroSection({ mover, partyColors }) {
         </div>
       </div>
 
-      {mover.llm_reasoning && (
+      {(mover.chain_of_thought || mover.llm_reasoning) && (
         <p className="mt-4 text-sm text-gray-400 border-t border-gray-700 pt-4 italic">
-          &ldquo;{mover.llm_reasoning}&rdquo;
+          &ldquo;{mover.chain_of_thought || mover.llm_reasoning}&rdquo;
         </p>
       )}
     </div>

@@ -59,13 +59,17 @@ phases:
         fail_action: exit
 
       - name: sync-main
-        type: cmd
-        cmd: |
+        type: doc
+        notes: >-
+          CRITICAL — this step must ALWAYS be executed. Fetch origin/main,
+          then rebase the current branch onto it. If rebase conflicts arise,
+          the agent MUST resolve them (read conflicting files, choose correct
+          content, git add, git rebase --continue). Only abort if conflicts
+          are ambiguous and require human judgement. After rebase, force-push
+          the branch since history was rewritten.
+        cmd_hint: |
           git fetch origin main
-          git merge origin/main --no-edit || {
-            echo "Merge conflicts detected - resolve manually"
-            exit 1
-          }
+          git rebase origin/main || <resolve conflicts then git rebase --continue>
         fail_action: exit
 
       - name: install-deps
@@ -106,7 +110,7 @@ phases:
     steps:
       - name: push-branch
         type: cmd
-        cmd: git push -u origin "$(git rev-parse --abbrev-ref HEAD)"
+        cmd: git push --force-with-lease -u origin "$(git rev-parse --abbrev-ref HEAD)"
         fail_action: exit
 
       - name: gather-context

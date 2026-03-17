@@ -14,7 +14,7 @@ describe("HeroSection", () => {
     overall_score: 7.5,
     delta: 1.2,
     previousScore: 6.3,
-    llm_reasoning: "Strong positive coverage today.",
+    chain_of_thought: "Strong positive coverage today.",
   };
 
   it("renders the biggest mover name", () => {
