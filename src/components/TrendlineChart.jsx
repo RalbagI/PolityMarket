@@ -185,7 +185,7 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
       </div>
 
       {smaMode !== "raw" && (
-        <p className="text-xs text-gray-600 mt-2 text-right">
+        <p className="text-xs text-gray-600 mt-2 text-end">
           {smaMode === "sma7" ? t("trendlineChart.smaNote.7d") : t("trendlineChart.smaNote.14d")}
         </p>
       )}

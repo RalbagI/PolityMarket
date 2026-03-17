@@ -63,7 +63,7 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
             {entry.party}
           </span>
         </div>
-        <div className="text-right">
+        <div className="text-end">
           <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
           <div className="text-xs text-gray-500">
             {selectedDate || t("detailView.date.fallback")}

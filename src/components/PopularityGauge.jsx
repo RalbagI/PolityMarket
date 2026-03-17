@@ -103,7 +103,7 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
               {g.yesterday !== null && (
                 <>
                   <span>{t("popularityGauge.comparison.yesterday")}</span>
-                  <span className="text-right font-medium text-gray-300">
+                  <span className="text-end font-medium text-gray-300">
                     {g.yesterday.toFixed(1)}
                   </span>
                 </>
@@ -111,7 +111,7 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
               {g.lastWeek !== null && (
                 <>
                   <span>{t("popularityGauge.comparison.lastWeek")}</span>
-                  <span className="text-right font-medium text-gray-300">
+                  <span className="text-end font-medium text-gray-300">
                     {g.lastWeek.toFixed(1)}
                   </span>
                 </>
@@ -119,7 +119,7 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
               {g.lastMonth !== null && (
                 <>
                   <span>{t("popularityGauge.comparison.lastMonth")}</span>
-                  <span className="text-right font-medium text-gray-300">
+                  <span className="text-end font-medium text-gray-300">
                     {g.lastMonth.toFixed(1)}
                   </span>
                 </>
