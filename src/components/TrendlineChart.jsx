@@ -55,7 +55,7 @@ export default function TrendlineChart({ data, dates, politicians }) {
     }
 
     const window = smaMode === "sma7" ? 7 : 14;
-    const result = [...raw];
+    const result = raw.map((r) => ({ ...r }));
 
     for (const name of politicians) {
       const rawValues = raw.map((r) => r[`${name}_raw`]);

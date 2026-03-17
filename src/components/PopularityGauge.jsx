@@ -19,7 +19,7 @@ function getGaugeLabel(score) {
 function GaugeArc({ score }) {
   const percentage = (score / 10) * 100;
   const color = getGaugeColor(score);
-  const circumference = Math.PI * 120;
+  const circumference = Math.PI * 110;
   const filled = (percentage / 100) * circumference;
 
   return (

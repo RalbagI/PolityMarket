@@ -159,9 +159,11 @@ phases:
 next_workflow_suggestion:
   workflow: code-review
   message: >-
-    IMPORTANT: After completing this workflow, ALWAYS suggest to the user:
-    "Ready for `/code-review` to validate the changes before merge."
+    IMPORTANT: After completing this workflow, ALWAYS ask the user:
+    "Would you like me to run `/code-review` to validate the changes?"
     This must appear as the final line of the workflow output.
+    If the user responds affirmatively (yes, y, sure, go ahead, etc.),
+    immediately execute the /code-review workflow without further prompting.
 
 output:
   format: structured
