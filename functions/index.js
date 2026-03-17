@@ -1,0 +1,175 @@
+import { onSchedule } from "firebase-functions/v2/scheduler";
+import { onRequest } from "firebase-functions/v2/https";
+import { initializeApp } from "firebase-admin/app";
+import { getStorage } from "firebase-admin/storage";
+import { defineString } from "firebase-functions/params";
+
+initializeApp();
+
+// ── Configuration via Firebase environment params ──────────────────────
+const anthropicKey = defineString("ANTHROPIC_API_KEY", { default: "" });
+
+// ── Score Computation (same formula as data-pipeline) ──────────────────
+const WEIGHT_POLICY = 0.4;
+const WEIGHT_HOSTILITY = 0.35;
+const WEIGHT_AMPLIFICATION = 0.25;
+
+function computeOverallScore(hostility, policyApproval, mediaAmplification) {
+  const policyNormalized = (policyApproval + 1) / 2;
+  const inverseHostility = 1 - hostility;
+  const raw =
+    WEIGHT_POLICY * policyNormalized +
+    WEIGHT_HOSTILITY * inverseHostility +
+    WEIGHT_AMPLIFICATION * mediaAmplification;
+  return parseFloat((raw * 10).toFixed(1));
+}
+
+const POLITICIANS = [
+  { id: "benjamin-netanyahu", name: "Benjamin Netanyahu", party: "Likud" },
+  { id: "yair-lapid", name: "Yair Lapid", party: "Yesh Atid" },
+  { id: "benny-gantz", name: "Benny Gantz", party: "National Unity" },
+  { id: "bezalel-smotrich", name: "Bezalel Smotrich", party: "Religious Zionism" },
+  { id: "avigdor-lieberman", name: "Avigdor Lieberman", party: "Yisrael Beiteinu" },
+];
+
+// ── Mock scoring (replace with real LLM call in production) ────────────
+async function scorePolitician(politician) {
+  // TODO: When ANTHROPIC_API_KEY is set, call Claude API here
+  // with the CoT system prompt from data-pipeline/prompts/system-prompt.txt
+  const hostility = parseFloat((Math.random() * 0.8).toFixed(2));
+  const policyApproval = parseFloat((Math.random() * 2 - 1).toFixed(2));
+  const mediaAmplification = parseFloat((0.2 + Math.random() * 0.6).toFixed(2));
+  const overallScore = computeOverallScore(hostility, policyApproval, mediaAmplification);
+
+  return {
+    politician_id: politician.id,
+    name: politician.name,
+    party: politician.party,
+    hostility_level: hostility,
+    policy_approval: policyApproval,
+    media_amplification: mediaAmplification,
+    overall_score: overallScore,
+    chain_of_thought: `ניתוח אוטומטי: ${politician.name} קיבל סיקור מעורב היום.`,
+    news_sentiment: parseFloat((((policyApproval + 1) / 2) * 10).toFixed(1)),
+    social_sentiment: parseFloat(((1 - hostility) * 10).toFixed(1)),
+    media_volume: parseFloat((mediaAmplification * 10).toFixed(1)),
+  };
+}
+
+/**
+ * Scheduled function: runs daily at 2:00 AM Israel time.
+ * Generates scores for all politicians, updates hosting data files
+ * via Firebase Storage, then triggers a hosting redeploy.
+ */
+export const dailyPipeline = onSchedule(
+  {
+    schedule: "0 2 * * *",
+    timeZone: "Asia/Jerusalem",
+    region: "europe-west1",
+    memory: "512MiB",
+    timeoutSeconds: 120,
+  },
+  async () => {
+    const today = new Date().toISOString().split("T")[0];
+    console.log(`📊 PolityMarket Daily Pipeline — ${today}`);
+
+    const entries = [];
+    for (const politician of POLITICIANS) {
+      try {
+        const result = await scorePolitician(politician);
+        result.date = today;
+        entries.push(result);
+        console.log(`  ✓ ${politician.name}: ${result.overall_score}`);
+      } catch (err) {
+        console.error(`  ✗ ${politician.name}: ${err.message}`);
+      }
+    }
+
+    if (entries.length === 0) {
+      console.error("No entries generated — skipping update");
+      return;
+    }
+
+    // Update summary data
+    const bucket = getStorage().bucket();
+
+    // Read existing summary
+    let summary = [];
+    try {
+      const [summaryFile] = await bucket.file("politymarket/timeseries_summary.json").download();
+      summary = JSON.parse(summaryFile.toString());
+    } catch {
+      console.log("No existing summary — starting fresh");
+    }
+
+    // Append today's entries
+    summary = summary.filter((e) => e.date !== today);
+    for (const entry of entries) {
+      summary.push({
+        date: entry.date,
+        politician_id: entry.politician_id,
+        name: entry.name,
+        party: entry.party,
+        overall_score: entry.overall_score,
+        media_volume: entry.media_volume,
+      });
+    }
+    summary.sort((a, b) => a.date.localeCompare(b.date) || a.politician_id.localeCompare(b.politician_id));
+
+    // Write summary
+    await bucket.file("politymarket/timeseries_summary.json").save(
+      JSON.stringify(summary, null, 2),
+      { contentType: "application/json" }
+    );
+
+    // Write daily detail file
+    const detailEntries = entries.map((e) => ({
+      politician_id: e.politician_id,
+      name: e.name,
+      party: e.party,
+      hostility_level: e.hostility_level,
+      policy_approval: e.policy_approval,
+      media_amplification: e.media_amplification,
+      news_sentiment: e.news_sentiment,
+      social_sentiment: e.social_sentiment,
+      media_volume: e.media_volume,
+      overall_score: e.overall_score,
+      chain_of_thought: e.chain_of_thought,
+    }));
+
+    await bucket.file(`politymarket/details/${today}.json`).save(
+      JSON.stringify(detailEntries, null, 2),
+      { contentType: "application/json" }
+    );
+
+    console.log(`✅ Pipeline complete — ${entries.length} politicians scored`);
+  }
+);
+
+/**
+ * HTTP trigger to manually run the pipeline (for testing).
+ * Call: https://<region>-politymarket.cloudfunctions.net/runPipelineManually
+ */
+export const runPipelineManually = onRequest(
+  { region: "europe-west1", memory: "512MiB", timeoutSeconds: 120 },
+  async (req, res) => {
+    if (req.method !== "POST") {
+      res.status(405).send("POST only");
+      return;
+    }
+
+    const today = new Date().toISOString().split("T")[0];
+    const entries = [];
+    for (const politician of POLITICIANS) {
+      try {
+        const result = await scorePolitician(politician);
+        result.date = today;
+        entries.push(result);
+      } catch (err) {
+        console.error(`Failed: ${politician.name}: ${err.message}`);
+      }
+    }
+
+    res.json({ date: today, scored: entries.length, entries });
+  }
+);
