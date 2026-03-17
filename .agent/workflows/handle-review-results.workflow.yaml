@@ -136,6 +136,15 @@ phases:
 
     next_phase: null
 
+next_workflow_suggestion:
+  workflow: prepare-for-merge
+  message: >-
+    IMPORTANT: After completing this workflow, ALWAYS ask the user:
+    "Would you like me to run `/prepare-for-merge` to push and create a PR?"
+    This must appear as the final line of the workflow output.
+    If the user responds affirmatively (yes, y, sure, go ahead, etc.),
+    immediately execute the /prepare-for-merge workflow without further prompting.
+
 output:
   format: structured
   sections:
@@ -154,3 +163,4 @@ validation:
     - "All tests passing"
     - "Clean git state"
     - "Workflow memory captured"
+    - "Suggested /prepare-for-merge as next step"

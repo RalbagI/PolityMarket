@@ -264,6 +264,15 @@ phases:
 
     next_phase: null
 
+next_workflow_suggestion:
+  workflow: handle-review-results
+  message: >-
+    IMPORTANT: After completing this workflow, ALWAYS ask the user:
+    "Would you like me to run `/handle-review-results` to resolve the findings?"
+    This must appear as the final line of the workflow output.
+    If the user responds affirmatively (yes, y, sure, go ahead, etc.),
+    immediately execute the /handle-review-results workflow without further prompting.
+
 output:
   format: structured
   template: code-review-report-v1
