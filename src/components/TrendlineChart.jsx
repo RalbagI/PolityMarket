@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import useStore from "../store";
+import { localizeName } from "../lib/localize";
 import {
   ComposedChart,
   Line,
@@ -151,7 +152,7 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
               formatter={(value, name) => {
                 if (name === "totalVolume")
                   return [value.toFixed(1), t("trendlineChart.tooltip.mediaVolume")];
-                return [value?.toFixed(2), name];
+                return [value?.toFixed(2), localizeName(t, name)];
               }}
             />
             <Legend wrapperStyle={{ fontSize: "12px", color: "#cbd5e0" }} />
@@ -173,6 +174,7 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
                 yAxisId="right"
                 type="monotone"
                 dataKey={name}
+                name={localizeName(t, name)}
                 stroke={LINE_COLORS[i % LINE_COLORS.length]}
                 strokeWidth={2}
                 dot={false}

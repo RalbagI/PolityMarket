@@ -8,15 +8,15 @@
       "failedToLoadData": "שגיאה בטעינת נתונים: {{error}}"
     },
     "header": {
-      "logo": "פמ",
-      "title": "פוליטי מרקט",
+      "logo": "PM",
+      "title": "PolityMarket",
       "subtitle": "מעקב סנטימנט פוליטי ישראלי"
     },
     "panel": {
       "defaultTitle": "פרטים"
     },
     "footer": {
-      "text": "פוליטי מרקט · הנתונים מתעדכנים מדי יום בשעה 2:00 · מופעל על ידי ניתוח סנטימנט AI"
+      "text": "PolityMarket · הנתונים מתעדכנים מדי יום בשעה 2:00 · מופעל על ידי ניתוח סנטימנט AI"
     }
   },
   "detailView": {
@@ -112,5 +112,19 @@
   "errorBoundary": {
     "message": "שגיאה בטעינת רכיב",
     "retry": "נסה שוב"
+  },
+  "politicians": {
+    "Benjamin Netanyahu": "בנימין נתניהו",
+    "Yair Lapid": "יאיר לפיד",
+    "Benny Gantz": "בני גנץ",
+    "Bezalel Smotrich": "בצלאל סמוטריץ׳",
+    "Avigdor Lieberman": "אביגדור ליברמן"
+  },
+  "parties": {
+    "Likud": "הליכוד",
+    "Yesh Atid": "יש עתיד",
+    "National Unity": "המחנה הממלכתי",
+    "Religious Zionism": "הציונות הדתית",
+    "Yisrael Beiteinu": "ישראל ביתנו"
   }
 }

@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { localizeName } from "../lib/localize";
 
 const VOICE_COLORS = ["#6366f1", "#8b5cf6", "#a78bfa", "#c4b5fd", "#ddd6fe"];
 
@@ -38,7 +39,7 @@ export default function ShareOfVoice({ todayData }) {
               width: `${s.percentage}%`,
               backgroundColor: VOICE_COLORS[i % VOICE_COLORS.length],
             }}
-            title={`${s.fullName}: ${s.percentage.toFixed(1)}%`}
+            title={`${localizeName(t, s.fullName)}: ${s.percentage.toFixed(1)}%`}
           />
         ))}
       </div>
@@ -52,7 +53,7 @@ export default function ShareOfVoice({ todayData }) {
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: VOICE_COLORS[i % VOICE_COLORS.length] }}
               />
-              <span className="text-gray-300">{s.fullName}</span>
+              <span className="text-gray-300">{localizeName(t, s.fullName)}</span>
             </div>
             <span className="text-gray-400 font-medium">{s.percentage.toFixed(1)}%</span>
           </div>

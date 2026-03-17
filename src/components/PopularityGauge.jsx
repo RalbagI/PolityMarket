@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { localizeName, localizeParty } from "../lib/localize";
 
 function getGaugeColor(score) {
   if (score <= 2) return "#dc2626";
@@ -95,9 +96,9 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
             <GaugeArc score={g.now} t={t} />
             <div className="mt-2 text-center">
               <div className="text-sm font-semibold text-white truncate max-w-[140px]">
-                {g.name.split(" ").pop()}
+                {localizeName(t, g.name).split(" ").pop()}
               </div>
-              <div className="text-xs text-gray-500">{g.party}</div>
+              <div className="text-xs text-gray-500">{localizeParty(t, g.party)}</div>
             </div>
             <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs text-gray-400">
               {g.yesterday !== null && (
