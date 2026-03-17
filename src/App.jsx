@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useCallback, lazy, Suspense } from "react";
+import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PopularityGauge from "./components/PopularityGauge";
 import ShareOfVoice from "./components/ShareOfVoice";
 import Leaderboard from "./components/Leaderboard";
+import MethodologyModal from "./components/MethodologyModal";
 
 const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
@@ -29,6 +30,7 @@ function ChartFallback() {
 
 export default function App() {
   const { t } = useTranslation();
+  const [methodologyOpen, setMethodologyOpen] = useState(false);
   const summaryData = useStore((s) => s.summaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
@@ -163,10 +165,18 @@ export default function App() {
       </ErrorBoundary>
 
       <footer className="border-t border-gray-800/60 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
-          {t("app.footer.text")}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col items-center gap-2 text-sm text-gray-600">
+          <span>{t("app.footer.text")}</span>
+          <button
+            onClick={() => setMethodologyOpen(true)}
+            className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors"
+          >
+            {t("methodology.link")}
+          </button>
         </div>
       </footer>
+
+      <MethodologyModal isOpen={methodologyOpen} onClose={() => setMethodologyOpen(false)} />
     </div>
   );
 }
