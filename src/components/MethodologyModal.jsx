@@ -1,10 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { X, Brain, BarChart3, Shield, AlertTriangle } from "lucide-react";
 
 export default function MethodologyModal({ isOpen, onClose }) {
   const { t } = useTranslation();
-  const modalRef = useRef(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -33,7 +32,6 @@ export default function MethodologyModal({ isOpen, onClose }) {
       <div className="fixed inset-0 bg-black/60 z-50" onClick={onClose} aria-hidden="true" />
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div
-          ref={modalRef}
           role="dialog"
           aria-modal="true"
           aria-labelledby="methodology-title"
