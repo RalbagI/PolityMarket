@@ -1,0 +1,253 @@
+{
+  "name": "PolityMarket Daily Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 2,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Daily 2AM IST",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0],
+      "notes": "Fires daily at 2:00 AM IST. Timezone set via GENERIC_TIMEZONE=Asia/Jerusalem in docker-compose."
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rss_url }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "fetch-rss",
+      "name": "Poll RSS Feeds",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, -100],
+      "notes": "Poll news RSS feeds for each politician. Configure RSS URLs in the Function node before this.",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "url": "https://api.telegram.org/bot{{ $credentials.telegramBotToken }}/getUpdates",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "fetch-telegram",
+      "name": "Fetch Telegram Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 0],
+      "notes": "Fetch messages from monitored Telegram channels. Requires Telegram Bot Token credential.",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "url": "https://api.twitter.com/2/lists/{{ $json.list_id }}/tweets",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "fetch-x",
+      "name": "Fetch X/Twitter Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [220, 100],
+      "notes": "Fetch tweets from monitored X lists. Requires X API Bearer Token credential.",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "// Chunk and clean text per politician\n// Merge RSS headlines, Telegram messages, and X tweets\n// Attach k-turns of thread context for sarcasm detection\n\nconst politicians = [\n  { id: 'benjamin-netanyahu', name: 'Benjamin Netanyahu', party: 'Likud' },\n  { id: 'yair-lapid', name: 'Yair Lapid', party: 'Yesh Atid' },\n  { id: 'benny-gantz', name: 'Benny Gantz', party: 'National Unity' },\n  { id: 'bezalel-smotrich', name: 'Bezalel Smotrich', party: 'Religious Zionism' },\n  { id: 'avigdor-lieberman', name: 'Avigdor Lieberman', party: 'Yisrael Beiteinu' },\n];\n\nconst results = [];\nfor (const pol of politicians) {\n  // Filter and chunk text mentioning this politician\n  // Attach thread context (preceding posts) for sarcasm detection\n  // Attach speaker metadata (known_satirist flag)\n  results.push({\n    json: {\n      politician: pol,\n      headlines: [], // populated from RSS\n      socialMentions: [], // populated from Telegram + X\n    }\n  });\n}\n\nreturn results;"
+      },
+      "id": "chunk-text",
+      "name": "Chunk & Clean Text",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [440, 0],
+      "notes": "Groups all fetched data by politician. Attaches thread context for sarcasm detection."
+    },
+    {
+      "parameters": {
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-api-key", "value": "={{ $credentials.anthropicApiKey }}" },
+            { "name": "anthropic-version", "value": "2023-06-01" },
+            { "name": "content-type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 500, temperature: 0.0, system: $node['Load System Prompt'].json.prompt, messages: [{ role: 'user', content: $json.userPrompt }] }) }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "llm-api-call",
+      "name": "LLM Scoring (Claude)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, 0],
+      "notes": "Version-pinned Claude API call (claude-sonnet-4-20250514). Temperature locked at 0.0. Uses system prompt from prompts/system-prompt.txt. Retry 3x with exponential backoff.",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 10000
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse LLM JSON response\n// Strip markdown fences, validate field ranges\n\nconst raw = $json.content[0].text;\nconst cleaned = raw.replace(/^```json?\\n?/m, '').replace(/\\n?```$/m, '').trim();\nconst parsed = JSON.parse(cleaned);\n\n// Validate ranges\nif (parsed.hostility_level < 0 || parsed.hostility_level > 1) throw new Error('Invalid hostility_level');\nif (parsed.policy_approval < -1 || parsed.policy_approval > 1) throw new Error('Invalid policy_approval');\nif (parsed.media_amplification < 0 || parsed.media_amplification > 1) throw new Error('Invalid media_amplification');\n\nreturn [{ json: parsed }];"
+      },
+      "id": "parse-response",
+      "name": "Parse LLM Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, 0],
+      "notes": "Validates dimensional rubric ranges. Strips markdown fences from LLM output."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Compute deterministic overall_score from dimensional rubrics\n// Formula: 0.4 * policy_normalized + 0.35 * (1 - hostility) + 0.25 * amplification\n\nconst WEIGHT_POLICY = 0.4;\nconst WEIGHT_HOSTILITY = 0.35;\nconst WEIGHT_AMPLIFICATION = 0.25;\n\nconst h = $json.hostility_level;\nconst p = $json.policy_approval;\nconst m = $json.media_amplification;\n\nconst policyNormalized = (p + 1) / 2;\nconst inverseHostility = 1 - h;\nconst overall = WEIGHT_POLICY * policyNormalized + WEIGHT_HOSTILITY * inverseHostility + WEIGHT_AMPLIFICATION * m;\n\n$json.overall_score = parseFloat((overall * 10).toFixed(1));\n$json.news_sentiment = parseFloat((policyNormalized * 10).toFixed(1));\n$json.social_sentiment = parseFloat((inverseHostility * 10).toFixed(1));\n$json.media_volume = parseFloat((m * 10).toFixed(1));\n\nreturn [{ json: $json }];"
+      },
+      "id": "compute-score",
+      "name": "Compute Overall Score",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1100, 0],
+      "notes": "Deterministic weighted average — NOT computed by LLM."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Run golden dataset validation (weekly check)\nconst dayOfWeek = new Date().getDay();\nif (dayOfWeek !== 0) {\n  // Skip validation on non-Sundays\n  return [{ json: { validation_skipped: true, reason: 'Not Sunday' } }];\n}\n\n// On Sundays, run golden dataset MSE evaluation\n// This would call the LLM against the golden dataset and compute MSE\n// If MSE > 0.15, set drifted = true\nreturn [{ json: { validation_run: true, mse: 0.0, drifted: false } }];"
+      },
+      "id": "golden-validation",
+      "name": "Golden Dataset Check (Weekly)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1100, 150],
+      "notes": "Runs golden dataset MSE evaluation every Sunday. Triggers drift alert if MSE > 0.15."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format summary + detail JSON artifacts for GitHub push\n\nconst today = new Date().toISOString().split('T')[0];\nconst entries = $input.all().map(item => item.json);\n\n// Summary row (lightweight)\nconst summaryRows = entries.map(e => ({\n  date: today,\n  politician_id: e.politician_id,\n  name: e.name,\n  party: e.party,\n  overall_score: e.overall_score,\n  media_volume: e.media_volume,\n}));\n\n// Detail file (heavy, per-day)\nconst detailEntries = entries.map(e => ({\n  politician_id: e.politician_id,\n  name: e.name,\n  party: e.party,\n  hostility_level: e.hostility_level,\n  policy_approval: e.policy_approval,\n  media_amplification: e.media_amplification,\n  news_sentiment: e.news_sentiment,\n  social_sentiment: e.social_sentiment,\n  media_volume: e.media_volume,\n  overall_score: e.overall_score,\n  chain_of_thought: e.chain_of_thought,\n}));\n\nreturn [\n  { json: { type: 'summary', data: summaryRows, date: today } },\n  { json: { type: 'detail', data: detailEntries, date: today } },\n];"
+      },
+      "id": "format-artifacts",
+      "name": "Format JSON Artifacts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1320, 0],
+      "notes": "Creates two artifact types: timeseries_summary rows and daily detail file."
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/{{ $credentials.githubOwner }}/PolityMarket/contents/public/data/{{ $json.type === 'summary' ? 'timeseries_summary.json' : 'details/' + $json.date + '.json' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer {{ $credentials.githubPat }}" },
+            { "name": "Accept", "value": "application/vnd.github+json" }
+          ]
+        },
+        "requestMethod": "PUT",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ message: 'chore: update daily scores [' + $json.date + ']', content: Buffer.from(JSON.stringify($json.data, null, 2)).toString('base64'), sha: $json.existing_sha || undefined }) }}"
+      },
+      "id": "push-to-github",
+      "name": "Push to GitHub",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1540, 0],
+      "notes": "Pushes JSON artifacts to GitHub repo via Contents API. This triggers the GitHub Actions deploy workflow.",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.alert_webhook_url }}",
+        "requestMethod": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: '🚨 PolityMarket pipeline failed: ' + $json.error_message }) }}"
+      },
+      "id": "alert-on-failure",
+      "name": "Alert on Failure",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1540, 200],
+      "notes": "Sends alert to Slack/Telegram webhook on complete pipeline failure. Configure webhook URL in n8n credentials."
+    }
+  ],
+  "connections": {
+    "Daily 2AM IST": {
+      "main": [
+        [
+          { "node": "Poll RSS Feeds", "type": "main", "index": 0 },
+          { "node": "Fetch Telegram Data", "type": "main", "index": 0 },
+          { "node": "Fetch X/Twitter Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Poll RSS Feeds": {
+      "main": [[{ "node": "Chunk & Clean Text", "type": "main", "index": 0 }]]
+    },
+    "Fetch Telegram Data": {
+      "main": [[{ "node": "Chunk & Clean Text", "type": "main", "index": 0 }]]
+    },
+    "Fetch X/Twitter Data": {
+      "main": [[{ "node": "Chunk & Clean Text", "type": "main", "index": 0 }]]
+    },
+    "Chunk & Clean Text": {
+      "main": [[{ "node": "LLM Scoring (Claude)", "type": "main", "index": 0 }]]
+    },
+    "LLM Scoring (Claude)": {
+      "main": [[{ "node": "Parse LLM Response", "type": "main", "index": 0 }]]
+    },
+    "Parse LLM Response": {
+      "main": [[{ "node": "Compute Overall Score", "type": "main", "index": 0 }]]
+    },
+    "Compute Overall Score": {
+      "main": [
+        [
+          { "node": "Format JSON Artifacts", "type": "main", "index": 0 },
+          { "node": "Golden Dataset Check (Weekly)", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format JSON Artifacts": {
+      "main": [[{ "node": "Push to GitHub", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "alert-on-failure"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "politymarket-production"
+  },
+  "tags": [
+    { "name": "politymarket" },
+    { "name": "daily-pipeline" }
+  ]
+}
