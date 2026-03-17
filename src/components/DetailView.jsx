@@ -2,6 +2,7 @@ import { Loader2, Quote, BarChart3, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
 import { localizeName, localizeParty } from "../lib/localize";
+import Avatar from "./Avatar";
 
 function MetricBar({ label, value, max, color, weight }) {
   const pct = max !== 0 ? (Math.abs(value) / max) * 100 : 0;
@@ -58,11 +59,14 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
     <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div>
-          <h4 className="text-lg font-bold text-white">{localizeName(t, entry.name)}</h4>
-          <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
-            {localizeParty(t, entry.party)}
-          </span>
+        <div className="flex items-center gap-3">
+          <Avatar name={entry.name} politicianId={entry.politician_id} size={64} />
+          <div>
+            <h4 className="text-lg font-bold text-white">{localizeName(t, entry.name)}</h4>
+            <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
+              {localizeParty(t, entry.party)}
+            </span>
+          </div>
         </div>
         <div className="text-end">
           <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
