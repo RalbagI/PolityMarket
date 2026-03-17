@@ -1,10 +1,14 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import { useEffect, useMemo, useCallback, lazy, Suspense } from "react";
+import useStore from "./store";
+import ErrorBoundary from "./components/ErrorBoundary";
 import PopularityGauge from "./components/PopularityGauge";
-import TrendlineChart from "./components/TrendlineChart";
-import Leaderboard from "./components/Leaderboard";
-import DetailView from "./components/DetailView";
 import ShareOfVoice from "./components/ShareOfVoice";
-import SlidePanel from "./components/SlidePanel";
+import Leaderboard from "./components/Leaderboard";
+
+// Lazy-load heavy components for code splitting
+const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
+const SlidePanel = lazy(() => import("./components/SlidePanel"));
+const DetailView = lazy(() => import("./components/DetailView"));
 
 const NEUTRAL_COLORS = {
   Likud: "#6b7280",
@@ -14,48 +18,32 @@ const NEUTRAL_COLORS = {
   "Yisrael Beiteinu": "#6b7280",
 };
 
+function ChartFallback() {
+  return (
+    <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 h-80 flex items-center justify-center">
+      <div className="text-gray-500 text-sm">Loading chart...</div>
+    </div>
+  );
+}
+
 export default function App() {
-  const [summaryData, setSummaryData] = useState([]);
-  const [detailCache, setDetailCache] = useState({});
-  const [detailLoading, setDetailLoading] = useState(false);
-  const [loadError, setLoadError] = useState(null);
+  // Subscribe to specific Zustand slices — no unnecessary re-renders
+  const summaryData = useStore((s) => s.summaryData);
+  const loadError = useStore((s) => s.loadError);
+  const loadSummary = useStore((s) => s.loadSummary);
+  const panelOpen = useStore((s) => s.panelOpen);
+  const selectedPolitician = useStore((s) => s.selectedPolitician);
+  const selectedDate = useStore((s) => s.selectedDate);
+  const detailLoading = useStore((s) => s.detailLoading);
+  const openPanel = useStore((s) => s.openPanel);
+  const closePanel = useStore((s) => s.closePanel);
 
-  // Panel state
-  const [panelOpen, setPanelOpen] = useState(false);
-  const [selectedPolitician, setSelectedPolitician] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(null);
-
+  // Load summary data on mount
   useEffect(() => {
-    fetch("/data/timeseries_summary.json")
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(setSummaryData)
-      .catch((err) => setLoadError(err.message));
-  }, []);
+    loadSummary();
+  }, [loadSummary]);
 
-  const fetchDetail = useCallback(async (date) => {
-    let alreadyCached = false;
-    setDetailCache((prev) => {
-      if (prev[date]) alreadyCached = true;
-      return prev;
-    });
-    if (alreadyCached) return;
-
-    setDetailLoading(true);
-    try {
-      const res = await fetch(`/data/details/${date}.json`);
-      if (!res.ok) return;
-      const detail = await res.json();
-      setDetailCache((prev) => ({ ...prev, [date]: detail }));
-    } catch {
-      // Detail fetch failed
-    } finally {
-      setDetailLoading(false);
-    }
-  }, []);
-
+  // Derived data — memoized
   const { dates, politicians, todayData, yesterdayData, latestDate } = useMemo(() => {
     if (!summaryData.length)
       return { dates: [], politicians: [], todayData: [], yesterdayData: [], latestDate: null };
@@ -74,40 +62,25 @@ export default function App() {
     };
   }, [summaryData]);
 
-  // Open panel for a politician (from leaderboard — uses today's date)
   const handleSelectPolitician = useCallback(
     (name) => {
-      setSelectedPolitician(name);
-      setSelectedDate(latestDate);
-      setPanelOpen(true);
-      if (latestDate) fetchDetail(latestDate);
+      if (latestDate) openPanel(name, latestDate);
     },
-    [latestDate, fetchDetail]
+    [latestDate, openPanel]
   );
 
-  // Ref to avoid stale closure in handleDateClick
-  const selectedPoliticianRef = useRef(selectedPolitician);
-  selectedPoliticianRef.current = selectedPolitician;
-
-  // Open panel from chart click (uses clicked date, keeps current politician or picks first)
   const handleDateClick = useCallback(
     (date) => {
-      setSelectedDate(date);
-      if (!selectedPoliticianRef.current && politicians.length) {
-        setSelectedPolitician(politicians[0]);
-      }
-      setPanelOpen(true);
-      fetchDetail(date);
+      const politician = useStore.getState().selectedPolitician || politicians[0];
+      openPanel(politician, date);
     },
-    [politicians, fetchDetail]
+    [politicians, openPanel]
   );
 
-  const handleClosePanel = useCallback(() => {
-    setPanelOpen(false);
-  }, []);
-
   const activeDate = selectedDate || latestDate;
-  const activeDetail = activeDate ? detailCache[activeDate] : null;
+  // Subscribe only to the specific cache entry for the active date,
+  // not the entire detailCache object — prevents re-renders when other dates are cached
+  const activeDetail = useStore((s) => (activeDate ? s.detailCache[activeDate] : null));
 
   if (loadError) {
     return (
@@ -148,12 +121,16 @@ export default function App() {
           summaryData={summaryData}
         />
 
-        <TrendlineChart
-          data={summaryData}
-          dates={dates}
-          politicians={politicians}
-          onDateClick={handleDateClick}
-        />
+        <ErrorBoundary>
+          <Suspense fallback={<ChartFallback />}>
+            <TrendlineChart
+              data={summaryData}
+              dates={dates}
+              politicians={politicians}
+              onDateClick={handleDateClick}
+            />
+          </Suspense>
+        </ErrorBoundary>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1">
@@ -171,19 +148,22 @@ export default function App() {
         </div>
       </main>
 
-      {/* Sliding Detail Panel */}
-      <SlidePanel
-        isOpen={panelOpen}
-        onClose={handleClosePanel}
-        title={selectedPolitician || "Details"}
-      >
-        <DetailView
-          todayDetail={activeDetail}
-          selectedPolitician={selectedPolitician}
-          selectedDate={activeDate}
-          loading={detailLoading}
-        />
-      </SlidePanel>
+      <ErrorBoundary>
+        <Suspense fallback={null}>
+          <SlidePanel
+            isOpen={panelOpen}
+            onClose={closePanel}
+            title={selectedPolitician || "Details"}
+          >
+            <DetailView
+              todayDetail={activeDetail}
+              selectedPolitician={selectedPolitician}
+              selectedDate={activeDate}
+              loading={detailLoading}
+            />
+          </SlidePanel>
+        </Suspense>
+      </ErrorBoundary>
 
       <footer className="border-t border-gray-800/60 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">

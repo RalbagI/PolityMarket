@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import useStore from "../store";
 import {
   ComposedChart,
   Line,
@@ -25,7 +26,8 @@ function computeSMA(values, window) {
 }
 
 export default function TrendlineChart({ data, dates, politicians, onDateClick }) {
-  const [smaMode, setSmaMode] = useState("sma7");
+  const smaMode = useStore((s) => s.smaMode);
+  const setSmaMode = useStore((s) => s.setSmaMode);
 
   const chartData = useMemo(() => {
     // Build raw data per date
