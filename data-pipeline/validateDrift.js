@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import parseLLMResponse from "./lib/parseLLMResponse.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,25 +16,17 @@ const PSI_THRESHOLD = 0.2;
 const KL_SPIKE_THRESHOLD = 0.5;
 const BASELINE_WINDOW_DAYS = 30;
 const NUM_BINS = 10;
+const MIN_SAMPLE_SIZE_FOR_DRIFT = 10;
 
-// ── Load System Prompt & LLM Scoring ───────────────────────────────────
-// Reuse the same prompt and scoring function from the main pipeline.
-
-const SYSTEM_PROMPT = fs.readFileSync(
-  path.join(__dirname, "prompts", "system-prompt.txt"),
-  "utf-8"
-);
-
-function parseLLMResponse(raw) {
-  const cleaned = raw
-    .replace(/^```json?\n?/m, "")
-    .replace(/\n?```$/m, "")
-    .trim();
-  const parsed = JSON.parse(cleaned);
-  if (typeof parsed.hostility_level !== "number") throw new Error("Missing hostility_level");
-  if (typeof parsed.policy_approval !== "number") throw new Error("Missing policy_approval");
-  if (typeof parsed.media_amplification !== "number") throw new Error("Missing media_amplification");
-  return parsed;
+// ── Load System Prompt (lazy, non-fatal) ───────────────────────────────
+let SYSTEM_PROMPT = "";
+try {
+  SYSTEM_PROMPT = fs.readFileSync(
+    path.join(__dirname, "prompts", "system-prompt.txt"),
+    "utf-8"
+  );
+} catch {
+  console.warn("[Warning] prompts/system-prompt.txt not found — LLM scoring unavailable");
 }
 
 async function scoreSingleText(text, speakerContext, threadContext) {
@@ -300,6 +293,17 @@ function runDistributionDrift(summaryPath) {
 
   console.log(`Baseline: ${baseline.length} entries (${cutoffStr} to ${latestDate})`);
   console.log(`Current: ${current.length} entries (${latestDate})`);
+
+  if (current.length < MIN_SAMPLE_SIZE_FOR_DRIFT) {
+    console.log(
+      `\n⚠ Current batch (${current.length}) below minimum sample size (${MIN_SAMPLE_SIZE_FOR_DRIFT}) — KL/PSI would be unreliable. Skipping distribution drift.`
+    );
+    return {
+      date: latestDate,
+      baseline_window: `${cutoffStr} to ${latestDate}`,
+      overall_score: { kl_divergence: null, psi: null, skipped: "insufficient_samples" },
+    };
+  }
 
   // Compute drift on overall_score (0-10 scale)
   const baselineScores = baseline.map((e) => e.overall_score);
