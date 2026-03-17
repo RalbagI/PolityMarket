@@ -45,8 +45,6 @@ describe("HeroSection", () => {
 
   it("renders the LLM reasoning quote", () => {
     render(<HeroSection mover={mover} partyColors={PARTY_COLORS} />);
-    expect(
-      screen.getByText(/Strong positive coverage today/),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Strong positive coverage today/)).toBeInTheDocument();
   });
 });

@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6.3,
+    "social_sentiment": 5.2,
+    "media_volume": 8.5,
+    "overall_score": 6.7,
+    "llm_reasoning": "Routine Knesset session; stable media presence with no major developments."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 6,
+    "social_sentiment": 6.5,
+    "media_volume": 7.5,
+    "overall_score": 6.7,
+    "llm_reasoning": "Launched new healthcare policy proposal; well-received across media."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5.5,
+    "social_sentiment": 5,
+    "media_volume": 6,
+    "overall_score": 5.5,
+    "llm_reasoning": "Returned to baseline; no major statements or appearances."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 3.5,
+    "social_sentiment": 3,
+    "media_volume": 7,
+    "overall_score": 4.5,
+    "llm_reasoning": "Budget disagreement with coalition partners made negative headlines."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 6.5,
+    "social_sentiment": 6,
+    "media_volume": 7,
+    "overall_score": 6.5,
+    "llm_reasoning": "Strong Knesset speech on pension reform went viral on social media."
+  }
+]

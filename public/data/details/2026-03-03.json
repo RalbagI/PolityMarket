@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6.2,
+    "social_sentiment": 5.1,
+    "media_volume": 9,
+    "overall_score": 6.8,
+    "llm_reasoning": "Steady media presence as coalition budget talks dominate the news cycle."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.5,
+    "social_sentiment": 6,
+    "media_volume": 7,
+    "overall_score": 6.2,
+    "llm_reasoning": "Vocal opposition speech on education reform resonated well on social media."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5,
+    "social_sentiment": 4.5,
+    "media_volume": 6,
+    "overall_score": 5.2,
+    "llm_reasoning": "Low-key day focused on internal party strategy meetings."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 3.5,
+    "social_sentiment": 3,
+    "media_volume": 7.5,
+    "overall_score": 4.7,
+    "llm_reasoning": "Controversial settlement expansion comments drew sharp criticism."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5,
+    "social_sentiment": 4.8,
+    "media_volume": 5.5,
+    "overall_score": 5.1,
+    "llm_reasoning": "Moderate day with a brief committee appearance on economic policy."
+  }
+]

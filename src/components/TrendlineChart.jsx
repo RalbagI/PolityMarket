@@ -11,12 +11,7 @@ import {
 } from "recharts";
 import { format, parseISO } from "date-fns";
 
-export default function TrendlineChart({
-  data,
-  dates,
-  politicians,
-  partyColors,
-}) {
+export default function TrendlineChart({ data, dates, politicians, partyColors }) {
   const chartData = useMemo(() => {
     return dates.map((date) => {
       const row = { date };
@@ -43,10 +38,7 @@ export default function TrendlineChart({
       <h3 className="text-lg font-semibold text-white mb-6">14-Day Trend</h3>
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={chartData}
-            margin={{ top: 5, right: 10, left: -10, bottom: 5 }}
-          >
+          <LineChart data={chartData} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
             <XAxis
               dataKey="date"
@@ -54,11 +46,7 @@ export default function TrendlineChart({
               tickFormatter={(val) => format(parseISO(val), "MMM d")}
               stroke="#4b5563"
             />
-            <YAxis
-              domain={[0, 10]}
-              tick={{ fill: "#9ca3af", fontSize: 12 }}
-              stroke="#4b5563"
-            />
+            <YAxis domain={[0, 10]} tick={{ fill: "#9ca3af", fontSize: 12 }} stroke="#4b5563" />
             <Tooltip
               contentStyle={{
                 backgroundColor: "#1f2937",

@@ -1,4 +1,4 @@
-import { Newspaper, MessageCircle, Volume2, Quote } from "lucide-react";
+import { Newspaper, MessageCircle, Volume2, Quote, Loader2 } from "lucide-react";
 
 function MetricBar({ label, value, icon: Icon, color }) {
   return (
@@ -23,11 +23,7 @@ function MetricBar({ label, value, icon: Icon, color }) {
   );
 }
 
-export default function DetailView({
-  todayData,
-  selectedPolitician,
-  partyColors,
-}) {
+export default function DetailView({ todayDetail, selectedPolitician, partyColors, loading }) {
   if (!selectedPolitician) {
     return (
       <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 flex items-center justify-center min-h-[300px]">
@@ -38,7 +34,17 @@ export default function DetailView({
     );
   }
 
-  const entry = todayData.find((d) => d.name === selectedPolitician);
+  if (loading || !todayDetail) {
+    return (
+      <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 flex items-center justify-center min-h-[300px]">
+        <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
+      </div>
+    );
+  }
+
+  const entry = todayDetail.find(
+    (d) => d.name === selectedPolitician || d.politician_id === selectedPolitician
+  );
   if (!entry) return null;
 
   const partyColor = partyColors[entry.party] || "#6b7280";
@@ -62,9 +68,7 @@ export default function DetailView({
 
       {/* Overall Score */}
       <div className="text-center py-4">
-        <div className="text-5xl font-bold text-white">
-          {entry.overall_score.toFixed(1)}
-        </div>
+        <div className="text-5xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
         <div className="text-sm text-gray-400 mt-1">Overall Score</div>
       </div>
 
@@ -85,15 +89,10 @@ export default function DetailView({
           icon={MessageCircle}
           color="#8b5cf6"
         />
-        <MetricBar
-          label="Media Volume"
-          value={entry.media_volume}
-          icon={Volume2}
-          color="#f59e0b"
-        />
+        <MetricBar label="Media Volume" value={entry.media_volume} icon={Volume2} color="#f59e0b" />
       </div>
 
-      {/* LLM Reasoning */}
+      {/* LLM Reasoning — lazy-loaded from detail file */}
       {entry.llm_reasoning && (
         <div className="border-t border-gray-800 pt-4">
           <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">

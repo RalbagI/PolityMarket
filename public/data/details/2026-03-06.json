@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 5.5,
+    "social_sentiment": 4.5,
+    "media_volume": 7.8,
+    "overall_score": 5.9,
+    "llm_reasoning": "Opposition criticism of judicial appointments generated negative coverage."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 6.5,
+    "social_sentiment": 7,
+    "media_volume": 8,
+    "overall_score": 7.2,
+    "llm_reasoning": "Sharp critique of judicial appointments went viral, boosting visibility."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5.8,
+    "social_sentiment": 5.2,
+    "media_volume": 6.5,
+    "overall_score": 5.8,
+    "llm_reasoning": "Avoided judicial debate; perceived as cautiously neutral."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 4,
+    "social_sentiment": 3.5,
+    "media_volume": 6.5,
+    "overall_score": 4.7,
+    "llm_reasoning": "News cycle moved on somewhat; sentiment still below average."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5.8,
+    "social_sentiment": 5.5,
+    "media_volume": 6.5,
+    "overall_score": 5.9,
+    "llm_reasoning": "Joined criticism of judicial appointments; seen as independent voice."
+  }
+]

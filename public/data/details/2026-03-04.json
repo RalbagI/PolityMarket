@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 5.8,
+    "social_sentiment": 4.8,
+    "media_volume": 8.5,
+    "overall_score": 6.4,
+    "llm_reasoning": "Mild criticism over delayed infrastructure bill dampened sentiment slightly."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.8,
+    "social_sentiment": 6.5,
+    "media_volume": 7.5,
+    "overall_score": 6.6,
+    "llm_reasoning": "Follow-up interviews on education policy increased positive exposure."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5.5,
+    "social_sentiment": 5,
+    "media_volume": 6.5,
+    "overall_score": 5.7,
+    "llm_reasoning": "Brief remarks on defense budget received moderate coverage."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 3,
+    "social_sentiment": 2.5,
+    "media_volume": 8,
+    "overall_score": 4.5,
+    "llm_reasoning": "International backlash to settlement remarks intensified negative coverage."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5.5,
+    "social_sentiment": 5.2,
+    "media_volume": 6,
+    "overall_score": 5.6,
+    "llm_reasoning": "Op-ed on fiscal responsibility gained moderate traction."
+  }
+]

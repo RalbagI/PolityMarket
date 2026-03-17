@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6.5,
+    "social_sentiment": 5.5,
+    "media_volume": 7.5,
+    "overall_score": 6.5,
+    "llm_reasoning": "Quiet weekend day with limited news; sentiment drifted toward baseline."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.5,
+    "social_sentiment": 6,
+    "media_volume": 5.5,
+    "overall_score": 5.7,
+    "llm_reasoning": "Weekend social media activity showed steady but unremarkable engagement."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5.5,
+    "social_sentiment": 5,
+    "media_volume": 5,
+    "overall_score": 5.2,
+    "llm_reasoning": "Weekend with no public appearances; minimal social media activity."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 4,
+    "social_sentiment": 3.2,
+    "media_volume": 5,
+    "overall_score": 4.1,
+    "llm_reasoning": "Quiet weekend; base engagement steady but mainstream sentiment still low."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5,
+    "social_sentiment": 4.5,
+    "media_volume": 4.5,
+    "overall_score": 4.7,
+    "llm_reasoning": "Low weekend activity; no significant public engagements."
+  }
+]

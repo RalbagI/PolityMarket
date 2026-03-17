@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 7.2,
+    "social_sentiment": 6.2,
+    "media_volume": 9,
+    "overall_score": 7.5,
+    "llm_reasoning": "Announcement of new trade agreement garnered strong positive coverage."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 5,
+    "social_sentiment": 5.5,
+    "media_volume": 6,
+    "overall_score": 5.5,
+    "llm_reasoning": "Trade agreement news overshadowed opposition messaging."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5.8,
+    "social_sentiment": 5,
+    "media_volume": 6,
+    "overall_score": 5.6,
+    "llm_reasoning": "Quiet day; trade agreement dominated headlines over defense topics."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 4.5,
+    "social_sentiment": 3.8,
+    "media_volume": 6.5,
+    "overall_score": 4.9,
+    "llm_reasoning": "Expressed support for trade agreement; seen as constructive for once."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5.8,
+    "social_sentiment": 5.5,
+    "media_volume": 6,
+    "overall_score": 5.8,
+    "llm_reasoning": "Commented on trade agreement with cautious optimism; balanced coverage."
+  }
+]
