@@ -239,9 +239,10 @@
   "settings": {
     "executionOrder": "v1",
     "saveManualExecutions": true,
-    "callerPolicy": "workflowsFromSameOwner",
-    "errorWorkflow": "alert-on-failure"
+    "callerPolicy": "workflowsFromSameOwner"
   },
+  "pinData": {},
+  "_comment_error_handling": "Connect the 'Alert on Failure' node to the error output of 'LLM Scoring (Claude)' and 'Push to GitHub' nodes in the n8n UI after import. n8n's errorWorkflow setting requires a separate workflow ID, not a node ID.",
   "meta": {
     "templateCredsSetupCompleted": false,
     "instanceId": "politymarket-production"
