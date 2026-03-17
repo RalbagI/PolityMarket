@@ -2,12 +2,12 @@ import { onSchedule } from "firebase-functions/v2/scheduler";
 import { onRequest } from "firebase-functions/v2/https";
 import { initializeApp } from "firebase-admin/app";
 import { getStorage } from "firebase-admin/storage";
-import { defineString } from "firebase-functions/params";
 
 initializeApp();
 
-// ── Configuration via Firebase environment params ──────────────────────
-const anthropicKey = defineString("ANTHROPIC_API_KEY", { default: "" });
+// ── Configuration ──────────────────────────────────────────────────────
+// Set API keys via: firebase functions:secrets:set ANTHROPIC_API_KEY
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || "";
 
 // ── Score Computation (same formula as data-pipeline) ──────────────────
 const WEIGHT_POLICY = 0.4;
