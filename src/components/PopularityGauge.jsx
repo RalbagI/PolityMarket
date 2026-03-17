@@ -96,7 +96,7 @@ export default function PopularityGauge({ todayData, yesterdayData, summaryData 
           <div key={g.name} className="flex flex-col items-center">
             <GaugeArc score={g.now} t={t} />
             <div className="mt-2 flex flex-col items-center gap-1">
-              <Avatar name={g.name} size={32} />
+              <Avatar name={g.name} size={48} />
               <div className="text-sm font-semibold text-white truncate max-w-[140px]">
                 {localizeName(t, g.name).split(" ").pop()}
               </div>

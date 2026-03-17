@@ -60,7 +60,7 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Avatar name={entry.name} politicianId={entry.politician_id} size={48} />
+          <Avatar name={entry.name} politicianId={entry.politician_id} size={64} />
           <div>
             <h4 className="text-lg font-bold text-white">{localizeName(t, entry.name)}</h4>
             <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">

@@ -162,7 +162,7 @@ export default function Leaderboard({
                   <td className="px-6 py-4 text-sm text-gray-500 font-mono">{i + 1}</td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <Avatar name={entry.name} politicianId={entry.politician_id} size={32} />
+                      <Avatar name={entry.name} politicianId={entry.politician_id} size={40} />
                       <span className="text-sm font-medium text-white">
                         {localizeName(t, entry.name)}
                       </span>
@@ -207,7 +207,7 @@ export default function Leaderboard({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-gray-500 font-mono w-5">{i + 1}</span>
-                  <Avatar name={entry.name} politicianId={entry.politician_id} size={32} />
+                  <Avatar name={entry.name} politicianId={entry.politician_id} size={40} />
                   <div>
                     <div className="text-sm font-medium text-white">
                       {localizeName(t, entry.name)}
