@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Workflow memory helper for PoliticMarket.
+Workflow memory helper for PolityMarket.
 
 Adds lightweight recall/snapshot/learn primitives for workflows.
 Stores runtime state in .agent/state/ (ignored by git).
@@ -32,7 +32,7 @@ STOPWORDS = {
     "a", "an", "and", "are", "as", "at", "be", "by", "for", "from",
     "in", "is", "it", "of", "on", "or", "that", "the", "this", "to",
     "with", "workflow", "issue", "review", "results", "prepare",
-    "merge", "resolve", "politicmarket",
+    "merge", "resolve", "politymarket",
 }
 
 

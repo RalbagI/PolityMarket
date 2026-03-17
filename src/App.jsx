@@ -86,7 +86,7 @@ export default function App() {
             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-sm">
               PM
             </div>
-            <h1 className="text-xl font-bold tracking-tight">PoliticMarket</h1>
+            <h1 className="text-xl font-bold tracking-tight">PolityMarket</h1>
           </div>
           <p className="text-sm text-gray-500 hidden sm:block">
             Israeli Political Sentiment Tracker
@@ -128,7 +128,7 @@ export default function App() {
 
       <footer className="border-t border-gray-800 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
-          PoliticMarket &middot; Data updates daily at 2:00 AM IST &middot;
+          PolityMarket &middot; Data updates daily at 2:00 AM IST &middot;
           Powered by AI sentiment analysis
         </div>
       </footer>

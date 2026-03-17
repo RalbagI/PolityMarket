@@ -115,7 +115,7 @@ Analyze and score this politician's current public standing.`;
 
 async function main() {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-  console.log(`\n📊 PoliticMarket Daily Pipeline — ${today}\n`);
+  console.log(`\n📊 PolityMarket Daily Pipeline — ${today}\n`);
 
   // Load existing data
   let historicalData = [];

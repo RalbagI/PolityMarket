@@ -2,7 +2,7 @@
 """
 AI-First Workflow Engine
 Parses and executes YAML workflows with deterministic execution paths.
-Adapted for PoliticMarket (React/Vite) from Tipi (Flutter).
+Adapted for PolityMarket (React/Vite) from Tipi (Flutter).
 """
 
 import sys

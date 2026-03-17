@@ -1,7 +1,7 @@
 # AI-First Workflow Format
 
 > This directory contains workflows optimized for AI execution, not human reading.
-> Adapted from [Tipi](../../../Tipi/.agent/workflows/) for the PoliticMarket React/Vite project.
+> Adapted from [Tipi](../../../Tipi/.agent/workflows/) for the PolityMarket React/Vite project.
 
 ## Format
 
@@ -43,7 +43,7 @@ phases:
 
 ## Key Adaptations from Tipi
 
-| Tipi (Flutter/GitLab) | PoliticMarket (React/GitHub) |
+| Tipi (Flutter/GitLab) | PolityMarket (React/GitHub) |
 |---|---|
 | `dart analyze` | `npx eslint src/` |
 | `dart format` | `npx prettier --check` |

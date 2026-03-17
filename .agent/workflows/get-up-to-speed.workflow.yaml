@@ -68,7 +68,7 @@ phases:
         cmd: |
           [ -n "$TOPIC" ] && \
           grep -r "$TOPIC" src/ data-pipeline/ || \
-          echo "Project: PoliticMarket - Israeli Political Sentiment Tracker"
+          echo "Project: PolityMarket - Israeli Political Sentiment Tracker"
         store: PROJECT_CONTEXT
 
     next_phase: 3-code-changes

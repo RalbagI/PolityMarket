@@ -1,6 +1,6 @@
 # AI-First Workflow Schema v1.0
 # Optimized for deterministic AI parsing
-# Adapted for PoliticMarket (React/Vite) from Tipi (Flutter)
+# Adapted for PolityMarket (React/Vite) from Tipi (Flutter)
 
 workflow:
   id: string                              # unique workflow ID (e.g., code-review)
