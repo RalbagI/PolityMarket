@@ -120,8 +120,26 @@ function SmotrichAvatar({ size }) {
       <circle cx="39" cy="46" r="2.2" fill="#3d2b1f" />
       <circle cx="63" cy="46" r="2.2" fill="#3d2b1f" />
       {/* Glasses - rectangular */}
-      <rect x="29" y="41" width="18" height="12" rx="2" stroke="#333" strokeWidth="1.5" fill="none" />
-      <rect x="53" y="41" width="18" height="12" rx="2" stroke="#333" strokeWidth="1.5" fill="none" />
+      <rect
+        x="29"
+        y="41"
+        width="18"
+        height="12"
+        rx="2"
+        stroke="#333"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <rect
+        x="53"
+        y="41"
+        width="18"
+        height="12"
+        rx="2"
+        stroke="#333"
+        strokeWidth="1.5"
+        fill="none"
+      />
       <line x1="47" y1="47" x2="53" y2="47" stroke="#333" strokeWidth="1.5" />
       {/* Eyebrows */}
       <path d="M30 39 Q38 35 46 39" stroke="#2c2c2c" strokeWidth="2" fill="none" />
