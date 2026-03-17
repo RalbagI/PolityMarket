@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6.8,
+    "social_sentiment": 5.8,
+    "media_volume": 8.5,
+    "overall_score": 7,
+    "llm_reasoning": "Successful tech industry summit appearance shifted narrative positively."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.5,
+    "social_sentiment": 6,
+    "media_volume": 6.5,
+    "overall_score": 6,
+    "llm_reasoning": "Attention shifted to tech summit; Lapid's coverage normalized."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 6,
+    "social_sentiment": 5.5,
+    "media_volume": 7,
+    "overall_score": 6.2,
+    "llm_reasoning": "Attended tech summit; positioned as pragmatic centrist leader."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 4,
+    "social_sentiment": 3.5,
+    "media_volume": 6,
+    "overall_score": 4.5,
+    "llm_reasoning": "Media attention shifted to tech summit; briefly out of the spotlight."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5,
+    "social_sentiment": 4.8,
+    "media_volume": 5.5,
+    "overall_score": 5.1,
+    "llm_reasoning": "Minor appearance at tech summit; not a primary speaker."
+  }
+]

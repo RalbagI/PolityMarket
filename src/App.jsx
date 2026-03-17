@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import HeroSection from "./components/HeroSection";
 import TrendlineChart from "./components/TrendlineChart";
 import Leaderboard from "./components/Leaderboard";
@@ -13,64 +13,95 @@ const PARTY_COLORS = {
 };
 
 export default function App() {
-  const [data, setData] = useState([]);
+  const [summaryData, setSummaryData] = useState([]);
   const [selectedPolitician, setSelectedPolitician] = useState(null);
+  const [detailCache, setDetailCache] = useState({});
+  const [detailLoading, setDetailLoading] = useState(false);
 
+  // Phase 1: Load lightweight summary on init
   useEffect(() => {
-    fetch("/data/historical_scores.json")
+    fetch("/data/timeseries_summary.json")
       .then((res) => res.json())
-      .then(setData)
-      .catch((err) => console.error("Failed to load data:", err));
+      .then(setSummaryData)
+      .catch(() => {});
   }, []);
 
-  const { dates, politicians, todayData, yesterdayData, biggestMover } =
-    useMemo(() => {
-      if (!data.length)
-        return {
-          dates: [],
-          politicians: [],
-          todayData: [],
-          yesterdayData: [],
-          biggestMover: null,
-        };
+  // Lazy-load detail file for a specific date
+  const fetchDetail = useCallback(
+    async (date) => {
+      if (detailCache[date]) return detailCache[date];
+      setDetailLoading(true);
+      try {
+        const res = await fetch(`/data/details/${date}.json`);
+        if (!res.ok) return null;
+        const detail = await res.json();
+        setDetailCache((prev) => ({ ...prev, [date]: detail }));
+        return detail;
+      } catch {
+        return null;
+      } finally {
+        setDetailLoading(false);
+      }
+    },
+    [detailCache]
+  );
 
-      const allDates = [...new Set(data.map((d) => d.date))].sort();
-      const latestDate = allDates[allDates.length - 1];
-      const previousDate = allDates[allDates.length - 2];
-      const uniqueNames = [...new Set(data.map((d) => d.name))];
+  const { dates, politicians, todayData, yesterdayData, biggestMover, latestDate } = useMemo(() => {
+    if (!summaryData.length)
+      return {
+        dates: [],
+        politicians: [],
+        todayData: [],
+        yesterdayData: [],
+        biggestMover: null,
+        latestDate: null,
+      };
 
-      const today = data.filter((d) => d.date === latestDate);
-      const yesterday = previousDate
-        ? data.filter((d) => d.date === previousDate)
-        : [];
+    const allDates = [...new Set(summaryData.map((d) => d.date))].sort();
+    const latest = allDates[allDates.length - 1];
+    const previousDate = allDates[allDates.length - 2];
+    const uniqueNames = [...new Set(summaryData.map((d) => d.name))];
 
-      let mover = null;
-      let maxDelta = 0;
-      for (const entry of today) {
-        const prev = yesterday.find((y) => y.name === entry.name);
-        if (prev) {
-          const delta = Math.abs(entry.overall_score - prev.overall_score);
-          if (delta > maxDelta) {
-            maxDelta = delta;
-            mover = {
-              ...entry,
-              delta: entry.overall_score - prev.overall_score,
-              previousScore: prev.overall_score,
-            };
-          }
+    const today = summaryData.filter((d) => d.date === latest);
+    const yesterday = previousDate ? summaryData.filter((d) => d.date === previousDate) : [];
+
+    let mover = null;
+    let maxDelta = 0;
+    for (const entry of today) {
+      const prev = yesterday.find((y) => y.name === entry.name);
+      if (prev) {
+        const delta = Math.abs(entry.overall_score - prev.overall_score);
+        if (delta > maxDelta) {
+          maxDelta = delta;
+          mover = {
+            ...entry,
+            delta: entry.overall_score - prev.overall_score,
+            previousScore: prev.overall_score,
+          };
         }
       }
+    }
 
-      return {
-        dates: allDates,
-        politicians: uniqueNames,
-        todayData: today,
-        yesterdayData: yesterday,
-        biggestMover: mover,
-      };
-    }, [data]);
+    return {
+      dates: allDates,
+      politicians: uniqueNames,
+      todayData: today,
+      yesterdayData: yesterday,
+      biggestMover: mover,
+      latestDate: latest,
+    };
+  }, [summaryData]);
 
-  if (!data.length) {
+  // Auto-fetch today's detail when a politician is selected
+  useEffect(() => {
+    if (selectedPolitician && latestDate) {
+      fetchDetail(latestDate);
+    }
+  }, [selectedPolitician, latestDate, fetchDetail]);
+
+  const todayDetail = latestDate ? detailCache[latestDate] : null;
+
+  if (!summaryData.length) {
     return (
       <div className="min-h-screen bg-gray-950 flex items-center justify-center">
         <div className="text-gray-400 text-lg">Loading data...</div>
@@ -95,12 +126,10 @@ export default function App() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {biggestMover && (
-          <HeroSection mover={biggestMover} partyColors={PARTY_COLORS} />
-        )}
+        {biggestMover && <HeroSection mover={biggestMover} partyColors={PARTY_COLORS} />}
 
         <TrendlineChart
-          data={data}
+          data={summaryData}
           dates={dates}
           politicians={politicians}
           partyColors={PARTY_COLORS}
@@ -118,9 +147,10 @@ export default function App() {
           </div>
           <div className="lg:col-span-1">
             <DetailView
-              todayData={todayData}
+              todayDetail={todayDetail}
               selectedPolitician={selectedPolitician}
               partyColors={PARTY_COLORS}
+              loading={detailLoading}
             />
           </div>
         </div>
@@ -128,8 +158,8 @@ export default function App() {
 
       <footer className="border-t border-gray-800 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
-          PolityMarket &middot; Data updates daily at 2:00 AM IST &middot;
-          Powered by AI sentiment analysis
+          PolityMarket &middot; Data updates daily at 2:00 AM IST &middot; Powered by AI sentiment
+          analysis
         </div>
       </footer>
     </div>

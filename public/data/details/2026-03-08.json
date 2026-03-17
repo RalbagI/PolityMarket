@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 7,
+    "social_sentiment": 6,
+    "media_volume": 9.2,
+    "overall_score": 7.4,
+    "llm_reasoning": "Major security briefing and decisive response earned broad approval."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 4.5,
+    "social_sentiment": 5,
+    "media_volume": 6,
+    "overall_score": 5.2,
+    "llm_reasoning": "Security narrative dominated by PM; opposition voices received less coverage."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 7.5,
+    "social_sentiment": 7,
+    "media_volume": 8.5,
+    "overall_score": 7.7,
+    "llm_reasoning": "Security briefing role elevated profile alongside PM; strong approval."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 4.5,
+    "social_sentiment": 4,
+    "media_volume": 5.5,
+    "overall_score": 4.7,
+    "llm_reasoning": "Security news overshadowed all other coverage; low visibility day."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5,
+    "social_sentiment": 4.5,
+    "media_volume": 5,
+    "overall_score": 4.8,
+    "llm_reasoning": "Security narrative dominated; economic voices took a back seat."
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6.5,
+    "social_sentiment": 5.5,
+    "media_volume": 8.8,
+    "overall_score": 6.9,
+    "llm_reasoning": "Positive reception to diplomatic meeting with EU envoy boosted scores."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 5,
+    "social_sentiment": 5.5,
+    "media_volume": 6.5,
+    "overall_score": 5.7,
+    "llm_reasoning": "Quiet news day; overshadowed by PM's diplomatic meeting."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 6,
+    "social_sentiment": 5.5,
+    "media_volume": 7,
+    "overall_score": 6.2,
+    "llm_reasoning": "Participated in diplomatic reception; seen as a centrist stabilizing presence."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 3.8,
+    "social_sentiment": 3.2,
+    "media_volume": 7,
+    "overall_score": 4.7,
+    "llm_reasoning": "Attempted pivot to budget policy; media still focused on settlement story."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5,
+    "social_sentiment": 4.5,
+    "media_volume": 5.5,
+    "overall_score": 5,
+    "llm_reasoning": "Quiet day overshadowed by diplomatic events; minimal coverage."
+  }
+]

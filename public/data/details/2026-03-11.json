@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 5,
+    "social_sentiment": 4,
+    "media_volume": 9,
+    "overall_score": 6,
+    "llm_reasoning": "Leaked coalition disagreements drew significant critical coverage."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 7,
+    "social_sentiment": 7.5,
+    "media_volume": 8.5,
+    "overall_score": 7.7,
+    "llm_reasoning": "Capitalized on coalition leak story; seen as strongest opposition voice."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5,
+    "social_sentiment": 4.8,
+    "media_volume": 5.5,
+    "overall_score": 5.1,
+    "llm_reasoning": "Stayed out of coalition controversy; lower visibility as a result."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 3,
+    "social_sentiment": 2.8,
+    "media_volume": 8,
+    "overall_score": 4.6,
+    "llm_reasoning": "Named in coalition leak as source of internal friction; heavy criticism."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 6,
+    "social_sentiment": 5.8,
+    "media_volume": 6.5,
+    "overall_score": 6.1,
+    "llm_reasoning": "Continued momentum from pension speech; cited by economic commentators."
+  }
+]

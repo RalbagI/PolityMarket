@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  ArrowUp,
-  ArrowDown,
-  Minus,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { ArrowUp, ArrowDown, Minus, ChevronDown, ChevronUp } from "lucide-react";
 
 function ScoreBadge({ score }) {
   let bg, text;
@@ -49,11 +43,7 @@ function DeltaIndicator({ delta }) {
         isPositive ? "text-emerald-400" : "text-red-400"
       }`}
     >
-      {isPositive ? (
-        <ArrowUp className="w-3 h-3" />
-      ) : (
-        <ArrowDown className="w-3 h-3" />
-      )}
+      {isPositive ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
       {isPositive ? "+" : ""}
       {delta.toFixed(1)}
     </span>
@@ -159,21 +149,15 @@ export default function Leaderboard({
               const isSelected = selectedPolitician === entry.name;
               return (
                 <tr
-                  key={entry.id}
+                  key={entry.politician_id || entry.name}
                   onClick={() => onSelect(isSelected ? null : entry.name)}
                   className={`border-b border-gray-800/50 cursor-pointer transition-colors ${
-                    isSelected
-                      ? "bg-blue-500/10 hover:bg-blue-500/15"
-                      : "hover:bg-gray-800/50"
+                    isSelected ? "bg-blue-500/10 hover:bg-blue-500/15" : "hover:bg-gray-800/50"
                   }`}
                 >
-                  <td className="px-6 py-4 text-sm text-gray-500 font-mono">
-                    {i + 1}
-                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-500 font-mono">{i + 1}</td>
                   <td className="px-6 py-4">
-                    <span className="text-sm font-medium text-white">
-                      {entry.name}
-                    </span>
+                    <span className="text-sm font-medium text-white">{entry.name}</span>
                   </td>
                   <td className="px-6 py-4">
                     <span
@@ -205,7 +189,7 @@ export default function Leaderboard({
           const isSelected = selectedPolitician === entry.name;
           return (
             <div
-              key={entry.id}
+              key={entry.politician_id || entry.name}
               onClick={() => onSelect(isSelected ? null : entry.name)}
               className={`px-4 py-4 cursor-pointer transition-colors ${
                 isSelected ? "bg-blue-500/10" : "hover:bg-gray-800/50"
@@ -213,13 +197,9 @@ export default function Leaderboard({
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="text-sm text-gray-500 font-mono w-5">
-                    {i + 1}
-                  </span>
+                  <span className="text-sm text-gray-500 font-mono w-5">{i + 1}</span>
                   <div>
-                    <div className="text-sm font-medium text-white">
-                      {entry.name}
-                    </div>
+                    <div className="text-sm font-medium text-white">{entry.name}</div>
                     <span
                       className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium"
                       style={{

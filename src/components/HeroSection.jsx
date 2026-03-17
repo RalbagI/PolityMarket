@@ -16,9 +16,7 @@ export default function HeroSection({ mover, partyColors }) {
 
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
         <div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
-            {mover.name}
-          </h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">{mover.name}</h2>
           <span
             className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
             style={{
@@ -34,20 +32,14 @@ export default function HeroSection({ mover, partyColors }) {
         <div className="flex items-end gap-6">
           <div className="text-right">
             <div className="text-sm text-gray-400 mb-1">Overall Score</div>
-            <div className="text-4xl font-bold text-white">
-              {mover.overall_score.toFixed(1)}
-            </div>
+            <div className="text-4xl font-bold text-white">{mover.overall_score.toFixed(1)}</div>
           </div>
           <div
             className={`flex items-center gap-1 text-2xl font-bold ${
               isPositive ? "text-emerald-400" : "text-red-400"
             }`}
           >
-            {isPositive ? (
-              <TrendingUp className="w-6 h-6" />
-            ) : (
-              <TrendingDown className="w-6 h-6" />
-            )}
+            {isPositive ? <TrendingUp className="w-6 h-6" /> : <TrendingDown className="w-6 h-6" />}
             {isPositive ? "+" : ""}
             {mover.delta.toFixed(1)}
           </div>

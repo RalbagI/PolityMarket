@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6,
+    "social_sentiment": 5,
+    "media_volume": 8.2,
+    "overall_score": 6.4,
+    "llm_reasoning": "Mixed reactions to economic policy speech; social media largely neutral."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 6,
+    "social_sentiment": 6.2,
+    "media_volume": 7,
+    "overall_score": 6.4,
+    "llm_reasoning": "Maintained momentum from judicial critique; steady social media engagement."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 6.5,
+    "social_sentiment": 6,
+    "media_volume": 7.5,
+    "overall_score": 6.7,
+    "llm_reasoning": "Defense committee hearing showcased expertise; media praised competence."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 4.2,
+    "social_sentiment": 3.8,
+    "media_volume": 6,
+    "overall_score": 4.7,
+    "llm_reasoning": "Finance committee session was unremarkable; gradual recovery."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 6,
+    "social_sentiment": 5.8,
+    "media_volume": 6,
+    "overall_score": 5.9,
+    "llm_reasoning": "Economic policy interview was well-received; steady visibility."
+  }
+]

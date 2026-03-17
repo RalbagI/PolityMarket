@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6,
+    "social_sentiment": 5,
+    "media_volume": 8,
+    "overall_score": 6.3,
+    "llm_reasoning": "Sunday session opened with routine policy review; no surprises."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 6.2,
+    "social_sentiment": 6.8,
+    "media_volume": 7,
+    "overall_score": 6.7,
+    "llm_reasoning": "Pre-Knesset interview on cost of living gained traction online."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 6.2,
+    "social_sentiment": 5.8,
+    "media_volume": 7,
+    "overall_score": 6.3,
+    "llm_reasoning": "Announced defense modernization plan; received cautiously positive press."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 3.8,
+    "social_sentiment": 3,
+    "media_volume": 7,
+    "overall_score": 4.6,
+    "llm_reasoning": "Pre-session budget stance drew renewed criticism from opposition."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 6,
+    "social_sentiment": 5.5,
+    "media_volume": 6.5,
+    "overall_score": 6,
+    "llm_reasoning": "Pre-session economic briefing positioned him as fiscal hawk; positive coverage."
+  }
+]

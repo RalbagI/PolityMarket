@@ -1,0 +1,52 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6.8,
+    "social_sentiment": 5.8,
+    "media_volume": 8,
+    "overall_score": 6.9,
+    "llm_reasoning": "Weekend op-eds reflected positively on the security measures taken."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 5,
+    "social_sentiment": 5.5,
+    "media_volume": 5.5,
+    "overall_score": 5.3,
+    "llm_reasoning": "Low weekend activity; some supportive op-eds but limited reach."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 6.5,
+    "social_sentiment": 6,
+    "media_volume": 6.5,
+    "overall_score": 6.3,
+    "llm_reasoning": "Positive weekend coverage from security role carried over."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 4,
+    "social_sentiment": 3.5,
+    "media_volume": 5,
+    "overall_score": 4.2,
+    "llm_reasoning": "Weekend base rallies showed strong supporter turnout but limited broader appeal."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5.5,
+    "social_sentiment": 5,
+    "media_volume": 5,
+    "overall_score": 5.2,
+    "llm_reasoning": "Weekend interview on Russian-speaking community outreach was niche but positive."
+  }
+]
