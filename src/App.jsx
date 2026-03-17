@@ -17,34 +17,41 @@ export default function App() {
   const [selectedPolitician, setSelectedPolitician] = useState(null);
   const [detailCache, setDetailCache] = useState({});
   const [detailLoading, setDetailLoading] = useState(false);
+  const [loadError, setLoadError] = useState(null);
 
   // Phase 1: Load lightweight summary on init
   useEffect(() => {
     fetch("/data/timeseries_summary.json")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then(setSummaryData)
-      .catch(() => {});
+      .catch((err) => setLoadError(err.message));
   }, []);
 
   // Lazy-load detail file for a specific date
-  const fetchDetail = useCallback(
-    async (date) => {
-      if (detailCache[date]) return detailCache[date];
-      setDetailLoading(true);
-      try {
-        const res = await fetch(`/data/details/${date}.json`);
-        if (!res.ok) return null;
-        const detail = await res.json();
-        setDetailCache((prev) => ({ ...prev, [date]: detail }));
-        return detail;
-      } catch {
-        return null;
-      } finally {
-        setDetailLoading(false);
-      }
-    },
-    [detailCache]
-  );
+  const fetchDetail = useCallback(async (date) => {
+    // Use a flag via functional setState to check cache without depending on detailCache
+    let alreadyCached = false;
+    setDetailCache((prev) => {
+      if (prev[date]) alreadyCached = true;
+      return prev;
+    });
+    if (alreadyCached) return;
+
+    setDetailLoading(true);
+    try {
+      const res = await fetch(`/data/details/${date}.json`);
+      if (!res.ok) return;
+      const detail = await res.json();
+      setDetailCache((prev) => ({ ...prev, [date]: detail }));
+    } catch {
+      // Detail fetch failed — panel will show no data
+    } finally {
+      setDetailLoading(false);
+    }
+  }, []);
 
   const { dates, politicians, todayData, yesterdayData, biggestMover, latestDate } = useMemo(() => {
     if (!summaryData.length)
@@ -100,6 +107,14 @@ export default function App() {
   }, [selectedPolitician, latestDate, fetchDetail]);
 
   const todayDetail = latestDate ? detailCache[latestDate] : null;
+
+  if (loadError) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <div className="text-red-400 text-lg">Failed to load data: {loadError}</div>
+      </div>
+    );
+  }
 
   if (!summaryData.length) {
     return (

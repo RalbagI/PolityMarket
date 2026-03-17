@@ -170,7 +170,7 @@ function appendToSummary(entries, today) {
   // Sort by date then politician_id for consistency
   summary.sort((a, b) => a.date.localeCompare(b.date) || a.politician_id.localeCompare(b.politician_id));
 
-  fs.writeFileSync(SUMMARY_PATH, JSON.stringify(summary));
+  fs.writeFileSync(SUMMARY_PATH, JSON.stringify(summary, null, 2));
   console.log(`  → Summary: ${summary.length} total rows`);
 }
 
