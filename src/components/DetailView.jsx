@@ -92,15 +92,15 @@ export default function DetailView({ todayDetail, selectedPolitician, partyColor
         <MetricBar label="Media Volume" value={entry.media_volume} icon={Volume2} color="#f59e0b" />
       </div>
 
-      {/* LLM Reasoning — lazy-loaded from detail file */}
-      {entry.llm_reasoning && (
+      {/* Chain-of-Thought Analysis — lazy-loaded from detail file */}
+      {(entry.chain_of_thought || entry.llm_reasoning) && (
         <div className="border-t border-gray-800 pt-4">
           <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
             <Quote className="w-4 h-4" />
             <span>AI Analysis</span>
           </div>
           <p className="text-sm text-gray-300 italic leading-relaxed">
-            &ldquo;{entry.llm_reasoning}&rdquo;
+            &ldquo;{entry.chain_of_thought || entry.llm_reasoning}&rdquo;
           </p>
         </div>
       )}
