@@ -4,6 +4,10 @@
       "chart": "טוען תרשים...",
       "data": "טוען נתונים..."
     },
+    "chart": {
+      "hide": "הסתר תרשים",
+      "show": "הצג תרשים"
+    },
     "error": {
       "failedToLoadData": "שגיאה בטעינת נתונים: {{error}}"
     },
@@ -168,7 +172,9 @@
     "histogram": {
       "title": "התפלגות ציונים"
     },
-    "partyBreakdown": "לפי מפלגה"
+    "partyBreakdown": "לפי מפלגה",
+    "openDrawer": "פתח תפריט צד",
+    "closeDrawer": "סגור תפריט צד"
   },
   "treemap": {
     "tooltip": {

@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { scoreToColor } from "../lib/colorScale";
 import { localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
+import useFocusTrap from "../lib/useFocusTrap";
 
 const TIERS = [
   { min: 0, max: 2, key: "tier0_2" },
@@ -115,6 +116,8 @@ function SidebarContent({ stats, t, onMethodologyClick }) {
 export default function Sidebar({ todayData, onMethodologyClick }) {
   const { t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const drawerRef = useRef(null);
+  useFocusTrap(drawerRef, drawerOpen);
 
   const stats = useMemo(() => {
     if (!todayData.length) return null;
@@ -177,7 +180,7 @@ export default function Sidebar({ todayData, onMethodologyClick }) {
           <button
             onClick={() => setDrawerOpen(true)}
             className="p-1.5 rounded-lg hover:bg-gray-800 text-gray-400"
-            aria-label="Open sidebar"
+            aria-label={t("sidebar.openDrawer")}
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -191,12 +194,15 @@ export default function Sidebar({ todayData, onMethodologyClick }) {
             className="md:hidden fixed inset-0 bg-black/50 z-40"
             onClick={() => setDrawerOpen(false)}
           />
-          <div className="md:hidden fixed top-0 inset-inline-start-0 w-[280px] h-screen bg-gray-950 border-e border-gray-800 overflow-y-auto z-50">
+          <div
+            ref={drawerRef}
+            className="md:hidden fixed top-0 inset-inline-start-0 w-[280px] h-screen bg-gray-950 border-e border-gray-800 overflow-y-auto z-50"
+          >
             <div className="flex justify-end p-3">
               <button
                 onClick={() => setDrawerOpen(false)}
                 className="p-1.5 rounded-lg hover:bg-gray-800 text-gray-400"
-                aria-label="Close sidebar"
+                aria-label={t("sidebar.closeDrawer")}
               >
                 <X className="w-5 h-5" />
               </button>

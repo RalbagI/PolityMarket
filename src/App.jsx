@@ -121,7 +121,7 @@ export default function App() {
             className="w-full flex items-center justify-center gap-1 py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors md:hidden"
           >
             {chartVisible ? <ChevronDown className="w-3 h-3" /> : <ChevronUp className="w-3 h-3" />}
-            {chartVisible ? "הסתר תרשים" : "הצג תרשים"}
+            {chartVisible ? t("app.chart.hide") : t("app.chart.show")}
           </button>
 
           <div
