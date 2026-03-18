@@ -3,6 +3,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import parseLLMResponse, { dailyEntrySchema } from "./lib/parseLLMResponse.js";
 import retry from "./lib/retry.js";
+import computeOverallScore from "./lib/computeScore.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -63,21 +64,7 @@ const SUMMARY_PATH = path.join(DATA_DIR, "timeseries_summary.json");
 const DETAILS_DIR = path.join(DATA_DIR, "details");
 const RETENTION_DAYS = 90;
 
-// ── Score Weights ──────────────────────────────────────────────────────
-const WEIGHT_POLICY = 0.4;
-const WEIGHT_HOSTILITY = 0.35;
-const WEIGHT_AMPLIFICATION = 0.25;
-
-// ── Deterministic Score Computation ────────────────────────────────────
-function computeOverallScore(hostility, policyApproval, mediaAmplification) {
-  const policyNormalized = (policyApproval + 1) / 2;
-  const inverseHostility = 1 - hostility;
-  const raw =
-    WEIGHT_POLICY * policyNormalized +
-    WEIGHT_HOSTILITY * inverseHostility +
-    WEIGHT_AMPLIFICATION * mediaAmplification;
-  return parseFloat((raw * 10).toFixed(1));
-}
+// computeOverallScore imported from ./lib/computeScore.js
 
 // ── Mock Data-Fetching Functions ───────────────────────────────────────
 async function fetchRSSHeadlines(politicianName) {
