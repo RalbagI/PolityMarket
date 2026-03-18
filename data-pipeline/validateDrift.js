@@ -210,10 +210,7 @@ function writeAlert(alert) {
 // ── Webhook Notification ───────────────────────────────────────────────
 
 async function sendWebhookAlert(alert) {
-  if (!DRIFT_WEBHOOK_URL) {
-    console.log("  ℹ No DRIFT_WEBHOOK_URL configured — skipping webhook");
-    return;
-  }
+  if (!DRIFT_WEBHOOK_URL) return;
 
   const payload = {
     text:
