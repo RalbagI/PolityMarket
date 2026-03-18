@@ -1,6 +1,7 @@
-import { Loader2, Quote, BarChart3, FileText } from "lucide-react";
+import { Quote, BarChart3, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
+import SkeletonLoader from "./SkeletonLoader";
 import { localizeName, localizeParty } from "../lib/localize";
 import Avatar from "./Avatar";
 
@@ -40,14 +41,7 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
   }
 
   if (loading || !todayDetail) {
-    return (
-      <div className="flex items-center justify-center min-h-[200px]">
-        <div className="flex flex-col items-center gap-3">
-          <Loader2 className="w-6 h-6 text-gray-500 animate-spin" />
-          <span className="text-sm text-gray-500">{t("detailView.loading")}</span>
-        </div>
-      </div>
-    );
+    return <SkeletonLoader />;
   }
 
   const entry = todayDetail.find(
