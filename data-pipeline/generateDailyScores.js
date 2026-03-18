@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import parseLLMResponse, { dailyEntrySchema } from "./lib/parseLLMResponse.js";
+import retry from "./lib/retry.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -279,11 +280,18 @@ async function main() {
     try {
       const headlines = await fetchRSSHeadlines(politician.name);
       const socialMentions = await fetchSocialMediaMentions(politician.name);
-      const llmResult = await scorePoliticianWithLLM(
-        politician.name,
-        politician.party,
-        headlines,
-        socialMentions
+      const llmResult = await retry(
+        () => scorePoliticianWithLLM(politician.name, politician.party, headlines, socialMentions),
+        {
+          maxRetries: 3,
+          initialDelay: 1000,
+          maxDelay: 30000,
+          onRetry: (err, attempt, delay) => {
+            console.warn(
+              `  ⟳ Retry ${attempt}/3 for ${politician.name} in ${Math.round(delay)}ms: ${err.message}`
+            );
+          },
+        }
       );
 
       const overallScore = computeOverallScore(
