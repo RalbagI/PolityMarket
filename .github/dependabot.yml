@@ -1,0 +1,38 @@
+version: 2
+updates:
+  # Root package.json (frontend + pipeline)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+    groups:
+      production:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "@vitest/*"
+          - "vitest"
+          - "@vitejs/*"
+
+  # Cloud Functions dependencies
+  - package-ecosystem: "npm"
+    directory: "/functions"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "functions"
+
+  # GitHub Actions versions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "ci"
