@@ -174,7 +174,9 @@ export default function App() {
           <SlidePanel
             isOpen={panelOpen}
             onClose={closePanel}
-            title={selectedPolitician ? localizeName(t, selectedPolitician) : t("app.panel.defaultTitle")}
+            title={
+              selectedPolitician ? localizeName(t, selectedPolitician) : t("app.panel.defaultTitle")
+            }
           >
             <DetailView
               todayDetail={activeDetail}

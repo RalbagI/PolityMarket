@@ -6,6 +6,7 @@ import { localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 import useFocusTrap from "../lib/useFocusTrap";
 import FilterBar from "./FilterBar";
+import useStore from "../store";
 
 const TIERS = [
   { min: 0, max: 2, key: "tier0_2" },
@@ -14,6 +15,64 @@ const TIERS = [
   { min: 6, max: 8, key: "tier6_8" },
   { min: 8, max: 10, key: "tier8_10" },
 ];
+
+function DisplayOptions({ t }) {
+  const sizeBy = useStore((s) => s.treemapSizeBy);
+  const colorBy = useStore((s) => s.treemapColorBy);
+  const setSizeBy = useStore((s) => s.setTreemapSizeBy);
+  const setColorBy = useStore((s) => s.setTreemapColorBy);
+
+  const options = [
+    { value: "media_volume", label: t("treemap.options.mediaVolume") },
+    { value: "overall_score", label: t("treemap.options.score") },
+  ];
+
+  return (
+    <div className="space-y-2">
+      <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
+        {t("treemap.options.title")}
+      </h3>
+      <div className="grid grid-cols-2 gap-2">
+        <div>
+          <div className="text-[10px] text-gray-500 mb-1">{t("treemap.options.sizeBy")}</div>
+          <div className="flex gap-1">
+            {options.map((o) => (
+              <button
+                key={o.value}
+                onClick={() => setSizeBy(o.value)}
+                className={`px-2 py-1 rounded text-[10px] font-medium transition-colors ${
+                  sizeBy === o.value
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-800 text-gray-500 hover:text-gray-300"
+                }`}
+              >
+                {o.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="text-[10px] text-gray-500 mb-1">{t("treemap.options.colorBy")}</div>
+          <div className="flex gap-1">
+            {options.map((o) => (
+              <button
+                key={o.value}
+                onClick={() => setColorBy(o.value)}
+                className={`px-2 py-1 rounded text-[10px] font-medium transition-colors ${
+                  colorBy === o.value
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-800 text-gray-500 hover:text-gray-300"
+                }`}
+              >
+                {o.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function SidebarContent({ stats, t, onMethodologyClick, filterProps }) {
   return (
@@ -84,6 +143,9 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps }) {
           <span className="text-[10px] text-gray-500">שלילי</span>
         </div>
       </div>
+
+      {/* Display Options */}
+      <DisplayOptions t={t} />
 
       {/* Filters */}
       {filterProps && <FilterBar {...filterProps} />}

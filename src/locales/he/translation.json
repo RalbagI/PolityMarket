@@ -279,7 +279,8 @@
     "liked": "מועדפים",
     "hidden": "מוסתרים",
     "showAll": "הצג הכל",
-    "clearFilters": "נקה סינון"
+    "clearFilters": "נקה סינון",
+    "noResults": "אין תוצאות לסינון הנוכחי"
   },
   "sidebar": {
     "totalTracked": "פוליטיקאים במעקב",
@@ -298,6 +299,13 @@
       "mediaVolume": "נפח מדיה",
       "change": "שינוי מאתמול",
       "party": "מפלגה"
+    },
+    "options": {
+      "title": "תצוגה",
+      "sizeBy": "גודל לפי",
+      "colorBy": "צבע לפי",
+      "mediaVolume": "נפח",
+      "score": "ציון"
     }
   },
   "methodology": {

@@ -78,6 +78,14 @@ const useStore = create((set, get) => ({
   // ── Chart Settings Slice ─────────────────────────────────────────────
   smaMode: "sma7",
   setSmaMode: (mode) => set({ smaMode: mode }),
+
+  // ── Treemap Settings Slice ─────────────────────────────────────────
+  // sizeBy: what metric determines block SIZE
+  // colorBy: what metric determines block COLOR
+  treemapSizeBy: "media_volume", // "media_volume" | "overall_score"
+  treemapColorBy: "overall_score", // "overall_score" | "media_volume"
+  setTreemapSizeBy: (v) => set({ treemapSizeBy: v }),
+  setTreemapColorBy: (v) => set({ treemapColorBy: v }),
 }));
 
 // Background refetch on window focus (stale-while-revalidate)

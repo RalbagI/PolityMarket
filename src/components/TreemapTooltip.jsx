@@ -41,7 +41,9 @@ export default memo(function TreemapTooltip({ politician, position }) {
     >
       {/* Name + Party */}
       <div className="mb-3">
-        <div className="text-sm font-bold text-white">{d.displayName || localizeName(t, d.name)}</div>
+        <div className="text-sm font-bold text-white">
+          {d.displayName || localizeName(t, d.name)}
+        </div>
         <div className="text-xs text-gray-400">{d.displayParty || localizeParty(t, d.party)}</div>
       </div>
 

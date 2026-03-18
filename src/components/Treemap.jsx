@@ -3,10 +3,13 @@ import { useTranslation } from "react-i18next";
 import { hierarchy, treemap, treemapSquarify } from "d3-hierarchy";
 import { scoreToColorWithAlpha } from "../lib/colorScale";
 import { localizeName } from "../lib/localize";
+import useStore from "../store";
 import TreemapTooltip from "./TreemapTooltip";
 
 export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const { t } = useTranslation();
+  const sizeBy = useStore((s) => s.treemapSizeBy);
+  const colorBy = useStore((s) => s.treemapColorBy);
   const containerRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [hovered, setHovered] = useState(null);
@@ -32,7 +35,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
     try {
       const root = hierarchy({ children: data })
-        .sum((d) => Math.max(d.media_volume || d.treemapValue || 1, 1))
+        .sum((d) => Math.max(d[sizeBy] || d.media_volume || 1, 1))
         .sort((a, b) => b.value - a.value);
 
       treemap().size([size.width, size.height]).padding(2).tile(treemapSquarify)(root);
@@ -41,7 +44,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     } catch {
       return [];
     }
-  }, [data, size.width, size.height]);
+  }, [data, size.width, size.height, sizeBy]);
 
   const handleMouseMove = useCallback(
     (e) => {
@@ -49,6 +52,14 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     },
     [hovered]
   );
+
+  if (!data || !data.length) {
+    return (
+      <div ref={containerRef} className="w-full h-full flex items-center justify-center">
+        <p className="text-gray-500 text-sm">{t("filterBar.noResults")}</p>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -101,7 +112,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
               width: w,
               height: h,
               backgroundColor: scoreToColorWithAlpha(
-                d.overall_score,
+                d[colorBy] || d.overall_score,
                 isHovered || isSelected ? 0.85 : 0.55
               ),
               border:
