@@ -19,7 +19,7 @@ export default function EntityCard({ entry, delta, isSelected, onSelect }) {
           onSelect(entry.name);
         }
       }}
-      className={`relative rounded-2xl p-5 cursor-pointer transition-all duration-200
+      className={`entity-card relative rounded-2xl p-5 cursor-pointer transition-all duration-200
         hover:scale-[1.02] hover:shadow-lg hover:shadow-black/20
         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-950
         ${isSelected ? "ring-2 ring-indigo-400 scale-[1.02]" : ""}

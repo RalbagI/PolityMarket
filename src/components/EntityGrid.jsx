@@ -20,12 +20,7 @@ export default function EntityGrid({ todayData, yesterdayData, selectedPoliticia
   return (
     <div>
       <h3 className="text-lg font-semibold text-white mb-4">{t("leaderboard.title")}</h3>
-      <div
-        className="grid gap-4"
-        style={{
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-        }}
-      >
+      <div className="entity-grid">
         {cardsWithDelta.map(({ entry, delta }) => (
           <EntityCard
             key={entry.politician_id || entry.name}
