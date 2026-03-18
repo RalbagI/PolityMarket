@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Sidebar from "./components/Sidebar";
@@ -13,6 +14,7 @@ const DetailView = lazy(() => import("./components/DetailView"));
 export default function App() {
   const { t } = useTranslation();
   const [methodologyOpen, setMethodologyOpen] = useState(false);
+  const [chartVisible, setChartVisible] = useState(true);
   const summaryData = useStore((s) => s.summaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
@@ -45,7 +47,6 @@ export default function App() {
     };
   }, [summaryData]);
 
-  // Enrich today data with deltas for treemap
   const treemapData = useMemo(() => {
     return todayData.map((entry) => {
       const prev = yesterdayData.find((y) => y.name === entry.name);
@@ -53,9 +54,8 @@ export default function App() {
     });
   }, [todayData, yesterdayData]);
 
-  // Top 5 politicians for trendline chart (avoid spaghetti with 30 lines)
   const topPoliticians = useMemo(() => {
-    return todayData
+    return [...todayData]
       .sort((a, b) => b.media_volume - a.media_volume)
       .slice(0, 5)
       .map((d) => d.name);
@@ -98,14 +98,13 @@ export default function App() {
   }
 
   return (
-    <div className="h-screen bg-gray-950 text-gray-100 overflow-hidden">
-      {/* Fixed Sidebar (right side in RTL) */}
+    <div className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
       <Sidebar todayData={todayData} onMethodologyClick={() => setMethodologyOpen(true)} />
 
-      {/* Main content area — offset by sidebar width */}
-      <main className="h-screen flex flex-col" style={{ marginInlineEnd: 260 }}>
-        {/* Treemap — fills remaining viewport above the chart */}
-        <div className="flex-1" style={{ minHeight: 300 }}>
+      {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
+      <main className="md:h-screen flex flex-col md:me-[260px] pt-14 md:pt-0">
+        {/* Treemap */}
+        <div className="flex-1 min-h-[50vh] md:min-h-[300px]">
           <ErrorBoundary>
             <Treemap
               data={treemapData}
@@ -115,28 +114,39 @@ export default function App() {
           </ErrorBoundary>
         </div>
 
-        {/* TrendlineChart — bottom strip */}
-        <div className="h-64 shrink-0 border-t border-gray-800 bg-gray-950">
-          <ErrorBoundary>
-            <Suspense
-              fallback={
-                <div className="h-full flex items-center justify-center text-gray-500 text-sm">
-                  {t("app.loading.chart")}
-                </div>
-              }
-            >
-              <TrendlineChart
-                data={summaryData}
-                dates={dates}
-                politicians={topPoliticians}
-                onDateClick={handleDateClick}
-              />
-            </Suspense>
-          </ErrorBoundary>
+        {/* Chart toggle + TrendlineChart */}
+        <div className="shrink-0 border-t border-gray-800 bg-gray-950">
+          <button
+            onClick={() => setChartVisible(!chartVisible)}
+            className="w-full flex items-center justify-center gap-1 py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors md:hidden"
+          >
+            {chartVisible ? <ChevronDown className="w-3 h-3" /> : <ChevronUp className="w-3 h-3" />}
+            {chartVisible ? "הסתר תרשים" : "הצג תרשים"}
+          </button>
+
+          <div
+            className={`${chartVisible ? "h-48 md:h-64" : "h-0"} overflow-hidden transition-all duration-300`}
+          >
+            <ErrorBoundary>
+              <Suspense
+                fallback={
+                  <div className="h-full flex items-center justify-center text-gray-500 text-sm">
+                    {t("app.loading.chart")}
+                  </div>
+                }
+              >
+                <TrendlineChart
+                  data={summaryData}
+                  dates={dates}
+                  politicians={topPoliticians}
+                  onDateClick={handleDateClick}
+                />
+              </Suspense>
+            </ErrorBoundary>
+          </div>
         </div>
       </main>
 
-      {/* Slide Panel — opens from the left (opposite sidebar) */}
       <ErrorBoundary>
         <Suspense fallback={null}>
           <SlidePanel

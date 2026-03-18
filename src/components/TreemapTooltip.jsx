@@ -11,11 +11,20 @@ export default function TreemapTooltip({ politician, position }) {
   const scoreColor = scoreToColor(d.overall_score);
   const scorePct = (d.overall_score / 10) * 100;
 
-  // Clamp tooltip to viewport edges
+  // Clamp tooltip to viewport edges, accounting for sidebar (260px) on desktop
   const tooltipW = 280;
   const tooltipH = 160;
-  const x =
-    position.x + tooltipW + 20 > window.innerWidth ? position.x - tooltipW - 10 : position.x + 16;
+  const isRtl = document.documentElement.dir === "rtl";
+  const sidebarW = window.innerWidth >= 768 ? 260 : 0;
+  const availableW = window.innerWidth - sidebarW;
+
+  // In RTL, sidebar is on the right — available space is on the left
+  let x;
+  if (isRtl) {
+    x = position.x - tooltipW - 10 < 0 ? position.x + 16 : position.x - tooltipW - 10;
+  } else {
+    x = position.x + tooltipW + 20 > availableW ? position.x - tooltipW - 10 : position.x + 16;
+  }
   const y =
     position.y + tooltipH > window.innerHeight
       ? window.innerHeight - tooltipH - 10

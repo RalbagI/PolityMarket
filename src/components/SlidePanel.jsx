@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
+import useFocusTrap from "../lib/useFocusTrap";
 
 export default function SlidePanel({ isOpen, onClose, title, children }) {
   const { t } = useTranslation();
   const panelRef = useRef(null);
   const titleId = "slide-panel-title";
+  useFocusTrap(panelRef, isOpen);
 
   // Close on click outside (fallback for non-backdrop clicks)
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
         aria-modal="true"
         aria-labelledby={titleId}
         className={`fixed z-50 bg-gray-900 border-gray-800 shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out
-          sm:top-0 sm:inset-inline-end-0 sm:h-full sm:w-[420px] sm:border-s
+          sm:top-0 sm:inset-inline-end-0 sm:h-full sm:w-[380px] lg:w-[420px] sm:border-s
           ${isOpen ? "sm:translate-x-0" : "sm:ltr:translate-x-full sm:rtl:-translate-x-full"}
           max-sm:bottom-0 max-sm:left-0 max-sm:right-0 max-sm:max-h-[85vh] max-sm:rounded-t-2xl max-sm:border-t
           ${isOpen ? "max-sm:translate-y-0" : "max-sm:translate-y-full"}
