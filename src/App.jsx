@@ -16,7 +16,7 @@ const DetailView = lazy(() => import("./components/DetailView"));
 export default function App() {
   const { t } = useTranslation();
   const [methodologyOpen, setMethodologyOpen] = useState(false);
-  const [chartVisible, setChartVisible] = useState(true);
+  const [chartVisible, setChartVisible] = useState(false);
   const summaryData = useStore((s) => s.summaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
@@ -133,7 +133,7 @@ export default function App() {
         <div className="shrink-0 border-t border-gray-800 bg-gray-950">
           <button
             onClick={() => setChartVisible(!chartVisible)}
-            className="w-full flex items-center justify-center gap-1 py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors md:hidden"
+            className="w-full flex items-center justify-center gap-1 py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
           >
             {chartVisible ? <ChevronDown className="w-3 h-3" /> : <ChevronUp className="w-3 h-3" />}
             {chartVisible ? t("app.chart.hide") : t("app.chart.show")}
