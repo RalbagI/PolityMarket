@@ -42,6 +42,23 @@ body {
   }
 }
 
+/* SlidePanel RTL-safe positioning */
+@media (min-width: 640px) {
+  .slide-panel {
+    inset-inline-end: 0;
+    top: 0;
+  }
+  .slide-panel-hidden {
+    transform: translateX(100%);
+  }
+  [dir="rtl"] .slide-panel-hidden {
+    transform: translateX(-100%);
+  }
+  .slide-panel-visible {
+    transform: translateX(0);
+  }
+}
+
 /* Performance: skip rendering off-screen cards in large grids */
 .entity-card {
   content-visibility: auto;

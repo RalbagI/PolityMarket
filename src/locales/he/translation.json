@@ -4,6 +4,10 @@
       "chart": "טוען תרשים...",
       "data": "טוען נתונים..."
     },
+    "chart": {
+      "hide": "הסתר תרשים",
+      "show": "הצג תרשים"
+    },
     "error": {
       "failedToLoadData": "שגיאה בטעינת נתונים: {{error}}"
     },
@@ -159,7 +163,9 @@
     "United Torah Judaism": "יהדות התורה",
     "Labor": "העבודה",
     "Hadash-Ta'al": "חד״ש-תע״ל",
+    "Hadash-Taal": "חד״ש-תע״ל",
     "Ra'am": "רע״ם",
+    "Raam": "רע״ם",
     "Democrats": "הדמוקרטים"
   },
   "sidebar": {
@@ -168,7 +174,9 @@
     "histogram": {
       "title": "התפלגות ציונים"
     },
-    "partyBreakdown": "לפי מפלגה"
+    "partyBreakdown": "לפי מפלגה",
+    "openDrawer": "פתח תפריט צד",
+    "closeDrawer": "סגור תפריט צד"
   },
   "treemap": {
     "tooltip": {

@@ -76,7 +76,7 @@ export default function Treemap({ data, onSelect, selectedPolitician }) {
               }
             }}
             onMouseEnter={() => setHovered(d.name)}
-            className="absolute overflow-hidden cursor-pointer transition-opacity duration-150"
+            className="absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
             style={{
               left: leaf.x0,
               top: leaf.y0,
