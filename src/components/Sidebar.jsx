@@ -102,71 +102,80 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps }) {
         </div>
       </div>
 
-      {/* Score Histogram */}
-      <div>
-        <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
-          {t("sidebar.histogram.title")}
-        </h3>
-        <div className="flex items-end gap-1.5 h-20">
-          {stats.histogram.map((tier) => (
-            <div key={tier.key} className="flex-1 flex flex-col items-center gap-1">
-              <div
-                className="w-full rounded-t transition-all duration-300"
-                style={{
-                  height: `${(tier.count / stats.maxCount) * 100}%`,
-                  minHeight: tier.count > 0 ? 4 : 0,
-                  backgroundColor: tier.color,
-                  opacity: 0.8,
-                }}
-              />
-              <span className="text-xs text-gray-500">{tier.count}</span>
-            </div>
-          ))}
-        </div>
-        <div className="flex justify-between mt-1">
-          <span className="text-[10px] text-gray-600">0</span>
-          <span className="text-[10px] text-gray-600">5</span>
-          <span className="text-[10px] text-gray-600">10</span>
-        </div>
-      </div>
-
-      {/* Color Legend */}
-      <div>
-        <div
-          className="h-2 rounded-full"
-          style={{
-            background: "linear-gradient(to left, #0d9488, #22c55e, #eab308, #f59e0b, #dc2626)",
-          }}
-        />
-        <div className="flex justify-between mt-1">
-          <span className="text-[10px] text-gray-500">חיובי</span>
-          <span className="text-[10px] text-gray-500">שלילי</span>
-        </div>
-      </div>
-
-      {/* Display Options */}
-      <DisplayOptions t={t} />
-
       {/* Filters */}
       {filterProps && <FilterBar {...filterProps} />}
 
-      {/* Party Breakdown */}
-      <div>
-        <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
-          {t("sidebar.partyBreakdown")}
-        </h3>
-        <div className="space-y-1.5">
-          {stats.parties.map(({ party, count, color }) => (
-            <div key={party} className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: color.accent }} />
-                <span className="text-gray-300">{localizeParty(t, party)}</span>
-              </div>
-              <span className="text-gray-500 font-mono">{count}</span>
+      {stats.total === 0 ? (
+        <p className="text-xs text-gray-500 text-center py-4">{t("filterBar.noResults")}</p>
+      ) : (
+        <>
+          {/* Score Histogram */}
+          <div>
+            <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
+              {t("sidebar.histogram.title")}
+            </h3>
+            <div className="flex items-end gap-1.5 h-20">
+              {stats.histogram.map((tier) => (
+                <div key={tier.key} className="flex-1 flex flex-col items-center gap-1">
+                  <div
+                    className="w-full rounded-t transition-all duration-300"
+                    style={{
+                      height: `${(tier.count / stats.maxCount) * 100}%`,
+                      minHeight: tier.count > 0 ? 4 : 0,
+                      backgroundColor: tier.color,
+                      opacity: 0.8,
+                    }}
+                  />
+                  <span className="text-xs text-gray-500">{tier.count}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+            <div className="flex justify-between mt-1">
+              <span className="text-[10px] text-gray-600">0</span>
+              <span className="text-[10px] text-gray-600">5</span>
+              <span className="text-[10px] text-gray-600">10</span>
+            </div>
+          </div>
+
+          {/* Color Legend */}
+          <div>
+            <div
+              className="h-2 rounded-full"
+              style={{
+                background: "linear-gradient(to left, #0d9488, #22c55e, #eab308, #f59e0b, #dc2626)",
+              }}
+            />
+            <div className="flex justify-between mt-1">
+              <span className="text-[10px] text-gray-500">חיובי</span>
+              <span className="text-[10px] text-gray-500">שלילי</span>
+            </div>
+          </div>
+
+          {/* Display Options */}
+          <DisplayOptions t={t} />
+
+          {/* Party Breakdown */}
+          <div>
+            <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
+              {t("sidebar.partyBreakdown")}
+            </h3>
+            <div className="space-y-1.5">
+              {stats.parties.map(({ party, count, color }) => (
+                <div key={party} className="flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="w-2.5 h-2.5 rounded-sm"
+                      style={{ backgroundColor: color.accent }}
+                    />
+                    <span className="text-gray-300">{localizeParty(t, party)}</span>
+                  </div>
+                  <span className="text-gray-500 font-mono">{count}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Methodology Link */}
       <button
