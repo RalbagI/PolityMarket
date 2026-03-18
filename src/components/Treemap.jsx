@@ -50,7 +50,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     <div
       ref={containerRef}
       role="img"
-      aria-label="Treemap visualization of politician sentiment scores. Block size represents media volume, color represents overall score."
+      aria-label={t("treemap.ariaLabel")}
       className="w-full h-full relative overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHovered(null)}

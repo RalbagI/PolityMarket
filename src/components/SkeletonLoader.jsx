@@ -4,7 +4,8 @@
  */
 export default function SkeletonLoader() {
   return (
-    <div className="space-y-4 animate-pulse">
+    <div className="space-y-4 animate-pulse" role="status" aria-label="טוען...">
+      <span className="sr-only">טוען...</span>
       {/* Header: avatar + name + score */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
