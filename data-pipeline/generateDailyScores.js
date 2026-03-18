@@ -8,19 +8,53 @@ const __dirname = path.dirname(__filename);
 
 // ── Configuration ──────────────────────────────────────────────────────
 const POLITICIANS = [
+  // Existing
   { id: "benjamin-netanyahu", name: "Benjamin Netanyahu", party: "Likud" },
   { id: "yair-lapid", name: "Yair Lapid", party: "Yesh Atid" },
   { id: "benny-gantz", name: "Benny Gantz", party: "National Unity" },
-  {
-    id: "bezalel-smotrich",
-    name: "Bezalel Smotrich",
-    party: "Religious Zionism",
-  },
-  {
-    id: "avigdor-lieberman",
-    name: "Avigdor Lieberman",
-    party: "Yisrael Beiteinu",
-  },
+  { id: "bezalel-smotrich", name: "Bezalel Smotrich", party: "Religious Zionism" },
+  { id: "avigdor-lieberman", name: "Avigdor Lieberman", party: "Yisrael Beiteinu" },
+  // New - Likud
+  { id: "yariv-levin", name: "Yariv Levin", party: "Likud" },
+  { id: "yoav-gallant", name: "Yoav Gallant", party: "Likud" },
+  { id: "miri-regev", name: "Miri Regev", party: "Likud" },
+  { id: "nir-barkat", name: "Nir Barkat", party: "Likud" },
+  { id: "amir-ohana", name: "Amir Ohana", party: "Likud" },
+  // New - Shas
+  { id: "aryeh-deri", name: "Aryeh Deri", party: "Shas" },
+  { id: "yoav-ben-tzur", name: "Yoav Ben-Tzur", party: "Shas" },
+  // New - Otzma Yehudit
+  { id: "itamar-ben-gvir", name: "Itamar Ben Gvir", party: "Otzma Yehudit" },
+  // New - UTJ
+  { id: "yitzhak-goldknopf", name: "Yitzhak Goldknopf", party: "United Torah Judaism" },
+  { id: "moshe-gafni", name: "Moshe Gafni", party: "United Torah Judaism" },
+  // New - National Unity
+  { id: "gadi-eisenkot", name: "Gadi Eisenkot", party: "National Unity" },
+  { id: "gideon-saar", name: "Gideon Sa'ar", party: "National Unity" },
+  // New - Labor
+  { id: "merav-michaeli", name: "Merav Michaeli", party: "Labor" },
+  // New - Hadash-Ta'al
+  { id: "ayman-odeh", name: "Ayman Odeh", party: "Hadash-Ta'al" },
+  { id: "ahmad-tibi", name: "Ahmad Tibi", party: "Hadash-Ta'al" },
+  // New - Ra'am
+  { id: "mansour-abbas", name: "Mansour Abbas", party: "Ra'am" },
+  // New - Yesh Atid
+  { id: "meir-cohen", name: "Meir Cohen", party: "Yesh Atid" },
+  { id: "karine-elharrar", name: "Karine Elharrar", party: "Yesh Atid" },
+  // New - Democrats
+  { id: "yair-golan", name: "Yair Golan", party: "Democrats" },
+  // New - More Likud
+  { id: "eli-cohen", name: "Eli Cohen", party: "Likud" },
+  // New - More Religious Zionism
+  { id: "orit-strock", name: "Orit Strock", party: "Religious Zionism" },
+  // New - Yisrael Beiteinu
+  { id: "oded-forer", name: "Oded Forer", party: "Yisrael Beiteinu" },
+  // New - National Unity
+  { id: "pnina-tamano-shata", name: "Pnina Tamano-Shata", party: "National Unity" },
+  // New - Shas
+  { id: "yinon-azoulay", name: "Yinon Azoulay", party: "Shas" },
+  // New - Otzma Yehudit
+  { id: "almog-cohen", name: "Almog Cohen", party: "Otzma Yehudit" },
 ];
 
 const DATA_DIR = path.resolve(__dirname, "../public/data");

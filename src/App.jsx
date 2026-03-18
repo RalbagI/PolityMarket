@@ -2,32 +2,13 @@ import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react
 import { useTranslation } from "react-i18next";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
-import PopularityGauge from "./components/PopularityGauge";
-import ShareOfVoice from "./components/ShareOfVoice";
-import Leaderboard from "./components/Leaderboard";
-import EntityGrid from "./components/EntityGrid";
+import Sidebar from "./components/Sidebar";
+import Treemap from "./components/Treemap";
 import MethodologyModal from "./components/MethodologyModal";
 
 const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
-
-const NEUTRAL_COLORS = {
-  Likud: "#6b7280",
-  "Yesh Atid": "#6b7280",
-  "National Unity": "#6b7280",
-  "Religious Zionism": "#6b7280",
-  "Yisrael Beiteinu": "#6b7280",
-};
-
-function ChartFallback() {
-  const { t } = useTranslation();
-  return (
-    <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6 h-80 flex items-center justify-center">
-      <div className="text-gray-500 text-sm">{t("app.loading.chart")}</div>
-    </div>
-  );
-}
 
 export default function App() {
   const { t } = useTranslation();
@@ -64,6 +45,22 @@ export default function App() {
     };
   }, [summaryData]);
 
+  // Enrich today data with deltas for treemap
+  const treemapData = useMemo(() => {
+    return todayData.map((entry) => {
+      const prev = yesterdayData.find((y) => y.name === entry.name);
+      return { ...entry, delta: prev ? entry.overall_score - prev.overall_score : null };
+    });
+  }, [todayData, yesterdayData]);
+
+  // Top 5 politicians for trendline chart (avoid spaghetti with 30 lines)
+  const topPoliticians = useMemo(() => {
+    return todayData
+      .sort((a, b) => b.media_volume - a.media_volume)
+      .slice(0, 5)
+      .map((d) => d.name);
+  }, [todayData]);
+
   const handleSelectPolitician = useCallback(
     (name) => {
       if (latestDate) openPanel(name, latestDate);
@@ -84,7 +81,7 @@ export default function App() {
 
   if (loadError) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <div className="h-screen bg-gray-950 flex items-center justify-center">
         <div className="text-red-400 text-lg">
           {t("app.error.failedToLoadData", { error: loadError })}
         </div>
@@ -94,68 +91,52 @@ export default function App() {
 
   if (!summaryData.length) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+      <div className="h-screen bg-gray-950 flex items-center justify-center">
         <div className="text-gray-400 text-lg">{t("app.loading.data")}</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
-      <header className="border-b border-gray-800/60 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-sm">
-              {t("app.header.logo")}
-            </div>
-            <h1 className="text-xl font-bold tracking-tight">{t("app.header.title")}</h1>
-          </div>
-          <p className="text-sm text-gray-500 hidden sm:block">{t("app.header.subtitle")}</p>
-        </div>
-      </header>
+    <div className="h-screen bg-gray-950 text-gray-100 overflow-hidden">
+      {/* Fixed Sidebar (right side in RTL) */}
+      <Sidebar todayData={todayData} onMethodologyClick={() => setMethodologyOpen(true)} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <PopularityGauge
-          todayData={todayData}
-          yesterdayData={yesterdayData}
-          summaryData={summaryData}
-        />
-
-        <ErrorBoundary>
-          <Suspense fallback={<ChartFallback />}>
-            <TrendlineChart
-              data={summaryData}
-              dates={dates}
-              politicians={politicians}
-              onDateClick={handleDateClick}
-            />
-          </Suspense>
-        </ErrorBoundary>
-
-        {/* Colored block grid — primary view */}
-        <EntityGrid
-          todayData={todayData}
-          yesterdayData={yesterdayData}
-          selectedPolitician={selectedPolitician}
-          onSelect={handleSelectPolitician}
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1">
-            <ShareOfVoice todayData={todayData} />
-          </div>
-          <div className="lg:col-span-2">
-            <Leaderboard
-              todayData={todayData}
-              yesterdayData={yesterdayData}
-              partyColors={NEUTRAL_COLORS}
-              selectedPolitician={selectedPolitician}
+      {/* Main content area — offset by sidebar width */}
+      <main className="h-screen flex flex-col" style={{ marginInlineEnd: 260 }}>
+        {/* Treemap — fills available space */}
+        <div className="flex-1 min-h-0">
+          <ErrorBoundary>
+            <Treemap
+              data={treemapData}
               onSelect={handleSelectPolitician}
+              selectedPolitician={selectedPolitician}
             />
-          </div>
+          </ErrorBoundary>
+        </div>
+
+        {/* TrendlineChart — bottom strip */}
+        <div className="h-64 shrink-0 border-t border-gray-800 bg-gray-950">
+          <ErrorBoundary>
+            <Suspense
+              fallback={
+                <div className="h-full flex items-center justify-center text-gray-500 text-sm">
+                  {t("app.loading.chart")}
+                </div>
+              }
+            >
+              <TrendlineChart
+                data={summaryData}
+                dates={dates}
+                politicians={topPoliticians}
+                onDateClick={handleDateClick}
+              />
+            </Suspense>
+          </ErrorBoundary>
         </div>
       </main>
 
+      {/* Slide Panel — opens from the left (opposite sidebar) */}
       <ErrorBoundary>
         <Suspense fallback={null}>
           <SlidePanel
@@ -172,18 +153,6 @@ export default function App() {
           </SlidePanel>
         </Suspense>
       </ErrorBoundary>
-
-      <footer className="border-t border-gray-800/60 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col items-center gap-2 text-sm text-gray-600">
-          <span>{t("app.footer.text")}</span>
-          <button
-            onClick={() => setMethodologyOpen(true)}
-            className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors"
-          >
-            {t("methodology.link")}
-          </button>
-        </div>
-      </footer>
 
       <MethodologyModal isOpen={methodologyOpen} onClose={() => setMethodologyOpen(false)} />
     </div>
