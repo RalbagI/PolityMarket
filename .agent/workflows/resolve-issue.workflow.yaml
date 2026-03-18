@@ -96,11 +96,20 @@ phases:
       - name: write-tests
         type: cmd
         cmd: npx vitest run
+        fail_action: exit
 
       - name: verify-lint
         type: cmd
         cmd: npx eslint src/
         fail_action: exit
+
+      - name: verify-coverage
+        type: cmd
+        cmd: npx vitest run --coverage --reporter=verbose 2>&1 | tail -20
+        fail_action: warn
+        notes: >-
+          Verify test coverage. New code should have adequate coverage.
+          This is a quality gate — warn if coverage drops.
 
     next_phase: 4-commit
 
