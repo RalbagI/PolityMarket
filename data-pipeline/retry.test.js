@@ -104,6 +104,15 @@ describe("isTransientError", () => {
     expect(isTransientError(new Error("Timeout exceeded"))).toBe(true);
   });
 
+  it("returns true for network error string", () => {
+    expect(isTransientError(new Error("network error"))).toBe(true);
+    expect(isTransientError(new Error("NetworkError when attempting to fetch"))).toBe(true);
+  });
+
+  it("returns false for non-transient network-related messages", () => {
+    expect(isTransientError(new Error("Invalid network configuration"))).toBe(false);
+  });
+
   it("returns false for unknown errors", () => {
     expect(isTransientError(new Error("validation failed"))).toBe(false);
     expect(isTransientError(new Error("parse error"))).toBe(false);

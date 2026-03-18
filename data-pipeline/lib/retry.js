@@ -58,7 +58,8 @@ export function isTransientError(error) {
     message.includes("ETIMEDOUT") ||
     message.includes("ENOTFOUND") ||
     message.includes("fetch failed") ||
-    message.includes("network")
+    message.includes("network error") ||
+    message.includes("NetworkError")
   ) {
     return true;
   }
