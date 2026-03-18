@@ -1,46 +1,83 @@
+import { z } from "zod";
+
 /**
- * Validates and parses LLM JSON responses.
- * Strips markdown code fences, validates required fields and ranges.
+ * Zod schema for LLM dimensional rubric responses.
+ * Matches the expected output from the CoT system prompt.
+ */
+export const llmResponseSchema = z.object({
+  chain_of_thought: z
+    .string()
+    .min(1, "chain_of_thought must not be empty"),
+  hostility_level: z
+    .number()
+    .min(0, "hostility_level must be >= 0")
+    .max(1, "hostility_level must be <= 1"),
+  policy_approval: z
+    .number()
+    .min(-1, "policy_approval must be >= -1")
+    .max(1, "policy_approval must be <= 1"),
+  media_amplification: z
+    .number()
+    .min(0, "media_amplification must be >= 0")
+    .max(1, "media_amplification must be <= 1"),
+});
+
+/**
+ * Schema for a fully processed daily entry (after deterministic score computation).
+ * Used to validate data before writing to public/data/.
+ */
+export const dailyEntrySchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date must be YYYY-MM-DD"),
+  politician_id: z.string().min(1),
+  name: z.string().min(1),
+  party: z.string().min(1),
+  hostility_level: z.number().min(0).max(1),
+  policy_approval: z.number().min(-1).max(1),
+  media_amplification: z.number().min(0).max(1),
+  overall_score: z.number().min(0).max(10),
+  chain_of_thought: z.string().min(1),
+  news_sentiment: z.number().min(0).max(10),
+  social_sentiment: z.number().min(0).max(10),
+  media_volume: z.number().min(0).max(10),
+});
+
+/**
+ * Schema for summary rows written to timeseries_summary.json.
+ */
+export const summaryRowSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  politician_id: z.string().min(1),
+  name: z.string().min(1),
+  party: z.string().min(1),
+  overall_score: z.number().min(0).max(10),
+  media_volume: z.number().min(0).max(10),
+});
+
+/**
+ * Validates and parses raw LLM JSON responses.
+ * Strips markdown code fences, then validates against zod schema.
+ * Returns validated object or throws with field-level errors.
  */
 export default function parseLLMResponse(raw) {
   const cleaned = raw
-    .replace(/^```json?\n?/m, "")
-    .replace(/\n?```$/m, "")
+    .replace(/^```(?:json)?\s*/m, "")
+    .replace(/\s*```\s*$/m, "")
     .trim();
-  const parsed = JSON.parse(cleaned);
 
-  if (
-    typeof parsed.chain_of_thought !== "string" ||
-    !parsed.chain_of_thought.length
-  ) {
-    throw new Error("Missing or empty chain_of_thought");
+  let parsed;
+  try {
+    parsed = JSON.parse(cleaned);
+  } catch (e) {
+    throw new Error(`Invalid JSON from LLM: ${e.message}\nRaw: ${cleaned.slice(0, 200)}`);
   }
-  if (
-    typeof parsed.hostility_level !== "number" ||
-    parsed.hostility_level < 0 ||
-    parsed.hostility_level > 1
-  ) {
-    throw new Error(
-      `Invalid hostility_level: ${parsed.hostility_level} (must be 0.0–1.0)`
-    );
+
+  const result = llmResponseSchema.safeParse(parsed);
+  if (!result.success) {
+    const fieldErrors = result.error.issues
+      .map((i) => `${i.path.join(".")}: ${i.message}`)
+      .join("; ");
+    throw new Error(`LLM response validation failed: ${fieldErrors}`);
   }
-  if (
-    typeof parsed.policy_approval !== "number" ||
-    parsed.policy_approval < -1 ||
-    parsed.policy_approval > 1
-  ) {
-    throw new Error(
-      `Invalid policy_approval: ${parsed.policy_approval} (must be -1.0–1.0)`
-    );
-  }
-  if (
-    typeof parsed.media_amplification !== "number" ||
-    parsed.media_amplification < 0 ||
-    parsed.media_amplification > 1
-  ) {
-    throw new Error(
-      `Invalid media_amplification: ${parsed.media_amplification} (must be 0.0–1.0)`
-    );
-  }
-  return parsed;
+
+  return result.data;
 }
