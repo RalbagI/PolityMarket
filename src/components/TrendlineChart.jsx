@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import useStore from "../store";
 import { localizeName } from "../lib/localize";
@@ -27,7 +27,7 @@ function computeSMA(values, window) {
   });
 }
 
-export default function TrendlineChart({ data, dates, politicians, onDateClick }) {
+export default memo(function TrendlineChart({ data, dates, politicians, onDateClick }) {
   const { t } = useTranslation();
   const smaMode = useStore((s) => s.smaMode);
   const setSmaMode = useStore((s) => s.setSmaMode);
@@ -193,4 +193,4 @@ export default function TrendlineChart({ data, dates, politicians, onDateClick }
       )}
     </div>
   );
-}
+});
