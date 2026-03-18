@@ -21,10 +21,7 @@ const MIN_SAMPLE_SIZE_FOR_DRIFT = 10;
 // ── Load System Prompt (lazy, non-fatal) ───────────────────────────────
 let SYSTEM_PROMPT = "";
 try {
-  SYSTEM_PROMPT = fs.readFileSync(
-    path.join(__dirname, "prompts", "system-prompt.txt"),
-    "utf-8"
-  );
+  SYSTEM_PROMPT = fs.readFileSync(path.join(__dirname, "prompts", "system-prompt.txt"), "utf-8");
 } catch {
   console.warn("[Warning] prompts/system-prompt.txt not found — LLM scoring unavailable");
 }
@@ -219,11 +216,7 @@ async function runGoldenDatasetValidation() {
   let mockMode = false;
 
   for (const entry of golden) {
-    const result = await scoreSingleText(
-      entry.text,
-      entry.speaker_context,
-      entry.thread_context
-    );
+    const result = await scoreSingleText(entry.text, entry.speaker_context, entry.thread_context);
 
     if (result === null) {
       // Mock mode — generate slightly noisy versions of expected scores
@@ -232,9 +225,18 @@ async function runGoldenDatasetValidation() {
         mockMode = true;
       }
       llmResults.push({
-        hostility_level: Math.max(0, Math.min(1, entry.expected_hostility + (Math.random() - 0.5) * 0.1)),
-        policy_approval: Math.max(-1, Math.min(1, entry.expected_policy_approval + (Math.random() - 0.5) * 0.1)),
-        media_amplification: Math.max(0, Math.min(1, entry.expected_media_amplification + (Math.random() - 0.5) * 0.1)),
+        hostility_level: Math.max(
+          0,
+          Math.min(1, entry.expected_hostility + (Math.random() - 0.5) * 0.1)
+        ),
+        policy_approval: Math.max(
+          -1,
+          Math.min(1, entry.expected_policy_approval + (Math.random() - 0.5) * 0.1)
+        ),
+        media_amplification: Math.max(
+          0,
+          Math.min(1, entry.expected_media_amplification + (Math.random() - 0.5) * 0.1)
+        ),
       });
     } else {
       llmResults.push(result);
@@ -314,8 +316,12 @@ function runDistributionDrift(summaryPath) {
   console.log(`\nOverall Score Distribution Drift:`);
   console.log(`  KL Divergence: ${metrics.kl_divergence}`);
   console.log(`  PSI: ${metrics.psi}`);
-  console.log(`  KL Status: ${metrics.kl_divergence <= KL_SPIKE_THRESHOLD ? "✅ Normal" : "⚠ Spike detected"}`);
-  console.log(`  PSI Status: ${metrics.psi < 0.1 ? "✅ No shift" : metrics.psi < PSI_THRESHOLD ? "⚡ Moderate shift" : "❌ Significant drift"}`);
+  console.log(
+    `  KL Status: ${metrics.kl_divergence <= KL_SPIKE_THRESHOLD ? "✅ Normal" : "⚠ Spike detected"}`
+  );
+  console.log(
+    `  PSI Status: ${metrics.psi < 0.1 ? "✅ No shift" : metrics.psi < PSI_THRESHOLD ? "⚡ Moderate shift" : "❌ Significant drift"}`
+  );
 
   return {
     date: latestDate,

@@ -5,9 +5,7 @@ import { z } from "zod";
  * Matches the expected output from the CoT system prompt.
  */
 export const llmResponseSchema = z.object({
-  chain_of_thought: z
-    .string()
-    .min(1, "chain_of_thought must not be empty"),
+  chain_of_thought: z.string().min(1, "chain_of_thought must not be empty"),
   hostility_level: z
     .number()
     .min(0, "hostility_level must be >= 0")
