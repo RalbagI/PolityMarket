@@ -1,19 +1,5 @@
 import { describe, it, expect } from "vitest";
-
-// Re-implement computeOverallScore for testing (same formula as pipeline)
-const WEIGHT_POLICY = 0.4;
-const WEIGHT_HOSTILITY = 0.35;
-const WEIGHT_AMPLIFICATION = 0.25;
-
-function computeOverallScore(hostility, policyApproval, mediaAmplification) {
-  const policyNormalized = (policyApproval + 1) / 2;
-  const inverseHostility = 1 - hostility;
-  const raw =
-    WEIGHT_POLICY * policyNormalized +
-    WEIGHT_HOSTILITY * inverseHostility +
-    WEIGHT_AMPLIFICATION * mediaAmplification;
-  return parseFloat((raw * 10).toFixed(1));
-}
+import computeOverallScore from "./lib/computeScore.js";
 
 describe("computeOverallScore", () => {
   it("returns 10 for perfect scores (hostility=0, policy=1, amp=1)", () => {
