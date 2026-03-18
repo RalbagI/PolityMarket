@@ -121,14 +121,62 @@
     "Yair Lapid": "יאיר לפיד",
     "Benny Gantz": "בני גנץ",
     "Bezalel Smotrich": "בצלאל סמוטריץ׳",
-    "Avigdor Lieberman": "אביגדור ליברמן"
+    "Avigdor Lieberman": "אביגדור ליברמן",
+    "Yariv Levin": "יריב לוין",
+    "Yoav Gallant": "יואב גלנט",
+    "Miri Regev": "מירי רגב",
+    "Nir Barkat": "ניר ברקת",
+    "Amir Ohana": "אמיר אוחנה",
+    "Aryeh Deri": "אריה דרעי",
+    "Yoav Ben-Tzur": "יואב בן צור",
+    "Itamar Ben Gvir": "איתמר בן גביר",
+    "Yitzhak Goldknopf": "יצחק גולדקנופף",
+    "Moshe Gafni": "משה גפני",
+    "Gadi Eisenkot": "גדי איזנקוט",
+    "Gideon Sa'ar": "גדעון סער",
+    "Merav Michaeli": "מרב מיכאלי",
+    "Ayman Odeh": "איימן עודה",
+    "Ahmad Tibi": "אחמד טיבי",
+    "Mansour Abbas": "מנסור עבאס",
+    "Meir Cohen": "מאיר כהן",
+    "Karine Elharrar": "קרין אלהרר",
+    "Yair Golan": "יאיר גולן",
+    "Eli Cohen": "אלי כהן",
+    "Orit Strock": "אורית סטרוק",
+    "Oded Forer": "עודד פורר",
+    "Pnina Tamano-Shata": "פנינה תמנו-שטה",
+    "Yinon Azoulay": "ינון אזולאי",
+    "Almog Cohen": "אלמוג כהן"
   },
   "parties": {
     "Likud": "הליכוד",
     "Yesh Atid": "יש עתיד",
     "National Unity": "המחנה הממלכתי",
     "Religious Zionism": "הציונות הדתית",
-    "Yisrael Beiteinu": "ישראל ביתנו"
+    "Yisrael Beiteinu": "ישראל ביתנו",
+    "Shas": "ש״ס",
+    "Otzma Yehudit": "עוצמה יהודית",
+    "United Torah Judaism": "יהדות התורה",
+    "Labor": "העבודה",
+    "Hadash-Ta'al": "חד״ש-תע״ל",
+    "Ra'am": "רע״ם",
+    "Democrats": "הדמוקרטים"
+  },
+  "sidebar": {
+    "totalTracked": "פוליטיקאים במעקב",
+    "weightedAverage": "ציון ממוצע משוקלל",
+    "histogram": {
+      "title": "התפלגות ציונים"
+    },
+    "partyBreakdown": "לפי מפלגה"
+  },
+  "treemap": {
+    "tooltip": {
+      "score": "ציון",
+      "mediaVolume": "נפח מדיה",
+      "change": "שינוי מאתמול",
+      "party": "מפלגה"
+    }
   },
   "methodology": {
     "title": "איך זה עובד · הצהרה משפטית",

@@ -3,50 +3,300 @@
     "politician_id": "benjamin-netanyahu",
     "name": "Benjamin Netanyahu",
     "party": "Likud",
-    "news_sentiment": 6.5,
-    "social_sentiment": 5.5,
-    "media_volume": 8.8,
-    "overall_score": 6.9,
-    "llm_reasoning": "Positive reception to diplomatic meeting with EU envoy boosted scores."
+    "news_sentiment": 5.9,
+    "social_sentiment": 5.3,
+    "media_volume": 9.9,
+    "overall_score": 7.2,
+    "chain_of_thought": "ניתוח אוטומטי: Benjamin Netanyahu קיבל סיקור מעורב היום עם נפח מדיה של 9.9"
   },
   {
     "politician_id": "yair-lapid",
     "name": "Yair Lapid",
     "party": "Yesh Atid",
-    "news_sentiment": 5,
-    "social_sentiment": 5.5,
-    "media_volume": 6.5,
-    "overall_score": 5.7,
-    "llm_reasoning": "Quiet news day; overshadowed by PM's diplomatic meeting."
+    "news_sentiment": 3.1,
+    "social_sentiment": 3.9,
+    "media_volume": 6.7,
+    "overall_score": 2.8,
+    "chain_of_thought": "ניתוח אוטומטי: Yair Lapid קיבל סיקור מעורב היום עם נפח מדיה של 6.7"
   },
   {
     "politician_id": "benny-gantz",
     "name": "Benny Gantz",
     "party": "National Unity",
-    "news_sentiment": 6,
-    "social_sentiment": 5.5,
-    "media_volume": 7,
-    "overall_score": 6.2,
-    "llm_reasoning": "Participated in diplomatic reception; seen as a centrist stabilizing presence."
+    "news_sentiment": 5,
+    "social_sentiment": 4.2,
+    "media_volume": 7.1,
+    "overall_score": 5.8,
+    "chain_of_thought": "ניתוח אוטומטי: Benny Gantz קיבל סיקור מעורב היום עם נפח מדיה של 7.1"
   },
   {
     "politician_id": "bezalel-smotrich",
     "name": "Bezalel Smotrich",
     "party": "Religious Zionism",
-    "news_sentiment": 3.8,
-    "social_sentiment": 3.2,
-    "media_volume": 7,
-    "overall_score": 4.7,
-    "llm_reasoning": "Attempted pivot to budget policy; media still focused on settlement story."
+    "news_sentiment": 3.9,
+    "social_sentiment": 4.5,
+    "media_volume": 7.8,
+    "overall_score": 4.1,
+    "chain_of_thought": "ניתוח אוטומטי: Bezalel Smotrich קיבל סיקור מעורב היום עם נפח מדיה של 7.8"
   },
   {
     "politician_id": "avigdor-lieberman",
     "name": "Avigdor Lieberman",
     "party": "Yisrael Beiteinu",
+    "news_sentiment": 3.8,
+    "social_sentiment": 5.3,
+    "media_volume": 2.2,
+    "overall_score": 3.8,
+    "chain_of_thought": "ניתוח אוטומטי: Avigdor Lieberman קיבל סיקור מעורב היום עם נפח מדיה של 2.2"
+  },
+  {
+    "politician_id": "yariv-levin",
+    "name": "Yariv Levin",
+    "party": "Likud",
+    "news_sentiment": 6.8,
+    "social_sentiment": 5.8,
+    "media_volume": 5.1,
+    "overall_score": 6.3,
+    "chain_of_thought": "ניתוח אוטומטי: Yariv Levin קיבל סיקור מעורב היום עם נפח מדיה של 5.1"
+  },
+  {
+    "politician_id": "yoav-gallant",
+    "name": "Yoav Gallant",
+    "party": "Likud",
+    "news_sentiment": 3.7,
+    "social_sentiment": 2.4,
+    "media_volume": 7.7,
+    "overall_score": 3.4,
+    "chain_of_thought": "ניתוח אוטומטי: Yoav Gallant קיבל סיקור מעורב היום עם נפח מדיה של 7.7"
+  },
+  {
+    "politician_id": "miri-regev",
+    "name": "Miri Regev",
+    "party": "Likud",
     "news_sentiment": 5,
-    "social_sentiment": 4.5,
-    "media_volume": 5.5,
-    "overall_score": 5,
-    "llm_reasoning": "Quiet day overshadowed by diplomatic events; minimal coverage."
+    "social_sentiment": 3.9,
+    "media_volume": 1.9,
+    "overall_score": 5.5,
+    "chain_of_thought": "ניתוח אוטומטי: Miri Regev קיבל סיקור מעורב היום עם נפח מדיה של 1.9"
+  },
+  {
+    "politician_id": "nir-barkat",
+    "name": "Nir Barkat",
+    "party": "Likud",
+    "news_sentiment": 7.9,
+    "social_sentiment": 5.6,
+    "media_volume": 3.5,
+    "overall_score": 7.6,
+    "chain_of_thought": "ניתוח אוטומטי: Nir Barkat קיבל סיקור מעורב היום עם נפח מדיה של 3.5"
+  },
+  {
+    "politician_id": "amir-ohana",
+    "name": "Amir Ohana",
+    "party": "Likud",
+    "news_sentiment": 3.5,
+    "social_sentiment": 5.1,
+    "media_volume": 4.4,
+    "overall_score": 4.3,
+    "chain_of_thought": "ניתוח אוטומטי: Amir Ohana קיבל סיקור מעורב היום עם נפח מדיה של 4.4"
+  },
+  {
+    "politician_id": "aryeh-deri",
+    "name": "Aryeh Deri",
+    "party": "Shas",
+    "news_sentiment": 4,
+    "social_sentiment": 6,
+    "media_volume": 4.9,
+    "overall_score": 4.9,
+    "chain_of_thought": "ניתוח אוטומטי: Aryeh Deri קיבל סיקור מעורב היום עם נפח מדיה של 4.9"
+  },
+  {
+    "politician_id": "yoav-ben-tzur",
+    "name": "Yoav Ben-Tzur",
+    "party": "Shas",
+    "news_sentiment": 5.8,
+    "social_sentiment": 6.3,
+    "media_volume": 3.3,
+    "overall_score": 6.2,
+    "chain_of_thought": "ניתוח אוטומטי: Yoav Ben-Tzur קיבל סיקור מעורב היום עם נפח מדיה של 3.3"
+  },
+  {
+    "politician_id": "itamar-ben-gvir",
+    "name": "Itamar Ben Gvir",
+    "party": "Otzma Yehudit",
+    "news_sentiment": 5.3,
+    "social_sentiment": 5.5,
+    "media_volume": 6.4,
+    "overall_score": 6.5,
+    "chain_of_thought": "ניתוח אוטומטי: Itamar Ben Gvir קיבל סיקור מעורב היום עם נפח מדיה של 6.4"
+  },
+  {
+    "politician_id": "yitzhak-goldknopf",
+    "name": "Yitzhak Goldknopf",
+    "party": "United Torah Judaism",
+    "news_sentiment": 7.6,
+    "social_sentiment": 7.9,
+    "media_volume": 3.7,
+    "overall_score": 7.8,
+    "chain_of_thought": "ניתוח אוטומטי: Yitzhak Goldknopf קיבל סיקור מעורב היום עם נפח מדיה של 3.7"
+  },
+  {
+    "politician_id": "moshe-gafni",
+    "name": "Moshe Gafni",
+    "party": "United Torah Judaism",
+    "news_sentiment": 5.7,
+    "social_sentiment": 5.1,
+    "media_volume": 4,
+    "overall_score": 5.2,
+    "chain_of_thought": "ניתוח אוטומטי: Moshe Gafni קיבל סיקור מעורב היום עם נפח מדיה של 4.0"
+  },
+  {
+    "politician_id": "gadi-eisenkot",
+    "name": "Gadi Eisenkot",
+    "party": "National Unity",
+    "news_sentiment": 3.1,
+    "social_sentiment": 5.4,
+    "media_volume": 2.8,
+    "overall_score": 3.9,
+    "chain_of_thought": "ניתוח אוטומטי: Gadi Eisenkot קיבל סיקור מעורב היום עם נפח מדיה של 2.8"
+  },
+  {
+    "politician_id": "gideon-saar",
+    "name": "Gideon Saar",
+    "party": "National Unity",
+    "news_sentiment": 6.4,
+    "social_sentiment": 7.2,
+    "media_volume": 6.5,
+    "overall_score": 6.7,
+    "chain_of_thought": "ניתוח אוטומטי: Gideon Saar קיבל סיקור מעורב היום עם נפח מדיה של 6.5"
+  },
+  {
+    "politician_id": "merav-michaeli",
+    "name": "Merav Michaeli",
+    "party": "Labor",
+    "news_sentiment": 6.2,
+    "social_sentiment": 5.3,
+    "media_volume": 2.6,
+    "overall_score": 6.5,
+    "chain_of_thought": "ניתוח אוטומטי: Merav Michaeli קיבל סיקור מעורב היום עם נפח מדיה של 2.6"
+  },
+  {
+    "politician_id": "ayman-odeh",
+    "name": "Ayman Odeh",
+    "party": "Hadash-Taal",
+    "news_sentiment": 7.8,
+    "social_sentiment": 6.2,
+    "media_volume": 2.5,
+    "overall_score": 7.9,
+    "chain_of_thought": "ניתוח אוטומטי: Ayman Odeh קיבל סיקור מעורב היום עם נפח מדיה של 2.5"
+  },
+  {
+    "politician_id": "ahmad-tibi",
+    "name": "Ahmad Tibi",
+    "party": "Hadash-Taal",
+    "news_sentiment": 6.3,
+    "social_sentiment": 6.3,
+    "media_volume": 2.4,
+    "overall_score": 5.8,
+    "chain_of_thought": "ניתוח אוטומטי: Ahmad Tibi קיבל סיקור מעורב היום עם נפח מדיה של 2.4"
+  },
+  {
+    "politician_id": "mansour-abbas",
+    "name": "Mansour Abbas",
+    "party": "Raam",
+    "news_sentiment": 4.2,
+    "social_sentiment": 4.3,
+    "media_volume": 3.7,
+    "overall_score": 4.9,
+    "chain_of_thought": "ניתוח אוטומטי: Mansour Abbas קיבל סיקור מעורב היום עם נפח מדיה של 3.7"
+  },
+  {
+    "politician_id": "meir-cohen",
+    "name": "Meir Cohen",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.9,
+    "social_sentiment": 4.6,
+    "media_volume": 3.8,
+    "overall_score": 6.4,
+    "chain_of_thought": "ניתוח אוטומטי: Meir Cohen קיבל סיקור מעורב היום עם נפח מדיה של 3.8"
+  },
+  {
+    "politician_id": "karine-elharrar",
+    "name": "Karine Elharrar",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.4,
+    "social_sentiment": 5.1,
+    "media_volume": 5.2,
+    "overall_score": 4.2,
+    "chain_of_thought": "ניתוח אוטומטי: Karine Elharrar קיבל סיקור מעורב היום עם נפח מדיה של 5.2"
+  },
+  {
+    "politician_id": "yair-golan",
+    "name": "Yair Golan",
+    "party": "Democrats",
+    "news_sentiment": 5.3,
+    "social_sentiment": 5.6,
+    "media_volume": 6,
+    "overall_score": 5.9,
+    "chain_of_thought": "ניתוח אוטומטי: Yair Golan קיבל סיקור מעורב היום עם נפח מדיה של 6.0"
+  },
+  {
+    "politician_id": "eli-cohen",
+    "name": "Eli Cohen",
+    "party": "Likud",
+    "news_sentiment": 4.5,
+    "social_sentiment": 4.8,
+    "media_volume": 6,
+    "overall_score": 4.8,
+    "chain_of_thought": "ניתוח אוטומטי: Eli Cohen קיבל סיקור מעורב היום עם נפח מדיה של 6.0"
+  },
+  {
+    "politician_id": "orit-strock",
+    "name": "Orit Strock",
+    "party": "Religious Zionism",
+    "news_sentiment": 6.8,
+    "social_sentiment": 6.9,
+    "media_volume": 4.6,
+    "overall_score": 8,
+    "chain_of_thought": "ניתוח אוטומטי: Orit Strock קיבל סיקור מעורב היום עם נפח מדיה של 4.6"
+  },
+  {
+    "politician_id": "oded-forer",
+    "name": "Oded Forer",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 6.5,
+    "social_sentiment": 5.4,
+    "media_volume": 1.7,
+    "overall_score": 6,
+    "chain_of_thought": "ניתוח אוטומטי: Oded Forer קיבל סיקור מעורב היום עם נפח מדיה של 1.7"
+  },
+  {
+    "politician_id": "pnina-tamano-shata",
+    "name": "Pnina Tamano-Shata",
+    "party": "National Unity",
+    "news_sentiment": 5.2,
+    "social_sentiment": 5.5,
+    "media_volume": 4.3,
+    "overall_score": 5.3,
+    "chain_of_thought": "ניתוח אוטומטי: Pnina Tamano-Shata קיבל סיקור מעורב היום עם נפח מדיה של 4.3"
+  },
+  {
+    "politician_id": "yinon-azoulay",
+    "name": "Yinon Azoulay",
+    "party": "Shas",
+    "news_sentiment": 3.6,
+    "social_sentiment": 4.1,
+    "media_volume": 5.9,
+    "overall_score": 4.2,
+    "chain_of_thought": "ניתוח אוטומטי: Yinon Azoulay קיבל סיקור מעורב היום עם נפח מדיה של 5.9"
+  },
+  {
+    "politician_id": "almog-cohen",
+    "name": "Almog Cohen",
+    "party": "Otzma Yehudit",
+    "news_sentiment": 3.4,
+    "social_sentiment": 4,
+    "media_volume": 3.6,
+    "overall_score": 3.5,
+    "chain_of_thought": "ניתוח אוטומטי: Almog Cohen קיבל סיקור מעורב היום עם נפח מדיה של 3.6"
   }
 ]
