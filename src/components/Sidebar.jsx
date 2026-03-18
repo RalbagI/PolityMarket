@@ -104,6 +104,20 @@ export default function Sidebar({ todayData, onMethodologyClick }) {
           </div>
         </div>
 
+        {/* Color Legend */}
+        <div>
+          <div
+            className="h-2 rounded-full"
+            style={{
+              background: "linear-gradient(to left, #0d9488, #22c55e, #eab308, #f59e0b, #dc2626)",
+            }}
+          />
+          <div className="flex justify-between mt-1">
+            <span className="text-[9px] text-gray-500">חיובי</span>
+            <span className="text-[9px] text-gray-500">שלילי</span>
+          </div>
+        </div>
+
         {/* Party Breakdown */}
         <div>
           <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">

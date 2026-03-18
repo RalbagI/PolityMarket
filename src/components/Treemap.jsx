@@ -39,9 +39,12 @@ export default function Treemap({ data, onSelect, selectedPolitician }) {
     return root.leaves();
   }, [data, size.width, size.height]);
 
-  const handleMouseMove = useCallback((e) => {
-    setMousePos({ x: e.clientX, y: e.clientY });
-  }, []);
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (hovered) setMousePos({ x: e.clientX, y: e.clientY });
+    },
+    [hovered]
+  );
 
   return (
     <div

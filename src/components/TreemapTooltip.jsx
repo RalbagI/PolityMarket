@@ -11,12 +11,22 @@ export default function TreemapTooltip({ politician, position }) {
   const scoreColor = scoreToColor(d.overall_score);
   const scorePct = (d.overall_score / 10) * 100;
 
+  // Clamp tooltip to viewport edges
+  const tooltipW = 280;
+  const tooltipH = 160;
+  const x =
+    position.x + tooltipW + 20 > window.innerWidth ? position.x - tooltipW - 10 : position.x + 16;
+  const y =
+    position.y + tooltipH > window.innerHeight
+      ? window.innerHeight - tooltipH - 10
+      : Math.max(10, position.y - 10);
+
   return (
     <div
       className="fixed z-[100] pointer-events-none bg-gray-900/95 border border-gray-700 rounded-xl shadow-2xl p-4 min-w-[220px] max-w-[300px]"
       style={{
-        left: position.x + 16,
-        top: position.y - 10,
+        left: x,
+        top: y,
       }}
     >
       {/* Name + Party */}
