@@ -14,7 +14,9 @@ const PARTY_BLOCK_COLORS = {
   "United Torah Judaism": { bg: "#3f3f46", text: "#e4e4e7", accent: "#a1a1aa" },
   Labor: { bg: "#dc2626", text: "#fee2e2", accent: "#fca5a5" },
   "Hadash-Ta'al": { bg: "#0f766e", text: "#ccfbf1", accent: "#5eead4" },
+  "Hadash-Taal": { bg: "#0f766e", text: "#ccfbf1", accent: "#5eead4" },
   "Ra'am": { bg: "#15803d", text: "#dcfce7", accent: "#86efac" },
+  Raam: { bg: "#15803d", text: "#dcfce7", accent: "#86efac" },
   Democrats: { bg: "#0369a1", text: "#e0f2fe", accent: "#7dd3fc" },
 };
 

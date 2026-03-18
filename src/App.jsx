@@ -102,7 +102,7 @@ export default function App() {
       <Sidebar todayData={todayData} onMethodologyClick={() => setMethodologyOpen(true)} />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
-      <main className="md:h-screen flex flex-col md:me-[260px] pt-14 md:pt-0">
+      <main className="md:h-screen flex flex-col md:ms-[260px] pt-14 md:pt-0">
         {/* Treemap */}
         <div className="flex-1 min-h-[50vh] md:min-h-[300px]">
           <ErrorBoundary>

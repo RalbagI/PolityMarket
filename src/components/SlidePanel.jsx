@@ -54,18 +54,30 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
         aria-hidden="true"
       />
 
-      {/* Panel — left on desktop (opposite sidebar), bottom on mobile */}
+      {/* Panel — slides from left in RTL (opposite sidebar), bottom on mobile */}
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         className={`fixed z-50 bg-gray-900 border-gray-800 shadow-2xl overflow-y-auto transition-transform duration-300 ease-in-out
-          sm:top-0 sm:inset-inline-end-0 sm:h-full sm:w-[380px] lg:w-[420px] sm:border-s
-          ${isOpen ? "sm:translate-x-0" : "sm:ltr:translate-x-full sm:rtl:-translate-x-full"}
+          sm:top-0 sm:h-full sm:w-[380px] lg:w-[420px] sm:border-e
           max-sm:bottom-0 max-sm:left-0 max-sm:right-0 max-sm:max-h-[85vh] max-sm:rounded-t-2xl max-sm:border-t
           ${isOpen ? "max-sm:translate-y-0" : "max-sm:translate-y-full"}
         `}
+        style={{
+          // Desktop: position on the opposite side from sidebar (left in RTL)
+          ...(typeof window !== "undefined" && window.innerWidth >= 640
+            ? {
+                insetInlineEnd: 0,
+                transform: isOpen
+                  ? "translateX(0)"
+                  : document.documentElement.dir === "rtl"
+                    ? "translateX(-100%)"
+                    : "translateX(100%)",
+              }
+            : {}),
+        }}
       >
         {/* Header */}
         <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 px-6 py-4 flex items-center justify-between">
