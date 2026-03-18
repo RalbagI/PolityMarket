@@ -95,6 +95,13 @@ export default function App() {
     [politicians, openPanel]
   );
 
+  // Resolve selectedPolitician (name) → politician_id for liked checks
+  const selectedPoliticianId = useMemo(() => {
+    if (!selectedPolitician) return null;
+    const entry = enrichedData.find((p) => p.name === selectedPolitician);
+    return entry?.politician_id || selectedPolitician;
+  }, [selectedPolitician, enrichedData]);
+
   const activeDate = selectedDate || latestDate;
   const activeDetail = useStore((s) => (activeDate ? s.detailCache[activeDate] : null));
 
@@ -184,7 +191,7 @@ export default function App() {
               selectedPolitician={selectedPolitician}
               selectedDate={activeDate}
               loading={detailLoading}
-              isLiked={filterState.likedIds.includes(selectedPolitician)}
+              isLiked={filterState.likedIds.includes(selectedPoliticianId)}
               onToggleLike={filterState.toggleLiked}
             />
           </SlidePanel>

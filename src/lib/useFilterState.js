@@ -107,9 +107,6 @@ export default function useFilterState(allPoliticians) {
     return allPoliticians.filter((p) => {
       const id = p.politician_id || p.name;
 
-      // Always show liked (pinned), even if filters would hide them
-      if (likedIds.includes(id)) return true;
-
       // Never show explicitly hidden
       if (hiddenIds.includes(id)) return false;
 
@@ -143,6 +140,7 @@ export default function useFilterState(allPoliticians) {
     activeSectors,
     likedIds,
     hiddenIds,
+    showLikedOnly,
     toggleFilter,
     toggleLiked,
     toggleHidden,

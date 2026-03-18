@@ -44,17 +44,13 @@ export default function FilterBar({
   activeWings,
   activeSectors,
   likedIds,
+  showLikedOnly,
   toggleFilter,
   clearFilters,
   visibleCount,
   totalCount,
 }) {
   const { t } = useTranslation();
-  const showLikedOnly =
-    activeParties.length === 0 &&
-    activeWings.length === 0 &&
-    activeSectors.length === 0 &&
-    likedIds?.length > 0;
   const hasFilters = activeParties.length || activeWings.length || activeSectors.length;
 
   return (
