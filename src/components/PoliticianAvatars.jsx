@@ -5,7 +5,14 @@
 
 function NetanyahuAvatar({ size }) {
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} className="rounded-full">
+    <svg
+      viewBox="0 0 100 100"
+      width={size}
+      height={size}
+      className="rounded-full"
+      role="img"
+      aria-hidden="true"
+    >
       <circle cx="50" cy="50" r="50" fill="#f5e6d3" />
       {/* Hair - silver/gray, swept back */}
       <ellipse cx="50" cy="28" rx="35" ry="22" fill="#b0b0b0" />
@@ -38,7 +45,14 @@ function NetanyahuAvatar({ size }) {
 
 function LapidAvatar({ size }) {
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} className="rounded-full">
+    <svg
+      viewBox="0 0 100 100"
+      width={size}
+      height={size}
+      className="rounded-full"
+      role="img"
+      aria-hidden="true"
+    >
       <circle cx="50" cy="50" r="50" fill="#e8ddd0" />
       {/* Hair - dark, styled */}
       <ellipse cx="50" cy="26" rx="33" ry="20" fill="#3a3a3a" />
@@ -74,7 +88,14 @@ function LapidAvatar({ size }) {
 
 function GantzAvatar({ size }) {
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} className="rounded-full">
+    <svg
+      viewBox="0 0 100 100"
+      width={size}
+      height={size}
+      className="rounded-full"
+      role="img"
+      aria-hidden="true"
+    >
       <circle cx="50" cy="50" r="50" fill="#ddd5c8" />
       {/* Hair - short, military cut, graying */}
       <ellipse cx="50" cy="28" rx="32" ry="18" fill="#777" />
@@ -105,7 +126,14 @@ function GantzAvatar({ size }) {
 
 function SmotrichAvatar({ size }) {
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} className="rounded-full">
+    <svg
+      viewBox="0 0 100 100"
+      width={size}
+      height={size}
+      className="rounded-full"
+      role="img"
+      aria-hidden="true"
+    >
       <circle cx="50" cy="50" r="50" fill="#e8ddd0" />
       {/* Kippah */}
       <ellipse cx="50" cy="22" rx="22" ry="12" fill="#1a1a2e" />
@@ -163,7 +191,14 @@ function SmotrichAvatar({ size }) {
 
 function LiebermanAvatar({ size }) {
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} className="rounded-full">
+    <svg
+      viewBox="0 0 100 100"
+      width={size}
+      height={size}
+      className="rounded-full"
+      role="img"
+      aria-hidden="true"
+    >
       <circle cx="50" cy="50" r="50" fill="#ddd5c8" />
       {/* Hair - receding, dark */}
       <path d="M22 35 Q30 18 50 16 Q70 18 78 35" fill="#4a3a2a" />

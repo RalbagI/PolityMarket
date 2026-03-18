@@ -74,7 +74,11 @@ export default memo(function TrendlineChart({ data, dates, politicians, onDateCl
   }, [data, dates, politicians, smaMode]);
 
   return (
-    <div className="rounded-2xl bg-gray-900 border border-gray-800 p-6">
+    <div
+      className="rounded-2xl bg-gray-900 border border-gray-800 p-6"
+      role="region"
+      aria-label="Sentiment trendline chart"
+    >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-3">
         <h3 className="text-lg font-semibold text-white">{t("trendlineChart.title")}</h3>
         <div className="flex gap-1 bg-gray-800 rounded-lg p-1">
@@ -96,11 +100,11 @@ export default memo(function TrendlineChart({ data, dates, politicians, onDateCl
         </div>
       </div>
 
-      <div className="h-80">
+      <div className="h-full min-h-[180px]">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart
             data={chartData}
-            margin={{ top: 5, right: 10, left: -10, bottom: 5 }}
+            margin={{ top: 5, right: 5, left: -15, bottom: 5 }}
             onClick={(e) => {
               if (e?.activePayload?.[0]?.payload?.date && onDateClick) {
                 onDateClick(e.activePayload[0].payload.date);
@@ -111,21 +115,22 @@ export default memo(function TrendlineChart({ data, dates, politicians, onDateCl
             <CartesianGrid strokeDasharray="3 3" stroke="#2d3748" />
             <XAxis
               dataKey="date"
-              tick={{ fill: "#9ca3af", fontSize: 12 }}
-              tickFormatter={(val) => format(parseISO(val), "MMM d")}
+              tick={{ fill: "#9ca3af", fontSize: 10 }}
+              tickFormatter={(val) => format(parseISO(val), "d/M")}
               stroke="#4a5568"
+              interval="preserveStartEnd"
             />
             <YAxis
               yAxisId="left"
               orientation="left"
               domain={[0, "auto"]}
-              tick={{ fill: "#6b7280", fontSize: 11 }}
+              tick={{ fill: "#6b7280", fontSize: 9 }}
               stroke="#4a5568"
               label={{
                 value: t("trendlineChart.axis.volume"),
                 angle: -90,
                 position: "insideLeft",
-                style: { fill: "#6b7280", fontSize: 11 },
+                style: { fill: "#6b7280", fontSize: 9 },
               }}
             />
             <YAxis
@@ -138,7 +143,7 @@ export default memo(function TrendlineChart({ data, dates, politicians, onDateCl
                 value: t("trendlineChart.axis.score"),
                 angle: 90,
                 position: "insideRight",
-                style: { fill: "#9ca3af", fontSize: 11 },
+                style: { fill: "#9ca3af", fontSize: 9 },
               }}
             />
             <Tooltip

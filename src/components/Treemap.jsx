@@ -49,6 +49,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   return (
     <div
       ref={containerRef}
+      role="img"
+      aria-label="Treemap visualization of politician sentiment scores. Block size represents media volume, color represents overall score."
       className="w-full h-full relative overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHovered(null)}
@@ -68,6 +70,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
             key={d.politician_id || d.name}
             role="button"
             tabIndex={0}
+            aria-label={`${localizeName(t, d.name)}: ${d.overall_score.toFixed(1)}/10`}
             onClick={() => onSelect(d.name)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
