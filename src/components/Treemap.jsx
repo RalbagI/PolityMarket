@@ -28,15 +28,19 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
   // Compute treemap layout
   const leaves = useMemo(() => {
-    if (!data.length || size.width === 0 || size.height === 0) return [];
+    if (!data || !data.length || size.width === 0 || size.height === 0) return [];
 
-    const root = hierarchy({ children: data })
-      .sum((d) => Math.max(d.media_volume || 1, 1))
-      .sort((a, b) => b.value - a.value);
+    try {
+      const root = hierarchy({ children: data })
+        .sum((d) => Math.max(d.media_volume || d.treemapValue || 1, 1))
+        .sort((a, b) => b.value - a.value);
 
-    treemap().size([size.width, size.height]).padding(3).tile(treemapSquarify)(root);
+      treemap().size([size.width, size.height]).padding(2).tile(treemapSquarify)(root);
 
-    return root.leaves();
+      return root.leaves();
+    } catch {
+      return [];
+    }
   }, [data, size.width, size.height]);
 
   const handleMouseMove = useCallback(
@@ -61,16 +65,27 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         const h = leaf.y1 - leaf.y0;
         const isHovered = hovered === d.name;
         const isSelected = selectedPolitician === d.name;
-        const fontSize = Math.min(14, Math.max(9, Math.min(w / 7, h / 3)));
-        const showScore = w > 55 && h > 35;
-        const showParty = w > 80 && h > 50;
+
+        // Area-based font scaling: sqrt(area) gives proportional sizing
+        const area = w * h;
+        const sqrtArea = Math.sqrt(area);
+        // Scale: tiny blocks (area<1000) get 0, large blocks get up to 24px
+        const nameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
+        const scoreFontSize = Math.min(28, nameFontSize * 1.4);
+
+        // Visibility thresholds based on area
+        const tooSmall = area < 800; // ~28x28 — show nothing
+        const showName = !tooSmall && nameFontSize >= 7;
+        const showScore = area > 3000 && h > 30;
+
+        const displayName = d.displayName || localizeName(t, d.name);
 
         return (
           <div
             key={d.politician_id || d.name}
             role="button"
-            tabIndex={0}
-            aria-label={`${d.displayName || localizeName(t, d.name)}: ${d.overall_score.toFixed(1)}/10`}
+            tabIndex={tooSmall ? -1 : 0}
+            aria-label={`${displayName}: ${d.overall_score.toFixed(1)}/10`}
             onClick={() => onSelect(d.name)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -96,41 +111,46 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
               borderRadius: 4,
             }}
           >
-            <div className="p-1.5 h-full flex flex-col justify-between overflow-hidden">
+            {showName && (
               <div
-                className="font-bold text-white leading-tight"
-                style={{
-                  fontSize,
-                  textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: w < 100 ? "nowrap" : "normal",
-                }}
+                className="p-1 h-full flex flex-col justify-between overflow-hidden"
+                style={{ padding: Math.max(2, sqrtArea / 20) }}
               >
-                {d.displayName || localizeName(t, d.name)}
-              </div>
-              {showScore && (
-                <div className="flex items-end justify-between">
-                  <span
-                    className="font-black text-white"
-                    style={{
-                      fontSize: fontSize * 1.2,
-                      textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-                    }}
-                  >
-                    {d.overall_score.toFixed(1)}
-                  </span>
-                  {showParty && (
+                <div
+                  className="font-bold text-white leading-tight"
+                  style={{
+                    fontSize: nameFontSize,
+                    textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    display: "-webkit-box",
+                    WebkitLineClamp: h > 60 ? 3 : h > 40 ? 2 : 1,
+                    WebkitBoxOrient: "vertical",
+                  }}
+                >
+                  {displayName}
+                </div>
+                {showScore && (
+                  <div className="flex items-end justify-between mt-auto">
                     <span
-                      className="text-white/60 truncate"
-                      style={{ fontSize: Math.max(8, fontSize - 2) }}
+                      className="font-black text-white tabular-nums"
+                      style={{
+                        fontSize: scoreFontSize,
+                        textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                      }}
+                    >
+                      {d.overall_score.toFixed(1)}
+                    </span>
+                    <span
+                      className="text-white/50"
+                      style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
                     >
                       /10
                     </span>
-                  )}
-                </div>
-              )}
-            </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         );
       })}
