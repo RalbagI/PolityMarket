@@ -81,7 +81,9 @@ const useStore = create((set, get) => ({
 }));
 
 // Background refetch on window focus (stale-while-revalidate)
-if (typeof window !== "undefined") {
+// Guard against duplicate listeners during HMR
+if (typeof window !== "undefined" && !window.__politymarket_visibility_listener) {
+  window.__politymarket_visibility_listener = true;
   window.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
       useStore.getState().loadSummary();
