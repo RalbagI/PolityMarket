@@ -1,9 +1,10 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { localizeName, localizeParty } from "../lib/localize";
 import { scoreToColor } from "../lib/colorScale";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 
-export default function TreemapTooltip({ politician, position }) {
+export default memo(function TreemapTooltip({ politician, position }) {
   const { t } = useTranslation();
   if (!politician) return null;
 
@@ -88,4 +89,4 @@ export default function TreemapTooltip({ politician, position }) {
       )}
     </div>
   );
-}
+});

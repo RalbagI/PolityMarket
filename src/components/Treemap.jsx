@@ -1,11 +1,11 @@
-import { useMemo, useState, useRef, useEffect, useCallback } from "react";
+import { memo, useMemo, useState, useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { hierarchy, treemap, treemapSquarify } from "d3-hierarchy";
 import { scoreToColorWithAlpha } from "../lib/colorScale";
 import { localizeName } from "../lib/localize";
 import TreemapTooltip from "./TreemapTooltip";
 
-export default function Treemap({ data, onSelect, selectedPolitician }) {
+export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const { t } = useTranslation();
   const containerRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -137,4 +137,4 @@ export default function Treemap({ data, onSelect, selectedPolitician }) {
       )}
     </div>
   );
-}
+});

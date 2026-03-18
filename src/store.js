@@ -1,20 +1,42 @@
 import { create } from "zustand";
 
+const SUMMARY_CACHE_TTL = 5 * 60 * 1000; // 5 minutes stale-while-revalidate
+
 const useStore = create((set, get) => ({
-  // ── Summary Data Slice ───────────────────────────────────────────────
+  // ── Summary Data Slice (with caching) ──────────────────────────────
   summaryData: [],
   loadError: null,
-  setSummaryData: (data) => set({ summaryData: data }),
-  setLoadError: (error) => set({ loadError: error }),
+  _summaryFetchedAt: 0,
+  _summaryFetching: false,
 
-  loadSummary: async () => {
+  loadSummary: async ({ force = false } = {}) => {
+    const state = get();
+
+    // Skip if already fetching (deduping)
+    if (state._summaryFetching) return;
+
+    // Skip if fresh and not forced
+    if (
+      !force &&
+      state.summaryData.length &&
+      Date.now() - state._summaryFetchedAt < SUMMARY_CACHE_TTL
+    ) {
+      return;
+    }
+
+    set({ _summaryFetching: true });
     try {
       const res = await fetch("/data/timeseries_summary.json");
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      set({ summaryData: data });
+      set({ summaryData: data, _summaryFetchedAt: Date.now(), loadError: null });
     } catch (err) {
-      set({ loadError: err.message });
+      // Only set error if no cached data — stale-while-revalidate
+      if (!get().summaryData.length) {
+        set({ loadError: err.message });
+      }
+    } finally {
+      set({ _summaryFetching: false });
     }
   },
 
@@ -57,5 +79,14 @@ const useStore = create((set, get) => ({
   smaMode: "sma7",
   setSmaMode: (mode) => set({ smaMode: mode }),
 }));
+
+// Background refetch on window focus (stale-while-revalidate)
+if (typeof window !== "undefined") {
+  window.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") {
+      useStore.getState().loadSummary();
+    }
+  });
+}
 
 export default useStore;
