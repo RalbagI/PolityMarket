@@ -70,7 +70,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
             key={d.politician_id || d.name}
             role="button"
             tabIndex={0}
-            aria-label={`${localizeName(t, d.name)}: ${d.overall_score.toFixed(1)}/10`}
+            aria-label={`${d.displayName || localizeName(t, d.name)}: ${d.overall_score.toFixed(1)}/10`}
             onClick={() => onSelect(d.name)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -107,7 +107,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                   whiteSpace: w < 100 ? "nowrap" : "normal",
                 }}
               >
-                {localizeName(t, d.name)}
+                {d.displayName || localizeName(t, d.name)}
               </div>
               {showScore && (
                 <div className="flex items-end justify-between">

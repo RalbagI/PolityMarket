@@ -8,6 +8,7 @@ import Treemap from "./components/Treemap";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
+import { localizeName } from "./lib/localize";
 
 const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
@@ -49,13 +50,19 @@ export default function App() {
     };
   }, [summaryData]);
 
-  // Enrich today data with deltas
+  // Enrich today data with deltas + pre-localized display names
+  // This ensures NO English names leak to any downstream component
   const enrichedData = useMemo(() => {
     return todayData.map((entry) => {
       const prev = yesterdayData.find((y) => y.name === entry.name);
-      return { ...entry, delta: prev ? entry.overall_score - prev.overall_score : null };
+      return {
+        ...entry,
+        displayName: localizeName(t, entry.name),
+        displayParty: t(`parties.${entry.party}`, { defaultValue: entry.party }),
+        delta: prev ? entry.overall_score - prev.overall_score : null,
+      };
     });
-  }, [todayData, yesterdayData]);
+  }, [todayData, yesterdayData, t]);
 
   // Filter state with localStorage persistence
   const filterState = useFilterState(enrichedData);
@@ -139,26 +146,26 @@ export default function App() {
             {chartVisible ? t("app.chart.hide") : t("app.chart.show")}
           </button>
 
-          <div
-            className={`${chartVisible ? "h-48 md:h-64" : "h-0"} overflow-hidden transition-all duration-300`}
-          >
-            <ErrorBoundary>
-              <Suspense
-                fallback={
-                  <div className="h-full flex items-center justify-center text-gray-500 text-sm">
-                    {t("app.loading.chart")}
-                  </div>
-                }
-              >
-                <TrendlineChart
-                  data={summaryData}
-                  dates={dates}
-                  politicians={topPoliticians}
-                  onDateClick={handleDateClick}
-                />
-              </Suspense>
-            </ErrorBoundary>
-          </div>
+          {chartVisible && (
+            <div className="h-48 md:h-64">
+              <ErrorBoundary>
+                <Suspense
+                  fallback={
+                    <div className="h-full flex items-center justify-center text-gray-500 text-sm">
+                      {t("app.loading.chart")}
+                    </div>
+                  }
+                >
+                  <TrendlineChart
+                    data={summaryData}
+                    dates={dates}
+                    politicians={topPoliticians}
+                    onDateClick={handleDateClick}
+                  />
+                </Suspense>
+              </ErrorBoundary>
+            </div>
+          )}
         </div>
       </main>
 
@@ -167,7 +174,7 @@ export default function App() {
           <SlidePanel
             isOpen={panelOpen}
             onClose={closePanel}
-            title={selectedPolitician || t("app.panel.defaultTitle")}
+            title={selectedPolitician ? localizeName(t, selectedPolitician) : t("app.panel.defaultTitle")}
           >
             <DetailView
               todayDetail={activeDetail}
