@@ -16,7 +16,7 @@ jobs:
     name: Lint & Security
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -56,7 +56,7 @@ jobs:
     name: Test
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -70,7 +70,7 @@ jobs:
     runs-on: self-hosted
     needs: [checks, test]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
