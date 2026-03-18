@@ -83,6 +83,11 @@ phases:
         type: cmd
         cmd: npx vite build
 
+      - name: verify-coverage
+        type: cmd
+        cmd: npx vitest run --coverage 2>&1 | tail -20
+        fail_action: warn
+
     next_phase: 4-commit
 
   - id: 4-commit

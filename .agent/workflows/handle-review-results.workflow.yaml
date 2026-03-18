@@ -78,6 +78,11 @@ phases:
         check: npx vitest run
         fail_action: exit
 
+      - name: verify-coverage
+        type: check
+        check: npx vitest run --coverage 2>&1 | tail -20
+        fail_action: warn
+
       - name: process-findings
         type: cmd
         cmd: |

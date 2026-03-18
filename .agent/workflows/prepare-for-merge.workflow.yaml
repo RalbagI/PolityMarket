@@ -98,6 +98,11 @@ phases:
         check: npx vitest run
         fail_action: exit
 
+      - name: coverage
+        type: check
+        check: npx vitest run --coverage 2>&1 | tail -20
+        fail_action: warn
+
       - name: vite-build
         type: check
         check: npx vite build
@@ -136,12 +141,18 @@ phases:
   - id: 4-self-improve
     name: Self-Improvement
     steps:
+      - name: check-autofix-log
+        type: cmd
+        cmd: cat /tmp/prepare-merge-autofixes.log 2>/dev/null || echo "none"
+        store: AUTOFIX_LOG
+
       - name: update-lessons
         type: doc
         notes: >-
-          If any auto-fixes were applied (format, lint),
+          If any auto-fixes were applied (format, lint, coverage),
           record a lesson in .agent/lessons_learned.md
           so /resolve-issue avoids the same mistake next time.
+          Only write if AUTOFIX_LOG is not "none".
         template: lessons-from-autofixes
         target: ".agent/lessons_learned.md"
 

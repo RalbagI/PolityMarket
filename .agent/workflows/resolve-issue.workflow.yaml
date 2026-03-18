@@ -93,9 +93,13 @@ phases:
         cmd: "echo 'Implementing fix...'"
         store: CODE_CHANGES
 
-      - name: write-tests
+      - name: run-tests-with-coverage
         type: cmd
-        cmd: npx vitest run
+        cmd: npx vitest run --coverage --reporter=verbose
+        fail_action: exit
+        notes: >-
+          Run tests and verify coverage in a single pass.
+          This is a quality gate — warn if coverage drops.
 
       - name: verify-lint
         type: cmd
