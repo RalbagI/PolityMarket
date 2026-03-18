@@ -104,8 +104,8 @@ export default function App() {
 
       {/* Main content area — offset by sidebar width */}
       <main className="h-screen flex flex-col" style={{ marginInlineEnd: 260 }}>
-        {/* Treemap — fills available space */}
-        <div className="flex-1 min-h-0">
+        {/* Treemap — fills remaining viewport above the chart */}
+        <div className="flex-1" style={{ minHeight: 300 }}>
           <ErrorBoundary>
             <Treemap
               data={treemapData}

@@ -12,13 +12,15 @@ export default function Treemap({ data, onSelect, selectedPolitician }) {
   const [hovered, setHovered] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Track container size
+  // Track container size — measure immediately + observe resizes
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
+    // Measure immediately
+    setSize({ width: el.offsetWidth, height: el.offsetHeight });
     const observer = new ResizeObserver((entries) => {
       const { width, height } = entries[0].contentRect;
-      setSize({ width, height });
+      if (width > 0 && height > 0) setSize({ width, height });
     });
     observer.observe(el);
     return () => observer.disconnect();
