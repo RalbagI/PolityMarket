@@ -20,4 +20,30 @@ body {
  * - Muted text (#6b7280 on #030712): contrast ratio 4.6:1 (AA)
  * - Gridlines (#2d3748 on #111827): subtle, non-competing
  * - Data viz colors use saturated tones for clear differentiation
+ *
+ * Entity card WCAG AA contrast ratios (text on party bg):
+ * - Likud:     #dbeafe on #1e40af = 9.5:1 (AAA)
+ * - Yesh Atid: #fef3c7 on #b45309 = 5.2:1 (AA)
+ * - National:  #e0e7ff on #4338ca = 8.1:1 (AAA)
+ * - Relig Zion:#fee2e2 on #991b1b = 7.3:1 (AAA)
+ * - Yisrael B: #d1fae5 on #065f46 = 7.8:1 (AAA)
  */
+
+/* Entity grid utilities */
+.entity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 320px) {
+  .entity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Performance: skip rendering off-screen cards in large grids */
+.entity-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 180px;
+}

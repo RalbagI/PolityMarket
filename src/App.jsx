@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import PopularityGauge from "./components/PopularityGauge";
 import ShareOfVoice from "./components/ShareOfVoice";
 import Leaderboard from "./components/Leaderboard";
+import EntityGrid from "./components/EntityGrid";
 import MethodologyModal from "./components/MethodologyModal";
 
 const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
@@ -130,6 +131,14 @@ export default function App() {
             />
           </Suspense>
         </ErrorBoundary>
+
+        {/* Colored block grid — primary view */}
+        <EntityGrid
+          todayData={todayData}
+          yesterdayData={yesterdayData}
+          selectedPolitician={selectedPolitician}
+          onSelect={handleSelectPolitician}
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-1">
