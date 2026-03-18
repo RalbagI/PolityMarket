@@ -18,6 +18,10 @@ const BASELINE_WINDOW_DAYS = 30;
 const NUM_BINS = 10;
 const MIN_SAMPLE_SIZE_FOR_DRIFT = 10;
 
+// Webhook URL for drift alerts (Slack, Discord, Telegram, etc.)
+// Set via: DRIFT_WEBHOOK_URL environment variable
+const DRIFT_WEBHOOK_URL = process.env.DRIFT_WEBHOOK_URL || "";
+
 // ── Load System Prompt (lazy, non-fatal) ───────────────────────────────
 let SYSTEM_PROMPT = "";
 try {
@@ -203,6 +207,38 @@ function writeAlert(alert) {
   fs.writeFileSync(DRIFT_ALERTS_PATH, JSON.stringify(alerts, null, 2));
 }
 
+// ── Webhook Notification ───────────────────────────────────────────────
+
+async function sendWebhookAlert(alert) {
+  if (!DRIFT_WEBHOOK_URL) return;
+
+  const payload = {
+    text:
+      `🚨 *PolityMarket Drift Alert*\n` +
+      `Type: ${alert.type}\n` +
+      `Date: ${alert.date}\n` +
+      `${alert.message}\n` +
+      (alert.mse != null ? `MSE: ${alert.mse} (threshold: ${alert.threshold})` : "") +
+      (alert.psi != null ? `PSI: ${alert.psi} (threshold: ${alert.threshold})` : "") +
+      (alert.deviations != null ? `\nDeviating entries: ${alert.deviations}` : ""),
+  };
+
+  try {
+    const res = await fetch(DRIFT_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      console.error(`  ⚠ Webhook failed: HTTP ${res.status}`);
+    } else {
+      console.log("  ✓ Webhook alert sent");
+    }
+  } catch (err) {
+    console.error(`  ⚠ Webhook error: ${err.message}`);
+  }
+}
+
 // ── Main Validation ────────────────────────────────────────────────────
 
 async function runGoldenDatasetValidation() {
@@ -363,7 +399,7 @@ async function main() {
   appendDriftLog(logEntry);
   console.log(`\n📝 Drift metrics logged to ${DRIFT_LOG_PATH}`);
 
-  // 4. Alert if drifted
+  // 4. Alert if drifted (file + webhook)
   if (goldenResult.drifted) {
     const alert = {
       date: today,
@@ -374,6 +410,7 @@ async function main() {
       message: `Golden dataset MSE (${goldenResult.mse}) exceeds threshold (${MSE_THRESHOLD}). LLM scoring may have drifted.`,
     };
     writeAlert(alert);
+    await sendWebhookAlert(alert);
     console.log(`\n🚨 ALERT written to ${DRIFT_ALERTS_PATH}`);
     console.log(`   ${alert.message}`);
   }
@@ -387,6 +424,7 @@ async function main() {
       message: `PSI (${driftResult.overall_score.psi}) indicates significant distribution drift.`,
     };
     writeAlert(alert);
+    await sendWebhookAlert(alert);
     console.log(`\n🚨 ALERT: ${alert.message}`);
   }
 
