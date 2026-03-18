@@ -19,7 +19,7 @@ export default function EntityGrid({ todayData, yesterdayData, selectedPoliticia
 
   return (
     <div>
-      <h3 className="text-lg font-semibold text-white mb-4">{t("leaderboard.title")}</h3>
+      <h3 className="text-lg font-semibold text-white mb-4">{t("entityGrid.title")}</h3>
       <div className="entity-grid">
         {cardsWithDelta.map(({ entry, delta }) => (
           <EntityCard

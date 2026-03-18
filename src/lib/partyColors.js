@@ -16,10 +16,3 @@ const DEFAULT_COLOR = { bg: "#374151", text: "#e5e7eb", accent: "#9ca3af" };
 export function getPartyColor(party) {
   return PARTY_BLOCK_COLORS[party] || DEFAULT_COLOR;
 }
-
-export function getScoreColor(score) {
-  if (score <= 3) return "#ef4444";
-  if (score <= 5) return "#f59e0b";
-  if (score <= 7) return "#6b7280";
-  return "#22c55e";
-}

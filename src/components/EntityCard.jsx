@@ -12,6 +12,7 @@ export default function EntityCard({ entry, delta, isSelected, onSelect }) {
     <div
       role="button"
       tabIndex={0}
+      aria-label={localizeName(t, entry.name)}
       onClick={() => onSelect(entry.name)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
