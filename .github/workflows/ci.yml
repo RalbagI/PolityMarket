@@ -1,0 +1,144 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: ESLint
+        run: npx eslint src/
+
+      - name: Prettier
+        run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}" "data-pipeline/**/*.js"
+
+  test:
+    name: Test
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run tests with coverage
+        run: npx vitest run --reporter=verbose --coverage
+
+  build:
+    name: Build
+    runs-on: self-hosted
+    needs: [lint, test]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build
+        run: npx vite build
+
+      - name: Verify no chunk > 500KB
+        run: |
+          oversized=$(find dist/assets -name '*.js' -size +500k 2>/dev/null)
+          if [ -n "$oversized" ]; then
+            echo "ERROR: Chunks exceed 500KB:"
+            ls -lh $oversized
+            exit 1
+          fi
+          echo "All chunks under 500KB"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+  security:
+    name: Security Audit
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: npm audit (production)
+        run: npm audit --omit=dev --audit-level=high
+        continue-on-error: true
+
+      - name: Check for hardcoded secrets
+        run: |
+          if grep -rn --include='*.js' --include='*.jsx' --include='*.json' \
+            -E '(sk-ant-|AIza[A-Za-z0-9]|ghp_[A-Za-z0-9]|gho_[A-Za-z0-9]|AKIA[A-Z0-9]|xoxb-)' \
+            src/ data-pipeline/ 2>/dev/null | grep -v node_modules; then
+            echo "ERROR: Potential hardcoded secrets found"
+            exit 1
+          fi
+          echo "No hardcoded secrets found"
+
+      - name: Check for console.log in production code
+        run: |
+          if grep -rn 'console\.\(log\|debug\)' src/ --include='*.js' --include='*.jsx' \
+            | grep -v test | grep -v spec; then
+            echo "WARNING: console.log found in production code"
+          fi
+          echo "Console check complete"
+
+  pipeline-validate:
+    name: Pipeline Validation
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Validate golden dataset JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('data-pipeline/golden_dataset.json','utf-8')); console.log('PASS')"
+
+      - name: Validate data files
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('public/data/timeseries_summary.json','utf-8')); console.log('Summary: PASS')"
+          for f in public/data/details/*.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf-8'))" && echo "$f: PASS"
+          done
+
+      - name: Validate firebase.json
+        run: node -e "JSON.parse(require('fs').readFileSync('firebase.json','utf-8')); console.log('PASS')"

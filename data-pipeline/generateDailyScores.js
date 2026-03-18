@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import parseLLMResponse from "./lib/parseLLMResponse.js";
+import parseLLMResponse, { dailyEntrySchema } from "./lib/parseLLMResponse.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -280,14 +280,19 @@ async function main() {
       const headlines = await fetchRSSHeadlines(politician.name);
       const socialMentions = await fetchSocialMediaMentions(politician.name);
       const llmResult = await scorePoliticianWithLLM(
-        politician.name, politician.party, headlines, socialMentions
+        politician.name,
+        politician.party,
+        headlines,
+        socialMentions
       );
 
       const overallScore = computeOverallScore(
-        llmResult.hostility_level, llmResult.policy_approval, llmResult.media_amplification
+        llmResult.hostility_level,
+        llmResult.policy_approval,
+        llmResult.media_amplification
       );
 
-      newEntries.push({
+      const entry = {
         date: today,
         politician_id: politician.id,
         name: politician.name,
@@ -300,9 +305,22 @@ async function main() {
         news_sentiment: parseFloat((((llmResult.policy_approval + 1) / 2) * 10).toFixed(1)),
         social_sentiment: parseFloat(((1 - llmResult.hostility_level) * 10).toFixed(1)),
         media_volume: parseFloat((llmResult.media_amplification * 10).toFixed(1)),
-      });
+      };
 
-      console.log(`  → Hostility: ${llmResult.hostility_level} | Policy: ${llmResult.policy_approval} | Amplification: ${llmResult.media_amplification}`);
+      // Validate entry against schema before writing
+      const validation = dailyEntrySchema.safeParse(entry);
+      if (!validation.success) {
+        const errors = validation.error.issues
+          .map((i) => `${i.path.join(".")}: ${i.message}`)
+          .join("; ");
+        throw new Error(`Entry validation failed: ${errors}`);
+      }
+
+      newEntries.push(validation.data);
+
+      console.log(
+        `  → Hostility: ${llmResult.hostility_level} | Policy: ${llmResult.policy_approval} | Amplification: ${llmResult.media_amplification}`
+      );
       console.log(`  → Overall score (deterministic): ${overallScore}`);
     } catch (err) {
       console.error(`  ✗ Failed to process ${politician.name}: ${err.message}`);

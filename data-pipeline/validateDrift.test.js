@@ -49,8 +49,7 @@ function computeMSE(goldenEntries, llmResults) {
     if (!l) continue;
     const seHostility = (l.hostility_level - g.expected_hostility) ** 2;
     const sePolicy = (l.policy_approval - g.expected_policy_approval) ** 2;
-    const seAmplification =
-      (l.media_amplification - g.expected_media_amplification) ** 2;
+    const seAmplification = (l.media_amplification - g.expected_media_amplification) ** 2;
     totalSE += (seHostility + sePolicy + seAmplification) / 3;
     count++;
   }
@@ -122,9 +121,7 @@ describe("computeMSE", () => {
     const golden = [
       { expected_hostility: 0.5, expected_policy_approval: 0.0, expected_media_amplification: 0.5 },
     ];
-    const results = [
-      { hostility_level: 0.5, policy_approval: 0.0, media_amplification: 0.5 },
-    ];
+    const results = [{ hostility_level: 0.5, policy_approval: 0.0, media_amplification: 0.5 }];
     expect(computeMSE(golden, results)).toBe(0);
   });
 
@@ -132,9 +129,7 @@ describe("computeMSE", () => {
     const golden = [
       { expected_hostility: 0.0, expected_policy_approval: 0.0, expected_media_amplification: 0.0 },
     ];
-    const results = [
-      { hostility_level: 1.0, policy_approval: 1.0, media_amplification: 1.0 },
-    ];
+    const results = [{ hostility_level: 1.0, policy_approval: 1.0, media_amplification: 1.0 }];
     // Each SE = 1.0, avg of 3 = 1.0, MSE over 1 entry = 1.0
     expect(computeMSE(golden, results)).toBe(1);
   });
@@ -144,7 +139,10 @@ describe("computeMSE", () => {
       { expected_hostility: 0.5, expected_policy_approval: 0.0, expected_media_amplification: 0.5 },
       { expected_hostility: 0.5, expected_policy_approval: 0.0, expected_media_amplification: 0.5 },
     ];
-    const results = [null, { hostility_level: 0.5, policy_approval: 0.0, media_amplification: 0.5 }];
+    const results = [
+      null,
+      { hostility_level: 0.5, policy_approval: 0.0, media_amplification: 0.5 },
+    ];
     expect(computeMSE(golden, results)).toBe(0);
   });
 
