@@ -1,4 +1,4 @@
-import { Quote, BarChart3, FileText } from "lucide-react";
+import { Quote, BarChart3, FileText, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
 import SkeletonLoader from "./SkeletonLoader";
@@ -27,7 +27,14 @@ function MetricBar({ label, value, max, color, weight }) {
   );
 }
 
-export default function DetailView({ todayDetail, selectedPolitician, selectedDate, loading }) {
+export default function DetailView({
+  todayDetail,
+  selectedPolitician,
+  selectedDate,
+  loading,
+  isLiked,
+  onToggleLike,
+}) {
   const { t } = useTranslation();
 
   if (!selectedPolitician) {
@@ -62,10 +69,25 @@ export default function DetailView({ todayDetail, selectedPolitician, selectedDa
             </span>
           </div>
         </div>
-        <div className="text-end">
-          <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
-          <div className="text-xs text-gray-500">
-            {selectedDate || t("detailView.date.fallback")}
+        <div className="flex items-start gap-3">
+          {onToggleLike && (
+            <button
+              onClick={() => onToggleLike(entry.politician_id || entry.name)}
+              className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
+              aria-label={isLiked ? t("detailView.unlike") : t("detailView.like")}
+            >
+              <Heart
+                className={`w-6 h-6 transition-colors ${
+                  isLiked ? "fill-red-500 text-red-500" : "text-gray-500 hover:text-red-400"
+                }`}
+              />
+            </button>
+          )}
+          <div className="text-end">
+            <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
+            <div className="text-xs text-gray-500">
+              {selectedDate || t("detailView.date.fallback")}
+            </div>
           </div>
         </div>
       </div>

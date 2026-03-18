@@ -9,6 +9,7 @@ import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
 import { localizeName } from "./lib/localize";
+import CookieConsent from "./components/CookieConsent";
 
 const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
@@ -183,12 +184,15 @@ export default function App() {
               selectedPolitician={selectedPolitician}
               selectedDate={activeDate}
               loading={detailLoading}
+              isLiked={filterState.likedIds.includes(selectedPolitician)}
+              onToggleLike={filterState.toggleLiked}
             />
           </SlidePanel>
         </Suspense>
       </ErrorBoundary>
 
       <MethodologyModal isOpen={methodologyOpen} onClose={() => setMethodologyOpen(false)} />
+      <CookieConsent />
     </div>
   );
 }

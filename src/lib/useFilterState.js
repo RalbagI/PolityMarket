@@ -52,11 +52,17 @@ export default function useFilterState(allPoliticians) {
   const likedIds = useMemo(() => prefs.liked || [], [prefs.liked]);
   const hiddenIds = useMemo(() => prefs.hidden || [], [prefs.hidden]);
 
+  const showLikedOnly = useMemo(() => prefs.showLikedOnly || false, [prefs.showLikedOnly]);
+
   const toggleFilter = useCallback((type, value) => {
+    if (type === "showLikedOnly") {
+      setPrefs((prev) => ({ ...prev, showLikedOnly: !prev.showLikedOnly }));
+      return;
+    }
     setPrefs((prev) => {
       const arr = prev[type] || [];
       const next = arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value];
-      return { ...prev, [type]: next };
+      return { ...prev, [type]: next, showLikedOnly: false };
     });
   }, []);
 
@@ -90,6 +96,14 @@ export default function useFilterState(allPoliticians) {
 
   // Compute visible politicians
   const visible = useMemo(() => {
+    // "Show liked only" mode — only show hearted politicians
+    if (showLikedOnly && likedIds.length) {
+      return allPoliticians.filter((p) => {
+        const id = p.politician_id || p.name;
+        return likedIds.includes(id);
+      });
+    }
+
     return allPoliticians.filter((p) => {
       const id = p.politician_id || p.name;
 
@@ -110,7 +124,15 @@ export default function useFilterState(allPoliticians) {
 
       return true;
     });
-  }, [allPoliticians, activeParties, activeWings, activeSectors, likedIds, hiddenIds]);
+  }, [
+    allPoliticians,
+    activeParties,
+    activeWings,
+    activeSectors,
+    likedIds,
+    hiddenIds,
+    showLikedOnly,
+  ]);
 
   return {
     parties,

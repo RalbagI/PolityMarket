@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Filter, X, ChevronDown } from "lucide-react";
+import { Filter, X, ChevronDown, Heart } from "lucide-react";
 import { localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 
@@ -43,12 +43,18 @@ export default function FilterBar({
   activeParties,
   activeWings,
   activeSectors,
+  likedIds,
   toggleFilter,
   clearFilters,
   visibleCount,
   totalCount,
 }) {
   const { t } = useTranslation();
+  const showLikedOnly =
+    activeParties.length === 0 &&
+    activeWings.length === 0 &&
+    activeSectors.length === 0 &&
+    likedIds?.length > 0;
   const hasFilters = activeParties.length || activeWings.length || activeSectors.length;
 
   return (
@@ -71,6 +77,21 @@ export default function FilterBar({
           </button>
         )}
       </div>
+
+      {/* Liked filter */}
+      {likedIds?.length > 0 && (
+        <button
+          onClick={() => toggleFilter("showLikedOnly", true)}
+          className={`w-full flex items-center justify-center gap-2 py-2 rounded-lg text-xs font-medium transition-colors border ${
+            showLikedOnly
+              ? "bg-red-500/20 border-red-500/40 text-red-400"
+              : "bg-gray-800/50 border-gray-700 text-gray-400 hover:text-red-400 hover:border-red-500/30"
+          }`}
+        >
+          <Heart className={`w-3.5 h-3.5 ${showLikedOnly ? "fill-red-500" : ""}`} />
+          {t("filterBar.liked")} ({likedIds.length})
+        </button>
+      )}
 
       {/* Wing filter */}
       <FilterSection title={t("filterBar.wing")} defaultOpen={true}>
