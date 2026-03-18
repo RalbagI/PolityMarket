@@ -5,6 +5,7 @@ import { scoreToColor } from "../lib/colorScale";
 import { localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 import useFocusTrap from "../lib/useFocusTrap";
+import FilterBar from "./FilterBar";
 
 const TIERS = [
   { min: 0, max: 2, key: "tier0_2" },
@@ -14,7 +15,7 @@ const TIERS = [
   { min: 8, max: 10, key: "tier8_10" },
 ];
 
-function SidebarContent({ stats, t, onMethodologyClick }) {
+function SidebarContent({ stats, t, onMethodologyClick, filterProps }) {
   return (
     <div className="p-5 space-y-6">
       {/* App Header */}
@@ -84,6 +85,9 @@ function SidebarContent({ stats, t, onMethodologyClick }) {
         </div>
       </div>
 
+      {/* Filters */}
+      {filterProps && <FilterBar {...filterProps} />}
+
       {/* Party Breakdown */}
       <div>
         <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
@@ -113,7 +117,7 @@ function SidebarContent({ stats, t, onMethodologyClick }) {
   );
 }
 
-export default function Sidebar({ todayData, onMethodologyClick }) {
+export default function Sidebar({ todayData, onMethodologyClick, filterProps }) {
   const { t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
@@ -157,7 +161,12 @@ export default function Sidebar({ todayData, onMethodologyClick }) {
         aria-label={t("app.header.subtitle")}
         className="hidden md:block fixed top-0 inset-inline-start-0 w-[260px] h-screen bg-gray-950 border-e border-gray-800 overflow-y-auto z-30"
       >
-        <SidebarContent stats={stats} t={t} onMethodologyClick={onMethodologyClick} />
+        <SidebarContent
+          stats={stats}
+          t={t}
+          onMethodologyClick={onMethodologyClick}
+          filterProps={filterProps}
+        />
       </aside>
 
       {/* Mobile: Top stats bar */}
@@ -207,7 +216,12 @@ export default function Sidebar({ todayData, onMethodologyClick }) {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <SidebarContent stats={stats} t={t} onMethodologyClick={onMethodologyClick} />
+            <SidebarContent
+              stats={stats}
+              t={t}
+              onMethodologyClick={onMethodologyClick}
+              filterProps={filterProps}
+            />
           </div>
         </>
       )}

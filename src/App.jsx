@@ -6,6 +6,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Sidebar from "./components/Sidebar";
 import Treemap from "./components/Treemap";
 import MethodologyModal from "./components/MethodologyModal";
+import useFilterState from "./lib/useFilterState";
+import normalizeScores from "./lib/normalizeScores";
 
 const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
@@ -47,19 +49,28 @@ export default function App() {
     };
   }, [summaryData]);
 
-  const treemapData = useMemo(() => {
+  // Enrich today data with deltas
+  const enrichedData = useMemo(() => {
     return todayData.map((entry) => {
       const prev = yesterdayData.find((y) => y.name === entry.name);
       return { ...entry, delta: prev ? entry.overall_score - prev.overall_score : null };
     });
   }, [todayData, yesterdayData]);
 
+  // Filter state with localStorage persistence
+  const filterState = useFilterState(enrichedData);
+
+  // Normalize visible politicians for treemap (dynamic min/max)
+  const treemapData = useMemo(() => {
+    return normalizeScores(filterState.visible);
+  }, [filterState.visible]);
+
   const topPoliticians = useMemo(() => {
-    return [...todayData]
+    return [...filterState.visible]
       .sort((a, b) => b.media_volume - a.media_volume)
       .slice(0, 5)
       .map((d) => d.name);
-  }, [todayData]);
+  }, [filterState.visible]);
 
   const handleSelectPolitician = useCallback(
     (name) => {
@@ -99,7 +110,11 @@ export default function App() {
 
   return (
     <div className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
-      <Sidebar todayData={todayData} onMethodologyClick={() => setMethodologyOpen(true)} />
+      <Sidebar
+        todayData={filterState.visible}
+        onMethodologyClick={() => setMethodologyOpen(true)}
+        filterProps={filterState}
+      />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
       <main className="md:h-screen flex flex-col md:ms-[260px] pt-14 md:pt-0">
