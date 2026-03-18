@@ -28,9 +28,7 @@ export default function CookieConsent() {
       <div className="max-w-lg mx-auto bg-gray-900/95 backdrop-blur-sm border border-gray-700/50 rounded-xl shadow-2xl px-4 py-3">
         <div className="flex items-center gap-3">
           <Cookie className="w-4 h-4 text-amber-400 shrink-0" />
-          <p className="flex-1 text-xs text-gray-400 leading-snug">
-            {t("cookies.description")}
-          </p>
+          <p className="flex-1 text-xs text-gray-400 leading-snug">{t("cookies.description")}</p>
           <button
             onClick={accept}
             className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-lg transition-colors shrink-0"
