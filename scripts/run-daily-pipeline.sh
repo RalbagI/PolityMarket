@@ -77,7 +77,22 @@ fi
 git commit -m "chore(data): daily pipeline update [${RUN_DATE}]"
 
 if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-  git -c "http.https://github.com/.extraheader=AUTHORIZATION: bearer ${GITHUB_TOKEN}" push origin main
+  ASKPASS_FILE="$(mktemp)"
+  cat > "${ASKPASS_FILE}" <<'EOF'
+#!/usr/bin/env bash
+case "$1" in
+  *Username*) printf '%s\n' "x-access-token" ;;
+  *Password*) printf '%s\n' "${GITHUB_TOKEN}" ;;
+  *) printf '\n' ;;
+esac
+EOF
+  chmod 700 "${ASKPASS_FILE}"
+  if GIT_ASKPASS="${ASKPASS_FILE}" git push origin main; then
+    rm -f "${ASKPASS_FILE}"
+  else
+    rm -f "${ASKPASS_FILE}"
+    exit 1
+  fi
 else
   git push origin main
 fi

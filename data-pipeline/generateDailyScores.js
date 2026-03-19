@@ -1057,6 +1057,8 @@ function writeDetailFile(entries, today) {
     media_volume: e.media_volume,
     overall_score: e.overall_score,
     chain_of_thought: e.chain_of_thought,
+    news_headlines: Array.isArray(e.news_headlines) ? e.news_headlines : [],
+    social_mentions: Array.isArray(e.social_mentions) ? e.social_mentions : [],
   }));
   const detailPath = path.join(DETAILS_DIR, `${today}.json`);
   fs.writeFileSync(detailPath, JSON.stringify(detailEntries, null, 2));
@@ -1136,6 +1138,8 @@ async function main() {
         news_sentiment: parseFloat((((llmResult.policy_approval + 1) / 2) * 10).toFixed(1)),
         social_sentiment: parseFloat(((1 - llmResult.hostility_level) * 10).toFixed(1)),
         media_volume: parseFloat((llmResult.media_amplification * 10).toFixed(1)),
+        news_headlines: headlines,
+        social_mentions: socialMentions,
       };
 
       // Validate entry against schema before writing

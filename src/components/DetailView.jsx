@@ -27,6 +27,13 @@ function MetricBar({ label, value, max, color, weight }) {
   );
 }
 
+function extractSourceUrl(threadContext = []) {
+  const sourceLine = threadContext.find((line) => /^source\s*:/i.test(line));
+  if (!sourceLine) return null;
+  const url = sourceLine.replace(/^source\s*:\s*/i, "").trim();
+  return /^https?:\/\//i.test(url) ? url : null;
+}
+
 export default function DetailView({
   todayDetail,
   selectedPolitician,
@@ -55,6 +62,10 @@ export default function DetailView({
     (d) => d.name === selectedPolitician || d.politician_id === selectedPolitician
   );
   if (!entry) return null;
+
+  const newsHeadlines = Array.isArray(entry.news_headlines) ? entry.news_headlines : [];
+  const socialMentions = Array.isArray(entry.social_mentions) ? entry.social_mentions : [];
+  const hasSources = newsHeadlines.length > 0 || socialMentions.length > 0;
 
   return (
     <div className="space-y-4">
@@ -175,7 +186,58 @@ export default function DetailView({
 
       {/* Sources — collapsed by default */}
       <AccordionSection title={t("detailView.section.sources")} icon={FileText} defaultOpen={false}>
-        <p className="text-sm text-gray-500 italic">{t("detailView.sources.empty")}</p>
+        {hasSources ? (
+          <div className="space-y-4">
+            <div>
+              <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+                {t("detailView.sources.news")}
+              </div>
+              {newsHeadlines.length ? (
+                <ul className="space-y-2">
+                  {newsHeadlines.map((headline, index) => (
+                    <li key={`headline-${index}`} className="text-sm text-gray-300 leading-relaxed">
+                      • {headline}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm text-gray-500 italic">{t("detailView.sources.empty")}</p>
+              )}
+            </div>
+
+            <div className="border-t border-gray-800 pt-3">
+              <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+                {t("detailView.sources.social")}
+              </div>
+              {socialMentions.length ? (
+                <ul className="space-y-3">
+                  {socialMentions.map((mention, index) => {
+                    const sourceUrl = extractSourceUrl(mention.thread_context || []);
+                    return (
+                      <li key={`social-${index}`} className="text-sm text-gray-300 leading-relaxed">
+                        <p>• {mention.text}</p>
+                        {sourceUrl && (
+                          <a
+                            href={sourceUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs text-indigo-300 hover:text-indigo-200 underline mt-1 inline-block"
+                          >
+                            {t("detailView.sources.sourceLink")}
+                          </a>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p className="text-sm text-gray-500 italic">{t("detailView.sources.empty")}</p>
+              )}
+            </div>
+          </div>
+        ) : (
+          <p className="text-sm text-gray-500 italic">{t("detailView.sources.empty")}</p>
+        )}
       </AccordionSection>
     </div>
   );
