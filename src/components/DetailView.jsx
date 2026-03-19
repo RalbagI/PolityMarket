@@ -61,7 +61,13 @@ export default function DetailView({
   const entry = todayDetail.find(
     (d) => d.name === selectedPolitician || d.politician_id === selectedPolitician
   );
-  if (!entry) return null;
+  if (!entry) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px]">
+        <p className="text-gray-500 text-sm text-center">{t("detailView.sources.empty")}</p>
+      </div>
+    );
+  }
 
   const newsHeadlines = Array.isArray(entry.news_headlines) ? entry.news_headlines : [];
   const socialMentions = Array.isArray(entry.social_mentions) ? entry.social_mentions : [];
@@ -194,8 +200,8 @@ export default function DetailView({
               </div>
               {newsHeadlines.length ? (
                 <ul className="space-y-2">
-                  {newsHeadlines.map((headline, index) => (
-                    <li key={`headline-${index}`} className="text-sm text-gray-300 leading-relaxed">
+                  {newsHeadlines.map((headline) => (
+                    <li key={headline} className="text-sm text-gray-300 leading-relaxed">
                       • {headline}
                     </li>
                   ))}
@@ -211,10 +217,10 @@ export default function DetailView({
               </div>
               {socialMentions.length ? (
                 <ul className="space-y-3">
-                  {socialMentions.map((mention, index) => {
+                  {socialMentions.map((mention) => {
                     const sourceUrl = extractSourceUrl(mention.thread_context || []);
                     return (
-                      <li key={`social-${index}`} className="text-sm text-gray-300 leading-relaxed">
+                      <li key={mention.text} className="text-sm text-gray-300 leading-relaxed">
                         <p>• {mention.text}</p>
                         {sourceUrl && (
                           <a

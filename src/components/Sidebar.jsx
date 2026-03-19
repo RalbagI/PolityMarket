@@ -146,8 +146,8 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps }) {
               }}
             />
             <div className="flex justify-between mt-1">
-              <span className="text-[10px] text-gray-500">חיובי</span>
-              <span className="text-[10px] text-gray-500">שלילי</span>
+              <span className="text-[10px] text-gray-500">{t("sidebar.colorLegend.positive")}</span>
+              <span className="text-[10px] text-gray-500">{t("sidebar.colorLegend.negative")}</span>
             </div>
           </div>
 
@@ -195,6 +195,10 @@ export default function Sidebar({ todayData, onMethodologyClick, filterProps }) 
   useFocusTrap(drawerRef, drawerOpen);
 
   const stats = useMemo(() => {
+    if (!todayData.length) {
+      return { total: 0, weightedAvg: 0, histogram: [], maxCount: 1, parties: [] };
+    }
+
     const totalVolume = todayData.reduce((s, d) => s + d.media_volume, 0);
     const weightedSum = todayData.reduce((s, d) => s + d.overall_score * d.media_volume, 0);
     const weightedAvg = totalVolume > 0 ? weightedSum / totalVolume : 0;

@@ -872,10 +872,11 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
     );
   }
 
-  const unique = dedupeStrings(matches.map((m) => m.text))
-    .map((text) => matches.find((m) => m.text === text))
-    .slice(0, socialConfig.maxMentionsPerPolitician)
-    .filter(Boolean);
+  const seenTexts = new Map();
+  for (const m of matches) {
+    if (!seenTexts.has(m.text)) seenTexts.set(m.text, m);
+  }
+  const unique = [...seenTexts.values()].slice(0, socialConfig.maxMentionsPerPolitician);
 
   if (unique.length === 0) {
     unique.push({
@@ -982,9 +983,7 @@ async function scorePoliticianWithLLM(politicianName, party, headlines, socialMe
 
   if (!response.ok) {
     const body = await response.text();
-    const error = new Error(`Ollama chat failed (${response.status}): ${body.slice(0, 250)}`);
-    error.status = response.status;
-    throw error;
+    throw new Error(`Ollama chat failed (${response.status}): ${body.slice(0, 250)}`);
   }
 
   const raw = await response.json();

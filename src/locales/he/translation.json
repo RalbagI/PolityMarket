@@ -293,6 +293,10 @@
     "histogram": {
       "title": "התפלגות ציונים"
     },
+    "colorLegend": {
+      "positive": "חיובי",
+      "negative": "שלילי"
+    },
     "partyBreakdown": "לפי מפלגה",
     "openDrawer": "פתח תפריט צד",
     "closeDrawer": "סגור תפריט צד"
