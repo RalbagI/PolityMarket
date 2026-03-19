@@ -1,0 +1,19 @@
+{
+  "rss": {
+    "searchTemplates": [
+      "https://news.google.com/rss/search?q={query}+Israel+politics+when:1d&hl=en-US&gl=US&ceid=US:en",
+      "https://news.google.com/rss/search?q={query}+Knesset+when:1d&hl=en-US&gl=US&ceid=US:en"
+    ],
+    "globalFeeds": [
+      "https://www.timesofisrael.com/feed/",
+      "https://www.jpost.com/rss/rssfeedsheadlines.aspx"
+    ],
+    "maxItemsPerSource": 10,
+    "maxHeadlinesPerPolitician": 8
+  },
+  "social": {
+    "redditSubreddits": ["Israel", "worldnews", "MiddleEastNews"],
+    "maxPostsPerSubreddit": 40,
+    "maxMentionsPerPolitician": 8
+  }
+}

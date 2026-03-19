@@ -1,0 +1,15 @@
+[Unit]
+Description=PolityMarket Daily Data Pipeline
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=botipi-4
+WorkingDirectory=/home/botipi-4/PoliticMarket
+EnvironmentFile=/home/botipi-4/PoliticMarket/.env.pipeline
+ExecStart=/home/botipi-4/PoliticMarket/scripts/run-daily-pipeline.sh
+TimeoutStartSec=2h
+
+[Install]
+WantedBy=multi-user.target

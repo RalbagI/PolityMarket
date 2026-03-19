@@ -14,7 +14,9 @@
     "test:watch": "vitest",
     "test:ci": "vitest run --coverage --reporter=default",
     "preview": "vite preview",
-    "pipeline": "node data-pipeline/generateDailyScores.js"
+    "pipeline": "node data-pipeline/generateDailyScores.js",
+    "pipeline:validate": "node scripts/validate-daily-artifacts.js",
+    "pipeline:run": "bash scripts/run-daily-pipeline.sh"
   },
   "dependencies": {
     "d3-hierarchy": "^3.1.2",

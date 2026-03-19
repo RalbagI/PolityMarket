@@ -1,0 +1,10 @@
+[Unit]
+Description=Run PolityMarket pipeline daily at 02:00 Asia/Jerusalem
+
+[Timer]
+OnCalendar=*-*-* 02:00:00 Asia/Jerusalem
+Persistent=true
+Unit=politymarket-pipeline.service
+
+[Install]
+WantedBy=timers.target
