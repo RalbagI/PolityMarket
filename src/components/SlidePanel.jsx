@@ -18,7 +18,11 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
       }
     }
     document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
+    document.addEventListener("touchstart", handleClick);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("touchstart", handleClick);
+    };
   }, [isOpen, onClose]);
 
   // Close on Escape
@@ -68,8 +72,13 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
         `}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 px-6 py-4 flex items-center justify-between">
-          <h3 id={titleId} className="text-lg font-semibold text-white truncate">
+        {/* Swipe indicator for mobile bottom sheet */}
+        <div className="sm:hidden flex justify-center pt-2 pb-1">
+          <div className="w-10 h-1 rounded-full bg-gray-600" />
+        </div>
+
+        <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+          <h3 id={titleId} className="text-base sm:text-lg font-semibold text-white truncate">
             {title || t("slidePanel.defaultTitle")}
           </h3>
           <button
@@ -82,7 +91,7 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
         </div>
 
         {/* Content */}
-        <div className="p-6">{children}</div>
+        <div className="p-4 sm:p-6">{children}</div>
       </div>
     </>
   );

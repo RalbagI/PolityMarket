@@ -134,7 +134,7 @@ export default function App() {
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
       <main className="md:h-screen flex flex-col md:ms-[260px] pt-14 md:pt-0">
         {/* Treemap */}
-        <div className="flex-1 min-h-[50vh] md:min-h-[300px]">
+        <div className="flex-1 min-h-[40vh] sm:min-h-[50vh] md:min-h-[300px]">
           <ErrorBoundary>
             <Treemap
               data={treemapData}

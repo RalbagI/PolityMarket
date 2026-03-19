@@ -46,11 +46,32 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     }
   }, [data, size.width, size.height, sizeBy]);
 
+  const isTouchRef = useRef(false);
+
   const handleMouseMove = useCallback(
     (e) => {
       if (hovered) setMousePos({ x: e.clientX, y: e.clientY });
     },
     [hovered]
+  );
+
+  // On touch: first tap shows tooltip, second tap (or tap same) opens panel
+  const handleTouchStart = useCallback(
+    (name, e) => {
+      isTouchRef.current = true;
+      const touch = e.touches[0];
+      if (hovered === name) {
+        // Second tap on same block — open panel
+        onSelect(name);
+        setHovered(null);
+      } else {
+        // First tap — show tooltip
+        e.preventDefault();
+        setHovered(name);
+        setMousePos({ x: touch.clientX, y: touch.clientY });
+      }
+    },
+    [hovered, onSelect]
   );
 
   if (!data || !data.length) {
@@ -69,6 +90,10 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       className="w-full h-full relative overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHovered(null)}
+      onTouchStart={(e) => {
+        // Tap on container background dismisses tooltip
+        if (e.target === containerRef.current) setHovered(null);
+      }}
     >
       {leaves.map((leaf) => {
         const d = leaf.data;
@@ -104,7 +129,11 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                 onSelect(d.name);
               }
             }}
-            onMouseEnter={() => setHovered(d.name)}
+            onTouchStart={(e) => handleTouchStart(d.name, e)}
+            onMouseEnter={() => {
+              if (!isTouchRef.current) setHovered(d.name);
+              isTouchRef.current = false;
+            }}
             className="absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
             style={{
               left: leaf.x0,
