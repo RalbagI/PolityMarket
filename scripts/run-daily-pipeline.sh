@@ -43,6 +43,23 @@ if [[ -n "${NON_DATA_CHANGES}" ]]; then
   exit 1
 fi
 
+git fetch --quiet origin main
+LOCAL_HEAD="$(git rev-parse HEAD)"
+REMOTE_HEAD="$(git rev-parse origin/main)"
+MERGE_BASE="$(git merge-base HEAD origin/main)"
+if [[ "${LOCAL_HEAD}" != "${REMOTE_HEAD}" ]]; then
+  if [[ "${LOCAL_HEAD}" == "${MERGE_BASE}" ]]; then
+    echo "Local main is behind origin/main; fast-forwarding before pipeline run..."
+    git pull --ff-only origin main
+  elif [[ "${REMOTE_HEAD}" == "${MERGE_BASE}" ]]; then
+    echo "Local main is ahead of origin/main before pipeline run; refusing to continue." >&2
+    exit 1
+  else
+    echo "Local main has diverged from origin/main; refusing to continue." >&2
+    exit 1
+  fi
+fi
+
 echo "Running daily pipeline..."
 node data-pipeline/generateDailyScores.js
 

@@ -567,7 +567,6 @@ const SOURCES_CONFIG_PATH = process.env.PIPELINE_SOURCES_PATH
 
 // computeOverallScore imported from ./lib/computeScore.js
 
-const SOURCE_CONFIG = loadSourceConfig();
 const rssFeedCache = new Map();
 const redditFeedCache = new Map();
 let ollamaReadyChecked = false;
@@ -715,7 +714,10 @@ async function fetchText(url, timeoutMs) {
       },
     });
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+      const bodyPreview = (await response.text()).slice(0, 250);
+      const error = new Error(`HTTP ${response.status} for ${url}: ${bodyPreview}`);
+      error.status = response.status;
+      throw error;
     }
     return await response.text();
   } finally {
@@ -785,17 +787,21 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   const rssConfig = sourceConfig.rss;
   const searchTerms = buildSearchTerms(politician);
   const headlines = [];
+  let successfulSources = 0;
+  let failedSources = 0;
 
   for (const template of rssConfig.searchTemplates) {
     const url = renderSearchTemplate(template, politician);
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
+      successfulSources++;
       for (const item of items) {
         if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
           headlines.push(item.title);
         }
       }
     } catch (err) {
+      failedSources++;
       console.warn(`[RSS] ${politician.name}: failed query feed (${url}) — ${err.message}`);
     }
   }
@@ -803,14 +809,22 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   for (const url of rssConfig.globalFeeds ?? []) {
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
+      successfulSources++;
       for (const item of items) {
         if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
           headlines.push(item.title);
         }
       }
     } catch (err) {
+      failedSources++;
       console.warn(`[RSS] ${politician.name}: failed global feed (${url}) — ${err.message}`);
     }
+  }
+
+  if (successfulSources === 0) {
+    throw new Error(
+      `[RSS] ${politician.name}: all configured sources failed (${failedSources} failures)`
+    );
   }
 
   const unique = dedupeStrings(headlines).slice(0, rssConfig.maxHeadlinesPerPolitician);
@@ -825,10 +839,13 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   const socialConfig = sourceConfig.social;
   const searchTerms = buildSearchTerms(politician);
   const matches = [];
+  let successfulSources = 0;
+  let failedSources = 0;
 
   for (const subreddit of socialConfig.redditSubreddits) {
     try {
       const posts = await getRedditPosts(subreddit, socialConfig.maxPostsPerSubreddit);
+      successfulSources++;
       for (const post of posts) {
         const combined = `${post.title} ${post.body}`;
         if (!includesPolitician(combined, searchTerms)) {
@@ -844,8 +861,15 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
         });
       }
     } catch (err) {
+      failedSources++;
       console.warn(`[Social] ${politician.name}: failed subreddit (${subreddit}) — ${err.message}`);
     }
+  }
+
+  if (successfulSources === 0) {
+    throw new Error(
+      `[Social] ${politician.name}: all configured subreddits failed (${failedSources} failures)`
+    );
   }
 
   const unique = dedupeStrings(matches.map((m) => m.text))
@@ -958,7 +982,9 @@ async function scorePoliticianWithLLM(politicianName, party, headlines, socialMe
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`Ollama chat failed (${response.status}): ${body.slice(0, 250)}`);
+    const error = new Error(`Ollama chat failed (${response.status}): ${body.slice(0, 250)}`);
+    error.status = response.status;
+    throw error;
   }
 
   const raw = await response.json();
@@ -1067,6 +1093,7 @@ async function main() {
     );
   }
 
+  const sourceConfig = loadSourceConfig();
   await ensureOllamaReady();
 
   const newEntries = [];
@@ -1074,8 +1101,8 @@ async function main() {
   for (const politician of POLITICIANS) {
     console.log(`\nProcessing: ${politician.name} (${politician.party})`);
     try {
-      const headlines = await fetchRSSHeadlines(politician, SOURCE_CONFIG);
-      const socialMentions = await fetchSocialMediaMentions(politician, SOURCE_CONFIG);
+      const headlines = await fetchRSSHeadlines(politician, sourceConfig);
+      const socialMentions = await fetchSocialMediaMentions(politician, sourceConfig);
       const llmResult = await retry(
         () => scorePoliticianWithLLM(politician.name, politician.party, headlines, socialMentions),
         {

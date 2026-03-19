@@ -51,6 +51,11 @@ export default async function retry(fn, options = {}) {
  */
 export function isTransientError(error) {
   const message = error.message || "";
+  const name = error.name || "";
+
+  if (name === "AbortError" || message.toLowerCase().includes("aborted")) {
+    return true;
+  }
 
   // Network errors
   if (
