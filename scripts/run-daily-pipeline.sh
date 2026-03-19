@@ -43,6 +43,23 @@ if [[ -n "${NON_DATA_CHANGES}" ]]; then
   exit 1
 fi
 
+git fetch --quiet origin main
+LOCAL_HEAD="$(git rev-parse HEAD)"
+REMOTE_HEAD="$(git rev-parse origin/main)"
+MERGE_BASE="$(git merge-base HEAD origin/main)"
+if [[ "${LOCAL_HEAD}" != "${REMOTE_HEAD}" ]]; then
+  if [[ "${LOCAL_HEAD}" == "${MERGE_BASE}" ]]; then
+    echo "Local main is behind origin/main; fast-forwarding before pipeline run..."
+    git pull --ff-only origin main
+  elif [[ "${REMOTE_HEAD}" == "${MERGE_BASE}" ]]; then
+    echo "Local main is ahead of origin/main before pipeline run; refusing to continue." >&2
+    exit 1
+  else
+    echo "Local main has diverged from origin/main; refusing to continue." >&2
+    exit 1
+  fi
+fi
+
 echo "Running daily pipeline..."
 node data-pipeline/generateDailyScores.js
 
@@ -60,7 +77,22 @@ fi
 git commit -m "chore(data): daily pipeline update [${RUN_DATE}]"
 
 if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-  git -c "http.https://github.com/.extraheader=AUTHORIZATION: bearer ${GITHUB_TOKEN}" push origin main
+  ASKPASS_FILE="$(mktemp)"
+  cat > "${ASKPASS_FILE}" <<'EOF'
+#!/usr/bin/env bash
+case "$1" in
+  *Username*) printf '%s\n' "x-access-token" ;;
+  *Password*) printf '%s\n' "${GITHUB_TOKEN}" ;;
+  *) printf '\n' ;;
+esac
+EOF
+  chmod 700 "${ASKPASS_FILE}"
+  if GIT_ASKPASS="${ASKPASS_FILE}" git push origin main; then
+    rm -f "${ASKPASS_FILE}"
+  else
+    rm -f "${ASKPASS_FILE}"
+    exit 1
+  fi
 else
   git push origin main
 fi

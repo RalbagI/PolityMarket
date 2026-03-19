@@ -58,7 +58,10 @@
       "mediaAmplification": "הגברה תקשורתית"
     },
     "sources": {
-      "empty": "ציטוטי מקורות יתמלאו כאשר קליטת נתונים אמיתית תופעל."
+      "empty": "לא נמצאו מקורות זמינים עבור תאריך זה.",
+      "news": "כותרות חדשות",
+      "social": "אזכורים ברשתות חברתיות",
+      "sourceLink": "קישור למקור"
     }
   },
   "entityGrid": {
@@ -289,6 +292,10 @@
     "weightedAverage": "ציון ממוצע משוקלל",
     "histogram": {
       "title": "התפלגות ציונים"
+    },
+    "colorLegend": {
+      "positive": "חיובי",
+      "negative": "שלילי"
     },
     "partyBreakdown": "לפי מפלגה",
     "openDrawer": "פתח תפריט צד",

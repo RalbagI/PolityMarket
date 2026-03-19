@@ -567,7 +567,6 @@ const SOURCES_CONFIG_PATH = process.env.PIPELINE_SOURCES_PATH
 
 // computeOverallScore imported from ./lib/computeScore.js
 
-const SOURCE_CONFIG = loadSourceConfig();
 const rssFeedCache = new Map();
 const redditFeedCache = new Map();
 let ollamaReadyChecked = false;
@@ -715,7 +714,10 @@ async function fetchText(url, timeoutMs) {
       },
     });
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+      const bodyPreview = (await response.text()).slice(0, 250);
+      const error = new Error(`HTTP ${response.status} for ${url}: ${bodyPreview}`);
+      error.status = response.status;
+      throw error;
     }
     return await response.text();
   } finally {
@@ -785,17 +787,21 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   const rssConfig = sourceConfig.rss;
   const searchTerms = buildSearchTerms(politician);
   const headlines = [];
+  let successfulSources = 0;
+  let failedSources = 0;
 
   for (const template of rssConfig.searchTemplates) {
     const url = renderSearchTemplate(template, politician);
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
+      successfulSources++;
       for (const item of items) {
         if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
           headlines.push(item.title);
         }
       }
     } catch (err) {
+      failedSources++;
       console.warn(`[RSS] ${politician.name}: failed query feed (${url}) — ${err.message}`);
     }
   }
@@ -803,14 +809,22 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   for (const url of rssConfig.globalFeeds ?? []) {
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
+      successfulSources++;
       for (const item of items) {
         if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
           headlines.push(item.title);
         }
       }
     } catch (err) {
+      failedSources++;
       console.warn(`[RSS] ${politician.name}: failed global feed (${url}) — ${err.message}`);
     }
+  }
+
+  if (successfulSources === 0) {
+    throw new Error(
+      `[RSS] ${politician.name}: all configured sources failed (${failedSources} failures)`
+    );
   }
 
   const unique = dedupeStrings(headlines).slice(0, rssConfig.maxHeadlinesPerPolitician);
@@ -825,10 +839,13 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   const socialConfig = sourceConfig.social;
   const searchTerms = buildSearchTerms(politician);
   const matches = [];
+  let successfulSources = 0;
+  let failedSources = 0;
 
   for (const subreddit of socialConfig.redditSubreddits) {
     try {
       const posts = await getRedditPosts(subreddit, socialConfig.maxPostsPerSubreddit);
+      successfulSources++;
       for (const post of posts) {
         const combined = `${post.title} ${post.body}`;
         if (!includesPolitician(combined, searchTerms)) {
@@ -844,14 +861,22 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
         });
       }
     } catch (err) {
+      failedSources++;
       console.warn(`[Social] ${politician.name}: failed subreddit (${subreddit}) — ${err.message}`);
     }
   }
 
-  const unique = dedupeStrings(matches.map((m) => m.text))
-    .map((text) => matches.find((m) => m.text === text))
-    .slice(0, socialConfig.maxMentionsPerPolitician)
-    .filter(Boolean);
+  if (successfulSources === 0) {
+    throw new Error(
+      `[Social] ${politician.name}: all configured subreddits failed (${failedSources} failures)`
+    );
+  }
+
+  const seenTexts = new Map();
+  for (const m of matches) {
+    if (!seenTexts.has(m.text)) seenTexts.set(m.text, m);
+  }
+  const unique = [...seenTexts.values()].slice(0, socialConfig.maxMentionsPerPolitician);
 
   if (unique.length === 0) {
     unique.push({
@@ -1031,6 +1056,8 @@ function writeDetailFile(entries, today) {
     media_volume: e.media_volume,
     overall_score: e.overall_score,
     chain_of_thought: e.chain_of_thought,
+    news_headlines: Array.isArray(e.news_headlines) ? e.news_headlines : [],
+    social_mentions: Array.isArray(e.social_mentions) ? e.social_mentions : [],
   }));
   const detailPath = path.join(DETAILS_DIR, `${today}.json`);
   fs.writeFileSync(detailPath, JSON.stringify(detailEntries, null, 2));
@@ -1067,6 +1094,7 @@ async function main() {
     );
   }
 
+  const sourceConfig = loadSourceConfig();
   await ensureOllamaReady();
 
   const newEntries = [];
@@ -1074,8 +1102,8 @@ async function main() {
   for (const politician of POLITICIANS) {
     console.log(`\nProcessing: ${politician.name} (${politician.party})`);
     try {
-      const headlines = await fetchRSSHeadlines(politician, SOURCE_CONFIG);
-      const socialMentions = await fetchSocialMediaMentions(politician, SOURCE_CONFIG);
+      const headlines = await fetchRSSHeadlines(politician, sourceConfig);
+      const socialMentions = await fetchSocialMediaMentions(politician, sourceConfig);
       const llmResult = await retry(
         () => scorePoliticianWithLLM(politician.name, politician.party, headlines, socialMentions),
         {
@@ -1109,6 +1137,8 @@ async function main() {
         news_sentiment: parseFloat((((llmResult.policy_approval + 1) / 2) * 10).toFixed(1)),
         social_sentiment: parseFloat(((1 - llmResult.hostility_level) * 10).toFixed(1)),
         media_volume: parseFloat((llmResult.media_amplification * 10).toFixed(1)),
+        news_headlines: headlines,
+        social_mentions: socialMentions,
       };
 
       // Validate entry against schema before writing

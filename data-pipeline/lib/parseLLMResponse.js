@@ -37,6 +37,21 @@ export const dailyEntrySchema = z.object({
   news_sentiment: z.number().min(0).max(10),
   social_sentiment: z.number().min(0).max(10),
   media_volume: z.number().min(0).max(10),
+  news_headlines: z.array(z.string().min(1)).optional(),
+  social_mentions: z
+    .array(
+      z.object({
+        text: z.string().min(1),
+        thread_context: z.array(z.string()).optional(),
+        speaker_metadata: z
+          .object({
+            handle: z.string().min(1),
+            known_satirist: z.boolean().optional(),
+          })
+          .optional(),
+      })
+    )
+    .optional(),
 });
 
 /**

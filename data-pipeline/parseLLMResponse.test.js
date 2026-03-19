@@ -208,6 +208,32 @@ describe("dailyEntrySchema", () => {
     });
     expect(result.success).toBe(false);
   });
+
+  it("accepts source metadata fields for detail rendering", () => {
+    const result = dailyEntrySchema.safeParse({
+      date: "2026-03-18",
+      politician_id: "test-pol",
+      name: "Test Politician",
+      party: "Test Party",
+      hostility_level: 0.3,
+      policy_approval: 0.5,
+      media_amplification: 0.7,
+      overall_score: 6.5,
+      chain_of_thought: "analysis",
+      news_sentiment: 7.5,
+      social_sentiment: 7.0,
+      media_volume: 7.0,
+      news_headlines: ["Headline A"],
+      social_mentions: [
+        {
+          text: "Mention A",
+          thread_context: ["Source: https://example.com/post"],
+          speaker_metadata: { handle: "@example", known_satirist: false },
+        },
+      ],
+    });
+    expect(result.success).toBe(true);
+  });
 });
 
 describe("summaryRowSchema", () => {
