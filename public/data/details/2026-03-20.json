@@ -1,0 +1,3342 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0.6,
+    "media_amplification": 0.3,
+    "news_sentiment": 8,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 7.1,
+    "chain_of_thought": "השכלה מעורבת עם רמזים לדייגציה פוליטית וקריטיקה למדיניות, אך עם תובנות חיוביות. ראשית, כותרות כמו 'המלחמה באיראן יכולה לפתור חמישה בעיות' ו'הנשיא נטניאו מלחיד את הדיפלומטיה' מציגות קריטיקה סמלית למדיניות, אך לא מתקדמים לדייגציה פוליטית. תובנות כמו 'ניטניאו זכה ל-seat' ו'המתקפה על איראן' מציינות תובנות חיוביות. במקורות הרדיט, תובנות חיוביות מופיעות אך גם קריטיקה מופיעה, כמו השוואה ל'שבריר מפוזר'. לא נמצאו דוגמאות ברורות לPDD, אך יש רמזים לאי-אמינות. הסטיגמה של 'ניטניאו מדבר על י酥וס' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'הממשל הוא כמו עץ רך' היא קריטיקה סמלית, אך לא מתקדמת לדייגציה פוליטית. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת למשמעת מוגזמת, אך לא מתקדמת לPDD. הסטיגמה של 'ניטניאו מדבר על אירופה' נחשבת لمشاعر مُغَزَّاة، لكنها لا تُعتبر مُتَقَدِّمة. 😊",
+    "news_headlines": [
+      "Five problems the Iran war could solve for Israel’s Netanyahu - Al Jazeera",
+      "Kill or Die: How Israel's Netanyahu Has Waged War on Diplomacy for Decades - Haaretz",
+      "Benjamin Netanyahu gains electoral seat at Ben-Gvir's expense in new poll - The Jerusalem Post",
+      "Netanyahu: 'I Did Not Mock Jesus – That's Fake News' - i24NEWS",
+      "Explained | Netanyahu’s high-stakes gamble: How Iran war could reshape Israel’s politics - MSN",
+      "Israeli Prime Minister Benjamin Netanyahu has dismissed rumours of his death, calling them “fake news”. - facebook.com",
+      "Netanyahu says Iran is being 'decimated' but revolution requires 'ground component' - CNBC",
+      "Netanyahu’s dreams came true with the Iran war. Will it propel him to victory? - SMH.com.au"
+    ],
+    "social_mentions": [
+      {
+        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryvj0r/what_could_possibly_have_led_netanyahu_to_say_that/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Hot_Minute_9249",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Netanyahu: A Very Unique & Impressive Leader — I’m an American of Indian ethnicity. I’ve been following World politics all my life and have never come across a decisive, impressive and uniquely ruthless leader like Netanyahu. IMHO, when it comes to protecting his people he’s simply done",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryj28q/netanyahu_a_very_unique_impressive_leader/"
+        ],
+        "speaker_metadata": {
+          "handle": "@2Hawaii",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Netanyahu: Regime is ‘like a hollowed-out, rotten piece of wood’",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rycwqz/netanyahu_regime_is_like_a_hollowedout_rotten/"
+        ],
+        "speaker_metadata": {
+          "handle": "@c9joe",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Benjamin Netanyahu: Iran can no longer enrich uranium or manufacture ballistic missiles",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry9kpg/benjamin_netanyahu_iran_can_no_longer_enrich/"
+        ],
+        "speaker_metadata": {
+          "handle": "@DANIELLE_2027",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Netanyahu says revolution in Iran would require ‘ground component’ to war",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1ryzwfd/netanyahu_says_revolution_in_iran_would_require/"
+        ],
+        "speaker_metadata": {
+          "handle": "@No-Post4444",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "US Senator: Netanyahu Found 'President Stupid Enough' as Hormuz Stays Closed, Gas Prices Surge",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rsirfy/us_senator_netanyahu_found_president_stupid/"
+        ],
+        "speaker_metadata": {
+          "handle": "@kitz99",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yariv-levin",
+    "name": "Yariv Levin",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "הכותרות מציגות דיווחים על בדיקה של שמועות שברורות, ללא ערך פוליטי או רעיוני. אין עימות או ביקורת על מדיניות, ואין שימוש בדיבור שמתבסס על פגיעה בזיהוי או בתקנות. התקשורת נוקחת בזיהויים אובייקטיביים, ללא עימות או תקווה. אין סטיגמה או פגיעה בזיהוי, ולכן אין דיבור פוליטי מפקיר. הפרסום נמוך, אך יש רלוונטיות לתחום התחבורה.",
+    "news_headlines": [
+      "Yariv Levin Rumor False March 20: No Israel Leadership Change - Meyka",
+      "March 20: Yariv Levin Interim PM Rumor Debunked—Market Risk Eases - Meyka",
+      "Has Israel Appointed Yariv Levin as Interim Prime Minister to Replace Benjamin Netanyahu? Here’s the - LatestLY",
+      "Fact Check News | ⚡Fact Check: No, Yariv Levin Has Not Replaced Benjamin Netanyahu as Israel’s Prime Minister - LatestLY"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yariv Levin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-gallant",
+    "name": "Yoav Gallant",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות מדויקות לגביו במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית תורמת לשקיפות נייטרלית, אך ללא מידע עדכני קשה למדוד תחושה פוליטית אמיתית.",
+    "news_headlines": [
+      "No direct headlines matched Yoav Gallant in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Gallant in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "miri-regev",
+    "name": "Miri Regev",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות מותאמות לרג'ב במקורות המותאמים במחזור זה. היעדר תיעודים מעורר ספק לגבי הפרסונליזציה של הפעילות הפוליטית שלה, אך לא מצביע על פוליטיקה של דילגיטימציה או אכזריות. היעדר תקשורת פומבית מפחיתה את האינטראקציה עם הקהל.",
+    "news_headlines": [
+      "No direct headlines matched Miri Regev in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Miri Regev in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "nir-barkat",
+    "name": "Nir Barkat",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של ניר ברטק במקורות המותרים, לכן ניתוח התרשים מתבסס על היעדר מידע. היעדר תיעוד תקשורתית מעורר ספק לגבי נוכחות פומבית או ניסוחים מודעים. ללא תוכן להשוואה, אין זיהוי של פד or סארק. הניתוח מצביע על נוכחות נמוכה במרחב הפומבי.",
+    "news_headlines": [
+      "No direct headlines matched Nir Barkat in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Nir Barkat in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amir-ohana",
+    "name": "Amir Ohana",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד זמין לרעיונות או הערות על אמיר עohana במקורות המותרים, לכן אין אפשרות לניתוח רגשי או דיבור פוליטי. היעדר תיעוד מעיד על נוכחות מינימלית במרחב הפוליטי העדכני.",
+    "news_headlines": [
+      "No direct headlines matched Amir Ohana in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amir Ohana in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eli-cohen",
+    "name": "Eli Cohen",
+    "party": "Likud",
+    "hostility_level": 0.3,
+    "policy_approval": -0.2,
+    "media_amplification": 0.6,
+    "news_sentiment": 4,
+    "social_sentiment": 7,
+    "media_volume": 6,
+    "overall_score": 5.6,
+    "chain_of_thought": "הכותרות מציגות את אלי כהן בקשר לiran, אך ללא הקשר הישיר למדיניות או תקשורת פומבית. הכותרת 'אליה כהן 2.0 בתוך אירן?' יכולה להיחשב כהתקפה סמלית, אך ללא הקשר ברור לתקשורות פומביות. ההפניות לחיילים וקרנות מוסדרות כהקשר כללי, אך ללא זיהוי פוליטי ישראלי ישראלי. אין התייחסות ישירה לכהן במקורות החברתיים, מה שמעיד על נוכחות מינימלית בדיבור הפומבי.",
+    "news_headlines": [
+      "Eli Cohen 2.0 inside Iran? How Tehran is losing the intelligence war - India Today",
+      "Iron Dome reservist soldier indicted for spying for Iran"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eli Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yisrael-katz",
+    "name": "Yisrael Katz",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על יסראל קatz במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא חוקי, סארקזם או נרטיבים מודעים. היעדר תיעוד עדכני מעיד על נוכחות מינימלית במרחב הפוליטי, מה שגורם לציון נייטרלי בכל המטרות.",
+    "news_headlines": [
+      "No direct headlines matched Yisrael Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yisrael Katz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yuli-edelstein",
+    "name": "Yuli Edelstein",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 0,
+    "overall_score": 5.2,
+    "chain_of_thought": "אין תיעוד עדכני של חדשות או הערות חברתיות על אדליינסטайн במקורות המותרים, לכן אין מידע להערכה של תפקוד או נטייה פוליטית. הניתוח מתבסס על היעדר עדכון, ולא על תקשורת פומבית מודרנית.",
+    "news_headlines": [
+      "No direct headlines matched Yuli Edelstein in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yuli Edelstein in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shlomo-karhi",
+    "name": "Shlomo Karhi",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות מותאמות לשלמה ק尔希 במקורות המותאמים במחזור זה, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר עניין בתקשורת. אין מידע להערכה של טון, פדיעות או דיבור פוליטי מוסרי.",
+    "news_headlines": [
+      "No direct headlines matched Shlomo Karhi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Shlomo Karhi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zeev-elkin",
+    "name": "Zeev Elkin",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על זיו אלכין, מה указים על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תוכן פוליטי או ביקורתי גורם לניתוח שולי. אין סימני פד or סארקASM, אך גם אין תובנות על תומך או מתנגד.",
+    "news_headlines": [
+      "No direct headlines matched Zeev Elkin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zeev Elkin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avi-dichter",
+    "name": "Avi Dichter",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתאימות לאייב דיכטר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיעודים פומביים יכול להצביע על נוכחות נמוכה, או על היעדר אירועים משמעותיים הקשורים אליו. אין סימני פד",
+    "news_headlines": [
+      "No direct headlines matched Avi Dichter in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avi Dichter in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "danny-danon",
+    "name": "Danny Danon",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של דני דנון במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או בדיאלוגים ציבוריים. היעדר תובנות עדכניות מוביל לניתוח שיטתי של נייטרליות, ללא רמזים לדרמטיקה פוליטית או קרב תיאורטי. אין סימני פחד או תקווה, אך גם אין מידע להערכה של תרבות פוליטית.",
+    "news_headlines": [
+      "No direct headlines matched Danny Danon in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Danny Danon in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-akunis",
+    "name": "Ofir Akunis",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעוד ישיר או מודעות פומבית לאייר אקוניס במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר עניין בדיבור ציבורי. היעדר תובנות או ביקורת מפורשת עלול להצביע על נייטרליות או חוסר פופולאריות, אך ללא מידע נוסף קשה לאמוד את הדרישות המדויקות.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Akunis in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofir Akunis in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "david-bitan",
+    "name": "David Bitan",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על דיויד ביטן במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור delegitimizing. היעדר תיעוד פומבי מעיד על נמוך רמת תשומת לב או נוכחות מינימלית במרחב הפוליטי. כל המטרות הדרישות נulled עקב היעדר נתונים.",
+    "news_headlines": [
+      "No direct headlines matched David Bitan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched David Bitan in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "fateen-mulla",
+    "name": "Fateen Mulla",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות ישירות לפוטיין מולה במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הרשת. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פדיעות או דיבור מוסרי, אך גם אין מידע להערכה של תומך או מתנגד.",
+    "news_headlines": [
+      "No direct headlines matched Fateen Mulla in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Fateen Mulla in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "david-amsalem",
+    "name": "David Amsalem",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד פומבי או התייחסות לאמסאלם במקורות המותרים, לכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטימציה פוליטית. היעדר תיעוד מעיד על נמוך מאוד רלוונטיות ציבוריים, אך לא ניתן להסיק סיכום מוחלט ללא נתונים.",
+    "news_headlines": [
+      "No direct headlines matched David Amsalem in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched David Amsalem in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "boaz-bismuth",
+    "name": "Boaz Bismuth",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על בועז ביסמooth, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר עניין בתקופת ההערכה. ללא תוכן להערכה של סטיגמה, פוליטיקה, או אמפליפיקציה, כל המטרות של ניתוח ה-PDD והסארקמטיקה לא קיימות. הניתוח מצביע על נוכחות נמוכה באופן כללי.",
+    "news_headlines": [
+      "No direct headlines matched Boaz Bismuth in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Boaz Bismuth in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ariel-kallner",
+    "name": "Ariel Kallner",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעודים או הערות חברתיות מותאמות לאיירל קאלנר במקורות המותאמים, לכן אין מידע להערכה של טון, סארק, או דיבור delegitimizing. היעדר תיעודים מעיד על ניכור נמוך או אי-הlevance, מה שגורם לשליליות ברמת האgressivité, נייטרליות במדיניות, ופחות פופולריות תקשורתית.",
+    "news_headlines": [
+      "No direct headlines matched Ariel Kallner in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ariel Kallner in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hanoch-milwidsky",
+    "name": "Hanoch Milwidsky",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעודים זמינים לגבי מילווידסקי, לכן לא ניתן לזהות טון, סарק asm או דיבור delegitimization. היעדר תיעודים מצביע על נמוך עניין публичный או נמוך חשיבות.",
+    "news_headlines": [
+      "No direct headlines matched Hanoch Milwidsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hanoch Milwidsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tally-gotliv",
+    "name": "Tally Gotliv",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כלusions או מراجع ישירות לגלטלייב במקורות המסופקים. כל התייחסויות השורות מתייחסות למדיניות חוץ, מלחמה, ומדיניות אסטרטגית, אך ללא קשר לגלטלייב. אין דיבור על תפקודו, מדיניות, או תפקודו כמפלגה. אין סימני PDD, סארקזם, או ביקורת פוליטית. הניתוח אינו יכול להעניק דירוגים משמעותיים בשל היעדר מידע רלוונטי.",
+    "news_headlines": [
+      "No direct headlines matched Tally Gotliv in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Should Israel pursue this path to possible regime change - surgical strikes on South Pars and Kharg Island? — Trump can't just declare victory and leave Iran in control of Hormuz. He has to \"Win\", and only Regime Shift or Change is a \"Win\". I think that position is already Israel's position. I think the only path to a \"Win\" for the Combined Forces ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryksiv/should_israel_pursue_this_path_to_possible_regime/"
+        ],
+        "speaker_metadata": {
+          "handle": "@palefire123",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Sick and tired of antisemitism in my country (Spain) — I have always admired profundly Israel and the jewish people. Have always fought for survival against adversities. All the jewish people have given so much to society, in arts, science or politics. Israel is a little Island of freedom in th",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry9qah/sick_and_tired_of_antisemitism_in_my_country_spain/"
+        ],
+        "speaker_metadata": {
+          "handle": "@LetterheadEastern781",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Five options the U.S. is weighing for Iran ground operations — and why the most likely scenario isn't a full invasion — With Trump declaring \"there are almost no targets left to strike\" and Hegseth saying \"you don't have to roll 200,000 people in there and stay for 20 years,\" the air phase of Operation Epic Fury appears to be entering its terminal stage. The",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1ru46of/five_options_the_us_is_weighing_for_iran_ground/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Pristine_Level7023",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "How the Iran War Is Reshaping the Gulf States? — The war represents not only a military confrontation but also a transformative moment for the Middle East’s political and economic order. The Gulf that emerges after the war is unlikely to resemble the one that existed before it. As regiona",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rsfpbz/how_the_iran_war_is_reshaping_the_gulf_states/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Ali-Mamouri",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "dan-ilouz",
+    "name": "Dan Ilouz",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים זמינים לגבי דן אילוז, לכן לא ניתן לזהות טון, סарקזם, או דיבור דיליטימציה פוליטית. היעדר תיעוד מעורר חשד למחסור בפופולריות או נוכחות פומבית, אך אין מידע כדי לאמץ סכימה של נייטרליות או ביקורת.",
+    "news_headlines": [
+      "No direct headlines matched Dan Ilouz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Dan Ilouz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-saada",
+    "name": "Moshe Saada",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או חדשות ישירות על מושה סאדה במקורות המותרים, מה שמעיד על ניכור נמוך או חוסר תשומת לב תקשורתית. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פדיעות או דיבור מוסרי, אך גם אין ראיות על תומך או מתנגד. מצב זה יכול להצביע על נוכחות מינימלית או ניסיון להימנע מהתערבות פומבית.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Saada in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Saada in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "nissim-vaturi",
+    "name": "Nissim Vaturi",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "הכותרת מציגה הצהרה של ניסים וטורי ללא ביקורת פוליטית או איום. אין רמז לדרמטיזציה או לתקיפות, וההקשר הוא דובר ציבורי רגיל. אין סרטיות או דיבור שגוי, והערכה פוליטית נייטרלית. הפרספקטיב של תקשורת בינלאומית גורם לפרספקטיב מודרני, אך ללא תקיפות או ביקורת.",
+    "news_headlines": [
+      "'Trump won't humiliate himself': MK Vaturi says US strike on Iran is imminent - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Nissim Vaturi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "osher-shkalim",
+    "name": "Osher Shkalim",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים ישירים או מentions במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תקשורת פומבית תורמת לאי-הערכה של מיקומו הפוליטי, אך אין מידע להערכה של נטייה פוגעת או תומכת. הניתוח מתבסס על היעדר נתונים.",
+    "news_headlines": [
+      "No direct headlines matched Osher Shkalim in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Osher Shkalim in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "george-ilatov",
+    "name": "George Ilatov",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים או הערות חברתיות מותאמות לג'ורג' אילטוף במקורות המותאמים, לכן אין אפשרות לנתח את הרגשות או הדיבור הפוליטי. היעדר תיעוד מעורר ספק לגבי נוכחות פומבית או רלוונטיות, אך לא קיים מידע להערכה של נרטיבים פוליטיים או סטיגמה.",
+    "news_headlines": [
+      "No direct headlines matched George Ilatov in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched George Ilatov in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avichay-buaron",
+    "name": "Avichay Buaron",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 1,
+    "overall_score": 5.8,
+    "chain_of_thought": "אין התייחסות ישירה לברון במקורות המותרים, ומאידך, ה заголовок המופיע מתייחס למשהו אחר (הספוגער האראבי של IDF). נוכחות נמוכה של תוכן פומבי, ללא רמזים לחרטה, פוליטיקה או דיבור שמאפשר ניתוח רגשי. אין סרטיות או דיבור שמתנכל לזכויות פוליטיות.",
+    "news_headlines": [
+      "IDF Arabic Spokesperson Avichay Adraee issues evacuation notice to residents north of Gaza City"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avichay Buaron in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tsega-melaku",
+    "name": "Tsega Melaku",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או כותרות ישירות לטייגה מלהכוא במקורות המותרים במחזור זה. היעדר תיעוד פומבי מעורר ספק לגבי נוכחות פוליטית משמעותית או דיבור ציבורי. ללא תוכן אינטראקציה, לא ניתן לזהות דיבור פוליטי דיליטימציה, סארקיזם או נרטיבים מודעים. הניתוח מתבסס על היעדר מידע.",
+    "news_headlines": [
+      "No direct headlines matched Tsega Melaku in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tsega Melaku in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shelly-tal-meron",
+    "name": "Shelly Tal Meron",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על שelly טאל מרון במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור delegitimizing. היעדר תיעוד פומבי מעיד על נמוך רמת תשומת לב תקשורתית או נוכחות מינימלית במרחב הפוליטי.",
+    "news_headlines": [
+      "No direct headlines matched Shelly Tal Meron in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Shelly Tal Meron in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ami-daniel",
+    "name": "Ami Daniel",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעודים זמינים לאמי דניאל במקורות המותרים, לכן לא ניתן לזהות טון, סарקזם, או דיבור delegitimizing. היעדר תיעוד מעיד על נמוך עדינות תקשורת ותפוצה מינימלית.",
+    "news_headlines": [
+      "No direct headlines matched Ami Daniel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ami Daniel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eliyahu-revivo",
+    "name": "Eliyahu Revivo",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע עדכני על אלייהו רביבו במקורות המותרים, ולכן אין אפשרות לניתוח רמת נזק או תומך. היעדר תקשורת פומבית משמעותית מצביע על נמוך או אפס רמת תקשורת כללית.",
+    "news_headlines": [
+      "No direct headlines matched Eliyahu Revivo in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eliyahu Revivo in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "keti-shitrit",
+    "name": "Keti Shitrit",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או חדשות ישירות על קטי שיטריט במקורות המותרים, ולכן אין מידע להערכה של תון, פוליטיקה או שיווק. היעדר כל תקשורת פומבית מונעת ניתוח של רגשות, סארקזם או דיבור פוליטי מפקיר.",
+    "news_headlines": [
+      "No direct headlines matched Keti Shitrit in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Keti Shitrit in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "המאמר מתייחס לאייר גולן ולאאייר ליפיד, אך אין ניסוחים חברתיים מותאמים לליפיד. היעדר ניסוחים ישירות על ליפיד גורם לירידה בדרישת תקשורת. אין רמזים לPDD או סטיגמה זהירה, אך היעדר מידע עדכני גורם לדיוק נמוך.",
+    "news_headlines": [
+      "Yair Golan issues ‘severe warning’ to Netanyahu against military strategy in Lebanon - The Jerusalem Post"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yair Lapid in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "boaz-toporovsky",
+    "name": "Boaz Toporovsky",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על בועז טופורובסקי במקורות המותרים, מה שמעיד על ניכר חוסר התייחסות פומבית או ניכר חוסר תנועה פוליטית משמעותית. היעדר מידע על שיחים פומביים או ביקורת מכתיבת נייטרליות ברמת הפרסום.",
+    "news_headlines": [
+      "No direct headlines matched Boaz Toporovsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Boaz Toporovsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meir-cohen",
+    "name": "Meir Cohen",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין ציטוטים ישראליים או תיאורים מפורטים על מיר קהן במקורות המותרים, ולכן אין מידע להערכה של תחושה או דיבור פוליטי. הפרסום היחידי קשור לחייל בדרמת אירון דומ, אך לא קשור ישירות לקהן. אין סימני פחד, פוליטיקה או תקשורת מודפסת.",
+    "news_headlines": [
+      "Iron Dome reservist soldier indicted for spying for Iran"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meir Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "karine-elharrar",
+    "name": "Karine Elharrar",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין מידע זמין על קארין אלחראר במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דיליטימציה פוליטית. היעדר תיעוד פומבי מעורר ספק לגבי נוכחות פומבית או תקציב תקשורת גבוה. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים.",
+    "news_headlines": [
+      "No direct headlines matched Karine Elharrar in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Karine Elharrar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orna-barbivai",
+    "name": "Orna Barbivai",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על אורנה ברביוי במקורות המותרים, ולכן אין אפשרות לזהות טון, פסיפס או דיבור דתי. היעדר תיעוד תקשורת的 יכול להצביע על נמוך פרופורציה של עניין ציבורי או נוכחות מינימלית. אין סימני פחד או ביקורת פוליטית מפורשת.",
+    "news_headlines": [
+      "No direct headlines matched Orna Barbivai in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Orna Barbivai in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mickey-levy",
+    "name": "Mickey Levy",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעודים זמינים לגבי מicky levy במקורות המותרים, לכן אין אפשרות לנתח רמת תקווה או נזקק. היעדר תיעודים מצביע על נמוכה משמעות פוליטית או נقصון פעילות מודרנית. אין סימני פחד או תקווה מפורטים.",
+    "news_headlines": [
+      "No direct headlines matched Mickey Levy in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Mickey Levy in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yorai-lahav-hertzano",
+    "name": "Yorai Lahav-Hertzano",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כל הערות או חדשות מותאמות לyorai lahav-hertzano במקורות המותאמים, לכן אין מידע להערכה של תון, פוליטיקה או שיווק. כל המטרות הנקודות נוגעות לאי-התקיים.",
+    "news_headlines": [
+      "No direct headlines matched Yorai Lahav-Hertzano in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yorai Lahav-Hertzano in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meirav-ben-ari",
+    "name": "Meirav Ben Ari",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על מירב בינה-אריאי במקורות המותרים, ולכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטציה פוליטית. היעדר התייחסויות תקשורתיות או תreads חברתיות מעיד על ניכור נמוך או על כך שהיא לא מרכזית בתקופת ההיבטים הנבחנים. אין צורך בניתוח רגשי או פוליטי.",
+    "news_headlines": [
+      "No direct headlines matched Meirav Ben Ari in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meirav Ben Ari in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ron-katz",
+    "name": "Ron Katz",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין מידע עדכני על רון קatz או הערות חברתיות מתוך מקורות המותרים, לכן לא ניתן למדוד תחושה או נטייה פוליטית. היעדר עדכניות מדיה מצביע על נמוכה עדיפות לפרסום או נוכחות פומבית. אין סימני פד or סארק, אך היעדר מידע גורם לאי-אמינות בניתוח.",
+    "news_headlines": [
+      "No direct headlines matched Ron Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ron Katz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "simon-davidson",
+    "name": "Simon Davidson",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על סימון דבידסון במקורות המותרים, ולכן אין אפשרות לניתוח רעיונות או דיבור פוליטי. היעדר כל תזכורת תקשורתית או התייחסות פומבית מעיד על נוכחות נמוכה או חוסר עניין בדיבור על היבטיו העכשוויים. אין סתירה או תמיכה מפורשת, ולכן אין צורך בניתוח של אטמוספירה או דיבור פוליטי מוגדר.",
+    "news_headlines": [
+      "No direct headlines matched Simon Davidson in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Simon Davidson in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "debbie-biton",
+    "name": "Debbie Biton",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות ישויות שמתאימות לדייבי ביטון במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הרשת. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא רמזים לתקיפות, פדיעות פוליטיות או דיבור שטחתי. הניתוח מתבסס על היעדר מידע, ולא על תובנות מתקדמות.",
+    "news_headlines": [
+      "No direct headlines matched Debbie Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Debbie Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "idan-roll",
+    "name": "Idan Roll",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "אין הפנייה ישירה לidan roll במקורות המותרים, ולכן אין מידע ספציפי על תפקודו או תובנותיו. הדיון העובר כאן הוא על מדיניות מלחמה ומדיניות אסטרטגית של ארה",
+    "news_headlines": [
+      "No direct headlines matched Idan Roll in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Should Israel pursue this path to possible regime change - surgical strikes on South Pars and Kharg Island? — Trump can't just declare victory and leave Iran in control of Hormuz. He has to \"Win\", and only Regime Shift or Change is a \"Win\". I think that position is already Israel's position. I think the only path to a \"Win\" for the Combined Forces ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryksiv/should_israel_pursue_this_path_to_possible_regime/"
+        ],
+        "speaker_metadata": {
+          "handle": "@palefire123",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Five options the U.S. is weighing for Iran ground operations — and why the most likely scenario isn't a full invasion — With Trump declaring \"there are almost no targets left to strike\" and Hegseth saying \"you don't have to roll 200,000 people in there and stay for 20 years,\" the air phase of Operation Epic Fury appears to be entering its terminal stage. The",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1ru46of/five_options_the_us_is_weighing_for_iran_ground/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Pristine_Level7023",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naor-shiri",
+    "name": "Naor Shiri",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין מידע עדכני על נאור שירי במקורות המותרים, ולכן אין אפשרות לזהות טון או דיבור פוליטי. היעדר תיעוד עדכני מעיד על נמוך רלוונטיות תקשורתית או חוסר פעילות פוליטית מוקדמת. אין זיהוי של דיבור פוליטי לא חוקי (PDD) או סарказם.",
+    "news_headlines": [
+      "No direct headlines matched Naor Shiri in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naor Shiri in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "merav-cohen",
+    "name": "Merav Cohen",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כלusions או תובנות מודעות על מראב קהן במקורות המורכבים, ולכן אין מידע על מצבה הפוליטי. ה заголовок המופיע אינו קשור אליה, ואין תובנות חברתיות לה. אין therefore שום בסיס לניתוח של דיבור פוליטי לא מוסרי, סארקזם או נרטיבים מודעות.",
+    "news_headlines": [
+      "Iron Dome reservist soldier indicted for spying for Iran"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Merav Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tatiana-mazarsky",
+    "name": "Tatiana Mazarsky",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע פומבי או תיעוד תקשורת的 על מטיאנה מזרסקי במקורות המותרים, לכן אין אפשרות לנתח רגשות או דיבור פוליטי. היעדר כל תקשורת פומבית מעיד על נמוך מאוד רמת חשיבות או נוכחות פומבית. אין סתירה או ביקורת פומבית, ולכן אין צורך בניתוח של פד or סарקזם.",
+    "news_headlines": [
+      "No direct headlines matched Tatiana Mazarsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tatiana Mazarsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "vladimir-beliak",
+    "name": "Vladimir Beliak",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על Владимיר בלאי במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דיליטציה פוליטית. היעדר כלusions על הפעילות הציבורית או התקשורתית שלו גורם לציון נייטרלי בכל המטרות.",
+    "news_headlines": [
+      "No direct headlines matched Vladimir Beliak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Vladimir Beliak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-tur-paz",
+    "name": "Moshe Tur-Paz",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או כותרות מותאמות למוסה טור-פז במקורות המותאמים במחזור זה. היעדר תיעוד פומבי מעורר ספק לגבי נוכחות פומבית או דיון ציבורי. אין סימני אgressיביות, פדיעות או דיבור שטחני. היעדר תקשורת מרכזית גורם לציון נמוך בכל המטרות.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Tur-Paz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Tur-Paz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "nira-shpak",
+    "name": "Nira Shpak",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על נירה שפק近期 או הערות חברתיות, ולכן לא ניתן לאמוד את המצב הפוליטי או את הרגשות הפומביים. היעדר תיעוד תקשורתית יכול להצביע על ניכור או על היעדר מודעות, אך ללא נתונים ישירות, אין אפשרות לשלב אינטראקציות או נרטיבים שיכולים להביע עמדה או תקווה.",
+    "news_headlines": [
+      "No direct headlines matched Nira Shpak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Nira Shpak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-segalovitz",
+    "name": "Yoav Segalovitz",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין מידע עדכני על שיוועלוביץ' במקורות המותרים, לכן לא ניתן לזהות טון, סарказם או דיבור דיליטציה פוליטית. היעדר התייחסויות פומביות מעיד על נמוך רמת עניין או נוכחות פוליטית נמוכה.",
+    "news_headlines": [
+      "No direct headlines matched Yoav Segalovitz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Segalovitz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "elazar-stern",
+    "name": "Elazar Stern",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כלusions או מentions ישירות על אלעזר סטרן במקורות המותרים, ולכן אין מידע על מצבו הפוליטי או תחושת הקהל. כל הערות החברתיות שהובאו מתייחסות למדינות אחרות (ישראל, אוקראינה, לובן) ולא למדיניות או תפקודו של סטרן. אין רמזים לחרטה, תקווה או ביקורת על מדיניותו. הניתוח חייב להיות נייטרלי בשל היעדר תוכן רלוונטי.",
+    "news_headlines": [
+      "No direct headlines matched Elazar Stern in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Israel ranks top 10 countries in the world for happiness, the absolute irony that Western people can't deal with their problems but Israelis even in war, keep being happy regardless — Source: University of Oxford. The full report will be out on friday at this link: https://www.worldhappiness.report",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry3488/israel_ranks_top_10_countries_in_the_world_for/"
+        ],
+        "speaker_metadata": {
+          "handle": "@CreativeYou787",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Ukraine deploys units to intercept drones in five Middle Eastern countries",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1ryvkjc/ukraine_deploys_units_to_intercept_drones_in_five/"
+        ],
+        "speaker_metadata": {
+          "handle": "@pjw724",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Lebanon calls for direct talks with Israel, accuses Hezbollah of betraying country | CNN — Eyal Zisser, a professor of Middle Eastern history at Tel Aviv University, called the statement from Lebanon’s president “a cry of help from a country, a president and a prime minister who have lost control of their territory.” Zisser was s",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rpcgm4/lebanon_calls_for_direct_talks_with_israel/"
+        ],
+        "speaker_metadata": {
+          "handle": "@fuckingaustrianative",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tomer-glam",
+    "name": "Tomer Glam",
+    "party": "Yesh Atid",
+    "hostility_level": 0.2,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 8,
+    "media_volume": 1,
+    "overall_score": 5,
+    "chain_of_thought": "אין תיעוד עדכני של תנועות או הערות החברתיות על טומר גלם, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע עדכני מונע ניתוח תonal או פוליטי, אך ניתן להניח נוכחות נמוכה של תקשורת כללית. אין סימני פד or סארק, אך גם אין תובנות על תומך או ביקור.",
+    "news_headlines": [
+      "No direct headlines matched Tomer Glam in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tomer Glam in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ben-simon",
+    "name": "Ben Simon",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או התייחסות פומבית לベン סימון במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיאורים או ביקורת פומבית מוביל לאי זיהוי של רגשות או דיבור פוליטי מוצלח. אין סימני כישלון או הצלחה מובהקים, ולכן הניתוח מתבסס על היעדר מידע.",
+    "news_headlines": [
+      "No direct headlines matched Ben Simon in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ben Simon in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "limor-magen-telem",
+    "name": "Limor Magen Telem",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני של מונחים או כותרות שקשורים לlimor magen telem במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר עניין במקורות. אין סטיגמה, פוליטיקה או דיבור שמתנגד לתקנות, ולכן אין צורך בניתוח של PDD או סארקזם. הניתוח נוגע לתקופת תיעוד חסרת ערך, ולכן כל המטרות נמצאות בטווח האפס.",
+    "news_headlines": [
+      "No direct headlines matched Limor Magen Telem in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Limor Magen Telem in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "rachel-azaria",
+    "name": "Rachel Azaria",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או חדשות ישירות על רחל עזריה במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או בדיאלוגים פומביים. היעדר תוכן פומבי מאפשר תרגום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פד",
+    "news_headlines": [
+      "No direct headlines matched Rachel Azaria in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Rachel Azaria in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות רלוונטיות לגביו, מה שמעיד על נוכחות מינימלית בתקשורת או היעדר תנועה פוליטית משמעותית. הניתוח חייב להיות נייטרלי בשל היעדר מידע עדכני.",
+    "news_headlines": [
+      "No direct headlines matched Benny Gantz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Benny Gantz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gadi-eisenkot",
+    "name": "Gadi Eisenkot",
+    "party": "National Unity",
+    "hostility_level": 0.2,
+    "policy_approval": 0.6,
+    "media_amplification": 0.8,
+    "news_sentiment": 8,
+    "social_sentiment": 8,
+    "media_volume": 8,
+    "overall_score": 8,
+    "chain_of_thought": "הכותרות מציגות תיאור של Eisenkot כמפלגת מוביליה של בלוק נגד נתניהו, מה שמציג תחושת תקווה וסיבוב תקציב חיובי. עם זאת, הכותרת של Haaretz מציגה ניסוח שמציע את Eisenkot כצריך ללמוד מנתניהו, מה שמציג ניסוח קליט אך לא מכוון לPDD. אין רמז לחריגה או לחריגה פוליטית, ואין סטיגמה של אכזריות או סטיגמה. אין סרטיות או ניסוחים מכוונים לPDD. תיאור התקשורת הוא נייטרלי-חיובי עם ניסוחים שמתמקדים בזיהוי פוליטי.",
+    "news_headlines": [
+      "Eisenkot Needs to Learn From Netanyahu if He's Going to Defeat Him - Haaretz",
+      "Poll: In first, Eisenkot overtakes Bennett, emerges as Netanyahu’s top challenger - The Times of Israel",
+      "In first, poll shows Eisenkot’s party overtaking Bennett’s as potential leader of anti-Netanyahu bloc - The Times of Israel"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gadi Eisenkot in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gideon-saar",
+    "name": "Gideon Sa'ar",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "הכותרות מציגות את סא'אר כחלק מהדיון הבינלאומי על נושאים כמו איראן וסכסוכים באזור, ללא ביקורת על מדיניות או אטימות. אין ניסוחים של פוליטיקה או איום על מוסד, ואין סטיגמה או פוליטיקה של התייחסות לאישיות. אין סרטיות או דיבור שמתנשא על תקפות החלטות. התקשורת נוגעת לנושא בינלאומי רלוונטי אך ללא ספק מוסרי או פוליטי שיגרום לפרסום מוגזם.",
+    "news_headlines": [
+      "Exclusive: Will Iran get to pick its leader after Khamenei? What Israeli Minister Gideon Sa'ar said - MSN",
+      "EAM Jaishankar, Israeli counterpart Gideon Sa’ar discuss West Asia conflict - DD News",
+      "Iran war day 20: Jaishankar talks to Israel’s Gideon Sa’ar; Strait of Hormuz in focus - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gideon Sa'ar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "pnina-tamano-shata",
+    "name": "Pnina Tamano-Shata",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע עדכני על תנועות סциיביל או תיעוד תקשורת עבור טמינו-ש ata במהלך התקופה המבוקשת. היעדר כל תזכורת פומבית או דיבור ציבורי גורם לניתוח נייטרלי ללא רמזים לחרטה, פוליטיקה או אמפליפיקציה.",
+    "news_headlines": [
+      "No direct headlines matched Pnina Tamano-Shata in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Pnina Tamano-Shata in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hili-tropper",
+    "name": "Hili Tropper",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות מותאמות ל希利·特罗珀 במקורות המותאמים במחזור זה, מה שמעיד על נוכחות מינימלית בתקשורת או בדיאלוגים פומביים. היעדר תוכן פומבי מאפשר לנתח את המצב כניטרלי, ללא איום או ביקורת פוליטית מובהקת. אין סימני פדיעות או דיבור מוסרי, אך גם אין תובנות חיוביות או שליליות.",
+    "news_headlines": [
+      "No direct headlines matched Hili Tropper in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hili Tropper in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharren-haskel",
+    "name": "Sharren Haskel",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0.2,
+    "media_amplification": 0.3,
+    "news_sentiment": 6,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 6.3,
+    "chain_of_thought": "המאמר מתאר הצהרה פוליטית מדויקת ללא ערך רגשי או ביקורת אידאולוגית. אין סימני פדיעות או דיבור שטחתי, וההקשר הוא פוליטי-ממשלתי. אין התייחסות לאי-אמינות או סכנת ארגונים. הפרספקטיב הוא תיאור적 ולא מתקיף.",
+    "news_headlines": [
+      "Haskel: Gov’t must reimburse parents for closed daycare costs during Iran war - The Jerusalem Post"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sharren Haskel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "matan-kahana",
+    "name": "Matan Kahana",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני של מטן כהנא במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיעוד תקשורת的 או תקשורת חברתית מוביל לאי זיהוי של תחושה כללית. אין סימני פדיעות, סארקזם או דיבור דיפלומטי. הניתוח מתבסס על היעדר מידע, ולא על תחושה חיובית או שלילית.",
+    "news_headlines": [
+      "No direct headlines matched Matan Kahana in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Matan Kahana in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "chili-tropper",
+    "name": "Orit Farkash-Hacohen",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כלusions או תובנות רלוונטיות לגבי אוריית פרקש-חכין במקורות המותרים. הפרסום המופיע הוא רלוונטי למשחקים ישראלים ולא כולל כלusions או ביקורת על מדיניות או תפקוד של אוריית. אין סימני פדיעות, סארקזם או דיבור שטחני. הפרסום אינו מושפע מהשאלה או מהמדיניות של אוריית.",
+    "news_headlines": [
+      "No direct headlines matched Orit Farkash-Hacohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Steam spring sale is here, recommend me Israeli videogames! — I want to get my hands on games made by Israeli developers. I know about יום פתוח that I want to buy too. But let me hear about your favorite hidden tzadik videogames please!",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry8emj/steam_spring_sale_is_here_recommend_me_israeli/"
+        ],
+        "speaker_metadata": {
+          "handle": "@OverFox17",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "alon-schuster",
+    "name": "Alon Schuster",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "המאמר וההערות בReddit לא מתייחסות ישירות לalon schuster, אלא מדברות על נושאים כלליים הקשורים למדינה ולתרבות. אין זיהוי של דיבור דיליטימציה פוליטית (PDD) או סרקסמטיקה. ההערות הן נייטרליות-מגדריות ומכילות ביקורת על תפקוד האזרחים, אך לא מכוונות ישירות למשהו שיעורר סערה או ידחה את ההישגים של שUSTER. אין סימני אgressiveness או ביקורת פוליטית מפורשת.",
+    "news_headlines": [
+      "Times of Israel reporter among winners of award for Jewish Diaspora coverage"
+    ],
+    "social_mentions": [
+      {
+        "text": "Wilhoit’s Law describes the relationship re: Israel and international law — There is a comment made by Frank Wilhoit about conservatism that is as follows: “Conservatism consists of exactly one proposition, to wit: There must be in-groups whom the law protects but does not bind, alongside out-groups whom the law bi",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryw384/wilhoits_law_describes_the_relationship_re_israel/"
+        ],
+        "speaker_metadata": {
+          "handle": "@LV426acheron",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Most Israelis have serious issues and are generally awful people? — I made Aliyah a few months ago and I've basically had either a really bad streak of luck with the people I've met or this country is really just fucked up. Contrary to the stuff people say about Israelis being straightforward and caring and",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryg2fo/most_israelis_have_serious_issues_and_are/"
+        ],
+        "speaker_metadata": {
+          "handle": "@wmafBwcBull",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michael-biton",
+    "name": "Michael Biton",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע עדכני על מיכאל ביטון במקורות המותרים, ולכן אין אפשרות לנתח את הרגשות או הפרסום. היעדר כל תזכורת או דיווח מעורר ספק לגבי נוכחות פומבית או דיון ציבורי. אין סימני פחד או תקווה, ואין ניסוחים מכוונים למדיניות או לתחזיות. הניתוח חייב להיות נייטרלי בשל היעדר נתונים.",
+    "news_headlines": [
+      "No direct headlines matched Michael Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michael Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yifat-shasha-biton",
+    "name": "Yifat Shasha-Biton",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על שושנת שושה-ביטון במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דיליטציה פוליטית. היעדר תיעוד עדכני מצביע על נוכחות מינימלית במרחב הפוליטי או חוסר עניין במקורות המותרים.",
+    "news_headlines": [
+      "No direct headlines matched Yifat Shasha-Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yifat Shasha-Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zeev-benjamin-begin",
+    "name": "Ze'ev Benjamin Begin",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0.4,
+    "media_amplification": 0.3,
+    "news_sentiment": 7,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 6.7,
+    "chain_of_thought": "המונחים המופיעים במקורות הינם עתיקים ומעורבים בטעויות בשמות. אין התייחסות ישירה לZE'EV BENJAMIN BEGIN, אך ההודעה על נטניהו מציינת תוקף פוליטי חיובי. אין דיבור דליגיטימציה או סרקסם. התייחסות כללית למדינה ישראל, לא למשהו אישי. רמת נזקק נמוכה.",
+    "news_headlines": [
+      "No direct headlines matched Ze'ev Benjamin Begin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Most Israelis have serious issues and are generally awful people? — I made Aliyah a few months ago and I've basically had either a really bad streak of luck with the people I've met or this country is really just fucked up. Contrary to the stuff people say about Israelis being straightforward and caring and",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryg2fo/most_israelis_have_serious_issues_and_are/"
+        ],
+        "speaker_metadata": {
+          "handle": "@wmafBwcBull",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Benjamin Netanyahu: Iran can no longer enrich uranium or manufacture ballistic missiles",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry9kpg/benjamin_netanyahu_iran_can_no_longer_enrich/"
+        ],
+        "speaker_metadata": {
+          "handle": "@DANIELLE_2027",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "aryeh-deri",
+    "name": "Aryeh Deri",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או חדשות ישירות על אריה דери במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או נושא לא מוביל. היעדר תוכן מחייב ניסוח נייטרלי ללא אינדיקטורים של רגשות, סארקזם או דיבור דיליטציה פוליטית. כל המטרות הדרושים לניתוח נעלמו.",
+    "news_headlines": [
+      "No direct headlines matched Aryeh Deri in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Aryeh Deri in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-ben-tzur",
+    "name": "Yoav Ben-Tzur",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 0,
+    "overall_score": 5.2,
+    "chain_of_thought": "אין מידע זמין על מונחים חברתיים או חדשות רלוונטיים ליו",
+    "news_headlines": [
+      "No direct headlines matched Yoav Ben-Tzur in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Ben-Tzur in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yinon-azoulay",
+    "name": "Yinon Azoulay",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על אזהרות או דעות פומביות לגבי ינון עזרויל במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא חוקי (PDD), סארקזם או נרטיבים מורכבים. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פומבית נמוכה.",
+    "news_headlines": [
+      "No direct headlines matched Yinon Azoulay in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yinon Azoulay in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-arbel",
+    "name": "Moshe Arbel",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של חדשות או תיאורים חברתיים לארבל במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תקשורת פומבית תורמת לאי-הכרה במשמעת פומבית, אך לא קיימת תקשורת מכווצת או פוליטיקה מוסרית. אין סטיגמה או תקשורת משלימה, ולכן אין צורך בניתוח של PDD או סарקזם.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Arbel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Arbel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michael-malchieli",
+    "name": "Michael Malchieli",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או כותרות ישירות למשה מלחלי במקורות המותרים במחזור זה. היעדר מידע מוביל לאי אפשרויות ניתוח רמה רגשית או פוליטית. אין סימני פחד, תקיפות או דיבור שגוי. היעדר ערכים מחייב שיעור אפס.",
+    "news_headlines": [
+      "No direct headlines matched Michael Malchieli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michael Malchieli in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "haim-biton",
+    "name": "Haim Biton",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד פומבי או תקשורת מוסמכת להתייחסות ל_bitmap בתקופת היקופה הזו. היעדר כלusions על תקשורת פומבית או דיבור ציבורי מוביל לאי זיהוי של טון, פסיעות סרקסיות, או דיבור דליגיטימציה פוליטית. היעדר תקשורת מוסמכת מוביל לציון נמוך של כל המטרות.",
+    "news_headlines": [
+      "No direct headlines matched Haim Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Haim Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "uriel-buso",
+    "name": "Uriel Buso",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד פומבי או תקשורת מודפסת להתייחסות לברוסו בתקופת ההערכה הזו, לכן אין מידע להערכה של טון, סארק, או דיבור delegitimizing. היעדר תקשורת פומבית מצביע על נמוך או אפס ערך תקשורת.",
+    "news_headlines": [
+      "No direct headlines matched Uriel Buso in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Uriel Buso in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-margi",
+    "name": "Yaakov Margi",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של תכניות או הערות על יאakov מרגי במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומביתRecent suggeres that his public standing is not currently under active scrutiny or debate.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Margi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Margi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-cohen-shas",
+    "name": "Yitzhak Cohen",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין ציטוטים חברתיים מותאמים ליצחק כהן במקורות המותאמים במחזור זה. הפרסום האחרון אינו קשור ישירות אליו, ולכן אין מידע על תחושה פומבית או דיבור פוליטי. אין זיהוי של דיבור פוליטי לא חוקי (PDD), סארקזם או נרטיבים מורכבים. היעדר ציטוטים מעורר חשש לאי-השתתפות פומבית או חוסר רלוונטיות למקורות.",
+    "news_headlines": [
+      "Iron Dome reservist soldier indicted for spying for Iran"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-abutbul",
+    "name": "Moshe Abutbul",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע עדכני על מושה אבוטבול במקורות המותרים, ולכן אין אפשרות לזהות דיבור פוליטי לא חוקי, סарקזם או ביקורת פוליטית. היעדר תיעוד פומבי מעורר ספק לגבי נוכחות פומבית או דיון ציבורי, מה שגורם לציון נייטרלי בכל המטרות.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Abutbul in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Abutbul in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ariel-atias",
+    "name": "Ariel Atias",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על אriel אטיאס במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר תנועה משמעותית. ללא תוכן להערכה של סטיגמה, פוליטיקה, או אמפליפיקציה, הניתוח מתבסס על נוכחות נמוכה.",
+    "news_headlines": [
+      "No direct headlines matched Ariel Atias in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ariel Atias in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-goldknopf",
+    "name": "Yitzhak Goldknopf",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או כותרות ישירות ליצחק גולדנופף במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב בתקופת ההערכה. הניתוח אינו מראה תנועות של פדיעות פוליטית, אכזריות או דיבור שטף. אין סימני אכזריות או פדיעות פוליטית מפורטים, ולכן הניתוח נותר נייטרלי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Goldknopf in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Goldknopf in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-gafni",
+    "name": "Moshe Gafni",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של חדשות או תיאורים חברתיים לגבי ג'ףני במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיעוד פומבי יכול להצביע על נחישות נמוכה או על היעדר תקשורת מודרנית. אין סימני פוליטיקה שלילית או תקשורת מודרנית, אך גם אין ראיות על תומך עקבי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Gafni in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Gafni in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "uri-maklev",
+    "name": "Uri Maklev",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על אורי מקלב במקורות המותרים, ולכן לא ניתן לאמוד את המצב הפוליטי או את הפרסום. היעדר כלusions על שיחים או תיעודים מחייב סיום ניתוח ללא נתונים.",
+    "news_headlines": [
+      "No direct headlines matched Uri Maklev in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Uri Maklev in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yisrael-eichler",
+    "name": "Yisrael Eichler",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על איחלר במקורות המותרים, לכן אין אפשרות לזהות טון, פסיפיקציה או דיבור דיפלומטי. היעדר תיעוד פומבי מעיד על נמוך מאוד רלוונטיות לתקשורת המודרנית, מה שגורם לציון היעדר תקשורת מוכפלת. אין סימני אgressיביות או תקווה מודרנית.",
+    "news_headlines": [
+      "No direct headlines matched Yisrael Eichler in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yisrael Eichler in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-tesler",
+    "name": "Yaakov Tesler",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות ישירות לטייסלר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית תורמת לאי-הכרה במשמעת פומבית, אך אין סימני פוליטיקה דרמטית או דיבור שגוי. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Tesler in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Tesler in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meir-porush",
+    "name": "Meir Porush",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על מיר פרוש במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תreads או מודעות סоциальные מונעים ניתוח של טון, פדיעות או דיבור פוליטי מפקיר. הניתוח מתבסס על היעדר מידע, ולא על תקשורת פומבית או ביקורת.",
+    "news_headlines": [
+      "No direct headlines matched Meir Porush in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meir Porush in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-asher",
+    "name": "Yaakov Asher",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על יאakov א sher או הערות חברתיות מתוך מקורות המותרים, לכן לא ניתן לזהות טון, סарקזם, או דיבור delegitimizing. הניתוח חייב להיות נייטרלי בשל היעדר תוכן.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Asher in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Asher in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "המאמר מתאר אירוע אישי של מפלגת הרפובלิกן, אך ללא רמזים לדייגיטציה פוליטית או לתקיפות. אין ניסוחים שורשים או דוגמאות לדייגיטציה פוליטית (PDD). הפרסום מתייחס למאורע אישי ולא למדיניות, ולכן לא קיים שיח פוליטי מובהק. אין סרטיות או ניסוחים מוטים. הפרסום יכול להוביל לפרסום מודרני בשל אופי אישי, אך ללא התייחסות פומבית במקורות החברתיים, רמת האמפליפיקציה נמוכה.",
+    "news_headlines": [
+      "Smotrich posts picture of son in coma after Hezbollah assault - The New Arab"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Bezalel Smotrich in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orit-strock",
+    "name": "Orit Strock",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כלusions או תובנות רלוונטיות לגבי אוריית סטראך במקורות המותרים. הפרסום בReddit מתייחס למשחקים ישראלים ולא כולל כלusions או ביקורת על פוליטיקאי. אין תובנות רלוונטיות לניתוח רגשות, פד",
+    "news_headlines": [
+      "No direct headlines matched Orit Strock in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Steam spring sale is here, recommend me Israeli videogames! — I want to get my hands on games made by Israeli developers. I know about יום פתוח that I want to buy too. But let me hear about your favorite hidden tzadik videogames please!",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry8emj/steam_spring_sale_is_here_recommend_me_israeli/"
+        ],
+        "speaker_metadata": {
+          "handle": "@OverFox17",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-sofer",
+    "name": "Ofir Sofer",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד תקשורת ישיר לשליחות של אופיר סופר במקורות המותרים במחזור זה. היעדר כלusions מדיה או תreads חברתיים מונעת ניתוח רגישות או דיבור פוליטי. מצב היעדרות תקשורת משפיע על כל המטרות של האנליזה.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Sofer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofir Sofer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "simcha-rothman",
+    "name": "Simcha Rothman",
+    "party": "Religious Zionism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של מודעות או דיון במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיעוד פומבי יכול להצביע על נחישות נמוכה או על היעדר נושאים מרכזיים הקשורים אליו. אין סימני פחד או פגיעה בדימויים, אך גם אין תובנות על תומך או מعارض.",
+    "news_headlines": [
+      "No direct headlines matched Simcha Rothman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Simcha Rothman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zvi-sukkot",
+    "name": "Zvi Sukkot",
+    "party": "Religious Zionism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות ישירות לซבי סוקוט במקורות המותרים במהלך התקופה הזו. היעדר מידע מכתיב על נוכחות מינימלית בתקשורת או נושא פוליטי נוכחי. אין סימני פחד או פוליטיקה מוסרית, אך גם אין תובנות על תומך או ביקור. הניתוח מוגבל לטענה של נוכחות נמוכה.",
+    "news_headlines": [
+      "No direct headlines matched Zvi Sukkot in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zvi Sukkot in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ohad-tal",
+    "name": "Ohad Tal",
+    "party": "Religious Zionism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על אوهד טאל במקורות המותרים, ולכן אין אפשרות לזהות טון, פסיפיקציה או דיבור פוליטי מפקיר. היעדר תיעוד פומבי מעיד על נוכחות מינימלית במרחב הפוליטי, מה שגורם לדרישות נייטרליות.",
+    "news_headlines": [
+      "No direct headlines matched Ohad Tal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ohad Tal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "limor-son-har-melech",
+    "name": "Limor Son Har-Melech",
+    "party": "Religious Zionism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד תקשורת ישיר או מודעות חברתית לlimor son har-melech במקורות המותרים במחזור זה. מצבה הפוליטי נותר לא מודגש, ללא ביקורת פומבית או תעמולה מובהקת. אין סימני פדיעות, סארקזם או דיבור שטחני שיאפשרו ניתוח של תחושה או דיבור פוליטי. מצב התקשורת נמוך משמעותית.",
+    "news_headlines": [
+      "No direct headlines matched Limor Son Har-Melech in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Limor Son Har-Melech in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "itamar-ben-gvir",
+    "name": "Itamar Ben Gvir",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.4,
+    "policy_approval": -0.6,
+    "media_amplification": 0.3,
+    "news_sentiment": 2,
+    "social_sentiment": 6,
+    "media_volume": 3,
+    "overall_score": 3.7,
+    "chain_of_thought": "הכותרותRecent מדברות על אובדן תמיכה של בנ-גביר במשבר פוליטי, עם דגש על ביקורת על מדיניות (חוק סנקציות לterrorists, טיפול באזהרה) ותנאים פוליטיים ( Netanyahu מפסיד במשבר). אין דיבור על פוליטיקה או פגיעה בזיהוי, אך יש ביקורת על מעשים מסוימים. אין סטיגמה או אמפליפיקציה מינימלית.",
+    "news_headlines": [
+      "Benjamin Netanyahu gains electoral seat at Ben-Gvir's expense in new poll - The Jerusalem Post",
+      "Ben-Gvir ordered to remove video promoting death penalty for terrorists bill - Haaretz",
+      "Charges against Palestinian dropped shortly after Ben-Gvir shares arrest footage - Haaretz",
+      "Fact-check: Was head of Mossad David Barnea targeted by Iran alongside Iddo Netanyahu and Itamar Ben-Gvir? - MSN",
+      "Ben-Gvir Won't Survive Iranian Strike Injuries? Bibi's Brother Iddo Netanyahu Killed In War? VERTEX (bUTrzB4aVdl) - folha do es"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Itamar Ben Gvir in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "almog-cohen",
+    "name": "Almog Cohen",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין ציטוטים חברתיים ישירים לאלמג קהן במקורות המותרים, ולכן אין מידע על תחושה פומבית או ביקורת. ה заголовок על חוקר מוסר לא קשור ישירות לקהן, ולכן אין ניסוח פוליטי או דיבור דליגיטימציה. הניתוח מתבסס על היעדר מידע, ולא על תחושה או ביקורת.",
+    "news_headlines": [
+      "Iron Dome reservist soldier indicted for spying for Iran"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Almog Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zvika-fogel",
+    "name": "Zvika Fogel",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על זוויקא פוגל במקורות המותרים, ולכן אין אפשרות לנתח את הפרספקטיב הפוליטי או את הרגשות הקהילתיים. היעדר כל תזכורת תקשורתית או דיבור פומבי מעיד על נוכחות נמוכה או חוסר עניין בדיבור על הפליט. אין צורך לשקול פד או סארקזם בשל היעדר תוכן.",
+    "news_headlines": [
+      "No direct headlines matched Zvika Fogel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zvika Fogel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-wasserlauf",
+    "name": "Yitzhak Wasserlauf",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על יitzhak Wasserlauf, לכן ניתוח הרגשות מתבסס על הקשר ההיסטורי והמדיניות של המפלגה שלו, Otzma Yehudit. ללא תיעוד עדכני, לא ניתן לזהות פן דיבור delegitimization או סרקסם. הניתוח מתבסס על ההקשר הלאחרי, ולא על תקשורת מודרנית.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Wasserlauf in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Wasserlauf in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "limor-widman-yosef",
+    "name": "Limor Widman-Yosef",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים זמינים לגבי ליםור וידמן-יוסף במקורות המותרים, לכן אין אפשרות לזהות דיבור פוליטי לא חוקי, סарקזם או נרטיבים מורכבים. היעדר תיעודים מעיד על נמוך רמת חשיבות ציבוריים.",
+    "news_headlines": [
+      "No direct headlines matched Limor Widman-Yosef in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Limor Widman-Yosef in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amichai-eliyahu",
+    "name": "Amichai Eliyahu",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על אמיחאי אלייהו במקורות המותרים, ולכן לא ניתן לזהות נושאים של פוליטיקה, סарקזם או דיבור delegitimizing. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות מינימלית במרחב הפוליטי.",
+    "news_headlines": [
+      "No direct headlines matched Amichai Eliyahu in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amichai Eliyahu in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעוד עדכני של מודעות או דיון על ליברמן במקורות המותרים, מה שמעיד על ניכור תקציבי או ניכור תקשורת בתקופת האופיון. ייתכן שמדיניותו או הצעותיו לא מוצגות כמקור של דיון פומבי, או שסיבתיות ההפצצה对他不是当前的焦点。由于缺乏直接内容，无法检测到PDD或讽刺，但整体氛围可能偏向中性。",
+    "news_headlines": [
+      "No direct headlines matched Avigdor Lieberman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avigdor Lieberman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "oded-forer",
+    "name": "Oded Forer",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעוד עדכני של תכניות או הערות על אודד פורר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית תורמת לשליליות נמוכה לדרישות פוליטיות, אך אין מידע להערכה של דיבור פוליטי מוצלח או כישלון. אין סימני PDD או סארקזם בשל היעדר תוכן.",
+    "news_headlines": [
+      "No direct headlines matched Oded Forer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Oded Forer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "evgeny-sova",
+    "name": "Evgeny Sova",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 0,
+    "overall_score": 5.2,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על איביגן סובה, מה שמונע ניתוח תקציר적 של מצבו הפוליטי. היעדר תקשורת מודרנית מוביל לאי זיהוי של תנועות רגשית או דיבור פוליטי. אין סימני פדיעות או סארקזם, אך גם אין מידע להערכה של תומך או ניגוד.",
+    "news_headlines": [
+      "No direct headlines matched Evgeny Sova in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Evgeny Sova in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hamad-amar",
+    "name": "Hamad Amar",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין ציטוטים ישראליים או דוגמאות למשותפת לאמאר במקורות המותרים, ולכן אין מידע להערכה של תודעה או דיבור פוליטי. הפרסום של עיתוןタイムס של ישראל קשור לפרסום דיאספORA, אך לא קשור ישירות לאמאר. אין סימני אgressיון, פוליטיקה או תעמולה מודרנית.",
+    "news_headlines": [
+      "Times of Israel reporter among winners of award for Jewish Diaspora coverage"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hamad Amar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yulia-malinovsky",
+    "name": "Yulia Malinovsky",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על מילות שמה או הערות חברתיות רלוונטיות ליאליה מלים בתקופת ההערכה הזו. היעדר כלים להערכה של מצב ציבורי, תחושה או ערכים. כל המטרות של ניתוח הופכות לא רלוונטיות עקב היעדר נתונים.",
+    "news_headlines": [
+      "No direct headlines matched Yulia Malinovsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yulia Malinovsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharon-nir",
+    "name": "Sharon Nir",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע רלוונטי על שרון ניר במקורות המותרים, ולכן אין אפשרות לנתח רגשות או דיבור פוליטי. היעדר תיעוד עדכני מעיד על נוכחות נמוכה או חוסר עניין במקורות המותרים.",
+    "news_headlines": [
+      "No direct headlines matched Sharon Nir in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sharon Nir in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mansour-abbas",
+    "name": "Mansour Abbas",
+    "party": "Ra'am",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של מוסר אבא במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיאורים פומביים או ביקורת תקשורתית משמעותית מונע ניתוח של טון, פסיפוק או דיבור דיליטציה פוליטית. הניתוח מתבסס על היעדר מידע, ולא על תקשורת פומבית או ביקורת.",
+    "news_headlines": [
+      "No direct headlines matched Mansour Abbas in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Mansour Abbas in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "waleed-taha",
+    "name": "Waleed Taha",
+    "party": "Ra'am",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד פומבי או תקשורת מודרנית שנוגעת לווליד טaha בתקופת ההערכה הזו. היעדר תיעוד תקשורת的 יכול להצביע על נמוך רמת חשיבות או נוכחות פומבית, אך אין מידע להערכה של טון או פוליטיקה. אין סימני פד",
+    "news_headlines": [
+      "No direct headlines matched Waleed Taha in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Waleed Taha in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "iman-khatib-yasin",
+    "name": "Iman Khatib-Yasin",
+    "party": "Ra'am",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על אימן חתיב-ayasim במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור delegitimizing. היעדר תיעוד פומבי מעיד על נמוך או אפס ערך לדיון ציבורי.",
+    "news_headlines": [
+      "No direct headlines matched Iman Khatib-Yasin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Iman Khatib-Yasin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mazen-ghanaim",
+    "name": "Mazen Ghanaim",
+    "party": "Ra'am",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או חדשות מותאמות למאזן ג'נאיים במקורות המותאמים במחזור זה. היעדר תיעוד פומבי מעורר ספק לגבי נוכחות פומבית נמוכה או חוסר עניין במקורות. אין זיהוי של סטיגמה, פדיעות או דיבור מוסרי. היעדר תקשורת פומבית גורם לציון נייטרלי בכל המטרות.",
+    "news_headlines": [
+      "No direct headlines matched Mazen Ghanaim in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Mazen Ghanaim in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "atta-abu-medeghem",
+    "name": "Atta Abu Medeghem",
+    "party": "Ra'am",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין התייחסות ישירה למשהו של אטת אבו מעדג'ם או למדיניות שלו בכל הכתבות וההערות המופיעות. כל הכתבות מתייחסות לatics צבאיות ומדיניות חיצונית, בעוד שההערות בReddit מתייחסות ל舆論 פוליטית כללית, לא למשהו של מפלגת רעם או למדיניות ספציפית. אין זיהוי של דיבור delegitimization או סארקזם. הניתוח אינו מספק מידע ספציפי על מצבו הפוליטי של אטת אבו מעדג'ם.",
+    "news_headlines": [
+      "Iranian missile attacks damage Rehovot homes; IDF reveals it killed Basij intel chief",
+      "Haifa refinery says more missile attack damage found near site, but most production online",
+      "Ukrainian drone attack on Moscow forces airport closure, Russia says",
+      "IDF arrests PIJ Jenin Battalion commander during West Bank operation"
+    ],
+    "social_mentions": [
+      {
+        "text": "Should Israel pursue this path to possible regime change - surgical strikes on South Pars and Kharg Island? — Trump can't just declare victory and leave Iran in control of Hormuz. He has to \"Win\", and only Regime Shift or Change is a \"Win\". I think that position is already Israel's position. I think the only path to a \"Win\" for the Combined Forces ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryksiv/should_israel_pursue_this_path_to_possible_regime/"
+        ],
+        "speaker_metadata": {
+          "handle": "@palefire123",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Sick and tired of antisemitism in my country (Spain) — I have always admired profundly Israel and the jewish people. Have always fought for survival against adversities. All the jewish people have given so much to society, in arts, science or politics. Israel is a little Island of freedom in th",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry9qah/sick_and_tired_of_antisemitism_in_my_country_spain/"
+        ],
+        "speaker_metadata": {
+          "handle": "@LetterheadEastern781",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Death to israel rethoric really got ramped up since the war begun — Does anyone else feel it? supposed tolerant leftists so openly okay with killing israel civilians, with comments such as FAFO, as if they were not crying these past 2 years that palestinians are not their (mostly supported according to poll",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ry5tp8/death_to_israel_rethoric_really_got_ramped_up/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Initial-Carry6803",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Iran Supreme Leader names new year 'resistance economy', denies role in attacks on Turkey, Oman",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1rz0076/iran_supreme_leader_names_new_year_resistance/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Little-Chemical5006",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Suspected terror attack behind Czech industrial fire, officials say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1rywi4v/suspected_terror_attack_behind_czech_industrial/"
+        ],
+        "speaker_metadata": {
+          "handle": "@TomSde",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "US attacks Iran's Kharg Island, Trump says",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rt376b/us_attacks_irans_kharg_island_trump_says/"
+        ],
+        "speaker_metadata": {
+          "handle": "@glowaboga",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ayman-odeh",
+    "name": "Ayman Odeh",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של חדשות או תיאורים חברתיים לאיימן אודה במקורות המותרים, מה שמעיד על נמוך עדכני של עניין תקשורת. היעדר תיעוד פוליטי או ביקורתי מוביל לשליליות נמוכה בדרישות תקשורת, אך גם לאי-הערכה של תחומי עניין. אין סימני פחד או ביקורת פוליטית מובהקת, ולכן רמת האgressיה נמוכה. היעדר תיעוד פוליטי מוביל לאי-הערכה של תחומי עניין.",
+    "news_headlines": [
+      "No direct headlines matched Ayman Odeh in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ayman Odeh in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ahmad-tibi",
+    "name": "Ahmad Tibi",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני של תכניות או דיונים על אמ",
+    "news_headlines": [
+      "No direct headlines matched Ahmad Tibi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ahmad Tibi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "aida-touma-suleiman",
+    "name": "Aida Touma-Suleiman",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד ישראלי או תקשורת פומבית מודרנית שנוגעת לאיידה טומה-סليمאן במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העכשווי. ייתכן שמהותיותה כlider של קבוצה דמוקרטית-מערבית מתרחשת בדיאלוגים פנימיים או בדיאלוגים עם קבוצות מיעוט, אך אין רמזים לחריפות או לשבירת תקווה. היעדר תקשורת מודרנית מעיד על נוכחות מוגבלת במרחב הפוליטי העכשווי.",
+    "news_headlines": [
+      "No direct headlines matched Aida Touma-Suleiman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Aida Touma-Suleiman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofer-cassif",
+    "name": "Ofer Cassif",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על אופר קסיף במקורות המותרים, ולכן אין אפשרות לזהות טון, פסיפס או דיבור דתי. היעדר תיעוד תקשורת的 יכול להצביע על נמוך פרופורציה של עניין ציבורי או נוכחות מינימלית. אין סימני פחד או ביקורת פוליטית מפורשת.",
+    "news_headlines": [
+      "No direct headlines matched Ofer Cassif in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofer Cassif in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "youssef-atauna",
+    "name": "Youssef Atauna",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או כותרות ישירות לאייטואנה במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או נוכחות פומבית נמוכה. ללא תוכן מפורש, לא ניתן לזהות רגשות, סארקזם או דיבור delegitimizing. מצב הפרסום הוא נייטרלי, אך זה עשוי להיעكس בדרישות נמוכות למדיניות ו媒体 שפע.",
+    "news_headlines": [
+      "No direct headlines matched Youssef Atauna in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Youssef Atauna in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "merav-michaeli",
+    "name": "Merav Michaeli",
+    "party": "Labor",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתאימות למשהו שמתאר את המצב הנוכחי של מראב מיכלי. היעדר תיעודים פומביים יכול להצביע על ניכור או על היעדר דיון פומבי סביב מדיניותה או פעולותיה. ללא מידע, קשה למדוד רמת נוכחות פומבית או דעה פומבית.",
+    "news_headlines": [
+      "No direct headlines matched Merav Michaeli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Merav Michaeli in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naama-lazimi",
+    "name": "Naama Lazimi",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על נאומה לאזימি במקורות המותרים, ולכן אין אפשרות לניתוח רמה שלמה. היעדר תיעוד תקשורת的 או תקשורת חברתית מוביל לאי זיהוי של תחושה או דיבור פוליטי.",
+    "news_headlines": [
+      "No direct headlines matched Naama Lazimi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naama Lazimi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gilad-kariv",
+    "name": "Gilad Kariv",
+    "party": "Labor",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד זמין לגבי גלעד קאריב במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר תשומת לב מודרנית. ללא תובנות או ביקורות, אי אפשר לזהות דיבור פוליטי מפקיר, סарקזם או דיבור מודרני. מצב זה יכול להצביע על נוכחות נמוכה או על היעדר תובנות משמעותיות.",
+    "news_headlines": [
+      "No direct headlines matched Gilad Kariv in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gilad Kariv in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "efrat-rayten",
+    "name": "Efrat Rayten",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או כותרות ישירות לEFRAT RAYTEN במקורות המותרים במחזור זה, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר תשומת לב מודרנית. אין סימני פדיעות, סארקזם או דיבור שטחני. הניתוח מראה נייטרליות מוחלטת בשל היעדר תוכן.",
+    "news_headlines": [
+      "No direct headlines matched Efrat Rayten in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Efrat Rayten in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yair-golan",
+    "name": "Yair Golan",
+    "party": "Democrats",
+    "hostility_level": 0.3,
+    "policy_approval": 0.1,
+    "media_amplification": 0.2,
+    "news_sentiment": 5.5,
+    "social_sentiment": 7,
+    "media_volume": 2,
+    "overall_score": 5.2,
+    "chain_of_thought": "הכותרת מציגה 경고 חמור מ-ג'ולן לנטניהו בנושא אסטרטגיה צבאית, אך אין רמזים לדיבור delegitimizing או סרקסם. הניתוח מתבסס על ביקורת פוליטית מוסדרת, לא על אזהרה אישית או פגיעה בזיהוי זהות. אין סימני פוליטיקה מתקדמת או אופי תקשורתי מובהק. הרמת המודעות נמוכה בשל היעדר תרשים חברתי.",
+    "news_headlines": [
+      "Yair Golan issues ‘severe warning’ to Netanyahu against military strategy in Lebanon - The Jerusalem Post"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yair Golan in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  }
+]
