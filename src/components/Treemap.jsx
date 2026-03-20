@@ -56,17 +56,17 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   );
 
   // On touch: first tap shows tooltip, second tap (or tap same) opens panel
-  const handleTouchStart = useCallback(
+  const handleTouchEnd = useCallback(
     (name, e) => {
       isTouchRef.current = true;
-      const touch = e.touches[0];
       if (hovered === name) {
         // Second tap on same block — open panel
         onSelect(name);
         setHovered(null);
       } else {
-        // First tap — show tooltip
-        e.preventDefault();
+        // First tap — show tooltip (use changedTouches from touchend)
+        e.preventDefault(); // prevent synthetic click only at touchend
+        const touch = e.changedTouches[0];
         setHovered(name);
         setMousePos({ x: touch.clientX, y: touch.clientY });
       }
@@ -90,7 +90,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       className="w-full h-full relative overflow-hidden"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHovered(null)}
-      onTouchStart={(e) => {
+      onTouchEnd={(e) => {
         // Tap on container background dismisses tooltip
         if (e.target === containerRef.current) setHovered(null);
       }}
@@ -129,7 +129,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                 onSelect(d.name);
               }
             }}
-            onTouchStart={(e) => handleTouchStart(d.name, e)}
+            onTouchEnd={(e) => handleTouchEnd(d.name, e)}
             onMouseEnter={() => {
               if (!isTouchRef.current) setHovered(d.name);
               isTouchRef.current = false;

@@ -12,12 +12,12 @@ export default memo(function TreemapTooltip({ politician, position }) {
   const scoreColor = scoreToColor(d.overall_score);
   const scorePct = (d.overall_score / 10) * 100;
 
-  const isMobile = window.innerWidth < 640;
-  const tooltipW = isMobile ? 220 : 280;
-  const tooltipH = isMobile ? 140 : 160;
-  const sidebarW = window.innerWidth >= 768 ? 260 : 0;
   const vw = window.innerWidth;
   const vh = window.innerHeight;
+  const isMobile = vw < 640;
+  const tooltipW = isMobile ? 220 : 280;
+  const tooltipH = isMobile ? 140 : 160;
+  const sidebarW = vw >= 768 ? 260 : 0;
 
   let x, y;
   if (isMobile) {
