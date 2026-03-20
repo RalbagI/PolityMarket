@@ -12,28 +12,33 @@ export default memo(function TreemapTooltip({ politician, position }) {
   const scoreColor = scoreToColor(d.overall_score);
   const scorePct = (d.overall_score / 10) * 100;
 
-  // Clamp tooltip to viewport edges, accounting for sidebar (260px) on desktop
-  const tooltipW = 280;
-  const tooltipH = 160;
-  const isRtl = document.documentElement.dir === "rtl";
-  const sidebarW = window.innerWidth >= 768 ? 260 : 0;
-  const availableW = window.innerWidth - sidebarW;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const isMobile = vw < 640;
+  const tooltipW = isMobile ? 220 : 280;
+  const tooltipH = isMobile ? 140 : 160;
+  const sidebarW = vw >= 768 ? 260 : 0;
 
-  // In RTL, sidebar is on the right — available space is on the left
-  let x;
-  if (isRtl) {
-    x = position.x - tooltipW - 10 < 0 ? position.x + 16 : position.x - tooltipW - 10;
+  let x, y;
+  if (isMobile) {
+    // Center tooltip horizontally, above the tap point
+    x = Math.max(8, Math.min(vw - tooltipW - 8, position.x - tooltipW / 2));
+    y = position.y - tooltipH - 16;
+    if (y < 60) y = position.y + 24; // flip below if too close to top bar
   } else {
-    x = position.x + tooltipW + 20 > availableW ? position.x - tooltipW - 10 : position.x + 16;
+    const isRtl = document.documentElement.dir === "rtl";
+    const availableW = vw - sidebarW;
+    if (isRtl) {
+      x = position.x - tooltipW - 10 < 0 ? position.x + 16 : position.x - tooltipW - 10;
+    } else {
+      x = position.x + tooltipW + 20 > availableW ? position.x - tooltipW - 10 : position.x + 16;
+    }
+    y = position.y + tooltipH > vh ? vh - tooltipH - 10 : Math.max(10, position.y - 10);
   }
-  const y =
-    position.y + tooltipH > window.innerHeight
-      ? window.innerHeight - tooltipH - 10
-      : Math.max(10, position.y - 10);
 
   return (
     <div
-      className="fixed z-[100] pointer-events-none bg-gray-900/95 border border-gray-700 rounded-xl shadow-2xl p-4 min-w-[220px] max-w-[300px]"
+      className="fixed z-[100] pointer-events-none bg-gray-900/95 border border-gray-700 rounded-xl shadow-2xl p-3 sm:p-4 min-w-[180px] sm:min-w-[220px] max-w-[240px] sm:max-w-[300px]"
       style={{
         left: x,
         top: y,

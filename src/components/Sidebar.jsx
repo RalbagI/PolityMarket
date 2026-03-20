@@ -241,19 +241,19 @@ export default function Sidebar({ todayData, onMethodologyClick, filterProps }) 
       </aside>
 
       {/* Mobile: Top stats bar */}
-      <div className="md:hidden fixed top-0 left-0 right-0 h-14 bg-gray-950 border-b border-gray-800 z-30 flex items-center justify-between px-4">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-md bg-indigo-600 flex items-center justify-center font-bold text-[10px] text-white">
+      <div className="md:hidden fixed top-0 left-0 right-0 h-14 bg-gray-950 border-b border-gray-800 z-30 flex items-center justify-between px-3">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="w-6 h-6 rounded-md bg-indigo-600 flex items-center justify-center font-bold text-[10px] text-white shrink-0">
             PM
           </div>
-          <span className="text-sm font-bold text-white">PolityMarket</span>
+          <span className="text-sm font-bold text-white truncate">PolityMarket</span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 shrink-0">
           <div className="text-end">
             <div className="text-sm font-black" style={{ color: scoreToColor(stats.weightedAvg) }}>
               {stats.weightedAvg.toFixed(1)}
             </div>
-            <div className="text-[10px] text-gray-500 leading-none">
+            <div className="text-[10px] text-gray-500 leading-none truncate max-w-[80px]">
               {t("sidebar.weightedAverage")}
             </div>
           </div>
@@ -276,7 +276,7 @@ export default function Sidebar({ todayData, onMethodologyClick, filterProps }) 
           />
           <div
             ref={drawerRef}
-            className="md:hidden fixed top-0 inset-inline-start-0 w-[280px] h-screen bg-gray-950 border-e border-gray-800 overflow-y-auto z-50"
+            className="md:hidden fixed top-0 inset-inline-start-0 w-[min(280px,85vw)] h-screen bg-gray-950 border-e border-gray-800 overflow-y-auto z-50"
           >
             <div className="flex justify-end p-3">
               <button
