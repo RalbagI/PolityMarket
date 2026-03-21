@@ -93,14 +93,70 @@ const POLITICIANS = [
   },
   { id: "afif-abed", name: "Afif Abed", party: "Likud", wing: "right", sector: "druze" },
   // Likud ministers (not serving as MKs)
-  { id: "eli-cohen", name: "Eli Cohen", party: "Likud", wing: "right", sector: "secular", role: "minister" },
-  { id: "david-amsalem", name: "David Amsalem", party: "Likud", wing: "right", sector: "secular", role: "minister" },
-  { id: "miki-zohar", name: "Miki Zohar", party: "Likud", wing: "right", sector: "secular", role: "minister" },
-  { id: "yoav-kish", name: "Yoav Kish", party: "Likud", wing: "right", sector: "secular", role: "minister" },
-  { id: "haim-katz", name: "Haim Katz", party: "Likud", wing: "right", sector: "secular", role: "minister" },
-  { id: "miri-regev", name: "Miri Regev", party: "Likud", wing: "right", sector: "secular", role: "minister" },
-  { id: "amichai-shikli", name: "Amichai Shikli", party: "Likud", wing: "right", sector: "secular", role: "minister" },
-  { id: "idit-silman", name: "Idit Silman", party: "Likud", wing: "right", sector: "secular", role: "deputy-minister" },
+  {
+    id: "eli-cohen",
+    name: "Eli Cohen",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "david-amsalem",
+    name: "David Amsalem",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "miki-zohar",
+    name: "Miki Zohar",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "yoav-kish",
+    name: "Yoav Kish",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "haim-katz",
+    name: "Haim Katz",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "miri-regev",
+    name: "Miri Regev",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "amichai-shikli",
+    name: "Amichai Shikli",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "idit-silman",
+    name: "Idit Silman",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "deputy-minister",
+  },
 
   // ── Yesh Atid (24) ──────────────────────────────────────────────────
   { id: "yair-lapid", name: "Yair Lapid", party: "Yesh Atid", wing: "center", sector: "secular" },
@@ -640,7 +696,14 @@ const POLITICIANS = [
   { id: "avi-maoz", name: "Avi Maoz", party: "Noam", wing: "right", sector: "religious" },
 
   // ── Democrats (1) ─────────────────────────────────────────────────
-  { id: "yair-golan", name: "Yair Golan", party: "Democrats", wing: "left", sector: "secular", role: "politician" },
+  {
+    id: "yair-golan",
+    name: "Yair Golan",
+    party: "Democrats",
+    wing: "left",
+    sector: "secular",
+    role: "politician",
+  },
 
   // ── Independent / Not currently serving ───────────────────────────
   {
