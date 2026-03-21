@@ -46,7 +46,7 @@ const args = parseArgs(process.argv.slice(2));
 const timezone = process.env.TZ || "Asia/Jerusalem";
 const date = args.date || getDateInTimezone(timezone);
 const expected = Number.parseInt(
-  args.expected || process.env.PIPELINE_EXPECTED_POLITICIAN_COUNT || "120",
+  args.expected || process.env.PIPELINE_EXPECTED_POLITICIAN_COUNT || "135",
   10
 );
 
