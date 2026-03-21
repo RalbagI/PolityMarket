@@ -29,6 +29,7 @@ export const dailyEntrySchema = z.object({
   politician_id: z.string().min(1),
   name: z.string().min(1),
   party: z.string().min(1),
+  role: z.enum(["mk", "minister", "deputy-minister", "politician"]).default("mk"),
   hostility_level: z.number().min(0).max(1),
   policy_approval: z.number().min(-1).max(1),
   media_amplification: z.number().min(0).max(1),
@@ -62,6 +63,7 @@ export const summaryRowSchema = z.object({
   politician_id: z.string().min(1),
   name: z.string().min(1),
   party: z.string().min(1),
+  role: z.enum(["mk", "minister", "deputy-minister", "politician"]).default("mk"),
   overall_score: z.number().min(0).max(10),
   media_volume: z.number().min(0).max(10),
 });

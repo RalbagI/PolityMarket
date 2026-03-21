@@ -9,8 +9,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ── Configuration ──────────────────────────────────────────────────────
+// role: "mk" (default if omitted), "minister", "deputy-minister", or "politician"
 const POLITICIANS = [
-  // ── Likud (32) ───────────────────────────────────────────────────────
+  // ── Likud (32 MKs + 6 ministers/deputy-ministers) ────────────────────
   {
     id: "benjamin-netanyahu",
     name: "Benjamin Netanyahu",
@@ -19,11 +20,8 @@ const POLITICIANS = [
     sector: "secular",
   },
   { id: "yariv-levin", name: "Yariv Levin", party: "Likud", wing: "right", sector: "secular" },
-  { id: "yoav-gallant", name: "Yoav Gallant", party: "Likud", wing: "right", sector: "secular" },
-  { id: "miri-regev", name: "Miri Regev", party: "Likud", wing: "right", sector: "secular" },
   { id: "nir-barkat", name: "Nir Barkat", party: "Likud", wing: "right", sector: "secular" },
   { id: "amir-ohana", name: "Amir Ohana", party: "Likud", wing: "right", sector: "secular" },
-  { id: "eli-cohen", name: "Eli Cohen", party: "Likud", wing: "right", sector: "secular" },
   { id: "yisrael-katz", name: "Yisrael Katz", party: "Likud", wing: "right", sector: "secular" },
   {
     id: "yuli-edelstein",
@@ -33,13 +31,8 @@ const POLITICIANS = [
     sector: "secular",
   },
   { id: "shlomo-karhi", name: "Shlomo Karhi", party: "Likud", wing: "right", sector: "secular" },
-  { id: "zeev-elkin", name: "Zeev Elkin", party: "Likud", wing: "right", sector: "secular" },
   { id: "avi-dichter", name: "Avi Dichter", party: "Likud", wing: "right", sector: "secular" },
-  { id: "danny-danon", name: "Danny Danon", party: "Likud", wing: "right", sector: "secular" },
-  { id: "ofir-akunis", name: "Ofir Akunis", party: "Likud", wing: "right", sector: "secular" },
   { id: "david-bitan", name: "David Bitan", party: "Likud", wing: "right", sector: "secular" },
-  { id: "fateen-mulla", name: "Fateen Mulla", party: "Likud", wing: "right", sector: "druze" },
-  { id: "david-amsalem", name: "David Amsalem", party: "Likud", wing: "right", sector: "secular" },
   { id: "boaz-bismuth", name: "Boaz Bismuth", party: "Likud", wing: "right", sector: "secular" },
   { id: "ariel-kallner", name: "Ariel Kallner", party: "Likud", wing: "right", sector: "secular" },
   {
@@ -54,7 +47,6 @@ const POLITICIANS = [
   { id: "moshe-saada", name: "Moshe Saada", party: "Likud", wing: "right", sector: "secular" },
   { id: "nissim-vaturi", name: "Nissim Vaturi", party: "Likud", wing: "right", sector: "secular" },
   { id: "osher-shkalim", name: "Osher Shkalim", party: "Likud", wing: "right", sector: "secular" },
-  { id: "george-ilatov", name: "George Ilatov", party: "Likud", wing: "right", sector: "secular" },
   {
     id: "avichay-buaron",
     name: "Avichay Buaron",
@@ -64,14 +56,6 @@ const POLITICIANS = [
   },
   { id: "tsega-melaku", name: "Tsega Melaku", party: "Likud", wing: "right", sector: "secular" },
   {
-    id: "shelly-tal-meron",
-    name: "Shelly Tal Meron",
-    party: "Likud",
-    wing: "right",
-    sector: "secular",
-  },
-  { id: "ami-daniel", name: "Ami Daniel", party: "Likud", wing: "right", sector: "secular" },
-  {
     id: "eliyahu-revivo",
     name: "Eliyahu Revivo",
     party: "Likud",
@@ -79,6 +63,100 @@ const POLITICIANS = [
     sector: "secular",
   },
   { id: "keti-shitrit", name: "Keti Shitrit", party: "Likud", wing: "right", sector: "secular" },
+  { id: "ofir-katz", name: "Ofir Katz", party: "Likud", wing: "right", sector: "secular" },
+  { id: "may-golan", name: "May Golan", party: "Likud", wing: "right", sector: "secular" },
+  { id: "gila-gamliel", name: "Gila Gamliel", party: "Likud", wing: "right", sector: "secular" },
+  {
+    id: "galit-distel-atbaryan",
+    name: "Galit Distel Atbaryan",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+  },
+  { id: "eli-dalal", name: "Eli Dalal", party: "Likud", wing: "right", sector: "secular" },
+  { id: "shalom-danino", name: "Shalom Danino", party: "Likud", wing: "right", sector: "secular" },
+  { id: "amit-halevi", name: "Amit Halevi", party: "Likud", wing: "right", sector: "secular" },
+  {
+    id: "hava-eti-atia",
+    name: "Hava Eti Atia",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+  },
+  { id: "moshe-passal", name: "Moshe Passal", party: "Likud", wing: "right", sector: "secular" },
+  {
+    id: "sasson-guetta",
+    name: "Sasson Guetta",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+  },
+  { id: "afif-abed", name: "Afif Abed", party: "Likud", wing: "right", sector: "druze" },
+  // Likud ministers (not serving as MKs)
+  {
+    id: "eli-cohen",
+    name: "Eli Cohen",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "david-amsalem",
+    name: "David Amsalem",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "miki-zohar",
+    name: "Miki Zohar",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "yoav-kish",
+    name: "Yoav Kish",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "haim-katz",
+    name: "Haim Katz",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "miri-regev",
+    name: "Miri Regev",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "amichai-shikli",
+    name: "Amichai Shikli",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "idit-silman",
+    name: "Idit Silman",
+    party: "Likud",
+    wing: "right",
+    sector: "secular",
+    role: "deputy-minister",
+  },
 
   // ── Yesh Atid (24) ──────────────────────────────────────────────────
   { id: "yair-lapid", name: "Yair Lapid", party: "Yesh Atid", wing: "center", sector: "secular" },
@@ -93,13 +171,6 @@ const POLITICIANS = [
   {
     id: "karine-elharrar",
     name: "Karine Elharrar",
-    party: "Yesh Atid",
-    wing: "center",
-    sector: "secular",
-  },
-  {
-    id: "orna-barbivai",
-    name: "Orna Barbivai",
     party: "Yesh Atid",
     wing: "center",
     sector: "secular",
@@ -134,7 +205,6 @@ const POLITICIANS = [
     wing: "center",
     sector: "secular",
   },
-  { id: "idan-roll", name: "Idan Roll", party: "Yesh Atid", wing: "center", sector: "secular" },
   { id: "naor-shiri", name: "Naor Shiri", party: "Yesh Atid", wing: "center", sector: "secular" },
   { id: "merav-cohen", name: "Merav Cohen", party: "Yesh Atid", wing: "center", sector: "secular" },
   {
@@ -158,7 +228,6 @@ const POLITICIANS = [
     wing: "center",
     sector: "secular",
   },
-  { id: "nira-shpak", name: "Nira Shpak", party: "Yesh Atid", wing: "center", sector: "secular" },
   {
     id: "yoav-segalovitz",
     name: "Yoav Segalovitz",
@@ -173,41 +242,54 @@ const POLITICIANS = [
     wing: "center",
     sector: "secular",
   },
-  { id: "tomer-glam", name: "Tomer Glam", party: "Yesh Atid", wing: "center", sector: "secular" },
-  { id: "ben-simon", name: "Ben Simon", party: "Yesh Atid", wing: "center", sector: "secular" },
   {
-    id: "limor-magen-telem",
-    name: "Limor Magen Telem",
+    id: "ram-ben-barak",
+    name: "Ram Ben Barak",
+    party: "Yesh Atid",
+    wing: "center",
+    sector: "secular",
+  },
+  { id: "yaron-levy", name: "Yaron Levy", party: "Yesh Atid", wing: "center", sector: "secular" },
+  {
+    id: "shelly-tal-meron",
+    name: "Shelly Tal Meron",
     party: "Yesh Atid",
     wing: "center",
     sector: "secular",
   },
   {
-    id: "rachel-azaria",
-    name: "Rachel Azaria",
+    id: "adi-azuz",
+    name: "Adi Azuz",
+    party: "Yesh Atid",
+    wing: "center",
+    sector: "secular",
+  },
+  {
+    id: "yasmin-fridman",
+    name: "Yasmin Fridman",
+    party: "Yesh Atid",
+    wing: "center",
+    sector: "secular",
+  },
+  {
+    id: "matti-sarfatti-harcavi",
+    name: "Matti Sarfatti Harcavi",
+    party: "Yesh Atid",
+    wing: "center",
+    sector: "secular",
+  },
+  {
+    id: "michal-shir-segman",
+    name: "Michal Shir Segman",
     party: "Yesh Atid",
     wing: "center",
     sector: "secular",
   },
 
-  // ── National Unity (12) ─────────────────────────────────────────────
+  // ── National Unity (8) ────────────────────────────────────────────
   {
     id: "benny-gantz",
     name: "Benny Gantz",
-    party: "National Unity",
-    wing: "center",
-    sector: "secular",
-  },
-  {
-    id: "gadi-eisenkot",
-    name: "Gadi Eisenkot",
-    party: "National Unity",
-    wing: "center",
-    sector: "secular",
-  },
-  {
-    id: "gideon-saar",
-    name: "Gideon Sa'ar",
     party: "National Unity",
     wing: "center",
     sector: "secular",
@@ -227,21 +309,7 @@ const POLITICIANS = [
     sector: "secular",
   },
   {
-    id: "sharren-haskel",
-    name: "Sharren Haskel",
-    party: "National Unity",
-    wing: "center",
-    sector: "secular",
-  },
-  {
-    id: "matan-kahana",
-    name: "Matan Kahana",
-    party: "National Unity",
-    wing: "center",
-    sector: "religious",
-  },
-  {
-    id: "chili-tropper",
+    id: "orit-farkash-hacohen",
     name: "Orit Farkash-Hacohen",
     party: "National Unity",
     wing: "center",
@@ -262,18 +330,43 @@ const POLITICIANS = [
     sector: "secular",
   },
   {
-    id: "yifat-shasha-biton",
-    name: "Yifat Shasha-Biton",
+    id: "eitan-ginzburg",
+    name: "Eitan Ginzburg",
     party: "National Unity",
     wing: "center",
     sector: "secular",
   },
   {
-    id: "zeev-benjamin-begin",
-    name: "Ze'ev Benjamin Begin",
+    id: "yael-ron-ben-moshe",
+    name: "Yael Ron Ben Moshe",
     party: "National Unity",
     wing: "center",
     sector: "secular",
+  },
+  // National Unity – not currently serving as MKs
+  {
+    id: "gadi-eisenkot",
+    name: "Gadi Eisenkot",
+    party: "National Unity",
+    wing: "center",
+    sector: "secular",
+    role: "politician",
+  },
+  {
+    id: "matan-kahana",
+    name: "Matan Kahana",
+    party: "National Unity",
+    wing: "center",
+    sector: "religious",
+    role: "politician",
+  },
+  {
+    id: "yoaz-hendel",
+    name: "Yoaz Hendel",
+    party: "National Unity",
+    wing: "center",
+    sector: "secular",
+    role: "politician",
   },
 
   // ── Shas (11) ───────────────────────────────────────────────────────
@@ -291,15 +384,15 @@ const POLITICIANS = [
   { id: "haim-biton", name: "Haim Biton", party: "Shas", wing: "right", sector: "haredi" },
   { id: "uriel-buso", name: "Uriel Buso", party: "Shas", wing: "right", sector: "haredi" },
   { id: "yaakov-margi", name: "Yaakov Margi", party: "Shas", wing: "right", sector: "haredi" },
+  { id: "moshe-abutbul", name: "Moshe Abutbul", party: "Shas", wing: "right", sector: "haredi" },
+  { id: "yosef-taieb", name: "Yosef Taieb", party: "Shas", wing: "right", sector: "haredi" },
   {
-    id: "yitzhak-cohen-shas",
-    name: "Yitzhak Cohen",
+    id: "yonatan-mishraki",
+    name: "Yonatan Mishraki",
     party: "Shas",
     wing: "right",
     sector: "haredi",
   },
-  { id: "moshe-abutbul", name: "Moshe Abutbul", party: "Shas", wing: "right", sector: "haredi" },
-  { id: "ariel-atias", name: "Ariel Atias", party: "Shas", wing: "right", sector: "haredi" },
 
   // ── United Torah Judaism (7) ────────────────────────────────────────
   {
@@ -319,13 +412,6 @@ const POLITICIANS = [
   {
     id: "uri-maklev",
     name: "Uri Maklev",
-    party: "United Torah Judaism",
-    wing: "right",
-    sector: "haredi",
-  },
-  {
-    id: "yisrael-eichler",
-    name: "Yisrael Eichler",
     party: "United Torah Judaism",
     wing: "right",
     sector: "haredi",
@@ -351,14 +437,22 @@ const POLITICIANS = [
     wing: "right",
     sector: "haredi",
   },
+  {
+    id: "yitzhak-pindrus",
+    name: "Yitzhak Pindrus",
+    party: "United Torah Judaism",
+    wing: "right",
+    sector: "haredi",
+  },
 
-  // ── Religious Zionism (7) ───────────────────────────────────────────
+  // ── Religious Zionism (7 MKs + 1 minister) ────────────────────────
   {
     id: "bezalel-smotrich",
     name: "Bezalel Smotrich",
     party: "Religious Zionism",
     wing: "right",
     sector: "religious",
+    role: "minister",
   },
   {
     id: "orit-strock",
@@ -396,8 +490,15 @@ const POLITICIANS = [
     sector: "religious",
   },
   {
-    id: "limor-son-har-melech",
-    name: "Limor Son Har-Melech",
+    id: "michal-waldiger",
+    name: "Michal Waldiger",
+    party: "Religious Zionism",
+    wing: "right",
+    sector: "religious",
+  },
+  {
+    id: "moshe-solomon",
+    name: "Moshe Solomon",
     party: "Religious Zionism",
     wing: "right",
     sector: "religious",
@@ -407,13 +508,6 @@ const POLITICIANS = [
   {
     id: "itamar-ben-gvir",
     name: "Itamar Ben Gvir",
-    party: "Otzma Yehudit",
-    wing: "right",
-    sector: "religious",
-  },
-  {
-    id: "almog-cohen",
-    name: "Almog Cohen",
     party: "Otzma Yehudit",
     wing: "right",
     sector: "religious",
@@ -433,15 +527,22 @@ const POLITICIANS = [
     sector: "religious",
   },
   {
-    id: "limor-widman-yosef",
-    name: "Limor Widman-Yosef",
+    id: "amichai-eliyahu",
+    name: "Amichai Eliyahu",
     party: "Otzma Yehudit",
     wing: "right",
     sector: "religious",
   },
   {
-    id: "amichai-eliyahu",
-    name: "Amichai Eliyahu",
+    id: "limor-son-har-melech",
+    name: "Limor Son Har-Melech",
+    party: "Otzma Yehudit",
+    wing: "right",
+    sector: "religious",
+  },
+  {
+    id: "yitzhak-kroizer",
+    name: "Yitzhak Kroizer",
     party: "Otzma Yehudit",
     wing: "right",
     sector: "religious",
@@ -501,10 +602,16 @@ const POLITICIANS = [
     wing: "arab",
     sector: "arab",
   },
-  { id: "mazen-ghanaim", name: "Mazen Ghanaim", party: "Ra'am", wing: "arab", sector: "arab" },
   {
-    id: "atta-abu-medeghem",
-    name: "Atta Abu Medeghem",
+    id: "walid-alhawashla",
+    name: "Walid Alhawashla",
+    party: "Ra'am",
+    wing: "arab",
+    sector: "arab",
+  },
+  {
+    id: "yasser-hujirat",
+    name: "Yasser Hujirat",
     party: "Ra'am",
     wing: "arab",
     sector: "arab",
@@ -528,8 +635,8 @@ const POLITICIANS = [
     sector: "secular",
   },
   {
-    id: "youssef-atauna",
-    name: "Youssef Atauna",
+    id: "samir-ben-said",
+    name: "Samir Ben Said",
     party: "Hadash-Ta'al",
     wing: "arab",
     sector: "arab",
@@ -539,10 +646,74 @@ const POLITICIANS = [
   { id: "merav-michaeli", name: "Merav Michaeli", party: "Labor", wing: "left", sector: "secular" },
   { id: "naama-lazimi", name: "Naama Lazimi", party: "Labor", wing: "left", sector: "secular" },
   { id: "gilad-kariv", name: "Gilad Kariv", party: "Labor", wing: "left", sector: "secular" },
-  { id: "efrat-rayten", name: "Efrat Rayten", party: "Labor", wing: "left", sector: "secular" },
+  {
+    id: "efrat-rayten",
+    name: "Efrat Rayten Marom",
+    party: "Labor",
+    wing: "left",
+    sector: "secular",
+  },
+
+  // ── HaYamin HaMamlakhti (4 MKs + 1 minister) ─────────────────────
+  {
+    id: "gideon-saar",
+    name: "Gideon Sa'ar",
+    party: "HaYamin HaMamlakhti",
+    wing: "right",
+    sector: "secular",
+    role: "minister",
+  },
+  {
+    id: "zeev-elkin",
+    name: "Ze'ev Elkin",
+    party: "HaYamin HaMamlakhti",
+    wing: "right",
+    sector: "secular",
+  },
+  {
+    id: "sharren-haskel",
+    name: "Sharren Haskel",
+    party: "HaYamin HaMamlakhti",
+    wing: "right",
+    sector: "secular",
+  },
+  {
+    id: "michel-buskila",
+    name: "Michel Buskila",
+    party: "HaYamin HaMamlakhti",
+    wing: "right",
+    sector: "secular",
+  },
+  {
+    id: "akram-hasson",
+    name: "Akram Hasson",
+    party: "HaYamin HaMamlakhti",
+    wing: "right",
+    sector: "druze",
+  },
+
+  // ── Noam (1) ──────────────────────────────────────────────────────
+  { id: "avi-maoz", name: "Avi Maoz", party: "Noam", wing: "right", sector: "religious" },
 
   // ── Democrats (1) ─────────────────────────────────────────────────
-  { id: "yair-golan", name: "Yair Golan", party: "Democrats", wing: "left", sector: "secular" },
+  {
+    id: "yair-golan",
+    name: "Yair Golan",
+    party: "Democrats",
+    wing: "left",
+    sector: "secular",
+    role: "politician",
+  },
+
+  // ── Independent / Not currently serving ───────────────────────────
+  {
+    id: "naftali-bennett",
+    name: "Naftali Bennett",
+    party: "Independent",
+    wing: "right",
+    sector: "religious",
+    role: "politician",
+  },
 ];
 
 const DATA_DIR = path.resolve(__dirname, "../public/data");
@@ -559,7 +730,7 @@ const OLLAMA_TIMEOUT_MS = parsePositiveInt(process.env.OLLAMA_TIMEOUT_MS, 120000
 const SOURCE_TIMEOUT_MS = parsePositiveInt(process.env.SOURCE_TIMEOUT_MS, 20000);
 const EXPECTED_POLITICIAN_COUNT = parsePositiveInt(
   process.env.PIPELINE_EXPECTED_POLITICIAN_COUNT,
-  120
+  135
 );
 const SOURCES_CONFIG_PATH = process.env.PIPELINE_SOURCES_PATH
   ? path.resolve(process.env.PIPELINE_SOURCES_PATH)
@@ -1023,6 +1194,7 @@ function appendToSummary(entries, today) {
       politician_id: entry.politician_id,
       name: entry.name,
       party: entry.party,
+      role: entry.role,
       overall_score: entry.overall_score,
       media_volume: entry.media_volume,
     };
@@ -1048,6 +1220,7 @@ function writeDetailFile(entries, today) {
     politician_id: e.politician_id,
     name: e.name,
     party: e.party,
+    role: e.role,
     hostility_level: e.hostility_level,
     policy_approval: e.policy_approval,
     media_amplification: e.media_amplification,
@@ -1129,6 +1302,7 @@ async function main() {
         politician_id: politician.id,
         name: politician.name,
         party: politician.party,
+        role: politician.role || "mk",
         hostility_level: llmResult.hostility_level,
         policy_approval: llmResult.policy_approval,
         media_amplification: llmResult.media_amplification,
