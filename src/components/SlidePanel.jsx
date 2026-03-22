@@ -38,7 +38,9 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
   }, []);
   const handleSwipeEnd = useCallback(
     (e) => {
-      const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+      const touch = e.changedTouches[0];
+      if (!touch) return;
+      const deltaY = touch.clientY - touchStartY.current;
       if (deltaY > 80) onClose();
     },
     [onClose]

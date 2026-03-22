@@ -74,9 +74,7 @@ describe("EntityCard", () => {
   });
 
   it("applies selected ring when isSelected", () => {
-    const { container } = render(
-      <EntityCard entry={baseEntry} isSelected onSelect={() => {}} />
-    );
+    const { container } = render(<EntityCard entry={baseEntry} isSelected onSelect={() => {}} />);
     const card = container.querySelector("[role='button']");
     expect(card.className).toContain("ring-2");
   });

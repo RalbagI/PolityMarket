@@ -17,8 +17,12 @@ beforeEach(() => {
   storage = {};
   vi.stubGlobal("localStorage", {
     getItem: (key) => storage[key] ?? null,
-    setItem: (key, val) => { storage[key] = String(val); },
-    removeItem: (key) => { delete storage[key]; },
+    setItem: (key, val) => {
+      storage[key] = String(val);
+    },
+    removeItem: (key) => {
+      delete storage[key];
+    },
   });
 });
 

@@ -23,9 +23,7 @@ describe("PoliticianAvatars", () => {
   });
 
   it("respects size prop", () => {
-    const { container } = render(
-      <PoliticianAvatars politicianId="test" name="Test" size={64} />
-    );
+    const { container } = render(<PoliticianAvatars politicianId="test" name="Test" size={64} />);
     const el = container.firstChild;
     // Should have width/height matching size
     expect(el.style.width || el.getAttribute("width")).toBeTruthy();

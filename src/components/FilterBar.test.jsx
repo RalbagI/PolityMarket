@@ -59,9 +59,7 @@ describe("FilterBar", () => {
 
   it("calls clearFilters when clear button is clicked", () => {
     const clearFilters = vi.fn();
-    render(
-      <FilterBar {...baseProps} activeWings={["right"]} clearFilters={clearFilters} />
-    );
+    render(<FilterBar {...baseProps} activeWings={["right"]} clearFilters={clearFilters} />);
     const clearBtn = screen.getByText("filterBar.clearFilters");
     fireEvent.click(clearBtn);
     expect(clearFilters).toHaveBeenCalled();

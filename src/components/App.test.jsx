@@ -124,8 +124,8 @@ describe("App mobile layout", () => {
 
     const main = container.querySelector("main");
     expect(main).toBeTruthy();
-    // Should have h-[calc(100dvh-3.5rem)] for mobile height fix
-    expect(main.className).toContain("h-[calc(100dvh-3.5rem)]");
+    // Should have vh fallback + dvh for mobile height fix
+    expect(main.className).toContain("h-[calc(100vh-3.5rem)]");
   });
 
   it("renders main with md:h-screen for desktop", () => {
@@ -140,9 +140,7 @@ describe("App mobile layout", () => {
 
     // The chart toggle button
     const buttons = container.querySelectorAll("button");
-    const chartToggle = Array.from(buttons).find((b) =>
-      b.className.includes("min-h-[44px]")
-    );
+    const chartToggle = Array.from(buttons).find((b) => b.className.includes("min-h-[44px]"));
     expect(chartToggle).toBeTruthy();
   });
 
