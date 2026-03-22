@@ -52,7 +52,10 @@ const LETTER_MAP = {
 function transliterateLatinWord(word) {
   if (!word) return "";
 
-  let normalized = word.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+  let normalized = word
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "");
   for (const [pattern, replacement] of DIGRAPH_REPLACEMENTS) {
     normalized = normalized.replace(pattern, replacement);
   }
