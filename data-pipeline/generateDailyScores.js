@@ -1085,6 +1085,9 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
               if (m.speaker_metadata?.known_satirist) {
                 entry += " [Speaker: known satirist]";
               }
+              if (m.thread_context?.length) {
+                entry += "\n  Thread context: " + m.thread_context.map((t) => `"${t}"`).join(" → ");
+              }
               return entry;
             })
             .join("\n")
@@ -1173,7 +1176,13 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap) {
       maxRetries: 2,
       initialDelay: 5000,
       maxDelay: 30000,
-      shouldRetry: () => true,
+      shouldRetry: (err) => {
+        const msg = err.message || "";
+        // Don't retry parse/validation failures — the response won't change
+        if (msg.includes("parse") || msg.includes("not an array")) return false;
+        // Retry timeouts, CLI crashes, network issues
+        return true;
+      },
       onRetry: (err, attempt, delay) => {
         console.warn(
           `  ⟳ Retry ${attempt}/2 for batch ${b + 1} in ${Math.round(delay)}ms: ${err.message}`
@@ -1323,6 +1332,13 @@ async function main() {
     }
   }
 
+  if (resultMap.size !== POLITICIANS.length) {
+    const missing = POLITICIANS.filter((p) => !resultMap.has(p.id)).map((p) => p.id);
+    throw new Error(
+      `LLM returned ${resultMap.size} unique IDs, expected ${POLITICIANS.length}. Missing: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`
+    );
+  }
+
   // ── Phase 3: Process results and build entries ──────────────────────
   console.log("\nPhase 3: Processing results...");
   const newEntries = [];
@@ -1335,11 +1351,16 @@ async function main() {
         throw new Error(`No LLM result found for politician_id: ${politician.id}`);
       }
 
+      // Validate chain_of_thought is present — fail loud if LLM omitted it
+      if (!llmResult.chain_of_thought || String(llmResult.chain_of_thought).trim().length === 0) {
+        throw new Error(`LLM returned empty chain_of_thought for ${politician.id}`);
+      }
+
       // Clamp values to expected ranges
       const hostility = Math.max(0, Math.min(1, Number(llmResult.hostility_level) || 0));
       const policy = Math.max(-1, Math.min(1, Number(llmResult.policy_approval) || 0));
       const amplification = Math.max(0, Math.min(1, Number(llmResult.media_amplification) || 0));
-      const chainOfThought = String(llmResult.chain_of_thought || "");
+      const chainOfThought = String(llmResult.chain_of_thought);
 
       const overallScore = computeOverallScore(hostility, policy, amplification);
       const data = politicianDataMap.get(politician.id) || { headlines: [], socialMentions: [] };
