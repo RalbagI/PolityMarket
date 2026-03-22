@@ -304,68 +304,69 @@ const POLITICIANS = [
     sector: "secular",
   },
 
-  // ── National Unity (8) ────────────────────────────────────────────
+  // ── Blue and White (8) ───────────────────────────────────────────
   {
     id: "benny-gantz",
     name: "Benny Gantz",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
   {
     id: "pnina-tamano-shata",
     name: "Pnina Tamano-Shata",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
   {
     id: "hili-tropper",
     name: "Hili Tropper",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
   {
     id: "orit-farkash-hacohen",
     name: "Orit Farkash-Hacohen",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
   {
     id: "alon-schuster",
     name: "Alon Schuster",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
   {
     id: "michael-biton",
     name: "Michael Biton",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
   {
     id: "eitan-ginzburg",
     name: "Eitan Ginzburg",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
   {
     id: "yael-ron-ben-moshe",
     name: "Yael Ron Ben Moshe",
-    party: "National Unity",
+    party: "Blue and White",
     wing: "center",
     sector: "secular",
   },
-  // National Unity – not currently serving as MKs
+
+  // ── Yashar! with Eisenkot (2) ──────────────────────────────────
   {
     id: "gadi-eisenkot",
     name: "Gadi Eisenkot",
-    party: "National Unity",
+    party: "Yashar",
     wing: "center",
     sector: "secular",
     role: "politician",
@@ -373,15 +374,17 @@ const POLITICIANS = [
   {
     id: "matan-kahana",
     name: "Matan Kahana",
-    party: "National Unity",
+    party: "Yashar",
     wing: "center",
     sector: "religious",
     role: "politician",
   },
+
+  // ── HaMiluimnikim (1) ──────────────────────────────────────────
   {
     id: "yoaz-hendel",
     name: "Yoaz Hendel",
-    party: "National Unity",
+    party: "HaMiluimnikim",
     wing: "center",
     sector: "secular",
     role: "politician",
@@ -660,23 +663,22 @@ const POLITICIANS = [
     sector: "arab",
   },
 
-  // ── Labor (4) ──────────────────────────────────────────────────────
-  { id: "merav-michaeli", name: "Merav Michaeli", party: "Labor", wing: "left", sector: "secular" },
-  { id: "naama-lazimi", name: "Naama Lazimi", party: "Labor", wing: "left", sector: "secular" },
-  { id: "gilad-kariv", name: "Gilad Kariv", party: "Labor", wing: "left", sector: "secular" },
+  // ── Labor → members moved to Democrats; Michaeli retired ─────────
+  { id: "naama-lazimi", name: "Naama Lazimi", party: "Democrats", wing: "left", sector: "secular" },
+  { id: "gilad-kariv", name: "Gilad Kariv", party: "Democrats", wing: "left", sector: "secular" },
   {
     id: "efrat-rayten",
     name: "Efrat Rayten Marom",
-    party: "Labor",
+    party: "Democrats",
     wing: "left",
     sector: "secular",
   },
 
-  // ── HaYamin HaMamlakhti (4 MKs + 1 minister) ─────────────────────
+  // ── HaYamin HaMamlakhti (3 MKs) — Sa'ar & Elkin returned to Likud
   {
     id: "gideon-saar",
     name: "Gideon Sa'ar",
-    party: "HaYamin HaMamlakhti",
+    party: "Likud",
     wing: "right",
     sector: "secular",
     role: "minister",
@@ -684,7 +686,7 @@ const POLITICIANS = [
   {
     id: "zeev-elkin",
     name: "Ze'ev Elkin",
-    party: "HaYamin HaMamlakhti",
+    party: "Likud",
     wing: "right",
     sector: "secular",
   },
@@ -713,7 +715,7 @@ const POLITICIANS = [
   // ── Noam (1) ──────────────────────────────────────────────────────
   { id: "avi-maoz", name: "Avi Maoz", party: "Noam", wing: "right", sector: "religious" },
 
-  // ── Democrats (1) ─────────────────────────────────────────────────
+  // ── Democrats (4 — Golan + 3 former Labor) ───────────────────────
   {
     id: "yair-golan",
     name: "Yair Golan",
@@ -723,11 +725,21 @@ const POLITICIANS = [
     role: "politician",
   },
 
-  // ── Independent / Not currently serving ───────────────────────────
+  // ── El HaDegel (1) ──────────────────────────────────────────────
+  {
+    id: "matan-yafe",
+    name: "Matan Yafe",
+    party: "El HaDegel",
+    wing: "right",
+    sector: "secular",
+    role: "politician",
+  },
+
+  // ── Bennett 2026 (1) ─────────────────────────────────────────────
   {
     id: "naftali-bennett",
     name: "Naftali Bennett",
-    party: "Independent",
+    party: "Bennett 2026",
     wing: "right",
     sector: "religious",
     role: "politician",
