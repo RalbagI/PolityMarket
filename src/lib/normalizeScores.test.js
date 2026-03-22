@@ -64,4 +64,16 @@ describe("normalizeScores", () => {
     expect(result[0].normalizedScore).toBe(0);
     expect(result[1].normalizedScore).toBe(0);
   });
+
+  it("preserves wing and sector fields", () => {
+    const input = [
+      { name: "A", overall_score: 5, media_volume: 3, wing: "right", sector: "secular" },
+      { name: "B", overall_score: 7, media_volume: 5, wing: "left", sector: "haredi" },
+    ];
+    const result = normalizeScores(input);
+    expect(result[0].wing).toBe("right");
+    expect(result[0].sector).toBe("secular");
+    expect(result[1].wing).toBe("left");
+    expect(result[1].sector).toBe("haredi");
+  });
 });

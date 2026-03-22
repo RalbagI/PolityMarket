@@ -1,12 +1,15 @@
 {
   "rss": {
     "searchTemplates": [
-      "https://news.google.com/rss/search?q={query}+Israel+politics+when:1d&hl=en-US&gl=US&ceid=US:en",
-      "https://news.google.com/rss/search?q={query}+Knesset+when:1d&hl=en-US&gl=US&ceid=US:en"
+      "https://news.google.com/rss/search?q={query}+פוליטיקה+ישראל+when:1d&hl=iw&gl=IL&ceid=IL:he",
+      "https://news.google.com/rss/search?q={query}+כנסת+when:1d&hl=iw&gl=IL&ceid=IL:he",
+      "https://news.google.com/rss/search?q={query}+Israel+politics+when:1d&hl=en-US&gl=US&ceid=US:en"
     ],
     "globalFeeds": [
-      "https://www.timesofisrael.com/feed/",
-      "https://www.jpost.com/rss/rssfeedsheadlines.aspx"
+      "https://www.ynet.co.il/Integration/StoryRss1854.xml",
+      "https://rss.walla.co.il/feed/22",
+      "https://www.maariv.co.il/rss/rssfeedsmivzakichadashot",
+      "https://www.timesofisrael.com/feed/"
     ],
     "maxItemsPerSource": 10,
     "maxHeadlinesPerPolitician": 8

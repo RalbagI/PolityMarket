@@ -9,6 +9,23 @@ import computeOverallScore from "./lib/computeScore.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// ── Hebrew Name Lookup ────────────────────────────────────────────────
+// Load Hebrew politician names from i18n translation file for Hebrew search queries
+const HEBREW_NAMES = (() => {
+  try {
+    const i18nPath = path.resolve(__dirname, "../src/locales/he/translation.json");
+    const translations = JSON.parse(fs.readFileSync(i18nPath, "utf-8"));
+    const names = translations.politicians || {};
+    console.log(`[i18n] Loaded ${Object.keys(names).length} Hebrew politician names`);
+    return names;
+  } catch (err) {
+    console.warn(
+      `[i18n] Could not load Hebrew names — Hebrew search queries will use English names: ${err.message}`
+    );
+    return {};
+  }
+})();
+
 // ── Configuration ──────────────────────────────────────────────────────
 // role: "mk" (default if omitted), "minister", "deputy-minister", or "politician"
 const POLITICIANS = [
@@ -798,18 +815,39 @@ function dedupeStrings(values) {
   return [...new Set(values.map((v) => String(v).trim()).filter(Boolean))];
 }
 
-function buildSearchTerms(politician) {
+const MIN_LATIN_TOKEN_LENGTH = 4;
+const MIN_HEBREW_TOKEN_LENGTH = 3;
+const HEBREW_TOKEN_DENYLIST = new Set(["בן"]);
+
+export function buildSearchTerms(politician) {
   const tokenTerms = politician.name
     .split(/[\s\-']/)
     .map((token) => token.trim())
-    .filter((token) => token.length >= 4);
+    .filter((token) => token.length >= MIN_LATIN_TOKEN_LENGTH);
   const terms = dedupeStrings([politician.name, politician.id.replace(/-/g, " "), ...tokenTerms]);
-  return terms.map((term) => normalizeText(term));
+  // Add Hebrew name and its tokens for matching Hebrew headlines
+  const hebrewName = HEBREW_NAMES[politician.name];
+  if (hebrewName) {
+    terms.push(hebrewName);
+    const hebrewTokens = hebrewName
+      .split(/\s+/)
+      .map((token) => normalizeText(token))
+      .filter(
+        (token) => token.length >= MIN_HEBREW_TOKEN_LENGTH && !HEBREW_TOKEN_DENYLIST.has(token)
+      );
+    terms.push(...hebrewTokens);
+  }
+  return dedupeStrings(terms.map((term) => normalizeText(term)));
 }
 
-function includesPolitician(text, searchTerms) {
+export function includesPolitician(text, searchTerms) {
   const normalized = normalizeText(text);
-  return searchTerms.some((term) => normalized.includes(term));
+  if (!normalized) return false;
+  const paddedText = ` ${normalized} `;
+  return searchTerms.some((term) => {
+    const normalizedTerm = normalizeText(term);
+    return normalizedTerm.length > 0 && paddedText.includes(` ${normalizedTerm} `);
+  });
 }
 
 function decodeHtmlEntities(input) {
@@ -933,7 +971,11 @@ async function getRedditPosts(subreddit, maxPosts) {
 }
 
 function renderSearchTemplate(template, politician) {
-  const quotedName = `"${politician.name}"`;
+  // Use Hebrew name for Hebrew search templates, English name otherwise
+  const isHebrew = template.includes("hl=iw") || template.includes("ceid=IL:he");
+  const hebrewName = HEBREW_NAMES[politician.name];
+  const name = isHebrew && hebrewName ? hebrewName : politician.name;
+  const quotedName = `"${name}"`;
   return template.replaceAll("{query}", encodeURIComponent(quotedName));
 }
 
@@ -1310,6 +1352,8 @@ function appendToSummary(entries, today) {
       politician_id: entry.politician_id,
       name: entry.name,
       party: entry.party,
+      wing: entry.wing,
+      sector: entry.sector,
       role: entry.role,
       overall_score: entry.overall_score,
       media_volume: entry.media_volume,
@@ -1483,6 +1527,8 @@ async function main() {
         politician_id: politician.id,
         name: politician.name,
         party: politician.party,
+        wing: politician.wing,
+        sector: politician.sector,
         role: politician.role || "mk",
         hostility_level: hostility,
         policy_approval: policy,

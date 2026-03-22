@@ -1,1113 +1,57 @@
 [
   {
-    "politician_id": "benjamin-netanyahu",
-    "name": "Benjamin Netanyahu",
-    "party": "Likud",
-    "news_sentiment": 6.1,
-    "social_sentiment": 4.8,
-    "media_volume": 9.2,
-    "overall_score": 5.8,
-    "chain_of_thought": "Benjamin Netanyahu קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yariv-levin",
-    "name": "Yariv Levin",
-    "party": "Likud",
-    "news_sentiment": 7.7,
-    "social_sentiment": 7.2,
-    "media_volume": 4.8,
-    "overall_score": 7.3,
-    "chain_of_thought": "Yariv Levin קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yoav-gallant",
-    "name": "Yoav Gallant",
-    "party": "Likud",
-    "news_sentiment": 6.4,
-    "social_sentiment": 5,
-    "media_volume": 6.9,
-    "overall_score": 5.9,
-    "chain_of_thought": "Yoav Gallant קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "miri-regev",
-    "name": "Miri Regev",
-    "party": "Likud",
-    "news_sentiment": 4.6,
-    "social_sentiment": 5.8,
-    "media_volume": 6.2,
-    "overall_score": 5.4,
-    "chain_of_thought": "Miri Regev קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "nir-barkat",
-    "name": "Nir Barkat",
-    "party": "Likud",
-    "news_sentiment": 6.1,
-    "social_sentiment": 6.1,
-    "media_volume": 4.2,
-    "overall_score": 7.2,
-    "chain_of_thought": "Nir Barkat קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "amir-ohana",
-    "name": "Amir Ohana",
-    "party": "Likud",
-    "news_sentiment": 8.3,
-    "social_sentiment": 7.4,
-    "media_volume": 6.6,
-    "overall_score": 8.4,
-    "chain_of_thought": "Amir Ohana קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "eli-cohen",
-    "name": "Eli Cohen",
-    "party": "Likud",
-    "news_sentiment": 4.1,
-    "social_sentiment": 5.1,
-    "media_volume": 2.8,
-    "overall_score": 3.3,
-    "chain_of_thought": "Eli Cohen קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yisrael-katz",
-    "name": "Yisrael Katz",
-    "party": "Likud",
-    "news_sentiment": 4.5,
-    "social_sentiment": 3.3,
-    "media_volume": 4.7,
-    "overall_score": 4.2,
-    "chain_of_thought": "Yisrael Katz קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yuli-edelstein",
-    "name": "Yuli Edelstein",
-    "party": "Likud",
-    "news_sentiment": 4.9,
-    "social_sentiment": 5.7,
-    "media_volume": 2.1,
-    "overall_score": 5.1,
-    "chain_of_thought": "Yuli Edelstein קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "shlomo-karhi",
-    "name": "Shlomo Karhi",
-    "party": "Likud",
-    "news_sentiment": 5.4,
-    "social_sentiment": 5.5,
-    "media_volume": 3.3,
-    "overall_score": 5.6,
-    "chain_of_thought": "Shlomo Karhi קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "zeev-elkin",
-    "name": "Zeev Elkin",
-    "party": "Likud",
-    "news_sentiment": 5.4,
-    "social_sentiment": 6.7,
-    "media_volume": 1.6,
-    "overall_score": 6,
-    "chain_of_thought": "Zeev Elkin קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "avi-dichter",
-    "name": "Avi Dichter",
-    "party": "Likud",
-    "news_sentiment": 4,
-    "social_sentiment": 4.1,
-    "media_volume": 3.1,
-    "overall_score": 3.9,
-    "chain_of_thought": "Avi Dichter קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "danny-danon",
-    "name": "Danny Danon",
-    "party": "Likud",
-    "news_sentiment": 6.2,
-    "social_sentiment": 7.4,
-    "media_volume": 6.1,
-    "overall_score": 6.9,
-    "chain_of_thought": "Danny Danon קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ofir-akunis",
-    "name": "Ofir Akunis",
-    "party": "Likud",
-    "news_sentiment": 6.1,
-    "social_sentiment": 6,
-    "media_volume": 4.7,
-    "overall_score": 5.6,
-    "chain_of_thought": "Ofir Akunis קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "david-bitan",
-    "name": "David Bitan",
-    "party": "Likud",
-    "news_sentiment": 4.5,
-    "social_sentiment": 4.1,
-    "media_volume": 7.2,
-    "overall_score": 5.3,
-    "chain_of_thought": "David Bitan קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "fateen-mulla",
-    "name": "Fateen Mulla",
-    "party": "Likud",
-    "news_sentiment": 5.4,
-    "social_sentiment": 6,
-    "media_volume": 5,
-    "overall_score": 4.6,
-    "chain_of_thought": "Fateen Mulla קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "david-amsalem",
-    "name": "David Amsalem",
-    "party": "Likud",
-    "news_sentiment": 5.9,
-    "social_sentiment": 6,
-    "media_volume": 4.6,
-    "overall_score": 5.8,
-    "chain_of_thought": "David Amsalem קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "boaz-bismuth",
-    "name": "Boaz Bismuth",
-    "party": "Likud",
-    "news_sentiment": 6.2,
-    "social_sentiment": 8,
-    "media_volume": 6.3,
-    "overall_score": 7.3,
-    "chain_of_thought": "Boaz Bismuth קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ariel-kallner",
-    "name": "Ariel Kallner",
-    "party": "Likud",
-    "news_sentiment": 6.1,
-    "social_sentiment": 4.1,
-    "media_volume": 2.8,
-    "overall_score": 5.3,
-    "chain_of_thought": "Ariel Kallner קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "hanoch-milwidsky",
-    "name": "Hanoch Milwidsky",
-    "party": "Likud",
-    "news_sentiment": 4.1,
-    "social_sentiment": 4.1,
-    "media_volume": 3.5,
-    "overall_score": 4.5,
-    "chain_of_thought": "Hanoch Milwidsky קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "tally-gotliv",
-    "name": "Tally Gotliv",
-    "party": "Likud",
-    "news_sentiment": 5.6,
-    "social_sentiment": 6.2,
-    "media_volume": 1.7,
-    "overall_score": 6.7,
-    "chain_of_thought": "Tally Gotliv קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "dan-ilouz",
-    "name": "Dan Ilouz",
-    "party": "Likud",
-    "news_sentiment": 3.2,
-    "social_sentiment": 4.2,
-    "media_volume": 4.9,
-    "overall_score": 2.9,
-    "chain_of_thought": "Dan Ilouz קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "moshe-saada",
-    "name": "Moshe Saada",
-    "party": "Likud",
-    "news_sentiment": 5.6,
-    "social_sentiment": 4.1,
-    "media_volume": 3.3,
-    "overall_score": 5.3,
-    "chain_of_thought": "Moshe Saada קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "nissim-vaturi",
-    "name": "Nissim Vaturi",
-    "party": "Likud",
-    "news_sentiment": 5.8,
-    "social_sentiment": 3.9,
-    "media_volume": 2.6,
-    "overall_score": 4.7,
-    "chain_of_thought": "Nissim Vaturi קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "osher-shkalim",
-    "name": "Osher Shkalim",
-    "party": "Likud",
-    "news_sentiment": 5.3,
-    "social_sentiment": 5,
-    "media_volume": 3.5,
-    "overall_score": 5.1,
-    "chain_of_thought": "Osher Shkalim קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "george-ilatov",
-    "name": "George Ilatov",
-    "party": "Likud",
-    "news_sentiment": 7,
-    "social_sentiment": 6.1,
-    "media_volume": 5.6,
-    "overall_score": 6.8,
-    "chain_of_thought": "George Ilatov קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "avichay-buaron",
-    "name": "Avichay Buaron",
-    "party": "Likud",
-    "news_sentiment": 4.7,
-    "social_sentiment": 3.4,
-    "media_volume": 3.6,
-    "overall_score": 4.8,
-    "chain_of_thought": "Avichay Buaron קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "tsega-melaku",
-    "name": "Tsega Melaku",
-    "party": "Likud",
+    "politician_id": "adi-azuz",
+    "name": "Adi Azuz",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
     "news_sentiment": 5,
-    "social_sentiment": 3.5,
-    "media_volume": 4.8,
-    "overall_score": 3.8,
-    "chain_of_thought": "Tsega Melaku קיבל סיקור מעורב היום"
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Adi Azuz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Adi Azuz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "shelly-tal-meron",
-    "name": "Shelly Tal Meron",
+    "politician_id": "afif-abed",
+    "name": "Afif Abed",
     "party": "Likud",
-    "news_sentiment": 7.5,
-    "social_sentiment": 5.7,
-    "media_volume": 4.5,
-    "overall_score": 7.4,
-    "chain_of_thought": "Shelly Tal Meron קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ami-daniel",
-    "name": "Ami Daniel",
-    "party": "Likud",
-    "news_sentiment": 5.9,
-    "social_sentiment": 6.7,
-    "media_volume": 4.6,
-    "overall_score": 7.3,
-    "chain_of_thought": "Ami Daniel קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "eliyahu-revivo",
-    "name": "Eliyahu Revivo",
-    "party": "Likud",
-    "news_sentiment": 6.1,
-    "social_sentiment": 6.1,
-    "media_volume": 4,
-    "overall_score": 6.5,
-    "chain_of_thought": "Eliyahu Revivo קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "keti-shitrit",
-    "name": "Keti Shitrit",
-    "party": "Likud",
-    "news_sentiment": 3.9,
-    "social_sentiment": 3.2,
-    "media_volume": 2.3,
-    "overall_score": 3,
-    "chain_of_thought": "Keti Shitrit קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yair-lapid",
-    "name": "Yair Lapid",
-    "party": "Yesh Atid",
-    "news_sentiment": 6.1,
-    "social_sentiment": 4.9,
-    "media_volume": 6.6,
-    "overall_score": 5.2,
-    "chain_of_thought": "Yair Lapid קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "boaz-toporovsky",
-    "name": "Boaz Toporovsky",
-    "party": "Yesh Atid",
-    "news_sentiment": 4.4,
-    "social_sentiment": 3.7,
-    "media_volume": 4.8,
-    "overall_score": 4.3,
-    "chain_of_thought": "Boaz Toporovsky קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "meir-cohen",
-    "name": "Meir Cohen",
-    "party": "Yesh Atid",
-    "news_sentiment": 5.1,
-    "social_sentiment": 3.8,
-    "media_volume": 5.2,
-    "overall_score": 5.1,
-    "chain_of_thought": "Meir Cohen קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "karine-elharrar",
-    "name": "Karine Elharrar",
-    "party": "Yesh Atid",
-    "news_sentiment": 7.2,
-    "social_sentiment": 8.2,
-    "media_volume": 3.7,
-    "overall_score": 8.4,
-    "chain_of_thought": "Karine Elharrar קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "orna-barbivai",
-    "name": "Orna Barbivai",
-    "party": "Yesh Atid",
-    "news_sentiment": 6,
-    "social_sentiment": 6.1,
-    "media_volume": 6.8,
-    "overall_score": 6.9,
-    "chain_of_thought": "Orna Barbivai קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "mickey-levy",
-    "name": "Mickey Levy",
-    "party": "Yesh Atid",
-    "news_sentiment": 6.5,
-    "social_sentiment": 6,
-    "media_volume": 1.7,
-    "overall_score": 7.3,
-    "chain_of_thought": "Mickey Levy קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yorai-lahav-hertzano",
-    "name": "Yorai Lahav-Hertzano",
-    "party": "Yesh Atid",
-    "news_sentiment": 5.4,
-    "social_sentiment": 4.4,
-    "media_volume": 2.9,
-    "overall_score": 5.3,
-    "chain_of_thought": "Yorai Lahav-Hertzano קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "meirav-ben-ari",
-    "name": "Meirav Ben Ari",
-    "party": "Yesh Atid",
-    "news_sentiment": 7.1,
-    "social_sentiment": 7,
-    "media_volume": 3.2,
-    "overall_score": 7.9,
-    "chain_of_thought": "Meirav Ben Ari קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ron-katz",
-    "name": "Ron Katz",
-    "party": "Yesh Atid",
-    "news_sentiment": 7.3,
-    "social_sentiment": 6.7,
-    "media_volume": 5.4,
-    "overall_score": 6.8,
-    "chain_of_thought": "Ron Katz קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "simon-davidson",
-    "name": "Simon Davidson",
-    "party": "Yesh Atid",
-    "news_sentiment": 6.2,
-    "social_sentiment": 6.9,
-    "media_volume": 3.5,
-    "overall_score": 6.1,
-    "chain_of_thought": "Simon Davidson קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "debbie-biton",
-    "name": "Debbie Biton",
-    "party": "Yesh Atid",
-    "news_sentiment": 7.6,
-    "social_sentiment": 6.7,
-    "media_volume": 4.1,
-    "overall_score": 7,
-    "chain_of_thought": "Debbie Biton קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "idan-roll",
-    "name": "Idan Roll",
-    "party": "Yesh Atid",
-    "news_sentiment": 7.1,
-    "social_sentiment": 7.8,
-    "media_volume": 3.2,
-    "overall_score": 7.8,
-    "chain_of_thought": "Idan Roll קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "naor-shiri",
-    "name": "Naor Shiri",
-    "party": "Yesh Atid",
-    "news_sentiment": 4.5,
-    "social_sentiment": 4.8,
-    "media_volume": 4.2,
-    "overall_score": 4,
-    "chain_of_thought": "Naor Shiri קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "merav-cohen",
-    "name": "Merav Cohen",
-    "party": "Yesh Atid",
-    "news_sentiment": 4.9,
-    "social_sentiment": 6.4,
-    "media_volume": 6.6,
-    "overall_score": 5.4,
-    "chain_of_thought": "Merav Cohen קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "tatiana-mazarsky",
-    "name": "Tatiana Mazarsky",
-    "party": "Yesh Atid",
-    "news_sentiment": 4.8,
-    "social_sentiment": 4.8,
-    "media_volume": 7.2,
-    "overall_score": 5.4,
-    "chain_of_thought": "Tatiana Mazarsky קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "vladimir-beliak",
-    "name": "Vladimir Beliak",
-    "party": "Yesh Atid",
-    "news_sentiment": 4.9,
-    "social_sentiment": 4.4,
-    "media_volume": 2.6,
-    "overall_score": 4.5,
-    "chain_of_thought": "Vladimir Beliak קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "moshe-tur-paz",
-    "name": "Moshe Tur-Paz",
-    "party": "Yesh Atid",
-    "news_sentiment": 6.3,
-    "social_sentiment": 7.2,
-    "media_volume": 6.2,
-    "overall_score": 7.3,
-    "chain_of_thought": "Moshe Tur-Paz קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "nira-shpak",
-    "name": "Nira Shpak",
-    "party": "Yesh Atid",
-    "news_sentiment": 7.7,
-    "social_sentiment": 6.5,
-    "media_volume": 2.9,
-    "overall_score": 7.2,
-    "chain_of_thought": "Nira Shpak קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yoav-segalovitz",
-    "name": "Yoav Segalovitz",
-    "party": "Yesh Atid",
-    "news_sentiment": 2.3,
-    "social_sentiment": 3.1,
-    "media_volume": 5.9,
-    "overall_score": 2.9,
-    "chain_of_thought": "Yoav Segalovitz קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "elazar-stern",
-    "name": "Elazar Stern",
-    "party": "Yesh Atid",
-    "news_sentiment": 4.1,
-    "social_sentiment": 5.8,
-    "media_volume": 4.9,
-    "overall_score": 4.3,
-    "chain_of_thought": "Elazar Stern קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "tomer-glam",
-    "name": "Tomer Glam",
-    "party": "Yesh Atid",
-    "news_sentiment": 7.8,
-    "social_sentiment": 7.7,
-    "media_volume": 5.3,
-    "overall_score": 8.2,
-    "chain_of_thought": "Tomer Glam קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ben-simon",
-    "name": "Ben Simon",
-    "party": "Yesh Atid",
-    "news_sentiment": 6.1,
-    "social_sentiment": 6,
-    "media_volume": 2.1,
-    "overall_score": 5.2,
-    "chain_of_thought": "Ben Simon קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "limor-magen-telem",
-    "name": "Limor Magen Telem",
-    "party": "Yesh Atid",
-    "news_sentiment": 4.2,
-    "social_sentiment": 3,
-    "media_volume": 5.8,
-    "overall_score": 3.3,
-    "chain_of_thought": "Limor Magen Telem קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "rachel-azaria",
-    "name": "Rachel Azaria",
-    "party": "Yesh Atid",
-    "news_sentiment": 2.9,
-    "social_sentiment": 3.9,
-    "media_volume": 5.8,
-    "overall_score": 2.8,
-    "chain_of_thought": "Rachel Azaria קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "benny-gantz",
-    "name": "Benny Gantz",
-    "party": "National Unity",
-    "news_sentiment": 5.8,
-    "social_sentiment": 5.9,
-    "media_volume": 6.5,
-    "overall_score": 5.3,
-    "chain_of_thought": "Benny Gantz קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "gadi-eisenkot",
-    "name": "Gadi Eisenkot",
-    "party": "National Unity",
-    "news_sentiment": 5.7,
-    "social_sentiment": 3.5,
-    "media_volume": 7.3,
-    "overall_score": 4.8,
-    "chain_of_thought": "Gadi Eisenkot קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "gideon-saar",
-    "name": "Gideon Sa'ar",
-    "party": "National Unity",
-    "news_sentiment": 5.2,
-    "social_sentiment": 5.9,
-    "media_volume": 5.2,
-    "overall_score": 5.4,
-    "chain_of_thought": "Gideon Sa'ar קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "pnina-tamano-shata",
-    "name": "Pnina Tamano-Shata",
-    "party": "National Unity",
-    "news_sentiment": 6.2,
-    "social_sentiment": 4.6,
-    "media_volume": 4,
-    "overall_score": 5.8,
-    "chain_of_thought": "Pnina Tamano-Shata קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "hili-tropper",
-    "name": "Hili Tropper",
-    "party": "National Unity",
-    "news_sentiment": 5.4,
-    "social_sentiment": 6.2,
-    "media_volume": 6.1,
-    "overall_score": 6.7,
-    "chain_of_thought": "Hili Tropper קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "sharren-haskel",
-    "name": "Sharren Haskel",
-    "party": "National Unity",
-    "news_sentiment": 5.9,
-    "social_sentiment": 5.5,
-    "media_volume": 4.6,
-    "overall_score": 5.1,
-    "chain_of_thought": "Sharren Haskel קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "matan-kahana",
-    "name": "Matan Kahana",
-    "party": "National Unity",
-    "news_sentiment": 4.1,
-    "social_sentiment": 4.8,
-    "media_volume": 2.3,
-    "overall_score": 4.1,
-    "chain_of_thought": "Matan Kahana קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "chili-tropper",
-    "name": "Orit Farkash-Hacohen",
-    "party": "National Unity",
-    "news_sentiment": 6.6,
-    "social_sentiment": 7,
-    "media_volume": 6.1,
-    "overall_score": 8.1,
-    "chain_of_thought": "Orit Farkash-Hacohen קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "alon-schuster",
-    "name": "Alon Schuster",
-    "party": "National Unity",
-    "news_sentiment": 6,
-    "social_sentiment": 5,
-    "media_volume": 3.6,
-    "overall_score": 6.5,
-    "chain_of_thought": "Alon Schuster קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "michael-biton",
-    "name": "Michael Biton",
-    "party": "National Unity",
-    "news_sentiment": 7.6,
-    "social_sentiment": 8.3,
-    "media_volume": 2.6,
-    "overall_score": 8,
-    "chain_of_thought": "Michael Biton קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yifat-shasha-biton",
-    "name": "Yifat Shasha-Biton",
-    "party": "National Unity",
-    "news_sentiment": 4.2,
-    "social_sentiment": 4.8,
-    "media_volume": 4.7,
-    "overall_score": 3.5,
-    "chain_of_thought": "Yifat Shasha-Biton קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "zeev-benjamin-begin",
-    "name": "Ze'ev Benjamin Begin",
-    "party": "National Unity",
-    "news_sentiment": 4,
-    "social_sentiment": 3.9,
-    "media_volume": 6.6,
-    "overall_score": 5,
-    "chain_of_thought": "Ze'ev Benjamin Begin קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "aryeh-deri",
-    "name": "Aryeh Deri",
-    "party": "Shas",
-    "news_sentiment": 5.7,
-    "social_sentiment": 5.1,
-    "media_volume": 3.4,
-    "overall_score": 5.2,
-    "chain_of_thought": "Aryeh Deri קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yoav-ben-tzur",
-    "name": "Yoav Ben-Tzur",
-    "party": "Shas",
-    "news_sentiment": 6.9,
-    "social_sentiment": 6.9,
-    "media_volume": 5.7,
-    "overall_score": 6.4,
-    "chain_of_thought": "Yoav Ben-Tzur קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yinon-azoulay",
-    "name": "Yinon Azoulay",
-    "party": "Shas",
-    "news_sentiment": 6.7,
-    "social_sentiment": 7.3,
-    "media_volume": 4,
-    "overall_score": 6.7,
-    "chain_of_thought": "Yinon Azoulay קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "moshe-arbel",
-    "name": "Moshe Arbel",
-    "party": "Shas",
-    "news_sentiment": 4.6,
-    "social_sentiment": 5.5,
-    "media_volume": 5.8,
-    "overall_score": 3.7,
-    "chain_of_thought": "Moshe Arbel קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "michael-malchieli",
-    "name": "Michael Malchieli",
-    "party": "Shas",
-    "news_sentiment": 7.1,
-    "social_sentiment": 8.3,
-    "media_volume": 5.9,
-    "overall_score": 7.6,
-    "chain_of_thought": "Michael Malchieli קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "haim-biton",
-    "name": "Haim Biton",
-    "party": "Shas",
-    "news_sentiment": 4.3,
-    "social_sentiment": 4.2,
-    "media_volume": 5,
-    "overall_score": 4.1,
-    "chain_of_thought": "Haim Biton קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "uriel-buso",
-    "name": "Uriel Buso",
-    "party": "Shas",
-    "news_sentiment": 2.9,
-    "social_sentiment": 4.2,
-    "media_volume": 5.6,
-    "overall_score": 2.9,
-    "chain_of_thought": "Uriel Buso קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yaakov-margi",
-    "name": "Yaakov Margi",
-    "party": "Shas",
-    "news_sentiment": 4.6,
-    "social_sentiment": 2.7,
-    "media_volume": 2.6,
-    "overall_score": 3.5,
-    "chain_of_thought": "Yaakov Margi קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yitzhak-cohen-shas",
-    "name": "Yitzhak Cohen",
-    "party": "Shas",
-    "news_sentiment": 4,
-    "social_sentiment": 3.4,
-    "media_volume": 3.5,
-    "overall_score": 4.4,
-    "chain_of_thought": "Yitzhak Cohen קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "moshe-abutbul",
-    "name": "Moshe Abutbul",
-    "party": "Shas",
-    "news_sentiment": 4.4,
-    "social_sentiment": 4.5,
-    "media_volume": 6,
-    "overall_score": 4.7,
-    "chain_of_thought": "Moshe Abutbul קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ariel-atias",
-    "name": "Ariel Atias",
-    "party": "Shas",
-    "news_sentiment": 5.7,
-    "social_sentiment": 5.7,
-    "media_volume": 2.9,
-    "overall_score": 6.7,
-    "chain_of_thought": "Ariel Atias קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yitzhak-goldknopf",
-    "name": "Yitzhak Goldknopf",
-    "party": "United Torah Judaism",
-    "news_sentiment": 5.9,
-    "social_sentiment": 5.6,
-    "media_volume": 5.3,
-    "overall_score": 5.9,
-    "chain_of_thought": "Yitzhak Goldknopf קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "moshe-gafni",
-    "name": "Moshe Gafni",
-    "party": "United Torah Judaism",
-    "news_sentiment": 6.3,
-    "social_sentiment": 5.1,
-    "media_volume": 3,
-    "overall_score": 5.9,
-    "chain_of_thought": "Moshe Gafni קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "uri-maklev",
-    "name": "Uri Maklev",
-    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
     "news_sentiment": 5,
-    "social_sentiment": 5.4,
-    "media_volume": 6.2,
-    "overall_score": 5.9,
-    "chain_of_thought": "Uri Maklev קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yisrael-eichler",
-    "name": "Yisrael Eichler",
-    "party": "United Torah Judaism",
-    "news_sentiment": 5.3,
-    "social_sentiment": 6.1,
-    "media_volume": 4.2,
-    "overall_score": 5.8,
-    "chain_of_thought": "Yisrael Eichler קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yaakov-tesler",
-    "name": "Yaakov Tesler",
-    "party": "United Torah Judaism",
-    "news_sentiment": 3.4,
-    "social_sentiment": 5.3,
-    "media_volume": 7.6,
-    "overall_score": 3.5,
-    "chain_of_thought": "Yaakov Tesler קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "meir-porush",
-    "name": "Meir Porush",
-    "party": "United Torah Judaism",
-    "news_sentiment": 6.3,
-    "social_sentiment": 6,
-    "media_volume": 2.4,
-    "overall_score": 6.2,
-    "chain_of_thought": "Meir Porush קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yaakov-asher",
-    "name": "Yaakov Asher",
-    "party": "United Torah Judaism",
-    "news_sentiment": 3.8,
-    "social_sentiment": 2.9,
-    "media_volume": 7,
-    "overall_score": 2.5,
-    "chain_of_thought": "Yaakov Asher קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "bezalel-smotrich",
-    "name": "Bezalel Smotrich",
-    "party": "Religious Zionism",
-    "news_sentiment": 3.7,
-    "social_sentiment": 4.2,
-    "media_volume": 6.3,
-    "overall_score": 4.6,
-    "chain_of_thought": "Bezalel Smotrich קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "orit-strock",
-    "name": "Orit Strock",
-    "party": "Religious Zionism",
-    "news_sentiment": 6.4,
-    "social_sentiment": 6,
-    "media_volume": 4.3,
-    "overall_score": 6.3,
-    "chain_of_thought": "Orit Strock קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ofir-sofer",
-    "name": "Ofir Sofer",
-    "party": "Religious Zionism",
-    "news_sentiment": 5.7,
-    "social_sentiment": 4.6,
-    "media_volume": 3.2,
-    "overall_score": 5,
-    "chain_of_thought": "Ofir Sofer קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "simcha-rothman",
-    "name": "Simcha Rothman",
-    "party": "Religious Zionism",
-    "news_sentiment": 7.2,
-    "social_sentiment": 6,
-    "media_volume": 3.4,
-    "overall_score": 7.4,
-    "chain_of_thought": "Simcha Rothman קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "zvi-sukkot",
-    "name": "Zvi Sukkot",
-    "party": "Religious Zionism",
-    "news_sentiment": 6.7,
-    "social_sentiment": 6.7,
-    "media_volume": 4.9,
-    "overall_score": 6.4,
-    "chain_of_thought": "Zvi Sukkot קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ohad-tal",
-    "name": "Ohad Tal",
-    "party": "Religious Zionism",
-    "news_sentiment": 5.3,
-    "social_sentiment": 5.9,
-    "media_volume": 4.8,
-    "overall_score": 4.1,
-    "chain_of_thought": "Ohad Tal קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "limor-son-har-melech",
-    "name": "Limor Son Har-Melech",
-    "party": "Religious Zionism",
-    "news_sentiment": 3.7,
-    "social_sentiment": 4,
-    "media_volume": 7.1,
-    "overall_score": 4.1,
-    "chain_of_thought": "Limor Son Har-Melech קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "itamar-ben-gvir",
-    "name": "Itamar Ben Gvir",
-    "party": "Otzma Yehudit",
-    "news_sentiment": 4.7,
-    "social_sentiment": 6,
-    "media_volume": 7.2,
-    "overall_score": 4.9,
-    "chain_of_thought": "Itamar Ben Gvir קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "almog-cohen",
-    "name": "Almog Cohen",
-    "party": "Otzma Yehudit",
-    "news_sentiment": 4.2,
-    "social_sentiment": 4.7,
-    "media_volume": 6.2,
-    "overall_score": 4.9,
-    "chain_of_thought": "Almog Cohen קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "zvika-fogel",
-    "name": "Zvika Fogel",
-    "party": "Otzma Yehudit",
-    "news_sentiment": 7,
-    "social_sentiment": 7.4,
-    "media_volume": 1,
-    "overall_score": 7.6,
-    "chain_of_thought": "Zvika Fogel קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yitzhak-wasserlauf",
-    "name": "Yitzhak Wasserlauf",
-    "party": "Otzma Yehudit",
-    "news_sentiment": 7.2,
-    "social_sentiment": 8.4,
-    "media_volume": 4.2,
-    "overall_score": 7.9,
-    "chain_of_thought": "Yitzhak Wasserlauf קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "limor-widman-yosef",
-    "name": "Limor Widman-Yosef",
-    "party": "Otzma Yehudit",
-    "news_sentiment": 8.3,
-    "social_sentiment": 7.4,
-    "media_volume": 5.6,
-    "overall_score": 8.3,
-    "chain_of_thought": "Limor Widman-Yosef קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "amichai-eliyahu",
-    "name": "Amichai Eliyahu",
-    "party": "Otzma Yehudit",
-    "news_sentiment": 5.7,
-    "social_sentiment": 5,
-    "media_volume": 2.5,
-    "overall_score": 6.7,
-    "chain_of_thought": "Amichai Eliyahu קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "avigdor-lieberman",
-    "name": "Avigdor Lieberman",
-    "party": "Yisrael Beiteinu",
-    "news_sentiment": 3.4,
-    "social_sentiment": 4.4,
-    "media_volume": 5.4,
-    "overall_score": 3.5,
-    "chain_of_thought": "Avigdor Lieberman קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "oded-forer",
-    "name": "Oded Forer",
-    "party": "Yisrael Beiteinu",
-    "news_sentiment": 4.8,
-    "social_sentiment": 5.7,
-    "media_volume": 4.9,
-    "overall_score": 4.1,
-    "chain_of_thought": "Oded Forer קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "evgeny-sova",
-    "name": "Evgeny Sova",
-    "party": "Yisrael Beiteinu",
-    "news_sentiment": 5.3,
-    "social_sentiment": 5.7,
-    "media_volume": 1.6,
-    "overall_score": 6.2,
-    "chain_of_thought": "Evgeny Sova קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "hamad-amar",
-    "name": "Hamad Amar",
-    "party": "Yisrael Beiteinu",
-    "news_sentiment": 4.7,
-    "social_sentiment": 4.1,
-    "media_volume": 4.8,
-    "overall_score": 5.1,
-    "chain_of_thought": "Hamad Amar קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "yulia-malinovsky",
-    "name": "Yulia Malinovsky",
-    "party": "Yisrael Beiteinu",
-    "news_sentiment": 3.9,
-    "social_sentiment": 5.3,
-    "media_volume": 4.5,
-    "overall_score": 3.3,
-    "chain_of_thought": "Yulia Malinovsky קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "sharon-nir",
-    "name": "Sharon Nir",
-    "party": "Yisrael Beiteinu",
-    "news_sentiment": 7.2,
-    "social_sentiment": 6.6,
-    "media_volume": 5.3,
-    "overall_score": 8.2,
-    "chain_of_thought": "Sharon Nir קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "mansour-abbas",
-    "name": "Mansour Abbas",
-    "party": "Ra'am",
-    "news_sentiment": 6.6,
-    "social_sentiment": 7.3,
-    "media_volume": 6.5,
-    "overall_score": 7.8,
-    "chain_of_thought": "Mansour Abbas קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "waleed-taha",
-    "name": "Waleed Taha",
-    "party": "Ra'am",
-    "news_sentiment": 7.2,
-    "social_sentiment": 5.5,
-    "media_volume": 4.4,
-    "overall_score": 7.6,
-    "chain_of_thought": "Waleed Taha קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "iman-khatib-yasin",
-    "name": "Iman Khatib-Yasin",
-    "party": "Ra'am",
-    "news_sentiment": 3.4,
-    "social_sentiment": 4.3,
-    "media_volume": 1.5,
-    "overall_score": 3.2,
-    "chain_of_thought": "Iman Khatib-Yasin קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "mazen-ghanaim",
-    "name": "Mazen Ghanaim",
-    "party": "Ra'am",
-    "news_sentiment": 6.8,
-    "social_sentiment": 7.7,
-    "media_volume": 6.4,
-    "overall_score": 7.6,
-    "chain_of_thought": "Mazen Ghanaim קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "atta-abu-medeghem",
-    "name": "Atta Abu Medeghem",
-    "party": "Ra'am",
-    "news_sentiment": 6.1,
-    "social_sentiment": 7.1,
-    "media_volume": 4.6,
-    "overall_score": 6.1,
-    "chain_of_thought": "Atta Abu Medeghem קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "ayman-odeh",
-    "name": "Ayman Odeh",
-    "party": "Hadash-Ta'al",
-    "news_sentiment": 6.8,
-    "social_sentiment": 7.9,
-    "media_volume": 7.7,
-    "overall_score": 7.2,
-    "chain_of_thought": "Ayman Odeh קיבל סיקור מעורב היום"
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Afif Abed in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Afif Abed in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
     "politician_id": "ahmad-tibi",
@@ -1130,54 +74,292 @@
     "chain_of_thought": "Aida Touma-Suleiman קיבל סיקור מעורב היום"
   },
   {
-    "politician_id": "ofer-cassif",
-    "name": "Ofer Cassif",
-    "party": "Hadash-Ta'al",
-    "news_sentiment": 6.5,
-    "social_sentiment": 4.8,
-    "media_volume": 4.1,
-    "overall_score": 6,
-    "chain_of_thought": "Ofer Cassif קיבל סיקור מעורב היום"
+    "politician_id": "akram-hasson",
+    "name": "Akram Hasson",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Akram Hasson in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Akram Hasson in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "youssef-atauna",
-    "name": "Youssef Atauna",
-    "party": "Hadash-Ta'al",
-    "news_sentiment": 4.9,
-    "social_sentiment": 4.4,
-    "media_volume": 2.1,
-    "overall_score": 4.1,
-    "chain_of_thought": "Youssef Atauna קיבל סיקור מעורב היום"
+    "politician_id": "alon-schuster",
+    "name": "Alon Schuster",
+    "party": "National Unity",
+    "news_sentiment": 6,
+    "social_sentiment": 5,
+    "media_volume": 3.6,
+    "overall_score": 6.5,
+    "chain_of_thought": "Alon Schuster קיבל סיקור מעורב היום"
   },
   {
-    "politician_id": "merav-michaeli",
-    "name": "Merav Michaeli",
-    "party": "Labor",
-    "news_sentiment": 3.3,
-    "social_sentiment": 5.1,
-    "media_volume": 5.4,
-    "overall_score": 3.1,
-    "chain_of_thought": "Merav Michaeli קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "naama-lazimi",
-    "name": "Naama Lazimi",
-    "party": "Labor",
-    "news_sentiment": 4.3,
-    "social_sentiment": 4.4,
-    "media_volume": 5.6,
-    "overall_score": 5.4,
-    "chain_of_thought": "Naama Lazimi קיבל סיקור מעורב היום"
-  },
-  {
-    "politician_id": "gilad-kariv",
-    "name": "Gilad Kariv",
-    "party": "Labor",
+    "politician_id": "amichai-eliyahu",
+    "name": "Amichai Eliyahu",
+    "party": "Otzma Yehudit",
     "news_sentiment": 5.7,
-    "social_sentiment": 7.2,
-    "media_volume": 3.9,
-    "overall_score": 6.3,
-    "chain_of_thought": "Gilad Kariv קיבל סיקור מעורב היום"
+    "social_sentiment": 5,
+    "media_volume": 2.5,
+    "overall_score": 6.7,
+    "chain_of_thought": "Amichai Eliyahu קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "amichai-shikli",
+    "name": "Amichai Shikli",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Amichai Shikli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amichai Shikli in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amir-ohana",
+    "name": "Amir Ohana",
+    "party": "Likud",
+    "news_sentiment": 8.3,
+    "social_sentiment": 7.4,
+    "media_volume": 6.6,
+    "overall_score": 8.4,
+    "chain_of_thought": "Amir Ohana קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "amit-halevi",
+    "name": "Amit Halevi",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Amit Halevi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amit Halevi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ariel-kallner",
+    "name": "Ariel Kallner",
+    "party": "Likud",
+    "news_sentiment": 6.1,
+    "social_sentiment": 4.1,
+    "media_volume": 2.8,
+    "overall_score": 5.3,
+    "chain_of_thought": "Ariel Kallner קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "aryeh-deri",
+    "name": "Aryeh Deri",
+    "party": "Shas",
+    "news_sentiment": 5.7,
+    "social_sentiment": 5.1,
+    "media_volume": 3.4,
+    "overall_score": 5.2,
+    "chain_of_thought": "Aryeh Deri קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "avi-dichter",
+    "name": "Avi Dichter",
+    "party": "Likud",
+    "news_sentiment": 4,
+    "social_sentiment": 4.1,
+    "media_volume": 3.1,
+    "overall_score": 3.9,
+    "chain_of_thought": "Avi Dichter קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "avi-maoz",
+    "name": "Avi Maoz",
+    "party": "Noam",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Avi Maoz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avi Maoz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avichay-buaron",
+    "name": "Avichay Buaron",
+    "party": "Likud",
+    "news_sentiment": 4.7,
+    "social_sentiment": 3.4,
+    "media_volume": 3.6,
+    "overall_score": 4.8,
+    "chain_of_thought": "Avichay Buaron קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 3.4,
+    "social_sentiment": 4.4,
+    "media_volume": 5.4,
+    "overall_score": 3.5,
+    "chain_of_thought": "Avigdor Lieberman קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "ayman-odeh",
+    "name": "Ayman Odeh",
+    "party": "Hadash-Ta'al",
+    "news_sentiment": 6.8,
+    "social_sentiment": 7.9,
+    "media_volume": 7.7,
+    "overall_score": 7.2,
+    "chain_of_thought": "Ayman Odeh קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "news_sentiment": 6.1,
+    "social_sentiment": 4.8,
+    "media_volume": 9.2,
+    "overall_score": 5.8,
+    "chain_of_thought": "Benjamin Netanyahu קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "news_sentiment": 5.8,
+    "social_sentiment": 5.9,
+    "media_volume": 6.5,
+    "overall_score": 5.3,
+    "chain_of_thought": "Benny Gantz קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "news_sentiment": 3.7,
+    "social_sentiment": 4.2,
+    "media_volume": 6.3,
+    "overall_score": 4.6,
+    "chain_of_thought": "Bezalel Smotrich קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "boaz-bismuth",
+    "name": "Boaz Bismuth",
+    "party": "Likud",
+    "news_sentiment": 6.2,
+    "social_sentiment": 8,
+    "media_volume": 6.3,
+    "overall_score": 7.3,
+    "chain_of_thought": "Boaz Bismuth קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "boaz-toporovsky",
+    "name": "Boaz Toporovsky",
+    "party": "Yesh Atid",
+    "news_sentiment": 4.4,
+    "social_sentiment": 3.7,
+    "media_volume": 4.8,
+    "overall_score": 4.3,
+    "chain_of_thought": "Boaz Toporovsky קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "dan-ilouz",
+    "name": "Dan Ilouz",
+    "party": "Likud",
+    "news_sentiment": 3.2,
+    "social_sentiment": 4.2,
+    "media_volume": 4.9,
+    "overall_score": 2.9,
+    "chain_of_thought": "Dan Ilouz קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "david-amsalem",
+    "name": "David Amsalem",
+    "party": "Likud",
+    "news_sentiment": 5.9,
+    "social_sentiment": 6,
+    "media_volume": 4.6,
+    "overall_score": 5.8,
+    "chain_of_thought": "David Amsalem קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "david-bitan",
+    "name": "David Bitan",
+    "party": "Likud",
+    "news_sentiment": 4.5,
+    "social_sentiment": 4.1,
+    "media_volume": 7.2,
+    "overall_score": 5.3,
+    "chain_of_thought": "David Bitan קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "debbie-biton",
+    "name": "Debbie Biton",
+    "party": "Yesh Atid",
+    "news_sentiment": 7.6,
+    "social_sentiment": 6.7,
+    "media_volume": 4.1,
+    "overall_score": 7,
+    "chain_of_thought": "Debbie Biton קיבל סיקור מעורב היום"
   },
   {
     "politician_id": "efrat-rayten",
@@ -1190,6 +372,1277 @@
     "chain_of_thought": "Efrat Rayten קיבל סיקור מעורב היום"
   },
   {
+    "politician_id": "eitan-ginzburg",
+    "name": "Eitan Ginzburg",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Eitan Ginzburg in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eitan Ginzburg in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "elazar-stern",
+    "name": "Elazar Stern",
+    "party": "Yesh Atid",
+    "news_sentiment": 4.1,
+    "social_sentiment": 5.8,
+    "media_volume": 4.9,
+    "overall_score": 4.3,
+    "chain_of_thought": "Elazar Stern קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "eli-cohen",
+    "name": "Eli Cohen",
+    "party": "Likud",
+    "news_sentiment": 4.1,
+    "social_sentiment": 5.1,
+    "media_volume": 2.8,
+    "overall_score": 3.3,
+    "chain_of_thought": "Eli Cohen קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "eli-dalal",
+    "name": "Eli Dalal",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Eli Dalal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eli Dalal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eliyahu-revivo",
+    "name": "Eliyahu Revivo",
+    "party": "Likud",
+    "news_sentiment": 6.1,
+    "social_sentiment": 6.1,
+    "media_volume": 4,
+    "overall_score": 6.5,
+    "chain_of_thought": "Eliyahu Revivo קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "evgeny-sova",
+    "name": "Evgeny Sova",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 5.3,
+    "social_sentiment": 5.7,
+    "media_volume": 1.6,
+    "overall_score": 6.2,
+    "chain_of_thought": "Evgeny Sova קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "gadi-eisenkot",
+    "name": "Gadi Eisenkot",
+    "party": "National Unity",
+    "news_sentiment": 5.7,
+    "social_sentiment": 3.5,
+    "media_volume": 7.3,
+    "overall_score": 4.8,
+    "chain_of_thought": "Gadi Eisenkot קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "galit-distel-atbaryan",
+    "name": "Galit Distel Atbaryan",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Galit Distel Atbaryan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Galit Distel Atbaryan in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gideon-saar",
+    "name": "Gideon Sa'ar",
+    "party": "National Unity",
+    "news_sentiment": 5.2,
+    "social_sentiment": 5.9,
+    "media_volume": 5.2,
+    "overall_score": 5.4,
+    "chain_of_thought": "Gideon Sa'ar קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "gila-gamliel",
+    "name": "Gila Gamliel",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Gila Gamliel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gila Gamliel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gilad-kariv",
+    "name": "Gilad Kariv",
+    "party": "Labor",
+    "news_sentiment": 5.7,
+    "social_sentiment": 7.2,
+    "media_volume": 3.9,
+    "overall_score": 6.3,
+    "chain_of_thought": "Gilad Kariv קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "haim-biton",
+    "name": "Haim Biton",
+    "party": "Shas",
+    "news_sentiment": 4.3,
+    "social_sentiment": 4.2,
+    "media_volume": 5,
+    "overall_score": 4.1,
+    "chain_of_thought": "Haim Biton קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "haim-katz",
+    "name": "Haim Katz",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי — ככל הנראה ישראל כץ ולא חיים כץ. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Haim Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hamad-amar",
+    "name": "Hamad Amar",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 4.7,
+    "social_sentiment": 4.1,
+    "media_volume": 4.8,
+    "overall_score": 5.1,
+    "chain_of_thought": "Hamad Amar קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "hanoch-milwidsky",
+    "name": "Hanoch Milwidsky",
+    "party": "Likud",
+    "news_sentiment": 4.1,
+    "social_sentiment": 4.1,
+    "media_volume": 3.5,
+    "overall_score": 4.5,
+    "chain_of_thought": "Hanoch Milwidsky קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "hava-eti-atia",
+    "name": "Hava Eti Atia",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Hava Eti Atia in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hava Eti Atia in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hili-tropper",
+    "name": "Hili Tropper",
+    "party": "National Unity",
+    "news_sentiment": 5.4,
+    "social_sentiment": 6.2,
+    "media_volume": 6.1,
+    "overall_score": 6.7,
+    "chain_of_thought": "Hili Tropper קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "idit-silman",
+    "name": "Idit Silman",
+    "party": "Likud",
+    "role": "deputy-minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Idit Silman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Idit Silman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "iman-khatib-yasin",
+    "name": "Iman Khatib-Yasin",
+    "party": "Ra'am",
+    "news_sentiment": 3.4,
+    "social_sentiment": 4.3,
+    "media_volume": 1.5,
+    "overall_score": 3.2,
+    "chain_of_thought": "Iman Khatib-Yasin קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "itamar-ben-gvir",
+    "name": "Itamar Ben Gvir",
+    "party": "Otzma Yehudit",
+    "news_sentiment": 4.7,
+    "social_sentiment": 6,
+    "media_volume": 7.2,
+    "overall_score": 4.9,
+    "chain_of_thought": "Itamar Ben Gvir קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "karine-elharrar",
+    "name": "Karine Elharrar",
+    "party": "Yesh Atid",
+    "news_sentiment": 7.2,
+    "social_sentiment": 8.2,
+    "media_volume": 3.7,
+    "overall_score": 8.4,
+    "chain_of_thought": "Karine Elharrar קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "keti-shitrit",
+    "name": "Keti Shitrit",
+    "party": "Likud",
+    "news_sentiment": 3.9,
+    "social_sentiment": 3.2,
+    "media_volume": 2.3,
+    "overall_score": 3,
+    "chain_of_thought": "Keti Shitrit קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "limor-son-har-melech",
+    "name": "Limor Son Har-Melech",
+    "party": "Religious Zionism",
+    "news_sentiment": 3.7,
+    "social_sentiment": 4,
+    "media_volume": 7.1,
+    "overall_score": 4.1,
+    "chain_of_thought": "Limor Son Har-Melech קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "mansour-abbas",
+    "name": "Mansour Abbas",
+    "party": "Ra'am",
+    "news_sentiment": 6.6,
+    "social_sentiment": 7.3,
+    "media_volume": 6.5,
+    "overall_score": 7.8,
+    "chain_of_thought": "Mansour Abbas קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "matan-kahana",
+    "name": "Matan Kahana",
+    "party": "National Unity",
+    "news_sentiment": 4.1,
+    "social_sentiment": 4.8,
+    "media_volume": 2.3,
+    "overall_score": 4.1,
+    "chain_of_thought": "Matan Kahana קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "matti-sarfatti-harcavi",
+    "name": "Matti Sarfatti Harcavi",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Matti Sarfatti Harcavi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Matti Sarfatti Harcavi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "may-golan",
+    "name": "May Golan",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לרמת הגולן ולא לח\"כ מאי גולן — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched May Golan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Can someone explain the Syrian occupation etc — I keep getting shot down when I try to defend Israel. Everyone talks about how GolaN Heights used to be Syrian but Israel 'illegally\" annexed them and Israel has been occupying Syria since 1967 and 'Greater Expansion' is happening. I though",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz0vf0/can_someone_explain_the_syrian_occupation_etc/"
+        ],
+        "speaker_metadata": {
+          "handle": "@AZShitshow",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meir-cohen",
+    "name": "Meir Cohen",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.1,
+    "social_sentiment": 3.8,
+    "media_volume": 5.2,
+    "overall_score": 5.1,
+    "chain_of_thought": "Meir Cohen קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "meir-porush",
+    "name": "Meir Porush",
+    "party": "United Torah Judaism",
+    "news_sentiment": 6.3,
+    "social_sentiment": 6,
+    "media_volume": 2.4,
+    "overall_score": 6.2,
+    "chain_of_thought": "Meir Porush קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "meirav-ben-ari",
+    "name": "Meirav Ben Ari",
+    "party": "Yesh Atid",
+    "news_sentiment": 7.1,
+    "social_sentiment": 7,
+    "media_volume": 3.2,
+    "overall_score": 7.9,
+    "chain_of_thought": "Meirav Ben Ari קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "merav-cohen",
+    "name": "Merav Cohen",
+    "party": "Yesh Atid",
+    "news_sentiment": 4.9,
+    "social_sentiment": 6.4,
+    "media_volume": 6.6,
+    "overall_score": 5.4,
+    "chain_of_thought": "Merav Cohen קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "merav-michaeli",
+    "name": "Merav Michaeli",
+    "party": "Labor",
+    "news_sentiment": 3.3,
+    "social_sentiment": 5.1,
+    "media_volume": 5.4,
+    "overall_score": 3.1,
+    "chain_of_thought": "Merav Michaeli קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "michael-biton",
+    "name": "Michael Biton",
+    "party": "National Unity",
+    "news_sentiment": 7.6,
+    "social_sentiment": 8.3,
+    "media_volume": 2.6,
+    "overall_score": 8,
+    "chain_of_thought": "Michael Biton קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "michael-malchieli",
+    "name": "Michael Malchieli",
+    "party": "Shas",
+    "news_sentiment": 7.1,
+    "social_sentiment": 8.3,
+    "media_volume": 5.9,
+    "overall_score": 7.6,
+    "chain_of_thought": "Michael Malchieli קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "michal-shir-segman",
+    "name": "Michal Shir Segman",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michal Shir Segman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michal Shir Segman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michal-waldiger",
+    "name": "Michal Waldiger",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michal Waldiger in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michal Waldiger in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michel-buskila",
+    "name": "Michel Buskila",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michel Buskila in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michel Buskila in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mickey-levy",
+    "name": "Mickey Levy",
+    "party": "Yesh Atid",
+    "news_sentiment": 6.5,
+    "social_sentiment": 6,
+    "media_volume": 1.7,
+    "overall_score": 7.3,
+    "chain_of_thought": "Mickey Levy קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "miki-zohar",
+    "name": "Miki Zohar",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Miki Zohar in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Miki Zohar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "miri-regev",
+    "name": "Miri Regev",
+    "party": "Likud",
+    "news_sentiment": 4.6,
+    "social_sentiment": 5.8,
+    "media_volume": 6.2,
+    "overall_score": 5.4,
+    "chain_of_thought": "Miri Regev קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "moshe-abutbul",
+    "name": "Moshe Abutbul",
+    "party": "Shas",
+    "news_sentiment": 4.4,
+    "social_sentiment": 4.5,
+    "media_volume": 6,
+    "overall_score": 4.7,
+    "chain_of_thought": "Moshe Abutbul קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "moshe-arbel",
+    "name": "Moshe Arbel",
+    "party": "Shas",
+    "news_sentiment": 4.6,
+    "social_sentiment": 5.5,
+    "media_volume": 5.8,
+    "overall_score": 3.7,
+    "chain_of_thought": "Moshe Arbel קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "moshe-gafni",
+    "name": "Moshe Gafni",
+    "party": "United Torah Judaism",
+    "news_sentiment": 6.3,
+    "social_sentiment": 5.1,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "Moshe Gafni קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "moshe-passal",
+    "name": "Moshe Passal",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Passal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Passal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-saada",
+    "name": "Moshe Saada",
+    "party": "Likud",
+    "news_sentiment": 5.6,
+    "social_sentiment": 4.1,
+    "media_volume": 3.3,
+    "overall_score": 5.3,
+    "chain_of_thought": "Moshe Saada קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "moshe-solomon",
+    "name": "Moshe Solomon",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Solomon in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Solomon in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-tur-paz",
+    "name": "Moshe Tur-Paz",
+    "party": "Yesh Atid",
+    "news_sentiment": 6.3,
+    "social_sentiment": 7.2,
+    "media_volume": 6.2,
+    "overall_score": 7.3,
+    "chain_of_thought": "Moshe Tur-Paz קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "naama-lazimi",
+    "name": "Naama Lazimi",
+    "party": "Labor",
+    "news_sentiment": 4.3,
+    "social_sentiment": 4.4,
+    "media_volume": 5.6,
+    "overall_score": 5.4,
+    "chain_of_thought": "Naama Lazimi קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "naftali-bennett",
+    "name": "Naftali Bennett",
+    "party": "Independent",
+    "role": "politician",
+    "hostility_level": 0.15,
+    "policy_approval": 0.15,
+    "media_amplification": 0.5,
+    "news_sentiment": 5.8,
+    "social_sentiment": 8.5,
+    "media_volume": 5,
+    "overall_score": 6.5,
+    "chain_of_thought": "סיקור מעורב: מאמר ביקורתי על 'רודנים משפטיים' בישראל, פגישות דיפלומטיות חיוביות באבו דאבי, אזהרת ח\"כ ממרצ שממשלתו תיפול, וחשיפת פרטי תוכנית השלום של טראמפ. מיצוב כשחקן מדיני פעיל עם נוכחות בינלאומית.",
+    "news_headlines": [
+      "Bennett, Sa’ar and Israel’s legal tyrants - JNS",
+      "Bennett meets with UAE officials in Abu Dhabi - JNS",
+      "Meretz MK: Bennett knows his government will fall if he takes military action - JNS",
+      "Bennett reveals alleged details of soon-to-be released Trump Mideast peace plan - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naftali Bennett in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naor-shiri",
+    "name": "Naor Shiri",
+    "party": "Yesh Atid",
+    "news_sentiment": 4.5,
+    "social_sentiment": 4.8,
+    "media_volume": 4.2,
+    "overall_score": 4,
+    "chain_of_thought": "Naor Shiri קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "nir-barkat",
+    "name": "Nir Barkat",
+    "party": "Likud",
+    "news_sentiment": 6.1,
+    "social_sentiment": 6.1,
+    "media_volume": 4.2,
+    "overall_score": 7.2,
+    "chain_of_thought": "Nir Barkat קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "nissim-vaturi",
+    "name": "Nissim Vaturi",
+    "party": "Likud",
+    "news_sentiment": 5.8,
+    "social_sentiment": 3.9,
+    "media_volume": 2.6,
+    "overall_score": 4.7,
+    "chain_of_thought": "Nissim Vaturi קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "oded-forer",
+    "name": "Oded Forer",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 4.8,
+    "social_sentiment": 5.7,
+    "media_volume": 4.9,
+    "overall_score": 4.1,
+    "chain_of_thought": "Oded Forer קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "ofer-cassif",
+    "name": "Ofer Cassif",
+    "party": "Hadash-Ta'al",
+    "news_sentiment": 6.5,
+    "social_sentiment": 4.8,
+    "media_volume": 4.1,
+    "overall_score": 6,
+    "chain_of_thought": "Ofer Cassif קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "ofir-katz",
+    "name": "Ofir Katz",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי-ביטחוני ככל הנראה מכוון לישראל כץ ולא לאופיר כץ. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-sofer",
+    "name": "Ofir Sofer",
+    "party": "Religious Zionism",
+    "news_sentiment": 5.7,
+    "social_sentiment": 4.6,
+    "media_volume": 3.2,
+    "overall_score": 5,
+    "chain_of_thought": "Ofir Sofer קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "ohad-tal",
+    "name": "Ohad Tal",
+    "party": "Religious Zionism",
+    "news_sentiment": 5.3,
+    "social_sentiment": 5.9,
+    "media_volume": 4.8,
+    "overall_score": 4.1,
+    "chain_of_thought": "Ohad Tal קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "orit-farkash-hacohen",
+    "name": "Orit Farkash-Hacohen",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Orit Farkash-Hacohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Orit Farkash-Hacohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orit-strock",
+    "name": "Orit Strock",
+    "party": "Religious Zionism",
+    "news_sentiment": 6.4,
+    "social_sentiment": 6,
+    "media_volume": 4.3,
+    "overall_score": 6.3,
+    "chain_of_thought": "Orit Strock קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "osher-shkalim",
+    "name": "Osher Shkalim",
+    "party": "Likud",
+    "news_sentiment": 5.3,
+    "social_sentiment": 5,
+    "media_volume": 3.5,
+    "overall_score": 5.1,
+    "chain_of_thought": "Osher Shkalim קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "pnina-tamano-shata",
+    "name": "Pnina Tamano-Shata",
+    "party": "National Unity",
+    "news_sentiment": 6.2,
+    "social_sentiment": 4.6,
+    "media_volume": 4,
+    "overall_score": 5.8,
+    "chain_of_thought": "Pnina Tamano-Shata קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "ram-ben-barak",
+    "name": "Ram Ben Barak",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Ram Ben Barak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ram Ben Barak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ron-katz",
+    "name": "Ron Katz",
+    "party": "Yesh Atid",
+    "news_sentiment": 7.3,
+    "social_sentiment": 6.7,
+    "media_volume": 5.4,
+    "overall_score": 6.8,
+    "chain_of_thought": "Ron Katz קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "samir-ben-said",
+    "name": "Samir Ben Said",
+    "party": "Hadash-Ta'al",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי עוסק באמירת נתניהו על ישו ואינו קשור לח\"כ סמיר בן סעיד — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Samir Ben Said in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryvj0r/what_could_possibly_have_led_netanyahu_to_say_that/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Hot_Minute_9249",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sasson-guetta",
+    "name": "Sasson Guetta",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Sasson Guetta in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sasson Guetta in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shalom-danino",
+    "name": "Shalom Danino",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכורים החברתיים הם ברכות 'שלום' בפוסטים לא קשורים ולא מתייחסים לפוליטיקאי. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Shalom Danino in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Passport without deferment from army? — Shalom! My fiancee is an Israeli Russian citizen (FROM BIRTH) who was born to Israeli citizen parents in Be'er Sheva, but left Israel when she was 1. She went back for a month when she was 5, but since then, she has never been in Israel at ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1s0n7ld/passport_without_deferment_from_army/"
+        ],
+        "speaker_metadata": {
+          "handle": "@CallMeTheFartman",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "American trying to get into Israel on May 2nd and wondering about alternate routes — Shalom, I am an American citizen with an A2 student visa trying to get into Israel at the start if May. Right now I have flights booked with El Al for May 2nd and are concerned they will get canceled. If so I need to get into the country a ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz2fn3/american_trying_to_get_into_israel_on_may_2nd_and/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ModuMotor",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharon-nir",
+    "name": "Sharon Nir",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 7.2,
+    "social_sentiment": 6.6,
+    "media_volume": 5.3,
+    "overall_score": 8.2,
+    "chain_of_thought": "Sharon Nir קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "sharren-haskel",
+    "name": "Sharren Haskel",
+    "party": "National Unity",
+    "news_sentiment": 5.9,
+    "social_sentiment": 5.5,
+    "media_volume": 4.6,
+    "overall_score": 5.1,
+    "chain_of_thought": "Sharren Haskel קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "shelly-tal-meron",
+    "name": "Shelly Tal Meron",
+    "party": "Likud",
+    "news_sentiment": 7.5,
+    "social_sentiment": 5.7,
+    "media_volume": 4.5,
+    "overall_score": 7.4,
+    "chain_of_thought": "Shelly Tal Meron קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "shlomo-karhi",
+    "name": "Shlomo Karhi",
+    "party": "Likud",
+    "news_sentiment": 5.4,
+    "social_sentiment": 5.5,
+    "media_volume": 3.3,
+    "overall_score": 5.6,
+    "chain_of_thought": "Shlomo Karhi קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "simcha-rothman",
+    "name": "Simcha Rothman",
+    "party": "Religious Zionism",
+    "news_sentiment": 7.2,
+    "social_sentiment": 6,
+    "media_volume": 3.4,
+    "overall_score": 7.4,
+    "chain_of_thought": "Simcha Rothman קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "simon-davidson",
+    "name": "Simon Davidson",
+    "party": "Yesh Atid",
+    "news_sentiment": 6.2,
+    "social_sentiment": 6.9,
+    "media_volume": 3.5,
+    "overall_score": 6.1,
+    "chain_of_thought": "Simon Davidson קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "tally-gotliv",
+    "name": "Tally Gotliv",
+    "party": "Likud",
+    "news_sentiment": 5.6,
+    "social_sentiment": 6.2,
+    "media_volume": 1.7,
+    "overall_score": 6.7,
+    "chain_of_thought": "Tally Gotliv קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "tatiana-mazarsky",
+    "name": "Tatiana Mazarsky",
+    "party": "Yesh Atid",
+    "news_sentiment": 4.8,
+    "social_sentiment": 4.8,
+    "media_volume": 7.2,
+    "overall_score": 5.4,
+    "chain_of_thought": "Tatiana Mazarsky קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "tsega-melaku",
+    "name": "Tsega Melaku",
+    "party": "Likud",
+    "news_sentiment": 5,
+    "social_sentiment": 3.5,
+    "media_volume": 4.8,
+    "overall_score": 3.8,
+    "chain_of_thought": "Tsega Melaku קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "uri-maklev",
+    "name": "Uri Maklev",
+    "party": "United Torah Judaism",
+    "news_sentiment": 5,
+    "social_sentiment": 5.4,
+    "media_volume": 6.2,
+    "overall_score": 5.9,
+    "chain_of_thought": "Uri Maklev קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "uriel-buso",
+    "name": "Uriel Buso",
+    "party": "Shas",
+    "news_sentiment": 2.9,
+    "social_sentiment": 4.2,
+    "media_volume": 5.6,
+    "overall_score": 2.9,
+    "chain_of_thought": "Uriel Buso קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "vladimir-beliak",
+    "name": "Vladimir Beliak",
+    "party": "Yesh Atid",
+    "news_sentiment": 4.9,
+    "social_sentiment": 4.4,
+    "media_volume": 2.6,
+    "overall_score": 4.5,
+    "chain_of_thought": "Vladimir Beliak קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "waleed-taha",
+    "name": "Waleed Taha",
+    "party": "Ra'am",
+    "news_sentiment": 7.2,
+    "social_sentiment": 5.5,
+    "media_volume": 4.4,
+    "overall_score": 7.6,
+    "chain_of_thought": "Waleed Taha קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "walid-alhawashla",
+    "name": "Walid Alhawashla",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Walid Alhawashla in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Walid Alhawashla in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-asher",
+    "name": "Yaakov Asher",
+    "party": "United Torah Judaism",
+    "news_sentiment": 3.8,
+    "social_sentiment": 2.9,
+    "media_volume": 7,
+    "overall_score": 2.5,
+    "chain_of_thought": "Yaakov Asher קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yaakov-margi",
+    "name": "Yaakov Margi",
+    "party": "Shas",
+    "news_sentiment": 4.6,
+    "social_sentiment": 2.7,
+    "media_volume": 2.6,
+    "overall_score": 3.5,
+    "chain_of_thought": "Yaakov Margi קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yaakov-tesler",
+    "name": "Yaakov Tesler",
+    "party": "United Torah Judaism",
+    "news_sentiment": 3.4,
+    "social_sentiment": 5.3,
+    "media_volume": 7.6,
+    "overall_score": 3.5,
+    "chain_of_thought": "Yaakov Tesler קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yael-ron-ben-moshe",
+    "name": "Yael Ron Ben Moshe",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yael Ron Ben Moshe in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yael Ron Ben Moshe in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
     "politician_id": "yair-golan",
     "name": "Yair Golan",
     "party": "Democrats",
@@ -1198,5 +1651,388 @@
     "media_volume": 5.9,
     "overall_score": 3.8,
     "chain_of_thought": "Yair Golan קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "news_sentiment": 6.1,
+    "social_sentiment": 4.9,
+    "media_volume": 6.6,
+    "overall_score": 5.2,
+    "chain_of_thought": "Yair Lapid קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yariv-levin",
+    "name": "Yariv Levin",
+    "party": "Likud",
+    "news_sentiment": 7.7,
+    "social_sentiment": 7.2,
+    "media_volume": 4.8,
+    "overall_score": 7.3,
+    "chain_of_thought": "Yariv Levin קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yaron-levy",
+    "name": "Yaron Levy",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yaron Levy in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaron Levy in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yasmin-fridman",
+    "name": "Yasmin Fridman",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yasmin Fridman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yasmin Fridman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yasser-hujirat",
+    "name": "Yasser Hujirat",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yasser Hujirat in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yasser Hujirat in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yinon-azoulay",
+    "name": "Yinon Azoulay",
+    "party": "Shas",
+    "news_sentiment": 6.7,
+    "social_sentiment": 7.3,
+    "media_volume": 4,
+    "overall_score": 6.7,
+    "chain_of_thought": "Yinon Azoulay קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yisrael-katz",
+    "name": "Yisrael Katz",
+    "party": "Likud",
+    "news_sentiment": 4.5,
+    "social_sentiment": 3.3,
+    "media_volume": 4.7,
+    "overall_score": 4.2,
+    "chain_of_thought": "Yisrael Katz קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yitzhak-goldknopf",
+    "name": "Yitzhak Goldknopf",
+    "party": "United Torah Judaism",
+    "news_sentiment": 5.9,
+    "social_sentiment": 5.6,
+    "media_volume": 5.3,
+    "overall_score": 5.9,
+    "chain_of_thought": "Yitzhak Goldknopf קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yitzhak-kroizer",
+    "name": "Yitzhak Kroizer",
+    "party": "Otzma Yehudit",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Kroizer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Kroizer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-pindrus",
+    "name": "Yitzhak Pindrus",
+    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Pindrus in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Pindrus in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-wasserlauf",
+    "name": "Yitzhak Wasserlauf",
+    "party": "Otzma Yehudit",
+    "news_sentiment": 7.2,
+    "social_sentiment": 8.4,
+    "media_volume": 4.2,
+    "overall_score": 7.9,
+    "chain_of_thought": "Yitzhak Wasserlauf קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yoav-ben-tzur",
+    "name": "Yoav Ben-Tzur",
+    "party": "Shas",
+    "news_sentiment": 6.9,
+    "social_sentiment": 6.9,
+    "media_volume": 5.7,
+    "overall_score": 6.4,
+    "chain_of_thought": "Yoav Ben-Tzur קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yoav-kish",
+    "name": "Yoav Kish",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0.05,
+    "policy_approval": 0.15,
+    "media_amplification": 0.2,
+    "news_sentiment": 5.8,
+    "social_sentiment": 9.5,
+    "media_volume": 2,
+    "overall_score": 6.1,
+    "chain_of_thought": "כותרת עניינית על פתיחת קייטנות בחופשת פסח ברשויות שיבקשו, מלבד המרכז. הודעה מנהלית ללא מטען רגשי.",
+    "news_headlines": [
+      "קיש: קייטנות בית הספר של חופשת פסח ייפתחו ברשויות שיבקשו, מלבד המרכז"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Kish in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-segalovitz",
+    "name": "Yoav Segalovitz",
+    "party": "Yesh Atid",
+    "news_sentiment": 2.3,
+    "social_sentiment": 3.1,
+    "media_volume": 5.9,
+    "overall_score": 2.9,
+    "chain_of_thought": "Yoav Segalovitz קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yoaz-hendel",
+    "name": "Yoaz Hendel",
+    "party": "National Unity",
+    "role": "politician",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yoaz Hendel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoaz Hendel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yonatan-mishraki",
+    "name": "Yonatan Mishraki",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yonatan Mishraki in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yonatan Mishraki in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yorai-lahav-hertzano",
+    "name": "Yorai Lahav-Hertzano",
+    "party": "Yesh Atid",
+    "news_sentiment": 5.4,
+    "social_sentiment": 4.4,
+    "media_volume": 2.9,
+    "overall_score": 5.3,
+    "chain_of_thought": "Yorai Lahav-Hertzano קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yosef-taieb",
+    "name": "Yosef Taieb",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yosef Taieb in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yosef Taieb in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yuli-edelstein",
+    "name": "Yuli Edelstein",
+    "party": "Likud",
+    "news_sentiment": 4.9,
+    "social_sentiment": 5.7,
+    "media_volume": 2.1,
+    "overall_score": 5.1,
+    "chain_of_thought": "Yuli Edelstein קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "yulia-malinovsky",
+    "name": "Yulia Malinovsky",
+    "party": "Yisrael Beiteinu",
+    "news_sentiment": 3.9,
+    "social_sentiment": 5.3,
+    "media_volume": 4.5,
+    "overall_score": 3.3,
+    "chain_of_thought": "Yulia Malinovsky קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "zeev-elkin",
+    "name": "Zeev Elkin",
+    "party": "Likud",
+    "news_sentiment": 5.4,
+    "social_sentiment": 6.7,
+    "media_volume": 1.6,
+    "overall_score": 6,
+    "chain_of_thought": "Zeev Elkin קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "zvi-sukkot",
+    "name": "Zvi Sukkot",
+    "party": "Religious Zionism",
+    "news_sentiment": 6.7,
+    "social_sentiment": 6.7,
+    "media_volume": 4.9,
+    "overall_score": 6.4,
+    "chain_of_thought": "Zvi Sukkot קיבל סיקור מעורב היום"
+  },
+  {
+    "politician_id": "zvika-fogel",
+    "name": "Zvika Fogel",
+    "party": "Otzma Yehudit",
+    "news_sentiment": 7,
+    "social_sentiment": 7.4,
+    "media_volume": 1,
+    "overall_score": 7.6,
+    "chain_of_thought": "Zvika Fogel קיבל סיקור מעורב היום"
   }
 ]
