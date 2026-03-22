@@ -132,7 +132,7 @@ export default function App() {
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
-      <main className="h-[calc(100vh-3.5rem)] supports-[height:100dvh]:h-[calc(100dvh-3.5rem)] md:h-screen flex flex-col md:ms-[260px] pt-14 md:pt-0">
+      <main className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:h-screen flex flex-col md:ms-[260px] pt-[calc(3.5rem+env(safe-area-inset-top))] md:pt-0">
         {/* Treemap — explicit height so flex-1 + h-full resolves in scrollable parent */}
         <div className="flex-1 min-h-[40vh] sm:min-h-[50vh] md:min-h-[300px]">
           <ErrorBoundary>

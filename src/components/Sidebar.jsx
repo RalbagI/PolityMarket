@@ -241,7 +241,7 @@ export default function Sidebar({ todayData, onMethodologyClick, filterProps }) 
       </aside>
 
       {/* Mobile: Top stats bar */}
-      <div className="md:hidden fixed top-0 left-0 right-0 h-14 bg-gray-950 border-b border-gray-800 z-30 flex items-center justify-between px-3 pt-[env(safe-area-inset-top)]">
+      <div className="md:hidden fixed top-0 left-0 right-0 h-[calc(3.5rem+env(safe-area-inset-top))] bg-gray-950 border-b border-gray-800 z-30 flex items-center justify-between px-3 pt-[env(safe-area-inset-top)]">
         <div className="flex items-center gap-2 min-w-0">
           <div className="w-6 h-6 rounded-md bg-indigo-600 flex items-center justify-center font-bold text-[10px] text-white shrink-0">
             PM

@@ -124,8 +124,12 @@ describe("App mobile layout", () => {
 
     const main = container.querySelector("main");
     expect(main).toBeTruthy();
-    // Should have vh fallback + dvh for mobile height fix
-    expect(main.className).toContain("h-[calc(100vh-3.5rem)]");
+    // Should account for top bar + safe-area inset in both vh and dvh variants
+    expect(main.className).toContain("h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))]");
+    expect(main.className).toContain(
+      "supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))]"
+    );
+    expect(main.className).toContain("pt-[calc(3.5rem+env(safe-area-inset-top))]");
   });
 
   it("renders main with md:h-screen for desktop", () => {

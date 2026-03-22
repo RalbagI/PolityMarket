@@ -77,6 +77,7 @@ describe("Sidebar mobile top bar", () => {
     const mobileBar = container.querySelector(".md\\:hidden.fixed");
     expect(mobileBar).toBeTruthy();
     expect(mobileBar.className).toContain("pt-[env(safe-area-inset-top)]");
+    expect(mobileBar.className).toContain("h-[calc(3.5rem+env(safe-area-inset-top))]");
   });
 
   it("renders PM logo in mobile top bar", () => {
