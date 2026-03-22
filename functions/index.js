@@ -31,7 +31,7 @@ export const runPipelineManually = onRequest(
     res.status(410).json({
       error: "dailyPipeline disabled",
       message:
-        "Production pipeline moved to self-hosted systemd timer + local Ollama runner. Use scripts/run-daily-pipeline.sh on the primary host.",
+        "Production pipeline moved to self-hosted systemd timer + Claude CLI. Use scripts/run-daily-pipeline.sh on the primary host.",
       disabledOn: "2026-03-19",
     });
   }
