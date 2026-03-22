@@ -301,7 +301,10 @@
     "Hadash-Taal": "חד״ש-תע״ל",
     "Ra'am": "רע״ם",
     "Raam": "רע״ם",
-    "Democrats": "הדמוקרטים"
+    "Democrats": "הדמוקרטים",
+    "HaYamin HaMamlakhti": "הימין הממלכתי",
+    "Independent": "עצמאי",
+    "Noam": "נעם"
   },
   "filterBar": {
     "title": "סינון",
@@ -343,6 +346,7 @@
   },
   "treemap": {
     "ariaLabel": "תצוגת טרימאפ של ציוני סנטימנט פוליטיקאים. גודל הבלוק מייצג נפח מדיה, הצבע מייצג ציון כולל.",
+    "others": "+{{count}} נוספים",
     "tooltip": {
       "score": "ציון",
       "mediaVolume": "נפח מדיה",

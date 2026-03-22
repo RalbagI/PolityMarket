@@ -3,20 +3,24 @@
     "searchTemplates": [
       "https://news.google.com/rss/search?q={query}+פוליטיקה+ישראל+when:1d&hl=iw&gl=IL&ceid=IL:he",
       "https://news.google.com/rss/search?q={query}+כנסת+when:1d&hl=iw&gl=IL&ceid=IL:he",
+      "https://news.google.com/rss/search?q={query}+ועדת+כנסת+when:1d&hl=iw&gl=IL&ceid=IL:he",
       "https://news.google.com/rss/search?q={query}+Israel+politics+when:1d&hl=en-US&gl=US&ceid=US:en"
     ],
     "globalFeeds": [
       "https://www.ynet.co.il/Integration/StoryRss1854.xml",
       "https://rss.walla.co.il/feed/22",
       "https://www.maariv.co.il/rss/rssfeedsmivzakichadashot",
+      "https://www.israelhayom.co.il/rss.xml",
+      "https://www.globes.co.il/webservice/rss/rssfeeder.asmx/FeederNode?iID=585",
+      "https://www.c14.co.il/feed/",
       "https://www.timesofisrael.com/feed/"
     ],
-    "maxItemsPerSource": 10,
-    "maxHeadlinesPerPolitician": 8
+    "maxItemsPerSource": 15,
+    "maxHeadlinesPerPolitician": 10
   },
   "social": {
-    "redditSubreddits": ["Israel", "worldnews", "MiddleEastNews"],
-    "maxPostsPerSubreddit": 40,
-    "maxMentionsPerPolitician": 8
+    "redditSubreddits": ["Israel", "worldnews", "MiddleEastNews", "IsraelPolitics"],
+    "maxPostsPerSubreddit": 50,
+    "maxMentionsPerPolitician": 10
   }
 }
