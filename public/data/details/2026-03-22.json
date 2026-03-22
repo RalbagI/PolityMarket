@@ -4,32 +4,44 @@
     "name": "Benjamin Netanyahu",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0.35,
-    "policy_approval": 0.1,
-    "media_amplification": 0.9,
-    "news_sentiment": 5.5,
-    "social_sentiment": 6.5,
-    "media_volume": 9,
-    "overall_score": 6.7,
-    "chain_of_thought": "סיקור אינטנסיבי ורב-ממדי. מצד אחד תכניות שאפתניות להפלת המשטר באיראן וזינוק בסקרים, מצד שני ביקורת בינלאומית חריפה (סנטור אמריקאי: 'מצא נשיא מספיק טיפש'), פולמוס סביב אמירת ישו/ג'ינגיס חאן, ותמיכה שנויה במחלוקת בראש ממשלת הונגריה. השוואה לצ'רצ'יל מגלה גם ביקורת על מנדטים שנעלמו. הסיקור מעורב אך בעל נוכחות תקשורתית גבוהה מאוד.",
+    "hostility_level": 0.45,
+    "policy_approval": -0.15,
+    "media_amplification": 0.85,
+    "news_sentiment": 4.3,
+    "social_sentiment": 5.5,
+    "media_volume": 8.5,
+    "overall_score": 5.8,
+    "chain_of_thought": "סיקור נרחב ומקוטב מאוד. כותרות כוללות תמיכה בהונגריה (שנויה במחלוקת), תוכניות להפלת משטר איראן, השוואה לצ'רצ'יל, ורגעים אנושיים (ספר תורה, חליפה). בזירה הבינלאומית: הגרדיאן מציג ניסיון לשקם תדמית, וושינגטון פוסט על הבחירות, טראמפ מתקיף את הרצוג. ברשתות: פרשת ישו/ג'ינגיס חאן שלילית, תשבחות מאמריקאי, סנאטור אמריקאי תוקף. הגברה תקשורתית גבוהה מאוד.",
     "news_headlines": [
-      "היעד הסופי נחשף: כך נתניהו מתכנן להפיל את המשטר באיראן - מעריב",
       "הודעת התמיכה של נתניהו בראש ממשלת הונגריה - פחות מחודש לבחירות - mako",
+      "היעד הסופי נחשף: כך נתניהו מתכנן להפיל את המשטר באיראן - מעריב",
       "צ'רצ'יל, נתניהו והמנדטים שנעלמו - היום",
-      "סקר מנדטים מפתיע: נתניהו נוסק, בנט יורד, ומה קרה ליאיר לפיד? - ice (אייס)",
-      "צפו: נתניהו כתב אות בספר התורה לעילוי נשמת הקדוש | \"זכות ג.. - כיכר השבת",
+      "צפו: נתניהו כתב אות בספר התורה לעילוי נשמת הקדוש | \"זכות ג.. - kikar.co.il",
+      "חורך את הרשת: נתניהו פושט את החליפה שלו ומגיש אותה לאישה ש\"קר לה\" - kikar.co.il",
+      "דיווח: ראש הממשלה נתניהו קיים דיון על מועד הבחירות - זה הת.. - kikar.co.il",
       "Netanyahu hopes destroying Iranian ‘axis of evil’ will rehabilitate his image - The Guardian",
+      "Trump calls Herzog a 'liar, weak, pathetic' for not granting Netanyahu pardon - Haaretz",
       "Netanyahu: Iran a threat to entire world - Cleveland Jewish News",
       "As Netanyahu prepares for elections, his foes in Iran and Lebanon could get a vote - The Washington Post"
     ],
     "social_mentions": [
       {
-        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the ",
+        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the",
         "thread_context": [
           "Source: https://www.reddit.com/r/Israel/comments/1ryvj0r/what_could_possibly_have_led_netanyahu_to_say_that/"
         ],
         "speaker_metadata": {
           "handle": "@Hot_Minute_9249",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Netanyahu: A Very Unique & Impressive Leader — I’m an American of Indian ethnicity. I’ve been following World politics all my life and have never come across a decisive, impressive and uniquely ruthless leader like Netanyahu. IMHO, when it comes to protecting his people he’s simply done",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryj28q/netanyahu_a_very_unique_impressive_leader/"
+        ],
+        "speaker_metadata": {
+          "handle": "@2Hawaii",
           "known_satirist": false
         }
       },
@@ -67,7 +79,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yariv Levin in configured sources this cycle."
     ],
@@ -94,7 +106,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Nir Barkat in configured sources this cycle."
     ],
@@ -121,7 +133,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Amir Ohana in configured sources this cycle."
     ],
@@ -141,16 +153,21 @@
     "name": "Yisrael Katz",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0.15,
-    "policy_approval": 0,
-    "media_amplification": 0.3,
-    "news_sentiment": 5,
-    "social_sentiment": 8.5,
-    "media_volume": 3,
-    "overall_score": 5.7,
-    "chain_of_thought": "הכותרת 'ישראל בכוננות' מתייחסת למדינה ולא לפוליטיקאי. אזכור חברתי אחד על הרס גשרים בלבנון מייחס לו עמדה צבאית נחרצת לצד נתניהו. סיקור מינימלי.",
+    "hostility_level": 0.1,
+    "policy_approval": 0.1,
+    "media_amplification": 0.35,
+    "news_sentiment": 5.5,
+    "social_sentiment": 9,
+    "media_volume": 3.5,
+    "overall_score": 6.2,
+    "chain_of_thought": "כותרות ביטחוניות על השמדת מעבר בלבנון ותקיפות צה\"ל קשורות ככל הנראה לתפקידו הביטחוני. ברשתות אזכור ישיר בהקשר הרס גשרים בלבנון לצד נתניהו. סיקור עובדתי-ביטחוני ללא עוינות ישירה כלפיו, עם הגברה בינונית בשל הקשר מבצעי.",
     "news_headlines": [
-      "ישראל בכוננות: \"היעדים החדשים שסימנה איראן\""
+      "צה\"ל השמיד מעבר מעל נהר הליטני ששימש את חיזבאללה",
+      "ארה\"ב בדרך לשגרירות קבע בירושלים - מבלי לוותר על הנכס בתל אביב",
+      "שאלנו את בכירי אלטשולר שחם למה התשואות לא משתפרות: \"להיות ב'אובר' על ישראל זה לקחת סיכון ולקחת פינה\"",
+      "\"הצלחה יוצאת דופן\": הפרשן הכלכלי המוביל מדבר על המשק הישראלי, המלחמה ושער הדולר",
+      "ראש המוסד לשעבר ושני כוכבי נדל\"ן מצטרפים לחברה הביטחונית הזו ומזניקים את המניה",
+      "החמרה בנתב\"ג: צמצום דרמטי בפעילות הטיסות והגבלת נוסעים"
     ],
     "social_mentions": [
       {
@@ -160,6 +177,46 @@
         ],
         "speaker_metadata": {
           "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "מזכ\"ל נאט\"ו, מארק רוטה תומך פומבית במהלכים של טראמפ נגד איראן : אנו בודקים את הטענות של ישראל שהטילים הבליסטיים של איראן מגיעים לפריז, ברלין ורומא. ניטרול תוכנית הגרעין האיראנית וניטרול הטילים הבליסטיים של איראן חיוני - הנשיא טראמפ הופך את",
+        "thread_context": [
+          "Source: https://t.me/AbuAliExpress/118373"
+        ],
+        "speaker_metadata": {
+          "handle": "@AbuAliExpress",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "דרום לבנון: גשר אלקאסמיה אחרי התקיפה השנייה. נראה יותר טוב. נחכה לסרטון באור יום כדי לראות אם הוא הושמד לחלוטין. 6 תגובות דובר צה\"ל על גשר אלקאסמיה 👆 : חיל-האוויר השמיד מעבר מעל נהר הליטאני המשמש את מחבלי ארגון הטרור חיזבאללה לתנועה מצפון",
+        "thread_context": [
+          "Source: https://t.me/AbuAliExpress/118381"
+        ],
+        "speaker_metadata": {
+          "handle": "@AbuAliExpress",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "כלי טיס ישראלי תקף לפני זמן קצר דירה של משפחת יאע'י ברחוב אלירמוכ בעיר עזה ליד מסעדת תאג'. ע\"פ מקורות עזתיים לא רשמיים בתקיפה הערב חוסל מחמד סלים אבו אלעטא - בכיר בזרוע הצבאית של הג'האד האסלאמי ואחיו של בהאא' אבו אלעטא אותו חיסלה ישראל במבצ",
+        "thread_context": [
+          "Source: https://t.me/AbuAliExpress/118384"
+        ],
+        "speaker_metadata": {
+          "handle": "@AbuAliExpress",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "\"לא רוצה למות למען ישראל\": טייסים אמריקאים מתכננים מרד?",
+        "thread_context": [
+          "Source: https://www.fxp.co.il/showthread.php?t=22029350"
+        ],
+        "speaker_metadata": {
+          "handle": "@fxp_user",
           "known_satirist": false
         }
       }
@@ -177,7 +234,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yuli Edelstein in configured sources this cycle."
     ],
@@ -197,23 +254,26 @@
     "name": "Shlomo Karhi",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0.45,
-    "policy_approval": -0.2,
-    "media_amplification": 0.4,
-    "news_sentiment": 4,
-    "social_sentiment": 5.5,
-    "media_volume": 4,
-    "overall_score": 4.5,
-    "chain_of_thought": "כותרת אחת בה קרחי מאשים חברי כנסת מיש עתיד ב'הצבעה עם תומכי טרור' — שפה תוקפנית ומקטבת. אין אזכורים חברתיים. הסיקור עצמו מדווח על ההתקפה ללא עוינות כלפיו אך תוכן ההאשמה שנוי במחלוקת.",
+    "hostility_level": 0.4,
+    "policy_approval": -0.1,
+    "media_amplification": 0.35,
+    "news_sentiment": 4.5,
+    "social_sentiment": 6,
+    "media_volume": 3.5,
+    "overall_score": 4.8,
+    "chain_of_thought": "כותרת ישירה: השר כרעי מאשים חברי כנסת מיש עתיד ב'הצבעה עם תומכי טרור' — רטוריקה תוקפנית המגבירה מתח פוליטי. כותרת שנייה על מניות סייבר לא קשורה ישירות. אזכור חברתי הוא פרסומת ולא רלוונטי. עוינות בינונית בשל הרטוריקה החריפה.",
     "news_headlines": [
-      "Minister Karhi accuses Yesh Atid MKs of 'voting with supporters of terrorism' - MSN"
+      "Minister Karhi accuses Yesh Atid MKs of 'voting with supporters of terrorism' - MSN",
+      "נפילת מניות הסייבר מוכיחה: וול סטריט לא יודעת לתמחר טכנולוגיה"
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Shlomo Karhi in configured sources this cycle.",
-        "thread_context": [],
+        "text": "🚗 מתקדמים לרכב מיד ראשונה בשלמה ומתחדשים בדרך חכמה ומשתלמת. בוחרים רכב מיד ראשונה ממגוון ענק, וגם נהנים ממימון במסלול משתלם ומותאם! ✅ בוחרים איזה רכב שרוצים ✅ מימון של 50,000 ₪ ללא ריבית ✅ פריסה נוחה ל-24 תשלומים ✅ רכב מיד ראשונה 👇 לחצו כ",
+        "thread_context": [
+          "Source: https://t.me/AbuAliExpress/118376"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@AbuAliExpress",
           "known_satirist": false
         }
       }
@@ -231,7 +291,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Avi Dichter in configured sources this cycle."
     ],
@@ -258,8 +318,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "הכותרת מתייחסת לד\"ר דיוויד חסן ולא לדוד ביטן — התאמה שגויה. אין סיקור ישיר.",
+    "chain_of_thought": "הכותרות שנמצאו (יפה בן דוד, ד\"ר דוד חסן) אינן קשורות אליו — התאמה שגויה על שם פרטי. ציונים ניטרליים.",
     "news_headlines": [
+      "יפה בן דוד מיישרת קו עם רן ארז: \"לא נאפשר פגיעה בתנאי עבודתם של המורים\"",
       "Rebuilding Gaza-with Dr. David Hasan - Sponsored Content"
     ],
     "social_mentions": [
@@ -278,16 +339,16 @@
     "name": "Boaz Bismuth",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0,
+    "hostility_level": 0.05,
     "policy_approval": 0,
-    "media_amplification": 0,
+    "media_amplification": 0.15,
     "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "social_sentiment": 9.5,
+    "media_volume": 1.5,
+    "overall_score": 5.7,
+    "chain_of_thought": "כותרת על ראש ועדה פרלמנטרית שדרש לזמן את נתניהו לעדות — ייתכן שקשור לתפקידו. סיקור עובדתי-פרלמנטרי ללא עוינות ישירה כלפיו.",
     "news_headlines": [
-      "No direct headlines matched Boaz Bismuth in configured sources this cycle."
+      "ראש אח\"מ דרש לזמן את נתניהו לעדות, המפכ\"ל בלם את המהלך"
     ],
     "social_mentions": [
       {
@@ -312,7 +373,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ariel Kallner in configured sources this cycle."
     ],
@@ -332,18 +393,19 @@
     "name": "Hanoch Milwidsky",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0.3,
-    "policy_approval": -0.1,
-    "media_amplification": 0.4,
-    "news_sentiment": 4.5,
-    "social_sentiment": 7,
-    "media_volume": 4,
-    "overall_score": 5.3,
-    "chain_of_thought": "שלוש כותרות: איום להפיל הסדר מיליארדים בנושא מס בנקים, וביקורת חריפה על למידה בזום ('בושה', 'תת רמה', 'עולב של עולבים'). שפה נחרצת ותוקפנית מצדו, אך הסיקור מדווח על עמדותיו ללא עוינות ברורה כלפיו.",
+    "hostility_level": 0.35,
+    "policy_approval": -0.2,
+    "media_amplification": 0.5,
+    "news_sentiment": 4,
+    "social_sentiment": 6.5,
+    "media_volume": 5,
+    "overall_score": 5.1,
+    "chain_of_thought": "סיקור ישיר ומשמעותי: מאיים להפיל הסדר מיליארדים על הבנקים, תוקף למידה בזום ('בושה, תת-רמה'), ושני נחקרים נוספים בפרשתו. דימוי של פוליטיקאי תוקפני שגם נמצא תחת חקירה. עוינות בינונית, הגברה תקשורתית ניכרת.",
     "news_headlines": [
       "מס רווחי היתר על הבנקים חוזר לשולחן? חנוך מילביצקי מאיים להפיל את הסדר המיליארדים - כלכליסט",
       "ח״כ מילביצקי תוקף את הלמידה בזום: \"בושה, תת רמה\". צפו - סרוגים",
-      "יו\"ר ועדת הכספים חנוך מילביצקי: \"הלמידה מרחוק - עולב של עולבים, אפילו לא בדיחה\" - כלכליסט"
+      "יו\"ר ועדת הכספים חנוך מילביצקי: \"הלמידה מרחוק - עולב של עולבים, אפילו לא בדיחה\" - כלכליסט",
+      "אלו שני הנחקרים הנוספים בפרשת ח\"כ חנוך מילביצקי - MSN"
     ],
     "social_mentions": [
       {
@@ -361,14 +423,14 @@
     "name": "Tally Gotliv",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0.55,
-    "policy_approval": -0.4,
-    "media_amplification": 0.45,
-    "news_sentiment": 3,
-    "social_sentiment": 4.5,
-    "media_volume": 4.5,
-    "overall_score": 3.9,
-    "chain_of_thought": "כותרת שלילית — דרישה לקדם הליך נגדה בטענה שהיא 'פוגעת בביטחון המדינה'. מסגור חמור שמציג אותה כאיום. רמת עוינות גבוהה יחסית למרות כותרת בודדת.",
+    "hostility_level": 0.45,
+    "policy_approval": -0.3,
+    "media_amplification": 0.35,
+    "news_sentiment": 3.5,
+    "social_sentiment": 5.5,
+    "media_volume": 3.5,
+    "overall_score": 4.2,
+    "chain_of_thought": "דרישה לקדם הליך משמעתי נגדה בטענה שהיא 'פוגעת בביטחון המדינה'. סיקור שלילי ומאשים, עוינות בינונית-גבוהה כלפיה.",
     "news_headlines": [
       "דרישה לקידום ההליך נגד גוטליב: \"פוגעת בביטחון המדינה\" - מעריב"
     ],
@@ -395,7 +457,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Dan Ilouz in configured sources this cycle."
     ],
@@ -422,16 +484,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט על פרשת השבוע ושוק ההון — התאמה שגויה על השם 'משה'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Moshe Saada in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Moshe Saada in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -442,14 +506,14 @@
     "name": "Nissim Vaturi",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0.3,
+    "hostility_level": 0.55,
     "policy_approval": -0.25,
     "media_amplification": 0.5,
     "news_sentiment": 3.8,
-    "social_sentiment": 7,
+    "social_sentiment": 4.5,
     "media_volume": 5,
-    "overall_score": 5.2,
-    "chain_of_thought": "הצהרה קיצונית ביותר: 'אני בעד לרסק הכול, לא צריך להשאיר לאף אחד באיראן חשמל'. אמירה אגרסיבית מאוד שמדווחת בגלי ישראל. עלולה לעורר ביקורת חריפה וגם תמיכה בקרב מחנה מסוים.",
+    "overall_score": 4.3,
+    "chain_of_thought": "ציטוט ישיר וחריף: 'אני בעד לרסק הכול, לא צריך להשאיר לאף אחד באיראן חשמל'. רטוריקה אלימה ומתלהמת. עוינות גבוהה בשל אופי ההצהרה הקיצונית, הגברה תקשורתית בינונית.",
     "news_headlines": [
       "ח\"כ ניסים ואטורי: \"אני בעד לרסק הכול. לא צריך להשאיר לאף אחד באיראן חשמל\" - רדיו גלי ישראל"
     ],
@@ -469,16 +533,16 @@
     "name": "Osher Shkalim",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "hostility_level": 0.05,
+    "policy_approval": 0.1,
+    "media_amplification": 0.2,
+    "news_sentiment": 5.5,
+    "social_sentiment": 9.5,
+    "media_volume": 2,
+    "overall_score": 6,
+    "chain_of_thought": "כותרת על אישור הכנסת למס בנקים — סיקור עובדתי-חקיקתי. ניטרלי עם נגיעה חיובית קלה למדיניות.",
     "news_headlines": [
-      "No direct headlines matched Osher Shkalim in configured sources this cycle."
+      "הכנסת אישרה: הבנקים הגדולים ישלמו השנה מס בסך 3 מיליארד שקלים"
     ],
     "social_mentions": [
       {
@@ -503,7 +567,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Avichay Buaron in configured sources this cycle."
     ],
@@ -530,7 +594,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Tsega Melaku in configured sources this cycle."
     ],
@@ -557,7 +621,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Eliyahu Revivo in configured sources this cycle."
     ],
@@ -584,7 +648,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Keti Shitrit in configured sources this cycle."
     ],
@@ -604,14 +668,14 @@
     "name": "Ofir Katz",
     "party": "Likud",
     "role": "mk",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי-ביטחוני ככל הנראה מכוון לישראל כץ ולא לאופיר כץ. אין סיקור ישיר.",
+    "hostility_level": 0.05,
+    "policy_approval": 0.05,
+    "media_amplification": 0.1,
+    "news_sentiment": 5.3,
+    "social_sentiment": 9.5,
+    "media_volume": 1,
+    "overall_score": 5.7,
+    "chain_of_thought": "אזכור חברתי על הרס גשרים בלבנון מזכיר את שם המשפחה 'כץ' — ייתכן שקשור אליו אך לא ברור. סיקור ביטחוני עובדתי. ציונים כמעט ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ofir Katz in configured sources this cycle."
     ],
@@ -640,9 +704,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "האזכור החברתי מתייחס לרמת הגולן ולא לח\"כ מאי גולן — התאמה שגויה. אין סיקור ישיר.",
+    "chain_of_thought": "הכותרות על 'יאיר גולן' וה'גולן' הסורי אינן קשורות אליה — התאמות שגויות. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched May Golan in configured sources this cycle."
+      "יאיר גולן נגד לפיד: \"הוא מסרב לאיחוד בגלל 'בעיות אישיות'\""
     ],
     "social_mentions": [
       {
@@ -663,15 +727,15 @@
     "party": "Likud",
     "role": "mk",
     "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
+    "policy_approval": 0.3,
+    "media_amplification": 0.25,
+    "news_sentiment": 6.5,
     "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "media_volume": 2.5,
+    "overall_score": 6.7,
+    "chain_of_thought": "כותרת חיובית: הודו-ישראל 'חברות הכי טובות', הסכם סחר חופשי ייטיב לשתיהן. סיקור דיפלומטי חיובי.",
     "news_headlines": [
-      "No direct headlines matched Gila Gamliel in configured sources this cycle."
+      "India-Israel 'best friends', FTA will be best for both: Gila Gamliel - MSN"
     ],
     "social_mentions": [
       {
@@ -696,7 +760,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Galit Distel Atbaryan in configured sources this cycle."
     ],
@@ -723,9 +787,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרת על התקדמות מכירת צים — חדשות כלכליות שאינן קשורות ישירות אליו. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Eli Dalal in configured sources this cycle."
+      "צים מתקדמת לאישור המכירה: אסיפת בעלי המניות תתכנס בסוף אפריל"
     ],
     "social_mentions": [
       {
@@ -750,13 +814,13 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "האזכורים החברתיים הם ברכות 'שלום' בפוסטים לא קשורים ולא מתייחסים לפוליטיקאי. אין סיקור ישיר.",
+    "chain_of_thought": "האזכורים החברתיים הם שימוש במילת הברכה 'שלום' בפוסטים על נסיעות — התאמה שגויה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Shalom Danino in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "Passport without deferment from army? — Shalom! My fiancee is an Israeli Russian citizen (FROM BIRTH) who was born to Israeli citizen parents in Be'er Sheva, but left Israel when she was 1. She went back for a month when she was 5, but since then, she has never been in Israel at ",
+        "text": "Passport without deferment from army? — Shalom! My fiancee is an Israeli Russian citizen (FROM BIRTH) who was born to Israeli citizen parents in Be'er Sheva, but left Israel when she was 1. She went back for a month when she was 5, but since then, she has never been in Israel at",
         "thread_context": [
           "Source: https://www.reddit.com/r/Israel/comments/1s0n7ld/passport_without_deferment_from_army/"
         ],
@@ -766,12 +830,22 @@
         }
       },
       {
-        "text": "American trying to get into Israel on May 2nd and wondering about alternate routes — Shalom, I am an American citizen with an A2 student visa trying to get into Israel at the start if May. Right now I have flights booked with El Al for May 2nd and are concerned they will get canceled. If so I need to get into the country a ",
+        "text": "American trying to get into Israel on May 2nd and wondering about alternate routes — Shalom, I am an American citizen with an A2 student visa trying to get into Israel at the start if May. Right now I have flights booked with El Al for May 2nd and are concerned they will get canceled. If so I need to get into the country a",
         "thread_context": [
           "Source: https://www.reddit.com/r/Israel/comments/1rz2fn3/american_trying_to_get_into_israel_on_may_2nd_and/"
         ],
         "speaker_metadata": {
           "handle": "@ModuMotor",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
+        "speaker_metadata": {
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -789,7 +863,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Amit Halevi in configured sources this cycle."
     ],
@@ -816,7 +890,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Hava Eti Atia in configured sources this cycle."
     ],
@@ -843,16 +917,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה על השם 'משה'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Moshe Passal in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Moshe Passal in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -870,7 +946,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Sasson Guetta in configured sources this cycle."
     ],
@@ -897,7 +973,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Afif Abed in configured sources this cycle."
     ],
@@ -919,15 +995,15 @@
     "role": "minister",
     "hostility_level": 0,
     "policy_approval": 0,
-    "media_amplification": 0,
+    "media_amplification": 0.05,
     "news_sentiment": 5,
     "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "הכותרות מתייחסות למרגל ההיסטורי אלי כהן ולשולמית כהן ולא לח\"כ אלי כהן מהליכוד — התאמה שגויה. אין סיקור ישיר.",
+    "media_volume": 0.5,
+    "overall_score": 5.6,
+    "chain_of_thought": "כותרות על ראש מוסד לשעבר ומכירת צים — ייתכן קשר עקיף לשמו אך לא סיקור ישיר שלו. ציונים כמעט ניטרליים.",
     "news_headlines": [
-      "Our woman in Beirut: the untold story of spy Shulamit Cohen - ynetnews",
-      "Eli Cohen 2.0 inside Iran? How Tehran is losing the intelligence war - MSN"
+      "ראש המוסד לשעבר ושני כוכבי נדל\"ן מצטרפים לחברה הביטחונית הזו ומזניקים את המניה",
+      "צים מתקדמת לאישור המכירה: אסיפת בעלי המניות תתכנס בסוף אפריל"
     ],
     "social_mentions": [
       {
@@ -952,8 +1028,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "הכותרת מתייחסת לד\"ר דיוויד חסן ולא לדוד אמסלם — התאמה שגויה. אין סיקור ישיר.",
+    "chain_of_thought": "הכותרות שנמצאו (יפה בן דוד, ד\"ר דוד חסן) אינן קשורות אליו — התאמה שגויה. ציונים ניטרליים.",
     "news_headlines": [
+      "יפה בן דוד מיישרת קו עם רן ארז: \"לא נאפשר פגיעה בתנאי עבודתם של המורים\"",
       "Rebuilding Gaza-with Dr. David Hasan - Sponsored Content"
     ],
     "social_mentions": [
@@ -979,7 +1056,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Miki Zohar in configured sources this cycle."
     ],
@@ -999,16 +1076,17 @@
     "name": "Yoav Kish",
     "party": "Likud",
     "role": "minister",
-    "hostility_level": 0.05,
-    "policy_approval": 0.15,
-    "media_amplification": 0.2,
-    "news_sentiment": 5.8,
-    "social_sentiment": 9.5,
-    "media_volume": 2,
-    "overall_score": 6.1,
-    "chain_of_thought": "כותרת עניינית על פתיחת קייטנות בחופשת פסח ברשויות שיבקשו, מלבד המרכז. הודעה מנהלית ללא מטען רגשי.",
+    "hostility_level": 0.2,
+    "policy_approval": -0.15,
+    "media_amplification": 0.3,
+    "news_sentiment": 4.3,
+    "social_sentiment": 8,
+    "media_volume": 3,
+    "overall_score": 5.2,
+    "chain_of_thought": "כשר החינוך: מאפשר פתיחת קייטנות חלקית. תלמידים מגיבים ליוזמה שלו ושל סמוטריץ': 'התבלבלתם'. סיקור מעורב — מדיניות סבירה אך ביקורת ציבורית מתלמידים.",
     "news_headlines": [
-      "קיש: קייטנות בית הספר של חופשת פסח ייפתחו ברשויות שיבקשו, מלבד המרכז"
+      "שר החינוך: חלק מהרשויות יוכלו לפתוח בשלישי את הקייטנות",
+      "התלמידים עונים ליוזמה החדשה של קיש ולסמוטריץ׳: \"התבלבלתם\" | כל הפרטים"
     ],
     "social_mentions": [
       {
@@ -1033,7 +1111,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי — ככל הנראה ישראל כץ ולא חיים כץ. אין סיקור ישיר.",
+    "chain_of_thought": "אזכור 'כץ' בכותרת לבנון הוא ככל הנראה ישראל כץ ולא חיים כץ. פוסט פרשת השבוע אינו רלוונטי. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Haim Katz in configured sources this cycle."
     ],
@@ -1045,6 +1123,16 @@
         ],
         "speaker_metadata": {
           "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
+        "speaker_metadata": {
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -1062,7 +1150,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Miri Regev in configured sources this cycle."
     ],
@@ -1089,7 +1177,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Amichai Shikli in configured sources this cycle."
     ],
@@ -1116,7 +1204,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Idit Silman in configured sources this cycle."
     ],
@@ -1136,19 +1224,22 @@
     "name": "Yair Lapid",
     "party": "Yesh Atid",
     "role": "mk",
-    "hostility_level": 0.25,
-    "policy_approval": 0,
-    "media_amplification": 0.55,
-    "news_sentiment": 5,
-    "social_sentiment": 7.5,
-    "media_volume": 5.5,
-    "overall_score": 6,
-    "chain_of_thought": "סיקור מעורב: מצד אחד תומך במלחמה אך תוקף את הממשלה על הוצאות לאינטרסים צרים. מאמר דעה 'חושב את הבלתי נתפס' ועמדה על הקפאת סכסוכים פנימיים במקרה מלחמה עם איראן. מנסה למצב עצמו כאופוזיציה פטריוטית. אזכור בסקר מנדטים מראה ירידה.",
+    "hostility_level": 0.35,
+    "policy_approval": -0.15,
+    "media_amplification": 0.6,
+    "news_sentiment": 4.3,
+    "social_sentiment": 6.5,
+    "media_volume": 6,
+    "overall_score": 5.5,
+    "chain_of_thought": "סיקור נרחב ומקוטב: גנץ במתקפה חריפה נגדו, יאיר גולן מאשים אותו בסירוב לאיחוד בגלל 'בעיות אישיות', מבורך על תמיכה במלחמה אך מותקף על הוצאות ממשלה, שתיקה מול אסון משגב עם. מאמר 'חושב את הבלתי נחשב' — מעניין אך מורכב. עוינות בינונית מכיוונים שונים.",
     "news_headlines": [
+      "\"בחרת לשבת ביציע\": בני גנץ במתקפה חריפה נגד יאיר לפיד - ערוץ 7",
       "צפו: יאיר גולן הגיע לזירת הנפילה בדימונה וגורש בבושת פנים - C14",
       "Lapid cheers on war, but slams government for spending on special interests - The Times of Israel",
       "Yair Lapid, thinking the unthinkable - JNS",
-      "Lapid: If war with Iran comes, internal conflicts will be put into deep freeze - MSN"
+      "Lapid: If war with Iran comes, internal conflicts will be put into deep freeze - MSN",
+      "לא נתניהו, לא כ\"ץ ולא לפיד: שתיקת הבכירים מול האסון במשגב עם",
+      "יאיר גולן נגד לפיד: \"הוא מסרב לאיחוד בגלל 'בעיות אישיות'\""
     ],
     "social_mentions": [
       {
@@ -1166,16 +1257,16 @@
     "name": "Boaz Toporovsky",
     "party": "Yesh Atid",
     "role": "mk",
-    "hostility_level": 0,
+    "hostility_level": 0.05,
     "policy_approval": 0,
-    "media_amplification": 0,
+    "media_amplification": 0.15,
     "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "social_sentiment": 9.5,
+    "media_volume": 1.5,
+    "overall_score": 5.7,
+    "chain_of_thought": "ייתכן קשר לכותרת על ראש ועדה פרלמנטרית שדרש עדות נתניהו. סיקור עובדתי. ציונים כמעט ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Boaz Toporovsky in configured sources this cycle."
+      "ראש אח\"מ דרש לזמן את נתניהו לעדות, המפכ\"ל בלם את המהלך"
     ],
     "social_mentions": [
       {
@@ -1200,9 +1291,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "הכותרת מתייחסת לרב מאיר כהן בטקס ברכת האילנות ולא לח\"כ מאיר כהן מיש עתיד — התאמה שגויה. אין סיקור ישיר.",
+    "chain_of_thought": "כותרת על ראש מוסד לשעבר — התאמה שגויה על שם המשפחה 'כהן'. ציונים ניטרליים.",
     "news_headlines": [
-      "להכין כבשים לקרבן פסח: ברכת האילנות ברוב עם במעמד הרב מאיר כהן שליט\"א - - אשדודס"
+      "ראש המוסד לשעבר ושני כוכבי נדל\"ן מצטרפים לחברה הביטחונית הזו ומזניקים את המניה"
     ],
     "social_mentions": [
       {
@@ -1227,7 +1318,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Karine Elharrar in configured sources this cycle."
     ],
@@ -1247,16 +1338,16 @@
     "name": "Mickey Levy",
     "party": "Yesh Atid",
     "role": "mk",
-    "hostility_level": 0,
+    "hostility_level": 0.05,
     "policy_approval": 0,
-    "media_amplification": 0,
+    "media_amplification": 0.1,
     "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "social_sentiment": 9.5,
+    "media_volume": 1,
+    "overall_score": 5.6,
+    "chain_of_thought": "כותרת על ועדה פרלמנטרית — ייתכן קשר עקיף. סיקור עובדתי ללא עוינות. ציונים כמעט ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Mickey Levy in configured sources this cycle."
+      "ראש אח\"מ דרש לזמן את נתניהו לעדות, המפכ\"ל בלם את המהלך"
     ],
     "social_mentions": [
       {
@@ -1281,7 +1372,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yorai Lahav-Hertzano in configured sources this cycle."
     ],
@@ -1308,7 +1399,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Meirav Ben Ari in configured sources this cycle."
     ],
@@ -1335,7 +1426,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי — ככל הנראה ישראל כץ ולא רון כץ. אין סיקור ישיר.",
+    "chain_of_thought": "אזכור 'כץ' בכותרת לבנון מתייחס ככל הנראה לישראל כץ ולא לרון כץ. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ron Katz in configured sources this cycle."
     ],
@@ -1364,7 +1455,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Simon Davidson in configured sources this cycle."
     ],
@@ -1391,7 +1482,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Debbie Biton in configured sources this cycle."
     ],
@@ -1418,7 +1509,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Naor Shiri in configured sources this cycle."
     ],
@@ -1445,9 +1536,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרת על ראש מוסד לשעבר — התאמה שגויה על שם המשפחה 'כהן'. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Merav Cohen in configured sources this cycle."
+      "ראש המוסד לשעבר ושני כוכבי נדל\"ן מצטרפים לחברה הביטחונית הזו ומזניקים את המניה"
     ],
     "social_mentions": [
       {
@@ -1472,7 +1563,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Tatiana Mazarsky in configured sources this cycle."
     ],
@@ -1492,16 +1583,17 @@
     "name": "Vladimir Beliak",
     "party": "Yesh Atid",
     "role": "mk",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "hostility_level": 0.15,
+    "policy_approval": -0.1,
+    "media_amplification": 0.25,
+    "news_sentiment": 4.5,
+    "social_sentiment": 8.5,
+    "media_volume": 2.5,
+    "overall_score": 5.4,
+    "chain_of_thought": "כותרת ישירה: ח\"כ בליאק טוען על 'שיא' בהקצאות תקציב קואליציוניות בזמן מלחמה. ביקורת מדינית מבוססת. כותרת שנייה על אוקראינה אינה קשורה. עוינות נמוכה, ביקורת מדיניות לגיטימית.",
     "news_headlines": [
-      "No direct headlines matched Vladimir Beliak in configured sources this cycle."
+      "‘Record-high’ coalition funds in state budget ahead of upcoming vote during war, MK Beliak says - The Jerusalem Post",
+      "אוקראינה: רוסיה הגבירה את מאמצי ההתקפה"
     ],
     "social_mentions": [
       {
@@ -1526,16 +1618,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה על השם 'משה'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Moshe Tur-Paz in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Moshe Tur-Paz in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -1553,9 +1647,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרת על שר החינוך ופתיחת קייטנות — לא קשורה ישירות אליו. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Yoav Segalovitz in configured sources this cycle."
+      "שר החינוך: חלק מהרשויות יוכלו לפתוח בשלישי את הקייטנות"
     ],
     "social_mentions": [
       {
@@ -1573,14 +1667,14 @@
     "name": "Elazar Stern",
     "party": "Yesh Atid",
     "role": "mk",
-    "hostility_level": 0.4,
-    "policy_approval": -0.3,
-    "media_amplification": 0.25,
-    "news_sentiment": 3.5,
-    "social_sentiment": 6,
-    "media_volume": 2.5,
-    "overall_score": 4.1,
-    "chain_of_thought": "כותרת ביקורתית: 'מקומם — הפסימיות של שטרן מול חריפותו של צ'רצ'יל'. מסגור שלילי שמציג את שטרן כפסימי ומתסכל בהשוואה לצ'רצ'יל. מילת 'מקומם' מעידה על עוינות מצד המקור.",
+    "hostility_level": 0.2,
+    "policy_approval": -0.15,
+    "media_amplification": 0.2,
+    "news_sentiment": 4.3,
+    "social_sentiment": 8,
+    "media_volume": 2,
+    "overall_score": 5,
+    "chain_of_thought": "כותרת ישירה: 'הפסימיות של שטרן מול חריפותו של צ'רצ'יל' — ביקורת המציגה אותו כפסימי ביחס למנהיג היסטורי. טון מזלזל אך לא עוין במיוחד.",
     "news_headlines": [
       "מקומם: הפסימיות של שטרן מול חריפותו של צ'רצ'יל - אמס"
     ],
@@ -1602,14 +1696,14 @@
     "role": "mk",
     "hostility_level": 0,
     "policy_approval": 0,
-    "media_amplification": 0,
+    "media_amplification": 0.1,
     "news_sentiment": 5,
     "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "media_volume": 1,
+    "overall_score": 5.8,
+    "chain_of_thought": "כותרת על ראש מוסד לשעבר שמצטרף לחברה ביטחונית — ייתכן שמדובר בו. סיקור עסקי ניטרלי.",
     "news_headlines": [
-      "No direct headlines matched Ram Ben Barak in configured sources this cycle."
+      "ראש המוסד לשעבר ושני כוכבי נדל\"ן מצטרפים לחברה הביטחונית הזו ומזניקים את המניה"
     ],
     "social_mentions": [
       {
@@ -1634,9 +1728,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרת על ועדה פרלמנטרית — התאמה שגויה על שם המשפחה 'לוי'. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Yaron Levy in configured sources this cycle."
+      "ראש אח\"מ דרש לזמן את נתניהו לעדות, המפכ\"ל בלם את המהלך"
     ],
     "social_mentions": [
       {
@@ -1661,16 +1755,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט ספאם על השקעות — אינו קשור אליה כלל. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Shelly Tal Meron in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Shelly Tal Meron in configured sources this cycle.",
-        "thread_context": [],
+        "text": "יום חדש כבר הגיע 🥳 🤑 ❤️ העסקאות של היום יהיו אדירות, רווחים עצומים ייעשו 🔥 , אז אני ממליץ לכל מי שעדיין לא משקיע למהר ולהפוך לכזה, בעוד שמשקיעים שלנו שעדיין לא שלחו את הפקדת ההשקעה שלהם צריכים למהר ולעשות זאת.... צרו איתי קשר על ידי לחיצ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3772"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -1688,7 +1784,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Adi Azuz in configured sources this cycle."
     ],
@@ -1715,7 +1811,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yasmin Fridman in configured sources this cycle."
     ],
@@ -1742,16 +1838,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "אזכור חברתי על סרטון מחיר הנפט — תוכן חדשותי כללי ולא קשור ישירות. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Matti Sarfatti Harcavi in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Matti Sarfatti Harcavi in configured sources this cycle.",
-        "thread_context": [],
+        "text": "השחקן הסמוי של המלחמה: האם מחיר הנפט יקבע מתי הכול ייגמר? https://youtube.com/watch?v=WQ3BBBgX0zA&si=0GUM7PlQrQtcQ2iE",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3761"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -1769,7 +1867,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Michal Shir Segman in configured sources this cycle."
     ],
@@ -1789,18 +1887,16 @@
     "name": "Benny Gantz",
     "party": "National Unity",
     "role": "mk",
-    "hostility_level": 0.15,
-    "policy_approval": 0.2,
-    "media_amplification": 0.6,
-    "news_sentiment": 6,
-    "social_sentiment": 8.5,
-    "media_volume": 6,
-    "overall_score": 6.9,
-    "chain_of_thought": "סיקור בחירות אינטנסיבי: סקר מנבא 32 מנדטים לגנץ מול 27 לנתניהו — תוצאה חיובית. מנגד, סקר אחר מראה חיזוק לליכוד אחרי עזיבתו. ביקורת על הדרת נשיאת העליון — גנץ קורא לממשלה רחבה וציונית. מיצוב כאלטרנטיבה מתונה.",
+    "hostility_level": 0.05,
+    "policy_approval": 0.25,
+    "media_amplification": 0.55,
+    "news_sentiment": 6.3,
+    "social_sentiment": 9.5,
+    "media_volume": 5.5,
+    "overall_score": 7.2,
+    "chain_of_thought": "סקר אחרון לפני הבחירות: 32 מנדטים לגנץ מול 27 לנתניהו — סיקור חיובי המציג אותו כמוביל. כותרת על תקיפה בעזה אינה קשורה ישירות. הגברה גבוהה בשל קרבת הבחירות והעניין הציבורי.",
     "news_headlines": [
       "Last pre-election poll before Israeli elections predicts 32 seats for Gantz, 27 for Netanyahu - JNS",
-      "Likud sees boost in poll after Gantz’s departure - JNS",
-      "Gantz: Coalition exclusion of High Court chief proves Israel needs broad, Zionist government - MSN",
       "דיווחים בעזה: ארבעה נהרגו בתקיפת ג'יפ של חמאס במרכז הרצועה"
     ],
     "social_mentions": [
@@ -1826,7 +1922,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Pnina Tamano-Shata in configured sources this cycle."
     ],
@@ -1853,7 +1949,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Hili Tropper in configured sources this cycle."
     ],
@@ -1875,14 +1971,14 @@
     "role": "mk",
     "hostility_level": 0,
     "policy_approval": 0,
-    "media_amplification": 0,
+    "media_amplification": 0.05,
     "news_sentiment": 5,
     "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "media_volume": 0.5,
+    "overall_score": 5.6,
+    "chain_of_thought": "כותרת על מיליארדים זורמים למשרד סטרוק — עשויה להיות קשורה לביקורת שלה כחברת אופוזיציה, אך אינה עליה ישירות. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Orit Farkash-Hacohen in configured sources this cycle."
+      "בדיקת האוצר חושפת: כך זורמים מיליארדים למשרד של אורית סטרוק - אחרי אישור התקציב - כלכליסט"
     ],
     "social_mentions": [
       {
@@ -1907,7 +2003,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Alon Schuster in configured sources this cycle."
     ],
@@ -1934,7 +2030,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "האזכור החברתי מתייחס לשגריר מייקל מקפול ולא לח\"כ מיכאל ביטון — התאמה שגויה. אין סיקור ישיר.",
+    "chain_of_thought": "אזכור 'Michael McFaul' ברדיט — התאמה שגויה על השם 'מיכאל'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Michael Biton in configured sources this cycle."
     ],
@@ -1963,7 +2059,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Eitan Ginzburg in configured sources this cycle."
     ],
@@ -1990,16 +2086,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yael Ron Ben Moshe in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Yael Ron Ben Moshe in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -2017,7 +2115,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Gadi Eisenkot in configured sources this cycle."
     ],
@@ -2044,7 +2142,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Matan Kahana in configured sources this cycle."
     ],
@@ -2071,9 +2169,10 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרות על כישלון קריפטו ומוסד לשעבר — אינן קשורות ישירות אליו. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Yoaz Hendel in configured sources this cycle."
+      "\"נכנסנו לקריפטו מוקדם מדי\": צבי זיו על הכישלון של סילבר קסטל",
+      "ראש המוסד לשעבר ושני כוכבי נדל\"ן מצטרפים לחברה הביטחונית הזו ומזניקים את המניה"
     ],
     "social_mentions": [
       {
@@ -2098,7 +2197,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Aryeh Deri in configured sources this cycle."
     ],
@@ -2125,9 +2224,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרת על שר החינוך ופתיחת קייטנות — אינה קשורה ישירות אליו. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Yoav Ben-Tzur in configured sources this cycle."
+      "שר החינוך: חלק מהרשויות יוכלו לפתוח בשלישי את הקייטנות"
     ],
     "social_mentions": [
       {
@@ -2152,7 +2251,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yinon Azoulay in configured sources this cycle."
     ],
@@ -2179,16 +2278,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה על השם 'משה'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Moshe Arbel in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Moshe Arbel in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -2206,7 +2307,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "האזכור החברתי מתייחס לשגריר מייקל מקפול ולא לח\"כ מיכאל מלכיאלי — התאמה שגויה. אין סיקור ישיר.",
+    "chain_of_thought": "אזכור 'Michael McFaul' ברדיט — התאמה שגויה על השם 'מיכאל'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Michael Malchieli in configured sources this cycle."
     ],
@@ -2235,16 +2336,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Haim Biton in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Haim Biton in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -2262,7 +2365,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Uriel Buso in configured sources this cycle."
     ],
@@ -2283,15 +2386,15 @@
     "party": "Shas",
     "role": "mk",
     "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
+    "policy_approval": 0.05,
+    "media_amplification": 0.1,
+    "news_sentiment": 5.3,
     "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "media_volume": 1,
+    "overall_score": 5.9,
+    "chain_of_thought": "כותרת על חגיגת יום הולדת בשידור חי — תוכן אנושי חיובי וקל. ציונים כמעט ניטרליים עם נגיעה חיובית.",
     "news_headlines": [
-      "No direct headlines matched Yaakov Margi in configured sources this cycle."
+      "מזל טוב: כך חגגו ליהודה שלזינגר יום הולדת בשידור חי | צפו"
     ],
     "social_mentions": [
       {
@@ -2316,16 +2419,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה על השם 'משה'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Moshe Abutbul in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Moshe Abutbul in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -2343,7 +2448,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yosef Taieb in configured sources this cycle."
     ],
@@ -2370,7 +2475,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yonatan Mishraki in configured sources this cycle."
     ],
@@ -2397,16 +2502,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור 'אמנון יצחק' — התאמה שגויה על השם 'יצחק'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yitzhak Goldknopf in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Yitzhak Goldknopf in configured sources this cycle.",
-        "thread_context": [],
+        "text": "אמנון יצחק מוכיח שאין אלוהים! צפייה מהנה",
+        "thread_context": [
+          "Source: https://www.fxp.co.il/showthread.php?t=22029336"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@fxp_user",
           "known_satirist": false
         }
       }
@@ -2424,16 +2531,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה על השם 'משה'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Moshe Gafni in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Moshe Gafni in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -2451,7 +2560,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Uri Maklev in configured sources this cycle."
     ],
@@ -2478,9 +2587,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרת על חגיגת יום הולדת — אינה קשורה ישירות אליו. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Yaakov Tesler in configured sources this cycle."
+      "מזל טוב: כך חגגו ליהודה שלזינגר יום הולדת בשידור חי | צפו"
     ],
     "social_mentions": [
       {
@@ -2505,7 +2614,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Meir Porush in configured sources this cycle."
     ],
@@ -2525,17 +2634,19 @@
     "name": "Yaakov Asher",
     "party": "United Torah Judaism",
     "role": "mk",
-    "hostility_level": 0.35,
+    "hostility_level": 0.3,
     "policy_approval": -0.1,
-    "media_amplification": 0.3,
+    "media_amplification": 0.35,
     "news_sentiment": 4.5,
-    "social_sentiment": 6.5,
-    "media_volume": 3,
-    "overall_score": 4.8,
-    "chain_of_thought": "כותרת על עימות: להב-הרצנו תקף את החרדים ויעקב אשר השיב בחריפות. סיקור קונפליקטי חילוני-חרדי טיפוסי. הכותרת השנייה על שריפה אינה קשורה. מסגור של עימות מגזרי.",
+    "social_sentiment": 7,
+    "media_volume": 3.5,
+    "overall_score": 5.1,
+    "chain_of_thought": "סיקור ישיר ומשמעותי: עימות על אפליה ('אתה מדבר על אפליה?'), עימות עם להב-הרצנו שתקף את החרדים — אשר לא נותר חייב. נראה כמגן על הציבור החרדי. עוינות בינונית סביב שיח קיטוב חברתי.",
     "news_headlines": [
+      "'אתה מדבר פה על אפליה?': ח\"כ יעקב אשר התעמת עם ח\"כי המפלגה שבקושי עוברת בסקרים - חרדים10",
       "צפו בעימות: להב-הרצנו תקף את החרדים - יעקב אשר לא נותר חייב - בחדרי חרדים",
-      "שריפה במקלט בין שני בניינים ברחובות, מאמצים לחילוץ זוג לכודים"
+      "שריפה במקלט בין שני בניינים ברחובות, מאמצים לחילוץ זוג לכודים",
+      "מזל טוב: כך חגגו ליהודה שלזינגר יום הולדת בשידור חי | צפו"
     ],
     "social_mentions": [
       {
@@ -2560,16 +2671,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור 'אמנון יצחק' — התאמה שגויה על השם 'יצחק'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yitzhak Pindrus in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Yitzhak Pindrus in configured sources this cycle.",
-        "thread_context": [],
+        "text": "אמנון יצחק מוכיח שאין אלוהים! צפייה מהנה",
+        "thread_context": [
+          "Source: https://www.fxp.co.il/showthread.php?t=22029336"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@fxp_user",
           "known_satirist": false
         }
       }
@@ -2580,17 +2693,18 @@
     "name": "Bezalel Smotrich",
     "party": "Religious Zionism",
     "role": "minister",
-    "hostility_level": 0.55,
-    "policy_approval": -0.4,
-    "media_amplification": 0.55,
-    "news_sentiment": 3,
-    "social_sentiment": 4.5,
-    "media_volume": 5.5,
-    "overall_score": 4.1,
-    "chain_of_thought": "סיקור שלילי מובהק: כלכליסט כותב ש'סמוטריץ' גילה שזלזול ויהירות אינם כלי עבודה' ושהציבור ישלם את המחיר — ביקורת חריפה על סגנון ומדיניות. בנוסף, הצהרה על עבודה ל'קריסת' הרשות הפלסטינית 'הרעה' — שנויה מאוד במחלוקת בתקשורת הבינלאומית.",
+    "hostility_level": 0.5,
+    "policy_approval": -0.3,
+    "media_amplification": 0.6,
+    "news_sentiment": 3.5,
+    "social_sentiment": 5,
+    "media_volume": 6,
+    "overall_score": 4.6,
+    "chain_of_thought": "סיקור ישיר ושנוי במחלוקת: מצהיר שעובד ל'קריסת' הרשות הפלסטינית ה'מרושעת', אב של נער מתנחל שנהרג מכנה את בנו 'קרבן' למען ההתנחלויות. שתיקה מול אסון משגב עם (ביקורת). שפת דה-לגיטימציה כלפי הרש\"פ. עוינות גבוהה, הגברה משמעותית.",
     "news_headlines": [
-      "סמוטריץ' גילה שזלזול ויהירות אינם כלי עבודה. את המחיר ישלם הציבור - כלכליסט",
-      "Smotrich: We’re working to ‘collapse’ the ‘evil’ Palestinian Authority - The Times of Israel"
+      "Smotrich: We’re working to ‘collapse’ the ‘evil’ Palestinian Authority - The Times of Israel",
+      "לא נתניהו, לא כ\"ץ ולא לפיד: שתיקת הבכירים מול האסון במשגב עם",
+      "Father of settler teen killed by Palestinian says son was ‘sacrifice’ for settlements cause"
     ],
     "social_mentions": [
       {
@@ -2608,18 +2722,18 @@
     "name": "Orit Strock",
     "party": "Religious Zionism",
     "role": "mk",
-    "hostility_level": 0.05,
-    "policy_approval": 0,
+    "hostility_level": 0.35,
+    "policy_approval": -0.25,
     "media_amplification": 0.4,
-    "news_sentiment": 5,
-    "social_sentiment": 9.5,
+    "news_sentiment": 3.8,
+    "social_sentiment": 6.5,
     "media_volume": 4,
-    "overall_score": 6.3,
-    "chain_of_thought": "סיקור מתמקד בטרגדיה האישית — מות בתה שושנה. כותרות על תום השבעה ובקשתה של סטרוק, וחקירת הפרשה. סיקור אמפתי ולא פוליטי. אין עוינות כלפיה.",
+    "overall_score": 4.8,
+    "chain_of_thought": "סיקור ישיר ומורכב: חקירת פרשת שושנה סטרוק כמעשה מוסרי ועיתונאי, חשיפה שמיליארדים זורמים למשרדה אחרי אישור התקציב, ובקשה אישית בתום השבעה. שילוב ביקורת תקציבית חריפה עם אמפתיה אנושית.",
     "news_headlines": [
       "תומר פלג: חקירת פרשת שושנה סטרוק היא המעשה המוסרי והעיתונאי - זמן ישראל",
-      "בתום השבעה של שושנה ז\"ל: הבקשה של אורית סטרוק - כיפה",
-      "Daughter of Settlements Minister Orit Strock found dead; no suspicion of criminal involvement - MSN"
+      "בדיקת האוצר חושפת: כך זורמים מיליארדים למשרד של אורית סטרוק - אחרי אישור התקציב - כלכליסט",
+      "בתום השבעה של שושנה ז\"ל: הבקשה של אורית סטרוק - כיפה"
     ],
     "social_mentions": [
       {
@@ -2644,7 +2758,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ofir Sofer in configured sources this cycle."
     ],
@@ -2664,16 +2778,16 @@
     "name": "Simcha Rothman",
     "party": "Religious Zionism",
     "role": "mk",
-    "hostility_level": 0.3,
+    "hostility_level": 0.45,
     "policy_approval": -0.2,
     "media_amplification": 0.4,
     "news_sentiment": 4,
-    "social_sentiment": 7,
+    "social_sentiment": 5.5,
     "media_volume": 4,
-    "overall_score": 5,
-    "chain_of_thought": "כותרת אחת: רוטמן טוען שבית המשפט העליון 'לא מכבד את שיקול הדעת של הציבור'. ביקורת על המערכת המשפטית שמאפיינת את עמדותיו. סיקור ניטרלי-שלילי מכיוון שממשיך קו שנוי במחלוקת.",
+    "overall_score": 4.5,
+    "chain_of_thought": "כותרת ישירה: 'האצבע קלה על ההגה' — רוטמן התפוצץ על קצין בכיר במשטרה. סיקור של התנהגות תוקפנית כלפי גורמי אכיפה. עוינות בינונית-גבוהה.",
     "news_headlines": [
-      "Rothman: High Court ‘does not respect the judgment of the public’ - JNS"
+      "\"האצבע קלה על ההגה\": שמחה רוטמן התפוצץ על הקצין הבכיר במשטרה - מעריב"
     ],
     "social_mentions": [
       {
@@ -2698,9 +2812,9 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "כותרת על 'צבי זיו' וכישלון קריפטו — התאמה שגויה על השם 'צבי'. ציונים ניטרליים.",
     "news_headlines": [
-      "No direct headlines matched Zvi Sukkot in configured sources this cycle."
+      "\"נכנסנו לקריפטו מוקדם מדי\": צבי זיו על הכישלון של סילבר קסטל"
     ],
     "social_mentions": [
       {
@@ -2725,7 +2839,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ohad Tal in configured sources this cycle."
     ],
@@ -2752,7 +2866,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Michal Waldiger in configured sources this cycle."
     ],
@@ -2779,16 +2893,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור החברתי הוא פוסט כללי על פרשת השבוע — התאמה שגויה על השם 'משה'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Moshe Solomon in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Moshe Solomon in configured sources this cycle.",
-        "thread_context": [],
+        "text": "חזון בלי ביצוע לא שווה כלום | פרשת ויקהל–פקודי ושוק ההון ערב שבת שלום חברים יקרים, פרשות השבת 'ויקהל- פקודי' הן שתי פרשות מחוברות שמציבות לנו מראה מאוד לא נוחה, אבל הכרחית. ויקהל היא הפרשה שבה משה מקהיל את העם ומעביר את החזון. לבנות משכן. מ",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3770"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -2799,21 +2915,25 @@
     "name": "Itamar Ben Gvir",
     "party": "Otzma Yehudit",
     "role": "mk",
-    "hostility_level": 0.8,
-    "policy_approval": -0.7,
-    "media_amplification": 0.85,
-    "news_sentiment": 1.5,
-    "social_sentiment": 2,
-    "media_volume": 8.5,
-    "overall_score": 3.4,
-    "chain_of_thought": "סיקור שלילי חריף מכל הכיוונים: היועמ\"שית דרשה מהמפכ\"ל לסגור מדור שהקים ('מדור הסתות'), אישה צעקה עליו 'נאצי' באירוע בערד (וידאו ויראלי בערוצים איראנים), עימות עם אישה באתר פגיעת טיל ('אתה רק מביא מוות'), ונתניהו עצמו כינה את הצהרתו על אביתר 'בלתי מקובלת'. PDD הפוך — המוסדות עצמם פועלים נגדו. עוינות גבוהה מאוד ופוטנציאל ויראלי חריג.",
+    "hostility_level": 0.75,
+    "policy_approval": -0.6,
+    "media_amplification": 0.8,
+    "news_sentiment": 2,
+    "social_sentiment": 2.5,
+    "media_volume": 8,
+    "overall_score": 3.7,
+    "chain_of_thought": "סיקור שלילי נרחב ואינטנסיבי: היועמ\"שית דורשת מהמפכ\"ל להפסיק את 'מדור ההסתות' שהקים, רדיפה לא חוקית של ערבים ושמאלנים, בג\"ץ מסמן כיוון נגדו, נקרא 'נאצי' בערד, אישה עימתה אותו באתר פגיעת טיל ('אתה רק מביא מוות'), נתניהו עצמו קורא להצהרתו 'בלתי מקובלת'. דפוס PDD הפוך — הוא הנושא של דה-לגיטימציה מכל הכיוונים. עוינות גבוהה מאוד, הגברה תקשורתית גבוהה.",
     "news_headlines": [
       "המשנים ליועמ\"שית דרשו מהמפכ\"ל לסגור את המדור שהקים בן גביר - מעריב",
+      "כשבן גביר רדף באופן לא חוקי ערבים ופעילי שמאל, הפרקליטות שתקה. עכשיו היא מתעוררת - העין השביעית",
+      "מול משטרה בקריסה ומפכ\"ל שמקרין חידלון: העליון מסמן כיוון בבג\"ץ בן גביר - MSN",
+      "המפכ\"ל והשר בן-גביר דוחים דרישת מיארה להפסיק פעילות \"מדור ההסתות\" - News1 מחלקה ראשונה",
       "היועמ\"שית למפכ\"ל: הפסק מיידית את פעילות מדור ההסתות שהקים בן גביר - הארץ",
       "\"נאצי\": סרטון הצעקות נגד בן גביר בערד זכה לתהודה רבה בערוצים איראנים - ערוץ 7",
       "Woman confronts Ben-Gvir at site of Iranian missile strike - Al Jazeera",
       "‘You only bring death’: Israeli woman confronts Ben-Gvir after Iranian missile strike - Anadolu Ajansı",
-      "Netanyahu calls Ben-Gvir’s Evyatar statement ‘unacceptable’ - JNS"
+      "Netanyahu calls Ben-Gvir’s Evyatar statement ‘unacceptable’ - JNS",
+      "Netanyahu KICKED OUT Of Arad After Ben-Gvir? Israeli PM WARNS Europe - BEGS Countries to JOIN War - Oneindia"
     ],
     "social_mentions": [
       {
@@ -2838,7 +2958,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Zvika Fogel in configured sources this cycle."
     ],
@@ -2865,16 +2985,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור 'אמנון יצחק' — התאמה שגויה על השם 'יצחק'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yitzhak Wasserlauf in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Yitzhak Wasserlauf in configured sources this cycle.",
-        "thread_context": [],
+        "text": "אמנון יצחק מוכיח שאין אלוהים! צפייה מהנה",
+        "thread_context": [
+          "Source: https://www.fxp.co.il/showthread.php?t=22029336"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@fxp_user",
           "known_satirist": false
         }
       }
@@ -2892,7 +3014,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Amichai Eliyahu in configured sources this cycle."
     ],
@@ -2912,16 +3034,16 @@
     "name": "Limor Son Har-Melech",
     "party": "Otzma Yehudit",
     "role": "mk",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "hostility_level": 0.25,
+    "policy_approval": -0.2,
+    "media_amplification": 0.3,
+    "news_sentiment": 4,
+    "social_sentiment": 7.5,
+    "media_volume": 3,
+    "overall_score": 5,
+    "chain_of_thought": "כותרת ישירה: כיסוי הראש שלה 'אינו הבעיה, הכפייה הדתית — כן'. ביקורת מתונה הממסגרת אותה כסמל לכפייה דתית, אם כי הכותרת מאזנת.",
     "news_headlines": [
-      "No direct headlines matched Limor Son Har-Melech in configured sources this cycle."
+      "כיסוי הראש של לימור סון הר-מלך הוא לא הבעיה. הכפייה הדתית – כן - הארץ"
     ],
     "social_mentions": [
       {
@@ -2946,16 +3068,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "האזכור 'אמנון יצחק' — התאמה שגויה על השם 'יצחק'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yitzhak Kroizer in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Yitzhak Kroizer in configured sources this cycle.",
-        "thread_context": [],
+        "text": "אמנון יצחק מוכיח שאין אלוהים! צפייה מהנה",
+        "thread_context": [
+          "Source: https://www.fxp.co.il/showthread.php?t=22029336"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@fxp_user",
           "known_satirist": false
         }
       }
@@ -2973,7 +3097,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Avigdor Lieberman in configured sources this cycle."
     ],
@@ -3000,7 +3124,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Oded Forer in configured sources this cycle."
     ],
@@ -3027,7 +3151,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Evgeny Sova in configured sources this cycle."
     ],
@@ -3054,7 +3178,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Hamad Amar in configured sources this cycle."
     ],
@@ -3081,7 +3205,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yulia Malinovsky in configured sources this cycle."
     ],
@@ -3108,7 +3232,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Sharon Nir in configured sources this cycle."
     ],
@@ -3135,7 +3259,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Mansour Abbas in configured sources this cycle."
     ],
@@ -3162,7 +3286,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Waleed Taha in configured sources this cycle."
     ],
@@ -3189,7 +3313,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Iman Khatib-Yasin in configured sources this cycle."
     ],
@@ -3216,7 +3340,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Walid Alhawashla in configured sources this cycle."
     ],
@@ -3243,7 +3367,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Yasser Hujirat in configured sources this cycle."
     ],
@@ -3270,7 +3394,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ayman Odeh in configured sources this cycle."
     ],
@@ -3297,7 +3421,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ahmad Tibi in configured sources this cycle."
     ],
@@ -3324,7 +3448,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Aida Touma-Suleiman in configured sources this cycle."
     ],
@@ -3344,16 +3468,17 @@
     "name": "Ofer Cassif",
     "party": "Hadash-Ta'al",
     "role": "mk",
-    "hostility_level": 0,
+    "hostility_level": 0.05,
     "policy_approval": 0,
-    "media_amplification": 0,
+    "media_amplification": 0.05,
     "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "הכותרת מתייחסת לעופר מושקוביץ ולא לח\"כ עופר כסיף — התאמה שגויה. אין סיקור ישיר.",
+    "social_sentiment": 9.5,
+    "media_volume": 0.5,
+    "overall_score": 5.4,
+    "chain_of_thought": "כותרות על 'עופר מושקוביץ' שייתכן שנהרג מאש צה\"ל — התאמה על השם 'עופר', לא עליו ישירות. שתיקת בכירים מול אסון משגב עם — ביקורת כללית. ציונים כמעט ניטרליים.",
     "news_headlines": [
-      "גורם צבאי: נבדקת האפשרות שעופר מושקוביץ נהרג מאש צה\"ל"
+      "גורם צבאי: נבדקת האפשרות שעופר מושקוביץ נהרג מאש צה\"ל",
+      "לא נתניהו, לא כ\"ץ ולא לפיד: שתיקת הבכירים מול האסון במשגב עם"
     ],
     "social_mentions": [
       {
@@ -3378,13 +3503,13 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "האזכור החברתי עוסק באמירת נתניהו על ישו ואינו קשור לח\"כ סמיר בן סעיד — התאמה שגויה. אין סיקור ישיר.",
+    "chain_of_thought": "האזכור החברתי על אמירת נתניהו על ישו — התאמה שגויה, לא קשור אליו. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Samir Ben Said in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the ",
+        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the",
         "thread_context": [
           "Source: https://www.reddit.com/r/Israel/comments/1ryvj0r/what_could_possibly_have_led_netanyahu_to_say_that/"
         ],
@@ -3407,7 +3532,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Merav Michaeli in configured sources this cycle."
     ],
@@ -3434,7 +3559,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Naama Lazimi in configured sources this cycle."
     ],
@@ -3461,7 +3586,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Gilad Kariv in configured sources this cycle."
     ],
@@ -3488,7 +3613,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Efrat Rayten Marom in configured sources this cycle."
     ],
@@ -3508,17 +3633,18 @@
     "name": "Gideon Sa'ar",
     "party": "HaYamin HaMamlakhti",
     "role": "minister",
-    "hostility_level": 0.2,
-    "policy_approval": 0.2,
-    "media_amplification": 0.55,
-    "news_sentiment": 6,
-    "social_sentiment": 8,
-    "media_volume": 5.5,
-    "overall_score": 6.6,
-    "chain_of_thought": "סיקור דומיננטי על עימות דיפלומטי עם השגריר הגרמני: סער תקף אותו על 'אובססיה ליהודים' ואמר 'טוב לדעת שבקרוב יגיע שגריר חדש'. מסגור אסרטיבי בתקשורת הישראלית — נתפס כהגנה על כבוד ישראל. בנוסף, פגישה דיפלומטית עם שר החוץ ההודי. סיקור חיובי-נחרץ.",
+    "hostility_level": 0.25,
+    "policy_approval": 0.1,
+    "media_amplification": 0.5,
+    "news_sentiment": 5.5,
+    "social_sentiment": 7.5,
+    "media_volume": 5,
+    "overall_score": 6.1,
+    "chain_of_thought": "סיקור ישיר ובולט: עימות חריג עם שגריר גרמניה ('טוב שבקרוב יגיע שגריר חדש'), האשמת השגריר ב'אובססיה ליהודים'. פגישה עם שר החוץ ההודי. סיקור דיפלומטי אסרטיבי — חלק יראו כהגנה על ישראל, אחרים כחוסר דיפלומטיה. עוינות מתונה, הגברה גבוהה.",
     "news_headlines": [
       "השגריר צייץ - וגדעון סער הימם את כל אירופה: \"האובססיה שלו ליהודים\" - מעריב",
       "עימות בין גדעון סער לשגריר הגרמני: \"טוב לדעת שבקרוב יגיע שגריר חדש\" - חרדים10",
+      "העימות החריג בין שר החוץ סער לשגריר גרמניה בישראל: \"טוב שבקרוב יגיע שגריר חדש\" - mako",
       "EAM Jaishankar, Israeli counterpart Gideon Sa’ar discuss West Asia conflict - DD News"
     ],
     "social_mentions": [
@@ -3544,7 +3670,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Ze'ev Elkin in configured sources this cycle."
     ],
@@ -3564,16 +3690,16 @@
     "name": "Sharren Haskel",
     "party": "HaYamin HaMamlakhti",
     "role": "mk",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "hostility_level": 0.05,
+    "policy_approval": 0.05,
+    "media_amplification": 0.2,
+    "news_sentiment": 5.3,
+    "social_sentiment": 9.5,
+    "media_volume": 2,
+    "overall_score": 5.9,
+    "chain_of_thought": "כותרת ציטוט רגשי: 'השכל רוצה שינוי באיראן, והרגש רוצה שהמשפחה תישאר בחיי'. אמירה אנושית ומאוזנת. סיקור ניטרלי-חיובי.",
     "news_headlines": [
-      "No direct headlines matched Sharren Haskel in configured sources this cycle."
+      "\"השכל רוצה שינוי באיראן, והרגש רוצה שהמשפחה תישאר בחיי\""
     ],
     "social_mentions": [
       {
@@ -3598,16 +3724,18 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "אזכור 'מישל!' בהקשר אירוויזיון — התאמה שגויה על השם 'מישל'. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Michel Buskila in configured sources this cycle."
     ],
     "social_mentions": [
       {
-        "text": "No direct social mentions matched Michel Buskila in configured sources this cycle.",
-        "thread_context": [],
+        "text": "\"מישל!\": חובבי האירוויזיון מתאהבים בשיר של נועם בתן https://youtube.com/watch?v=lkeVRRigB0U&si=ciEd6JuaRcoIsIA6",
+        "thread_context": [
+          "Source: https://t.me/kann_news/3758"
+        ],
         "speaker_metadata": {
-          "handle": "@pipeline",
+          "handle": "@kann_news",
           "known_satirist": false
         }
       }
@@ -3625,7 +3753,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Akram Hasson in configured sources this cycle."
     ],
@@ -3652,7 +3780,7 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "chain_of_thought": "לא נמצאו אזכורים ישירים במחזור זה. ציונים ניטרליים.",
     "news_headlines": [
       "No direct headlines matched Avi Maoz in configured sources this cycle."
     ],
@@ -3672,19 +3800,21 @@
     "name": "Yair Golan",
     "party": "Democrats",
     "role": "politician",
-    "hostility_level": 0.7,
-    "policy_approval": -0.35,
+    "hostility_level": 0.55,
+    "policy_approval": -0.2,
     "media_amplification": 0.6,
-    "news_sentiment": 3.3,
-    "social_sentiment": 3,
+    "news_sentiment": 4,
+    "social_sentiment": 4.5,
     "media_volume": 6,
-    "overall_score": 3.9,
-    "chain_of_thought": "סיקור שלילי חריף: גולן הגיע לזירת נפילת טיל בדימונה וגורש על ידי תושבים — 'לך מכאן, אתה מוקצה'. כותרות ממקורות ימניים (בחדרי חרדים, C14) מדגישות את ההשפלה. מנגד, תוקף את נתניהו ומאשים אותו בהארכת המלחמה למניעת בחירות. עוינות גבוהה מהציבור כלפיו. האזכור החברתי על רמת הגולן אינו קשור אליו.",
+    "overall_score": 4.7,
+    "chain_of_thought": "סיקור נרחב ושלילי ברובו: גורש בבושת פנים מזירת הנפילה בדימונה ('לך מכאן, אתה מוקצה'), תוקף את לפיד על סירוב לאיחוד. באנגלית: מאשים את נתניהו בהארכת המלחמה למניעת בחירות. אזכור 'גולן' ברדיט הוא על רמת הגולן ולא עליו. עוינות גבוהה — נתקל בדחייה פיזית מתושבים, תקשורת ימנית מציגה אותו בשלילה. הגברה גבוהה בשל הדרמטיות.",
     "news_headlines": [
       "\"לך מכאן, אתה מוקצה\": יאיר גולן גורש ע\"י תושבים בזירת הנפילה בדימונה - בחדרי חרדים",
+      "יאיר גולן נגד לפיד: \"הוא מסרב לאיחוד בגלל 'בעיות אישיות'\" - C14",
       "צפו: יאיר גולן הגיע לזירת הנפילה בדימונה וגורש בבושת פנים - C14",
       "Democrats head Golan says Netanyahu dragging out war to avoid elections - The Times of Israel",
-      "Ex-General Golan Accuses Netanyahu of Political War - jfeed.com"
+      "Ex-General Golan Accuses Netanyahu of Political War - jfeed.com",
+      "יאיר גולן נגד לפיד: \"הוא מסרב לאיחוד בגלל 'בעיות אישיות'\""
     ],
     "social_mentions": [
       {
@@ -3704,19 +3834,19 @@
     "name": "Naftali Bennett",
     "party": "Independent",
     "role": "politician",
-    "hostility_level": 0.15,
-    "policy_approval": 0.15,
-    "media_amplification": 0.5,
-    "news_sentiment": 5.8,
-    "social_sentiment": 8.5,
-    "media_volume": 5,
-    "overall_score": 6.5,
-    "chain_of_thought": "סיקור מעורב: מאמר ביקורתי על 'רודנים משפטיים' בישראל, פגישות דיפלומטיות חיוביות באבו דאבי, אזהרת ח\"כ ממרצ שממשלתו תיפול, וחשיפת פרטי תוכנית השלום של טראמפ. מיצוב כשחקן מדיני פעיל עם נוכחות בינלאומית.",
+    "hostility_level": 0.3,
+    "policy_approval": -0.1,
+    "media_amplification": 0.45,
+    "news_sentiment": 4.5,
+    "social_sentiment": 7,
+    "media_volume": 4.5,
+    "overall_score": 5.4,
+    "chain_of_thought": "סיקור מעורב: אופוזיציה מתקיפה את נאומו באו\"ם כ'חלול ומלא קלישאות', ח\"כ ממרצ אומר שממשלתו תיפול אם יפעל צבאית, מנגד — פגישה עם גורמי אמירויות. מאמר על בנט, סער ו'עריצי המשפט' מציג אותו בהקשר ביקורת משפטית. סיקור מקוטב עם ביקורת דומיננטית.",
     "news_headlines": [
       "Bennett, Sa’ar and Israel’s legal tyrants - JNS",
-      "Bennett meets with UAE officials in Abu Dhabi - JNS",
+      "Israel’s opposition blasts Bennett’s ‘hollow, cliché-filled’ UNGA address - JNS",
       "Meretz MK: Bennett knows his government will fall if he takes military action - JNS",
-      "Bennett reveals alleged details of soon-to-be released Trump Mideast peace plan - JNS"
+      "Bennett meets with UAE officials in Abu Dhabi - JNS"
     ],
     "social_mentions": [
       {
