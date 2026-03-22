@@ -998,17 +998,8 @@ async function getTelegramPosts(channel, maxPosts) {
   while ((match = messageRegex.exec(html)) !== null && posts.length < maxPosts) {
     const msgId = match[1];
     const rawHtml = match[2];
-    // Strip HTML tags to get plain text
-    const text = rawHtml
-      .replace(/<br\s*\/?>/gi, " ")
-      .replace(/<[^>]+>/g, "")
-      .replace(/&amp;/g, "&")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .replace(/\s+/g, " ")
-      .trim();
+    // Strip HTML tags and decode entities (reuses existing utility)
+    const text = decodeHtmlEntities(rawHtml);
 
     if (text.length > 10) {
       posts.push({
@@ -1019,6 +1010,13 @@ async function getTelegramPosts(channel, maxPosts) {
         createdUtc: 0,
       });
     }
+  }
+
+  // Warn if page returned content but no messages were parsed (HTML structure may have changed)
+  if (posts.length === 0 && html.length > 1000) {
+    console.warn(
+      `[Telegram] Channel ${channel}: received ${html.length} bytes but parsed 0 messages — HTML structure may have changed`
+    );
   }
 
   telegramFeedCache.set(channel, posts);
@@ -1072,7 +1070,11 @@ async function getFxpThreads(forumId, maxThreads) {
 
 async function searchBlueskyPosts(query, maxPosts) {
   const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=${encodeURIComponent(query)}&limit=${maxPosts}`;
-  const payload = await fetchJson(url, SOURCE_TIMEOUT_MS);
+  const payload = await retry(() => fetchJson(url, SOURCE_TIMEOUT_MS), {
+    maxRetries: 1,
+    initialDelay: 2000,
+    maxDelay: 5000,
+  });
 
   return (payload?.posts ?? []).map((post) => ({
     author: post.author?.handle || "unknown",
