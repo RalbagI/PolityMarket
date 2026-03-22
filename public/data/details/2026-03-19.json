@@ -1,450 +1,9 @@
 [
   {
-    "politician_id": "benjamin-netanyahu",
-    "name": "Benjamin Netanyahu",
-    "party": "Likud",
-    "hostility_level": 0.5,
-    "policy_approval": 0.2,
-    "media_amplification": 0.6,
-    "news_sentiment": 6,
-    "social_sentiment": 5,
-    "media_volume": 6,
-    "overall_score": 5.6,
-    "chain_of_thought": "ה커פוף לנתניהו כולל תיעודים מעורבים של תקשורת פוליטית וסיבובים תקשורתית. תיעודים כמו הפרסום על הבחירות המוקדמות והאשמה בקשר לiran מציינים תקשורת פוליטית מודерנית, בעוד שדיוקים כמו הפרסום על החקיקה נגדו מציינים תקשורת מתח. לא נמצאו דוגמאות לדייגיטציה פוליטית (PDD) או סרקסם מובהק. התקשורת משלבת תקשורת פוליטית עם תקשורת תקשורתית, מה שמעורר תקשורת מודרנית."
-  },
-  {
-    "politician_id": "yariv-levin",
-    "name": "Yariv Levin",
-    "party": "Likud",
-    "hostility_level": 0.2,
-    "policy_approval": 0,
-    "media_amplification": 0.3,
-    "news_sentiment": 5,
-    "social_sentiment": 8,
-    "media_volume": 3,
-    "overall_score": 5.5,
-    "chain_of_thought": "הכותרת מציגה דיבור נייטרלי עם ניסוח של 'rumors debunked' שמביע ספק או סירוב לאמינות הטענות. אין רמזים לPDD או סטיגמה זהירה, אך הניתוח אינו מוסר דעה מפורשת. היעדר ציטוטים חברתיים מונע ניתוח דינמי של טון או סטיגמה. הניתוח מתבסס על ניסוח הכתבה כמונח נייטרלי עם נוכחות מינימלית של ספק."
-  },
-  {
-    "politician_id": "yoav-gallant",
-    "name": "Yoav Gallant",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות מותאמות ליו"
-  },
-  {
-    "politician_id": "miri-regev",
-    "name": "Miri Regev",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על מירי רגב במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר תשומת לב מודרנית. היעדר תקשורת פומבית תורמת לאי-הסכמה או אי-ההערכה מוחלטת, אך ללא מידע נוסף קשה לאמץ דפוסים של פוליטיקה או דיבור מוסרי."
-  },
-  {
-    "politician_id": "nir-barkat",
-    "name": "Nir Barkat",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0.5,
-    "media_amplification": 0.4,
-    "news_sentiment": 7.5,
-    "social_sentiment": 9,
-    "media_volume": 4,
-    "overall_score": 7.1,
-    "chain_of_thought": "המאמר מציג את בarkin כמי שמשך את העיר לrenaissance תרבותי חיובי, תוך שימוש בביטוי 'ליאון' שמתאר את כוחו של מנהל העיר. אין רמז לחריגה או פגיעה בדמויות, ואין ניסוח שגוי או סטיגמה. הפרסום מכוון לפרסום תרבותי ומשתלב עם תפקודו כמנהל. אין סטיגמה או פגיעה בדמויות, ואין ניסוח שגוי או סטיגמה. אין ניסוח שגוי או סטיגמה. אין ניסוח שגוי או סטיגמה."
-  },
-  {
-    "politician_id": "amir-ohana",
-    "name": "Amir Ohana",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0.6,
-    "media_amplification": 0.3,
-    "news_sentiment": 8,
-    "social_sentiment": 9,
-    "media_volume": 3,
-    "overall_score": 7.1,
-    "chain_of_thought": "הערה חיובית מפורשת על תרומתו של אמיר עohana לתחום הגנה, עם דגש על תרומתו לשיטות הגנה כמו אירון דומ. אין סטיגמה או פגיעה בזיהוי, ואין דיבור מוסרי או פוליטי מכוון. הפרספקטיב הוא טכני ומבוסס, ללא סטיגמה או פגיעה בזיהוי. אין סטיגמה או פגיעה בזיהוי, ואין דיבור מוסרי או פוליטי מכוון. הפרספקטיב הוא טכני ומבוסס, ללא סטיגמה או פגיעה בזיהוי."
-  },
-  {
-    "politician_id": "eli-cohen",
-    "name": "Eli Cohen",
-    "party": "Likud",
-    "hostility_level": 0.2,
-    "policy_approval": 0.1,
-    "media_amplification": 0.6,
-    "news_sentiment": 5.5,
-    "social_sentiment": 8,
-    "media_volume": 6,
-    "overall_score": 6.5,
-    "chain_of_thought": "הכותרת הראשונה מציינת את קהילת קהילה כמossad שגריר, מה שיכולים להיחשב כהתקפה על הראיות הלאומית או הלאומית, אך לא בהכרח מציינת פוליטיקה נוכחית. הכותרת השנייה מציגה פעילות דיפלומטית חיובית נגד אירן, אך ללא הקשר למשמעת פוליטית. אין התייחסות למשמעת פוליטית נוכחית או לתקפות פוליטיות. אין זיהוי של PDD או סטיגמה. הפרסום במקורות מוסריים עשוי להגביר את הانتشار, אך אין התייחסות למשמעת פוליטית נוכחית."
-  },
-  {
-    "politician_id": "yisrael-katz",
-    "name": "Yisrael Katz",
-    "party": "Likud",
-    "hostility_level": 0.45,
-    "policy_approval": 0.1,
-    "media_amplification": 0.6,
-    "news_sentiment": 5.5,
-    "social_sentiment": 5.5,
-    "media_volume": 6,
-    "overall_score": 5.6,
-    "chain_of_thought": "המאמר המוביל מתאר פעולה צבאית משמעותית של קצץ, מה שיכולים לראות כצלול או כמתקף חזק. ההערות במדיה החברתית כוללות תreads עם נושאים שונים: אחד מתייחס למשבר פוליטי פנימי (Michael Katz) אך לא ברור אם זה קצץ עצמו, השני מדווח על הاعلان הרשמי שלו על הפעולה, והשלישי כולל תגובה סאטירית ל舆媒 שמתמקמת בפרטים טריוויאליים במהלך מלחמה. אין זיהוי של דיבור דילגיטימציה פוליטית, אך יש תחושת ביקורת על תפקוד ה舆媒. התגובה הסאטירית מציינת ניגוד בין תחושת אירוסיה למשבר, אך אינה מציינת פוליטיקה של קצץ באופן ישיר."
-  },
-  {
-    "politician_id": "yuli-edelstein",
-    "name": "Yuli Edelstein",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על יולי אדלstein, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומביתRecent suggets that public discourse is not actively shaping his current standing. No PDD or sarcasm detected due to lack of content."
-  },
-  {
-    "politician_id": "shlomo-karhi",
-    "name": "Shlomo Karhi",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.3,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 3,
-    "overall_score": 5.9,
-    "chain_of_thought": "הכותרת מתארת החלטה פוליטית נייטרלית ללא ערך דתי או פוליטי מובהק. אין סימני פדיעות או דיבור שגוי, וההקשר אינו מציית לפורמט של פדיעות פוליטית. הניתוח אינו מראה עלייה או ירידה משמעותית בתקיפות או תקווה."
-  },
-  {
-    "politician_id": "zeev-elkin",
-    "name": "Zeev Elkin",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על זיו אلكין במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או על היעדר נושאים מרכזיים הקשורים אליו. ללא תיאורים או ביקורת, לא ניתן לזהות נרטיבים של פדיעות פוליטית או סטיגמה. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים מפורטים."
-  },
-  {
-    "politician_id": "avi-dichter",
-    "name": "Avi Dichter",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע זמין על אביו דיכטר במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה לא מוסרית או סרקסם. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או תחושת תומך. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים."
-  },
-  {
-    "politician_id": "danny-danon",
-    "name": "Danny Danon",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0.6,
-    "media_amplification": 0.4,
-    "news_sentiment": 8,
-    "social_sentiment": 9,
-    "media_volume": 4,
-    "overall_score": 7.3,
-    "chain_of_thought": "הכותרות מציגות תיאור ניטרלי-חיובי של דנון כפועל מוביל במשימות דיפלומטיות וניהול ארגונים. אין רמזים לסיוע או פגיעה, ואין שימוש בדיבור שטח או פגיעה בזיהוי. התקשורת מוקדשת למדיניות ותפקידים, אך אין רמזים לחרדה או פגיעה במערכת דמוקרטית. אין סטיגמה או דיבור שטח, ולכן אין דיבור פוליטי מפקיר."
-  },
-  {
-    "politician_id": "ofir-akunis",
-    "name": "Ofir Akunis",
-    "party": "Likud",
-    "hostility_level": 0.3,
-    "policy_approval": 0.1,
-    "media_amplification": 0.5,
-    "news_sentiment": 5.5,
-    "social_sentiment": 7,
-    "media_volume": 5,
-    "overall_score": 5.9,
-    "chain_of_thought": "השכלה מעורבת עם נושאים שווים. ראשית, הפרסום על בחירתו כמועמד למשרה עולמית עשוי להגביר את הפרסום, אך הצהרה שלו על תקפות הפרסום כאנטישמייה יכולה להיחשב כמצב של עמדה ברורה. אין רמזים לPDD או סטיגמה זהותית. היעדר ציטוטים חברתיים מונחים את הניתוח בזווית של דגש על תקשורת רשמית."
-  },
-  {
-    "politician_id": "david-bitan",
-    "name": "David Bitan",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על דיויד ביטן במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דיליטציה פוליטית. היעדר תיעוד פומבי מעיד על נמוך רמת תשומת לב או נוכחות מינימלית במרחב הפוליטי."
-  },
-  {
-    "politician_id": "fateen-mulla",
-    "name": "Fateen Mulla",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או כותרות ישירות לפוטיין מולה במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע מחייב ניתוח נייטרלי, אך יש להניח שסמכותה כחברה בليكוד תורמת לשקיפות חלקית. אין רמזים לדרמטיזציה פוליטית או לתקיפות מפורשת."
-  },
-  {
-    "politician_id": "david-amsalem",
-    "name": "David Amsalem",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין תיעודים זמינים לגבי דוד אמסלם במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה דרמטית או סטיגמה. היעדר תיעודים מעורר ספק לגבי נוכחות פומבית ותפוצה תקשורתית. אין סימני אgressיביות או תומכות במדיניות. הניתוח מתבסס על היעדר מידע, ולא על דעות פומביות."
-  },
-  {
-    "politician_id": "boaz-bismuth",
-    "name": "Boaz Bismuth",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות או חדשות מדויקות על בועז ביסמooth במקורות המותרים, לכן אין מידע להערכה של תחושה או דיבור פוליטי. היעדר כל תקשורת פומבית משמעותית מעיד על נמוך או נעלם מודעות ציבוריים."
-  },
-  {
-    "politician_id": "ariel-kallner",
-    "name": "Ariel Kallner",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות או כותרות ישירות לאיירל קאלנר במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר עניין במקורות המבוקשים. ללא תוכן להערכה, כל המטרות נמצאות בנקודת האפס."
-  },
-  {
-    "politician_id": "hanoch-milwidsky",
-    "name": "Hanoch Milwidsky",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות מותאמות למחברת המלוד במחזור זה, מה שמעיד על נוכחות מינימלית או נulle בדיבור العام. היעדר תיעוד פומבי מונע ניתוח תקשורתי או דיבור פוליטי, ולכן אין מידע על רמת תקווה, ביקורת או אמפליפיקציה. הניתוח מתבסס על היעדר נתונים."
-  },
-  {
-    "politician_id": "tally-gotliv",
-    "name": "Tally Gotliv",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 2,
-    "overall_score": 6,
-    "chain_of_thought": "אין כלusions או מentions ישירות על טלי גוטליב בכל המקורות המותרים. כל הפרסומים המובאים מתייחסים לנושא מלחמה בירן, מדיניות ארה"
-  },
-  {
-    "politician_id": "dan-ilouz",
-    "name": "Dan Ilouz",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על דן אילוז במקורות המותרים, לכן ניתוח הרגשה מתבסס על היעדר מידע. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פוליטית נמוכה. אין סימני פחד או ביקורת פוליטית, ולכן אין צורך בניתוח PDD או סארקזם."
-  },
-  {
-    "politician_id": "moshe-saada",
-    "name": "Moshe Saada",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין הערות או חדשות ישירות על מושה סאדה במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב בתקופת ההערכה. היעדר תוכן פוליטי או ביקורתי מונע מהתקיים ניתוח של דיבור delegitimizing או סарק asm. הניתוח מתבסס על היעדר מידע, ולא על תקשורת פומבית."
-  },
-  {
-    "politician_id": "nissim-vaturi",
-    "name": "Nissim Vaturi",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על ניסים וטורי במקורות המותרים, ולכן לא ניתן ל분석 תון, סארקזם או דיבור דיליטציה פוליטית. היעדר כל תזכורת או הערה על המועמד גורם לציון אפס בכל המטרות."
-  },
-  {
-    "politician_id": "osher-shkalim",
-    "name": "Osher Shkalim",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 1,
-    "overall_score": 5.8,
-    "chain_of_thought": "אין כלusions או תובנות ישירות על אושר שקלים במקורות המותרים. הפרסום בReddit הוא שאלה כללית על אוכריים קוסריים, ללא התאמה למשהו שמקשר אותו למשהו ששקלים. אין סטיגמה, פדיה או ביקורת פוליטית. הפרסום אינו מתייחס לשקלים או למדיניות שלו, ולכן אין נוכחות פוליטית או תקשורת מוסרית."
-  },
-  {
-    "politician_id": "george-ilatov",
-    "name": "George Ilatov",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעודים או הערות חברתיות מותאמות לג'ורג' אילטוף במקורות המותאמים, מה שמעיד על ניכור נמוך או חוסר חשיבות בזירה הפוליטית. ללא תוכן, אין אפשרות לזהות סарказם, דיבור דיליטציה פוליטית או נרטיבים רגשיים. כל המטרות הדרמטיות נמצאות בнуance של חוסר תיעוד."
-  },
-  {
-    "politician_id": "avichay-buaron",
-    "name": "Avichay Buaron",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 0,
-    "overall_score": 5.2,
-    "chain_of_thought": "אין התייחסות ישירה לברון במקורות המותרים, ומאידך, ה заголовок המופיע מתייחס למשתתף אחר (אדראי). נוכחות נמוכה של תוכן פומבי, ללא רמזים לדרמטיקה פוליטית או ביקורת. אין סטיגמה, אכזריות או דיבור delegitimizing. הניתוח מראה נייטרליות מוחלטת בשל חוסר מידע."
-  },
-  {
-    "politician_id": "tsega-melaku",
-    "name": "Tsega Melaku",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או חדשות ישירות על טסגה מלהכוא במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב תקשורתית. היעדר תוכן פומבי מונע ניתוח רגשי או פוליטי, אך יש להניח נייטרליות מוגזמת בשל היעדר מידע."
-  },
-  {
-    "politician_id": "shelly-tal-meron",
-    "name": "Shelly Tal Meron",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין הערות או כותרות ישירות לשללי טאל מירון במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע ישירות עלול להצביע על נחישות נמוכה או נוכחות לא מרכזית, אך אין סימני אgressיביות או ביקורת פוליטית מפורשת. הניתוח מתבסס על היעדר נתונים, ולא על תובנות סטנדרטיות."
-  },
-  {
-    "politician_id": "ami-daniel",
-    "name": "Ami Daniel",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או כותרות מותאמות לאמי דניאל במקורות המותאמים במחזור זה. היעדר תיעוד תקשורת的 יכול להצביע על נוכחות מינימלית במרחב הפוליטי, או על חוסר עניין במקורות המותאמים. אין מידע להערכה של טון, סארק, או דיבור delegitimizing."
-  },
-  {
-    "politician_id": "eliyahu-revivo",
-    "name": "Eliyahu Revivo",
-    "party": "Likud",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על אלייהו רביבו במקורות המותרים, לכן ניתוח התרשים מתבסס על היעדר מידע. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פוליטית נמוכה. אין סימני פוליטיקה דרמטית או סטיגמה, אך גם אין תובנות חיוביות או שליליות."
-  },
-  {
-    "politician_id": "keti-shitrit",
-    "name": "Keti Shitrit",
-    "party": "Likud",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות או חדשות ישירות על קטי שיטריט במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הפוליטי. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פד or סטיגמה, אך גם אין תומכים או מعارضים מפורטים."
-  },
-  {
-    "politician_id": "yair-lapid",
-    "name": "Yair Lapid",
+    "politician_id": "adi-azuz",
+    "name": "Adi Azuz",
     "party": "Yesh Atid",
-    "hostility_level": 0.2,
-    "policy_approval": 0.4,
-    "media_amplification": 0.5,
-    "news_sentiment": 7,
-    "social_sentiment": 8,
-    "media_volume": 5,
-    "overall_score": 6.8,
-    "chain_of_thought": "הכותרות מציגות הצהרות של ליפיד על נושאים רלוונטיים למדינה, אך ללא עיכוב או ביקורת פוליטית מפורשת. הצהרת 'לא תופס' על פלסטינים נחשבת לשקפת פוליטיקה מודרנית, אך לא מציינת פגיעה בזיהוי או בתקנות. אין דיבור על סכנת מוסד או תקפות מינימליסטית. אין סטיגמה או אכזריות מפורשת, אך יש ניסוח שמרני שמאפשר תרומה לדיון פוליטי."
-  },
-  {
-    "politician_id": "boaz-toporovsky",
-    "name": "Boaz Toporovsky",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני של תכניות או הערות על בועז טופורובסקי במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית או ביקורת תקשורתית מונעת ניתוח רגיש לרגש או דיבור פוליטי. תחושת נייטרליות מובילה, אך ללא מידע מדויק אין יכולת למדוד נטייה פוליטית."
-  },
-  {
-    "politician_id": "meir-cohen",
-    "name": "Meir Cohen",
-    "party": "Yesh Atid",
+    "role": "mk",
     "hostility_level": 0,
     "policy_approval": 0,
     "media_amplification": 0,
@@ -452,25 +11,26 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין תיעוד עדכני של חדשות או תיאורים חברתיים לכהן, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תוכן מעורר נייטרליות, ללא סטיגמה, פדיעות או דיבור שטחתי. אין סיכוי להעניק דירוגים משמעותיים ללא נתונים."
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Adi Azuz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Adi Azuz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "karine-elharrar",
-    "name": "Karine Elharrar",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד תקשורת ישיר לคารין אלחראר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תובנות או מודעות פומביות מונעת מהערכה מדויקת של תחושה או נרטיבים. תובנות עתירות או ביקורת על מדיניות לא נמצאו, ולכן אין צורך בניתוח של פד"
-  },
-  {
-    "politician_id": "orna-barbivai",
-    "name": "Orna Barbivai",
-    "party": "Yesh Atid",
+    "politician_id": "afif-abed",
+    "name": "Afif Abed",
+    "party": "Likud",
+    "role": "mk",
     "hostility_level": 0,
     "policy_approval": 0,
     "media_amplification": 0,
@@ -478,969 +38,20 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין מידע עדכני על אורנה ברביוי במקורות המותרים, ולכן אין אפשרות לניתוח רגיש לרגש או דיבור פוליטי. היעדר תיעוד תקשורת的 יכול להצביע על נמוך פרופורציה של מודעות ציבורי או עיכוב בפעילות מרכזית. אין סימני פחד או תקשורות מוטות."
-  },
-  {
-    "politician_id": "mickey-levy",
-    "name": "Mickey Levy",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על מיכי לוי במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע על שיחים פומביים או ביקורות מונחים את הניתוח בנקודת partida של נייטרליות. אין סימני פד or סארקזם, ואין תובנות על תומך או ניגוד. היעדר תקשורת מודרנית מפחית את האמפליפיקציה הפוליטית."
-  },
-  {
-    "politician_id": "yorai-lahav-hertzano",
-    "name": "Yorai Lahav-Hertzano",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין תיעוד או הערות שורה שהשתלבו עם יוראי לאהב-הרצ'נו במקורות המותרים, לכן אין מידע להערכה של תון, פוליטיקה או פורסום. כל המטרות הנקודות נוגעות לשליליות או נייטרליות."
-  },
-  {
-    "politician_id": "meirav-ben-ari",
-    "name": "Meirav Ben Ari",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על מירב בינה-אריאי במקורות המותרים, ולכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטציה פוליטית. היעדר התייחסויות תקשורתיות או תreads חברתיות מעיד על ניכור נמוך או על כך שהיא לא מרכזית בתקופת ההיבטים הנבחנים. אין סתירה או תמיכה מפורשת, ולכן הערכה של רמת נוכחות תקשורתית נמוכה."
-  },
-  {
-    "politician_id": "ron-katz",
-    "name": "Ron Katz",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "המונחים המופיעים במקורות הוויכוחים נוגעים למשהו שונה מרון קatz (למשל, מיכאל קatz וקatz כ部长), מה שמעיד על הטעייה או ערבוב שמות. אין מידע ישראלי או פוליטי ישראלי ישירות על רון קatz במקורות המבוקרים, ולכן אין נוכחות פוליטית מובהקת. הניתוח אינו מראה שיחים פוליטיים או תקשורת מודרנית שמתמקדת בקatz. אין סימני PDD או סטיגמה פוליטית מובהקת, אך גם אין תקשורת חיובית או שלילית מובהקת."
-  },
-  {
-    "politician_id": "simon-davidson",
-    "name": "Simon Davidson",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין הערות או כותרות מותאמות לsimon davidson במקורות המותאמים, מה שמעיד על נוכחות מינימלית או חוסר דיון ציבורי. נוכחות נמוכה במקורות המותאמים גורמת לאי-התקיים של ניתוח רגשי או פוליטי. אין סימני פחד או תקשורות מודעות."
-  },
-  {
-    "politician_id": "debbie-biton",
-    "name": "Debbie Biton",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע זמין על דיבר ביטון במקורות המותרים, ולכן אין אפשרות לניתוח תקשורתי או דיבור פוליטי. היעדר כל תזכורת תקשורתית או מודעות פומבית מצביע על נוכחות נמוכה או חוסר עניין בדיבר ביטון בתקופת ההערכה הנוכחית."
-  },
-  {
-    "politician_id": "idan-roll",
-    "name": "Idan Roll",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין כלusions או תובנות רלוונטיות לגבי אidan roll במקורות המותרים. כל ההודעות שהובאו מתייחסות למדיניות ארה"
-  },
-  {
-    "politician_id": "naor-shiri",
-    "name": "Naor Shiri",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על נאור שירי במקורות המותרים, ולכן אין אפשרות לזהות טון או דיבור פוליטי. היעדר תיעוד עדכני מעיד על נמוך רלוונטיות תקשורתית או חוסר פעילות פוליטית מוקדמת. אין זיהוי של דיבור פוליטי לא חוקי (PDD) או סарקזם."
-  },
-  {
-    "politician_id": "merav-cohen",
-    "name": "Merav Cohen",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות או חדשות מדויקות על מראב קהן במקורות המותרים, לכן אין מידע להערכה של תחושה או דיבור פוליטי. היעדר תיעוד עדכני מצביע על נמוך או נייטרלי ערך תקשורת, אך אין סיבה להערכה מפורשת."
-  },
-  {
-    "politician_id": "tatiana-mazarsky",
-    "name": "Tatiana Mazarsky",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או כותרות ישויות מותאמות למטיאנה מזרסקי במקורות המותאמים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הרשת. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא אינטראקציות או ביקורת. אין סימני פדיעות, סארקזם או דיבור דיליטציה פוליטית."
-  },
-  {
-    "politician_id": "vladimir-beliak",
-    "name": "Vladimir Beliak",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על Владимיר בלאי במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דילגיטימציה פוליטית. היעדר התייחסויות публичные מעיד על נמוך רלוונטיות או עניין במשרהו. כל המטרות הדרמטיות והשכיחות המודפסות נמצאות בнуול."
-  },
-  {
-    "politician_id": "moshe-tur-paz",
-    "name": "Moshe Tur-Paz",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין הערות או חדשות ישירות על מושה טור-פז במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב במקורות המבוקרים. ללא תוכן פומבי, לא ניתן לזהות נרטיבים של פדיעות פוליטית, סארק, או דיבור שטח. הניתוח מתבסס על חוסר מידע, ולא על תובנות רגשית או פוליטית."
-  },
-  {
-    "politician_id": "nira-shpak",
-    "name": "Nira Shpak",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות או כותרות ישויות שמתאימות לניסוח הבקשה, ולכן אין מידע להערכה של רמת שנאה, אישור מדיניות או פופולריות. היעדר כלים לניתוח תיאורטי."
-  },
-  {
-    "politician_id": "yoav-segalovitz",
-    "name": "Yoav Segalovitz",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין הערות או חדשות ישירות על יואב סגאלוביץ' במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב תקשורתית. היעדר מידע מחייב ניתוח נייטרלי ללא רמזים לחרטה, פוליטיקה, או דיבור מוסרי. הניתוח מתבסס על היעדר נתונים, ולא על טון או נרטיבים."
-  },
-  {
-    "politician_id": "elazar-stern",
-    "name": "Elazar Stern",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0.3,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 3,
-    "overall_score": 6.3,
-    "chain_of_thought": "אין כלusions או תובנות ישויות מרכזיות על עליזר סטרן במקורות המורכבים, ולכן אין נוכחות של דיבור פוליטי או תקשורת מוסרית. כל התייחסויות המופיעות מתייחסות למאורעות כלליים (המתקפה, תקשורת בינלאומית, איום איראני) ולא למדיניות או תקשורת של סטרן. אין סימני פדיעות, סארקזם או דיבור שואף ל delegitimization. הניתוח מוגבל למאורעות חיצוניים ולא לפעילות פוליטית של סטרן."
-  },
-  {
-    "politician_id": "tomer-glam",
-    "name": "Tomer Glam",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על טומר גלם במקורות המותרים, ולכן אין אפשרות לזהות טון, פסיפיקציה או דיבור דיפלומטי. היעדר תיעוד פומבי מעיד על נוכחות מינימלית במרחב הפוליטי, מה שגורם לדרישת עימות נמוכה, דעה תקינה ללא משקל, ואמפליפיקציה מינימלית."
-  },
-  {
-    "politician_id": "ben-simon",
-    "name": "Ben Simon",
-    "party": "Yesh Atid",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעודים ישירים או מentions במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר עניין בתקופת ההיבטים. היעדר תוכן פומבי גורם לניתוח נייטרלי ללא רמזים לסלע, פד, או דיבור שטח. היעדר תקשורת פומבית מוביל לשליליות נמוכה בדרישות."
-  },
-  {
-    "politician_id": "limor-magen-telem",
-    "name": "Limor Magen Telem",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על מוניטין ציבורי של ליםור מגן טלם בשל היעדר הערות או חדשות מדויקות במקורות המותרים. היעדר כל תובנה של תקשורת פומבית או ביקורת תקשורית גורם לאי אפשר למדוד רמת נזק או תמיכה. אין סימני פדיעות, סארקזם או דיבור שטחני."
-  },
-  {
-    "politician_id": "rachel-azaria",
-    "name": "Rachel Azaria",
-    "party": "Yesh Atid",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין כלusions או תובנות ישירות על רחל עזריה במקורות המותרים. הפרסום המופיע מתמקד במדיניות ארה"
-  },
-  {
-    "politician_id": "benny-gantz",
-    "name": "Benny Gantz",
-    "party": "National Unity",
-    "hostility_level": 0.2,
-    "policy_approval": 0.4,
-    "media_amplification": 0.6,
-    "news_sentiment": 7,
-    "social_sentiment": 8,
-    "media_volume": 6,
-    "overall_score": 7.1,
-    "chain_of_thought": "הכותרות מציגות תנועות פוליטיות ומדיניות, אך אין ניסוחים מפורטים או אגרסיביים. אין זיהוי דיבור דיליטציה פוליטית או סרק asm. הניתוח מתבסס על נושאים פוליטיים ומדיניות, עם נטייה לפרספקטיבה אובייקטיבית. רמת אгрסיה נמוכה-בינונית, תומכת במדיניות, ותפזרות תקשורת מוגזמת."
-  },
-  {
-    "politician_id": "gadi-eisenkot",
-    "name": "Gadi Eisenkot",
-    "party": "National Unity",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או כותרות ישירות לאייזنكוט במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית משמעותית מעיד על נמוך רמת השפעה או עיכובים בדיבור. אין סימני פחד או תקיפות, אך גם אין תובנות חיוביות או שליליות."
-  },
-  {
-    "politician_id": "gideon-saar",
-    "name": "Gideon Sa'ar",
-    "party": "National Unity",
-    "hostility_level": 0.1,
-    "policy_approval": 0.3,
-    "media_amplification": 0.5,
-    "news_sentiment": 6.5,
-    "social_sentiment": 9,
-    "media_volume": 5,
-    "overall_score": 7,
-    "chain_of_thought": "הכותרת מציגה דיווח ניטרלי על הצהרה של סא'אר לגבי תוצאות מלחמה, תוך ציון של תוצאות לא מותאמות. אין רמזים לדייגיטליזציה פוליטית, סארקיזם או ביקורת על אידנטיטי. הפרספקטיב הוא פוליטי-מilitרי, אך ללא עיכובים אגרסיביים או תקשורות מוטות. הפרספקטיב יכול להיחשב כמוניטי-מוניטי, אך ללא רמזים לדרמטיזציה של מוסד או איום על דמוקרטיה."
-  },
-  {
-    "politician_id": "pnina-tamano-shata",
-    "name": "Pnina Tamano-Shata",
-    "party": "National Unity",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין תיעודים ישירים או מentions במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תקשורת פומבית תורמת לאי-הערכה של מיקומה בדיאלוג ציבורי. אין סימני פחד או ביקורת פוליטית מובהקת, אך גם אין תמיכה מפורשת."
-  },
-  {
-    "politician_id": "hili-tropper",
-    "name": "Hili Tropper",
-    "party": "National Unity",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או כותרות מותאמות להילי טרופר במקורות המותאמים במחזור זה, מה שמעיד על נוכחות מינימלית בתקשורת או בדיאלוג הפוליטי. היעדר תוכן פומבי מאפשר תרגום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פדיעות או דיבור מוסרי, אך גם אין תובנות חיוביות או שליליות."
-  },
-  {
-    "politician_id": "sharren-haskel",
-    "name": "Sharren Haskel",
-    "party": "National Unity",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 1,
-    "overall_score": 5.8,
-    "chain_of_thought": "אין מידע זמין על שארן חסקל במקורות המותרים, ולכן אין אפשרות לנתח רמת תרבות או דיבור פוליטי. היעדר כל ציטוט או עיתון מדויק מצביע על נוכחות נמוכה או חוסר עניין בתקשורת. אין סימני פחד או דיבור פוליטי מפורש, ולכן אין צורך בניתוח של פחד פוליטי או סטיגמה."
-  },
-  {
-    "politician_id": "matan-kahana",
-    "name": "Matan Kahana",
-    "party": "National Unity",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 1,
-    "overall_score": 5.8,
-    "chain_of_thought": "אין תיעודים זמינים לגבי מטן כהנא במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיאורים או מודעות סоциальные מונעים ניתוח של טון, פדיעות או דיבור delegitimizing. היעדר תקשורת פומבית תורמת לציון נמוך של אמפליפיקציה תקשורתית."
-  },
-  {
-    "politician_id": "chili-tropper",
-    "name": "Orit Farkash-Hacohen",
-    "party": "National Unity",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעודים זמינים לגבי אוריית פרקש-חכין, ולכן אין אפשרות לנתח את הרגשות או הדיבור. היעדר תיעודים מצביע על נמוך רמת תשומת לב תקשורתית, אך לא ניתן להסיק סיכום על מצבה הפוליטי ללא נתונים."
-  },
-  {
-    "politician_id": "alon-schuster",
-    "name": "Alon Schuster",
-    "party": "National Unity",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או כותרות ישירות על אלון שוסטר במקורות המותרים, ולכן אין מידע רלוונטי להערכה של מצבו הפוליטי. כל ההערות המופיעות מתייחסות ל אירועים חיצוניים (התקפות אירן, שאלות פוליטיות כלליות) ולא למדיניות או לתקשור של שוסטר. אין סימני פוליטיקה דרמטית או דיבור שגוי, אך גם אין תובנות חיוביות או שליליות ישירות."
-  },
-  {
-    "politician_id": "michael-biton",
-    "name": "Michael Biton",
-    "party": "National Unity",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע רלוונטי על מיכאל ביטון במקורות המותרים. ההודעה המוצגת מתייחסת למשה קatz ולא לביטון, ומכיוון שאין כלusions על פעילות פוליטית או דיון ציבורי מפורש, לא ניתן לזהות תנועה רגשית או דיבור פוליטי. הניתוח מתבסס על חוסר מידע."
-  },
-  {
-    "politician_id": "yifat-shasha-biton",
-    "name": "Yifat Shasha-Biton",
-    "party": "National Unity",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על שושלת שושה-ביטון במקורות המותרים, ולכן אין אפשרות לזהות טון, סарказם, או דיבור דיליטימציה פוליטית. היעדר תקשורת פומבית משמעותית מעיד על נמוך רמת הפעילות ההפוליטית או חוסר עניין בתקופת ההיבטים הנוכחית."
-  },
-  {
-    "politician_id": "zeev-benjamin-begin",
-    "name": "Ze'ev Benjamin Begin",
-    "party": "National Unity",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין תובנות חדשות או הערות חברתיות מותאמות לze'ev benjamin begin במקורות המותאמים במחזור זה. היעדר תובנות ישראליות או מודעות חברתיות מדויקות מוביל לניתוח נייטרלי. אין סימני פחד, פדיעות או דיבור פוליטי מפורש."
-  },
-  {
-    "politician_id": "aryeh-deri",
-    "name": "Aryeh Deri",
-    "party": "Shas",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין כלusions או תובנות רלוונטיות לגבי אריה דיри בכל המקורות המסופקים. כל ההודעות בReddit מתייחסות לנושא כללי (חנויות קוסר, תרבות רכבת, שאלות פוליטיות כלליות) אך ללא כלipsis או ביקורת על דיри או מדיניותו. אין סימני פדיעות, סארקזם או דיבור שואף ל delegitimization. הניתוח נוגע לאי-התקיים של תוכן רלוונטי."
-  },
-  {
-    "politician_id": "yoav-ben-tzur",
-    "name": "Yoav Ben-Tzur",
-    "party": "Shas",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על מוניטין ציבורי של בנטור בתקופת הפעילות הנוכחית. היעדר תיעוד תקשורת או התייחסויות במקורות המותרים מצביע על נמוך או אפס מוניטין ציבורי. אין סימני פחד או תקיפות פוליטיות, אך גם אין תובנות חיוביות או שליליות."
-  },
-  {
-    "politician_id": "yinon-azoulay",
-    "name": "Yinon Azoulay",
-    "party": "Shas",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע זמין על אזהרות או דעות פומביות לגבי ינון עזרויל במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא חוקי (PDD), סארקזם או נרטיבים מורכבים. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פומבית נמוכה."
-  },
-  {
-    "politician_id": "moshe-arbel",
-    "name": "Moshe Arbel",
-    "party": "Shas",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע עדכני על מושה ארבלי במקורות המותרים, ולכן אין אפשרות לניתוח רמה שלמה. היעדר כלusions חדשות או דיבורות חברתיות מעורר ספק לגבי נוכחות פומבית מובהקת. אין זיהוי של דיבורת פוליטיקה מפקדת או סרקסמטיקה. הניתוח מתבסס על היעדר מידע, ולא על תובנות חדשות."
-  },
-  {
-    "politician_id": "michael-malchieli",
-    "name": "Michael Malchieli",
-    "party": "Shas",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע ישראלי או תקשורת פומבית מוסמכת על מיכאל מקלחלי במקורות המותרים, כולל התייחסויות במדיה החברתי. התייחסות הReddit מתייחסת ל"
-  },
-  {
-    "politician_id": "haim-biton",
-    "name": "Haim Biton",
-    "party": "Shas",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין מידע זמין על הפרסום או התייחסויות החברתיות של הימן ביטון במקורות המותרים, ולכן לא ניתן לזהות נרטיבים של פוליטיקה הלאותית או סטיגמה. היעדר תקשורת פומבית תורמת לשקיפות נמוכה בדימויו العام."
-  },
-  {
-    "politician_id": "uriel-buso",
-    "name": "Uriel Buso",
-    "party": "Shas",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעודים זמינים לגבי אוריאל בוסו, לכן לא ניתן לזהות טון, סארקזם או דיבור דיליטימציה פוליטית. היעדר תיעודים מעיד על נוכחות מינימלית במרחב הפוליטי, מה שגורם לציון hostility_level נמוך. היעדר מידע על מדיניות גורם לציון policy_approval נייטרלי. היעדר תיעודים גם מפחית את האמפליפיקציה המודית."
-  },
-  {
-    "politician_id": "yaakov-margi",
-    "name": "Yaakov Margi",
-    "party": "Shas",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על מועמד זה במקורות המותרים, ולכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטציה פוליטית. היעדר התייחסויות תקשורתיות או תreads מקורות מעורר חשד לשקיפות נמוכה או נוכחות פוליטית מזערית. אין מידע להערכה של רמת נוכחות תקשורתית או דעה ציבורית."
-  },
-  {
-    "politician_id": "yitzhak-cohen-shas",
-    "name": "Yitzhak Cohen",
-    "party": "Shas",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע זמין על יitzhak כהן במקורות המותרים, לכן לא ניתן לזהות טון, פחד או דיבור פוליטי. היעדר כלusions על תקשורת פומבית או תקשורת חברתית גורם לציון נמוך בכל המטרות."
-  },
-  {
-    "politician_id": "moshe-abutbul",
-    "name": "Moshe Abutbul",
-    "party": "Shas",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 1,
-    "overall_score": 5.8,
-    "chain_of_thought": "אין מידע עדכני על מושה אבוטבול במקורות המותרים, ולכן אין אפשרות לזהות דיבור פוליטי לאישות או סарказם. היעדר תיעוד תקשורת的 יכול להצביע על נמוך רמת תשומת לב או נוכחות פוליטית נמוכה. ללא מידע על תובנות או ביקורת, רמת האgressיה והסכמה פוליטית נותרת לא מותאמת."
-  },
-  {
-    "politician_id": "ariel-atias",
-    "name": "Ariel Atias",
-    "party": "Shas",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות ישירות או כותרות שמתאימות לאייטס במקורות המותרים במחזור זה. היעדר מידע ישירות על התרחישים או הערות שמבוסсы על התרחישים גורם לאי אפשר לאמוד את המצב הפוליטי או את הפרספקטיבה הפומבית. היעדר כל תובנה של תקשורת פומבית או תקשורת פוליטית מוביל לאי אפשר לאמוד את המיקום הפוליטי או את הפרספקטיבה הפומבית."
-  },
-  {
-    "politician_id": "yitzhak-goldknopf",
-    "name": "Yitzhak Goldknopf",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין הערות או חדשות ישירות על יitzhak Goldknopf במקורות המותרים, לכן אין מידע להערכה של תון או פוליטיקה. היעדר תקשורת פומבית תורמת לציון נייטרלי בכל המטרות."
-  },
-  {
-    "politician_id": "moshe-gafni",
-    "name": "Moshe Gafni",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעודים זמינים לגבי ג'פני במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה דתית או אמירה סטנדרטית. היעדר תיעוד מעורר ספק לגבי נוכחות פומבית ורלוונטיות נוכחיות. אין סימני אכזריות או פדואליזם, אך גם אין תובנות על תומך או ביקור."
-  },
-  {
-    "politician_id": "uri-maklev",
-    "name": "Uri Maklev",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על אורי מקלב במקורות המותרים, ולכן אין אפשרות לזהות טון, פסיפיקציה או דיבור דיפלומטי. היעדר כל סוג של תיעוד פומבי מעיד על נוכחות מינימלית במרחב הפוליטי העדכני."
-  },
-  {
-    "politician_id": "yisrael-eichler",
-    "name": "Yisrael Eichler",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.4,
-    "policy_approval": -0.5,
-    "media_amplification": 0.5,
-    "news_sentiment": 2.5,
-    "social_sentiment": 6,
-    "media_volume": 5,
-    "overall_score": 4.3,
-    "chain_of_thought": "הערה סאטירית עם ניגוד בין מילה 'חמודה' לבין התוכן המocked. התייחסות ליום פורים כמקור של אירוניה מצביעה על ניסוח מודרני של ביקורת. אין פגיעה ישירה בזיהוי זהות או מנגנון דמוקרטי, אך קיימת ביקורת עקיפה על עמדה פוליטית. התייחסות ל'אבסורדים' ו'מגניבים' מציינת ניגוד בין מילה למשמעות, אך לא קיימת דיבורת פוליטיקה מפקחת. הפרספקטיב של 'המציאות' מציינת ניגוד בין תיאור לאמיתיות, אך לא קיימת דיבורת פוליטיקה מפקחת."
-  },
-  {
-    "politician_id": "yaakov-tesler",
-    "name": "Yaakov Tesler",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין תיעודים או הערות חברתיות מדויקות על טסלר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיעודים מחייב ניתוח נייטרלי, ללא רמזים לחרטה, פדואליות או דיבור מוטעה. היעדר תקשורת פומבית משמעותית מעיד על נוכחות מינימלית או עיכובים בפרסום."
-  },
-  {
-    "politician_id": "meir-porush",
-    "name": "Meir Porush",
-    "party": "United Torah Judaism",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות שמתמקדות בporush בתקופת ההערכה הזו. היעדר תיעוד פומבי מעיד על ניכור נמוך או אי-הlevance בתקופת הפעילות הנוכחית. אין סימני פחד או פגיעה בדימויים, ולכן אין צורך בניתוח של PDD או סארקזם. היעדר תיעוד גורם לציון נמוך בכל המטרות."
-  },
-  {
-    "politician_id": "yaakov-asher",
-    "name": "Yaakov Asher",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 5.7,
-    "chain_of_thought": "אין הערות או חדשות ישירות על יאakov א sher במקורות המותרים במחזור זה. היעדר תיעוד ישירות מצביע על ניכור נמוך או עיסוק מוגבל בissues של המפלגה. ייתכן שמדיניות המפלגה היא נושה מוגבל או שסמכותה לא מושגת בתקשורת המרכזית. אין סימני פחד או ביקורת פוליטית מובהקת."
-  },
-  {
-    "politician_id": "bezalel-smotrich",
-    "name": "Bezalel Smotrich",
-    "party": "Religious Zionism",
-    "hostility_level": 0.7,
-    "policy_approval": -0.6,
-    "media_amplification": 0.6,
-    "news_sentiment": 2,
-    "social_sentiment": 3,
-    "media_volume": 6,
-    "overall_score": 3.4,
-    "chain_of_thought": "הarticulation של סموتritch על היחס עם ארה"
-  },
-  {
-    "politician_id": "orit-strock",
-    "name": "Orit Strock",
-    "party": "Religious Zionism",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.3,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 3,
-    "overall_score": 5.9,
-    "chain_of_thought": "הערה על אובדן חבר במשפחה ללא ספקriminal suspicion מציינת את התרחשות אירונית אך לא מציינת שום ביקורת על הפעילות הפוליטית של סטראך. אין סימני PDD או סарקזם, וההעתקה היא נייטרלית אך רגשית. אין דיבור פוליטי או ביקורת על מדיניות, ולכן אין שום ערך למדיניות או עימות."
-  },
-  {
-    "politician_id": "ofir-sofer",
-    "name": "Ofir Sofer",
-    "party": "Religious Zionism",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על אופיר sober או הערות חברתיות רלוונטיות מתוך מקורות המותרים. היעדר כלusions על תקשורת פומבית או ביקורת פומבית גורם לניתוח חסר תקפות. אין סימני פחד או פוליטיקה מוסרית, אך גם אין תובנות על תומך או ביקור. הניתוח מתבסס על היעדר מידע."
-  },
-  {
-    "politician_id": "simcha-rothman",
-    "name": "Simcha Rothman",
-    "party": "Religious Zionism",
-    "hostility_level": 0.1,
-    "policy_approval": 0.2,
-    "media_amplification": 0.3,
-    "news_sentiment": 6,
-    "social_sentiment": 9,
-    "media_volume": 3,
-    "overall_score": 6.3,
-    "chain_of_thought": "המאמר של JNS.org מציג את רותמן כחבר כנסת בрамק של בחירות 2026, אך אין רמזים לרגש או דיבור פוליטי דרמטיזציה. אין תיאור של תקשורת חברתית או ביקורת, ולכן אין נוכחות של אכזריות, פדיעות או דיבור מודרני. הפרסום הוא ניטראלי ומבוסס על תפקוד פוליטי רגיל."
-  },
-  {
-    "politician_id": "zvi-sukkot",
-    "name": "Zvi Sukkot",
-    "party": "Religious Zionism",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות או חדשות ישירות על זבי סוקוט במקורות המותרים, ולכן אין מידע להערכה של רמת נזק, תומך במדיניות או פופולריות. היעדר כל תובנה על מודעות או דיון פומבי גורם לאי-הערכה של כל המטרות."
-  },
-  {
-    "politician_id": "ohad-tal",
-    "name": "Ohad Tal",
-    "party": "Religious Zionism",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0.2,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 2,
-    "overall_score": 6,
-    "chain_of_thought": "המאמר מציג את אוחד טאל כחבר כנסת ללא ביקורת או דיבור סמלי. אין רמזים לדרמטיזציה פוליטית או לתקיפות. הפרסום הוא תיאור적 ופactual, אך מכיוון שאין ראיות נוספות על שיחים חברתיים או תreads, קשה להעריך את הانتشار הפוטנציאלי. אין סימני כישלון או הומור."
-  },
-  {
-    "politician_id": "limor-son-har-melech",
-    "name": "Limor Son Har-Melech",
-    "party": "Religious Zionism",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על ליםור סון הר מלך במקורות המותרים, ולכן לא ניתן לזהות נרטיבים של פוליטיקה דתית או אמפליפיקציה תקשורתית. היעדר תובנות מודעות או תreads חברתיים מוביל לניתוח נייטרלי."
-  },
-  {
-    "politician_id": "itamar-ben-gvir",
-    "name": "Itamar Ben Gvir",
-    "party": "Otzma Yehudit",
-    "hostility_level": 0.8,
-    "policy_approval": -0.6,
-    "media_amplification": 0.7,
-    "news_sentiment": 2,
-    "social_sentiment": 2,
-    "media_volume": 7,
-    "overall_score": 3.2,
-    "chain_of_thought": "הכותרות מציגות ביקורת עזה על בנג'יר, במיוחד בהקשר של שימוש לא חוקי בכוחות משטרה ותפקידים ציבוריים לפרסום פוליטי, ובהקשר של ספק ביכולת המשטרה להבטיח בחירה חופפת. התייחסות למשפט ו至 מועמדות לפרסום עורך משטרה מעורר חשד לאי-חוקיות. הציטוטים של רבניים על תקווה של תקווה של.double standard ותגובה למשטרת ארה"
-  },
-  {
-    "politician_id": "almog-cohen",
-    "name": "Almog Cohen",
-    "party": "Otzma Yehudit",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע עדכני על אלמג כהן במקורות המותרים, ולכן אין אפשרות לניתוח רגישות או דיבור פוליטי. היעדר תיעוד תקשורת的 יכול להצביע על נוכחות נמוכה או חוסר עניין במקורות, אך אין מידע להערכה של רמת נזק או תומך."
-  },
-  {
-    "politician_id": "zvika-fogel",
-    "name": "Zvika Fogel",
-    "party": "Otzma Yehudit",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על זוויקא פוגל במקורות המותרים, לכן לא ניתן לבצע ניתוח רעיוני או דינמי. היעדר כל תזכורת תקשורתית או התייחסות פומבית מעידה על נוכחות נמוכה או חוסר עניין בדיבור ציבורי. אין צורך בניתוח של אטמוספירה רגשית או דיבור פוליטי מוסרי."
-  },
-  {
-    "politician_id": "yitzhak-wasserlauf",
-    "name": "Yitzhak Wasserlauf",
-    "party": "Otzma Yehudit",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין הערות ישירות או כותרות שמתאימות ליצחק וואסערלאוף במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או נוכחות מינימלית במרחב הפוליטי. ללא תוכן מפורש, לא ניתן לזהות תופעה של פוליטיקה של דיליטציה או סטיגמה, אך גם לא קיימת תופעה של תמיכה או ביקורת מפורשת. מצב זה מעיד על נוכחות נמוכה או עיכוב בדיבור הפוליטי."
-  },
-  {
-    "politician_id": "limor-widman-yosef",
-    "name": "Limor Widman-Yosef",
-    "party": "Otzma Yehudit",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע זמין על ליםור וידמן-יוסף במקורות המותרים, ולכן לא ניתן לזהות נרטיבים של פוליטיקה דרמטית או סטיגמה. היעדר תיעוד תקשורת的 יכול להצביע על נמוך רלוונטיות ציבוריים או חוסר תשומת לב, אך ללא נתונים ספציפיים אין ניתן לאמור על נטייה פוליטית או רגשית."
-  },
-  {
-    "politician_id": "amichai-eliyahu",
-    "name": "Amichai Eliyahu",
-    "party": "Otzma Yehudit",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין תיעוד זמין להערכה של מצבה הפוליטי של אמיחאי אלייהו, בשל היעדר חדשות או הערות חברתיות מתוך מקורות המותרים. מצב זה יכול להצביע על נמוך רלוונטיות פומבית, או על היעדר פעילות מודפסת近期. אין סימני פחד או ביקורת פוליטית, ולכן אין צורך בניתוח של דיבור פוליטי לא חוקי או סטיגמה."
-  },
-  {
-    "politician_id": "avigdor-lieberman",
-    "name": "Avigdor Lieberman",
-    "party": "Yisrael Beiteinu",
-    "hostility_level": 0.4,
-    "policy_approval": -0.2,
-    "media_amplification": 0.3,
-    "news_sentiment": 4,
-    "social_sentiment": 6,
-    "media_volume": 3,
-    "overall_score": 4.5,
-    "chain_of_thought": "הכותרת מציגה ביקורת על היעילות של ליברמן כ部长, עם דגש על 'דיבור חזק אך פחות פעולה' בנושא שכר פלסטינים לטרוריסטים. אין דיבור דרמטולוגי או פוליטיקה של פגיעה בזיהוי, אך יש ניסוח ביקורתי שמביע ספק ביכולת הפעולה. אין סטיגמה של סארקזם או פד"
-  },
-  {
-    "politician_id": "oded-forer",
-    "name": "Oded Forer",
-    "party": "Yisrael Beiteinu",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתאימות לoped Forer במקורות המותרים, לכן אין מידע להערכה של תודעה פומבית. היעדר תיעודים מעורר ספק לגבי נוכחות פומבית או תודעה כללית. אין זיהוי של דיבור delegitimization או סарקזם בשל היעדר תוכן."
-  },
-  {
-    "politician_id": "evgeny-sova",
-    "name": "Evgeny Sova",
-    "party": "Yisrael Beiteinu",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על איביגן סובה, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. הניתוח מתבסס על הקשר ההיסטורי של המפלגה שלו, יסראלי ביתין, אך ללא מידע עדכני אין יכולת למדידת רמת תקווה או ביקורת. אין סימני פדיעות או קולקציוניות מודרניות."
-  },
-  {
-    "politician_id": "hamad-amar",
-    "name": "Hamad Amar",
-    "party": "Yisrael Beiteinu",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על אמאר במקורות המותרים, מה שמעיד על ניכור נמוך בתקשורת ובשכבות הרחבת מודעות. היעדר תקשורת פומבית או פעילות פוליטית מודרנית גורם לאי-הערכה של מיקומו הפוליטי. אין סימני פוליטיקה פוגעת או סטיגמה מודרנית."
-  },
-  {
-    "politician_id": "yulia-malinovsky",
-    "name": "Yulia Malinovsky",
-    "party": "Yisrael Beiteinu",
-    "hostility_level": 0.1,
-    "policy_approval": -0.6,
-    "media_amplification": 0.2,
-    "news_sentiment": 2,
-    "social_sentiment": 9,
-    "media_volume": 2,
-    "overall_score": 4.5,
-    "chain_of_thought": "אין מידע עדכני על מילינובסקי במקורות המותרים, ולכן אין אפשרות לניתוח תקשורתי או סוציאלי עדכני. הניתוח חייב להסתמך על היסטוריה פוליטית ועמדות מיניות ידועות, אך ללא תובנות חדשות אין יכולת למדוד רמת נזק או תמיכה. אין סרטיות או דיבור delegitimizing בשל היעדר תוכן."
-  },
-  {
-    "politician_id": "sharon-nir",
-    "name": "Sharon Nir",
-    "party": "Yisrael Beiteinu",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע זמין על שרון ניר במקורות המותרים, ולכן לא ניתן לזהות דיבור פוליטי לא חוקי, סארקזם או נרטיבים מודעים. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או עניין תקשורת的."
-  },
-  {
-    "politician_id": "mansour-abbas",
-    "name": "Mansour Abbas",
-    "party": "Ra'am",
-    "hostility_level": 0.65,
-    "policy_approval": -0.4,
-    "media_amplification": 0.8,
-    "news_sentiment": 3,
-    "social_sentiment": 3.5,
-    "media_volume": 8,
-    "overall_score": 4.4,
-    "chain_of_thought": "המאמר המופיע מציג קשר מוטען בין אבאס ל Hamas, מה שמייצג דיבור דיליטימציה פוליטית (PDD) שמתבסס על איזון זהות (הקשר לארגון טרור) ותבנית של סכנת ארגון דמוקרטי. הציטוט אינו מכיל ביקורת פוליטית ישירה אלא מנסה לשלול את היכולת של אבאס ל đại표 את הקהילה שלו על בסיס זהות. אין סימני סטיריה או תקשורת סטנדרטית, אך יש רמז לאי-אמינות וסיכון לדרמטיזציה."
-  },
-  {
-    "politician_id": "waleed-taha",
-    "name": "Waleed Taha",
-    "party": "Ra'am",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד זמין לרעיונות או דיונים על ולייד טהא במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא מוסרי (PDD), סארקזם או נרטיבים מורכבים. היעדר תיעוד פומבי מעיד על נמוך רמת הפעילות הפומבית, אך לא על עמדה פוליטית מוגדרת. תהליך הניתוח מצריך תיעוד נוסף כדי לאמץ את הوضع המדויק."
-  },
-  {
-    "politician_id": "iman-khatib-yasin",
-    "name": "Iman Khatib-Yasin",
-    "party": "Ra'am",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על אימן חתיב-ayasim במקורות המותרים, ולכן אין אפשרות לזהות דיבור פוליטי לא חוקי או סарקזם. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או תקשורת מודרנית, מה שגורם לציון נייטרלי בכל המטרות."
-  },
-  {
-    "politician_id": "mazen-ghanaim",
-    "name": "Mazen Ghanaim",
-    "party": "Ra'am",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על מazen ג'נאיים במקורות המותרים, לכן לא ניתן לזהות טון, סарקזם או דיבור delegitimizing. היעדר תיעוד תקשורת的 מוביל לציון נייטרלי בכל המטרות."
-  },
-  {
-    "politician_id": "atta-abu-medeghem",
-    "name": "Atta Abu Medeghem",
-    "party": "Ra'am",
-    "hostility_level": 0,
-    "policy_approval": 0,
-    "media_amplification": 0,
-    "news_sentiment": 5,
-    "social_sentiment": 10,
-    "media_volume": 0,
-    "overall_score": 5.5,
-    "chain_of_thought": "אין 언급 או תיאור של אטת אבו מעדג'ם במאגרי המידע הנתונים. כל המהומות וההערות מתייחסות ל אירועים בינלאומיים וסיטואציות מלחמתיות, אך לא למדיניות או תפקודו של פוליטיקאי מסוים. אין סטיגמה, אכזריות או דיבור מוסרי שיחרר את התחום. הניתוח אינו יכול להיחשב כמונע או מוגזם."
-  },
-  {
-    "politician_id": "ayman-odeh",
-    "name": "Ayman Odeh",
-    "party": "Hadash-Ta'al",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות מותאמות לאיימן אודה במקורות המותאמים, מה שמעיד על נוכחות מינימלית בדיבור العام. היעדר תיעוד פומבי מוביל לשליליות נמוכה בדיבור, אך גם לאי-הערכה של תחומי עניין. אין סימני פד"
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Afif Abed in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Afif Abed in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
     "politician_id": "ahmad-tibi",
@@ -1469,9 +80,36 @@
     "chain_of_thought": "אין הערות או כותרות ישירות לאיידה טומה-סليمאן במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע מחייב ניתוח נייטרלי, ללא אמפליה או ביקורת פוליטית. אין סימני פד or סארקזם, ולכן הניתוח מתבסס על נוכחות נמוכה ורלוונטיות אפסית."
   },
   {
-    "politician_id": "ofer-cassif",
-    "name": "Ofer Cassif",
-    "party": "Hadash-Ta'al",
+    "politician_id": "akram-hasson",
+    "name": "Akram Hasson",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Akram Hasson in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Akram Hasson in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "alon-schuster",
+    "name": "Alon Schuster",
+    "party": "National Unity",
     "hostility_level": 0.1,
     "policy_approval": 0,
     "media_amplification": 0.2,
@@ -1479,12 +117,12 @@
     "social_sentiment": 9,
     "media_volume": 2,
     "overall_score": 5.7,
-    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתמקדות בקאסיף במהלך המחזור הנוכחי. היעדר תיעודים פומביים מצביע על נוכחות מינימלית במרחב הפוליטי או על נחישות נמוכה של המפלגה שלו. אין סימני אgressיביות או ביקורת פוליטית, ולכן הניתוח מתבסס על נוכחות נמוכה ולא על דיבור פוליטי מפורש."
+    "chain_of_thought": "אין הערות או כותרות ישירות על אלון שוסטר במקורות המותרים, ולכן אין מידע רלוונטי להערכה של מצבו הפוליטי. כל ההערות המופיעות מתייחסות ל אירועים חיצוניים (התקפות אירן, שאלות פוליטיות כלליות) ולא למדיניות או לתקשור של שוסטר. אין סימני פוליטיקה דרמטית או דיבור שגוי, אך גם אין תובנות חיוביות או שליליות ישירות."
   },
   {
-    "politician_id": "youssef-atauna",
-    "name": "Youssef Atauna",
-    "party": "Hadash-Ta'al",
+    "politician_id": "amichai-eliyahu",
+    "name": "Amichai Eliyahu",
+    "party": "Otzma Yehudit",
     "hostility_level": 0,
     "policy_approval": 0,
     "media_amplification": 0,
@@ -1492,12 +130,13 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין הערות או כותרות ישירות לאייסף אטואונה במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או נוכחות פומבית נמוכה. ללא תוכן מפורש, לא ניתן לזהות נרטיבים של פדיעות פוליטית, סארק, או דיבור שמתבסס על פגיעה בזיהוי זהות. מצב זה יכול להצביע על נוכחות מינימלית או עיכובים בפרסום מידע."
+    "chain_of_thought": "אין תיעוד זמין להערכה של מצבה הפוליטי של אמיחאי אלייהו, בשל היעדר חדשות או הערות חברתיות מתוך מקורות המותרים. מצב זה יכול להצביע על נמוך רלוונטיות פומבית, או על היעדר פעילות מודפסת近期. אין סימני פחד או ביקורת פוליטית, ולכן אין צורך בניתוח של דיבור פוליטי לא חוקי או סטיגמה."
   },
   {
-    "politician_id": "merav-michaeli",
-    "name": "Merav Michaeli",
-    "party": "Labor",
+    "politician_id": "amichai-shikli",
+    "name": "Amichai Shikli",
+    "party": "Likud",
+    "role": "minister",
     "hostility_level": 0,
     "policy_approval": 0,
     "media_amplification": 0,
@@ -1505,12 +144,39 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין תיעוד עדכני של מעריב מיכלי במקורות המותרים, מה שמעיד על ניכור מודרני או חוסר עניין בדיבור ציבורי. היעדר תובנות או ביקורות מדויקות עלול להפוך לציון של חוסר פופולריות או ניכור, אך ללא מידע נוסף קשה להעריך את הדרישות המדויקות. הניתוח מתבסס על היעדר תובנות, ולא על תובנות נייטרליות או מזדמנות."
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Amichai Shikli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amichai Shikli in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "naama-lazimi",
-    "name": "Naama Lazimi",
-    "party": "Labor",
+    "politician_id": "amir-ohana",
+    "name": "Amir Ohana",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0.6,
+    "media_amplification": 0.3,
+    "news_sentiment": 8,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 7.1,
+    "chain_of_thought": "הערה חיובית מפורשת על תרומתו של אמיר עohana לתחום הגנה, עם דגש על תרומתו לשיטות הגנה כמו אירון דומ. אין סטיגמה או פגיעה בזיהוי, ואין דיבור מוסרי או פוליטי מכוון. הפרספקטיב הוא טכני ומבוסס, ללא סטיגמה או פגיעה בזיהוי. אין סטיגמה או פגיעה בזיהוי, ואין דיבור מוסרי או פוליטי מכוון. הפרספקטיב הוא טכני ומבוסס, ללא סטיגמה או פגיעה בזיהוי."
+  },
+  {
+    "politician_id": "amit-halevi",
+    "name": "Amit Halevi",
+    "party": "Likud",
+    "role": "mk",
     "hostility_level": 0,
     "policy_approval": 0,
     "media_amplification": 0,
@@ -1518,12 +184,51 @@
     "social_sentiment": 10,
     "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "אין מידע זמין על נאומה לאזימי במקורות המותרים, ולכן אין אפשרות לניתוח רעיוני או דיבור פוליטי. היעדר כל ציטוט או תיעוד פומבי גורם לציון נייטרלי בכל המטרות."
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Amit Halevi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amit Halevi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "gilad-kariv",
-    "name": "Gilad Kariv",
-    "party": "Labor",
+    "politician_id": "ariel-kallner",
+    "name": "Ariel Kallner",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או כותרות ישירות לאיירל קאלנר במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר עניין במקורות המבוקשים. ללא תוכן להערכה, כל המטרות נמצאות בנקודת האפס."
+  },
+  {
+    "politician_id": "aryeh-deri",
+    "name": "Aryeh Deri",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כלusions או תובנות רלוונטיות לגבי אריה דיри בכל המקורות המסופקים. כל ההודעות בReddit מתייחסות לנושא כללי (חנויות קוסר, תרבות רכבת, שאלות פוליטיות כלליות) אך ללא כלipsis או ביקורת על דיри או מדיניותו. אין סימני פדיעות, סארקזם או דיבור שואף ל delegitimization. הניתוח נוגע לאי-התקיים של תוכן רלוונטי."
+  },
+  {
+    "politician_id": "avi-dichter",
+    "name": "Avi Dichter",
+    "party": "Likud",
     "hostility_level": 0.1,
     "policy_approval": 0,
     "media_amplification": 0.1,
@@ -1531,7 +236,190 @@
     "social_sentiment": 9,
     "media_volume": 1,
     "overall_score": 5.4,
-    "chain_of_thought": "אין מידע עדכני על גלעד קאריב במקורות המותרים, ולכן אין אפשרות לזהות טון, פדיעות או דיבור delegitimizing. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או דיבור ציבורי. אין סטיגמה או תקווה מודגשת, מה שגורם לציון נמוך של עלייה במדיה."
+    "chain_of_thought": "אין מידע זמין על אביו דיכטר במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה לא מוסרית או סרקסם. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או תחושת תומך. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים."
+  },
+  {
+    "politician_id": "avi-maoz",
+    "name": "Avi Maoz",
+    "party": "Noam",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Avi Maoz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avi Maoz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avichay-buaron",
+    "name": "Avichay Buaron",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 0,
+    "overall_score": 5.2,
+    "chain_of_thought": "אין התייחסות ישירה לברון במקורות המותרים, ומאידך, ה заголовок המופיע מתייחס למשתתף אחר (אדראי). נוכחות נמוכה של תוכן פומבי, ללא רמזים לדרמטיקה פוליטית או ביקורת. אין סטיגמה, אכזריות או דיבור delegitimizing. הניתוח מראה נייטרליות מוחלטת בשל חוסר מידע."
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.4,
+    "policy_approval": -0.2,
+    "media_amplification": 0.3,
+    "news_sentiment": 4,
+    "social_sentiment": 6,
+    "media_volume": 3,
+    "overall_score": 4.5,
+    "chain_of_thought": "הכותרת מציגה ביקורת על היעילות של ליברמן כ部长, עם דגש על 'דיבור חזק אך פחות פעולה' בנושא שכר פלסטינים לטרוריסטים. אין דיבור דרמטולוגי או פוליטיקה של פגיעה בזיהוי, אך יש ניסוח ביקורתי שמביע ספק ביכולת הפעולה. אין סטיגמה של סארקזם או פד"
+  },
+  {
+    "politician_id": "ayman-odeh",
+    "name": "Ayman Odeh",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות מותאמות לאיימן אודה במקורות המותאמים, מה שמעיד על נוכחות מינימלית בדיבור العام. היעדר תיעוד פומבי מוביל לשליליות נמוכה בדיבור, אך גם לאי-הערכה של תחומי עניין. אין סימני פד"
+  },
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "hostility_level": 0.5,
+    "policy_approval": 0.2,
+    "media_amplification": 0.6,
+    "news_sentiment": 6,
+    "social_sentiment": 5,
+    "media_volume": 6,
+    "overall_score": 5.6,
+    "chain_of_thought": "ה커פוף לנתניהו כולל תיעודים מעורבים של תקשורת פוליטית וסיבובים תקשורתית. תיעודים כמו הפרסום על הבחירות המוקדמות והאשמה בקשר לiran מציינים תקשורת פוליטית מודерנית, בעוד שדיוקים כמו הפרסום על החקיקה נגדו מציינים תקשורת מתח. לא נמצאו דוגמאות לדייגיטציה פוליטית (PDD) או סרקסם מובהק. התקשורת משלבת תקשורת פוליטית עם תקשורת תקשורתית, מה שמעורר תקשורת מודרנית."
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "hostility_level": 0.2,
+    "policy_approval": 0.4,
+    "media_amplification": 0.6,
+    "news_sentiment": 7,
+    "social_sentiment": 8,
+    "media_volume": 6,
+    "overall_score": 7.1,
+    "chain_of_thought": "הכותרות מציגות תנועות פוליטיות ומדיניות, אך אין ניסוחים מפורטים או אגרסיביים. אין זיהוי דיבור דיליטציה פוליטית או סרק asm. הניתוח מתבסס על נושאים פוליטיים ומדיניות, עם נטייה לפרספקטיבה אובייקטיבית. רמת אгрסיה נמוכה-בינונית, תומכת במדיניות, ותפזרות תקשורת מוגזמת."
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "hostility_level": 0.7,
+    "policy_approval": -0.6,
+    "media_amplification": 0.6,
+    "news_sentiment": 2,
+    "social_sentiment": 3,
+    "media_volume": 6,
+    "overall_score": 3.4,
+    "chain_of_thought": "הarticulation של סموتritch על היחס עם ארה"
+  },
+  {
+    "politician_id": "boaz-bismuth",
+    "name": "Boaz Bismuth",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או חדשות מדויקות על בועז ביסמooth במקורות המותרים, לכן אין מידע להערכה של תחושה או דיבור פוליטי. היעדר כל תקשורת פומבית משמעותית מעיד על נמוך או נעלם מודעות ציבוריים."
+  },
+  {
+    "politician_id": "boaz-toporovsky",
+    "name": "Boaz Toporovsky",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של תכניות או הערות על בועז טופורובסקי במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית או ביקורת תקשורתית מונעת ניתוח רגיש לרגש או דיבור פוליטי. תחושת נייטרליות מובילה, אך ללא מידע מדויק אין יכולת למדוד נטייה פוליטית."
+  },
+  {
+    "politician_id": "dan-ilouz",
+    "name": "Dan Ilouz",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על דן אילוז במקורות המותרים, לכן ניתוח הרגשה מתבסס על היעדר מידע. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פוליטית נמוכה. אין סימני פחד או ביקורת פוליטית, ולכן אין צורך בניתוח PDD או סארקזם."
+  },
+  {
+    "politician_id": "david-amsalem",
+    "name": "David Amsalem",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעודים זמינים לגבי דוד אמסלם במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה דרמטית או סטיגמה. היעדר תיעודים מעורר ספק לגבי נוכחות פומבית ותפוצה תקשורתית. אין סימני אgressיביות או תומכות במדיניות. הניתוח מתבסס על היעדר מידע, ולא על דעות פומביות."
+  },
+  {
+    "politician_id": "david-bitan",
+    "name": "David Bitan",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על דיויד ביטן במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דיליטציה פוליטית. היעדר תיעוד פומבי מעיד על נמוך רמת תשומת לב או נוכחות מינימלית במרחב הפוליטי."
+  },
+  {
+    "politician_id": "debbie-biton",
+    "name": "Debbie Biton",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על דיבר ביטון במקורות המותרים, ולכן אין אפשרות לניתוח תקשורתי או דיבור פוליטי. היעדר כל תזכורת תקשורתית או מודעות פומבית מצביע על נוכחות נמוכה או חוסר עניין בדיבר ביטון בתקופת ההערכה הנוכחית."
   },
   {
     "politician_id": "efrat-rayten",
@@ -1547,6 +435,1457 @@
     "chain_of_thought": "אין הערות או כותרות ישירות לEFRAT RAYTEN במקורות המותרים במהלך התקופה הזו. היעדר מידע מחייב ניתוח נייטרלי. אין סימני פחד או תקשורות מודעות, ולכן אין צורך בניתוח של דיבור פוליטי לא חוקי או סטיגמה. היעדר תקשורת פומבית גורם לציון נייטרלי."
   },
   {
+    "politician_id": "eitan-ginzburg",
+    "name": "Eitan Ginzburg",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Eitan Ginzburg in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eitan Ginzburg in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "elazar-stern",
+    "name": "Elazar Stern",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 3,
+    "overall_score": 6.3,
+    "chain_of_thought": "אין כלusions או תובנות ישויות מרכזיות על עליזר סטרן במקורות המורכבים, ולכן אין נוכחות של דיבור פוליטי או תקשורת מוסרית. כל התייחסויות המופיעות מתייחסות למאורעות כלליים (המתקפה, תקשורת בינלאומית, איום איראני) ולא למדיניות או תקשורת של סטרן. אין סימני פדיעות, סארקזם או דיבור שואף ל delegitimization. הניתוח מוגבל למאורעות חיצוניים ולא לפעילות פוליטית של סטרן."
+  },
+  {
+    "politician_id": "eli-cohen",
+    "name": "Eli Cohen",
+    "party": "Likud",
+    "hostility_level": 0.2,
+    "policy_approval": 0.1,
+    "media_amplification": 0.6,
+    "news_sentiment": 5.5,
+    "social_sentiment": 8,
+    "media_volume": 6,
+    "overall_score": 6.5,
+    "chain_of_thought": "הכותרת הראשונה מציינת את קהילת קהילה כמossad שגריר, מה שיכולים להיחשב כהתקפה על הראיות הלאומית או הלאומית, אך לא בהכרח מציינת פוליטיקה נוכחית. הכותרת השנייה מציגה פעילות דיפלומטית חיובית נגד אירן, אך ללא הקשר למשמעת פוליטית. אין התייחסות למשמעת פוליטית נוכחית או לתקפות פוליטיות. אין זיהוי של PDD או סטיגמה. הפרסום במקורות מוסריים עשוי להגביר את הانتشار, אך אין התייחסות למשמעת פוליטית נוכחית."
+  },
+  {
+    "politician_id": "eli-dalal",
+    "name": "Eli Dalal",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Eli Dalal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eli Dalal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eliyahu-revivo",
+    "name": "Eliyahu Revivo",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על אלייהו רביבו במקורות המותרים, לכן ניתוח התרשים מתבסס על היעדר מידע. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פוליטית נמוכה. אין סימני פוליטיקה דרמטית או סטיגמה, אך גם אין תובנות חיוביות או שליליות."
+  },
+  {
+    "politician_id": "evgeny-sova",
+    "name": "Evgeny Sova",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על איביגן סובה, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. הניתוח מתבסס על הקשר ההיסטורי של המפלגה שלו, יסראלי ביתין, אך ללא מידע עדכני אין יכולת למדידת רמת תקווה או ביקורת. אין סימני פדיעות או קולקציוניות מודרניות."
+  },
+  {
+    "politician_id": "gadi-eisenkot",
+    "name": "Gadi Eisenkot",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות ישירות לאייזنكוט במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית משמעותית מעיד על נמוך רמת השפעה או עיכובים בדיבור. אין סימני פחד או תקיפות, אך גם אין תובנות חיוביות או שליליות."
+  },
+  {
+    "politician_id": "galit-distel-atbaryan",
+    "name": "Galit Distel Atbaryan",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Galit Distel Atbaryan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Galit Distel Atbaryan in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gideon-saar",
+    "name": "Gideon Sa'ar",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0.3,
+    "media_amplification": 0.5,
+    "news_sentiment": 6.5,
+    "social_sentiment": 9,
+    "media_volume": 5,
+    "overall_score": 7,
+    "chain_of_thought": "הכותרת מציגה דיווח ניטרלי על הצהרה של סא'אר לגבי תוצאות מלחמה, תוך ציון של תוצאות לא מותאמות. אין רמזים לדייגיטליזציה פוליטית, סארקיזם או ביקורת על אידנטיטי. הפרספקטיב הוא פוליטי-מilitרי, אך ללא עיכובים אגרסיביים או תקשורות מוטות. הפרספקטיב יכול להיחשב כמוניטי-מוניטי, אך ללא רמזים לדרמטיזציה של מוסד או איום על דמוקרטיה."
+  },
+  {
+    "politician_id": "gila-gamliel",
+    "name": "Gila Gamliel",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Gila Gamliel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gila Gamliel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gilad-kariv",
+    "name": "Gilad Kariv",
+    "party": "Labor",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על גלעד קאריב במקורות המותרים, ולכן אין אפשרות לזהות טון, פדיעות או דיבור delegitimizing. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או דיבור ציבורי. אין סטיגמה או תקווה מודגשת, מה שגורם לציון נמוך של עלייה במדיה."
+  },
+  {
+    "politician_id": "haim-biton",
+    "name": "Haim Biton",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין מידע זמין על הפרסום או התייחסויות החברתיות של הימן ביטון במקורות המותרים, ולכן לא ניתן לזהות נרטיבים של פוליטיקה הלאותית או סטיגמה. היעדר תקשורת פומבית תורמת לשקיפות נמוכה בדימויו العام."
+  },
+  {
+    "politician_id": "haim-katz",
+    "name": "Haim Katz",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי — ככל הנראה ישראל כץ ולא חיים כץ. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Haim Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hamad-amar",
+    "name": "Hamad Amar",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על אמאר במקורות המותרים, מה שמעיד על ניכור נמוך בתקשורת ובשכבות הרחבת מודעות. היעדר תקשורת פומבית או פעילות פוליטית מודרנית גורם לאי-הערכה של מיקומו הפוליטי. אין סימני פוליטיקה פוגעת או סטיגמה מודרנית."
+  },
+  {
+    "politician_id": "hanoch-milwidsky",
+    "name": "Hanoch Milwidsky",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות מותאמות למחברת המלוד במחזור זה, מה שמעיד על נוכחות מינימלית או נulle בדיבור العام. היעדר תיעוד פומבי מונע ניתוח תקשורתי או דיבור פוליטי, ולכן אין מידע על רמת תקווה, ביקורת או אמפליפיקציה. הניתוח מתבסס על היעדר נתונים."
+  },
+  {
+    "politician_id": "hava-eti-atia",
+    "name": "Hava Eti Atia",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Hava Eti Atia in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hava Eti Atia in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hili-tropper",
+    "name": "Hili Tropper",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות מותאמות להילי טרופר במקורות המותאמים במחזור זה, מה שמעיד על נוכחות מינימלית בתקשורת או בדיאלוג הפוליטי. היעדר תוכן פומבי מאפשר תרגום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פדיעות או דיבור מוסרי, אך גם אין תובנות חיוביות או שליליות."
+  },
+  {
+    "politician_id": "idit-silman",
+    "name": "Idit Silman",
+    "party": "Likud",
+    "role": "deputy-minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Idit Silman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Idit Silman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "iman-khatib-yasin",
+    "name": "Iman Khatib-Yasin",
+    "party": "Ra'am",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על אימן חתיב-ayasim במקורות המותרים, ולכן אין אפשרות לזהות דיבור פוליטי לא חוקי או סарקזם. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או תקשורת מודרנית, מה שגורם לציון נייטרלי בכל המטרות."
+  },
+  {
+    "politician_id": "itamar-ben-gvir",
+    "name": "Itamar Ben Gvir",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.8,
+    "policy_approval": -0.6,
+    "media_amplification": 0.7,
+    "news_sentiment": 2,
+    "social_sentiment": 2,
+    "media_volume": 7,
+    "overall_score": 3.2,
+    "chain_of_thought": "הכותרות מציגות ביקורת עזה על בנג'יר, במיוחד בהקשר של שימוש לא חוקי בכוחות משטרה ותפקידים ציבוריים לפרסום פוליטי, ובהקשר של ספק ביכולת המשטרה להבטיח בחירה חופפת. התייחסות למשפט ו至 מועמדות לפרסום עורך משטרה מעורר חשד לאי-חוקיות. הציטוטים של רבניים על תקווה של תקווה של.double standard ותגובה למשטרת ארה"
+  },
+  {
+    "politician_id": "karine-elharrar",
+    "name": "Karine Elharrar",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד תקשורת ישיר לคารין אלחראר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תובנות או מודעות פומביות מונעת מהערכה מדויקת של תחושה או נרטיבים. תובנות עתירות או ביקורת על מדיניות לא נמצאו, ולכן אין צורך בניתוח של פד"
+  },
+  {
+    "politician_id": "keti-shitrit",
+    "name": "Keti Shitrit",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או חדשות ישירות על קטי שיטריט במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הפוליטי. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פד or סטיגמה, אך גם אין תומכים או מعارضים מפורטים."
+  },
+  {
+    "politician_id": "limor-son-har-melech",
+    "name": "Limor Son Har-Melech",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על ליםור סון הר מלך במקורות המותרים, ולכן לא ניתן לזהות נרטיבים של פוליטיקה דתית או אמפליפיקציה תקשורתית. היעדר תובנות מודעות או תreads חברתיים מוביל לניתוח נייטרלי."
+  },
+  {
+    "politician_id": "mansour-abbas",
+    "name": "Mansour Abbas",
+    "party": "Ra'am",
+    "hostility_level": 0.65,
+    "policy_approval": -0.4,
+    "media_amplification": 0.8,
+    "news_sentiment": 3,
+    "social_sentiment": 3.5,
+    "media_volume": 8,
+    "overall_score": 4.4,
+    "chain_of_thought": "המאמר המופיע מציג קשר מוטען בין אבאס ל Hamas, מה שמייצג דיבור דיליטימציה פוליטית (PDD) שמתבסס על איזון זהות (הקשר לארגון טרור) ותבנית של סכנת ארגון דמוקרטי. הציטוט אינו מכיל ביקורת פוליטית ישירה אלא מנסה לשלול את היכולת של אבאס ל đại표 את הקהילה שלו על בסיס זהות. אין סימני סטיריה או תקשורת סטנדרטית, אך יש רמז לאי-אמינות וסיכון לדרמטיזציה."
+  },
+  {
+    "politician_id": "matan-kahana",
+    "name": "Matan Kahana",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 1,
+    "overall_score": 5.8,
+    "chain_of_thought": "אין תיעודים זמינים לגבי מטן כהנא במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיאורים או מודעות סоциальные מונעים ניתוח של טון, פדיעות או דיבור delegitimizing. היעדר תקשורת פומבית תורמת לציון נמוך של אמפליפיקציה תקשורתית."
+  },
+  {
+    "politician_id": "matti-sarfatti-harcavi",
+    "name": "Matti Sarfatti Harcavi",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Matti Sarfatti Harcavi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Matti Sarfatti Harcavi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "may-golan",
+    "name": "May Golan",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לרמת הגולן ולא לח\"כ מאי גולן — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched May Golan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Can someone explain the Syrian occupation etc — I keep getting shot down when I try to defend Israel. Everyone talks about how GolaN Heights used to be Syrian but Israel 'illegally\" annexed them and Israel has been occupying Syria since 1967 and 'Greater Expansion' is happening. I though",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz0vf0/can_someone_explain_the_syrian_occupation_etc/"
+        ],
+        "speaker_metadata": {
+          "handle": "@AZShitshow",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meir-cohen",
+    "name": "Meir Cohen",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני של חדשות או תיאורים חברתיים לכהן, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תוכן מעורר נייטרליות, ללא סטיגמה, פדיעות או דיבור שטחתי. אין סיכוי להעניק דירוגים משמעותיים ללא נתונים."
+  },
+  {
+    "politician_id": "meir-porush",
+    "name": "Meir Porush",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות שמתמקדות בporush בתקופת ההערכה הזו. היעדר תיעוד פומבי מעיד על ניכור נמוך או אי-הlevance בתקופת הפעילות הנוכחית. אין סימני פחד או פגיעה בדימויים, ולכן אין צורך בניתוח של PDD או סארקזם. היעדר תיעוד גורם לציון נמוך בכל המטרות."
+  },
+  {
+    "politician_id": "meirav-ben-ari",
+    "name": "Meirav Ben Ari",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על מירב בינה-אריאי במקורות המותרים, ולכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטציה פוליטית. היעדר התייחסויות תקשורתיות או תreads חברתיות מעיד על ניכור נמוך או על כך שהיא לא מרכזית בתקופת ההיבטים הנבחנים. אין סתירה או תמיכה מפורשת, ולכן הערכה של רמת נוכחות תקשורתית נמוכה."
+  },
+  {
+    "politician_id": "merav-cohen",
+    "name": "Merav Cohen",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או חדשות מדויקות על מראב קהן במקורות המותרים, לכן אין מידע להערכה של תחושה או דיבור פוליטי. היעדר תיעוד עדכני מצביע על נמוך או נייטרלי ערך תקשורת, אך אין סיבה להערכה מפורשת."
+  },
+  {
+    "politician_id": "merav-michaeli",
+    "name": "Merav Michaeli",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד עדכני של מעריב מיכלי במקורות המותרים, מה שמעיד על ניכור מודרני או חוסר עניין בדיבור ציבורי. היעדר תובנות או ביקורות מדויקות עלול להפוך לציון של חוסר פופולריות או ניכור, אך ללא מידע נוסף קשה להעריך את הדרישות המדויקות. הניתוח מתבסס על היעדר תובנות, ולא על תובנות נייטרליות או מזדמנות."
+  },
+  {
+    "politician_id": "michael-biton",
+    "name": "Michael Biton",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע רלוונטי על מיכאל ביטון במקורות המותרים. ההודעה המוצגת מתייחסת למשה קatz ולא לביטון, ומכיוון שאין כלusions על פעילות פוליטית או דיון ציבורי מפורש, לא ניתן לזהות תנועה רגשית או דיבור פוליטי. הניתוח מתבסס על חוסר מידע."
+  },
+  {
+    "politician_id": "michael-malchieli",
+    "name": "Michael Malchieli",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע ישראלי או תקשורת פומבית מוסמכת על מיכאל מקלחלי במקורות המותרים, כולל התייחסויות במדיה החברתי. התייחסות הReddit מתייחסת ל"
+  },
+  {
+    "politician_id": "michal-shir-segman",
+    "name": "Michal Shir Segman",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michal Shir Segman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michal Shir Segman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michal-waldiger",
+    "name": "Michal Waldiger",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michal Waldiger in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michal Waldiger in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michel-buskila",
+    "name": "Michel Buskila",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michel Buskila in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michel Buskila in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mickey-levy",
+    "name": "Mickey Levy",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על מיכי לוי במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע על שיחים פומביים או ביקורות מונחים את הניתוח בנקודת partida של נייטרליות. אין סימני פד or סארקזם, ואין תובנות על תומך או ניגוד. היעדר תקשורת מודרנית מפחית את האמפליפיקציה הפוליטית."
+  },
+  {
+    "politician_id": "miki-zohar",
+    "name": "Miki Zohar",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Miki Zohar in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Miki Zohar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "miri-regev",
+    "name": "Miri Regev",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על מירי רגב במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר תשומת לב מודרנית. היעדר תקשורת פומבית תורמת לאי-הסכמה או אי-ההערכה מוחלטת, אך ללא מידע נוסף קשה לאמץ דפוסים של פוליטיקה או דיבור מוסרי."
+  },
+  {
+    "politician_id": "moshe-abutbul",
+    "name": "Moshe Abutbul",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 1,
+    "overall_score": 5.8,
+    "chain_of_thought": "אין מידע עדכני על מושה אבוטבול במקורות המותרים, ולכן אין אפשרות לזהות דיבור פוליטי לאישות או סарказם. היעדר תיעוד תקשורת的 יכול להצביע על נמוך רמת תשומת לב או נוכחות פוליטית נמוכה. ללא מידע על תובנות או ביקורת, רמת האgressיה והסכמה פוליטית נותרת לא מותאמת."
+  },
+  {
+    "politician_id": "moshe-arbel",
+    "name": "Moshe Arbel",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע עדכני על מושה ארבלי במקורות המותרים, ולכן אין אפשרות לניתוח רמה שלמה. היעדר כלusions חדשות או דיבורות חברתיות מעורר ספק לגבי נוכחות פומבית מובהקת. אין זיהוי של דיבורת פוליטיקה מפקדת או סרקסמטיקה. הניתוח מתבסס על היעדר מידע, ולא על תובנות חדשות."
+  },
+  {
+    "politician_id": "moshe-gafni",
+    "name": "Moshe Gafni",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים זמינים לגבי ג'פני במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה דתית או אמירה סטנדרטית. היעדר תיעוד מעורר ספק לגבי נוכחות פומבית ורלוונטיות נוכחיות. אין סימני אכזריות או פדואליזם, אך גם אין תובנות על תומך או ביקור."
+  },
+  {
+    "politician_id": "moshe-passal",
+    "name": "Moshe Passal",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Passal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Passal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-saada",
+    "name": "Moshe Saada",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או חדשות ישירות על מושה סאדה במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב בתקופת ההערכה. היעדר תוכן פוליטי או ביקורתי מונע מהתקיים ניתוח של דיבור delegitimizing או סарק asm. הניתוח מתבסס על היעדר מידע, ולא על תקשורת פומבית."
+  },
+  {
+    "politician_id": "moshe-solomon",
+    "name": "Moshe Solomon",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Solomon in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Solomon in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-tur-paz",
+    "name": "Moshe Tur-Paz",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או חדשות ישירות על מושה טור-פז במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב במקורות המבוקרים. ללא תוכן פומבי, לא ניתן לזהות נרטיבים של פדיעות פוליטית, סארק, או דיבור שטח. הניתוח מתבסס על חוסר מידע, ולא על תובנות רגשית או פוליטית."
+  },
+  {
+    "politician_id": "naama-lazimi",
+    "name": "Naama Lazimi",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על נאומה לאזימי במקורות המותרים, ולכן אין אפשרות לניתוח רעיוני או דיבור פוליטי. היעדר כל ציטוט או תיעוד פומבי גורם לציון נייטרלי בכל המטרות."
+  },
+  {
+    "politician_id": "naftali-bennett",
+    "name": "Naftali Bennett",
+    "party": "Independent",
+    "role": "politician",
+    "hostility_level": 0.15,
+    "policy_approval": 0.15,
+    "media_amplification": 0.5,
+    "news_sentiment": 5.8,
+    "social_sentiment": 8.5,
+    "media_volume": 5,
+    "overall_score": 6.5,
+    "chain_of_thought": "סיקור מעורב: מאמר ביקורתי על 'רודנים משפטיים' בישראל, פגישות דיפלומטיות חיוביות באבו דאבי, אזהרת ח\"כ ממרצ שממשלתו תיפול, וחשיפת פרטי תוכנית השלום של טראמפ. מיצוב כשחקן מדיני פעיל עם נוכחות בינלאומית.",
+    "news_headlines": [
+      "Bennett, Sa’ar and Israel’s legal tyrants - JNS",
+      "Bennett meets with UAE officials in Abu Dhabi - JNS",
+      "Meretz MK: Bennett knows his government will fall if he takes military action - JNS",
+      "Bennett reveals alleged details of soon-to-be released Trump Mideast peace plan - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naftali Bennett in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naor-shiri",
+    "name": "Naor Shiri",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על נאור שירי במקורות המותרים, ולכן אין אפשרות לזהות טון או דיבור פוליטי. היעדר תיעוד עדכני מעיד על נמוך רלוונטיות תקשורתית או חוסר פעילות פוליטית מוקדמת. אין זיהוי של דיבור פוליטי לא חוקי (PDD) או סарקזם."
+  },
+  {
+    "politician_id": "nir-barkat",
+    "name": "Nir Barkat",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0.5,
+    "media_amplification": 0.4,
+    "news_sentiment": 7.5,
+    "social_sentiment": 9,
+    "media_volume": 4,
+    "overall_score": 7.1,
+    "chain_of_thought": "המאמר מציג את בarkin כמי שמשך את העיר לrenaissance תרבותי חיובי, תוך שימוש בביטוי 'ליאון' שמתאר את כוחו של מנהל העיר. אין רמז לחריגה או פגיעה בדמויות, ואין ניסוח שגוי או סטיגמה. הפרסום מכוון לפרסום תרבותי ומשתלב עם תפקודו כמנהל. אין סטיגמה או פגיעה בדמויות, ואין ניסוח שגוי או סטיגמה. אין ניסוח שגוי או סטיגמה. אין ניסוח שגוי או סטיגמה."
+  },
+  {
+    "politician_id": "nissim-vaturi",
+    "name": "Nissim Vaturi",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על ניסים וטורי במקורות המותרים, ולכן לא ניתן ל분석 תון, סארקזם או דיבור דיליטציה פוליטית. היעדר כל תזכורת או הערה על המועמד גורם לציון אפס בכל המטרות."
+  },
+  {
+    "politician_id": "oded-forer",
+    "name": "Oded Forer",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתאימות לoped Forer במקורות המותרים, לכן אין מידע להערכה של תודעה פומבית. היעדר תיעודים מעורר ספק לגבי נוכחות פומבית או תודעה כללית. אין זיהוי של דיבור delegitimization או סарקזם בשל היעדר תוכן."
+  },
+  {
+    "politician_id": "ofer-cassif",
+    "name": "Ofer Cassif",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתמקדות בקאסיף במהלך המחזור הנוכחי. היעדר תיעודים פומביים מצביע על נוכחות מינימלית במרחב הפוליטי או על נחישות נמוכה של המפלגה שלו. אין סימני אgressיביות או ביקורת פוליטית, ולכן הניתוח מתבסס על נוכחות נמוכה ולא על דיבור פוליטי מפורש."
+  },
+  {
+    "politician_id": "ofir-katz",
+    "name": "Ofir Katz",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי-ביטחוני ככל הנראה מכוון לישראל כץ ולא לאופיר כץ. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-sofer",
+    "name": "Ofir Sofer",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על אופיר sober או הערות חברתיות רלוונטיות מתוך מקורות המותרים. היעדר כלusions על תקשורת פומבית או ביקורת פומבית גורם לניתוח חסר תקפות. אין סימני פחד או פוליטיקה מוסרית, אך גם אין תובנות על תומך או ביקור. הניתוח מתבסס על היעדר מידע."
+  },
+  {
+    "politician_id": "ohad-tal",
+    "name": "Ohad Tal",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 2,
+    "overall_score": 6,
+    "chain_of_thought": "המאמר מציג את אוחד טאל כחבר כנסת ללא ביקורת או דיבור סמלי. אין רמזים לדרמטיזציה פוליטית או לתקיפות. הפרסום הוא תיאור적 ופactual, אך מכיוון שאין ראיות נוספות על שיחים חברתיים או תreads, קשה להעריך את הانتشار הפוטנציאלי. אין סימני כישלון או הומור."
+  },
+  {
+    "politician_id": "orit-farkash-hacohen",
+    "name": "Orit Farkash-Hacohen",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Orit Farkash-Hacohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Orit Farkash-Hacohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orit-strock",
+    "name": "Orit Strock",
+    "party": "Religious Zionism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "הערה על אובדן חבר במשפחה ללא ספקriminal suspicion מציינת את התרחשות אירונית אך לא מציינת שום ביקורת על הפעילות הפוליטית של סטראך. אין סימני PDD או סарקזם, וההעתקה היא נייטרלית אך רגשית. אין דיבור פוליטי או ביקורת על מדיניות, ולכן אין שום ערך למדיניות או עימות."
+  },
+  {
+    "politician_id": "osher-shkalim",
+    "name": "Osher Shkalim",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 1,
+    "overall_score": 5.8,
+    "chain_of_thought": "אין כלusions או תובנות ישירות על אושר שקלים במקורות המותרים. הפרסום בReddit הוא שאלה כללית על אוכריים קוסריים, ללא התאמה למשהו שמקשר אותו למשהו ששקלים. אין סטיגמה, פדיה או ביקורת פוליטית. הפרסום אינו מתייחס לשקלים או למדיניות שלו, ולכן אין נוכחות פוליטית או תקשורת מוסרית."
+  },
+  {
+    "politician_id": "pnina-tamano-shata",
+    "name": "Pnina Tamano-Shata",
+    "party": "National Unity",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעודים ישירים או מentions במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תקשורת פומבית תורמת לאי-הערכה של מיקומה בדיאלוג ציבורי. אין סימני פחד או ביקורת פוליטית מובהקת, אך גם אין תמיכה מפורשת."
+  },
+  {
+    "politician_id": "ram-ben-barak",
+    "name": "Ram Ben Barak",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Ram Ben Barak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ram Ben Barak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ron-katz",
+    "name": "Ron Katz",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "המונחים המופיעים במקורות הוויכוחים נוגעים למשהו שונה מרון קatz (למשל, מיכאל קatz וקatz כ部长), מה שמעיד על הטעייה או ערבוב שמות. אין מידע ישראלי או פוליטי ישראלי ישירות על רון קatz במקורות המבוקרים, ולכן אין נוכחות פוליטית מובהקת. הניתוח אינו מראה שיחים פוליטיים או תקשורת מודרנית שמתמקדת בקatz. אין סימני PDD או סטיגמה פוליטית מובהקת, אך גם אין תקשורת חיובית או שלילית מובהקת."
+  },
+  {
+    "politician_id": "samir-ben-said",
+    "name": "Samir Ben Said",
+    "party": "Hadash-Ta'al",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי עוסק באמירת נתניהו על ישו ואינו קשור לח\"כ סמיר בן סעיד — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Samir Ben Said in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryvj0r/what_could_possibly_have_led_netanyahu_to_say_that/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Hot_Minute_9249",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sasson-guetta",
+    "name": "Sasson Guetta",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Sasson Guetta in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sasson Guetta in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shalom-danino",
+    "name": "Shalom Danino",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכורים החברתיים הם ברכות 'שלום' בפוסטים לא קשורים ולא מתייחסים לפוליטיקאי. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Shalom Danino in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Passport without deferment from army? — Shalom! My fiancee is an Israeli Russian citizen (FROM BIRTH) who was born to Israeli citizen parents in Be'er Sheva, but left Israel when she was 1. She went back for a month when she was 5, but since then, she has never been in Israel at ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1s0n7ld/passport_without_deferment_from_army/"
+        ],
+        "speaker_metadata": {
+          "handle": "@CallMeTheFartman",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "American trying to get into Israel on May 2nd and wondering about alternate routes — Shalom, I am an American citizen with an A2 student visa trying to get into Israel at the start if May. Right now I have flights booked with El Al for May 2nd and are concerned they will get canceled. If so I need to get into the country a ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz2fn3/american_trying_to_get_into_israel_on_may_2nd_and/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ModuMotor",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharon-nir",
+    "name": "Sharon Nir",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על שרון ניר במקורות המותרים, ולכן לא ניתן לזהות דיבור פוליטי לא חוקי, סארקזם או נרטיבים מודעים. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או עניין תקשורת的."
+  },
+  {
+    "politician_id": "sharren-haskel",
+    "name": "Sharren Haskel",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 1,
+    "overall_score": 5.8,
+    "chain_of_thought": "אין מידע זמין על שארן חסקל במקורות המותרים, ולכן אין אפשרות לנתח רמת תרבות או דיבור פוליטי. היעדר כל ציטוט או עיתון מדויק מצביע על נוכחות נמוכה או חוסר עניין בתקשורת. אין סימני פחד או דיבור פוליטי מפורש, ולכן אין צורך בניתוח של פחד פוליטי או סטיגמה."
+  },
+  {
+    "politician_id": "shelly-tal-meron",
+    "name": "Shelly Tal Meron",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או כותרות ישירות לשללי טאל מירון במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע ישירות עלול להצביע על נחישות נמוכה או נוכחות לא מרכזית, אך אין סימני אgressיביות או ביקורת פוליטית מפורשת. הניתוח מתבסס על היעדר נתונים, ולא על תובנות סטנדרטיות."
+  },
+  {
+    "politician_id": "shlomo-karhi",
+    "name": "Shlomo Karhi",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 5.9,
+    "chain_of_thought": "הכותרת מתארת החלטה פוליטית נייטרלית ללא ערך דתי או פוליטי מובהק. אין סימני פדיעות או דיבור שגוי, וההקשר אינו מציית לפורמט של פדיעות פוליטית. הניתוח אינו מראה עלייה או ירידה משמעותית בתקיפות או תקווה."
+  },
+  {
+    "politician_id": "simcha-rothman",
+    "name": "Simcha Rothman",
+    "party": "Religious Zionism",
+    "hostility_level": 0.1,
+    "policy_approval": 0.2,
+    "media_amplification": 0.3,
+    "news_sentiment": 6,
+    "social_sentiment": 9,
+    "media_volume": 3,
+    "overall_score": 6.3,
+    "chain_of_thought": "המאמר של JNS.org מציג את רותמן כחבר כנסת בрамק של בחירות 2026, אך אין רמזים לרגש או דיבור פוליטי דרמטיזציה. אין תיאור של תקשורת חברתית או ביקורת, ולכן אין נוכחות של אכזריות, פדיעות או דיבור מודרני. הפרסום הוא ניטראלי ומבוסס על תפקוד פוליטי רגיל."
+  },
+  {
+    "politician_id": "simon-davidson",
+    "name": "Simon Davidson",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או כותרות מותאמות לsimon davidson במקורות המותאמים, מה שמעיד על נוכחות מינימלית או חוסר דיון ציבורי. נוכחות נמוכה במקורות המותאמים גורמת לאי-התקיים של ניתוח רגשי או פוליטי. אין סימני פחד או תקשורות מודעות."
+  },
+  {
+    "politician_id": "tally-gotliv",
+    "name": "Tally Gotliv",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 2,
+    "overall_score": 6,
+    "chain_of_thought": "אין כלusions או מentions ישירות על טלי גוטליב בכל המקורות המותרים. כל הפרסומים המובאים מתייחסים לנושא מלחמה בירן, מדיניות ארה"
+  },
+  {
+    "politician_id": "tatiana-mazarsky",
+    "name": "Tatiana Mazarsky",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או כותרות ישויות מותאמות למטיאנה מזרסקי במקורות המותאמים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הרשת. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא אינטראקציות או ביקורת. אין סימני פדיעות, סארקזם או דיבור דיליטציה פוליטית."
+  },
+  {
+    "politician_id": "tsega-melaku",
+    "name": "Tsega Melaku",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או חדשות ישירות על טסגה מלהכוא במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב תקשורתית. היעדר תוכן פומבי מונע ניתוח רגשי או פוליטי, אך יש להניח נייטרליות מוגזמת בשל היעדר מידע."
+  },
+  {
+    "politician_id": "uri-maklev",
+    "name": "Uri Maklev",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על אורי מקלב במקורות המותרים, ולכן אין אפשרות לזהות טון, פסיפיקציה או דיבור דיפלומטי. היעדר כל סוג של תיעוד פומבי מעיד על נוכחות מינימלית במרחב הפוליטי העדכני."
+  },
+  {
+    "politician_id": "uriel-buso",
+    "name": "Uriel Buso",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעודים זמינים לגבי אוריאל בוסו, לכן לא ניתן לזהות טון, סארקזם או דיבור דיליטימציה פוליטית. היעדר תיעודים מעיד על נוכחות מינימלית במרחב הפוליטי, מה שגורם לציון hostility_level נמוך. היעדר מידע על מדיניות גורם לציון policy_approval נייטרלי. היעדר תיעודים גם מפחית את האמפליפיקציה המודית."
+  },
+  {
+    "politician_id": "vladimir-beliak",
+    "name": "Vladimir Beliak",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על Владимיר בלאי במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דילגיטימציה פוליטית. היעדר התייחסויות публичные מעיד על נמוך רלוונטיות או עניין במשרהו. כל המטרות הדרמטיות והשכיחות המודפסות נמצאות בнуול."
+  },
+  {
+    "politician_id": "waleed-taha",
+    "name": "Waleed Taha",
+    "party": "Ra'am",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד זמין לרעיונות או דיונים על ולייד טהא במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא מוסרי (PDD), סארקזם או נרטיבים מורכבים. היעדר תיעוד פומבי מעיד על נמוך רמת הפעילות הפומבית, אך לא על עמדה פוליטית מוגדרת. תהליך הניתוח מצריך תיעוד נוסף כדי לאמץ את הوضع המדויק."
+  },
+  {
+    "politician_id": "walid-alhawashla",
+    "name": "Walid Alhawashla",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Walid Alhawashla in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Walid Alhawashla in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-asher",
+    "name": "Yaakov Asher",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין הערות או חדשות ישירות על יאakov א sher במקורות המותרים במחזור זה. היעדר תיעוד ישירות מצביע על ניכור נמוך או עיסוק מוגבל בissues של המפלגה. ייתכן שמדיניות המפלגה היא נושה מוגבל או שסמכותה לא מושגת בתקשורת המרכזית. אין סימני פחד או ביקורת פוליטית מובהקת."
+  },
+  {
+    "politician_id": "yaakov-margi",
+    "name": "Yaakov Margi",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע עדכני על מועמד זה במקורות המותרים, ולכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטציה פוליטית. היעדר התייחסויות תקשורתיות או תreads מקורות מעורר חשד לשקיפות נמוכה או נוכחות פוליטית מזערית. אין מידע להערכה של רמת נוכחות תקשורתית או דעה ציבורית."
+  },
+  {
+    "politician_id": "yaakov-tesler",
+    "name": "Yaakov Tesler",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.2,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 5.7,
+    "chain_of_thought": "אין תיעודים או הערות חברתיות מדויקות על טסלר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיעודים מחייב ניתוח נייטרלי, ללא רמזים לחרטה, פדואליות או דיבור מוטעה. היעדר תקשורת פומבית משמעותית מעיד על נוכחות מינימלית או עיכובים בפרסום."
+  },
+  {
+    "politician_id": "yael-ron-ben-moshe",
+    "name": "Yael Ron Ben Moshe",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yael Ron Ben Moshe in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yael Ron Ben Moshe in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
     "politician_id": "yair-golan",
     "name": "Yair Golan",
     "party": "Democrats",
@@ -1558,5 +1897,430 @@
     "media_volume": 3,
     "overall_score": 6.3,
     "chain_of_thought": "המאמר מתמקד בتصريح של גולן על נעלמת Kasau, אך אין רמזים לדייגיטיזציה פוליטית או לתקיפות. אין תיאור של תקשורת חברתית או סטיגמה. הפרספקטיב הוא פוליטי-ממשלתי, אך ללא רמזים לתקיפות או לפרשנות היסטורית. אין סטיגמה או תקשורת סאטירית. הפרספקטיב הוא נייטרלי-ממשלתי."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "hostility_level": 0.2,
+    "policy_approval": 0.4,
+    "media_amplification": 0.5,
+    "news_sentiment": 7,
+    "social_sentiment": 8,
+    "media_volume": 5,
+    "overall_score": 6.8,
+    "chain_of_thought": "הכותרות מציגות הצהרות של ליפיד על נושאים רלוונטיים למדינה, אך ללא עיכוב או ביקורת פוליטית מפורשת. הצהרת 'לא תופס' על פלסטינים נחשבת לשקפת פוליטיקה מודרנית, אך לא מציינת פגיעה בזיהוי או בתקנות. אין דיבור על סכנת מוסד או תקפות מינימליסטית. אין סטיגמה או אכזריות מפורשת, אך יש ניסוח שמרני שמאפשר תרומה לדיון פוליטי."
+  },
+  {
+    "politician_id": "yariv-levin",
+    "name": "Yariv Levin",
+    "party": "Likud",
+    "hostility_level": 0.2,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 8,
+    "media_volume": 3,
+    "overall_score": 5.5,
+    "chain_of_thought": "הכותרת מציגה דיבור נייטרלי עם ניסוח של 'rumors debunked' שמביע ספק או סירוב לאמינות הטענות. אין רמזים לPDD או סטיגמה זהירה, אך הניתוח אינו מוסר דעה מפורשת. היעדר ציטוטים חברתיים מונע ניתוח דינמי של טון או סטיגמה. הניתוח מתבסס על ניסוח הכתבה כמונח נייטרלי עם נוכחות מינימלית של ספק."
+  },
+  {
+    "politician_id": "yaron-levy",
+    "name": "Yaron Levy",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yaron Levy in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaron Levy in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yasmin-fridman",
+    "name": "Yasmin Fridman",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yasmin Fridman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yasmin Fridman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yasser-hujirat",
+    "name": "Yasser Hujirat",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yasser Hujirat in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yasser Hujirat in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yinon-azoulay",
+    "name": "Yinon Azoulay",
+    "party": "Shas",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין מידע זמין על אזהרות או דעות פומביות לגבי ינון עזרויל במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא חוקי (PDD), סארקזם או נרטיבים מורכבים. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פומבית נמוכה."
+  },
+  {
+    "politician_id": "yisrael-katz",
+    "name": "Yisrael Katz",
+    "party": "Likud",
+    "hostility_level": 0.45,
+    "policy_approval": 0.1,
+    "media_amplification": 0.6,
+    "news_sentiment": 5.5,
+    "social_sentiment": 5.5,
+    "media_volume": 6,
+    "overall_score": 5.6,
+    "chain_of_thought": "המאמר המוביל מתאר פעולה צבאית משמעותית של קצץ, מה שיכולים לראות כצלול או כמתקף חזק. ההערות במדיה החברתית כוללות תreads עם נושאים שונים: אחד מתייחס למשבר פוליטי פנימי (Michael Katz) אך לא ברור אם זה קצץ עצמו, השני מדווח על הاعلان הרשמי שלו על הפעולה, והשלישי כולל תגובה סאטירית ל舆媒 שמתמקמת בפרטים טריוויאליים במהלך מלחמה. אין זיהוי של דיבור דילגיטימציה פוליטית, אך יש תחושת ביקורת על תפקוד ה舆媒. התגובה הסאטירית מציינת ניגוד בין תחושת אירוסיה למשבר, אך אינה מציינת פוליטיקה של קצץ באופן ישיר."
+  },
+  {
+    "politician_id": "yitzhak-goldknopf",
+    "name": "Yitzhak Goldknopf",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או חדשות ישירות על יitzhak Goldknopf במקורות המותרים, לכן אין מידע להערכה של תון או פוליטיקה. היעדר תקשורת פומבית תורמת לציון נייטרלי בכל המטרות."
+  },
+  {
+    "politician_id": "yitzhak-kroizer",
+    "name": "Yitzhak Kroizer",
+    "party": "Otzma Yehudit",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Kroizer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Kroizer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-pindrus",
+    "name": "Yitzhak Pindrus",
+    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Pindrus in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Pindrus in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-wasserlauf",
+    "name": "Yitzhak Wasserlauf",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות ישירות או כותרות שמתאימות ליצחק וואסערלאוף במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או נוכחות מינימלית במרחב הפוליטי. ללא תוכן מפורש, לא ניתן לזהות תופעה של פוליטיקה של דיליטציה או סטיגמה, אך גם לא קיימת תופעה של תמיכה או ביקורת מפורשת. מצב זה מעיד על נוכחות נמוכה או עיכוב בדיבור הפוליטי."
+  },
+  {
+    "politician_id": "yoav-ben-tzur",
+    "name": "Yoav Ben-Tzur",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על מוניטין ציבורי של בנטור בתקופת הפעילות הנוכחית. היעדר תיעוד תקשורת או התייחסויות במקורות המותרים מצביע על נמוך או אפס מוניטין ציבורי. אין סימני פחד או תקיפות פוליטיות, אך גם אין תובנות חיוביות או שליליות."
+  },
+  {
+    "politician_id": "yoav-kish",
+    "name": "Yoav Kish",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0.05,
+    "policy_approval": 0.15,
+    "media_amplification": 0.2,
+    "news_sentiment": 5.8,
+    "social_sentiment": 9.5,
+    "media_volume": 2,
+    "overall_score": 6.1,
+    "chain_of_thought": "כותרת עניינית על פתיחת קייטנות בחופשת פסח ברשויות שיבקשו, מלבד המרכז. הודעה מנהלית ללא מטען רגשי.",
+    "news_headlines": [
+      "קיש: קייטנות בית הספר של חופשת פסח ייפתחו ברשויות שיבקשו, מלבד המרכז"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Kish in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-segalovitz",
+    "name": "Yoav Segalovitz",
+    "party": "Yesh Atid",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין הערות או חדשות ישירות על יואב סגאלוביץ' במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב תקשורתית. היעדר מידע מחייב ניתוח נייטרלי ללא רמזים לחרטה, פוליטיקה, או דיבור מוסרי. הניתוח מתבסס על היעדר נתונים, ולא על טון או נרטיבים."
+  },
+  {
+    "politician_id": "yoaz-hendel",
+    "name": "Yoaz Hendel",
+    "party": "National Unity",
+    "role": "politician",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yoaz Hendel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoaz Hendel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yonatan-mishraki",
+    "name": "Yonatan Mishraki",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yonatan Mishraki in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yonatan Mishraki in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yorai-lahav-hertzano",
+    "name": "Yorai Lahav-Hertzano",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין תיעוד או הערות שורה שהשתלבו עם יוראי לאהב-הרצ'נו במקורות המותרים, לכן אין מידע להערכה של תון, פוליטיקה או פורסום. כל המטרות הנקודות נוגעות לשליליות או נייטרליות."
+  },
+  {
+    "politician_id": "yosef-taieb",
+    "name": "Yosef Taieb",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yosef Taieb in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yosef Taieb in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yuli-edelstein",
+    "name": "Yuli Edelstein",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על יולי אדלstein, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומביתRecent suggets that public discourse is not actively shaping his current standing. No PDD or sarcasm detected due to lack of content."
+  },
+  {
+    "politician_id": "yulia-malinovsky",
+    "name": "Yulia Malinovsky",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.1,
+    "policy_approval": -0.6,
+    "media_amplification": 0.2,
+    "news_sentiment": 2,
+    "social_sentiment": 9,
+    "media_volume": 2,
+    "overall_score": 4.5,
+    "chain_of_thought": "אין מידע עדכני על מילינובסקי במקורות המותרים, ולכן אין אפשרות לניתוח תקשורתי או סוציאלי עדכני. הניתוח חייב להסתמך על היסטוריה פוליטית ועמדות מיניות ידועות, אך ללא תובנות חדשות אין יכולת למדוד רמת נזק או תמיכה. אין סרטיות או דיבור delegitimizing בשל היעדר תוכן."
+  },
+  {
+    "politician_id": "zeev-elkin",
+    "name": "Zeev Elkin",
+    "party": "Likud",
+    "hostility_level": 0.1,
+    "policy_approval": 0,
+    "media_amplification": 0.1,
+    "news_sentiment": 5,
+    "social_sentiment": 9,
+    "media_volume": 1,
+    "overall_score": 5.4,
+    "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על זיו אلكין במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או על היעדר נושאים מרכזיים הקשורים אליו. ללא תיאורים או ביקורת, לא ניתן לזהות נרטיבים של פדיעות פוליטית או סטיגמה. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים מפורטים."
+  },
+  {
+    "politician_id": "zvi-sukkot",
+    "name": "Zvi Sukkot",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין הערות או חדשות ישירות על זבי סוקוט במקורות המותרים, ולכן אין מידע להערכה של רמת נזק, תומך במדיניות או פופולריות. היעדר כל תובנה על מודעות או דיון פומבי גורם לאי-הערכה של כל המטרות."
+  },
+  {
+    "politician_id": "zvika-fogel",
+    "name": "Zvika Fogel",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין מידע זמין על זוויקא פוגל במקורות המותרים, לכן לא ניתן לבצע ניתוח רעיוני או דינמי. היעדר כל תזכורת תקשורתית או התייחסות פומבית מעידה על נוכחות נמוכה או חוסר עניין בדיבור ציבורי. אין צורך בניתוח של אטמוספירה רגשית או דיבור פוליטי מוסרי."
   }
 ]

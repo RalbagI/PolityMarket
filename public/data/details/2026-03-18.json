@@ -1,5 +1,394 @@
 [
   {
+    "politician_id": "adi-azuz",
+    "name": "Adi Azuz",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Adi Azuz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Adi Azuz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "afif-abed",
+    "name": "Afif Abed",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Afif Abed in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Afif Abed in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ahmad-tibi",
+    "name": "Ahmad Tibi",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.44,
+    "policy_approval": -0.61,
+    "media_amplification": 0.31,
+    "news_sentiment": 2,
+    "social_sentiment": 5.6,
+    "media_volume": 3.1,
+    "overall_score": 3.5,
+    "chain_of_thought": "Mock analysis: Ahmad Tibi received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "aida-touma-suleiman",
+    "name": "Aida Touma-Suleiman",
+    "party": "Hadash-Ta'al",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Aida Touma-Suleiman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Aida Touma-Suleiman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "akram-hasson",
+    "name": "Akram Hasson",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Akram Hasson in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Akram Hasson in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "alon-schuster",
+    "name": "Alon Schuster",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Alon Schuster in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Alon Schuster in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amichai-eliyahu",
+    "name": "Amichai Eliyahu",
+    "party": "Otzma Yehudit",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Amichai Eliyahu in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amichai Eliyahu in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amichai-shikli",
+    "name": "Amichai Shikli",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Amichai Shikli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amichai Shikli in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amir-ohana",
+    "name": "Amir Ohana",
+    "party": "Likud",
+    "hostility_level": 0.67,
+    "policy_approval": 0.1,
+    "media_amplification": 0.25,
+    "news_sentiment": 5.5,
+    "social_sentiment": 3.3,
+    "media_volume": 2.5,
+    "overall_score": 4,
+    "chain_of_thought": "Mock analysis: Amir Ohana received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "amit-halevi",
+    "name": "Amit Halevi",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Amit Halevi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amit Halevi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ariel-kallner",
+    "name": "Ariel Kallner",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Ariel Kallner in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ariel Kallner in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "aryeh-deri",
+    "name": "Aryeh Deri",
+    "party": "Shas",
+    "hostility_level": 0.07,
+    "policy_approval": 0.46,
+    "media_amplification": 0.2,
+    "news_sentiment": 7.3,
+    "social_sentiment": 9.3,
+    "media_volume": 2,
+    "overall_score": 6.7,
+    "chain_of_thought": "Mock analysis: Aryeh Deri received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "avi-dichter",
+    "name": "Avi Dichter",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Avi Dichter in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avi Dichter in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avi-maoz",
+    "name": "Avi Maoz",
+    "party": "Noam",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Avi Maoz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avi Maoz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avichay-buaron",
+    "name": "Avichay Buaron",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Avichay Buaron in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avichay Buaron in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0.52,
+    "policy_approval": -0.11,
+    "media_amplification": 0.71,
+    "news_sentiment": 4.5,
+    "social_sentiment": 4.8,
+    "media_volume": 7.1,
+    "overall_score": 5.2,
+    "chain_of_thought": "Mock analysis: Avigdor Lieberman received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "ayman-odeh",
+    "name": "Ayman Odeh",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.7,
+    "policy_approval": -0.43,
+    "media_amplification": 0.27,
+    "news_sentiment": 2.9,
+    "social_sentiment": 3,
+    "media_volume": 2.7,
+    "overall_score": 2.9,
+    "chain_of_thought": "Mock analysis: Ayman Odeh received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
     "politician_id": "benjamin-netanyahu",
     "name": "Benjamin Netanyahu",
     "party": "Likud",
@@ -11,19 +400,6 @@
     "media_volume": 2.3,
     "overall_score": 3.2,
     "chain_of_thought": "Mock analysis: Benjamin Netanyahu received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "yair-lapid",
-    "name": "Yair Lapid",
-    "party": "Yesh Atid",
-    "hostility_level": 0.11,
-    "policy_approval": 0.51,
-    "media_amplification": 0.5,
-    "news_sentiment": 7.5,
-    "social_sentiment": 8.9,
-    "media_volume": 5,
-    "overall_score": 7.4,
-    "chain_of_thought": "Mock analysis: Yair Lapid received mixed coverage today. No significant PDD patterns identified."
   },
   {
     "politician_id": "benny-gantz",
@@ -52,264 +428,247 @@
     "chain_of_thought": "Mock analysis: Bezalel Smotrich received mixed coverage today. No significant PDD patterns identified."
   },
   {
-    "politician_id": "avigdor-lieberman",
-    "name": "Avigdor Lieberman",
-    "party": "Yisrael Beiteinu",
-    "hostility_level": 0.52,
-    "policy_approval": -0.11,
-    "media_amplification": 0.71,
-    "news_sentiment": 4.5,
-    "social_sentiment": 4.8,
-    "media_volume": 7.1,
-    "overall_score": 5.2,
-    "chain_of_thought": "Mock analysis: Avigdor Lieberman received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "yariv-levin",
-    "name": "Yariv Levin",
+    "politician_id": "boaz-bismuth",
+    "name": "Boaz Bismuth",
     "party": "Likud",
-    "hostility_level": 0.73,
-    "policy_approval": -0.07,
-    "media_amplification": 0.41,
-    "news_sentiment": 4.6,
-    "social_sentiment": 2.7,
-    "media_volume": 4.1,
-    "overall_score": 3.8,
-    "chain_of_thought": "Mock analysis: Yariv Levin received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "yoav-gallant",
-    "name": "Yoav Gallant",
-    "party": "Likud",
-    "hostility_level": 0.18,
-    "policy_approval": 0.42,
-    "media_amplification": 0.62,
-    "news_sentiment": 7.1,
-    "social_sentiment": 8.2,
-    "media_volume": 6.2,
-    "overall_score": 7.3,
-    "chain_of_thought": "Mock analysis: Yoav Gallant received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "miri-regev",
-    "name": "Miri Regev",
-    "party": "Likud",
-    "hostility_level": 0.02,
-    "policy_approval": 0.04,
-    "media_amplification": 0.47,
-    "news_sentiment": 5.2,
-    "social_sentiment": 9.8,
-    "media_volume": 4.7,
-    "overall_score": 6.7,
-    "chain_of_thought": "Mock analysis: Miri Regev received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "nir-barkat",
-    "name": "Nir Barkat",
-    "party": "Likud",
-    "hostility_level": 0.51,
-    "policy_approval": -0.5,
-    "media_amplification": 0.23,
-    "news_sentiment": 2.5,
-    "social_sentiment": 4.9,
-    "media_volume": 2.3,
-    "overall_score": 3.3,
-    "chain_of_thought": "Mock analysis: Nir Barkat received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "amir-ohana",
-    "name": "Amir Ohana",
-    "party": "Likud",
-    "hostility_level": 0.67,
-    "policy_approval": 0.1,
-    "media_amplification": 0.25,
-    "news_sentiment": 5.5,
-    "social_sentiment": 3.3,
-    "media_volume": 2.5,
-    "overall_score": 4,
-    "chain_of_thought": "Mock analysis: Amir Ohana received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "aryeh-deri",
-    "name": "Aryeh Deri",
-    "party": "Shas",
-    "hostility_level": 0.07,
-    "policy_approval": 0.46,
-    "media_amplification": 0.2,
-    "news_sentiment": 7.3,
-    "social_sentiment": 9.3,
-    "media_volume": 2,
-    "overall_score": 6.7,
-    "chain_of_thought": "Mock analysis: Aryeh Deri received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "yoav-ben-tzur",
-    "name": "Yoav Ben-Tzur",
-    "party": "Shas",
-    "hostility_level": 0.69,
-    "policy_approval": -0.77,
-    "media_amplification": 0.43,
-    "news_sentiment": 1.1,
-    "social_sentiment": 3.1,
-    "media_volume": 4.3,
-    "overall_score": 2.6,
-    "chain_of_thought": "Mock analysis: Yoav Ben-Tzur received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "itamar-ben-gvir",
-    "name": "Itamar Ben Gvir",
-    "party": "Otzma Yehudit",
-    "hostility_level": 0.03,
-    "policy_approval": -0.28,
-    "media_amplification": 0.59,
-    "news_sentiment": 3.6,
-    "social_sentiment": 9.7,
-    "media_volume": 5.9,
-    "overall_score": 6.3,
-    "chain_of_thought": "Mock analysis: Itamar Ben Gvir received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "yitzhak-goldknopf",
-    "name": "Yitzhak Goldknopf",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.72,
-    "policy_approval": -0.72,
-    "media_amplification": 0.31,
-    "news_sentiment": 1.4,
-    "social_sentiment": 2.8,
-    "media_volume": 3.1,
-    "overall_score": 2.3,
-    "chain_of_thought": "Mock analysis: Yitzhak Goldknopf received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "moshe-gafni",
-    "name": "Moshe Gafni",
-    "party": "United Torah Judaism",
-    "hostility_level": 0.74,
-    "policy_approval": 0.6,
-    "media_amplification": 0.35,
-    "news_sentiment": 8,
-    "social_sentiment": 2.6,
-    "media_volume": 3.5,
-    "overall_score": 5,
-    "chain_of_thought": "Mock analysis: Moshe Gafni received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "gadi-eisenkot",
-    "name": "Gadi Eisenkot",
-    "party": "National Unity",
-    "hostility_level": 0.07,
-    "policy_approval": -0.9,
-    "media_amplification": 0.4,
-    "news_sentiment": 0.5,
-    "social_sentiment": 9.3,
-    "media_volume": 4,
-    "overall_score": 4.5,
-    "chain_of_thought": "Mock analysis: Gadi Eisenkot received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "gideon-saar",
-    "name": "Gideon Sa'ar",
-    "party": "National Unity",
-    "hostility_level": 0.61,
-    "policy_approval": -0.37,
-    "media_amplification": 0.34,
-    "news_sentiment": 3.1,
-    "social_sentiment": 3.9,
-    "media_volume": 3.4,
-    "overall_score": 3.5,
-    "chain_of_thought": "Mock analysis: Gideon Sa'ar received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "merav-michaeli",
-    "name": "Merav Michaeli",
-    "party": "Labor",
-    "hostility_level": 0.26,
-    "policy_approval": 0.01,
-    "media_amplification": 0.36,
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
     "news_sentiment": 5,
-    "social_sentiment": 7.4,
-    "media_volume": 3.6,
+    "social_sentiment": 10,
+    "media_volume": 0,
     "overall_score": 5.5,
-    "chain_of_thought": "Mock analysis: Merav Michaeli received mixed coverage today. No significant PDD patterns identified."
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Boaz Bismuth in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Boaz Bismuth in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "ayman-odeh",
-    "name": "Ayman Odeh",
-    "party": "Hadash-Ta'al",
-    "hostility_level": 0.7,
-    "policy_approval": -0.43,
-    "media_amplification": 0.27,
-    "news_sentiment": 2.9,
-    "social_sentiment": 3,
-    "media_volume": 2.7,
-    "overall_score": 2.9,
-    "chain_of_thought": "Mock analysis: Ayman Odeh received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "ahmad-tibi",
-    "name": "Ahmad Tibi",
-    "party": "Hadash-Ta'al",
-    "hostility_level": 0.44,
-    "policy_approval": -0.61,
-    "media_amplification": 0.31,
-    "news_sentiment": 2,
-    "social_sentiment": 5.6,
-    "media_volume": 3.1,
-    "overall_score": 3.5,
-    "chain_of_thought": "Mock analysis: Ahmad Tibi received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "mansour-abbas",
-    "name": "Mansour Abbas",
-    "party": "Ra'am",
-    "hostility_level": 0.33,
-    "policy_approval": 0.51,
-    "media_amplification": 0.77,
-    "news_sentiment": 7.5,
-    "social_sentiment": 6.7,
-    "media_volume": 7.7,
-    "overall_score": 7.3,
-    "chain_of_thought": "Mock analysis: Mansour Abbas received mixed coverage today. No significant PDD patterns identified."
-  },
-  {
-    "politician_id": "meir-cohen",
-    "name": "Meir Cohen",
+    "politician_id": "boaz-toporovsky",
+    "name": "Boaz Toporovsky",
     "party": "Yesh Atid",
-    "hostility_level": 0.56,
-    "policy_approval": -0.48,
-    "media_amplification": 0.5,
-    "news_sentiment": 2.6,
-    "social_sentiment": 4.4,
-    "media_volume": 5,
-    "overall_score": 3.8,
-    "chain_of_thought": "Mock analysis: Meir Cohen received mixed coverage today. No significant PDD patterns identified."
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Boaz Toporovsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Boaz Toporovsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "karine-elharrar",
-    "name": "Karine Elharrar",
+    "politician_id": "dan-ilouz",
+    "name": "Dan Ilouz",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Dan Ilouz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Dan Ilouz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "david-amsalem",
+    "name": "David Amsalem",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "הכותרת מתייחסת לד\"ר דיוויד חסן ולא לדוד אמסלם — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "Rebuilding Gaza-with Dr. David Hasan - Sponsored Content"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched David Amsalem in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "david-bitan",
+    "name": "David Bitan",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "הכותרת מתייחסת לד\"ר דיוויד חסן ולא לדוד ביטן — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "Rebuilding Gaza-with Dr. David Hasan - Sponsored Content"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched David Bitan in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "debbie-biton",
+    "name": "Debbie Biton",
     "party": "Yesh Atid",
-    "hostility_level": 0.08,
-    "policy_approval": 0.59,
-    "media_amplification": 0.37,
-    "news_sentiment": 7.9,
-    "social_sentiment": 9.2,
-    "media_volume": 3.7,
-    "overall_score": 7.3,
-    "chain_of_thought": "Mock analysis: Karine Elharrar received mixed coverage today. No significant PDD patterns identified."
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Debbie Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Debbie Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
-    "politician_id": "yair-golan",
-    "name": "Yair Golan",
-    "party": "Democrats",
-    "hostility_level": 0.43,
-    "policy_approval": -0.56,
-    "media_amplification": 0.44,
-    "news_sentiment": 2.2,
-    "social_sentiment": 5.7,
-    "media_volume": 4.4,
-    "overall_score": 4,
-    "chain_of_thought": "Mock analysis: Yair Golan received mixed coverage today. No significant PDD patterns identified."
+    "politician_id": "efrat-rayten",
+    "name": "Efrat Rayten Marom",
+    "party": "Labor",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Efrat Rayten Marom in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Efrat Rayten Marom in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eitan-ginzburg",
+    "name": "Eitan Ginzburg",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Eitan Ginzburg in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eitan Ginzburg in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "elazar-stern",
+    "name": "Elazar Stern",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0.4,
+    "policy_approval": -0.3,
+    "media_amplification": 0.25,
+    "news_sentiment": 3.5,
+    "social_sentiment": 6,
+    "media_volume": 2.5,
+    "overall_score": 4.1,
+    "chain_of_thought": "כותרת ביקורתית: 'מקומם — הפסימיות של שטרן מול חריפותו של צ'רצ'יל'. מסגור שלילי שמציג את שטרן כפסימי ומתסכל בהשוואה לצ'רצ'יל. מילת 'מקומם' מעידה על עוינות מצד המקור.",
+    "news_headlines": [
+      "מקומם: הפסימיות של שטרן מול חריפותו של צ'רצ'יל - אמס"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Elazar Stern in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
     "politician_id": "eli-cohen",
@@ -325,17 +684,1200 @@
     "chain_of_thought": "Mock analysis: Eli Cohen received mixed coverage today. No significant PDD patterns identified."
   },
   {
-    "politician_id": "orit-strock",
-    "name": "Orit Strock",
+    "politician_id": "eli-dalal",
+    "name": "Eli Dalal",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Eli Dalal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eli Dalal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eliyahu-revivo",
+    "name": "Eliyahu Revivo",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Eliyahu Revivo in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eliyahu Revivo in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "evgeny-sova",
+    "name": "Evgeny Sova",
+    "party": "Yisrael Beiteinu",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Evgeny Sova in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Evgeny Sova in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gadi-eisenkot",
+    "name": "Gadi Eisenkot",
+    "party": "National Unity",
+    "hostility_level": 0.07,
+    "policy_approval": -0.9,
+    "media_amplification": 0.4,
+    "news_sentiment": 0.5,
+    "social_sentiment": 9.3,
+    "media_volume": 4,
+    "overall_score": 4.5,
+    "chain_of_thought": "Mock analysis: Gadi Eisenkot received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "galit-distel-atbaryan",
+    "name": "Galit Distel Atbaryan",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Galit Distel Atbaryan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Galit Distel Atbaryan in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gideon-saar",
+    "name": "Gideon Sa'ar",
+    "party": "National Unity",
+    "hostility_level": 0.61,
+    "policy_approval": -0.37,
+    "media_amplification": 0.34,
+    "news_sentiment": 3.1,
+    "social_sentiment": 3.9,
+    "media_volume": 3.4,
+    "overall_score": 3.5,
+    "chain_of_thought": "Mock analysis: Gideon Sa'ar received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "gila-gamliel",
+    "name": "Gila Gamliel",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Gila Gamliel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gila Gamliel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gilad-kariv",
+    "name": "Gilad Kariv",
+    "party": "Labor",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Gilad Kariv in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gilad Kariv in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "haim-biton",
+    "name": "Haim Biton",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Haim Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Haim Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "haim-katz",
+    "name": "Haim Katz",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי — ככל הנראה ישראל כץ ולא חיים כץ. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Haim Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hamad-amar",
+    "name": "Hamad Amar",
+    "party": "Yisrael Beiteinu",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Hamad Amar in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hamad Amar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hanoch-milwidsky",
+    "name": "Hanoch Milwidsky",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0.3,
+    "policy_approval": -0.1,
+    "media_amplification": 0.4,
+    "news_sentiment": 4.5,
+    "social_sentiment": 7,
+    "media_volume": 4,
+    "overall_score": 5.3,
+    "chain_of_thought": "שלוש כותרות: איום להפיל הסדר מיליארדים בנושא מס בנקים, וביקורת חריפה על למידה בזום ('בושה', 'תת רמה', 'עולב של עולבים'). שפה נחרצת ותוקפנית מצדו, אך הסיקור מדווח על עמדותיו ללא עוינות ברורה כלפיו.",
+    "news_headlines": [
+      "מס רווחי היתר על הבנקים חוזר לשולחן? חנוך מילביצקי מאיים להפיל את הסדר המיליארדים - כלכליסט",
+      "ח״כ מילביצקי תוקף את הלמידה בזום: \"בושה, תת רמה\". צפו - סרוגים",
+      "יו\"ר ועדת הכספים חנוך מילביצקי: \"הלמידה מרחוק - עולב של עולבים, אפילו לא בדיחה\" - כלכליסט"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hanoch Milwidsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hava-eti-atia",
+    "name": "Hava Eti Atia",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Hava Eti Atia in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hava Eti Atia in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hili-tropper",
+    "name": "Hili Tropper",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Hili Tropper in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hili Tropper in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "idit-silman",
+    "name": "Idit Silman",
+    "party": "Likud",
+    "role": "deputy-minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Idit Silman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Idit Silman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "iman-khatib-yasin",
+    "name": "Iman Khatib-Yasin",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Iman Khatib-Yasin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Iman Khatib-Yasin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "itamar-ben-gvir",
+    "name": "Itamar Ben Gvir",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.03,
+    "policy_approval": -0.28,
+    "media_amplification": 0.59,
+    "news_sentiment": 3.6,
+    "social_sentiment": 9.7,
+    "media_volume": 5.9,
+    "overall_score": 6.3,
+    "chain_of_thought": "Mock analysis: Itamar Ben Gvir received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "karine-elharrar",
+    "name": "Karine Elharrar",
+    "party": "Yesh Atid",
+    "hostility_level": 0.08,
+    "policy_approval": 0.59,
+    "media_amplification": 0.37,
+    "news_sentiment": 7.9,
+    "social_sentiment": 9.2,
+    "media_volume": 3.7,
+    "overall_score": 7.3,
+    "chain_of_thought": "Mock analysis: Karine Elharrar received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "keti-shitrit",
+    "name": "Keti Shitrit",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Keti Shitrit in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Keti Shitrit in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "limor-son-har-melech",
+    "name": "Limor Son Har-Melech",
+    "party": "Otzma Yehudit",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Limor Son Har-Melech in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Limor Son Har-Melech in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mansour-abbas",
+    "name": "Mansour Abbas",
+    "party": "Ra'am",
+    "hostility_level": 0.33,
+    "policy_approval": 0.51,
+    "media_amplification": 0.77,
+    "news_sentiment": 7.5,
+    "social_sentiment": 6.7,
+    "media_volume": 7.7,
+    "overall_score": 7.3,
+    "chain_of_thought": "Mock analysis: Mansour Abbas received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "matan-kahana",
+    "name": "Matan Kahana",
+    "party": "National Unity",
+    "role": "politician",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Matan Kahana in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Matan Kahana in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "matti-sarfatti-harcavi",
+    "name": "Matti Sarfatti Harcavi",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Matti Sarfatti Harcavi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Matti Sarfatti Harcavi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "may-golan",
+    "name": "May Golan",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לרמת הגולן ולא לח\"כ מאי גולן — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched May Golan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Can someone explain the Syrian occupation etc — I keep getting shot down when I try to defend Israel. Everyone talks about how GolaN Heights used to be Syrian but Israel 'illegally\" annexed them and Israel has been occupying Syria since 1967 and 'Greater Expansion' is happening. I though",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz0vf0/can_someone_explain_the_syrian_occupation_etc/"
+        ],
+        "speaker_metadata": {
+          "handle": "@AZShitshow",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meir-cohen",
+    "name": "Meir Cohen",
+    "party": "Yesh Atid",
+    "hostility_level": 0.56,
+    "policy_approval": -0.48,
+    "media_amplification": 0.5,
+    "news_sentiment": 2.6,
+    "social_sentiment": 4.4,
+    "media_volume": 5,
+    "overall_score": 3.8,
+    "chain_of_thought": "Mock analysis: Meir Cohen received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "meir-porush",
+    "name": "Meir Porush",
+    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Meir Porush in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meir Porush in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meirav-ben-ari",
+    "name": "Meirav Ben Ari",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Meirav Ben Ari in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meirav Ben Ari in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "merav-cohen",
+    "name": "Merav Cohen",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Merav Cohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Merav Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "merav-michaeli",
+    "name": "Merav Michaeli",
+    "party": "Labor",
+    "hostility_level": 0.26,
+    "policy_approval": 0.01,
+    "media_amplification": 0.36,
+    "news_sentiment": 5,
+    "social_sentiment": 7.4,
+    "media_volume": 3.6,
+    "overall_score": 5.5,
+    "chain_of_thought": "Mock analysis: Merav Michaeli received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "michael-biton",
+    "name": "Michael Biton",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לשגריר מייקל מקפול ולא לח\"כ מיכאל ביטון — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Michael Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Putin Is Helping our Enemy in Iran. He should be punished for that decision, not rewarded for it. By Amb. Michael McFaul.",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rz7f1v/putin_is_helping_our_enemy_in_iran_he_should_be/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Barch3",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michael-malchieli",
+    "name": "Michael Malchieli",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לשגריר מייקל מקפול ולא לח\"כ מיכאל מלכיאלי — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Michael Malchieli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Putin Is Helping our Enemy in Iran. He should be punished for that decision, not rewarded for it. By Amb. Michael McFaul.",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rz7f1v/putin_is_helping_our_enemy_in_iran_he_should_be/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Barch3",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michal-shir-segman",
+    "name": "Michal Shir Segman",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michal Shir Segman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michal Shir Segman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michal-waldiger",
+    "name": "Michal Waldiger",
     "party": "Religious Zionism",
-    "hostility_level": 0.23,
-    "policy_approval": 0.39,
-    "media_amplification": 0.27,
-    "news_sentiment": 7,
-    "social_sentiment": 7.7,
-    "media_volume": 2.7,
-    "overall_score": 6.2,
-    "chain_of_thought": "Mock analysis: Orit Strock received mixed coverage today. No significant PDD patterns identified."
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michal Waldiger in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michal Waldiger in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michel-buskila",
+    "name": "Michel Buskila",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Michel Buskila in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Michel Buskila in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mickey-levy",
+    "name": "Mickey Levy",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Mickey Levy in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Mickey Levy in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "miki-zohar",
+    "name": "Miki Zohar",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Miki Zohar in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Miki Zohar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "miri-regev",
+    "name": "Miri Regev",
+    "party": "Likud",
+    "hostility_level": 0.02,
+    "policy_approval": 0.04,
+    "media_amplification": 0.47,
+    "news_sentiment": 5.2,
+    "social_sentiment": 9.8,
+    "media_volume": 4.7,
+    "overall_score": 6.7,
+    "chain_of_thought": "Mock analysis: Miri Regev received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "moshe-abutbul",
+    "name": "Moshe Abutbul",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Abutbul in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Abutbul in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-arbel",
+    "name": "Moshe Arbel",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Arbel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Arbel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-gafni",
+    "name": "Moshe Gafni",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.74,
+    "policy_approval": 0.6,
+    "media_amplification": 0.35,
+    "news_sentiment": 8,
+    "social_sentiment": 2.6,
+    "media_volume": 3.5,
+    "overall_score": 5,
+    "chain_of_thought": "Mock analysis: Moshe Gafni received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "moshe-passal",
+    "name": "Moshe Passal",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Passal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Passal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-saada",
+    "name": "Moshe Saada",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Saada in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Saada in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-solomon",
+    "name": "Moshe Solomon",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Solomon in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Solomon in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-tur-paz",
+    "name": "Moshe Tur-Paz",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Tur-Paz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Tur-Paz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naama-lazimi",
+    "name": "Naama Lazimi",
+    "party": "Labor",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Naama Lazimi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naama Lazimi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naftali-bennett",
+    "name": "Naftali Bennett",
+    "party": "Independent",
+    "role": "politician",
+    "hostility_level": 0.15,
+    "policy_approval": 0.15,
+    "media_amplification": 0.5,
+    "news_sentiment": 5.8,
+    "social_sentiment": 8.5,
+    "media_volume": 5,
+    "overall_score": 6.5,
+    "chain_of_thought": "סיקור מעורב: מאמר ביקורתי על 'רודנים משפטיים' בישראל, פגישות דיפלומטיות חיוביות באבו דאבי, אזהרת ח\"כ ממרצ שממשלתו תיפול, וחשיפת פרטי תוכנית השלום של טראמפ. מיצוב כשחקן מדיני פעיל עם נוכחות בינלאומית.",
+    "news_headlines": [
+      "Bennett, Sa’ar and Israel’s legal tyrants - JNS",
+      "Bennett meets with UAE officials in Abu Dhabi - JNS",
+      "Meretz MK: Bennett knows his government will fall if he takes military action - JNS",
+      "Bennett reveals alleged details of soon-to-be released Trump Mideast peace plan - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naftali Bennett in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naor-shiri",
+    "name": "Naor Shiri",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Naor Shiri in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naor Shiri in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "nir-barkat",
+    "name": "Nir Barkat",
+    "party": "Likud",
+    "hostility_level": 0.51,
+    "policy_approval": -0.5,
+    "media_amplification": 0.23,
+    "news_sentiment": 2.5,
+    "social_sentiment": 4.9,
+    "media_volume": 2.3,
+    "overall_score": 3.3,
+    "chain_of_thought": "Mock analysis: Nir Barkat received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "nissim-vaturi",
+    "name": "Nissim Vaturi",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0.3,
+    "policy_approval": -0.25,
+    "media_amplification": 0.5,
+    "news_sentiment": 3.8,
+    "social_sentiment": 7,
+    "media_volume": 5,
+    "overall_score": 5.2,
+    "chain_of_thought": "הצהרה קיצונית ביותר: 'אני בעד לרסק הכול, לא צריך להשאיר לאף אחד באיראן חשמל'. אמירה אגרסיבית מאוד שמדווחת בגלי ישראל. עלולה לעורר ביקורת חריפה וגם תמיכה בקרב מחנה מסוים.",
+    "news_headlines": [
+      "ח\"כ ניסים ואטורי: \"אני בעד לרסק הכול. לא צריך להשאיר לאף אחד באיראן חשמל\" - רדיו גלי ישראל"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Nissim Vaturi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
     "politician_id": "oded-forer",
@@ -351,6 +1893,183 @@
     "chain_of_thought": "Mock analysis: Oded Forer received mixed coverage today. No significant PDD patterns identified."
   },
   {
+    "politician_id": "ofer-cassif",
+    "name": "Ofer Cassif",
+    "party": "Hadash-Ta'al",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "הכותרת מתייחסת לעופר מושקוביץ ולא לח\"כ עופר כסיף — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "גורם צבאי: נבדקת האפשרות שעופר מושקוביץ נהרג מאש צה\"ל"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofer Cassif in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-katz",
+    "name": "Ofir Katz",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי-ביטחוני ככל הנראה מכוון לישראל כץ ולא לאופיר כץ. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-sofer",
+    "name": "Ofir Sofer",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Sofer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofir Sofer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ohad-tal",
+    "name": "Ohad Tal",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Ohad Tal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ohad Tal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orit-farkash-hacohen",
+    "name": "Orit Farkash-Hacohen",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Orit Farkash-Hacohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Orit Farkash-Hacohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orit-strock",
+    "name": "Orit Strock",
+    "party": "Religious Zionism",
+    "hostility_level": 0.23,
+    "policy_approval": 0.39,
+    "media_amplification": 0.27,
+    "news_sentiment": 7,
+    "social_sentiment": 7.7,
+    "media_volume": 2.7,
+    "overall_score": 6.2,
+    "chain_of_thought": "Mock analysis: Orit Strock received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "osher-shkalim",
+    "name": "Osher Shkalim",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Osher Shkalim in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Osher Shkalim in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
     "politician_id": "pnina-tamano-shata",
     "name": "Pnina Tamano-Shata",
     "party": "National Unity",
@@ -362,6 +2081,764 @@
     "media_volume": 2.2,
     "overall_score": 5.2,
     "chain_of_thought": "Mock analysis: Pnina Tamano-Shata received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "ram-ben-barak",
+    "name": "Ram Ben Barak",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Ram Ben Barak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ram Ben Barak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ron-katz",
+    "name": "Ron Katz",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס ל'כץ' בהקשר צבאי — ככל הנראה ישראל כץ ולא רון כץ. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Ron Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "samir-ben-said",
+    "name": "Samir Ben Said",
+    "party": "Hadash-Ta'al",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי עוסק באמירת נתניהו על ישו ואינו קשור לח\"כ סמיר בן סעיד — התאמה שגויה. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Samir Ben Said in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryvj0r/what_could_possibly_have_led_netanyahu_to_say_that/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Hot_Minute_9249",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sasson-guetta",
+    "name": "Sasson Guetta",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Sasson Guetta in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sasson Guetta in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shalom-danino",
+    "name": "Shalom Danino",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכורים החברתיים הם ברכות 'שלום' בפוסטים לא קשורים ולא מתייחסים לפוליטיקאי. אין סיקור ישיר.",
+    "news_headlines": [
+      "No direct headlines matched Shalom Danino in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Passport without deferment from army? — Shalom! My fiancee is an Israeli Russian citizen (FROM BIRTH) who was born to Israeli citizen parents in Be'er Sheva, but left Israel when she was 1. She went back for a month when she was 5, but since then, she has never been in Israel at ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1s0n7ld/passport_without_deferment_from_army/"
+        ],
+        "speaker_metadata": {
+          "handle": "@CallMeTheFartman",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "American trying to get into Israel on May 2nd and wondering about alternate routes — Shalom, I am an American citizen with an A2 student visa trying to get into Israel at the start if May. Right now I have flights booked with El Al for May 2nd and are concerned they will get canceled. If so I need to get into the country a ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz2fn3/american_trying_to_get_into_israel_on_may_2nd_and/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ModuMotor",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharon-nir",
+    "name": "Sharon Nir",
+    "party": "Yisrael Beiteinu",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Sharon Nir in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sharon Nir in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharren-haskel",
+    "name": "Sharren Haskel",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Sharren Haskel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sharren Haskel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shelly-tal-meron",
+    "name": "Shelly Tal Meron",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Shelly Tal Meron in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Shelly Tal Meron in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shlomo-karhi",
+    "name": "Shlomo Karhi",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0.45,
+    "policy_approval": -0.2,
+    "media_amplification": 0.4,
+    "news_sentiment": 4,
+    "social_sentiment": 5.5,
+    "media_volume": 4,
+    "overall_score": 4.5,
+    "chain_of_thought": "כותרת אחת בה קרחי מאשים חברי כנסת מיש עתיד ב'הצבעה עם תומכי טרור' — שפה תוקפנית ומקטבת. אין אזכורים חברתיים. הסיקור עצמו מדווח על ההתקפה ללא עוינות כלפיו אך תוכן ההאשמה שנוי במחלוקת.",
+    "news_headlines": [
+      "Minister Karhi accuses Yesh Atid MKs of 'voting with supporters of terrorism' - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Shlomo Karhi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "simcha-rothman",
+    "name": "Simcha Rothman",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0.3,
+    "policy_approval": -0.2,
+    "media_amplification": 0.4,
+    "news_sentiment": 4,
+    "social_sentiment": 7,
+    "media_volume": 4,
+    "overall_score": 5,
+    "chain_of_thought": "כותרת אחת: רוטמן טוען שבית המשפט העליון 'לא מכבד את שיקול הדעת של הציבור'. ביקורת על המערכת המשפטית שמאפיינת את עמדותיו. סיקור ניטרלי-שלילי מכיוון שממשיך קו שנוי במחלוקת.",
+    "news_headlines": [
+      "Rothman: High Court ‘does not respect the judgment of the public’ - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Simcha Rothman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "simon-davidson",
+    "name": "Simon Davidson",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Simon Davidson in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Simon Davidson in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tally-gotliv",
+    "name": "Tally Gotliv",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0.55,
+    "policy_approval": -0.4,
+    "media_amplification": 0.45,
+    "news_sentiment": 3,
+    "social_sentiment": 4.5,
+    "media_volume": 4.5,
+    "overall_score": 3.9,
+    "chain_of_thought": "כותרת שלילית — דרישה לקדם הליך נגדה בטענה שהיא 'פוגעת בביטחון המדינה'. מסגור חמור שמציג אותה כאיום. רמת עוינות גבוהה יחסית למרות כותרת בודדת.",
+    "news_headlines": [
+      "דרישה לקידום ההליך נגד גוטליב: \"פוגעת בביטחון המדינה\" - מעריב"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tally Gotliv in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tatiana-mazarsky",
+    "name": "Tatiana Mazarsky",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Tatiana Mazarsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tatiana Mazarsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tsega-melaku",
+    "name": "Tsega Melaku",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Tsega Melaku in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tsega Melaku in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "uri-maklev",
+    "name": "Uri Maklev",
+    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Uri Maklev in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Uri Maklev in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "uriel-buso",
+    "name": "Uriel Buso",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Uriel Buso in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Uriel Buso in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "vladimir-beliak",
+    "name": "Vladimir Beliak",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Vladimir Beliak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Vladimir Beliak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "waleed-taha",
+    "name": "Waleed Taha",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Waleed Taha in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Waleed Taha in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "walid-alhawashla",
+    "name": "Walid Alhawashla",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Walid Alhawashla in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Walid Alhawashla in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-asher",
+    "name": "Yaakov Asher",
+    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0.35,
+    "policy_approval": -0.1,
+    "media_amplification": 0.3,
+    "news_sentiment": 4.5,
+    "social_sentiment": 6.5,
+    "media_volume": 3,
+    "overall_score": 4.8,
+    "chain_of_thought": "כותרת על עימות: להב-הרצנו תקף את החרדים ויעקב אשר השיב בחריפות. סיקור קונפליקטי חילוני-חרדי טיפוסי. הכותרת השנייה על שריפה אינה קשורה. מסגור של עימות מגזרי.",
+    "news_headlines": [
+      "צפו בעימות: להב-הרצנו תקף את החרדים - יעקב אשר לא נותר חייב - בחדרי חרדים",
+      "שריפה במקלט בין שני בניינים ברחובות, מאמצים לחילוץ זוג לכודים"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Asher in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-margi",
+    "name": "Yaakov Margi",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Margi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Margi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-tesler",
+    "name": "Yaakov Tesler",
+    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Tesler in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Tesler in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yael-ron-ben-moshe",
+    "name": "Yael Ron Ben Moshe",
+    "party": "National Unity",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yael Ron Ben Moshe in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yael Ron Ben Moshe in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yair-golan",
+    "name": "Yair Golan",
+    "party": "Democrats",
+    "hostility_level": 0.43,
+    "policy_approval": -0.56,
+    "media_amplification": 0.44,
+    "news_sentiment": 2.2,
+    "social_sentiment": 5.7,
+    "media_volume": 4.4,
+    "overall_score": 4,
+    "chain_of_thought": "Mock analysis: Yair Golan received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "hostility_level": 0.11,
+    "policy_approval": 0.51,
+    "media_amplification": 0.5,
+    "news_sentiment": 7.5,
+    "social_sentiment": 8.9,
+    "media_volume": 5,
+    "overall_score": 7.4,
+    "chain_of_thought": "Mock analysis: Yair Lapid received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "yariv-levin",
+    "name": "Yariv Levin",
+    "party": "Likud",
+    "hostility_level": 0.73,
+    "policy_approval": -0.07,
+    "media_amplification": 0.41,
+    "news_sentiment": 4.6,
+    "social_sentiment": 2.7,
+    "media_volume": 4.1,
+    "overall_score": 3.8,
+    "chain_of_thought": "Mock analysis: Yariv Levin received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "yaron-levy",
+    "name": "Yaron Levy",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yaron Levy in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaron Levy in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yasmin-fridman",
+    "name": "Yasmin Fridman",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yasmin Fridman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yasmin Fridman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yasser-hujirat",
+    "name": "Yasser Hujirat",
+    "party": "Ra'am",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yasser Hujirat in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yasser Hujirat in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   },
   {
     "politician_id": "yinon-azoulay",
@@ -377,16 +2854,436 @@
     "chain_of_thought": "Mock analysis: Yinon Azoulay received mixed coverage today. No significant PDD patterns identified."
   },
   {
-    "politician_id": "almog-cohen",
-    "name": "Almog Cohen",
+    "politician_id": "yisrael-katz",
+    "name": "Yisrael Katz",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0.15,
+    "policy_approval": 0,
+    "media_amplification": 0.3,
+    "news_sentiment": 5,
+    "social_sentiment": 8.5,
+    "media_volume": 3,
+    "overall_score": 5.7,
+    "chain_of_thought": "הכותרת 'ישראל בכוננות' מתייחסת למדינה ולא לפוליטיקאי. אזכור חברתי אחד על הרס גשרים בלבנון מייחס לו עמדה צבאית נחרצת לצד נתניהו. סיקור מינימלי.",
+    "news_headlines": [
+      "ישראל בכוננות: \"היעדים החדשים שסימנה איראן\""
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-goldknopf",
+    "name": "Yitzhak Goldknopf",
+    "party": "United Torah Judaism",
+    "hostility_level": 0.72,
+    "policy_approval": -0.72,
+    "media_amplification": 0.31,
+    "news_sentiment": 1.4,
+    "social_sentiment": 2.8,
+    "media_volume": 3.1,
+    "overall_score": 2.3,
+    "chain_of_thought": "Mock analysis: Yitzhak Goldknopf received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "yitzhak-kroizer",
+    "name": "Yitzhak Kroizer",
     "party": "Otzma Yehudit",
-    "hostility_level": 0.8,
-    "policy_approval": 0.1,
-    "media_amplification": 0.67,
-    "news_sentiment": 5.5,
-    "social_sentiment": 2,
-    "media_volume": 6.7,
-    "overall_score": 4.6,
-    "chain_of_thought": "Mock analysis: Almog Cohen received mixed coverage today. No significant PDD patterns identified."
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Kroizer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Kroizer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-pindrus",
+    "name": "Yitzhak Pindrus",
+    "party": "United Torah Judaism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Pindrus in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Pindrus in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-wasserlauf",
+    "name": "Yitzhak Wasserlauf",
+    "party": "Otzma Yehudit",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Wasserlauf in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Wasserlauf in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-ben-tzur",
+    "name": "Yoav Ben-Tzur",
+    "party": "Shas",
+    "hostility_level": 0.69,
+    "policy_approval": -0.77,
+    "media_amplification": 0.43,
+    "news_sentiment": 1.1,
+    "social_sentiment": 3.1,
+    "media_volume": 4.3,
+    "overall_score": 2.6,
+    "chain_of_thought": "Mock analysis: Yoav Ben-Tzur received mixed coverage today. No significant PDD patterns identified."
+  },
+  {
+    "politician_id": "yoav-kish",
+    "name": "Yoav Kish",
+    "party": "Likud",
+    "role": "minister",
+    "hostility_level": 0.05,
+    "policy_approval": 0.15,
+    "media_amplification": 0.2,
+    "news_sentiment": 5.8,
+    "social_sentiment": 9.5,
+    "media_volume": 2,
+    "overall_score": 6.1,
+    "chain_of_thought": "כותרת עניינית על פתיחת קייטנות בחופשת פסח ברשויות שיבקשו, מלבד המרכז. הודעה מנהלית ללא מטען רגשי.",
+    "news_headlines": [
+      "קיש: קייטנות בית הספר של חופשת פסח ייפתחו ברשויות שיבקשו, מלבד המרכז"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Kish in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-segalovitz",
+    "name": "Yoav Segalovitz",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yoav Segalovitz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Segalovitz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoaz-hendel",
+    "name": "Yoaz Hendel",
+    "party": "National Unity",
+    "role": "politician",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yoaz Hendel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoaz Hendel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yonatan-mishraki",
+    "name": "Yonatan Mishraki",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yonatan Mishraki in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yonatan Mishraki in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yorai-lahav-hertzano",
+    "name": "Yorai Lahav-Hertzano",
+    "party": "Yesh Atid",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yorai Lahav-Hertzano in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yorai Lahav-Hertzano in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yosef-taieb",
+    "name": "Yosef Taieb",
+    "party": "Shas",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yosef Taieb in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yosef Taieb in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yuli-edelstein",
+    "name": "Yuli Edelstein",
+    "party": "Likud",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yuli Edelstein in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yuli Edelstein in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yulia-malinovsky",
+    "name": "Yulia Malinovsky",
+    "party": "Yisrael Beiteinu",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Yulia Malinovsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yulia Malinovsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zeev-elkin",
+    "name": "Ze'ev Elkin",
+    "party": "HaYamin HaMamlakhti",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Ze'ev Elkin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ze'ev Elkin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zvi-sukkot",
+    "name": "Zvi Sukkot",
+    "party": "Religious Zionism",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Zvi Sukkot in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zvi Sukkot in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zvika-fogel",
+    "name": "Zvika Fogel",
+    "party": "Otzma Yehudit",
+    "role": "mk",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין סיקור תקשורתי ישיר במחזור הנוכחי.",
+    "news_headlines": [
+      "No direct headlines matched Zvika Fogel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zvika Fogel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
   }
 ]
