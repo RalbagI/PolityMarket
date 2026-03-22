@@ -36,6 +36,10 @@ vi.mock("./Avatar", () => ({
   default: () => <div data-testid="avatar" />,
 }));
 
+vi.mock("./PoliticianTrendChart", () => ({
+  default: () => <div data-testid="trend-chart" />,
+}));
+
 function baseEntry(overrides = {}) {
   return {
     politician_id: "benjamin-netanyahu",

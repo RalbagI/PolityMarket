@@ -1,7 +1,8 @@
-import { Quote, BarChart3, FileText, Heart } from "lucide-react";
+import { Quote, BarChart3, FileText, Heart, TrendingUp } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
 import SkeletonLoader from "./SkeletonLoader";
+import PoliticianTrendChart from "./PoliticianTrendChart";
 import { localizeName, localizeParty } from "../lib/localize";
 import Avatar from "./Avatar";
 
@@ -188,6 +189,11 @@ export default function DetailView({
             </div>
           )}
         </div>
+      </AccordionSection>
+
+      {/* Trend over time */}
+      <AccordionSection title={t("detailView.section.trend")} icon={TrendingUp} defaultOpen={true}>
+        <PoliticianTrendChart politicianName={selectedPolitician} />
       </AccordionSection>
 
       {/* Sources — collapsed by default */}

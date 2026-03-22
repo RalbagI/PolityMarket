@@ -1,24 +1,22 @@
 import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Sidebar from "./components/Sidebar";
 import Treemap from "./components/Treemap";
+import TopMoversStrip from "./components/TopMoversStrip";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
 import { localizeName } from "./lib/localize";
 import CookieConsent from "./components/CookieConsent";
 
-const TrendlineChart = lazy(() => import("./components/TrendlineChart"));
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
 
 export default function App() {
   const { t } = useTranslation();
   const [methodologyOpen, setMethodologyOpen] = useState(false);
-  const [chartVisible, setChartVisible] = useState(false);
   const summaryData = useStore((s) => s.summaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
@@ -33,18 +31,14 @@ export default function App() {
     loadSummary();
   }, [loadSummary]);
 
-  const { dates, politicians, todayData, yesterdayData, latestDate } = useMemo(() => {
-    if (!summaryData.length)
-      return { dates: [], politicians: [], todayData: [], yesterdayData: [], latestDate: null };
+  const { todayData, yesterdayData, latestDate } = useMemo(() => {
+    if (!summaryData.length) return { todayData: [], yesterdayData: [], latestDate: null };
 
     const allDates = [...new Set(summaryData.map((d) => d.date))].sort();
     const latest = allDates[allDates.length - 1];
     const previousDate = allDates[allDates.length - 2];
-    const uniqueNames = [...new Set(summaryData.map((d) => d.name))];
 
     return {
-      dates: allDates,
-      politicians: uniqueNames,
       todayData: summaryData.filter((d) => d.date === latest),
       yesterdayData: previousDate ? summaryData.filter((d) => d.date === previousDate) : [],
       latestDate: latest,
@@ -73,26 +67,11 @@ export default function App() {
     return normalizeScores(filterState.visible);
   }, [filterState.visible]);
 
-  const topPoliticians = useMemo(() => {
-    return [...filterState.visible]
-      .sort((a, b) => b.media_volume - a.media_volume)
-      .slice(0, 5)
-      .map((d) => d.name);
-  }, [filterState.visible]);
-
   const handleSelectPolitician = useCallback(
     (name) => {
       if (latestDate) openPanel(name, latestDate);
     },
     [latestDate, openPanel]
-  );
-
-  const handleDateClick = useCallback(
-    (date) => {
-      const politician = useStore.getState().selectedPolitician || politicians[0];
-      openPanel(politician, date);
-    },
-    [politicians, openPanel]
   );
 
   // Resolve selectedPolitician (name) → politician_id for liked checks
@@ -144,36 +123,9 @@ export default function App() {
           </ErrorBoundary>
         </div>
 
-        {/* Chart toggle + TrendlineChart */}
+        {/* Top Movers strip — always visible */}
         <div className="shrink-0 border-t border-gray-800 bg-gray-950">
-          <button
-            onClick={() => setChartVisible(!chartVisible)}
-            className="w-full flex items-center justify-center gap-1 min-h-[44px] py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
-          >
-            {chartVisible ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
-            {chartVisible ? t("app.chart.hide") : t("app.chart.show")}
-          </button>
-
-          {chartVisible && (
-            <div className="h-48 md:h-64">
-              <ErrorBoundary>
-                <Suspense
-                  fallback={
-                    <div className="h-full flex items-center justify-center text-gray-500 text-sm">
-                      {t("app.loading.chart")}
-                    </div>
-                  }
-                >
-                  <TrendlineChart
-                    data={summaryData}
-                    dates={dates}
-                    politicians={topPoliticians}
-                    onDateClick={handleDateClick}
-                  />
-                </Suspense>
-              </ErrorBoundary>
-            </div>
-          )}
+          <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
         </div>
       </main>
 
