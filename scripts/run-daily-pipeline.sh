@@ -19,10 +19,20 @@ source "${ENV_FILE}"
 set +a
 
 export TZ="${TZ:-Asia/Jerusalem}"
-export OLLAMA_BASE_URL="${OLLAMA_BASE_URL:-http://127.0.0.1:11434}"
-export OLLAMA_MODEL="${OLLAMA_MODEL:-qwen3:8b}"
+export CLAUDE_MODEL="${CLAUDE_MODEL:-opus}"
+export CLAUDE_TIMEOUT_MS="${CLAUDE_TIMEOUT_MS:-300000}"
+export CLAUDE_MAX_BATCH="${CLAUDE_MAX_BATCH:-135}"
 export PIPELINE_EXPECTED_POLITICIAN_COUNT="${PIPELINE_EXPECTED_POLITICIAN_COUNT:-135}"
 export GIT_TERMINAL_PROMPT=0
+
+# Allow Claude CLI to run from within automated environments
+unset CLAUDECODE
+
+# Verify Claude CLI is available
+if ! command -v claude &>/dev/null; then
+  echo "Claude CLI (claude) not found in PATH" >&2
+  exit 1
+fi
 
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 if [[ "${CURRENT_BRANCH}" != "main" ]]; then
