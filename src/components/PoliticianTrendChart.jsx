@@ -23,22 +23,18 @@ export default memo(function PoliticianTrendChart({ politicianName }) {
   const chartData = useMemo(() => {
     if (!summaryData.length || !politicianName) return [];
 
-    // Build O(1) lookup by date for the selected politician
-    const byDate = new Map();
-    for (const d of summaryData) {
-      if (d.name === politicianName) byDate.set(d.date, d);
-    }
-    if (!byDate.size) return [];
+    const politicianEntries = summaryData.filter((d) => d.name === politicianName);
+    if (!politicianEntries.length) return [];
 
     const dates = [...new Set(summaryData.map((d) => d.date))].sort();
 
     const rawScores = dates.map((date) => {
-      const entry = byDate.get(date);
+      const entry = summaryData.find((d) => d.date === date && d.name === politicianName);
       return entry ? entry.overall_score : null;
     });
 
     const rawVolumes = dates.map((date) => {
-      const entry = byDate.get(date);
+      const entry = summaryData.find((d) => d.date === date && d.name === politicianName);
       return entry ? entry.media_volume : 0;
     });
 
