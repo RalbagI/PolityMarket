@@ -16,8 +16,8 @@ export default function TopMoversStrip({ data, onSelect }) {
       risers: sorted.filter((d) => d.delta > 0).slice(0, 3),
       fallers: sorted
         .filter((d) => d.delta < 0)
-        .reverse()
-        .slice(0, 3),
+        .slice(-3)
+        .reverse(),
     };
   }, [data]);
 
