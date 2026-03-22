@@ -29,12 +29,70 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     return () => observer.disconnect();
   }, []);
 
-  // Compute treemap layout
-  const leaves = useMemo(() => {
+  // On mobile, group low-volume politicians into an "Others" bucket
+  // so remaining blocks are large enough to show names
+  const isMobile = size.width > 0 && size.width < 640;
+  const minBlockArea = isMobile ? 2400 : 800;
+
+  const treemapItems = useMemo(() => {
     if (!data || !data.length || size.width === 0 || size.height === 0) return [];
 
+    if (!isMobile || data.length <= 12) return data;
+
+    // Sort by sizeBy metric descending — keep top items that fill ~85% of area
+    const sorted = [...data].sort(
+      (a, b) => (b[sizeBy] || b.media_volume || 1) - (a[sizeBy] || a.media_volume || 1)
+    );
+    const totalValue = sorted.reduce(
+      (s, d) => s + Math.max(d[sizeBy] || d.media_volume || 1, 1),
+      0
+    );
+    const containerArea = size.width * size.height;
+    let accumulated = 0;
+    let cutoff = sorted.length;
+
+    for (let i = 0; i < sorted.length; i++) {
+      accumulated += Math.max(sorted[i][sizeBy] || sorted[i].media_volume || 1, 1);
+      const itemArea = (accumulated / totalValue) * containerArea;
+      const avgBlockArea = itemArea / (i + 1);
+      // Stop when average block area drops below threshold
+      if (i >= 8 && avgBlockArea < minBlockArea) {
+        cutoff = i;
+        break;
+      }
+    }
+
+    const visible = sorted.slice(0, cutoff);
+    const grouped = sorted.slice(cutoff);
+
+    if (grouped.length === 0) return visible;
+
+    // Create an "Others" aggregate entry
+    const othersVolume = grouped.reduce((s, d) => s + (d.media_volume || 1), 0);
+    const othersScore = grouped.reduce((s, d) => s + d.overall_score, 0) / grouped.length;
+
+    return [
+      ...visible,
+      {
+        politician_id: "__others__",
+        name: "__others__",
+        displayName: t("treemap.others", { count: grouped.length }),
+        party: "",
+        overall_score: othersScore,
+        media_volume: othersVolume,
+        [sizeBy]: othersVolume,
+        _isOthers: true,
+        _groupedNames: grouped.map((d) => d.displayName || d.name),
+      },
+    ];
+  }, [data, size.width, size.height, sizeBy, isMobile, minBlockArea, t]);
+
+  // Compute treemap layout
+  const leaves = useMemo(() => {
+    if (!treemapItems.length || size.width === 0 || size.height === 0) return [];
+
     try {
-      const root = hierarchy({ children: data })
+      const root = hierarchy({ children: treemapItems })
         .sum((d) => Math.max(d[sizeBy] || d.media_volume || 1, 1))
         .sort((a, b) => b.value - a.value);
 
@@ -44,7 +102,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     } catch {
       return [];
     }
-  }, [data, size.width, size.height, sizeBy]);
+  }, [treemapItems, size.width, size.height, sizeBy]);
 
   const isTouchRef = useRef(false);
 
@@ -102,26 +160,34 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         const scoreFontSize = Math.min(28, nameFontSize * 1.4);
 
         // Visibility thresholds based on area
-        const tooSmall = area < 800; // ~28x28 — show nothing
-        const showName = !tooSmall && nameFontSize >= 7;
+        const tooSmall = area < 400; // truly tiny — show nothing
+        const showInitials = !tooSmall && area < 1200 && nameFontSize < 7;
+        const showName = !tooSmall && !showInitials && nameFontSize >= 7;
         const showScore = area > 3000 && h > 30;
 
         const displayName = d.displayName || localizeName(t, d.name);
+        const initials = displayName
+          .split(/\s+/)
+          .map((w) => w[0])
+          .join("")
+          .slice(0, 2);
 
         return (
           <div
             key={d.politician_id || d.name}
             role="button"
             tabIndex={tooSmall ? -1 : 0}
-            aria-label={`${displayName}: ${d.overall_score.toFixed(1)}/10`}
-            onClick={() => onSelect(d.name)}
+            aria-label={
+              d._isOthers ? displayName : `${displayName}: ${d.overall_score.toFixed(1)}/10`
+            }
+            onClick={() => !d._isOthers && onSelect(d.name)}
             onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
+              if ((e.key === "Enter" || e.key === " ") && !d._isOthers) {
                 e.preventDefault();
                 onSelect(d.name);
               }
             }}
-            onTouchEnd={(e) => handleTouchEnd(d.name, e)}
+            onTouchEnd={(e) => !d._isOthers && handleTouchEnd(d.name, e)}
             onMouseEnter={() => {
               if (!isTouchRef.current) setHovered(d.name);
               isTouchRef.current = false;
@@ -143,6 +209,19 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
               borderRadius: 4,
             }}
           >
+            {showInitials && (
+              <div className="w-full h-full flex items-center justify-center">
+                <span
+                  className="font-bold text-white/80"
+                  style={{
+                    fontSize: Math.max(8, Math.min(14, sqrtArea / 4)),
+                    textShadow: "0 1px 2px rgba(0,0,0,0.6)",
+                  }}
+                >
+                  {initials}
+                </span>
+              </div>
+            )}
             {showName && (
               <div
                 className="p-1 h-full flex flex-col justify-between overflow-hidden"

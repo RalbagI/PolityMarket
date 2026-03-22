@@ -1,11 +1,62 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { X, Brain, BarChart3, Shield, AlertTriangle } from "lucide-react";
+import {
+  X,
+  Brain,
+  BarChart3,
+  Shield,
+  AlertTriangle,
+  Cpu,
+  Database,
+  CheckCircle,
+  Eye,
+  Scale,
+  FileText,
+} from "lucide-react";
 import useFocusTrap from "../lib/useFocusTrap";
+
+function Section({ icon: Icon, iconColor, title, children }) {
+  return (
+    <section>
+      <div className="flex items-center gap-2 mb-3">
+        <Icon className={`w-5 h-5 ${iconColor}`} />
+        <h3 className="text-base font-semibold text-white">{title}</h3>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function Paragraph({ text }) {
+  return <p className="text-sm text-gray-300 leading-relaxed">{text}</p>;
+}
+
+function BulletList({ items }) {
+  return (
+    <ul className="mt-2 space-y-1.5">
+      {items.map((item) => (
+        <li key={item} className="text-sm text-gray-400 flex gap-2 leading-relaxed">
+          <span className="text-gray-600 mt-1 shrink-0">•</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function LegalSection({ title, text }) {
+  return (
+    <div className="border-b border-gray-800/50 pb-4 last:border-0 last:pb-0">
+      <h4 className="text-sm font-semibold text-gray-200 mb-1.5">{title}</h4>
+      <p className="text-sm text-gray-400 leading-relaxed">{text}</p>
+    </div>
+  );
+}
 
 export default function MethodologyModal({ isOpen, onClose }) {
   const { t } = useTranslation();
   const modalRef = useRef(null);
+  const [tab, setTab] = useState("methodology");
   useFocusTrap(modalRef, isOpen);
 
   useEffect(() => {
@@ -41,89 +92,272 @@ export default function MethodologyModal({ isOpen, onClose }) {
           aria-labelledby="methodology-title"
           className="bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto"
         >
-          {/* Header */}
-          <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 px-6 py-4 flex items-center justify-between">
-            <h2 id="methodology-title" className="text-lg font-bold text-white">
-              {t("methodology.title")}
-            </h2>
-            <button
-              onClick={onClose}
-              aria-label={t("slidePanel.closeButton.ariaLabel")}
-              className="p-1.5 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
+          {/* Header with tabs */}
+          <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+            <div className="px-6 py-4 flex items-center justify-between">
+              <h2 id="methodology-title" className="text-lg font-bold text-white">
+                {tab === "methodology" ? t("methodology.title") : t("legal.title")}
+              </h2>
+              <button
+                onClick={onClose}
+                aria-label={t("slidePanel.closeButton.ariaLabel")}
+                className="p-1.5 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            {/* Tab bar */}
+            <div className="flex px-6 gap-1">
+              <button
+                onClick={() => setTab("methodology")}
+                className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors ${
+                  tab === "methodology"
+                    ? "bg-gray-800 text-white"
+                    : "text-gray-500 hover:text-gray-300"
+                }`}
+              >
+                {t("methodology.title")}
+              </button>
+              <button
+                onClick={() => setTab("legal")}
+                className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors ${
+                  tab === "legal" ? "bg-gray-800 text-white" : "text-gray-500 hover:text-gray-300"
+                }`}
+              >
+                {t("legal.title")}
+              </button>
+            </div>
           </div>
 
           {/* Content */}
           <div className="px-6 py-6 space-y-8">
-            {/* How It Works */}
-            <section>
-              <div className="flex items-center gap-2 mb-3">
-                <Brain className="w-5 h-5 text-indigo-400" />
-                <h3 className="text-base font-semibold text-white">
-                  {t("methodology.howItWorks.title")}
-                </h3>
-              </div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                {t("methodology.howItWorks.description")}
-              </p>
-            </section>
+            {tab === "methodology" ? (
+              <>
+                {/* How It Works */}
+                <Section
+                  icon={Brain}
+                  iconColor="text-indigo-400"
+                  title={t("methodology.howItWorks.title")}
+                >
+                  <Paragraph text={t("methodology.howItWorks.description")} />
+                  <Paragraph text={t("methodology.howItWorks.description2")} />
+                </Section>
 
-            {/* Scoring */}
-            <section>
-              <div className="flex items-center gap-2 mb-3">
-                <BarChart3 className="w-5 h-5 text-violet-400" />
-                <h3 className="text-base font-semibold text-white">
-                  {t("methodology.scoring.title")}
-                </h3>
-              </div>
-              <p className="text-sm text-gray-300 leading-relaxed mb-3">
-                {t("methodology.scoring.description")}
-              </p>
-              <div className="bg-gray-800/50 rounded-xl p-4 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">{t("methodology.scoring.policy")}</span>
-                  <span className="text-indigo-400 font-medium">40%</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">{t("methodology.scoring.hostility")}</span>
-                  <span className="text-violet-400 font-medium">35%</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-400">{t("methodology.scoring.amplification")}</span>
-                  <span className="text-purple-400 font-medium">25%</span>
-                </div>
-              </div>
-            </section>
+                {/* Scoring */}
+                <Section
+                  icon={BarChart3}
+                  iconColor="text-violet-400"
+                  title={t("methodology.scoring.title")}
+                >
+                  <Paragraph text={t("methodology.scoring.description")} />
+                  <div className="bg-gray-800/50 rounded-xl p-4 mt-3 space-y-3">
+                    <div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300 font-medium">
+                          {t("methodology.scoring.policy")}
+                        </span>
+                        <span className="text-indigo-400 font-bold">40%</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {t("methodology.scoring.policyDesc")}
+                      </p>
+                    </div>
+                    <div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300 font-medium">
+                          {t("methodology.scoring.hostility")}
+                        </span>
+                        <span className="text-violet-400 font-bold">35%</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {t("methodology.scoring.hostilityDesc")}
+                      </p>
+                    </div>
+                    <div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300 font-medium">
+                          {t("methodology.scoring.amplification")}
+                        </span>
+                        <span className="text-purple-400 font-bold">25%</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {t("methodology.scoring.amplificationDesc")}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-3 mt-3">
+                    <p className="text-xs text-indigo-300 font-mono text-center">
+                      {t("methodology.scoring.formula")}
+                    </p>
+                  </div>
+                </Section>
 
-            {/* Data Sources */}
-            <section>
-              <div className="flex items-center gap-2 mb-3">
-                <Shield className="w-5 h-5 text-cyan-400" />
-                <h3 className="text-base font-semibold text-white">
-                  {t("methodology.dataSources.title")}
-                </h3>
-              </div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                {t("methodology.dataSources.description")}
-              </p>
-            </section>
+                {/* Display Options — Size & Color explanation */}
+                <Section
+                  icon={Eye}
+                  iconColor="text-emerald-400"
+                  title={t("methodology.visualization.title")}
+                >
+                  <Paragraph text={t("methodology.visualization.description")} />
+                  <BulletList
+                    items={[
+                      t("methodology.visualization.size"),
+                      t("methodology.visualization.color"),
+                      t("methodology.visualization.interaction"),
+                    ]}
+                  />
 
-            {/* Legal Disclaimer */}
-            <section className="border-t border-gray-800 pt-6">
-              <div className="flex items-center gap-2 mb-3">
-                <AlertTriangle className="w-5 h-5 text-amber-400" />
-                <h3 className="text-base font-semibold text-white">
-                  {t("methodology.disclaimer.title")}
-                </h3>
-              </div>
-              <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4">
-                <p className="text-sm text-gray-300 leading-relaxed font-medium">
-                  {t("methodology.disclaimer.text")}
-                </p>
-              </div>
-            </section>
+                  {/* Display options: נפח and ציון */}
+                  <div className="mt-4">
+                    <h4 className="text-sm font-semibold text-gray-200 mb-2">
+                      {t("methodology.visualization.displayOptions")}
+                    </h4>
+                    <Paragraph text={t("methodology.visualization.displayDescription")} />
+
+                    <div className="bg-gray-800/50 rounded-xl p-4 mt-3 space-y-4">
+                      <div>
+                        <h5 className="text-sm font-medium text-emerald-400 mb-1.5">
+                          {t("methodology.visualization.sizeByTitle")}
+                        </h5>
+                        <div className="space-y-2">
+                          <div className="flex gap-2">
+                            <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-medium shrink-0">
+                              {t("treemap.options.mediaVolume")}
+                            </span>
+                            <p className="text-xs text-gray-400 leading-relaxed">
+                              {t("methodology.visualization.sizeByVolume")}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <span className="text-xs bg-violet-500/20 text-violet-300 px-2 py-0.5 rounded font-medium shrink-0">
+                              {t("treemap.options.score")}
+                            </span>
+                            <p className="text-xs text-gray-400 leading-relaxed">
+                              {t("methodology.visualization.sizeByScore")}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-gray-700/50 pt-3">
+                        <h5 className="text-sm font-medium text-emerald-400 mb-1.5">
+                          {t("methodology.visualization.colorByTitle")}
+                        </h5>
+                        <div className="space-y-2">
+                          <div className="flex gap-2">
+                            <span className="text-xs bg-violet-500/20 text-violet-300 px-2 py-0.5 rounded font-medium shrink-0">
+                              {t("treemap.options.score")}
+                            </span>
+                            <p className="text-xs text-gray-400 leading-relaxed">
+                              {t("methodology.visualization.colorByScore")}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-medium shrink-0">
+                              {t("treemap.options.mediaVolume")}
+                            </span>
+                            <p className="text-xs text-gray-400 leading-relaxed">
+                              {t("methodology.visualization.colorByVolume")}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Section>
+
+                {/* AI Analysis */}
+                <Section
+                  icon={Cpu}
+                  iconColor="text-rose-400"
+                  title={t("methodology.aiAnalysis.title")}
+                >
+                  <Paragraph text={t("methodology.aiAnalysis.description")} />
+                  <BulletList
+                    items={[
+                      t("methodology.aiAnalysis.sarcasm"),
+                      t("methodology.aiAnalysis.pdd"),
+                      t("methodology.aiAnalysis.nuance"),
+                    ]}
+                  />
+                </Section>
+
+                {/* Data Sources */}
+                <Section
+                  icon={Database}
+                  iconColor="text-cyan-400"
+                  title={t("methodology.dataSources.title")}
+                >
+                  <Paragraph text={t("methodology.dataSources.description")} />
+                  <BulletList
+                    items={[
+                      t("methodology.dataSources.hebrew"),
+                      t("methodology.dataSources.english"),
+                      t("methodology.dataSources.social"),
+                      t("methodology.dataSources.frequency"),
+                    ]}
+                  />
+                </Section>
+
+                {/* Quality Control */}
+                <Section
+                  icon={CheckCircle}
+                  iconColor="text-green-400"
+                  title={t("methodology.qualityControl.title")}
+                >
+                  <Paragraph text={t("methodology.qualityControl.description")} />
+                  <BulletList
+                    items={[
+                      t("methodology.qualityControl.validation"),
+                      t("methodology.qualityControl.drift"),
+                      t("methodology.qualityControl.retry"),
+                      t("methodology.qualityControl.deterministic"),
+                    ]}
+                  />
+                </Section>
+              </>
+            ) : (
+              <>
+                {/* Legal Disclaimer sections */}
+                <Section icon={Scale} iconColor="text-amber-400" title={t("legal.title")}>
+                  <div className="space-y-4">
+                    <LegalSection title={t("legal.general.title")} text={t("legal.general.text")} />
+                    <LegalSection
+                      title={t("legal.accuracy.title")}
+                      text={t("legal.accuracy.text")}
+                    />
+                    <LegalSection
+                      title={t("legal.aiLimitations.title")}
+                      text={t("legal.aiLimitations.text")}
+                    />
+                    <LegalSection
+                      title={t("legal.noEndorsement.title")}
+                      text={t("legal.noEndorsement.text")}
+                    />
+                    <LegalSection
+                      title={t("legal.dataSources.title")}
+                      text={t("legal.dataSources.text")}
+                    />
+                    <LegalSection title={t("legal.privacy.title")} text={t("legal.privacy.text")} />
+                    <LegalSection
+                      title={t("legal.liability.title")}
+                      text={t("legal.liability.text")}
+                    />
+                    <LegalSection title={t("legal.changes.title")} text={t("legal.changes.text")} />
+                  </div>
+                </Section>
+
+                {/* Warning box */}
+                <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4">
+                  <div className="flex items-start gap-2">
+                    <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
+                    <p className="text-xs text-amber-200/80 leading-relaxed">
+                      {t("legal.liability.text")}
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

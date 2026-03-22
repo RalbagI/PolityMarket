@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "../App";
 
 vi.mock("react-i18next", () => ({
@@ -103,6 +103,10 @@ vi.mock("./CookieConsent", () => ({
   default: () => null,
 }));
 
+vi.mock("./TopMoversStrip", () => ({
+  default: () => <div data-testid="top-movers" />,
+}));
+
 // Mock ResizeObserver for Treemap
 class MockResizeObserver {
   constructor(cb) {
@@ -139,13 +143,9 @@ describe("App mobile layout", () => {
     expect(main.className).toContain("md:h-screen");
   });
 
-  it("renders chart toggle button with min-h-[44px] touch target", () => {
-    const { container } = render(<App />);
-
-    // The chart toggle button
-    const buttons = container.querySelectorAll("button");
-    const chartToggle = Array.from(buttons).find((b) => b.className.includes("min-h-[44px]"));
-    expect(chartToggle).toBeTruthy();
+  it("renders TopMoversStrip instead of chart toggle", () => {
+    render(<App />);
+    expect(screen.getByTestId("top-movers")).toBeInTheDocument();
   });
 
   it("renders treemap container with min-h-[40vh]", () => {

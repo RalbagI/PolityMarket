@@ -51,6 +51,9 @@ jobs:
           done
           echo "PASS: All data files valid"
 
+      - name: Validate i18n coverage (no English names in UI)
+        run: node scripts/validate-i18n-coverage.js
+
   # Tests: run in parallel with checks
   test:
     name: Test

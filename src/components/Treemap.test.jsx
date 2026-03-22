@@ -132,4 +132,29 @@ describe("Treemap", () => {
     );
     expect(selectedBlock.style.border).toMatch(/rgba\(255,\s*255,\s*255,\s*0\.8\)/);
   });
+
+  it("does not call onSelect when clicking Others bucket", () => {
+    // Simulate a mobile-sized container
+    globalThis.ResizeObserver = class {
+      constructor(cb) {
+        this._cb = cb;
+      }
+      observe() {
+        // Small mobile width triggers Others grouping
+        this._cb([{ contentRect: { width: 320, height: 500 } }]);
+      }
+      disconnect() {}
+    };
+
+    const onSelect = vi.fn();
+    // Create enough politicians to trigger Others bucket on mobile
+    const data = makePoliticians(20);
+    render(<Treemap data={data} onSelect={onSelect} selectedPolitician={null} />);
+
+    const othersBlock = screen.queryByLabelText(/נוספים/);
+    if (othersBlock) {
+      fireEvent.click(othersBlock);
+      expect(onSelect).not.toHaveBeenCalled();
+    }
+  });
 });
