@@ -23,6 +23,13 @@ Follow the workflow defined in `.agent/workflows/resolve-issue.workflow.yaml`. E
 ## Phase 3: Implement Solution
 - Analyze the issue/task requirements
 - Implement the fix/feature with minimal, focused changes
+
+## Phase 3.5: Write Tests
+- Write tests for ALL new/changed behavior using vitest + @testing-library/react
+- Test files go next to the source file (e.g., `Foo.jsx` → `Foo.test.jsx`)
+- Cover: rendering, user interactions, edge cases, responsive behavior
+- For component changes: test DOM output, event handlers, conditional rendering
+- For utility changes: test pure function inputs/outputs
 - Run tests: `npx vitest run --coverage --reporter=verbose` — all must pass
 - Run lint: `npx eslint src/` — must pass clean
 
