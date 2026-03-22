@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
+import { execFileSync } from "child_process";
 import { fileURLToPath } from "url";
-import parseLLMResponse, { dailyEntrySchema, summaryRowSchema } from "./lib/parseLLMResponse.js";
+import { dailyEntrySchema, llmResponseSchema, summaryRowSchema } from "./lib/parseLLMResponse.js";
 import retry from "./lib/retry.js";
 import computeOverallScore from "./lib/computeScore.js";
 
@@ -721,17 +722,16 @@ const SUMMARY_PATH = path.join(DATA_DIR, "timeseries_summary.json");
 const DETAILS_DIR = path.join(DATA_DIR, "details");
 const RETENTION_DAYS = 90;
 const PIPELINE_TIMEZONE = process.env.TZ || "Asia/Jerusalem";
-const OLLAMA_BASE_URL = (process.env.OLLAMA_BASE_URL || "http://127.0.0.1:11434").replace(
-  /\/+$/,
-  ""
-);
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "qwen3:8b";
-const OLLAMA_TIMEOUT_MS = parsePositiveInt(process.env.OLLAMA_TIMEOUT_MS, 120000);
+const CLAUDE_MODEL = process.env.CLAUDE_MODEL || "opus";
+const CLAUDE_TIMEOUT_MS = parsePositiveInt(process.env.CLAUDE_TIMEOUT_MS, 300000);
+const CLAUDE_MAX_BATCH = parsePositiveInt(process.env.CLAUDE_MAX_BATCH, 120);
+const CLAUDE_MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.CLAUDE_MAX_PROMPT_CHARS, 350000);
 const SOURCE_TIMEOUT_MS = parsePositiveInt(process.env.SOURCE_TIMEOUT_MS, 20000);
 const EXPECTED_POLITICIAN_COUNT = parsePositiveInt(
   process.env.PIPELINE_EXPECTED_POLITICIAN_COUNT,
   135
 );
+const MAX_FETCH_FAILURES = parseNonNegativeInt(process.env.PIPELINE_MAX_FETCH_FAILURES, 0);
 const SOURCES_CONFIG_PATH = process.env.PIPELINE_SOURCES_PATH
   ? path.resolve(process.env.PIPELINE_SOURCES_PATH)
   : path.join(__dirname, "sources.config.json");
@@ -740,22 +740,15 @@ const SOURCES_CONFIG_PATH = process.env.PIPELINE_SOURCES_PATH
 
 const rssFeedCache = new Map();
 const redditFeedCache = new Map();
-let ollamaReadyChecked = false;
-const OLLAMA_JSON_SCHEMA = {
-  type: "object",
-  required: ["chain_of_thought", "hostility_level", "policy_approval", "media_amplification"],
-  properties: {
-    chain_of_thought: { type: "string" },
-    hostility_level: { type: "number", minimum: 0, maximum: 1 },
-    policy_approval: { type: "number", minimum: -1, maximum: 1 },
-    media_amplification: { type: "number", minimum: 0, maximum: 1 },
-  },
-  additionalProperties: false,
-};
 
 function parsePositiveInt(value, fallback) {
   const parsed = Number.parseInt(value ?? "", 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function parseNonNegativeInt(value, fallback) {
+  const parsed = Number.parseInt(value ?? "", 10);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
 }
 
 function getCurrentDateString() {
@@ -803,16 +796,6 @@ function normalizeText(input) {
 
 function dedupeStrings(values) {
   return [...new Set(values.map((v) => String(v).trim()).filter(Boolean))];
-}
-
-function extractLikelyJson(raw) {
-  const input = String(raw ?? "");
-  const start = input.indexOf("{");
-  const end = input.lastIndexOf("}");
-  if (start === -1 || end === -1 || end <= start) {
-    return input;
-  }
-  return input.slice(start, end + 1);
 }
 
 function buildSearchTerms(politician) {
@@ -1061,117 +1044,250 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   return unique;
 }
 
-async function ensureOllamaReady() {
-  if (ollamaReadyChecked) {
-    return;
-  }
-
-  const payload = await fetchJson(`${OLLAMA_BASE_URL}/api/tags`, OLLAMA_TIMEOUT_MS);
-  const available = (payload?.models ?? []).map((m) => m.name);
-  if (!available.includes(OLLAMA_MODEL)) {
-    throw new Error(
-      `Ollama model ${OLLAMA_MODEL} not found at ${OLLAMA_BASE_URL}. Available: ${available.join(", ")}`
-    );
-  }
-
-  ollamaReadyChecked = true;
-}
-
 // ── LLM System Prompt ─────────────────────────────────────────────────
 // Loaded from prompts/system-prompt.txt for easy review and iteration.
-//
-// ── Hebrew NLP Model Recommendations ──────────────────────────────────
-// For production: DictaLM 2.0, Hebrew_Nemo, HeBERT, DictaBERT.
 
 const SYSTEM_PROMPT = fs.readFileSync(
   path.join(__dirname, "prompts", "system-prompt.txt"),
   "utf-8"
 );
 
-// ── Build User Prompt ──────────────────────────────────────────────────
-function buildUserPrompt(politicianName, party, headlines, socialMentions) {
-  const headlineBlock = headlines.length
-    ? headlines.map((h) => `- ${h}`).join("\n")
-    : "- No matched headlines found in configured sources.";
+// ── Batched Claude CLI Scoring ───────────────────────────────────────
+// Instead of calling an LLM per-politician, we batch politicians into
+// fewer prompts and call Claude CLI for each batch.
 
-  const mentionBlock = socialMentions
-    .map((m) => {
-      let entry = `- "${m.text}"`;
-      if (m.speaker_metadata?.known_satirist) {
-        entry += ` [Speaker: known satirist]`;
-      }
-      if (m.thread_context?.length) {
-        entry += "\n  Thread context: " + m.thread_context.map((t) => `"${t}"`).join(" → ");
-      }
-      return entry;
-    })
-    .join("\n");
+export function buildBatchedPrompt(politicians, politicianDataMap) {
+  let prompt = `${SYSTEM_PROMPT}
 
-  return `Politician: ${politicianName} (${party})
+---
 
-Recent Headlines:
+Score ALL ${politicians.length} politicians below. For EACH, output a JSON object with:
+- politician_id: the ID provided
+- chain_of_thought: Hebrew analysis (1-2 sentences)
+- hostility_level: 0.0-1.0
+- policy_approval: -1.0 to 1.0
+- media_amplification: 0.0-1.0
+
+Respond with a raw JSON array of ${politicians.length} objects. No markdown. No code fences.
+"No matched" = neutral scores (0.0, 0.0, 0.0). Do NOT output overall_score.
+
+---
+`;
+
+  for (let i = 0; i < politicians.length; i++) {
+    const p = politicians[i];
+    const data = politicianDataMap.get(p.id) || { headlines: [], socialMentions: [] };
+
+    const headlineBlock =
+      data.headlines.length > 0
+        ? data.headlines.map((h) => `- ${h}`).join("\n")
+        : "No matched headlines";
+
+    const mentionBlock =
+      data.socialMentions.length > 0
+        ? data.socialMentions
+            .map((m) => {
+              let entry = `- "${m.text}"`;
+              if (m.speaker_metadata?.known_satirist) {
+                entry += " [Speaker: known satirist]";
+              }
+              if (m.thread_context?.length) {
+                entry += "\n  Thread context: " + m.thread_context.map((t) => `"${t}"`).join(" → ");
+              }
+              return entry;
+            })
+            .join("\n")
+        : "No matched social mentions";
+
+    prompt += `
+[${i + 1}] ${p.id} | ${p.name} (${p.party})
+Headlines:
 ${headlineBlock}
-
-Social Media Mentions (with thread context where available):
+Social:
 ${mentionBlock}
+`;
+  }
 
-Analyze this politician's current public standing. Remember:
-1. Write your chain_of_thought analysis FIRST
-2. Then output the three dimensional scores
-3. Do NOT output an overall_score`;
+  return prompt;
 }
 
-// ── LLM Scoring Function ──────────────────────────────────────────────
-async function scorePoliticianWithLLM(politicianName, party, headlines, socialMentions) {
-  const userPrompt = buildUserPrompt(politicianName, party, headlines, socialMentions);
-
-  const payload = {
-    model: OLLAMA_MODEL,
-    stream: false,
-    format: OLLAMA_JSON_SCHEMA,
-    options: { temperature: 0 },
-    messages: [
-      { role: "system", content: SYSTEM_PROMPT },
-      { role: "user", content: userPrompt },
-    ],
-  };
-
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), OLLAMA_TIMEOUT_MS);
+export function parseClaudeCliOutput(rawOutput) {
   let response;
   try {
-    response = await fetch(`${OLLAMA_BASE_URL}/api/chat`, {
-      method: "POST",
-      signal: controller.signal,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-  } finally {
-    clearTimeout(timer);
-  }
-
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Ollama chat failed (${response.status}): ${body.slice(0, 250)}`);
-  }
-
-  const raw = await response.json();
-  const content = raw?.message?.content;
-  if (typeof content !== "string" || content.trim().length === 0) {
-    throw new Error("Ollama response missing message.content");
-  }
-
-  try {
-    return parseLLMResponse(content);
+    response = JSON.parse(rawOutput);
   } catch (err) {
-    const repaired = extractLikelyJson(content);
-    if (repaired !== content) {
-      return parseLLMResponse(repaired);
-    }
-    throw err;
+    throw new Error(`Failed to parse Claude CLI JSON envelope: ${err.message}`);
   }
+
+  if (response?.is_error) {
+    throw new Error(`Claude CLI error: ${response.result || "unknown"}`);
+  }
+
+  const content = typeof response?.result === "string" ? response.result : "";
+  // Strip markdown code fences if present
+  const cleaned = content
+    .replace(/^```(?:json)?\s*/m, "")
+    .replace(/\s*```\s*$/m, "")
+    .trim();
+
+  let parsed;
+  try {
+    parsed = JSON.parse(cleaned);
+  } catch (e) {
+    // Try to extract JSON array from response
+    const start = cleaned.indexOf("[");
+    const end = cleaned.lastIndexOf("]");
+    if (start !== -1 && end > start) {
+      parsed = JSON.parse(cleaned.slice(start, end + 1));
+    } else {
+      throw new Error(`Failed to parse Claude response as JSON: ${e.message}`);
+    }
+  }
+
+  if (!Array.isArray(parsed)) {
+    throw new Error(`Claude response is not an array (got ${typeof parsed})`);
+  }
+
+  return {
+    results: parsed,
+    durationMs: response?.duration_ms,
+    totalCostUsd: response?.total_cost_usd,
+  };
+}
+
+function callClaudeCLI(prompt) {
+  const env = { ...process.env };
+  delete env.CLAUDECODE; // Allow nested CLI invocation
+
+  const raw = execFileSync("claude", ["-p", "--model", CLAUDE_MODEL, "--output-format", "json"], {
+    input: prompt,
+    env,
+    maxBuffer: 20 * 1024 * 1024,
+    timeout: CLAUDE_TIMEOUT_MS,
+    encoding: "utf-8",
+  });
+
+  const parsed = parseClaudeCliOutput(raw);
+  const duration = Number.isFinite(parsed.durationMs) ? parsed.durationMs : "n/a";
+  const cost =
+    typeof parsed.totalCostUsd === "number" ? `$${parsed.totalCostUsd.toFixed(4)}` : "n/a";
+  console.log(`  Claude CLI: ${duration}ms, ${cost}`);
+  return parsed.results;
+}
+
+export function shouldRetryClaudeBatchError(err) {
+  const msg = String(err?.message || "").toLowerCase();
+
+  // Permanent environment/configuration failures should fail fast.
+  if (msg.includes("enoent") && msg.includes("claude")) {
+    return false;
+  }
+  if (
+    msg.includes("claude cli error") &&
+    (msg.includes("authentication") ||
+      msg.includes("api key") ||
+      msg.includes("not authorized") ||
+      msg.includes("permission denied") ||
+      msg.includes("invalid model") ||
+      msg.includes("model not found"))
+  ) {
+    return false;
+  }
+
+  // Retry parse errors as the model may return valid JSON on a subsequent attempt.
+  return true;
+}
+
+export function splitPoliticiansIntoBatches(
+  politicians,
+  politicianDataMap,
+  maxBatchSize,
+  maxPromptChars
+) {
+  if (!Array.isArray(politicians) || politicians.length === 0) {
+    return [];
+  }
+
+  const cappedBatchSize = Math.max(1, Number(maxBatchSize) || 1);
+  const enforceCharBudget = Number(maxPromptChars) > 0;
+  const batches = [];
+  let current = [];
+
+  const exceedsPromptBudget = (batch) => {
+    if (!enforceCharBudget) return false;
+    return buildBatchedPrompt(batch, politicianDataMap).length > maxPromptChars;
+  };
+
+  for (const politician of politicians) {
+    if (current.length === 0) {
+      current = [politician];
+      if (exceedsPromptBudget(current)) {
+        console.warn(
+          `  ⚠ Single-politician prompt exceeds CLAUDE_MAX_PROMPT_CHARS for ${politician.id}`
+        );
+      }
+      continue;
+    }
+
+    const candidate = [...current, politician];
+    const exceedsCount = candidate.length > cappedBatchSize;
+    const exceedsChars = exceedsPromptBudget(candidate);
+    if (exceedsCount || exceedsChars) {
+      batches.push(current);
+      current = [politician];
+      if (exceedsPromptBudget(current)) {
+        console.warn(
+          `  ⚠ Single-politician prompt exceeds CLAUDE_MAX_PROMPT_CHARS for ${politician.id}`
+        );
+      }
+      continue;
+    }
+    current = candidate;
+  }
+
+  if (current.length > 0) {
+    batches.push(current);
+  }
+
+  return batches;
+}
+
+async function batchScoreAllPoliticians(politicians, politicianDataMap) {
+  const batchSize = Math.min(CLAUDE_MAX_BATCH, Math.max(1, politicians.length));
+  const batches = splitPoliticiansIntoBatches(
+    politicians,
+    politicianDataMap,
+    batchSize,
+    CLAUDE_MAX_PROMPT_CHARS
+  );
+
+  const allResults = [];
+
+  for (let b = 0; b < batches.length; b++) {
+    const batch = batches[b];
+    console.log(
+      `\n  Scoring batch ${b + 1}/${batches.length} (${batch.length} politicians) via Claude ${CLAUDE_MODEL}...`
+    );
+
+    const prompt = buildBatchedPrompt(batch, politicianDataMap);
+    console.log(`  Prompt size: ${prompt.length} chars`);
+
+    const results = await retry(() => callClaudeCLI(prompt), {
+      maxRetries: 2,
+      initialDelay: 5000,
+      maxDelay: 30000,
+      shouldRetry: shouldRetryClaudeBatchError,
+      onRetry: (err, attempt, delay) => {
+        console.warn(
+          `  ⟳ Retry ${attempt}/2 for batch ${b + 1} in ${Math.round(delay)}ms: ${err.message}`
+        );
+      },
+    });
+
+    allResults.push(...results);
+  }
+
+  return allResults;
 }
 
 // ── Artifact Writers ─────────────────────────────────────────────────
@@ -1259,7 +1375,8 @@ function pruneOldDetails() {
 // ── Main Pipeline ──────────────────────────────────────────────────────
 async function main() {
   const today = getCurrentDateString();
-  console.log(`\n📊 PolityMarket Daily Pipeline — ${today}\n`);
+  console.log(`\n📊 PolityMarket Daily Pipeline — ${today}`);
+  console.log(`   LLM: Claude ${CLAUDE_MODEL} (batched)\n`);
 
   if (POLITICIANS.length !== EXPECTED_POLITICIAN_COUNT) {
     throw new Error(
@@ -1268,34 +1385,96 @@ async function main() {
   }
 
   const sourceConfig = loadSourceConfig();
-  await ensureOllamaReady();
 
-  const newEntries = [];
-  const failures = [];
+  // ── Phase 1: Fetch all RSS + Reddit data ────────────────────────────
+  console.log("Phase 1: Fetching media data...");
+  const politicianDataMap = new Map();
+  const fetchFailures = [];
+
   for (const politician of POLITICIANS) {
-    console.log(`\nProcessing: ${politician.name} (${politician.party})`);
     try {
       const headlines = await fetchRSSHeadlines(politician, sourceConfig);
       const socialMentions = await fetchSocialMediaMentions(politician, sourceConfig);
-      const llmResult = await retry(
-        () => scorePoliticianWithLLM(politician.name, politician.party, headlines, socialMentions),
-        {
-          maxRetries: 3,
-          initialDelay: 1000,
-          maxDelay: 30000,
-          onRetry: (err, attempt, delay) => {
-            console.warn(
-              `  ⟳ Retry ${attempt}/3 for ${politician.name} in ${Math.round(delay)}ms: ${err.message}`
-            );
-          },
-        }
-      );
+      politicianDataMap.set(politician.id, { headlines, socialMentions });
+    } catch (err) {
+      console.warn(`  ⚠ Data fetch failed for ${politician.name}: ${err.message}`);
+      // Continue collecting failures so we can fail explicitly after phase 1.
+      politicianDataMap.set(politician.id, { headlines: [], socialMentions: [] });
+      fetchFailures.push({ politicianId: politician.id, message: err.message });
+    }
+  }
 
-      const overallScore = computeOverallScore(
-        llmResult.hostility_level,
-        llmResult.policy_approval,
-        llmResult.media_amplification
-      );
+  if (fetchFailures.length > MAX_FETCH_FAILURES) {
+    const sample = fetchFailures
+      .slice(0, 5)
+      .map((f) => `${f.politicianId}: ${f.message}`)
+      .join("; ");
+    throw new Error(
+      `Data fetch failures (${fetchFailures.length}) exceeded PIPELINE_MAX_FETCH_FAILURES=${MAX_FETCH_FAILURES}. Sample: ${sample}`
+    );
+  }
+  if (fetchFailures.length > 0) {
+    console.warn(
+      `  ⚠ Continuing with ${fetchFailures.length} tolerated fetch failure(s) because PIPELINE_MAX_FETCH_FAILURES=${MAX_FETCH_FAILURES}`
+    );
+  }
+
+  console.log(
+    `  Fetched data for ${politicianDataMap.size} politicians (${fetchFailures.length} partial failures)`
+  );
+
+  // ── Phase 2: Batch-score all politicians via Claude CLI ─────────────
+  console.log("\nPhase 2: Scoring via Claude CLI...");
+  const llmResults = await batchScoreAllPoliticians(POLITICIANS, politicianDataMap);
+
+  if (llmResults.length !== POLITICIANS.length) {
+    throw new Error(
+      `LLM result count mismatch: expected ${POLITICIANS.length}, got ${llmResults.length}`
+    );
+  }
+
+  // Build a lookup by politician_id for fast matching
+  const resultMap = new Map();
+  for (const r of llmResults) {
+    if (r.politician_id) {
+      resultMap.set(r.politician_id, r);
+    }
+  }
+
+  if (resultMap.size !== POLITICIANS.length) {
+    const missing = POLITICIANS.filter((p) => !resultMap.has(p.id)).map((p) => p.id);
+    throw new Error(
+      `LLM returned ${resultMap.size} unique IDs, expected ${POLITICIANS.length}. Missing: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`
+    );
+  }
+
+  // ── Phase 3: Process results and build entries ──────────────────────
+  console.log("\nPhase 3: Processing results...");
+  const newEntries = [];
+  const processFailures = [];
+
+  for (const politician of POLITICIANS) {
+    try {
+      const llmResult = resultMap.get(politician.id);
+      if (!llmResult) {
+        throw new Error(`No LLM result found for politician_id: ${politician.id}`);
+      }
+
+      const parsedLLM = llmResponseSchema.safeParse(llmResult);
+      if (!parsedLLM.success) {
+        const errors = parsedLLM.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`);
+        throw new Error(`LLM response validation failed for ${politician.id}: ${errors.join("; ")}`);
+      }
+
+      const {
+        hostility_level: hostility,
+        policy_approval: policy,
+        media_amplification: amplification,
+        chain_of_thought: chainOfThought,
+      } = parsedLLM.data;
+
+      const overallScore = computeOverallScore(hostility, policy, amplification);
+      const data = politicianDataMap.get(politician.id) || { headlines: [], socialMentions: [] };
 
       const entry = {
         date: today,
@@ -1303,19 +1482,18 @@ async function main() {
         name: politician.name,
         party: politician.party,
         role: politician.role || "mk",
-        hostility_level: llmResult.hostility_level,
-        policy_approval: llmResult.policy_approval,
-        media_amplification: llmResult.media_amplification,
+        hostility_level: hostility,
+        policy_approval: policy,
+        media_amplification: amplification,
         overall_score: overallScore,
-        chain_of_thought: llmResult.chain_of_thought,
-        news_sentiment: parseFloat((((llmResult.policy_approval + 1) / 2) * 10).toFixed(1)),
-        social_sentiment: parseFloat(((1 - llmResult.hostility_level) * 10).toFixed(1)),
-        media_volume: parseFloat((llmResult.media_amplification * 10).toFixed(1)),
-        news_headlines: headlines,
-        social_mentions: socialMentions,
+        chain_of_thought: chainOfThought,
+        news_sentiment: parseFloat((((policy + 1) / 2) * 10).toFixed(1)),
+        social_sentiment: parseFloat(((1 - hostility) * 10).toFixed(1)),
+        media_volume: parseFloat((amplification * 10).toFixed(1)),
+        news_headlines: data.headlines,
+        social_mentions: data.socialMentions,
       };
 
-      // Validate entry against schema before writing
       const validation = dailyEntrySchema.safeParse(entry);
       if (!validation.success) {
         const errors = validation.error.issues
@@ -1325,19 +1503,16 @@ async function main() {
       }
 
       newEntries.push(validation.data);
-
-      console.log(
-        `  → Hostility: ${llmResult.hostility_level} | Policy: ${llmResult.policy_approval} | Amplification: ${llmResult.media_amplification}`
-      );
-      console.log(`  → Overall score (deterministic): ${overallScore}`);
     } catch (err) {
       console.error(`  ✗ Failed to process ${politician.name}: ${err.message}`);
-      failures.push(politician.name);
+      processFailures.push(politician.name);
     }
   }
 
-  if (failures.length) {
-    throw new Error(`Failed to process ${failures.length} politician(s): ${failures.join(", ")}`);
+  if (processFailures.length) {
+    throw new Error(
+      `Failed to process ${processFailures.length} politician(s): ${processFailures.join(", ")}`
+    );
   }
 
   if (newEntries.length !== EXPECTED_POLITICIAN_COUNT) {
@@ -1346,7 +1521,8 @@ async function main() {
     );
   }
 
-  console.log("\nWriting artifacts...");
+  // ── Phase 4: Write artifacts ────────────────────────────────────────
+  console.log("\nPhase 4: Writing artifacts...");
   appendToSummary(newEntries, today);
   writeDetailFile(newEntries, today);
   pruneOldDetails();
@@ -1356,14 +1532,21 @@ async function main() {
 
 // ── CLI Flag Handling ──────────────────────────────────────────────────
 // --validate: Run golden dataset evaluation only (no daily score generation)
-if (process.argv.includes("--validate")) {
-  import("./validateDrift.js").catch((err) => {
-    console.error("Drift validation failed:", err);
-    process.exit(1);
-  });
-} else {
-  main().catch((err) => {
-    console.error("Pipeline failed:", err);
-    process.exit(1);
-  });
+function isDirectExecution() {
+  const entrypoint = process.argv[1];
+  return Boolean(entrypoint && path.resolve(entrypoint) === __filename);
+}
+
+if (isDirectExecution()) {
+  if (process.argv.includes("--validate")) {
+    import("./validateDrift.js").catch((err) => {
+      console.error("Drift validation failed:", err);
+      process.exit(1);
+    });
+  } else {
+    main().catch((err) => {
+      console.error("Pipeline failed:", err);
+      process.exit(1);
+    });
+  }
 }

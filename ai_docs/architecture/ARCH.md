@@ -20,7 +20,7 @@ Dashboard tracking Israeli politician sentiment via automated LLM analysis.
 | i18n      | i18next, Hebrew default, RTL                    |
 | Hosting   | Firebase Hosting (politymarket.web.app)         |
 | Scheduler | systemd timer (`02:00 Asia/Jerusalem`)          |
-| Pipeline  | Node.js scripts + local Ollama (`qwen3:8b`)     |
+| Pipeline  | Node.js scripts + Claude CLI (batched, 1M ctx)  |
 | Functions | Firebase Cloud Functions (manual endpoint only) |
 | CI        | GitHub Actions on self-hosted runners           |
 
