@@ -67,8 +67,9 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
     if (grouped.length === 0) return visible;
 
-    // Create an "Others" aggregate entry
-    const othersVolume = grouped.reduce((s, d) => s + (d.media_volume || 1), 0);
+    // Create an "Others" entry sized like the smallest visible block (not the sum)
+    const smallestVisible = visible[visible.length - 1];
+    const othersValue = Math.max(smallestVisible?.[sizeBy] || smallestVisible?.media_volume || 1, 1);
     const othersScore = grouped.reduce((s, d) => s + d.overall_score, 0) / grouped.length;
 
     return [
@@ -79,8 +80,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         displayName: t("treemap.others", { count: grouped.length }),
         party: "",
         overall_score: othersScore,
-        media_volume: othersVolume,
-        [sizeBy]: othersVolume,
+        media_volume: othersValue,
+        [sizeBy]: othersValue,
         _isOthers: true,
         _groupedNames: grouped.map((d) => d.displayName || d.name),
       },
