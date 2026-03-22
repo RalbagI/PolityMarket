@@ -19,7 +19,9 @@ const HEBREW_NAMES = (() => {
     console.log(`[i18n] Loaded ${Object.keys(names).length} Hebrew politician names`);
     return names;
   } catch (err) {
-    console.warn(`[i18n] Could not load Hebrew names — Hebrew search queries will use English names: ${err.message}`);
+    console.warn(
+      `[i18n] Could not load Hebrew names — Hebrew search queries will use English names: ${err.message}`
+    );
     return {};
   }
 })();
@@ -831,8 +833,7 @@ export function buildSearchTerms(politician) {
       .split(/\s+/)
       .map((token) => normalizeText(token))
       .filter(
-        (token) =>
-          token.length >= MIN_HEBREW_TOKEN_LENGTH && !HEBREW_TOKEN_DENYLIST.has(token)
+        (token) => token.length >= MIN_HEBREW_TOKEN_LENGTH && !HEBREW_TOKEN_DENYLIST.has(token)
       );
     terms.push(...hebrewTokens);
   }
