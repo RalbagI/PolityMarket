@@ -21,6 +21,30 @@
   "social": {
     "redditSubreddits": ["Israel", "worldnews", "MiddleEastNews", "IsraelPolitics"],
     "maxPostsPerSubreddit": 50,
-    "maxMentionsPerPolitician": 10
+    "maxMentionsPerPolitician": 12,
+    "telegram": {
+      "channels": [
+        "KanNewss",
+        "kann_news",
+        "AbuAliExpress",
+        "newsaborim",
+        "GLZRadio",
+        "MekomitNews",
+        "gaboreno",
+        "bhaborim"
+      ],
+      "maxMessagesPerChannel": 20,
+      "maxMentionsPerPolitician": 8
+    },
+    "fxp": {
+      "forumIds": ["31", "10"],
+      "maxThreadsPerForum": 30,
+      "maxMentionsPerPolitician": 3
+    },
+    "bluesky": {
+      "enabled": true,
+      "maxPostsPerSearch": 10,
+      "maxMentionsPerPolitician": 3
+    }
   }
 }
