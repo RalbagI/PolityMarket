@@ -15,8 +15,11 @@ const HEBREW_NAMES = (() => {
   try {
     const i18nPath = path.resolve(__dirname, "../src/locales/he/translation.json");
     const translations = JSON.parse(fs.readFileSync(i18nPath, "utf-8"));
-    return translations.politicians || {};
-  } catch {
+    const names = translations.politicians || {};
+    console.log(`[i18n] Loaded ${Object.keys(names).length} Hebrew politician names`);
+    return names;
+  } catch (err) {
+    console.warn(`[i18n] Could not load Hebrew names — Hebrew search queries will use English names: ${err.message}`);
     return {};
   }
 })();
