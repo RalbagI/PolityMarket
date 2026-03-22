@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import useFocusTrap from "../lib/useFocusTrap";
@@ -30,6 +30,19 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose]);
+
+  // Swipe-to-close for mobile bottom sheet
+  const touchStartY = useRef(0);
+  const handleSwipeStart = useCallback((e) => {
+    touchStartY.current = e.touches[0].clientY;
+  }, []);
+  const handleSwipeEnd = useCallback(
+    (e) => {
+      const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+      if (deltaY > 80) onClose();
+    },
+    [onClose]
+  );
 
   // Prevent body scroll when panel is open
   useEffect(() => {
@@ -67,9 +80,12 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
           ${isOpen ? "max-sm:translate-y-0" : "max-sm:translate-y-full"}
         `}
       >
-        {/* Header */}
-        {/* Swipe indicator for mobile bottom sheet */}
-        <div className="sm:hidden flex justify-center pt-2 pb-1">
+        {/* Swipe indicator + drag handle for mobile bottom sheet */}
+        <div
+          className="sm:hidden flex justify-center pt-2 pb-1 cursor-grab"
+          onTouchStart={handleSwipeStart}
+          onTouchEnd={handleSwipeEnd}
+        >
           <div className="w-10 h-1 rounded-full bg-gray-600" />
         </div>
 
@@ -87,7 +103,7 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6">{children}</div>
+        <div className="p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom))]">{children}</div>
       </div>
     </>
   );

@@ -132,8 +132,8 @@ export default function App() {
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
-      <main className="md:h-screen flex flex-col md:ms-[260px] pt-14 md:pt-0">
-        {/* Treemap */}
+      <main className="h-[calc(100dvh-3.5rem)] md:h-screen flex flex-col md:ms-[260px] pt-14 md:pt-0">
+        {/* Treemap — explicit height so flex-1 + h-full resolves in scrollable parent */}
         <div className="flex-1 min-h-[40vh] sm:min-h-[50vh] md:min-h-[300px]">
           <ErrorBoundary>
             <Treemap
@@ -148,9 +148,9 @@ export default function App() {
         <div className="shrink-0 border-t border-gray-800 bg-gray-950">
           <button
             onClick={() => setChartVisible(!chartVisible)}
-            className="w-full flex items-center justify-center gap-1 py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
+            className="w-full flex items-center justify-center gap-1 min-h-[44px] py-2 text-xs text-gray-500 hover:text-gray-300 transition-colors"
           >
-            {chartVisible ? <ChevronDown className="w-3 h-3" /> : <ChevronUp className="w-3 h-3" />}
+            {chartVisible ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
             {chartVisible ? t("app.chart.hide") : t("app.chart.show")}
           </button>
 

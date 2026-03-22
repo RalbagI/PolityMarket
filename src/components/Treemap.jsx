@@ -55,23 +55,15 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     [hovered]
   );
 
-  // On touch: first tap shows tooltip, second tap (or tap same) opens panel
+  // Mobile: single tap opens detail panel directly (no hover on touch devices)
   const handleTouchEnd = useCallback(
     (name, e) => {
       isTouchRef.current = true;
-      if (hovered === name) {
-        // Second tap on same block — open panel
-        onSelect(name);
-        setHovered(null);
-      } else {
-        // First tap — show tooltip (use changedTouches from touchend)
-        e.preventDefault(); // prevent synthetic click only at touchend
-        const touch = e.changedTouches[0];
-        setHovered(name);
-        setMousePos({ x: touch.clientX, y: touch.clientY });
-      }
+      e.preventDefault();
+      onSelect(name);
+      setHovered(null);
     },
-    [hovered, onSelect]
+    [onSelect]
   );
 
   if (!data || !data.length) {
