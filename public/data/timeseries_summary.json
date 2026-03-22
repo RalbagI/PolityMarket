@@ -354,7 +354,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 7.5,
     "media_volume": 2.9
@@ -834,7 +834,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 5.2,
     "media_volume": 4.4
@@ -844,7 +844,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 4.6,
     "media_volume": 5.1
@@ -1554,7 +1554,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 5.9,
     "media_volume": 3.2
@@ -2034,7 +2034,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 6.3,
     "media_volume": 7.1
@@ -2044,7 +2044,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 5.7,
     "media_volume": 2.2
@@ -2754,7 +2754,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 8.6,
     "media_volume": 4.9
@@ -3234,7 +3234,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 3.7,
     "media_volume": 3.1
@@ -3244,7 +3244,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 8.8,
     "media_volume": 6
@@ -3954,7 +3954,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 5.9,
     "media_volume": 4.3
@@ -4434,7 +4434,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 8.3,
     "media_volume": 5.6
@@ -4444,7 +4444,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 3.3,
     "media_volume": 4.1
@@ -5154,7 +5154,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 3.3,
     "media_volume": 3.6
@@ -5634,7 +5634,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 7.6,
     "media_volume": 3.4
@@ -5644,7 +5644,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 3.3,
     "media_volume": 4.2
@@ -6354,7 +6354,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 3.6,
     "media_volume": 3.6
@@ -6834,7 +6834,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 4.1,
     "media_volume": 7.5
@@ -6844,7 +6844,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 2.3,
     "media_volume": 3.4
@@ -7554,7 +7554,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 7.7,
     "media_volume": 6
@@ -8034,7 +8034,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 3.4,
     "media_volume": 1.7
@@ -8044,7 +8044,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 4.6,
     "media_volume": 6.3
@@ -8754,7 +8754,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 6.5,
     "media_volume": 5.8
@@ -9234,7 +9234,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 5.1,
     "media_volume": 5.1
@@ -9244,7 +9244,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 5.5,
     "media_volume": 4.4
@@ -9954,7 +9954,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 7.2,
     "media_volume": 5.4
@@ -10434,7 +10434,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 3.9,
     "media_volume": 3.1
@@ -10444,7 +10444,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 7.1,
     "media_volume": 5.8
@@ -11154,7 +11154,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 3.4,
     "media_volume": 2.7
@@ -11634,7 +11634,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 6.5,
     "media_volume": 6.3
@@ -11644,7 +11644,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 3.8,
     "media_volume": 2.3
@@ -12354,7 +12354,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 7.2,
     "media_volume": 4.8
@@ -12834,7 +12834,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 7.7,
     "media_volume": 5.4
@@ -12844,7 +12844,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 5,
     "media_volume": 6.4
@@ -13554,7 +13554,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 5.4,
     "media_volume": 5.2
@@ -14034,7 +14034,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 5.1,
     "media_volume": 4.6
@@ -14044,7 +14044,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 7.4,
     "media_volume": 4.5
@@ -14754,7 +14754,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 6.7,
     "media_volume": 3.9
@@ -15234,7 +15234,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 2.8,
     "media_volume": 5.3
@@ -15244,7 +15244,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 6.7,
     "media_volume": 4.3
@@ -15954,7 +15954,7 @@
     "politician_id": "gideon-saar",
     "name": "Gideon Sa'ar",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 3,
     "media_volume": 6.5
@@ -16434,7 +16434,7 @@
     "politician_id": "sharren-haskel",
     "name": "Sharren Haskel",
     "party": "National Unity",
-    "wing": "center",
+    "wing": "right",
     "sector": "secular",
     "overall_score": 7,
     "media_volume": 5.6
@@ -16444,7 +16444,7 @@
     "politician_id": "shelly-tal-meron",
     "name": "Shelly Tal Meron",
     "party": "Likud",
-    "wing": "right",
+    "wing": "center",
     "sector": "secular",
     "overall_score": 5,
     "media_volume": 6.8
@@ -16805,7 +16805,9 @@
     "name": "Ahmad Tibi",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -16813,7 +16815,9 @@
     "name": "Aida Touma-Suleiman",
     "party": "Hadash-Ta'al",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -16821,7 +16825,9 @@
     "name": "Almog Cohen",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -16829,7 +16835,9 @@
     "name": "Alon Schuster",
     "party": "National Unity",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16837,7 +16845,9 @@
     "name": "Ami Daniel",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16845,7 +16855,9 @@
     "name": "Amichai Eliyahu",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -16853,7 +16865,9 @@
     "name": "Amir Ohana",
     "party": "Likud",
     "overall_score": 7.1,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16861,7 +16875,9 @@
     "name": "Ariel Atias",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -16869,7 +16885,9 @@
     "name": "Ariel Kallner",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16877,7 +16895,9 @@
     "name": "Aryeh Deri",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -16885,7 +16905,9 @@
     "name": "Atta Abu Medeghem",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -16893,7 +16915,9 @@
     "name": "Avi Dichter",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16901,7 +16925,9 @@
     "name": "Avichay Buaron",
     "party": "Likud",
     "overall_score": 5.2,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16909,7 +16935,9 @@
     "name": "Avigdor Lieberman",
     "party": "Yisrael Beiteinu",
     "overall_score": 4.5,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16917,7 +16945,9 @@
     "name": "Ayman Odeh",
     "party": "Hadash-Ta'al",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -16925,7 +16955,9 @@
     "name": "Ben Simon",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16933,7 +16965,9 @@
     "name": "Benjamin Netanyahu",
     "party": "Likud",
     "overall_score": 5.6,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16941,7 +16975,9 @@
     "name": "Benny Gantz",
     "party": "National Unity",
     "overall_score": 7.1,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16949,7 +16985,9 @@
     "name": "Bezalel Smotrich",
     "party": "Religious Zionism",
     "overall_score": 3.4,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -16957,7 +16995,9 @@
     "name": "Boaz Bismuth",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16965,7 +17005,9 @@
     "name": "Boaz Toporovsky",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16973,7 +17015,9 @@
     "name": "Orit Farkash-Hacohen",
     "party": "National Unity",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16981,7 +17025,9 @@
     "name": "Dan Ilouz",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16989,7 +17035,9 @@
     "name": "Danny Danon",
     "party": "Likud",
     "overall_score": 7.3,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -16997,7 +17045,9 @@
     "name": "David Amsalem",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17005,7 +17055,9 @@
     "name": "David Bitan",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17013,7 +17065,9 @@
     "name": "Debbie Biton",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17021,7 +17075,9 @@
     "name": "Efrat Rayten",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17029,7 +17085,9 @@
     "name": "Elazar Stern",
     "party": "Yesh Atid",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17037,7 +17095,9 @@
     "name": "Eli Cohen",
     "party": "Likud",
     "overall_score": 6.5,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17045,7 +17105,9 @@
     "name": "Eliyahu Revivo",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17053,7 +17115,9 @@
     "name": "Evgeny Sova",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17061,7 +17125,9 @@
     "name": "Fateen Mulla",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "druze"
   },
   {
     "date": "2026-03-19",
@@ -17069,7 +17135,9 @@
     "name": "Gadi Eisenkot",
     "party": "National Unity",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17077,7 +17145,9 @@
     "name": "George Ilatov",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17085,7 +17155,9 @@
     "name": "Gideon Sa'ar",
     "party": "National Unity",
     "overall_score": 7,
-    "media_volume": 5
+    "media_volume": 5,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17093,7 +17165,9 @@
     "name": "Gilad Kariv",
     "party": "Labor",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17101,7 +17175,9 @@
     "name": "Haim Biton",
     "party": "Shas",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17109,7 +17185,9 @@
     "name": "Hamad Amar",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "druze"
   },
   {
     "date": "2026-03-19",
@@ -17117,7 +17195,9 @@
     "name": "Hanoch Milwidsky",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17125,7 +17205,9 @@
     "name": "Hili Tropper",
     "party": "National Unity",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17133,7 +17215,9 @@
     "name": "Idan Roll",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17141,7 +17225,9 @@
     "name": "Iman Khatib-Yasin",
     "party": "Ra'am",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -17149,7 +17235,9 @@
     "name": "Itamar Ben Gvir",
     "party": "Otzma Yehudit",
     "overall_score": 3.2,
-    "media_volume": 7
+    "media_volume": 7,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17157,7 +17245,9 @@
     "name": "Karine Elharrar",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17165,7 +17255,9 @@
     "name": "Keti Shitrit",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17173,7 +17265,9 @@
     "name": "Limor Magen Telem",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17181,7 +17275,9 @@
     "name": "Limor Son Har-Melech",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17189,7 +17285,9 @@
     "name": "Limor Widman-Yosef",
     "party": "Otzma Yehudit",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17197,7 +17295,9 @@
     "name": "Mansour Abbas",
     "party": "Ra'am",
     "overall_score": 4.4,
-    "media_volume": 8
+    "media_volume": 8,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -17205,7 +17305,9 @@
     "name": "Matan Kahana",
     "party": "National Unity",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17213,7 +17315,9 @@
     "name": "Mazen Ghanaim",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -17221,7 +17325,9 @@
     "name": "Meir Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17229,7 +17335,9 @@
     "name": "Meir Porush",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17237,7 +17345,9 @@
     "name": "Meirav Ben Ari",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17245,7 +17355,9 @@
     "name": "Merav Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17253,7 +17365,9 @@
     "name": "Merav Michaeli",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17261,7 +17375,9 @@
     "name": "Michael Biton",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17269,7 +17385,9 @@
     "name": "Michael Malchieli",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17277,7 +17395,9 @@
     "name": "Mickey Levy",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17285,7 +17405,9 @@
     "name": "Miri Regev",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17293,7 +17415,9 @@
     "name": "Moshe Abutbul",
     "party": "Shas",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17301,7 +17425,9 @@
     "name": "Moshe Arbel",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17309,7 +17435,9 @@
     "name": "Moshe Gafni",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17317,7 +17445,9 @@
     "name": "Moshe Saada",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17325,7 +17455,9 @@
     "name": "Moshe Tur-Paz",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17333,7 +17465,9 @@
     "name": "Naama Lazimi",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17341,7 +17475,9 @@
     "name": "Naor Shiri",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17349,7 +17485,9 @@
     "name": "Nir Barkat",
     "party": "Likud",
     "overall_score": 7.1,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17357,7 +17495,9 @@
     "name": "Nira Shpak",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17365,7 +17505,9 @@
     "name": "Nissim Vaturi",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17373,7 +17515,9 @@
     "name": "Oded Forer",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17381,7 +17525,9 @@
     "name": "Ofer Cassif",
     "party": "Hadash-Ta'al",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "arab",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17389,7 +17535,9 @@
     "name": "Ofir Akunis",
     "party": "Likud",
     "overall_score": 5.9,
-    "media_volume": 5
+    "media_volume": 5,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17397,7 +17545,9 @@
     "name": "Ofir Sofer",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17405,7 +17555,9 @@
     "name": "Ohad Tal",
     "party": "Religious Zionism",
     "overall_score": 6,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17413,7 +17565,9 @@
     "name": "Orit Strock",
     "party": "Religious Zionism",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17421,7 +17575,9 @@
     "name": "Orna Barbivai",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17429,7 +17585,9 @@
     "name": "Osher Shkalim",
     "party": "Likud",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17437,7 +17595,9 @@
     "name": "Pnina Tamano-Shata",
     "party": "National Unity",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17445,7 +17605,9 @@
     "name": "Rachel Azaria",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17453,7 +17615,9 @@
     "name": "Ron Katz",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17461,7 +17625,9 @@
     "name": "Sharon Nir",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17469,7 +17635,9 @@
     "name": "Sharren Haskel",
     "party": "National Unity",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17477,7 +17645,9 @@
     "name": "Shelly Tal Meron",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17485,7 +17655,9 @@
     "name": "Shlomo Karhi",
     "party": "Likud",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17493,7 +17665,9 @@
     "name": "Simcha Rothman",
     "party": "Religious Zionism",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17501,7 +17675,9 @@
     "name": "Simon Davidson",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17509,7 +17685,9 @@
     "name": "Tally Gotliv",
     "party": "Likud",
     "overall_score": 6,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17517,7 +17695,9 @@
     "name": "Tatiana Mazarsky",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17525,7 +17705,9 @@
     "name": "Tomer Glam",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17533,7 +17715,9 @@
     "name": "Tsega Melaku",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17541,7 +17725,9 @@
     "name": "Uri Maklev",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17549,7 +17735,9 @@
     "name": "Uriel Buso",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17557,7 +17745,9 @@
     "name": "Vladimir Beliak",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17565,7 +17755,9 @@
     "name": "Waleed Taha",
     "party": "Ra'am",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -17573,7 +17765,9 @@
     "name": "Yaakov Asher",
     "party": "United Torah Judaism",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17581,7 +17775,9 @@
     "name": "Yaakov Margi",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17589,7 +17785,9 @@
     "name": "Yaakov Tesler",
     "party": "United Torah Judaism",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17597,7 +17795,9 @@
     "name": "Yair Golan",
     "party": "Democrats",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17605,7 +17805,9 @@
     "name": "Yair Lapid",
     "party": "Yesh Atid",
     "overall_score": 6.8,
-    "media_volume": 5
+    "media_volume": 5,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17613,7 +17815,9 @@
     "name": "Yariv Levin",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17621,7 +17825,9 @@
     "name": "Yifat Shasha-Biton",
     "party": "National Unity",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17629,7 +17835,9 @@
     "name": "Yinon Azoulay",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17637,7 +17845,9 @@
     "name": "Yisrael Eichler",
     "party": "United Torah Judaism",
     "overall_score": 4.3,
-    "media_volume": 5
+    "media_volume": 5,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17645,7 +17855,9 @@
     "name": "Yisrael Katz",
     "party": "Likud",
     "overall_score": 5.6,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17653,7 +17865,9 @@
     "name": "Yitzhak Cohen",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17661,7 +17875,9 @@
     "name": "Yitzhak Goldknopf",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17669,7 +17885,9 @@
     "name": "Yitzhak Wasserlauf",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17677,7 +17895,9 @@
     "name": "Yoav Ben-Tzur",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-19",
@@ -17685,7 +17905,9 @@
     "name": "Yoav Gallant",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17693,7 +17915,9 @@
     "name": "Yoav Segalovitz",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17701,7 +17925,9 @@
     "name": "Yorai Lahav-Hertzano",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17709,7 +17935,9 @@
     "name": "Youssef Atauna",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-19",
@@ -17717,7 +17945,9 @@
     "name": "Yuli Edelstein",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17725,7 +17955,9 @@
     "name": "Yulia Malinovsky",
     "party": "Yisrael Beiteinu",
     "overall_score": 4.5,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17733,7 +17965,9 @@
     "name": "Ze'ev Benjamin Begin",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17741,7 +17975,9 @@
     "name": "Zeev Elkin",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-19",
@@ -17749,7 +17985,9 @@
     "name": "Zvi Sukkot",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-19",
@@ -17757,7 +17995,9 @@
     "name": "Zvika Fogel",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -17765,7 +18005,9 @@
     "name": "Ahmad Tibi",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -17773,7 +18015,9 @@
     "name": "Aida Touma-Suleiman",
     "party": "Hadash-Ta'al",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -17781,7 +18025,9 @@
     "name": "Almog Cohen",
     "party": "Otzma Yehudit",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -17789,7 +18035,9 @@
     "name": "Alon Schuster",
     "party": "National Unity",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17797,7 +18045,9 @@
     "name": "Ami Daniel",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17805,7 +18055,9 @@
     "name": "Amichai Eliyahu",
     "party": "Otzma Yehudit",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -17813,7 +18065,9 @@
     "name": "Amir Ohana",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17821,7 +18075,9 @@
     "name": "Ariel Atias",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -17829,7 +18085,9 @@
     "name": "Ariel Kallner",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17837,7 +18095,9 @@
     "name": "Aryeh Deri",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -17845,7 +18105,9 @@
     "name": "Atta Abu Medeghem",
     "party": "Ra'am",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -17853,7 +18115,9 @@
     "name": "Avi Dichter",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17861,7 +18125,9 @@
     "name": "Avichay Buaron",
     "party": "Likud",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17869,7 +18135,9 @@
     "name": "Avigdor Lieberman",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17877,7 +18145,9 @@
     "name": "Ayman Odeh",
     "party": "Hadash-Ta'al",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -17885,7 +18155,9 @@
     "name": "Ben Simon",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17893,7 +18165,9 @@
     "name": "Benjamin Netanyahu",
     "party": "Likud",
     "overall_score": 7.1,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17901,7 +18175,9 @@
     "name": "Benny Gantz",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17909,7 +18185,9 @@
     "name": "Bezalel Smotrich",
     "party": "Religious Zionism",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -17917,7 +18195,9 @@
     "name": "Boaz Bismuth",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17925,7 +18205,9 @@
     "name": "Boaz Toporovsky",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17933,7 +18215,9 @@
     "name": "Orit Farkash-Hacohen",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17941,7 +18225,9 @@
     "name": "Dan Ilouz",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17949,7 +18235,9 @@
     "name": "Danny Danon",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17957,7 +18245,9 @@
     "name": "David Amsalem",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17965,7 +18255,9 @@
     "name": "David Bitan",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17973,7 +18265,9 @@
     "name": "Debbie Biton",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17981,7 +18275,9 @@
     "name": "Efrat Rayten",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17989,7 +18285,9 @@
     "name": "Elazar Stern",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -17997,7 +18295,9 @@
     "name": "Eli Cohen",
     "party": "Likud",
     "overall_score": 5.6,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18005,7 +18305,9 @@
     "name": "Eliyahu Revivo",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18013,7 +18315,9 @@
     "name": "Evgeny Sova",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.2,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18021,7 +18325,9 @@
     "name": "Fateen Mulla",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "druze"
   },
   {
     "date": "2026-03-20",
@@ -18029,7 +18335,9 @@
     "name": "Gadi Eisenkot",
     "party": "National Unity",
     "overall_score": 8,
-    "media_volume": 8
+    "media_volume": 8,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18037,7 +18345,9 @@
     "name": "George Ilatov",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18045,7 +18355,9 @@
     "name": "Gideon Sa'ar",
     "party": "National Unity",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18053,7 +18365,9 @@
     "name": "Gilad Kariv",
     "party": "Labor",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18061,7 +18375,9 @@
     "name": "Haim Biton",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18069,7 +18385,9 @@
     "name": "Hamad Amar",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "druze"
   },
   {
     "date": "2026-03-20",
@@ -18077,7 +18395,9 @@
     "name": "Hanoch Milwidsky",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18085,7 +18405,9 @@
     "name": "Hili Tropper",
     "party": "National Unity",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18093,7 +18415,9 @@
     "name": "Idan Roll",
     "party": "Yesh Atid",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18101,7 +18425,9 @@
     "name": "Iman Khatib-Yasin",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -18109,7 +18435,9 @@
     "name": "Itamar Ben Gvir",
     "party": "Otzma Yehudit",
     "overall_score": 3.7,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18117,7 +18445,9 @@
     "name": "Karine Elharrar",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18125,7 +18455,9 @@
     "name": "Keti Shitrit",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18133,7 +18465,9 @@
     "name": "Limor Magen Telem",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18141,7 +18475,9 @@
     "name": "Limor Son Har-Melech",
     "party": "Religious Zionism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18149,7 +18485,9 @@
     "name": "Limor Widman-Yosef",
     "party": "Otzma Yehudit",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18157,7 +18495,9 @@
     "name": "Mansour Abbas",
     "party": "Ra'am",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -18165,7 +18505,9 @@
     "name": "Matan Kahana",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18173,7 +18515,9 @@
     "name": "Mazen Ghanaim",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -18181,7 +18525,9 @@
     "name": "Meir Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18189,7 +18535,9 @@
     "name": "Meir Porush",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18197,7 +18545,9 @@
     "name": "Meirav Ben Ari",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18205,7 +18555,9 @@
     "name": "Merav Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18213,7 +18565,9 @@
     "name": "Merav Michaeli",
     "party": "Labor",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18221,7 +18575,9 @@
     "name": "Michael Biton",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18229,7 +18585,9 @@
     "name": "Michael Malchieli",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18237,7 +18595,9 @@
     "name": "Mickey Levy",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18245,7 +18605,9 @@
     "name": "Miri Regev",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18253,7 +18615,9 @@
     "name": "Moshe Abutbul",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18261,7 +18625,9 @@
     "name": "Moshe Arbel",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18269,7 +18635,9 @@
     "name": "Moshe Gafni",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18277,7 +18645,9 @@
     "name": "Moshe Saada",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18285,7 +18655,9 @@
     "name": "Moshe Tur-Paz",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18293,7 +18665,9 @@
     "name": "Naama Lazimi",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18301,7 +18675,9 @@
     "name": "Naor Shiri",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18309,7 +18685,9 @@
     "name": "Nir Barkat",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18317,7 +18695,9 @@
     "name": "Nira Shpak",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18325,7 +18705,9 @@
     "name": "Nissim Vaturi",
     "party": "Likud",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18333,7 +18715,9 @@
     "name": "Oded Forer",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18341,7 +18725,9 @@
     "name": "Ofer Cassif",
     "party": "Hadash-Ta'al",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18349,7 +18735,9 @@
     "name": "Ofir Akunis",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18357,7 +18745,9 @@
     "name": "Ofir Sofer",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18365,7 +18755,9 @@
     "name": "Ohad Tal",
     "party": "Religious Zionism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18373,7 +18765,9 @@
     "name": "Orit Strock",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18381,7 +18775,9 @@
     "name": "Orna Barbivai",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18389,7 +18785,9 @@
     "name": "Osher Shkalim",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18397,7 +18795,9 @@
     "name": "Pnina Tamano-Shata",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18405,7 +18805,9 @@
     "name": "Rachel Azaria",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18413,7 +18815,9 @@
     "name": "Ron Katz",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18421,7 +18825,9 @@
     "name": "Sharon Nir",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18429,7 +18835,9 @@
     "name": "Sharren Haskel",
     "party": "National Unity",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18437,7 +18845,9 @@
     "name": "Shelly Tal Meron",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18445,7 +18855,9 @@
     "name": "Shlomo Karhi",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18453,7 +18865,9 @@
     "name": "Simcha Rothman",
     "party": "Religious Zionism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18461,7 +18875,9 @@
     "name": "Simon Davidson",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18469,7 +18885,9 @@
     "name": "Tally Gotliv",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18477,7 +18895,9 @@
     "name": "Tatiana Mazarsky",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18485,7 +18905,9 @@
     "name": "Tomer Glam",
     "party": "Yesh Atid",
     "overall_score": 5,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18493,7 +18915,9 @@
     "name": "Tsega Melaku",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18501,7 +18925,9 @@
     "name": "Uri Maklev",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18509,7 +18935,9 @@
     "name": "Uriel Buso",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18517,7 +18945,9 @@
     "name": "Vladimir Beliak",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18525,7 +18955,9 @@
     "name": "Waleed Taha",
     "party": "Ra'am",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -18533,7 +18965,9 @@
     "name": "Yaakov Asher",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18541,7 +18975,9 @@
     "name": "Yaakov Margi",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18549,7 +18985,9 @@
     "name": "Yaakov Tesler",
     "party": "United Torah Judaism",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18557,7 +18995,9 @@
     "name": "Yair Golan",
     "party": "Democrats",
     "overall_score": 5.2,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18565,7 +19005,9 @@
     "name": "Yair Lapid",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18573,7 +19015,9 @@
     "name": "Yariv Levin",
     "party": "Likud",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18581,7 +19025,9 @@
     "name": "Yifat Shasha-Biton",
     "party": "National Unity",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18589,7 +19035,9 @@
     "name": "Yinon Azoulay",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18597,7 +19045,9 @@
     "name": "Yisrael Eichler",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18605,7 +19055,9 @@
     "name": "Yisrael Katz",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18613,7 +19065,9 @@
     "name": "Yitzhak Cohen",
     "party": "Shas",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18621,7 +19075,9 @@
     "name": "Yitzhak Goldknopf",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18629,7 +19085,9 @@
     "name": "Yitzhak Wasserlauf",
     "party": "Otzma Yehudit",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18637,7 +19095,9 @@
     "name": "Yoav Ben-Tzur",
     "party": "Shas",
     "overall_score": 5.2,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-20",
@@ -18645,7 +19105,9 @@
     "name": "Yoav Gallant",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18653,7 +19115,9 @@
     "name": "Yoav Segalovitz",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18661,7 +19125,9 @@
     "name": "Yorai Lahav-Hertzano",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18669,7 +19135,9 @@
     "name": "Youssef Atauna",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-20",
@@ -18677,7 +19145,9 @@
     "name": "Yuli Edelstein",
     "party": "Likud",
     "overall_score": 5.2,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18685,7 +19155,9 @@
     "name": "Yulia Malinovsky",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18693,7 +19165,9 @@
     "name": "Ze'ev Benjamin Begin",
     "party": "National Unity",
     "overall_score": 6.7,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18701,7 +19175,9 @@
     "name": "Zeev Elkin",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-20",
@@ -18709,7 +19185,9 @@
     "name": "Zvi Sukkot",
     "party": "Religious Zionism",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-20",
@@ -18717,7 +19195,9 @@
     "name": "Zvika Fogel",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -18725,7 +19205,9 @@
     "name": "Ahmad Tibi",
     "party": "Hadash-Ta'al",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -18733,7 +19215,9 @@
     "name": "Aida Touma-Suleiman",
     "party": "Hadash-Ta'al",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -18741,7 +19225,9 @@
     "name": "Almog Cohen",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -18749,7 +19235,9 @@
     "name": "Alon Schuster",
     "party": "National Unity",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18757,7 +19245,9 @@
     "name": "Ami Daniel",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18765,7 +19255,9 @@
     "name": "Amichai Eliyahu",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -18773,7 +19265,9 @@
     "name": "Amir Ohana",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18781,7 +19275,9 @@
     "name": "Ariel Atias",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -18789,7 +19285,9 @@
     "name": "Ariel Kallner",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18797,7 +19295,9 @@
     "name": "Aryeh Deri",
     "party": "Shas",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -18805,7 +19305,9 @@
     "name": "Atta Abu Medeghem",
     "party": "Ra'am",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -18813,7 +19315,9 @@
     "name": "Avi Dichter",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18821,7 +19325,9 @@
     "name": "Avichay Buaron",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18829,7 +19335,9 @@
     "name": "Avigdor Lieberman",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18837,7 +19345,9 @@
     "name": "Ayman Odeh",
     "party": "Hadash-Ta'al",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -18845,7 +19355,9 @@
     "name": "Ben Simon",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18853,7 +19365,9 @@
     "name": "Benjamin Netanyahu",
     "party": "Likud",
     "overall_score": 5.1,
-    "media_volume": 8
+    "media_volume": 8,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18861,7 +19375,9 @@
     "name": "Benny Gantz",
     "party": "National Unity",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18869,7 +19385,9 @@
     "name": "Bezalel Smotrich",
     "party": "Religious Zionism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -18877,7 +19395,9 @@
     "name": "Boaz Bismuth",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18885,7 +19405,9 @@
     "name": "Boaz Toporovsky",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18893,7 +19415,9 @@
     "name": "Orit Farkash-Hacohen",
     "party": "National Unity",
     "overall_score": 5,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18901,7 +19425,9 @@
     "name": "Dan Ilouz",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18909,7 +19435,9 @@
     "name": "Danny Danon",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18917,7 +19445,9 @@
     "name": "David Amsalem",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18925,7 +19455,9 @@
     "name": "David Bitan",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18933,7 +19465,9 @@
     "name": "Debbie Biton",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18941,7 +19475,9 @@
     "name": "Efrat Rayten",
     "party": "Labor",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18949,7 +19485,9 @@
     "name": "Elazar Stern",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18957,7 +19495,9 @@
     "name": "Eli Cohen",
     "party": "Likud",
     "overall_score": 5.8,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18965,7 +19505,9 @@
     "name": "Eliyahu Revivo",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18973,7 +19515,9 @@
     "name": "Evgeny Sova",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18981,7 +19525,9 @@
     "name": "Fateen Mulla",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "druze"
   },
   {
     "date": "2026-03-21",
@@ -18989,7 +19535,9 @@
     "name": "Gadi Eisenkot",
     "party": "National Unity",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -18997,7 +19545,9 @@
     "name": "George Ilatov",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19005,7 +19555,9 @@
     "name": "Gideon Sa'ar",
     "party": "National Unity",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19013,7 +19565,9 @@
     "name": "Gilad Kariv",
     "party": "Labor",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19021,7 +19575,9 @@
     "name": "Haim Biton",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19029,7 +19585,9 @@
     "name": "Hamad Amar",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "druze"
   },
   {
     "date": "2026-03-21",
@@ -19037,7 +19595,9 @@
     "name": "Hanoch Milwidsky",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19045,7 +19605,9 @@
     "name": "Hili Tropper",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19053,7 +19615,9 @@
     "name": "Idan Roll",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19061,7 +19625,9 @@
     "name": "Iman Khatib-Yasin",
     "party": "Ra'am",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -19069,7 +19635,9 @@
     "name": "Itamar Ben Gvir",
     "party": "Otzma Yehudit",
     "overall_score": 2.7,
-    "media_volume": 7
+    "media_volume": 7,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19077,7 +19645,9 @@
     "name": "Karine Elharrar",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19085,7 +19655,9 @@
     "name": "Keti Shitrit",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19093,7 +19665,9 @@
     "name": "Limor Magen Telem",
     "party": "Yesh Atid",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19101,7 +19675,9 @@
     "name": "Limor Son Har-Melech",
     "party": "Religious Zionism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19109,7 +19685,9 @@
     "name": "Limor Widman-Yosef",
     "party": "Otzma Yehudit",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19117,7 +19695,9 @@
     "name": "Mansour Abbas",
     "party": "Ra'am",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -19125,7 +19705,9 @@
     "name": "Matan Kahana",
     "party": "National Unity",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19133,7 +19715,9 @@
     "name": "Mazen Ghanaim",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -19141,7 +19725,9 @@
     "name": "Meir Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19149,7 +19735,9 @@
     "name": "Meir Porush",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19157,7 +19745,9 @@
     "name": "Meirav Ben Ari",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19165,7 +19755,9 @@
     "name": "Merav Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19173,7 +19765,9 @@
     "name": "Merav Michaeli",
     "party": "Labor",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19181,7 +19775,9 @@
     "name": "Michael Biton",
     "party": "National Unity",
     "overall_score": 6.3,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19189,7 +19785,9 @@
     "name": "Michael Malchieli",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19197,7 +19795,9 @@
     "name": "Mickey Levy",
     "party": "Yesh Atid",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19205,7 +19805,9 @@
     "name": "Miri Regev",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19213,7 +19815,9 @@
     "name": "Moshe Abutbul",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19221,7 +19825,9 @@
     "name": "Moshe Arbel",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19229,7 +19835,9 @@
     "name": "Moshe Gafni",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19237,7 +19845,9 @@
     "name": "Moshe Saada",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19245,7 +19855,9 @@
     "name": "Moshe Tur-Paz",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19253,7 +19865,9 @@
     "name": "Naama Lazimi",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19261,7 +19875,9 @@
     "name": "Naor Shiri",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19269,7 +19885,9 @@
     "name": "Nir Barkat",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19277,7 +19895,9 @@
     "name": "Nira Shpak",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19285,7 +19905,9 @@
     "name": "Nissim Vaturi",
     "party": "Likud",
     "overall_score": 6.7,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19293,7 +19915,9 @@
     "name": "Oded Forer",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19301,7 +19925,9 @@
     "name": "Ofer Cassif",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19309,7 +19935,9 @@
     "name": "Ofir Akunis",
     "party": "Likud",
     "overall_score": 6.3,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19317,7 +19945,9 @@
     "name": "Ofir Sofer",
     "party": "Religious Zionism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19325,7 +19955,9 @@
     "name": "Ohad Tal",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19333,7 +19965,9 @@
     "name": "Orit Strock",
     "party": "Religious Zionism",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19341,7 +19975,9 @@
     "name": "Orna Barbivai",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19349,7 +19985,9 @@
     "name": "Osher Shkalim",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19357,7 +19995,9 @@
     "name": "Pnina Tamano-Shata",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19365,7 +20005,9 @@
     "name": "Rachel Azaria",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19373,7 +20015,9 @@
     "name": "Ron Katz",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19381,7 +20025,9 @@
     "name": "Sharon Nir",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19389,7 +20035,9 @@
     "name": "Sharren Haskel",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19397,7 +20045,9 @@
     "name": "Shelly Tal Meron",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19405,7 +20055,9 @@
     "name": "Shlomo Karhi",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19413,7 +20065,9 @@
     "name": "Simcha Rothman",
     "party": "Religious Zionism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19421,7 +20075,9 @@
     "name": "Simon Davidson",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19429,7 +20085,9 @@
     "name": "Tally Gotliv",
     "party": "Likud",
     "overall_score": 6,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19437,7 +20095,9 @@
     "name": "Tatiana Mazarsky",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19445,7 +20105,9 @@
     "name": "Tomer Glam",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19453,7 +20115,9 @@
     "name": "Tsega Melaku",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19461,7 +20125,9 @@
     "name": "Uri Maklev",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19469,7 +20135,9 @@
     "name": "Uriel Buso",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19477,7 +20145,9 @@
     "name": "Vladimir Beliak",
     "party": "Yesh Atid",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19485,7 +20155,9 @@
     "name": "Waleed Taha",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -19493,7 +20165,9 @@
     "name": "Yaakov Asher",
     "party": "United Torah Judaism",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19501,7 +20175,9 @@
     "name": "Yaakov Margi",
     "party": "Shas",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19509,7 +20185,9 @@
     "name": "Yaakov Tesler",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19517,7 +20195,9 @@
     "name": "Yair Golan",
     "party": "Democrats",
     "overall_score": 4,
-    "media_volume": 5
+    "media_volume": 5,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19525,7 +20205,9 @@
     "name": "Yair Lapid",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19533,7 +20215,9 @@
     "name": "Yariv Levin",
     "party": "Likud",
     "overall_score": 5.9,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19541,7 +20225,9 @@
     "name": "Yifat Shasha-Biton",
     "party": "National Unity",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19549,7 +20235,9 @@
     "name": "Yinon Azoulay",
     "party": "Shas",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19557,7 +20245,9 @@
     "name": "Yisrael Eichler",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19565,7 +20255,9 @@
     "name": "Yisrael Katz",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19573,7 +20265,9 @@
     "name": "Yitzhak Cohen",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19581,7 +20275,9 @@
     "name": "Yitzhak Goldknopf",
     "party": "United Torah Judaism",
     "overall_score": 5.8,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19589,7 +20285,9 @@
     "name": "Yitzhak Wasserlauf",
     "party": "Otzma Yehudit",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19597,7 +20295,9 @@
     "name": "Yoav Ben-Tzur",
     "party": "Shas",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-21",
@@ -19605,7 +20305,9 @@
     "name": "Yoav Gallant",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19613,7 +20315,9 @@
     "name": "Yoav Segalovitz",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19621,7 +20325,9 @@
     "name": "Yorai Lahav-Hertzano",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19629,7 +20335,9 @@
     "name": "Youssef Atauna",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-21",
@@ -19637,7 +20345,9 @@
     "name": "Yuli Edelstein",
     "party": "Likud",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19645,7 +20355,9 @@
     "name": "Yulia Malinovsky",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19653,7 +20365,9 @@
     "name": "Ze'ev Benjamin Begin",
     "party": "National Unity",
     "overall_score": 5.8,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19661,7 +20375,9 @@
     "name": "Zeev Elkin",
     "party": "Likud",
     "overall_score": 5.4,
-    "media_volume": 1
+    "media_volume": 1,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-21",
@@ -19669,7 +20385,9 @@
     "name": "Zvi Sukkot",
     "party": "Religious Zionism",
     "overall_score": 5.7,
-    "media_volume": 2
+    "media_volume": 2,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-21",
@@ -19677,7 +20395,9 @@
     "name": "Zvika Fogel",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -19685,7 +20405,9 @@
     "name": "Ahmad Tibi",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -19693,7 +20415,9 @@
     "name": "Aida Touma-Suleiman",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -19701,7 +20425,9 @@
     "name": "Almog Cohen",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -19709,7 +20435,9 @@
     "name": "Alon Schuster",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19717,7 +20445,9 @@
     "name": "Ami Daniel",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19725,7 +20455,9 @@
     "name": "Amichai Eliyahu",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -19733,7 +20465,9 @@
     "name": "Amir Ohana",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19741,7 +20475,9 @@
     "name": "Ariel Atias",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -19749,7 +20485,9 @@
     "name": "Ariel Kallner",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19757,7 +20495,9 @@
     "name": "Aryeh Deri",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -19765,7 +20505,9 @@
     "name": "Atta Abu Medeghem",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -19773,7 +20515,9 @@
     "name": "Avi Dichter",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19781,7 +20525,9 @@
     "name": "Avichay Buaron",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19789,7 +20535,9 @@
     "name": "Avigdor Lieberman",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19797,7 +20545,9 @@
     "name": "Ayman Odeh",
     "party": "Hadash-Ta'al",
     "overall_score": 5,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -19805,7 +20555,9 @@
     "name": "Ben Simon",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19813,7 +20565,9 @@
     "name": "Benjamin Netanyahu",
     "party": "Likud",
     "overall_score": 5.1,
-    "media_volume": 8.5
+    "media_volume": 8.5,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19821,7 +20575,9 @@
     "name": "Benny Gantz",
     "party": "National Unity",
     "overall_score": 7.4,
-    "media_volume": 6
+    "media_volume": 6,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19829,7 +20585,9 @@
     "name": "Bezalel Smotrich",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -19837,7 +20595,9 @@
     "name": "Boaz Bismuth",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19845,7 +20605,9 @@
     "name": "Boaz Toporovsky",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19853,7 +20615,9 @@
     "name": "Orit Farkash-Hacohen",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19861,7 +20625,9 @@
     "name": "Dan Ilouz",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19869,7 +20635,9 @@
     "name": "Danny Danon",
     "party": "Likud",
     "overall_score": 6.9,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19877,7 +20645,9 @@
     "name": "David Amsalem",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19885,7 +20655,9 @@
     "name": "David Bitan",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19893,7 +20665,9 @@
     "name": "Debbie Biton",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19901,7 +20675,9 @@
     "name": "Efrat Rayten",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19909,7 +20685,9 @@
     "name": "Elazar Stern",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19917,7 +20695,9 @@
     "name": "Eli Cohen",
     "party": "Likud",
     "overall_score": 6.3,
-    "media_volume": 2.5
+    "media_volume": 2.5,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19925,7 +20705,9 @@
     "name": "Eliyahu Revivo",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19933,7 +20715,9 @@
     "name": "Evgeny Sova",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19941,7 +20725,9 @@
     "name": "Fateen Mulla",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "druze"
   },
   {
     "date": "2026-03-22",
@@ -19949,7 +20735,9 @@
     "name": "Gadi Eisenkot",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19957,7 +20745,9 @@
     "name": "George Ilatov",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19965,7 +20755,9 @@
     "name": "Gideon Sa'ar",
     "party": "National Unity",
     "overall_score": 6.5,
-    "media_volume": 3
+    "media_volume": 3,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19973,7 +20765,9 @@
     "name": "Gilad Kariv",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -19981,7 +20775,9 @@
     "name": "Haim Biton",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -19989,7 +20785,9 @@
     "name": "Hamad Amar",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "druze"
   },
   {
     "date": "2026-03-22",
@@ -19997,7 +20795,9 @@
     "name": "Hanoch Milwidsky",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20005,7 +20805,9 @@
     "name": "Hili Tropper",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20013,7 +20815,9 @@
     "name": "Idan Roll",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20021,7 +20825,9 @@
     "name": "Iman Khatib-Yasin",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -20029,7 +20835,9 @@
     "name": "Itamar Ben Gvir",
     "party": "Otzma Yehudit",
     "overall_score": 3.6,
-    "media_volume": 7
+    "media_volume": 7,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20037,7 +20845,9 @@
     "name": "Karine Elharrar",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20045,7 +20855,9 @@
     "name": "Keti Shitrit",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20053,7 +20865,9 @@
     "name": "Limor Magen Telem",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20061,7 +20875,9 @@
     "name": "Limor Son Har-Melech",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20069,7 +20885,9 @@
     "name": "Limor Widman-Yosef",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20077,7 +20895,9 @@
     "name": "Mansour Abbas",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -20085,7 +20905,9 @@
     "name": "Matan Kahana",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20093,7 +20915,9 @@
     "name": "Mazen Ghanaim",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -20101,7 +20925,9 @@
     "name": "Meir Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20109,7 +20935,9 @@
     "name": "Meir Porush",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20117,7 +20945,9 @@
     "name": "Meirav Ben Ari",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20125,7 +20955,9 @@
     "name": "Merav Cohen",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20133,7 +20965,9 @@
     "name": "Merav Michaeli",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20141,7 +20975,9 @@
     "name": "Michael Biton",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20149,7 +20985,9 @@
     "name": "Michael Malchieli",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20157,7 +20995,9 @@
     "name": "Mickey Levy",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20165,7 +21005,9 @@
     "name": "Miri Regev",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20173,7 +21015,9 @@
     "name": "Moshe Abutbul",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20181,7 +21025,9 @@
     "name": "Moshe Arbel",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20189,7 +21035,9 @@
     "name": "Moshe Gafni",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20197,7 +21045,9 @@
     "name": "Moshe Saada",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20205,7 +21055,9 @@
     "name": "Moshe Tur-Paz",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20213,7 +21065,9 @@
     "name": "Naama Lazimi",
     "party": "Labor",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20221,7 +21075,9 @@
     "name": "Naor Shiri",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20229,7 +21085,9 @@
     "name": "Nir Barkat",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20237,7 +21095,9 @@
     "name": "Nira Shpak",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20245,7 +21105,9 @@
     "name": "Nissim Vaturi",
     "party": "Likud",
     "overall_score": 5.3,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20253,7 +21115,9 @@
     "name": "Oded Forer",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20261,7 +21125,9 @@
     "name": "Ofer Cassif",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20269,7 +21135,9 @@
     "name": "Ofir Akunis",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20277,7 +21145,9 @@
     "name": "Ofir Sofer",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20285,7 +21155,9 @@
     "name": "Ohad Tal",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20293,7 +21165,9 @@
     "name": "Orit Strock",
     "party": "Religious Zionism",
     "overall_score": 6.4,
-    "media_volume": 3.5
+    "media_volume": 3.5,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20301,7 +21175,9 @@
     "name": "Orna Barbivai",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20309,7 +21185,9 @@
     "name": "Osher Shkalim",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20317,7 +21195,9 @@
     "name": "Pnina Tamano-Shata",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20325,7 +21205,9 @@
     "name": "Rachel Azaria",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20333,7 +21215,9 @@
     "name": "Ron Katz",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20341,7 +21225,9 @@
     "name": "Sharon Nir",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20349,7 +21235,9 @@
     "name": "Sharren Haskel",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20357,7 +21245,9 @@
     "name": "Shelly Tal Meron",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20365,7 +21255,9 @@
     "name": "Shlomo Karhi",
     "party": "Likud",
     "overall_score": 4.4,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20373,7 +21265,9 @@
     "name": "Simcha Rothman",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20381,7 +21275,9 @@
     "name": "Simon Davidson",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20389,7 +21285,9 @@
     "name": "Tally Gotliv",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20397,7 +21295,9 @@
     "name": "Tatiana Mazarsky",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20405,7 +21305,9 @@
     "name": "Tomer Glam",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20413,7 +21315,9 @@
     "name": "Tsega Melaku",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20421,7 +21325,9 @@
     "name": "Uri Maklev",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20429,7 +21335,9 @@
     "name": "Uriel Buso",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20437,7 +21345,9 @@
     "name": "Vladimir Beliak",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20445,7 +21355,9 @@
     "name": "Waleed Taha",
     "party": "Ra'am",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -20453,7 +21365,9 @@
     "name": "Yaakov Asher",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20461,7 +21375,9 @@
     "name": "Yaakov Margi",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20469,7 +21385,9 @@
     "name": "Yaakov Tesler",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20477,7 +21395,9 @@
     "name": "Yair Golan",
     "party": "Democrats",
     "overall_score": 6.8,
-    "media_volume": 5.5
+    "media_volume": 5.5,
+    "wing": "left",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20485,7 +21405,9 @@
     "name": "Yair Lapid",
     "party": "Yesh Atid",
     "overall_score": 5.8,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20493,7 +21415,9 @@
     "name": "Yariv Levin",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20501,7 +21425,9 @@
     "name": "Yifat Shasha-Biton",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20509,7 +21435,9 @@
     "name": "Yinon Azoulay",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20517,7 +21445,9 @@
     "name": "Yisrael Eichler",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20525,7 +21455,9 @@
     "name": "Yisrael Katz",
     "party": "Likud",
     "overall_score": 5.8,
-    "media_volume": 4
+    "media_volume": 4,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20533,7 +21465,9 @@
     "name": "Yitzhak Cohen",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20541,7 +21475,9 @@
     "name": "Yitzhak Goldknopf",
     "party": "United Torah Judaism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20549,7 +21485,9 @@
     "name": "Yitzhak Wasserlauf",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20557,7 +21495,9 @@
     "name": "Yoav Ben-Tzur",
     "party": "Shas",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "haredi"
   },
   {
     "date": "2026-03-22",
@@ -20565,7 +21505,9 @@
     "name": "Yoav Gallant",
     "party": "Likud",
     "overall_score": 4.9,
-    "media_volume": 5
+    "media_volume": 5,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20573,7 +21515,9 @@
     "name": "Yoav Segalovitz",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20581,7 +21525,9 @@
     "name": "Yorai Lahav-Hertzano",
     "party": "Yesh Atid",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20589,7 +21535,9 @@
     "name": "Youssef Atauna",
     "party": "Hadash-Ta'al",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "arab",
+    "sector": "arab"
   },
   {
     "date": "2026-03-22",
@@ -20597,7 +21545,9 @@
     "name": "Yuli Edelstein",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20605,7 +21555,9 @@
     "name": "Yulia Malinovsky",
     "party": "Yisrael Beiteinu",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20613,7 +21565,9 @@
     "name": "Ze'ev Benjamin Begin",
     "party": "National Unity",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "center",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20621,7 +21575,9 @@
     "name": "Zeev Elkin",
     "party": "Likud",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "secular"
   },
   {
     "date": "2026-03-22",
@@ -20629,7 +21585,9 @@
     "name": "Zvi Sukkot",
     "party": "Religious Zionism",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   },
   {
     "date": "2026-03-22",
@@ -20637,6 +21595,8 @@
     "name": "Zvika Fogel",
     "party": "Otzma Yehudit",
     "overall_score": 5.5,
-    "media_volume": 0
+    "media_volume": 0,
+    "wing": "right",
+    "sector": "religious"
   }
 ]

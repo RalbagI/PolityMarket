@@ -243,6 +243,8 @@ describe("summaryRowSchema", () => {
       politician_id: "test-pol",
       name: "Test",
       party: "Test",
+      wing: "right",
+      sector: "secular",
       overall_score: 6.5,
       media_volume: 7.0,
     });

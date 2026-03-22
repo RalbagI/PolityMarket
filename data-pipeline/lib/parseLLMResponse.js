@@ -63,6 +63,8 @@ export const summaryRowSchema = z.object({
   politician_id: z.string().min(1),
   name: z.string().min(1),
   party: z.string().min(1),
+  wing: z.string().min(1),
+  sector: z.string().min(1),
   role: z.enum(["mk", "minister", "deputy-minister", "politician"]).default("mk"),
   overall_score: z.number().min(0).max(10),
   media_volume: z.number().min(0).max(10),
