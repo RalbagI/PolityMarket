@@ -227,7 +227,7 @@ export default function DetailView({
                             href={sourceUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-xs text-indigo-300 hover:text-indigo-200 underline mt-1 inline-block"
+                            className="text-xs text-indigo-300 hover:text-indigo-200 underline mt-1 inline-block py-1"
                           >
                             {t("detailView.sources.sourceLink")}
                           </a>
