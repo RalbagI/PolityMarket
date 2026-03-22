@@ -28,7 +28,9 @@ describe("MethodologyModal", () => {
 
   it("renders modal content when open", () => {
     render(<MethodologyModal isOpen={true} onClose={() => {}} />);
-    expect(screen.getByText("Methodology")).toBeInTheDocument();
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    // Title rendered in h2 and tab — use getAllByText with the mock-translated value
+    expect(screen.getAllByText("Methodology").length).toBeGreaterThan(0);
   });
 
   it("has dialog role and aria-modal", () => {
