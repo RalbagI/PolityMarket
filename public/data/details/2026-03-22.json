@@ -1,0 +1,3430 @@
+[
+  {
+    "politician_id": "benjamin-netanyahu",
+    "name": "Benjamin Netanyahu",
+    "party": "Likud",
+    "hostility_level": 0.55,
+    "policy_approval": -0.3,
+    "media_amplification": 0.85,
+    "news_sentiment": 3.5,
+    "social_sentiment": 4.5,
+    "media_volume": 8.5,
+    "overall_score": 5.1,
+    "chain_of_thought": "סיקור נרחב ומקוטב מאוד. כותרות עוסקות בדילמת בחירות מול מלחמה, האשמות בהארכת מלחמה למניעת בחירות, התחמקות מגיוס חרדים, ושערורייה סביב אמירת ישו-ג'ינגיס חאן. ברשתות החברתיות - תמהיל של הערצה ('מנהיג ייחודי ומרשים') לצד ביקורת חריפה (סנטור אמריקאי: 'מצא נשיא מספיק טיפש'). עוינות בינונית-גבוהה במצטבר, אישור מדיניות שלילי במאזן, הגברה תקשורתית גבוהה מאוד בשל ריבוי חזיתות.",
+    "news_headlines": [
+      "As Netanyahu prepares for elections, war in Iran and Lebanon may dictate when - Los Angeles Times",
+      "Netanyahu gov't tells High Court: can't address Haredi IDF draft during Iran war - Haaretz",
+      "As Netanyahu Prepares for Elections, His Foes in Iran and Lebanon Could Get a Vote - U.S. News & World Report",
+      "Democrats head Golan says Netanyahu dragging out war to avoid elections - The Times of Israel",
+      "Netanyahu’s Jesus–Genghis Khan remark sparks uproar - MSN",
+      "Netanyahu's Election Dilemma: War or the Polls? - Devdiscourse",
+      "Is Donald Trump in charge of America’s war machine – or is Netanyahu? - The Independent",
+      "Trump and Netanyahu have formed a convenient coalition. But clear divisions are emerging - SMH.com.au"
+    ],
+    "social_mentions": [
+      {
+        "text": "What could possibly have led Netanyahu to say that? — What is a rational explanation for Netanyahu to have said that “Jesus Christ has no advantage over Genghis Khan”? Why mention Jesus at all to offend over two billion people on the planet? He could have mentioned literally anyone else…. the ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryvj0r/what_could_possibly_have_led_netanyahu_to_say_that/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Hot_Minute_9249",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Netanyahu: A Very Unique & Impressive Leader — I’m an American of Indian ethnicity. I’ve been following World politics all my life and have never come across a decisive, impressive and uniquely ruthless leader like Netanyahu. IMHO, when it comes to protecting his people he’s simply done",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryj28q/netanyahu_a_very_unique_impressive_leader/"
+        ],
+        "speaker_metadata": {
+          "handle": "@2Hawaii",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Netanyahu: Regime is ‘like a hollowed-out, rotten piece of wood’",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rycwqz/netanyahu_regime_is_like_a_hollowedout_rotten/"
+        ],
+        "speaker_metadata": {
+          "handle": "@c9joe",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "US Senator: Netanyahu Found 'President Stupid Enough' as Hormuz Stays Closed, Gas Prices Surge",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rsirfy/us_senator_netanyahu_found_president_stupid/"
+        ],
+        "speaker_metadata": {
+          "handle": "@kitz99",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yariv-levin",
+    "name": "Yariv Levin",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yariv Levin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yariv Levin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-gallant",
+    "name": "Yoav Gallant",
+    "party": "Likud",
+    "hostility_level": 0.35,
+    "policy_approval": -0.3,
+    "media_amplification": 0.5,
+    "news_sentiment": 3.5,
+    "social_sentiment": 6.5,
+    "media_volume": 5,
+    "overall_score": 4.9,
+    "chain_of_thought": "כותרת על תמיכת מדינות אירופה בצו מעצר של בית הדין הבינלאומי נגד נתניהו וגלנט. סיקור שלילי מבחינה בינלאומית אך עובדתי באופיו, ללא עוינות אישית ישירה.",
+    "news_headlines": [
+      "European nations back ICC after it orders arrest of Netanyahu, Gallant - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Gallant in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "miri-regev",
+    "name": "Miri Regev",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Miri Regev in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Miri Regev in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "nir-barkat",
+    "name": "Nir Barkat",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Nir Barkat in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Nir Barkat in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amir-ohana",
+    "name": "Amir Ohana",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Amir Ohana in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amir Ohana in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eli-cohen",
+    "name": "Eli Cohen",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0.1,
+    "media_amplification": 0.25,
+    "news_sentiment": 5.5,
+    "social_sentiment": 10,
+    "media_volume": 2.5,
+    "overall_score": 6.3,
+    "chain_of_thought": "הכותרות מתייחסות למרגל ההיסטורי אלי כהן ('אלי כהן 2.0 בתוך איראן') ולא לפוליטיקאי ישירות. אסוציאציה חיובית קלה בהקשר מודיעיני אך אינה משקפת סנטימנט כלפי הח\"כ.",
+    "news_headlines": [
+      "Our woman in Beirut: the untold story of spy Shulamit Cohen - ynetnews",
+      "Eli Cohen 2.0 inside Iran? How Tehran is losing the intelligence war - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eli Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yisrael-katz",
+    "name": "Yisrael Katz",
+    "party": "Likud",
+    "hostility_level": 0.15,
+    "policy_approval": -0.1,
+    "media_amplification": 0.4,
+    "news_sentiment": 4.5,
+    "social_sentiment": 8.5,
+    "media_volume": 4,
+    "overall_score": 5.8,
+    "chain_of_thought": "אזכור ישיר בהקשר הרס גשרים ובתים בלבנון למיגור חזבאללה. דיווח ביטחוני-מדיני ללא עוינות ישירה אך עם פוטנציאל מחלוקת בינלאומית.",
+    "news_headlines": [
+      "No direct headlines matched Yisrael Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yuli-edelstein",
+    "name": "Yuli Edelstein",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yuli Edelstein in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yuli Edelstein in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shlomo-karhi",
+    "name": "Shlomo Karhi",
+    "party": "Likud",
+    "hostility_level": 0.5,
+    "policy_approval": -0.2,
+    "media_amplification": 0.4,
+    "news_sentiment": 4,
+    "social_sentiment": 5,
+    "media_volume": 4,
+    "overall_score": 4.4,
+    "chain_of_thought": "כותרת על האשמת חברי כנסת מיש עתיד כ'מצביעים עם תומכי טרור'. רטוריקה אגרסיבית ומסיתה, עוינות בינונית בשיח הפוליטי הפנימי.",
+    "news_headlines": [
+      "Minister Karhi accuses Yesh Atid MKs of 'voting with supporters of terrorism' - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Shlomo Karhi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zeev-elkin",
+    "name": "Zeev Elkin",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Zeev Elkin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zeev Elkin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avi-dichter",
+    "name": "Avi Dichter",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Avi Dichter in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avi Dichter in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "danny-danon",
+    "name": "Danny Danon",
+    "party": "Likud",
+    "hostility_level": 0.05,
+    "policy_approval": 0.3,
+    "media_amplification": 0.4,
+    "news_sentiment": 6.5,
+    "social_sentiment": 9.5,
+    "media_volume": 4,
+    "overall_score": 6.9,
+    "chain_of_thought": "כותרת על קריאת דנון לגנות את חמאס במועצת הביטחון בנושא החטופים. דיווח עובדתי-דיפלומטי חיובי יחסית, ללא עוינות.",
+    "news_headlines": [
+      "Danon calls on UNSC to condemn Hamas at meeting on hostages - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Danny Danon in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-akunis",
+    "name": "Ofir Akunis",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Akunis in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofir Akunis in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "david-bitan",
+    "name": "David Bitan",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched David Bitan in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched David Bitan in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "fateen-mulla",
+    "name": "Fateen Mulla",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Fateen Mulla in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Fateen Mulla in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "david-amsalem",
+    "name": "David Amsalem",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched David Amsalem in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched David Amsalem in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "boaz-bismuth",
+    "name": "Boaz Bismuth",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Boaz Bismuth in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Boaz Bismuth in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ariel-kallner",
+    "name": "Ariel Kallner",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ariel Kallner in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ariel Kallner in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hanoch-milwidsky",
+    "name": "Hanoch Milwidsky",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Hanoch Milwidsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hanoch Milwidsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tally-gotliv",
+    "name": "Tally Gotliv",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אזכורים חברתיים על עיר חרדית חדשה ומלחמת איראן אינם קשורים ישירות לח\"כ גוטליב. התאמות משניות ללא רלוונטיות ישירה.",
+    "news_headlines": [
+      "No direct headlines matched Tally Gotliv in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "The Government is planning to establish a new Haredi town (\"rivaling\" Kiryat Gat), \"Plugot\", over some of the agricultural fields of Shafir Regional Council and lead a demographic twist in the Shephelah to become Haredi majority with a drastically declined social-economic rank from Ashdod to Arad! — I'm not a person who goes to protests, but this time I'd be the first one to protest against this totally unnecessary \"development\"! Who joins me? The only Plugot they will see will be in the IDF.🇮🇱 If the haredim want to live in the Sout",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz45up/the_government_is_planning_to_establish_a_new/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Expensive_Warthog_68",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Should Israel pursue this path to possible regime change - surgical strikes on South Pars and Kharg Island? — Trump can't just declare victory and leave Iran in control of Hormuz. He has to \"Win\", and only Regime Shift or Change is a \"Win\". I think that position is already Israel's position. I think the only path to a \"Win\" for the Combined Forces ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryksiv/should_israel_pursue_this_path_to_possible_regime/"
+        ],
+        "speaker_metadata": {
+          "handle": "@palefire123",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Five options the U.S. is weighing for Iran ground operations — and why the most likely scenario isn't a full invasion — With Trump declaring \"there are almost no targets left to strike\" and Hegseth saying \"you don't have to roll 200,000 people in there and stay for 20 years,\" the air phase of Operation Epic Fury appears to be entering its terminal stage. The",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1ru46of/five_options_the_us_is_weighing_for_iran_ground/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Pristine_Level7023",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "How the Iran War Is Reshaping the Gulf States? — The war represents not only a military confrontation but also a transformative moment for the Middle East’s political and economic order. The Gulf that emerges after the war is unlikely to resemble the one that existed before it. As regiona",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rsfpbz/how_the_iran_war_is_reshaping_the_gulf_states/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Ali-Mamouri",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "dan-ilouz",
+    "name": "Dan Ilouz",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Dan Ilouz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Dan Ilouz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-saada",
+    "name": "Moshe Saada",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Saada in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Saada in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "nissim-vaturi",
+    "name": "Nissim Vaturi",
+    "party": "Likud",
+    "hostility_level": 0.3,
+    "policy_approval": -0.1,
+    "media_amplification": 0.4,
+    "news_sentiment": 4.5,
+    "social_sentiment": 7,
+    "media_volume": 4,
+    "overall_score": 5.3,
+    "chain_of_thought": "כותרת על אמירת ח\"כ ותורי שטראמפ לא ישפיל את עצמו ותקיפה אמריקאית באיראן קרובה. אמירה פרובוקטיבית שיכולה להיתפס כהסתה, עם פוטנציאל הגברה תקשורתית.",
+    "news_headlines": [
+      "'Trump won't humiliate himself': MK Vaturi says US strike on Iran is imminent - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Nissim Vaturi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "osher-shkalim",
+    "name": "Osher Shkalim",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Osher Shkalim in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Osher Shkalim in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "george-ilatov",
+    "name": "George Ilatov",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched George Ilatov in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched George Ilatov in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avichay-buaron",
+    "name": "Avichay Buaron",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "הכותרת מתייחסת לדובר צה\"ל אביחי אדרעי ולא לח\"כ אביחי בוארון. התאמת שם שגויה.",
+    "news_headlines": [
+      "IDF Arabic Spokesperson Avichay Adraee issues evacuation notice to residents north of Gaza City"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avichay Buaron in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tsega-melaku",
+    "name": "Tsega Melaku",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Tsega Melaku in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tsega Melaku in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "shelly-tal-meron",
+    "name": "Shelly Tal Meron",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Shelly Tal Meron in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Shelly Tal Meron in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ami-daniel",
+    "name": "Ami Daniel",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ami Daniel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ami Daniel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "eliyahu-revivo",
+    "name": "Eliyahu Revivo",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Eliyahu Revivo in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Eliyahu Revivo in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "keti-shitrit",
+    "name": "Keti Shitrit",
+    "party": "Likud",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Keti Shitrit in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Keti Shitrit in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yair-lapid",
+    "name": "Yair Lapid",
+    "party": "Yesh Atid",
+    "hostility_level": 0.2,
+    "policy_approval": 0,
+    "media_amplification": 0.4,
+    "news_sentiment": 5,
+    "social_sentiment": 8,
+    "media_volume": 4,
+    "overall_score": 5.8,
+    "chain_of_thought": "כותרת 'יאיר לפיד, חושב את הבלתי נחשב' מ-JNS. כותרת פרובוקטיבית המרמזת על עמדה פוליטית לא שגרתית. ללא הקשר נוסף, סיקור ניטרלי עד ביקורתי קל.",
+    "news_headlines": [
+      "Yair Lapid, thinking the unthinkable - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yair Lapid in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "boaz-toporovsky",
+    "name": "Boaz Toporovsky",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Boaz Toporovsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Boaz Toporovsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meir-cohen",
+    "name": "Meir Cohen",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Meir Cohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meir Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "karine-elharrar",
+    "name": "Karine Elharrar",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Karine Elharrar in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Karine Elharrar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orna-barbivai",
+    "name": "Orna Barbivai",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Orna Barbivai in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Orna Barbivai in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mickey-levy",
+    "name": "Mickey Levy",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Mickey Levy in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Mickey Levy in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yorai-lahav-hertzano",
+    "name": "Yorai Lahav-Hertzano",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yorai Lahav-Hertzano in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yorai Lahav-Hertzano in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meirav-ben-ari",
+    "name": "Meirav Ben Ari",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Meirav Ben Ari in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meirav Ben Ari in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ron-katz",
+    "name": "Ron Katz",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לישראל כץ (שר הביטחון) ולא לח\"כ רון כץ מיש עתיד. התאמת שם משפחה שגויה.",
+    "news_headlines": [
+      "No direct headlines matched Ron Katz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "simon-davidson",
+    "name": "Simon Davidson",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Simon Davidson in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Simon Davidson in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "debbie-biton",
+    "name": "Debbie Biton",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Debbie Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Debbie Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "idan-roll",
+    "name": "Idan Roll",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אזכורים חברתיים על אפשרויות צבאיות באיראן ומצור אנרגטי אינם קשורים ישירות לח\"כ עידן רול. התאמות משניות בלבד.",
+    "news_headlines": [
+      "No direct headlines matched Idan Roll in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Should Israel pursue this path to possible regime change - surgical strikes on South Pars and Kharg Island? — Trump can't just declare victory and leave Iran in control of Hormuz. He has to \"Win\", and only Regime Shift or Change is a \"Win\". I think that position is already Israel's position. I think the only path to a \"Win\" for the Combined Forces ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryksiv/should_israel_pursue_this_path_to_possible_regime/"
+        ],
+        "speaker_metadata": {
+          "handle": "@palefire123",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "The Energy Siege: Europe, US-Israel, and the Prophecy of a Final Alliance — ​ The story begins with a very real and immediate tension. The United States is currently pushing Europe to join a new and costly war against Iran. Across the continent, European leaders are resisting. They are tired of high inflation, brok",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1s0eqmn/the_energy_siege_europe_usisrael_and_the_prophecy/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ChampionshipSea3921",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Five options the U.S. is weighing for Iran ground operations — and why the most likely scenario isn't a full invasion — With Trump declaring \"there are almost no targets left to strike\" and Hegseth saying \"you don't have to roll 200,000 people in there and stay for 20 years,\" the air phase of Operation Epic Fury appears to be entering its terminal stage. The",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1ru46of/five_options_the_us_is_weighing_for_iran_ground/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Pristine_Level7023",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naor-shiri",
+    "name": "Naor Shiri",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Naor Shiri in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naor Shiri in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "merav-cohen",
+    "name": "Merav Cohen",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Merav Cohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Merav Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tatiana-mazarsky",
+    "name": "Tatiana Mazarsky",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Tatiana Mazarsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tatiana Mazarsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "vladimir-beliak",
+    "name": "Vladimir Beliak",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Vladimir Beliak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Vladimir Beliak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-tur-paz",
+    "name": "Moshe Tur-Paz",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Tur-Paz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Tur-Paz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "nira-shpak",
+    "name": "Nira Shpak",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Nira Shpak in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Nira Shpak in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-segalovitz",
+    "name": "Yoav Segalovitz",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yoav Segalovitz in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Segalovitz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "elazar-stern",
+    "name": "Elazar Stern",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אזכור חברתי על 'מצור אנרגטי' ויחסי אירופה-ישראל אינו קשור ישירות לח\"כ אלעזר שטרן. התאמה משנית.",
+    "news_headlines": [
+      "No direct headlines matched Elazar Stern in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "The Energy Siege: Europe, US-Israel, and the Prophecy of a Final Alliance — ​ The story begins with a very real and immediate tension. The United States is currently pushing Europe to join a new and costly war against Iran. Across the continent, European leaders are resisting. They are tired of high inflation, brok",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1s0eqmn/the_energy_siege_europe_usisrael_and_the_prophecy/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ChampionshipSea3921",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "tomer-glam",
+    "name": "Tomer Glam",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Tomer Glam in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Tomer Glam in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ben-simon",
+    "name": "Ben Simon",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ben Simon in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ben Simon in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "limor-magen-telem",
+    "name": "Limor Magen Telem",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Limor Magen Telem in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Limor Magen Telem in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "rachel-azaria",
+    "name": "Rachel Azaria",
+    "party": "Yesh Atid",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Rachel Azaria in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Rachel Azaria in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "benny-gantz",
+    "name": "Benny Gantz",
+    "party": "National Unity",
+    "hostility_level": 0.05,
+    "policy_approval": 0.3,
+    "media_amplification": 0.6,
+    "news_sentiment": 6.5,
+    "social_sentiment": 9.5,
+    "media_volume": 6,
+    "overall_score": 7.4,
+    "chain_of_thought": "שתי כותרות סקרים: גנץ מוביל עם 32 מנדטים מול 27 לנתניהו, אך הליכוד מתחזק לאחר עזיבתו. סיקור ניטרלי-חיובי עם עניין תקשורתי גבוה בהקשר בחירות.",
+    "news_headlines": [
+      "Last pre-election poll before Israeli elections predicts 32 seats for Gantz, 27 for Netanyahu - JNS",
+      "Likud sees boost in poll after Gantz’s departure - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Benny Gantz in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gadi-eisenkot",
+    "name": "Gadi Eisenkot",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Gadi Eisenkot in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gadi Eisenkot in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gideon-saar",
+    "name": "Gideon Sa'ar",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0.1,
+    "media_amplification": 0.3,
+    "news_sentiment": 5.5,
+    "social_sentiment": 10,
+    "media_volume": 3,
+    "overall_score": 6.5,
+    "chain_of_thought": "כותרת על שיחה דיפלומטית עם שר החוץ ההודי ג'אישנקר בנושא סכסוך המזרח התיכון. דיווח עובדתי-ניטרלי ללא מטען רגשי.",
+    "news_headlines": [
+      "EAM Jaishankar, Israeli counterpart Gideon Sa’ar discuss West Asia conflict - DD News"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gideon Sa'ar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "pnina-tamano-shata",
+    "name": "Pnina Tamano-Shata",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Pnina Tamano-Shata in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Pnina Tamano-Shata in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hili-tropper",
+    "name": "Hili Tropper",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Hili Tropper in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hili Tropper in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharren-haskel",
+    "name": "Sharren Haskel",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Sharren Haskel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sharren Haskel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "matan-kahana",
+    "name": "Matan Kahana",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Matan Kahana in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Matan Kahana in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "chili-tropper",
+    "name": "Orit Farkash-Hacohen",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אזכורים חברתיים על אנטי-ישראליות ברדיט, עיר חרדית חדשה ופקיסטן אינם קשורים ישירות לח\"כ פרקש-הכהן. התאמות משניות בלבד.",
+    "news_headlines": [
+      "No direct headlines matched Orit Farkash-Hacohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Reddit Has Become an Echo Chamber for Anti-Israel Sentiment — I go on Reddit several times a day, and sure, there are some great subs, but the algorithm is working overtime to ensure my feed is a non-stop parade of creative fiction about Israel. Apparently, according to the \"intellectuals\" of Reddit, ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1s0i74l/reddit_has_become_an_echo_chamber_for_antiisrael/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Electronic_Luck8731",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "The Government is planning to establish a new Haredi town (\"rivaling\" Kiryat Gat), \"Plugot\", over some of the agricultural fields of Shafir Regional Council and lead a demographic twist in the Shephelah to become Haredi majority with a drastically declined social-economic rank from Ashdod to Arad! — I'm not a person who goes to protests, but this time I'd be the first one to protest against this totally unnecessary \"development\"! Who joins me? The only Plugot they will see will be in the IDF.🇮🇱 If the haredim want to live in the Sout",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz45up/the_government_is_planning_to_establish_a_new/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Expensive_Warthog_68",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Rights body: 500 minority girls abducted, forcibly converted in Pakistan",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0g8v9/rights_body_500_minority_girls_abducted_forcibly/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Krankenitrate",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "alon-schuster",
+    "name": "Alon Schuster",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אזכורים חברתיים על תיירות בישראל, עיר חרדית וחוק בינלאומי אינם קשורים ישירות לח\"כ שוסטר. התאמות משניות.",
+    "news_headlines": [
+      "No direct headlines matched Alon Schuster in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Would you guys say it's stupid to try to come to Israel in July-August? — I was planning to visit during the end of March-beginning of April. Obviously, I canceled that because of the war. But now im looking at other opportunities during the summer. Of course it will be a \"play by ear\" type of thing, since we nev",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rzus67/would_you_guys_say_its_stupid_to_try_to_come_to/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ana_anastassiiaa",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "The Government is planning to establish a new Haredi town (\"rivaling\" Kiryat Gat), \"Plugot\", over some of the agricultural fields of Shafir Regional Council and lead a demographic twist in the Shephelah to become Haredi majority with a drastically declined social-economic rank from Ashdod to Arad! — I'm not a person who goes to protests, but this time I'd be the first one to protest against this totally unnecessary \"development\"! Who joins me? The only Plugot they will see will be in the IDF.🇮🇱 If the haredim want to live in the Sout",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz45up/the_government_is_planning_to_establish_a_new/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Expensive_Warthog_68",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Wilhoit’s Law describes the relationship re: Israel and international law — There is a comment made by Frank Wilhoit about conservatism that is as follows: “Conservatism consists of exactly one proposition, to wit: There must be in-groups whom the law protects but does not bind, alongside out-groups whom the law bi",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryw384/wilhoits_law_describes_the_relationship_re_israel/"
+        ],
+        "speaker_metadata": {
+          "handle": "@LV426acheron",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michael-biton",
+    "name": "Michael Biton",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לשגריר מייקל מקפול ולא לח\"כ מיכאל ביטון. התאמת שם פרטי שגויה.",
+    "news_headlines": [
+      "No direct headlines matched Michael Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Putin Is Helping our Enemy in Iran. He should be punished for that decision, not rewarded for it. By Amb. Michael McFaul.",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rz7f1v/putin_is_helping_our_enemy_in_iran_he_should_be/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Barch3",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yifat-shasha-biton",
+    "name": "Yifat Shasha-Biton",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yifat Shasha-Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yifat Shasha-Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zeev-benjamin-begin",
+    "name": "Ze'ev Benjamin Begin",
+    "party": "National Unity",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אזכורים חברתיים כוללים התאמת שם 'בנימין' עם נתניהו ונושאים כלליים. אינם קשורים ישירות לזאב בנימין בגין.",
+    "news_headlines": [
+      "No direct headlines matched Ze'ev Benjamin Begin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Would you guys say it's stupid to try to come to Israel in July-August? — I was planning to visit during the end of March-beginning of April. Obviously, I canceled that because of the war. But now im looking at other opportunities during the summer. Of course it will be a \"play by ear\" type of thing, since we nev",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rzus67/would_you_guys_say_its_stupid_to_try_to_come_to/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ana_anastassiiaa",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "IDF to destroy bridges, homes in Lebanon to curb Hezbollah, Katz, Benjamin Netanyahu say",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0je7g/idf_to_destroy_bridges_homes_in_lebanon_to_curb/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Insensibilities",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "The Energy Siege: Europe, US-Israel, and the Prophecy of a Final Alliance — ​ The story begins with a very real and immediate tension. The United States is currently pushing Europe to join a new and costly war against Iran. Across the continent, European leaders are resisting. They are tired of high inflation, brok",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1s0eqmn/the_energy_siege_europe_usisrael_and_the_prophecy/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ChampionshipSea3921",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "aryeh-deri",
+    "name": "Aryeh Deri",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אזכורים חברתיים על הגירה לישראל, מלחמה מתמשכת ואנטישמיות אינם קשורים ישירות לאריה דרעי. התאמות משניות בלבד.",
+    "news_headlines": [
+      "No direct headlines matched Aryeh Deri in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Canadian wanting to immigrate to Israel — Hi there I’m a Canadian citizen but I have a criminal record (marijuana) from about 10 years ago. I really want to get out of Canada as the antisemitism is crazy right now. In just 1 week 3 synagogues in my city were shot at. Is there any o",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rza948/canadian_wanting_to_immigrate_to_israel/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Icy-Debate-2626",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "American trying to get into Israel on May 2nd and wondering about alternate routes — Shalom, I am an American citizen with an A2 student visa trying to get into Israel at the start if May. Right now I have flights booked with El Al for May 2nd and are concerned they will get canceled. If so I need to get into the country a ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz2fn3/american_trying_to_get_into_israel_on_may_2nd_and/"
+        ],
+        "speaker_metadata": {
+          "handle": "@ModuMotor",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Forever war — Honest question(s). How long do people think Israel can keep up a war on five different fronts? How long are Israelis expected to deal with running to shelters multiple times a day for weeks on end? Is there a goal here or are we just going",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz20bp/forever_war/"
+        ],
+        "speaker_metadata": {
+          "handle": "@MarsupialFar4924",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yoav-ben-tzur",
+    "name": "Yoav Ben-Tzur",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yoav Ben-Tzur in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yoav Ben-Tzur in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yinon-azoulay",
+    "name": "Yinon Azoulay",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yinon Azoulay in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yinon Azoulay in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-arbel",
+    "name": "Moshe Arbel",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Arbel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Arbel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "michael-malchieli",
+    "name": "Michael Malchieli",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "האזכור החברתי מתייחס לשגריר מייקל מקפול ולא לח\"כ מלכיאלי. התאמת שם פרטי שגויה.",
+    "news_headlines": [
+      "No direct headlines matched Michael Malchieli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "Putin Is Helping our Enemy in Iran. He should be punished for that decision, not rewarded for it. By Amb. Michael McFaul.",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/MiddleEastNews/comments/1rz7f1v/putin_is_helping_our_enemy_in_iran_he_should_be/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Barch3",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "haim-biton",
+    "name": "Haim Biton",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Haim Biton in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Haim Biton in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "uriel-buso",
+    "name": "Uriel Buso",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Uriel Buso in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Uriel Buso in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-margi",
+    "name": "Yaakov Margi",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Margi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Margi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-cohen-shas",
+    "name": "Yitzhak Cohen",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Cohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-abutbul",
+    "name": "Moshe Abutbul",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Abutbul in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Abutbul in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ariel-atias",
+    "name": "Ariel Atias",
+    "party": "Shas",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ariel Atias in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ariel Atias in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-goldknopf",
+    "name": "Yitzhak Goldknopf",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Goldknopf in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Goldknopf in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "moshe-gafni",
+    "name": "Moshe Gafni",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Moshe Gafni in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Moshe Gafni in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "uri-maklev",
+    "name": "Uri Maklev",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Uri Maklev in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Uri Maklev in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yisrael-eichler",
+    "name": "Yisrael Eichler",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yisrael Eichler in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yisrael Eichler in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-tesler",
+    "name": "Yaakov Tesler",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Tesler in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Tesler in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "meir-porush",
+    "name": "Meir Porush",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Meir Porush in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Meir Porush in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yaakov-asher",
+    "name": "Yaakov Asher",
+    "party": "United Torah Judaism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yaakov Asher in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yaakov Asher in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "bezalel-smotrich",
+    "name": "Bezalel Smotrich",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Bezalel Smotrich in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Bezalel Smotrich in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "orit-strock",
+    "name": "Orit Strock",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0.35,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 3.5,
+    "overall_score": 6.4,
+    "chain_of_thought": "כותרת טראגית על מציאת בתה של השרה סטרוק ללא חיים, ללא חשד לפלילים. סיקור אישי-טראגי ולא פוליטי. אזכורים חברתיים אינם קשורים ישירות אליה.",
+    "news_headlines": [
+      "Daughter of Settlements Minister Orit Strock found dead; no suspicion of criminal involvement - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "Reddit Has Become an Echo Chamber for Anti-Israel Sentiment — I go on Reddit several times a day, and sure, there are some great subs, but the algorithm is working overtime to ensure my feed is a non-stop parade of creative fiction about Israel. Apparently, according to the \"intellectuals\" of Reddit, ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1s0i74l/reddit_has_become_an_echo_chamber_for_antiisrael/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Electronic_Luck8731",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "The Government is planning to establish a new Haredi town (\"rivaling\" Kiryat Gat), \"Plugot\", over some of the agricultural fields of Shafir Regional Council and lead a demographic twist in the Shephelah to become Haredi majority with a drastically declined social-economic rank from Ashdod to Arad! — I'm not a person who goes to protests, but this time I'd be the first one to protest against this totally unnecessary \"development\"! Who joins me? The only Plugot they will see will be in the IDF.🇮🇱 If the haredim want to live in the Sout",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz45up/the_government_is_planning_to_establish_a_new/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Expensive_Warthog_68",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Rights body: 500 minority girls abducted, forcibly converted in Pakistan",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0g8v9/rights_body_500_minority_girls_abducted_forcibly/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Krankenitrate",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofir-sofer",
+    "name": "Ofir Sofer",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ofir Sofer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofir Sofer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "simcha-rothman",
+    "name": "Simcha Rothman",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Simcha Rothman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Simcha Rothman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zvi-sukkot",
+    "name": "Zvi Sukkot",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Zvi Sukkot in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zvi Sukkot in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ohad-tal",
+    "name": "Ohad Tal",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ohad Tal in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ohad Tal in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "limor-son-har-melech",
+    "name": "Limor Son Har-Melech",
+    "party": "Religious Zionism",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Limor Son Har-Melech in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Limor Son Har-Melech in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "itamar-ben-gvir",
+    "name": "Itamar Ben Gvir",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0.7,
+    "policy_approval": -0.6,
+    "media_amplification": 0.7,
+    "news_sentiment": 2,
+    "social_sentiment": 3,
+    "media_volume": 7,
+    "overall_score": 3.6,
+    "chain_of_thought": "שלוש כותרות שליליות: אישה מעמתת את בן גביר באתר פגיעת טיל איראני ('אתה רק מביא מוות'), ונתניהו מכנה את הצהרת אביתר שלו 'בלתי מקובלת'. עוינות גבוהה כלפיו הן מהציבור והן מתוך הקואליציה. אישור מדיניות שלילי מאוד.",
+    "news_headlines": [
+      "Woman confronts Ben-Gvir at site of Iranian missile strike - Al Jazeera",
+      "‘You only bring death’: Israeli woman confronts Ben-Gvir after Iranian missile strike - Anadolu Ajansı",
+      "Netanyahu calls Ben-Gvir’s Evyatar statement ‘unacceptable’ - JNS"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Itamar Ben Gvir in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "almog-cohen",
+    "name": "Almog Cohen",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Almog Cohen in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Almog Cohen in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "zvika-fogel",
+    "name": "Zvika Fogel",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Zvika Fogel in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Zvika Fogel in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yitzhak-wasserlauf",
+    "name": "Yitzhak Wasserlauf",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yitzhak Wasserlauf in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yitzhak Wasserlauf in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "limor-widman-yosef",
+    "name": "Limor Widman-Yosef",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Limor Widman-Yosef in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Limor Widman-Yosef in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "amichai-eliyahu",
+    "name": "Amichai Eliyahu",
+    "party": "Otzma Yehudit",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Amichai Eliyahu in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Amichai Eliyahu in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "avigdor-lieberman",
+    "name": "Avigdor Lieberman",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Avigdor Lieberman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Avigdor Lieberman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "oded-forer",
+    "name": "Oded Forer",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Oded Forer in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Oded Forer in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "evgeny-sova",
+    "name": "Evgeny Sova",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Evgeny Sova in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Evgeny Sova in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "hamad-amar",
+    "name": "Hamad Amar",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Hamad Amar in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Hamad Amar in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yulia-malinovsky",
+    "name": "Yulia Malinovsky",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Yulia Malinovsky in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Yulia Malinovsky in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "sharon-nir",
+    "name": "Sharon Nir",
+    "party": "Yisrael Beiteinu",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Sharon Nir in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Sharon Nir in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mansour-abbas",
+    "name": "Mansour Abbas",
+    "party": "Ra'am",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Mansour Abbas in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Mansour Abbas in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "waleed-taha",
+    "name": "Waleed Taha",
+    "party": "Ra'am",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Waleed Taha in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Waleed Taha in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "iman-khatib-yasin",
+    "name": "Iman Khatib-Yasin",
+    "party": "Ra'am",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Iman Khatib-Yasin in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Iman Khatib-Yasin in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "mazen-ghanaim",
+    "name": "Mazen Ghanaim",
+    "party": "Ra'am",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Mazen Ghanaim in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Mazen Ghanaim in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "atta-abu-medeghem",
+    "name": "Atta Abu Medeghem",
+    "party": "Ra'am",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "כותרות ואזכורים חברתיים רבים על אירועים ביטחוניים (מתקפות איראניות, גירוש דיפלומטים, פעולות צבאיות) אך אף אחד אינו קשור ישירות לח\"כ אבו מדיר'ם. התאמות שגויות מהצנרת.",
+    "news_headlines": [
+      "Dozens of extremist settlers beat Palestinians; burn homes, cars in revenge attacks",
+      "Saudi Arabia orders Iranian military attache, four embassy staff to leave",
+      "After Iranian missile attacks on south, all schools to go remote on Sunday and Monday",
+      "Several hurt in Iranian cluster bomb attack around Tel Aviv",
+      "Ukrainian drone attack on Moscow forces airport closure, Russia says",
+      "IDF arrests PIJ Jenin Battalion commander during West Bank operation"
+    ],
+    "social_mentions": [
+      {
+        "text": "A realistic offramp? — I know nobody here is privy to any real information around this, but I'm curious what you all believe will be a realistic offramp for this campaign. I consider myself cynical when it comes believing in regime change, so I don't consider tha",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1s0h5bd/a_realistic_offramp/"
+        ],
+        "speaker_metadata": {
+          "handle": "@LowkeyShtuyot",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Dimona & Arad (together 100 injured) — For some reason the missles weren't shot down Failed interception IDF investigates Should Israel step up its attacks on Iran? [Failed interception](https://www.timesofisrael.com/liveblog_entry/idf-opens-probe-into-failed-interception-of-mis",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1s03ci1/dimona_arad_together_100_injured/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Tagglit2022",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Building collapses in Dimona after latest missile attack",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rzxm6n/building_collapses_in_dimona_after_latest_missile/"
+        ],
+        "speaker_metadata": {
+          "handle": "@thejerusalempost",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Why did Israel attack Lebanon in 1978? — I’m asking this question because I saw on someone’s insta story (she’s pro Palestinian) that Lebanon was a good and peaceful country with no “terrorists” (specifically hezbollah) in 1978. Basically she was insisting that Israel attacked the",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rzurj3/why_did_israel_attack_lebanon_in_1978/"
+        ],
+        "speaker_metadata": {
+          "handle": "@CommunicationNo6136",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Should Israel pursue this path to possible regime change - surgical strikes on South Pars and Kharg Island? — Trump can't just declare victory and leave Iran in control of Hormuz. He has to \"Win\", and only Regime Shift or Change is a \"Win\". I think that position is already Israel's position. I think the only path to a \"Win\" for the Combined Forces ",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1ryksiv/should_israel_pursue_this_path_to_possible_regime/"
+        ],
+        "speaker_metadata": {
+          "handle": "@palefire123",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Trump threatens attacks on Iranian power plants if Tehran fails to open the Strait of Hormuz",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0h9gh/trump_threatens_attacks_on_iranian_power_plants/"
+        ],
+        "speaker_metadata": {
+          "handle": "@jupa300",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Joint statement on Strait of Hormuz: Iran attacks must stop, freedom of navigation enshrined in law",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0ax8p/joint_statement_on_strait_of_hormuz_iran_attacks/"
+        ],
+        "speaker_metadata": {
+          "handle": "@Drdreboxx",
+          "known_satirist": false
+        }
+      },
+      {
+        "text": "Saudi Arabia expels Iran military attache, four embassy staff",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/worldnews/comments/1s0a7ow/saudi_arabia_expels_iran_military_attache_four/"
+        ],
+        "speaker_metadata": {
+          "handle": "@papipota",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ayman-odeh",
+    "name": "Ayman Odeh",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0.3,
+    "policy_approval": -0.1,
+    "media_amplification": 0.3,
+    "news_sentiment": 4.5,
+    "social_sentiment": 7,
+    "media_volume": 3,
+    "overall_score": 5,
+    "chain_of_thought": "כותרת על ביקור חברי כנסת מחד\"ש אצל ילדי משפחת בני עודה שהוריהם נהרגו על ידי חיילים. כותרת בעלת מטען רגשי חזק עם נרטיב ביקורתי כלפי הכיבוש, המחזקת את תדמית עודה כפוליטיקאי פרו-פלסטיני.",
+    "news_headlines": [
+      "Hadash MKs visited Bani Odeh children’s, their parents and two young brothers were murdered by Occupation soldiers - mronline.org"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ayman Odeh in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ahmad-tibi",
+    "name": "Ahmad Tibi",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Ahmad Tibi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ahmad Tibi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "aida-touma-suleiman",
+    "name": "Aida Touma-Suleiman",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Aida Touma-Suleiman in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Aida Touma-Suleiman in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "ofer-cassif",
+    "name": "Ofer Cassif",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "הכותרת על חקלאי אבוקדו שנהרג מרקטה של חזבאללה אינה קשורה ישירות לח\"כ עופר כסיף. התאמה שגויה.",
+    "news_headlines": [
+      "60-year-old avocado farmer and kibbutz spokesman killed by Hezbollah rocket"
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Ofer Cassif in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "youssef-atauna",
+    "name": "Youssef Atauna",
+    "party": "Hadash-Ta'al",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Youssef Atauna in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Youssef Atauna in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "merav-michaeli",
+    "name": "Merav Michaeli",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Merav Michaeli in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Merav Michaeli in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "naama-lazimi",
+    "name": "Naama Lazimi",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Naama Lazimi in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Naama Lazimi in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "gilad-kariv",
+    "name": "Gilad Kariv",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Gilad Kariv in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Gilad Kariv in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "efrat-rayten",
+    "name": "Efrat Rayten",
+    "party": "Labor",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 5.5,
+    "chain_of_thought": "אין כותרות או אזכורים חברתיים תואמים במחזור זה.",
+    "news_headlines": [
+      "No direct headlines matched Efrat Rayten in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Efrat Rayten in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ]
+  },
+  {
+    "politician_id": "yair-golan",
+    "name": "Yair Golan",
+    "party": "Democrats",
+    "hostility_level": 0.15,
+    "policy_approval": 0.2,
+    "media_amplification": 0.55,
+    "news_sentiment": 6,
+    "social_sentiment": 8.5,
+    "media_volume": 5.5,
+    "overall_score": 6.8,
+    "chain_of_thought": "שלוש כותרות בהן גולן מאשים את נתניהו בהארכת מלחמה להימנעות מבחירות, טוען שלממשלה אין תוכנית לסיום המלחמה עם איראן וחזבאללה. גולן מוצג כדמות אופוזיציונית אקטיבית ואמינה. אזכור חברתי על רמת הגולן אינו רלוונטי. סיקור חיובי כלפי גולן כמבקר הממשלה.",
+    "news_headlines": [
+      "Democrats head Golan says Netanyahu dragging out war to avoid elections - The Times of Israel",
+      "Ex-General Golan Accuses Netanyahu of Political War - jfeed.com",
+      "Yair Golan says government lacks plan to end war with Iran, Hezbollah - MSN"
+    ],
+    "social_mentions": [
+      {
+        "text": "Can someone explain the Syrian occupation etc — I keep getting shot down when I try to defend Israel. Everyone talks about how GolaN Heights used to be Syrian but Israel 'illegally\" annexed them and Israel has been occupying Syria since 1967 and 'Greater Expansion' is happening. I though",
+        "thread_context": [
+          "Source: https://www.reddit.com/r/Israel/comments/1rz0vf0/can_someone_explain_the_syrian_occupation_etc/"
+        ],
+        "speaker_metadata": {
+          "handle": "@AZShitshow",
+          "known_satirist": false
+        }
+      }
+    ]
+  }
+]
