@@ -83,7 +83,9 @@ describe("parseClaudeCliOutput", () => {
 
 describe("shouldRetryClaudeBatchError", () => {
   it("retries parse-format failures", () => {
-    expect(shouldRetryClaudeBatchError(new Error("Failed to parse Claude response as JSON"))).toBe(true);
+    expect(shouldRetryClaudeBatchError(new Error("Failed to parse Claude response as JSON"))).toBe(
+      true
+    );
   });
 
   it("does not retry missing CLI binary errors", () => {

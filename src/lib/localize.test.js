@@ -15,8 +15,10 @@ describe("localizeName", () => {
     expect(localizeName(mockT, "Benjamin Netanyahu")).toBe("בנימין נתניהו");
   });
 
-  it("falls back to English for unknown politician", () => {
-    expect(localizeName(mockT, "Unknown Person")).toBe("Unknown Person");
+  it("falls back to Hebrew transliteration for unknown politician", () => {
+    const fallback = localizeName(mockT, "Unknown Person");
+    expect(fallback).not.toBe("Unknown Person");
+    expect(fallback).toMatch(/[\u0590-\u05FF]/);
   });
 });
 

@@ -1463,7 +1463,9 @@ async function main() {
       const parsedLLM = llmResponseSchema.safeParse(llmResult);
       if (!parsedLLM.success) {
         const errors = parsedLLM.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`);
-        throw new Error(`LLM response validation failed for ${politician.id}: ${errors.join("; ")}`);
+        throw new Error(
+          `LLM response validation failed for ${politician.id}: ${errors.join("; ")}`
+        );
       }
 
       const {
