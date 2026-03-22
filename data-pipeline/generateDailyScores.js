@@ -757,6 +757,8 @@ const SOURCES_CONFIG_PATH = process.env.PIPELINE_SOURCES_PATH
 
 const rssFeedCache = new Map();
 const redditFeedCache = new Map();
+const telegramFeedCache = new Map();
+const fxpFeedCache = new Map();
 
 function parsePositiveInt(value, fallback) {
   const parsed = Number.parseInt(value ?? "", 10);
@@ -895,14 +897,16 @@ function parseRssItems(xml) {
     .filter((item) => item.title.length > 0);
 }
 
-async function fetchText(url, timeoutMs) {
+async function fetchText(url, timeoutMs, extraHeaders = {}) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetch(url, {
       signal: controller.signal,
+      redirect: "follow",
       headers: {
         "User-Agent": "PolityMarketPipeline/1.0 (+https://github.com/RalbagI/PolityMarket)",
+        ...extraHeaders,
       },
     });
     if (!response.ok) {
@@ -968,6 +972,117 @@ async function getRedditPosts(subreddit, maxPosts) {
 
   redditFeedCache.set(cacheKey, posts);
   return posts;
+}
+
+// ── Telegram Public Channel Scraping ─────────────────────────────────
+// Scrapes t.me/s/{channel} HTML preview pages (no API key needed).
+// Returns last ~20 messages from public channels.
+
+async function getTelegramPosts(channel, maxPosts) {
+  if (telegramFeedCache.has(channel)) {
+    return telegramFeedCache.get(channel);
+  }
+
+  const url = `https://t.me/s/${channel}`;
+  const html = await retry(() => fetchText(url, SOURCE_TIMEOUT_MS), {
+    maxRetries: 2,
+    initialDelay: 2000,
+    maxDelay: 10000,
+  });
+
+  // Parse messages from HTML: class="tgme_widget_message_text js-message_text"
+  const messageRegex =
+    /data-post="[^/]+\/(\d+)"[\s\S]*?class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>\s*(?:<a|<div class="tgme_widget_message)/g;
+  const posts = [];
+  let match;
+  while ((match = messageRegex.exec(html)) !== null && posts.length < maxPosts) {
+    const msgId = match[1];
+    const rawHtml = match[2];
+    // Strip HTML tags to get plain text
+    const text = rawHtml
+      .replace(/<br\s*\/?>/gi, " ")
+      .replace(/<[^>]+>/g, "")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (text.length > 10) {
+      posts.push({
+        author: channel,
+        title: "",
+        body: text,
+        permalink: `https://t.me/${channel}/${msgId}`,
+        createdUtc: 0,
+      });
+    }
+  }
+
+  telegramFeedCache.set(channel, posts);
+  return posts;
+}
+
+// ── FXP Forum Scraping ───────────────────────────────────────────────
+// Scrapes thread titles from FXP forum pages (Israeli forums).
+
+async function getFxpThreads(forumId, maxThreads) {
+  const cacheKey = `fxp:${forumId}`;
+  if (fxpFeedCache.has(cacheKey)) {
+    return fxpFeedCache.get(cacheKey);
+  }
+
+  const url = `https://www.fxp.co.il/forumdisplay.php?f=${forumId}`;
+  const html = await retry(() => fetchText(url, SOURCE_TIMEOUT_MS), {
+    maxRetries: 2,
+    initialDelay: 2000,
+    maxDelay: 10000,
+  });
+
+  // Parse thread links: showthread.php?t=XXXXX">Thread Title
+  const threadRegex = /showthread\.php\?t=(\d+)[^"]*"[^>]*>([^<]+)/g;
+  const threads = [];
+  let tmatch;
+  const seen = new Set();
+
+  while ((tmatch = threadRegex.exec(html)) !== null && threads.length < maxThreads) {
+    const threadId = tmatch[1];
+    const title = decodeHtmlEntities(tmatch[2]).trim();
+    // Skip sticky/meta threads and duplicates
+    if (seen.has(threadId) || title.length < 5) continue;
+    seen.add(threadId);
+
+    threads.push({
+      author: "fxp_user",
+      title,
+      body: "",
+      permalink: `https://www.fxp.co.il/showthread.php?t=${threadId}`,
+      createdUtc: 0,
+    });
+  }
+
+  fxpFeedCache.set(cacheKey, threads);
+  return threads;
+}
+
+// ── Bluesky AT Protocol Search ───────────────────────────────────────
+// Free public API — no auth needed. May return 403 from some IPs.
+
+async function searchBlueskyPosts(query, maxPosts) {
+  const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts?q=${encodeURIComponent(query)}&limit=${maxPosts}`;
+  const payload = await fetchJson(url, SOURCE_TIMEOUT_MS);
+
+  return (payload?.posts ?? []).map((post) => ({
+    author: post.author?.handle || "unknown",
+    title: "",
+    body: post.record?.text || "",
+    permalink: post.uri
+      ? `https://bsky.app/profile/${post.author?.handle}/post/${post.uri.split("/").pop()}`
+      : "",
+    createdUtc: post.record?.createdAt ? new Date(post.record.createdAt).getTime() / 1000 : 0,
+  }));
 }
 
 function renderSearchTemplate(template, politician) {
@@ -1038,33 +1153,83 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   let successfulSources = 0;
   let failedSources = 0;
 
-  for (const subreddit of socialConfig.redditSubreddits) {
+  // Helper: process a list of posts and push matching mentions
+  function processPosts(posts, sourceLabel) {
+    for (const post of posts) {
+      const combined = `${post.title} ${post.body}`;
+      if (!includesPolitician(combined, searchTerms)) continue;
+      matches.push({
+        text: post.body
+          ? `${post.title} — ${post.body.slice(0, 240)}`.trim().replace(/^— /, "")
+          : post.title,
+        thread_context: post.permalink ? [`Source: ${post.permalink}`] : [],
+        speaker_metadata: {
+          handle: `@${post.author}`,
+          known_satirist: /satire|parody|meme/i.test(`${post.author} ${combined}`),
+        },
+      });
+    }
+  }
+
+  // ── Reddit ──────────────────────────────────────────────────────────
+  for (const subreddit of socialConfig.redditSubreddits ?? []) {
     try {
       const posts = await getRedditPosts(subreddit, socialConfig.maxPostsPerSubreddit);
       successfulSources++;
-      for (const post of posts) {
-        const combined = `${post.title} ${post.body}`;
-        if (!includesPolitician(combined, searchTerms)) {
-          continue;
-        }
-        matches.push({
-          text: post.body ? `${post.title} — ${post.body.slice(0, 240)}` : post.title,
-          thread_context: post.permalink ? [`Source: ${post.permalink}`] : [],
-          speaker_metadata: {
-            handle: `@${post.author}`,
-            known_satirist: /satire|parody|meme/i.test(`${post.author} ${combined}`),
-          },
-        });
-      }
+      processPosts(posts, "Reddit");
     } catch (err) {
       failedSources++;
-      console.warn(`[Social] ${politician.name}: failed subreddit (${subreddit}) — ${err.message}`);
+      console.warn(`[Social] ${politician.name}: failed Reddit (${subreddit}) — ${err.message}`);
+    }
+  }
+
+  // ── Telegram ────────────────────────────────────────────────────────
+  const telegramConfig = socialConfig.telegram;
+  if (telegramConfig?.channels?.length) {
+    for (const channel of telegramConfig.channels) {
+      try {
+        const posts = await getTelegramPosts(channel, telegramConfig.maxMessagesPerChannel || 20);
+        successfulSources++;
+        processPosts(posts, "Telegram");
+      } catch (err) {
+        failedSources++;
+        console.warn(`[Social] ${politician.name}: failed Telegram (${channel}) — ${err.message}`);
+      }
+    }
+  }
+
+  // ── FXP Forum ───────────────────────────────────────────────────────
+  const fxpConfig = socialConfig.fxp;
+  if (fxpConfig?.forumIds?.length) {
+    for (const forumId of fxpConfig.forumIds) {
+      try {
+        const threads = await getFxpThreads(forumId, fxpConfig.maxThreadsPerForum || 30);
+        successfulSources++;
+        processPosts(threads, "FXP");
+      } catch (err) {
+        failedSources++;
+        console.warn(`[Social] ${politician.name}: failed FXP (f=${forumId}) — ${err.message}`);
+      }
+    }
+  }
+
+  // ── Bluesky ─────────────────────────────────────────────────────────
+  const blueskyConfig = socialConfig.bluesky;
+  if (blueskyConfig?.enabled) {
+    try {
+      const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
+      const posts = await searchBlueskyPosts(hebrewName, blueskyConfig.maxPostsPerSearch || 10);
+      successfulSources++;
+      processPosts(posts, "Bluesky");
+    } catch (err) {
+      // Bluesky is best-effort — don't count as failure
+      console.warn(`[Social] ${politician.name}: Bluesky unavailable — ${err.message}`);
     }
   }
 
   if (successfulSources === 0) {
     throw new Error(
-      `[Social] ${politician.name}: all configured subreddits failed (${failedSources} failures)`
+      `[Social] ${politician.name}: all configured sources failed (${failedSources} failures)`
     );
   }
 
