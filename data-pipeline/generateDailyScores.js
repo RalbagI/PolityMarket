@@ -813,11 +813,15 @@ function dedupeStrings(values) {
   return [...new Set(values.map((v) => String(v).trim()).filter(Boolean))];
 }
 
-function buildSearchTerms(politician) {
+const MIN_LATIN_TOKEN_LENGTH = 4;
+const MIN_HEBREW_TOKEN_LENGTH = 3;
+const HEBREW_TOKEN_DENYLIST = new Set(["בן"]);
+
+export function buildSearchTerms(politician) {
   const tokenTerms = politician.name
     .split(/[\s\-']/)
     .map((token) => token.trim())
-    .filter((token) => token.length >= 4);
+    .filter((token) => token.length >= MIN_LATIN_TOKEN_LENGTH);
   const terms = dedupeStrings([politician.name, politician.id.replace(/-/g, " "), ...tokenTerms]);
   // Add Hebrew name and its tokens for matching Hebrew headlines
   const hebrewName = HEBREW_NAMES[politician.name];
@@ -825,15 +829,24 @@ function buildSearchTerms(politician) {
     terms.push(hebrewName);
     const hebrewTokens = hebrewName
       .split(/\s+/)
-      .filter((t) => t.length >= 2);
+      .map((token) => normalizeText(token))
+      .filter(
+        (token) =>
+          token.length >= MIN_HEBREW_TOKEN_LENGTH && !HEBREW_TOKEN_DENYLIST.has(token)
+      );
     terms.push(...hebrewTokens);
   }
-  return dedupeStrings(terms).map((term) => normalizeText(term));
+  return dedupeStrings(terms.map((term) => normalizeText(term)));
 }
 
-function includesPolitician(text, searchTerms) {
+export function includesPolitician(text, searchTerms) {
   const normalized = normalizeText(text);
-  return searchTerms.some((term) => normalized.includes(term));
+  if (!normalized) return false;
+  const paddedText = ` ${normalized} `;
+  return searchTerms.some((term) => {
+    const normalizedTerm = normalizeText(term);
+    return normalizedTerm.length > 0 && paddedText.includes(` ${normalizedTerm} `);
+  });
 }
 
 function decodeHtmlEntities(input) {

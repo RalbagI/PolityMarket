@@ -179,6 +179,8 @@ describe("dailyEntrySchema", () => {
       politician_id: "test-pol",
       name: "Test Politician",
       party: "Test Party",
+      wing: "center",
+      sector: "secular",
       hostility_level: 0.3,
       policy_approval: 0.5,
       media_amplification: 0.7,
@@ -197,6 +199,8 @@ describe("dailyEntrySchema", () => {
       politician_id: "test",
       name: "Test",
       party: "Test",
+      wing: "center",
+      sector: "secular",
       hostility_level: 0.3,
       policy_approval: 0.5,
       media_amplification: 0.7,
@@ -215,6 +219,8 @@ describe("dailyEntrySchema", () => {
       politician_id: "test-pol",
       name: "Test Politician",
       party: "Test Party",
+      wing: "center",
+      sector: "secular",
       hostility_level: 0.3,
       policy_approval: 0.5,
       media_amplification: 0.7,
@@ -234,6 +240,29 @@ describe("dailyEntrySchema", () => {
     });
     expect(result.success).toBe(true);
   });
+
+  it("preserves wing and sector fields used by summary rows", () => {
+    const result = dailyEntrySchema.safeParse({
+      date: "2026-03-18",
+      politician_id: "test-pol",
+      name: "Test Politician",
+      party: "Test Party",
+      wing: "right",
+      sector: "arab",
+      role: "mk",
+      hostility_level: 0.3,
+      policy_approval: 0.5,
+      media_amplification: 0.7,
+      overall_score: 6.5,
+      chain_of_thought: "analysis",
+      news_sentiment: 7.5,
+      social_sentiment: 7.0,
+      media_volume: 7.0,
+    });
+    expect(result.success).toBe(true);
+    expect(result.data.wing).toBe("right");
+    expect(result.data.sector).toBe("arab");
+  });
 });
 
 describe("summaryRowSchema", () => {
@@ -249,5 +278,45 @@ describe("summaryRowSchema", () => {
       media_volume: 7.0,
     });
     expect(result.success).toBe(true);
+  });
+});
+
+describe("dailyEntrySchema -> summaryRowSchema integration", () => {
+  it("keeps wing/sector through parsed daily entry handoff", () => {
+    const dailyEntry = {
+      date: "2026-03-18",
+      politician_id: "test-pol",
+      name: "Test Politician",
+      party: "Test Party",
+      wing: "left",
+      sector: "haredi",
+      role: "mk",
+      hostility_level: 0.3,
+      policy_approval: 0.5,
+      media_amplification: 0.7,
+      overall_score: 6.5,
+      chain_of_thought: "analysis",
+      news_sentiment: 7.5,
+      social_sentiment: 7.0,
+      media_volume: 7.0,
+      news_headlines: ["Headline A"],
+      social_mentions: [],
+    };
+
+    const parsedEntry = dailyEntrySchema.safeParse(dailyEntry);
+    expect(parsedEntry.success).toBe(true);
+
+    const summaryRow = summaryRowSchema.safeParse({
+      date: parsedEntry.data.date,
+      politician_id: parsedEntry.data.politician_id,
+      name: parsedEntry.data.name,
+      party: parsedEntry.data.party,
+      wing: parsedEntry.data.wing,
+      sector: parsedEntry.data.sector,
+      role: parsedEntry.data.role,
+      overall_score: parsedEntry.data.overall_score,
+      media_volume: parsedEntry.data.media_volume,
+    });
+    expect(summaryRow.success).toBe(true);
   });
 });

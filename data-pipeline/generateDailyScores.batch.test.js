@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
 import {
   buildBatchedPrompt,
+  buildSearchTerms,
+  includesPolitician,
   parseClaudeCliOutput,
   shouldRetryClaudeBatchError,
   splitPoliticiansIntoBatches,
@@ -40,6 +42,23 @@ describe("buildBatchedPrompt", () => {
     expect(prompt).toContain("[2] beta | Beta Name (Party B)");
     expect(prompt).toContain("No matched headlines");
     expect(prompt).toContain("No matched social mentions");
+  });
+});
+
+describe("search term matching", () => {
+  it("filters common short Hebrew tokens while preserving useful terms", () => {
+    const terms = buildSearchTerms(makePolitician("itamar-ben-gvir", "Itamar Ben Gvir", "Otzma Yehudit"));
+    expect(terms).toContain("איתמר בן גביר");
+    expect(terms).toContain("גביר");
+    expect(terms).not.toContain("בן");
+  });
+
+  it("matches on word boundaries instead of raw substrings", () => {
+    expect(includesPolitician("הקבינט דן בבניין חדש בירושלים", ["בן"])).toBe(false);
+    expect(includesPolitician("דיווח מיוחד על בן גביר הערב", ["בן"])).toBe(true);
+    expect(includesPolitician("Update: Itamar Ben-Gvir addressed reporters", ["itamar ben gvir"])).toBe(
+      true
+    );
   });
 });
 

@@ -16,6 +16,7 @@
     "preview": "vite preview",
     "pipeline": "node data-pipeline/generateDailyScores.js",
     "pipeline:validate": "node scripts/validate-daily-artifacts.js",
+    "pipeline:backfill": "node scripts/backfill-historical-artifacts.js",
     "pipeline:run": "bash scripts/run-daily-pipeline.sh"
   },
   "dependencies": {
