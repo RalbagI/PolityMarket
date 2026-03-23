@@ -18,7 +18,7 @@ vi.mock("../store", () => ({
 }));
 
 vi.mock("../lib/colorScale", () => ({
-  scoreToColorWithAlpha: () => "rgba(100,100,200,0.55)",
+  normalizedScoreToColorWithAlpha: () => "rgba(100,100,200,0.55)",
 }));
 
 vi.mock("../lib/localize", () => ({

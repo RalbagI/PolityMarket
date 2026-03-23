@@ -18,6 +18,22 @@ export function scoreToColor(score) {
 /**
  * Parse the rgb() string from d3 and return rgba() with alpha.
  */
+/**
+ * Normalized color: maps score relative to [min, max] of visible data
+ * so the lowest visible score is red and highest is green.
+ */
+export function normalizedScoreToColor(score, min, max) {
+  const range = max - min || 1;
+  const normalized = ((score - min) / range) * 10;
+  return colorScale(normalized);
+}
+
+export function normalizedScoreToColorWithAlpha(score, min, max, alpha = 0.6) {
+  const range = max - min || 1;
+  const normalized = ((score - min) / range) * 10;
+  return scoreToColorWithAlpha(normalized, alpha);
+}
+
 export function scoreToColorWithAlpha(score, alpha = 0.6) {
   const color = colorScale(score);
   // d3 returns "rgb(r, g, b)" format
