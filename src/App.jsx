@@ -86,9 +86,11 @@ export default function App() {
 
   const handleSelectPolitician = useCallback(
     (name) => {
+      // In party mode, don't open the politician detail panel
+      if (viewMode === "parties") return;
       if (latestDate) openPanel(name, latestDate);
     },
-    [latestDate, openPanel]
+    [latestDate, openPanel, viewMode]
   );
 
   // Resolve selectedPolitician (name) → politician_id for liked checks

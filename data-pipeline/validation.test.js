@@ -5,7 +5,7 @@ import { describe, it, expect } from "vitest";
 
 // ── Spam Filter ───────────────────────────────────────────────────────
 
-const SPAM_PATTERNS_HE = ["מודעה", "פרסומת", "שיתוף פעולה מסחרי", "תוכן ממומן", "הצטרפו ל-"];
+const SPAM_PATTERNS_HE = ["מודעה", "פרסומת", "שיתוף פעולה מסחרי", "תוכן ממומן", "הצטרפו לערוץ"];
 const SPAM_PATTERNS_EN = ["sponsored", "promoted", "advertisement", "paid partnership", "Join @"];
 const SPAM_URL_PATTERNS = ["/sponsored/", "/ad/", "utm_medium=paid", "utm_source=paid"];
 
@@ -68,8 +68,12 @@ describe("isSpamContent", () => {
   });
 
   it("rejects Telegram channel promotions", () => {
-    expect(isSpamContent("הצטרפו ל-ערוץ החדשות שלנו לעדכונים", "")).toBe(true);
+    expect(isSpamContent("הצטרפו לערוץ החדשות שלנו לעדכונים", "")).toBe(true);
     expect(isSpamContent("Join @newsChannel for breaking news updates", "")).toBe(true);
+  });
+
+  it("allows legitimate content about joining parties", () => {
+    expect(isSpamContent("חבר הכנסת הצטרף לקואליציה אחרי שבועות של משא ומתן", "")).toBe(false);
   });
 });
 

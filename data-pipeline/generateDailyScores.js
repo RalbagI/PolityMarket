@@ -1102,7 +1102,7 @@ async function searchBlueskyPosts(query, maxPosts) {
 // ── Spam/Ad Content Filter ────────────────────────────────────────────
 // Filters out ads, sponsored content, and spam before politician matching.
 
-const SPAM_PATTERNS_HE = ["מודעה", "פרסומת", "שיתוף פעולה מסחרי", "תוכן ממומן", "הצטרפו ל-"];
+const SPAM_PATTERNS_HE = ["מודעה", "פרסומת", "שיתוף פעולה מסחרי", "תוכן ממומן", "הצטרפו לערוץ"];
 const SPAM_PATTERNS_EN = ["sponsored", "promoted", "advertisement", "paid partnership", "Join @"];
 const SPAM_URL_PATTERNS = ["/sponsored/", "/ad/", "utm_medium=paid", "utm_source=paid"];
 
@@ -1146,10 +1146,15 @@ function validateTemporalConsistency(entries, historicalSummary) {
   const warnings = [];
   if (!historicalSummary.length) return warnings;
 
+  // Pre-build O(1) lookup by politician_id
+  const historyMap = new Map();
+  for (const h of historicalSummary) {
+    if (!historyMap.has(h.politician_id)) historyMap.set(h.politician_id, []);
+    historyMap.get(h.politician_id).push(h.overall_score);
+  }
+
   for (const entry of entries) {
-    const history = historicalSummary
-      .filter((h) => h.politician_id === entry.politician_id)
-      .map((h) => h.overall_score);
+    const history = historyMap.get(entry.politician_id) || [];
 
     if (history.length < 3) continue;
 
