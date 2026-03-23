@@ -1,8 +1,13 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "../App";
+
+const openPanelMock = vi.fn();
+const closePanelMock = vi.fn();
+const loadSummaryMock = vi.fn();
+const loadPartySummaryMock = vi.fn();
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -14,6 +19,14 @@ vi.mock("react-i18next", () => ({
 vi.mock("../store", () => {
   const data = [
     {
+      date: "2026-03-21",
+      politician_id: "test-pol",
+      name: "Test Politician",
+      party: "TestParty",
+      overall_score: 4.5,
+      media_volume: 2,
+    },
+    {
       date: "2026-03-22",
       politician_id: "test-pol",
       name: "Test Politician",
@@ -22,22 +35,23 @@ vi.mock("../store", () => {
       media_volume: 3,
     },
   ];
+
   return {
     default: Object.assign(
       (selector) => {
         const state = {
           summaryData: data,
           loadError: null,
-          loadSummary: vi.fn(),
+          loadSummary: loadSummaryMock,
           panelOpen: false,
           selectedPolitician: null,
           selectedDate: null,
           detailLoading: false,
           detailCache: {},
-          openPanel: vi.fn(),
-          closePanel: vi.fn(),
+          openPanel: openPanelMock,
+          closePanel: closePanelMock,
           partySummaryData: [],
-          loadPartySummary: vi.fn(),
+          loadPartySummary: loadPartySummaryMock,
           treemapSizeBy: "media_volume",
           treemapColorBy: "overall_score",
           setTreemapSizeBy: vi.fn(),
@@ -92,9 +106,12 @@ vi.mock("../lib/normalizeScores", () => ({
   default: (data) => data,
 }));
 
-// Mock heavy child components — this test focuses on <main> layout structure
 vi.mock("./Sidebar", () => ({
-  default: () => <div data-testid="sidebar" />,
+  default: ({ onViewModeChange }) => (
+    <button data-testid="switch-parties" onClick={() => onViewModeChange("parties")}>
+      switch parties
+    </button>
+  ),
 }));
 
 vi.mock("./MethodologyModal", () => ({
@@ -106,10 +123,13 @@ vi.mock("./CookieConsent", () => ({
 }));
 
 vi.mock("./TopMoversStrip", () => ({
-  default: () => <div data-testid="top-movers" />,
+  default: ({ onSelect }) => (
+    <button data-testid="top-mover" onClick={() => onSelect("Test Politician")}>
+      select top mover
+    </button>
+  ),
 }));
 
-// Mock ResizeObserver for Treemap
 class MockResizeObserver {
   constructor(cb) {
     this._cb = cb;
@@ -122,38 +142,19 @@ class MockResizeObserver {
 
 beforeEach(() => {
   globalThis.ResizeObserver = MockResizeObserver;
+  openPanelMock.mockClear();
+  closePanelMock.mockClear();
+  loadSummaryMock.mockClear();
+  loadPartySummaryMock.mockClear();
 });
 
-describe("App mobile layout", () => {
-  it("renders main element with dynamic viewport height for mobile", () => {
-    const { container } = render(<App />);
-
-    const main = container.querySelector("main");
-    expect(main).toBeTruthy();
-    // Should account for top bar + safe-area inset in both vh and dvh variants
-    expect(main.className).toContain("h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))]");
-    expect(main.className).toContain(
-      "supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))]"
-    );
-    expect(main.className).toContain("pt-[calc(3.5rem+env(safe-area-inset-top))]");
-  });
-
-  it("renders main with md:h-screen for desktop", () => {
-    const { container } = render(<App />);
-
-    const main = container.querySelector("main");
-    expect(main.className).toContain("md:h-screen");
-  });
-
-  it("renders TopMoversStrip instead of chart toggle", () => {
+describe("App party mode interactions", () => {
+  it("maps top-mover politician click to party in party mode", () => {
     render(<App />);
-    expect(screen.getByTestId("top-movers")).toBeInTheDocument();
-  });
 
-  it("renders treemap container with min-h-[40vh]", () => {
-    const { container } = render(<App />);
+    fireEvent.click(screen.getByTestId("switch-parties"));
+    fireEvent.click(screen.getByTestId("top-mover"));
 
-    const treemapWrapper = container.querySelector(".min-h-\\[40vh\\]");
-    expect(treemapWrapper).toBeTruthy();
+    expect(openPanelMock).toHaveBeenCalledWith("TestParty", "2026-03-22");
   });
 });

@@ -53,7 +53,7 @@ phases:
 
       - name: detect-pr
         type: cmd
-        cmd: gh pr view 2>/dev/null && echo "yes" || echo "no"
+        cmd: gh pr view >/dev/null 2>&1 && echo "yes" || echo "no"
         store: PR_EXISTS
 
       - name: decide-mode

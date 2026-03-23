@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi } from "vitest";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import Sidebar from "./Sidebar";
 
 vi.mock("react-i18next", () => ({
@@ -40,6 +40,10 @@ vi.mock("./FilterBar", () => ({
 
 const baseFilterProps = {
   visible: [],
+  activeParties: [],
+  activeWings: [],
+  activeSectors: [],
+  showLikedOnly: false,
   wingFilter: [],
   partyFilter: [],
   sectorFilter: [],
@@ -92,5 +96,30 @@ describe("Sidebar mobile top bar", () => {
     const mobileBar = container.querySelector(".md\\:hidden.fixed");
     expect(mobileBar.textContent).toContain("PM");
     expect(mobileBar.textContent).toContain("PolityMarket");
+  });
+
+  it("wires view mode toggle in mobile drawer", () => {
+    const onViewModeChange = vi.fn();
+    const { container, getByLabelText } = render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={onViewModeChange}
+      />
+    );
+
+    fireEvent.click(getByLabelText("sidebar.openDrawer"));
+    const drawer = container.querySelector(".z-50");
+    expect(drawer).toBeTruthy();
+
+    const partiesButton = Array.from(drawer.querySelectorAll("button")).find((btn) =>
+      btn.textContent.includes("sidebar.viewMode.parties")
+    );
+    expect(partiesButton).toBeTruthy();
+
+    fireEvent.click(partiesButton);
+    expect(onViewModeChange).toHaveBeenCalledWith("parties");
   });
 });
