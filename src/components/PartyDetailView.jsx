@@ -164,10 +164,6 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
                 </span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">{t("partyDetail.seats")}</span>
-                <span className="text-gray-200 font-medium">{info.seats}</span>
-              </div>
-              <div className="flex justify-between text-sm">
                 <span className="text-gray-400">{t("partyDetail.founded")}</span>
                 <span className="text-gray-200 font-medium">{info.founded}</span>
               </div>

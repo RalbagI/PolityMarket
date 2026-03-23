@@ -1,6 +1,9 @@
 /**
  * Static metadata for Israeli political parties.
  * Used in PartyDetailView to show background info.
+ *
+ * NOTE: Do not add a `seats` field here — member count is derived from
+ * live pipeline data (party_summary.json / partyData.member_count).
  */
 const PARTY_INFO = {
   Likud: {
@@ -8,10 +11,9 @@ const PARTY_INFO = {
     founded: 1973,
     ideology: "National-liberal conservatism",
     wing: "right",
-    seats: 32,
     status: "coalition",
     description:
-      "Israel's dominant right-wing party, leading every coalition since 2009. Built on Begin's revisionist Zionism, today it blends free-market economics with security hawkishness and populist appeal. Under Netanyahu it absorbed Sa'ar and Elkin back from HaYamin HaMamlakhti ahead of the 2026 cycle.",
+      "Israel's dominant right-wing party, in power for most of the last two decades — with the exception of the Bennett-Lapid government (2021–2022). Built on Begin's revisionist Zionism, today it blends free-market economics with security hawkishness and populist appeal. Under Netanyahu it absorbed Sa'ar and Elkin back from HaYamin HaMamlakhti ahead of the 2026 cycle.",
     keyPositions: [
       "Oppose Palestinian statehood",
       "Judicial reform / reduce Supreme Court power",
@@ -24,7 +26,6 @@ const PARTY_INFO = {
     founded: 2012,
     ideology: "Liberal centrism",
     wing: "center",
-    seats: 24,
     status: "opposition",
     description:
       "The largest opposition party, founded by journalist Yair Lapid as a centrist alternative. Focuses on middle-class economics, secular civic identity, and a rules-based foreign policy. Served as the senior coalition partner in 2021–2022 with Lapid as PM.",
@@ -40,7 +41,6 @@ const PARTY_INFO = {
     founded: 2019,
     ideology: "National-liberal centrism",
     wing: "center",
-    seats: 8,
     status: "opposition",
     description:
       "Re-formed in 2026 after the dissolution of National Unity, led by former IDF Chief of Staff Benny Gantz. Positions itself as a security-first centrist alternative to both Likud and Yesh Atid, drawing on Gantz's military credentials.",
@@ -53,13 +53,12 @@ const PARTY_INFO = {
   },
   Yashar: {
     leader: "Gadi Eisenkot",
-    founded: 2026,
+    founded: 2025,
     ideology: "National centrism",
     wing: "center",
-    seats: 2,
     status: "opposition",
     description:
-      "A new party formed in 2026 by former IDF Chief of Staff Gadi Eisenkot and MK Matan Kahana after splitting from National Unity. Emphasizes military professionalism and centrist pragmatism over partisan politics.",
+      "Formed in 2025 by former IDF Chief of Staff Gadi Eisenkot and MK Matan Kahana after splitting from National Unity. Emphasizes military professionalism and centrist pragmatism over partisan politics.",
     keyPositions: [
       "Professional security leadership",
       "Hostage deal priority",
@@ -69,13 +68,12 @@ const PARTY_INFO = {
   },
   HaMiluimnikim: {
     leader: "Yoaz Hendel",
-    founded: 2026,
+    founded: 2025,
     ideology: "National-liberal",
     wing: "center",
-    seats: 1,
     status: "opposition",
     description:
-      "A single-MK party formed by Yoaz Hendel in 2026 after leaving National Unity. Represents the reservist (miluimnik) ethos — centrist on economics, hawkish on security, and critical of both the far-right coalition and the traditional opposition.",
+      "A single-MK party formed by Yoaz Hendel in 2025 after leaving National Unity. Represents the reservist (miluimnik) ethos — centrist on economics, hawkish on security, and critical of both the far-right coalition and the traditional opposition.",
     keyPositions: [
       "Reservist rights and recognition",
       "Equal burden of service",
@@ -88,7 +86,6 @@ const PARTY_INFO = {
     founded: 2019,
     ideology: "Religious Zionism, national-conservatism",
     wing: "right",
-    seats: 7,
     status: "coalition",
     description:
       "A hard-right religious-nationalist party led by Finance Minister Smotrich. Advocates for annexation of the West Bank, Torah-based governance, and settlement expansion. A key coalition partner with significant influence over fiscal and West Bank policy.",
@@ -104,7 +101,6 @@ const PARTY_INFO = {
     founded: 2012,
     ideology: "Kahanist, ultra-nationalist",
     wing: "right",
-    seats: 6,
     status: "coalition",
     description:
       "An ultra-nationalist party led by National Security Minister Ben Gvir. Rooted in the Kahanist movement, it has mainstreamed into coalition politics since 2022. Advocates aggressive policing, Jewish sovereignty on the Temple Mount, and hardline security measures.",
@@ -120,7 +116,6 @@ const PARTY_INFO = {
     founded: 1984,
     ideology: "Ultra-Orthodox, Mizrahi traditionalism",
     wing: "right",
-    seats: 11,
     status: "coalition",
     description:
       "The Mizrahi ultra-Orthodox party, one of the largest Haredi factions. Founded by Rabbi Ovadia Yosef, it blends religious conservatism with social welfare advocacy for Israel's Mizrahi working class. A perennial coalition kingmaker.",
@@ -136,7 +131,6 @@ const PARTY_INFO = {
     founded: 1992,
     ideology: "Ultra-Orthodox, Ashkenazi Haredi",
     wing: "right",
-    seats: 7,
     status: "coalition",
     description:
       "The Ashkenazi ultra-Orthodox alliance, uniting Agudat Yisrael and Degel HaTorah. Focused almost exclusively on preserving the Haredi way of life — yeshiva study, draft exemptions, and religious education funding. A reliable coalition partner for right-wing governments.",
@@ -152,7 +146,6 @@ const PARTY_INFO = {
     founded: 1999,
     ideology: "Secular nationalism",
     wing: "right",
-    seats: 6,
     status: "opposition",
     description:
       "A secular-nationalist party with strong support among Russian-speaking Israelis. Under Lieberman it combines security hawkishness with fierce secularism, opposing both Haredi influence and Arab political power. Has been in opposition since refusing to sit with ultra-Orthodox parties.",
@@ -168,7 +161,6 @@ const PARTY_INFO = {
     founded: 2024,
     ideology: "Social democracy",
     wing: "left",
-    seats: 4,
     status: "opposition",
     description:
       "Founded in 2024 as a merger of Labor and Meretz, led by former MK and IDF deputy chief Yair Golan. Joined by Labor defectors Lazimi, Kariv, and Rayten. Aims to revive social-democratic politics with a focus on equality, LGBTQ+ rights, and peace advocacy.",
@@ -184,7 +176,6 @@ const PARTY_INFO = {
     founded: 1968,
     ideology: "Social democracy, Zionist left",
     wing: "left",
-    seats: 0,
     status: "extra-parliamentary",
     description:
       "Israel's historic founding party, governing from 1948 to 1977 and intermittently since. After Merav Michaeli's retirement and the departure of key MKs to the Democrats, the party is now extra-parliamentary and faces an existential crisis heading into the next election.",
@@ -200,7 +191,6 @@ const PARTY_INFO = {
     founded: 2015,
     ideology: "Arab–Jewish socialism",
     wing: "left",
-    seats: 5,
     status: "opposition",
     description:
       "A joint list of the Jewish-Arab communist Hadash and the Arab-nationalist Ta'al. Represents Arab citizens alongside Jewish left activists. Advocates for equality, ending the occupation, and full civil rights for Israel's Arab minority.",
@@ -216,7 +206,6 @@ const PARTY_INFO = {
     founded: 1996,
     ideology: "Islamic conservatism, pragmatism",
     wing: "arab",
-    seats: 5,
     status: "opposition",
     description:
       "The southern branch of the Islamic Movement's political party. Made history in 2021 as the first Arab party to join a governing coalition, prioritizing pragmatic gains — budgets, infrastructure, and crime-fighting — for Arab communities over ideological purity.",
@@ -232,7 +221,6 @@ const PARTY_INFO = {
     founded: 2019,
     ideology: "Ultra-conservative, religious right",
     wing: "right",
-    seats: 1,
     status: "coalition",
     description:
       "A single-MK ultra-conservative party focused on opposing LGBTQ+ rights, liberal education curricula, and what it calls 'Western cultural erosion.' Briefly held a deputy-minister role in the current coalition before internal friction.",
@@ -248,7 +236,6 @@ const PARTY_INFO = {
     founded: 2022,
     ideology: "National-liberal conservatism",
     wing: "right",
-    seats: 3,
     status: "coalition",
     description:
       "Originally founded by Gideon Sa'ar after splitting from Likud. After Sa'ar and Elkin returned to Likud in 2025, the remaining MKs — Sharren Haskel, Michel Buskila, and Akram Hasson — continue as a coalition faction with a law-and-order, national-liberal platform.",
@@ -261,13 +248,12 @@ const PARTY_INFO = {
   },
   "Bennett 2026": {
     leader: "Naftali Bennett",
-    founded: 2026,
+    founded: 2025,
     ideology: "National-liberal, pragmatic right",
     wing: "right",
-    seats: 1,
     status: "extra-parliamentary",
     description:
-      "Former PM Naftali Bennett's comeback vehicle, launched in 2026 after years out of politics. Positioning himself as a pragmatic right-wing alternative to Netanyahu, drawing on his tech-sector background and brief tenure as PM in 2021–2022.",
+      "Former PM Naftali Bennett's comeback vehicle, registered in April 2025 after years out of politics. Positioning himself as a pragmatic right-wing alternative to Netanyahu, drawing on his tech-sector background and brief tenure as PM in 2021–2022.",
     keyPositions: [
       "Tech-driven economic growth",
       "Pragmatic security policy",
@@ -280,7 +266,6 @@ const PARTY_INFO = {
     founded: 2025,
     ideology: "Religious Zionism",
     wing: "right",
-    seats: 1,
     status: "extra-parliamentary",
     description:
       "A small religious-Zionist faction led by Matan Yafe, positioning itself between mainstream Religious Zionism and the Kahanist right. Focuses on settlement advocacy and religious-nationalist values.",
