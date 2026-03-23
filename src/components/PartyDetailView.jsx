@@ -1,6 +1,17 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Users, BarChart3, TrendingUp, TrendingDown } from "lucide-react";
+import { Users, BarChart3, TrendingUp } from "lucide-react";
+import {
+  ComposedChart,
+  Line,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+import { format, parseISO } from "date-fns";
 import AccordionSection from "./AccordionSection";
 import { scoreToColor } from "../lib/colorScale";
 import { localizeName, localizeParty } from "../lib/localize";
@@ -56,7 +67,7 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
           totalVol > 0
             ? dayMembers.reduce((s, m) => s + m.overall_score * m.media_volume, 0) / totalVol
             : dayMembers.reduce((s, m) => s + m.overall_score, 0) / dayMembers.length;
-        return { date, score: parseFloat(avg.toFixed(1)) };
+        return { date, score: parseFloat(avg.toFixed(1)), volume: parseFloat(totalVol.toFixed(1)) };
       })
       .filter(Boolean);
   }, [summaryData, partyName]);
@@ -137,38 +148,67 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
         </AccordionSection>
       )}
 
-      {/* 7-Day Trend */}
-      {trend.length > 1 &&
-        (() => {
-          const trendScores = trend.map((d) => d.score);
-          const tMin = Math.min(...trendScores);
-          const tMax = Math.max(...trendScores);
-          const tRange = tMax - tMin || 1;
-          return (
-            <AccordionSection title={t("partyDetail.trend")} icon={TrendingUp} defaultOpen>
-              <div className="flex items-end gap-1 h-20">
-                {trend.map((day) => {
-                  // Normalize relative to this party's own range for visible contrast
-                  const pct = ((day.score - tMin) / tRange) * 70 + 30; // 30-100% range
-                  return (
-                    <div key={day.date} className="flex-1 flex flex-col items-center gap-0.5">
-                      <span className="text-[9px] text-gray-400 tabular-nums">{day.score}</span>
-                      <div
-                        className="w-full rounded-t"
-                        style={{
-                          height: `${Math.max(10, Math.min(100, pct))}%`,
-                          backgroundColor: scoreToColor(day.score),
-                          opacity: 0.8,
-                        }}
-                      />
-                      <span className="text-[8px] text-gray-600">{day.date.slice(8)}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </AccordionSection>
-          );
-        })()}
+      {/* 7-Day Trend — Recharts chart matching politician trend style */}
+      {trend.length > 1 && (
+        <AccordionSection title={t("partyDetail.trend")} icon={TrendingUp} defaultOpen>
+          <div className="h-[160px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <ComposedChart data={trend} margin={{ top: 5, right: 5, left: -15, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
+                <XAxis
+                  dataKey="date"
+                  tick={{ fontSize: 10, fill: "#6b7280" }}
+                  tickFormatter={(d) => format(parseISO(d), "d/M")}
+                />
+                <YAxis
+                  yAxisId="left"
+                  tick={{ fontSize: 10, fill: "#6b7280" }}
+                  domain={[0, "auto"]}
+                  width={30}
+                />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  tick={{ fontSize: 10, fill: "#6b7280" }}
+                  domain={[0, 10]}
+                  width={30}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#1f2937",
+                    border: "1px solid #374151",
+                    borderRadius: 8,
+                    fontSize: 12,
+                  }}
+                  labelFormatter={(d) => format(parseISO(d), "d MMMM yyyy")}
+                  formatter={(value, name) => [
+                    typeof value === "number" ? value.toFixed(1) : value,
+                    name === "score"
+                      ? t("trendlineChart.axis.score")
+                      : t("trendlineChart.axis.volume"),
+                  ]}
+                />
+                <Bar
+                  yAxisId="left"
+                  dataKey="volume"
+                  fill="rgba(107,114,128,0.2)"
+                  radius={[2, 2, 0, 0]}
+                />
+                <Line
+                  yAxisId="right"
+                  type="monotone"
+                  dataKey="score"
+                  stroke={getPartyColor(partyName).bg || "#6366f1"}
+                  strokeWidth={2}
+                  dot={{ r: 3, fill: getPartyColor(partyName).bg || "#6366f1" }}
+                  activeDot={{ r: 5 }}
+                  connectNulls
+                />
+              </ComposedChart>
+            </ResponsiveContainer>
+          </div>
+        </AccordionSection>
+      )}
 
       {/* Members List */}
       <AccordionSection title={t("partyDetail.members")} icon={Users} defaultOpen>
