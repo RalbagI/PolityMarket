@@ -1,31 +1,12 @@
 import { describe, it, expect } from "vitest";
-
-// Test the validation and party aggregation logic
-// These replicate the functions from generateDailyScores.js for unit testing
-
-// ── Spam Filter ───────────────────────────────────────────────────────
-
-const SPAM_PATTERNS_HE = ["מודעה", "פרסומת", "שיתוף פעולה מסחרי", "תוכן ממומן", "הצטרפו לערוץ"];
-const SPAM_PATTERNS_EN = ["sponsored", "promoted", "advertisement", "paid partnership", "Join @"];
-const SPAM_URL_PATTERNS = ["/sponsored/", "/ad/", "utm_medium=paid", "utm_source=paid"];
-
-function isSpamContent(text, permalink) {
-  if (!text || text.length < 15) return true;
-  const lower = text.toLowerCase();
-  for (const p of SPAM_PATTERNS_EN) {
-    if (lower.includes(p.toLowerCase())) return true;
-  }
-  for (const p of SPAM_PATTERNS_HE) {
-    if (text.includes(p)) return true;
-  }
-  if (permalink) {
-    for (const p of SPAM_URL_PATTERNS) {
-      if (permalink.includes(p)) return true;
-    }
-  }
-  if (/^https?:\/\/\S+$/.test(text.trim())) return true;
-  return false;
-}
+import {
+  aggregateParties,
+  detectOutliers,
+  isSpamContent,
+  validateChainOfThought,
+  validatePartyConsistency,
+  validateTemporalConsistency,
+} from "./lib/validation.js";
 
 describe("isSpamContent", () => {
   it("rejects short text (<15 chars)", () => {
@@ -62,9 +43,7 @@ describe("isSpamContent", () => {
 
   it("accepts legitimate political content", () => {
     expect(isSpamContent("ראש הממשלה נתניהו הודיע על הסכם חדש עם ארצות הברית", "")).toBe(false);
-    expect(isSpamContent("Netanyahu announces new security plan at cabinet meeting", "")).toBe(
-      false
-    );
+    expect(isSpamContent("Netanyahu announces new security plan at cabinet meeting", "")).toBe(false);
   });
 
   it("rejects Telegram channel promotions", () => {
@@ -76,23 +55,6 @@ describe("isSpamContent", () => {
     expect(isSpamContent("חבר הכנסת הצטרף לקואליציה אחרי שבועות של משא ומתן", "")).toBe(false);
   });
 });
-
-// ── Chain-of-Thought Validation ───────────────────────────────────────
-
-const HEBREW_RE = /[\u0590-\u05FF]/;
-
-function validateChainOfThought(entries) {
-  const warnings = [];
-  for (const entry of entries) {
-    const cot = entry.chain_of_thought || "";
-    if (cot.length < 20) {
-      warnings.push(`[CoT] ${entry.name}: too short`);
-    } else if (!HEBREW_RE.test(cot)) {
-      warnings.push(`[CoT] ${entry.name}: no Hebrew`);
-    }
-  }
-  return warnings;
-}
 
 describe("validateChainOfThought", () => {
   it("returns no warnings for valid Hebrew CoT", () => {
@@ -113,38 +75,42 @@ describe("validateChainOfThought", () => {
     expect(validateChainOfThought(entries).length).toBe(1);
     expect(validateChainOfThought(entries)[0]).toContain("no Hebrew");
   });
+});
 
-  it("warns on empty CoT", () => {
-    const entries = [{ name: "Test", chain_of_thought: "" }];
-    expect(validateChainOfThought(entries).length).toBe(1);
+describe("validateTemporalConsistency", () => {
+  it("returns no warning when score is within threshold", () => {
+    const entries = [{ name: "Test", politician_id: "p1", overall_score: 5.4 }];
+    const history = [
+      { politician_id: "p1", overall_score: 5.0 },
+      { politician_id: "p1", overall_score: 5.0 },
+      { politician_id: "p1", overall_score: 5.0 },
+    ];
+    expect(validateTemporalConsistency(entries, history)).toEqual([]);
+  });
+
+  it("flags major deviation from history", () => {
+    const entries = [{ name: "Test", politician_id: "p1", overall_score: 9.0 }];
+    const history = [
+      { politician_id: "p1", overall_score: 5.0 },
+      { politician_id: "p1", overall_score: 5.0 },
+      { politician_id: "p1", overall_score: 5.0 },
+    ];
+    const warnings = validateTemporalConsistency(entries, history);
+    expect(warnings.length).toBe(1);
+    expect(warnings[0]).toContain("[Temporal]");
   });
 });
 
-// ── Outlier Detection ─────────────────────────────────────────────────
-
-function detectOutliers(entries) {
-  const warnings = [];
-  const scores = entries.map((e) => e.overall_score).sort((a, b) => a - b);
-  if (scores.length < 5) return warnings;
-  const q1 = scores[Math.floor(scores.length * 0.25)];
-  const q3 = scores[Math.floor(scores.length * 0.75)];
-  const iqr = q3 - q1;
-  const lowerBound = q1 - 1.5 * iqr;
-  const upperBound = q3 + 1.5 * iqr;
-  for (const entry of entries) {
-    if (entry.overall_score < lowerBound || entry.overall_score > upperBound) {
-      warnings.push(`[Outlier] ${entry.name}`);
-    }
-  }
-  return warnings;
-}
-
 describe("detectOutliers", () => {
-  it("returns no warnings for normal distribution", () => {
-    const entries = Array.from({ length: 20 }, (_, i) => ({
-      name: `Pol ${i}`,
-      overall_score: 4 + Math.random() * 2,
-    }));
+  it("returns no warnings for compact distribution", () => {
+    const entries = [
+      { name: "A", overall_score: 4.8 },
+      { name: "B", overall_score: 4.9 },
+      { name: "C", overall_score: 5.0 },
+      { name: "D", overall_score: 5.1 },
+      { name: "E", overall_score: 5.2 },
+      { name: "F", overall_score: 5.0 },
+    ];
     expect(detectOutliers(entries).length).toBe(0);
   });
 
@@ -164,10 +130,8 @@ describe("detectOutliers", () => {
   });
 });
 
-// ── Party Aggregation ─────────────────────────────────────────────────
-
-describe("party aggregation logic", () => {
-  it("computes weighted average by media volume", () => {
+describe("aggregateParties", () => {
+  it("computes weighted average by media volume and top politician", () => {
     const entries = [
       {
         party: "Likud",
@@ -190,31 +154,13 @@ describe("party aggregation logic", () => {
         politician_id: "b",
       },
     ];
-    // Weighted avg: (8*10 + 4*2) / (10+2) = 88/12 = 7.33
-    const totalVolume = 12;
-    const weightedScore = (8 * 10 + 4 * 2) / totalVolume;
-    expect(parseFloat(weightedScore.toFixed(1))).toBe(7.3);
-  });
 
-  it("computes stddev for hallucination detection", () => {
-    const scores = [5, 5, 5, 5];
-    const mean = 5;
-    const stddev = Math.sqrt(scores.reduce((s, v) => s + (v - mean) ** 2, 0) / scores.length);
-    expect(stddev).toBe(0); // All identical = 0 stddev = hallucination flag
+    const [likud] = aggregateParties(entries, "2026-03-23");
+    expect(likud.overall_score).toBe(7.3);
+    expect(likud.media_volume).toBe(12);
+    expect(likud.top_politician).toBe("a");
   });
 });
-
-// ── Party Consistency ─────────────────────────────────────────────────
-
-function validatePartyConsistency(partyEntries) {
-  const warnings = [];
-  for (const party of partyEntries) {
-    if (party.member_count >= 3 && party.score_stddev === 0) {
-      warnings.push(`[Party] ${party.party}: identical scores`);
-    }
-  }
-  return warnings;
-}
 
 describe("validatePartyConsistency", () => {
   it("flags party with all identical scores", () => {

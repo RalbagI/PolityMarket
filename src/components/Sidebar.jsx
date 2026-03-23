@@ -75,6 +75,13 @@ function DisplayOptions({ t }) {
 }
 
 function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, onViewModeChange }) {
+  const activeFilterCount = filterProps
+    ? (filterProps.activeParties?.length || 0) +
+      (filterProps.activeWings?.length || 0) +
+      (filterProps.activeSectors?.length || 0) +
+      (filterProps.showLikedOnly ? 1 : 0)
+    : 0;
+
   return (
     <div className="p-5 space-y-6">
       {/* App Header */}
@@ -130,6 +137,19 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
 
       {/* Filters — only in politicians view */}
       {viewMode !== "parties" && filterProps && <FilterBar {...filterProps} />}
+      {viewMode === "parties" && activeFilterCount > 0 && onViewModeChange && (
+        <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-3">
+          <p className="text-xs text-gray-400 mb-2">
+            {t("sidebar.partyMode.filtersHidden", { count: activeFilterCount })}
+          </p>
+          <button
+            onClick={() => onViewModeChange("politicians")}
+            className="text-xs text-indigo-400 hover:text-indigo-300 underline underline-offset-2 transition-colors"
+          >
+            {t("sidebar.partyMode.switchToPoliticians")}
+          </button>
+        </div>
+      )}
 
       {stats.total === 0 ? (
         <p className="text-xs text-gray-500 text-center py-4">{t("filterBar.noResults")}</p>
@@ -326,6 +346,8 @@ export default function Sidebar({
               t={t}
               onMethodologyClick={onMethodologyClick}
               filterProps={filterProps}
+              viewMode={viewMode}
+              onViewModeChange={onViewModeChange}
             />
           </div>
         </>

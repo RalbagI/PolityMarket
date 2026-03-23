@@ -331,6 +331,10 @@
       "politicians": "פוליטיקאים",
       "parties": "מפלגות"
     },
+    "partyMode": {
+      "filtersHidden": "{{count}} מסננים פעילים מוסתרים במצב מפלגות",
+      "switchToPoliticians": "חזרה למצב פוליטיקאים לניהול מסננים"
+    },
     "totalTracked": "פוליטיקאים במעקב",
     "weightedAverage": "ציון ממוצע משוקלל",
     "histogram": {

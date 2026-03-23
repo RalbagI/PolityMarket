@@ -84,6 +84,8 @@ export default function App() {
     }));
   }, [partySummaryData, latestDate, t]);
 
+  const sidebarData = viewMode === "parties" ? partyTreemapData : filterState.visible;
+
   const handleSelectPolitician = useCallback(
     (name) => {
       // In party mode, don't open the politician detail panel
@@ -124,7 +126,7 @@ export default function App() {
   return (
     <div className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
       <Sidebar
-        todayData={filterState.visible}
+        todayData={sidebarData}
         onMethodologyClick={() => setMethodologyOpen(true)}
         filterProps={filterState}
         viewMode={viewMode}
