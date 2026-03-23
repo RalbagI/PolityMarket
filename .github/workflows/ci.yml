@@ -54,6 +54,9 @@ jobs:
       - name: Validate i18n coverage (no English names in UI)
         run: node scripts/validate-i18n-coverage.js
 
+      - name: Validate data integrity (parties, politicians, Hebrew, avatars)
+        run: node scripts/validate-data-integrity.js
+
   # Tests: run in parallel with checks
   test:
     name: Test

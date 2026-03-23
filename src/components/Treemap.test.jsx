@@ -4,6 +4,13 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Treemap from "./Treemap";
 
+const mockTreemapState = {
+  treemapSizeBy: "media_volume",
+  treemapColorBy: "overall_score",
+};
+
+const mockNormalizedScoreToColorWithAlpha = vi.fn(() => "rgba(100,100,200,0.55)");
+
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key) => key,
@@ -12,13 +19,12 @@ vi.mock("react-i18next", () => ({
 
 vi.mock("../store", () => ({
   default: (selector) => {
-    const state = { treemapSizeBy: "media_volume", treemapColorBy: "overall_score" };
-    return selector(state);
+    return selector(mockTreemapState);
   },
 }));
 
 vi.mock("../lib/colorScale", () => ({
-  scoreToColorWithAlpha: () => "rgba(100,100,200,0.55)",
+  normalizedScoreToColorWithAlpha: (...args) => mockNormalizedScoreToColorWithAlpha(...args),
 }));
 
 vi.mock("../lib/localize", () => ({
@@ -43,6 +49,9 @@ class MockResizeObserver {
 
 beforeEach(() => {
   globalThis.ResizeObserver = MockResizeObserver;
+  mockTreemapState.treemapSizeBy = "media_volume";
+  mockTreemapState.treemapColorBy = "overall_score";
+  mockNormalizedScoreToColorWithAlpha.mockClear();
 });
 
 function makePoliticians(count = 3) {
@@ -156,5 +165,29 @@ describe("Treemap", () => {
       fireEvent.click(othersBlock);
       expect(onSelect).not.toHaveBeenCalled();
     }
+  });
+
+  it("uses zero-valued selected metric for color mapping (no fallback on 0)", () => {
+    mockTreemapState.treemapColorBy = "media_volume";
+
+    const data = [
+      {
+        politician_id: "pol-zero",
+        name: "Zero Metric",
+        party: "TestParty",
+        overall_score: 9,
+        media_volume: 0,
+      },
+    ];
+
+    render(<Treemap data={data} onSelect={() => {}} selectedPolitician={null} />);
+
+    expect(mockNormalizedScoreToColorWithAlpha).toHaveBeenCalled();
+    expect(mockNormalizedScoreToColorWithAlpha).toHaveBeenCalledWith(
+      0,
+      expect.any(Number),
+      expect.any(Number),
+      expect.any(Number)
+    );
   });
 });

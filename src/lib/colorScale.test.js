@@ -1,5 +1,15 @@
 import { describe, it, expect } from "vitest";
-import { scoreToColor, scoreToColorWithAlpha } from "./colorScale";
+import {
+  scoreToColor,
+  scoreToColorWithAlpha,
+  normalizedScoreToColor,
+  normalizedScoreToColorWithAlpha,
+} from "./colorScale";
+
+function parseRgbChannels(color) {
+  const match = String(color).match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+  return [Number(match?.[1] ?? 0), Number(match?.[2] ?? 0), Number(match?.[3] ?? 0)];
+}
 
 describe("scoreToColor", () => {
   it("returns a color string for valid scores", () => {
@@ -43,5 +53,54 @@ describe("scoreToColorWithAlpha", () => {
   it("handles boundary scores", () => {
     expect(scoreToColorWithAlpha(0, 0.5)).toMatch(/^rgba/);
     expect(scoreToColorWithAlpha(10, 0.5)).toMatch(/^rgba/);
+  });
+});
+
+describe("normalizedScoreToColor", () => {
+  it("maps min of range to red", () => {
+    const color = normalizedScoreToColor(3, 3, 7);
+    const match = String(color).match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+    expect(Number(match[1])).toBeGreaterThan(200); // red channel dominant
+  });
+
+  it("maps max of range to green/teal", () => {
+    const color = normalizedScoreToColor(7, 3, 7);
+    const match = String(color).match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+    expect(Number(match[2])).toBeGreaterThan(100); // green channel
+  });
+
+  it("maps mid of range to yellow/orange", () => {
+    const color = normalizedScoreToColor(5, 3, 7);
+    expect(color).toMatch(/rgb/);
+  });
+
+  it("handles equal min/max without crashing", () => {
+    const color = normalizedScoreToColor(5, 5, 5);
+    const [, g] = parseRgbChannels(color);
+    expect(g).toBeGreaterThan(100); // midpoint should not collapse to red
+  });
+});
+
+describe("normalizedScoreToColorWithAlpha", () => {
+  it("returns rgba with normalized color", () => {
+    const color = normalizedScoreToColorWithAlpha(3, 3, 7, 0.55);
+    expect(color).toMatch(/^rgba/);
+    expect(color).toContain("0.55");
+  });
+
+  it("lowest score is red-ish, highest is green-ish", () => {
+    const red = normalizedScoreToColorWithAlpha(4.5, 4.5, 6.0, 0.6);
+    const green = normalizedScoreToColorWithAlpha(6.0, 4.5, 6.0, 0.6);
+    // Extract red channel from rgba
+    const rRed = Number(red.match(/rgba\((\d+)/)[1]);
+    const rGreen = Number(green.match(/rgba\((\d+)/)[1]);
+    expect(rRed).toBeGreaterThan(rGreen); // red has more red channel
+  });
+
+  it("handles equal min/max with midpoint color", () => {
+    const color = normalizedScoreToColorWithAlpha(0, 0, 0, 0.5);
+    const match = color.match(/rgba\((\d+),\s*(\d+),\s*(\d+),\s*([^)]+)\)/);
+    expect(Number(match?.[2] ?? 0)).toBeGreaterThan(100);
+    expect(color).toContain("0.5");
   });
 });

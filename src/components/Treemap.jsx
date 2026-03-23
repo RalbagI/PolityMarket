@@ -1,7 +1,7 @@
 import { memo, useMemo, useState, useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { hierarchy, treemap, treemapSquarify } from "d3-hierarchy";
-import { scoreToColorWithAlpha } from "../lib/colorScale";
+import { normalizedScoreToColorWithAlpha } from "../lib/colorScale";
 import { localizeName } from "../lib/localize";
 import useStore from "../store";
 import TreemapTooltip from "./TreemapTooltip";
@@ -108,6 +108,28 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     }
   }, [treemapItems, size.width, size.height, sizeBy]);
 
+  const getColorMetric = useCallback(
+    (entry) => {
+      const value = entry?.[colorBy];
+      if (typeof value === "number" && Number.isFinite(value)) return value;
+      if (typeof entry?.overall_score === "number" && Number.isFinite(entry.overall_score)) {
+        return entry.overall_score;
+      }
+      return 0;
+    },
+    [colorBy]
+  );
+
+  // Compute dynamic color range from visible data so lowest=red, highest=green
+  const colorRange = useMemo(() => {
+    if (!treemapItems.length) return { min: 0, max: 10 };
+    const scores = treemapItems.filter((d) => !d._isOthers).map(getColorMetric);
+    return {
+      min: Math.min(...scores),
+      max: Math.max(...scores),
+    };
+  }, [treemapItems, getColorMetric]);
+
   const isTouchRef = useRef(false);
 
   const handleMouseMove = useCallback(
@@ -202,8 +224,10 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
               top: leaf.y0,
               width: w,
               height: h,
-              backgroundColor: scoreToColorWithAlpha(
-                d[colorBy] || d.overall_score,
+              backgroundColor: normalizedScoreToColorWithAlpha(
+                getColorMetric(d),
+                colorRange.min,
+                colorRange.max,
                 isHovered || isSelected ? 0.85 : 0.55
               ),
               border:
