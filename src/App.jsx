@@ -121,9 +121,18 @@ export default function App() {
 
   const handleSelectPolitician = useCallback(
     (name) => {
-      if (latestDate) openPanel(name, latestDate);
+      if (!latestDate) return;
+
+      if (viewMode === "parties") {
+        const matchedPolitician = todayData.find((p) => p.name === name);
+        const partyName = matchedPolitician?.party || name;
+        openPanel(partyName, latestDate);
+        return;
+      }
+
+      openPanel(name, latestDate);
     },
-    [latestDate, openPanel]
+    [latestDate, openPanel, todayData, viewMode]
   );
 
   // Resolve selectedPolitician (name) → politician_id for liked checks
