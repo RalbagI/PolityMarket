@@ -72,8 +72,20 @@ function renderHair(style, color, gray, isFemale) {
             <path d="M14 30 Q12 50 16 70 Q18 76 22 72 Q20 50 18 32 Z" fill={c} />
             <path d="M86 30 Q88 50 84 70 Q82 76 78 72 Q80 50 82 32 Z" fill={c} />
             {/* Subtle wave highlights */}
-            <path d="M15 40 Q18 50 17 62" stroke={lighten(c)} strokeWidth="2" fill="none" opacity="0.5" />
-            <path d="M85 40 Q82 50 83 62" stroke={lighten(c)} strokeWidth="2" fill="none" opacity="0.5" />
+            <path
+              d="M15 40 Q18 50 17 62"
+              stroke={lighten(c)}
+              strokeWidth="2"
+              fill="none"
+              opacity="0.5"
+            />
+            <path
+              d="M85 40 Q82 50 83 62"
+              stroke={lighten(c)}
+              strokeWidth="2"
+              fill="none"
+              opacity="0.5"
+            />
           </>
         );
       }
@@ -95,7 +107,13 @@ function renderHair(style, color, gray, isFemale) {
             <path d="M16 32 Q14 42 18 50 Q22 46 20 36 Z" fill={c} />
             <path d="M84 32 Q86 42 82 50 Q78 46 80 36 Z" fill={c} />
             {/* Highlight sweep */}
-            <path d="M25 22 Q38 14 55 18" stroke={lighten(c)} strokeWidth="2.5" fill="none" opacity="0.4" />
+            <path
+              d="M25 22 Q38 14 55 18"
+              stroke={lighten(c)}
+              strokeWidth="2.5"
+              fill="none"
+              opacity="0.4"
+            />
           </>
         );
       }
@@ -355,8 +373,18 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
         </>
       ) : (
         <>
-          <path d="M30 42 Q38 37 46 42" stroke={browColor} strokeWidth={eyebrowThick ? "2.5" : "2"} fill="none" />
-          <path d="M54 42 Q62 37 70 42" stroke={browColor} strokeWidth={eyebrowThick ? "2.5" : "2"} fill="none" />
+          <path
+            d="M30 42 Q38 37 46 42"
+            stroke={browColor}
+            strokeWidth={eyebrowThick ? "2.5" : "2"}
+            fill="none"
+          />
+          <path
+            d="M54 42 Q62 37 70 42"
+            stroke={browColor}
+            strokeWidth={eyebrowThick ? "2.5" : "2"}
+            fill="none"
+          />
         </>
       )}
       {/* Nose */}
