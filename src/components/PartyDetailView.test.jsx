@@ -59,7 +59,7 @@ describe("PartyDetailView", () => {
   it("renders party name and average score", () => {
     render(<PartyDetailView partyName="Likud" partyData={partyData} todayData={todayData} />);
     expect(screen.getByText("Likud")).toBeInTheDocument();
-    expect(screen.getByText("5.3")).toBeInTheDocument();
+    expect(screen.getAllByText("5.3").length).toBeGreaterThan(0);
   });
 
   it("renders member count", () => {

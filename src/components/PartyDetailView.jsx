@@ -138,28 +138,37 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
       )}
 
       {/* 7-Day Trend */}
-      {trend.length > 1 && (
-        <AccordionSection title={t("partyDetail.trend")} icon={TrendingUp} defaultOpen>
-          <div className="flex items-end gap-1 h-16">
-            {trend.map((day) => {
-              const height = ((day.score - 3) / 4) * 100; // normalize 3-7 range to 0-100%
-              return (
-                <div key={day.date} className="flex-1 flex flex-col items-center gap-0.5">
-                  <div
-                    className="w-full rounded-t"
-                    style={{
-                      height: `${Math.max(10, Math.min(100, height))}%`,
-                      backgroundColor: scoreToColor(day.score),
-                      opacity: 0.7,
-                    }}
-                  />
-                  <span className="text-[8px] text-gray-600">{day.date.slice(8)}</span>
-                </div>
-              );
-            })}
-          </div>
-        </AccordionSection>
-      )}
+      {trend.length > 1 &&
+        (() => {
+          const trendScores = trend.map((d) => d.score);
+          const tMin = Math.min(...trendScores);
+          const tMax = Math.max(...trendScores);
+          const tRange = tMax - tMin || 1;
+          return (
+            <AccordionSection title={t("partyDetail.trend")} icon={TrendingUp} defaultOpen>
+              <div className="flex items-end gap-1 h-20">
+                {trend.map((day) => {
+                  // Normalize relative to this party's own range for visible contrast
+                  const pct = ((day.score - tMin) / tRange) * 70 + 30; // 30-100% range
+                  return (
+                    <div key={day.date} className="flex-1 flex flex-col items-center gap-0.5">
+                      <span className="text-[9px] text-gray-400 tabular-nums">{day.score}</span>
+                      <div
+                        className="w-full rounded-t"
+                        style={{
+                          height: `${Math.max(10, Math.min(100, pct))}%`,
+                          backgroundColor: scoreToColor(day.score),
+                          opacity: 0.8,
+                        }}
+                      />
+                      <span className="text-[8px] text-gray-600">{day.date.slice(8)}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </AccordionSection>
+          );
+        })()}
 
       {/* Members List */}
       <AccordionSection title={t("partyDetail.members")} icon={Users} defaultOpen>
