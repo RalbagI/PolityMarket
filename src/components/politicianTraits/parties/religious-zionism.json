@@ -1,0 +1,71 @@
+{
+  "bezalel-smotrich": null,
+  "michal-waldiger": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "suitColor": "#2c3e50"
+  },
+  "moshe-solomon": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "goatee",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "ofir-sofer": {
+    "hair": "short",
+    "hairColor": "#4a3a2a",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#4a3a2a",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c"
+  },
+  "ohad-tal": {
+    "hair": "short",
+    "hairColor": "#4a3a2a",
+    "face": "square",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#4a3a2a",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c"
+  },
+  "orit-strock": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#8b6914",
+    "face": "oval",
+    "headCovering": "kippah-knit",
+    "suitColor": "#2c3e50"
+  },
+  "simcha-rothman": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "goatee",
+    "beardColor": "#3a3a3a",
+    "glasses": "rectangular",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "zvi-sukkot": {
+    "hair": "curly",
+    "hairColor": "#4a3a2a",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#4a3a2a",
+    "suitColor": "white",
+    "tieColor": null
+  }
+}

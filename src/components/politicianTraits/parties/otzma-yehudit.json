@@ -1,0 +1,58 @@
+{
+  "amichai-eliyahu": {
+    "hair": "curly",
+    "hairColor": "#4a3a2a",
+    "face": "round",
+    "headCovering": "kippah",
+    "beard": "goatee",
+    "beardColor": "#4a3a2a",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "itamar-ben-gvir": {
+    "hair": "receding",
+    "hairColor": "#c87020",
+    "face": "round",
+    "headCovering": "kippah",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c",
+    "eyebrowThick": true
+  },
+  "limor-son-har-melech": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "headCovering": "kippah-knit",
+    "suitColor": "#c0392b"
+  },
+  "yitzhak-kroizer": {
+    "hair": "curly",
+    "hairColor": "#4a3a2a",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#4a3a2a",
+    "suitColor": "white",
+    "tieColor": null
+  },
+  "yitzhak-wasserlauf": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#3a3a3a",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c"
+  },
+  "zvika-fogel": {
+    "hair": "short",
+    "hairColor": "#777",
+    "grayHair": true,
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "afif-abed": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#d4b896",
+    "beard": "mustache",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "amichai-shikli": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "oval",
+    "headCovering": "kippah",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "amir-ohana": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "eyeColor": "#3d2b1f",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "amit-halevi": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "square",
+    "headCovering": "kippah",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c"
+  },
+  "ariel-kallner": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "avi-dichter": {
+    "hair": "short",
+    "hairColor": "#777",
+    "grayHair": true,
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2c3e50"
+  },
+  "avichay-buaron": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#8e44ad"
+  },
+  "benjamin-netanyahu": null,
+  "boaz-bismuth": {
+    "hair": "styled",
+    "hairColor": "#3a3a3a",
+    "face": "oval",
+    "glasses": "thin",
+    "suitColor": "#2c3e50",
+    "tieColor": "#8e44ad"
+  },
+  "dan-ilouz": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "david-amsalem": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "david-bitan": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "eyebrowThick": true,
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "eli-cohen": {
+    "hair": "styled",
+    "hairColor": "#3a3a3a",
+    "grayHair": true,
+    "face": "oval",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "eli-dalal": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#e8c8a8",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "eliyahu-revivo": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "galit-distel-atbaryan": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#c87020",
+    "face": "oval",
+    "suitColor": "#c0392b"
+  },
+  "gideon-saar": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#8e44ad"
+  },
+  "gila-gamliel": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#5a3a2a",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#8e44ad"
+  },
+  "haim-katz": {
+    "hair": "swept",
+    "hairColor": "#999",
+    "grayHair": true,
+    "face": "round",
+    "glasses": "rectangular",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "hanoch-milwidsky": {
+    "hair": "receding",
+    "hairColor": "#888",
+    "grayHair": true,
+    "face": "round",
+    "eyebrowThick": true,
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "hava-eti-atia": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#2c3e50"
+  },
+  "idit-silman": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "suitColor": "#2c3e50"
+  },
+  "keti-shitrit": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#e8c8a8",
+    "suitColor": "#8e44ad"
+  },
+  "may-golan": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#d4a029",
+    "face": "oval",
+    "eyeColor": "#4a6741",
+    "suitColor": "#2c3e50"
+  },
+  "miki-zohar": {
+    "hair": "styled",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "miri-regev": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#5a3a2a",
+    "face": "round",
+    "eyeColor": "#3d2b1f",
+    "suitColor": "#c0392b"
+  },
+  "moshe-passal": {
+    "hair": "short",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "moshe-saada": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c"
+  },
+  "nir-barkat": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "grayHair": true,
+    "face": "square",
+    "eyeColor": "#4a6741",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "nissim-vaturi": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "ofir-katz": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "osher-shkalim": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#e8c8a8",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "sasson-guetta": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "shalom-danino": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "shlomo-karhi": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "headCovering": "kippah",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c"
+  },
+  "tally-gotliv": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#8b6914",
+    "face": "oval",
+    "skin": "#f0d0b4",
+    "suitColor": "#2c3e50"
+  },
+  "tsega-melaku": {
+    "hair": "short",
+    "hairColor": "#1a1a1a",
+    "face": "oval",
+    "skin": "#6b4a2a",
+    "eyeColor": "#1a1a1a",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "yariv-levin": {
+    "hair": "receding",
+    "hairColor": "#4a4a4a",
+    "grayHair": true,
+    "face": "long",
+    "glasses": "rectangular",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#8e44ad"
+  },
+  "yisrael-katz": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "glasses": "rectangular",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "yoav-kish": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "yuli-edelstein": {
+    "hair": "swept",
+    "hairColor": "#888",
+    "grayHair": true,
+    "face": "oval",
+    "eyeColor": "#4a6741",
+    "suitColor": "#2c3e50",
+    "tieColor": "#2980b9"
+  },
+  "zeev-elkin": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "oval",
+    "glasses": "rectangular",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  }
+}

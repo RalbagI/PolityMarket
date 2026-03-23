@@ -1,0 +1,51 @@
+{
+  "ahmad-tibi": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "skin": "#d4b896",
+    "beard": "mustache",
+    "beardColor": "#555",
+    "glasses": "thin",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  },
+  "aida-touma-suleiman": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#d4b896",
+    "glasses": "round",
+    "suitColor": "#c0392b"
+  },
+  "ayman-odeh": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#d4b896",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "ofer-cassif": {
+    "hair": "receding",
+    "hairColor": "#888",
+    "grayHair": true,
+    "face": "oval",
+    "glasses": "round",
+    "suitColor": "#2c3e50",
+    "tieColor": "#c0392b"
+  },
+  "samir-ben-said": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#d4b896",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#c0392b"
+  }
+}
