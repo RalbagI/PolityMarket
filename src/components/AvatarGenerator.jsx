@@ -10,7 +10,7 @@
 
 // ── Trait Rendering Functions ─────────────────────────────────────────
 
-function renderHair(style, color, gray) {
+function renderHair(style, color, gray, isFemale) {
   const c = gray ? mixColor(color, "#b0b0b0", 0.6) : color;
   switch (style) {
     case "swept":
@@ -28,6 +28,22 @@ function renderHair(style, color, gray) {
         </>
       );
     case "curly":
+      if (isFemale) {
+        return (
+          <>
+            <ellipse cx="50" cy="26" rx="36" ry="22" fill={c} />
+            <circle cx="22" cy="34" r="9" fill={c} />
+            <circle cx="78" cy="34" r="9" fill={c} />
+            <circle cx="18" cy="46" r="8" fill={c} />
+            <circle cx="82" cy="46" r="8" fill={c} />
+            <circle cx="20" cy="58" r="7" fill={c} />
+            <circle cx="80" cy="58" r="7" fill={c} />
+            <circle cx="30" cy="20" r="7" fill={lighten(c)} />
+            <circle cx="50" cy="16" r="6" fill={lighten(c)} />
+            <circle cx="70" cy="20" r="7" fill={lighten(c)} />
+          </>
+        );
+      }
       return (
         <>
           <ellipse cx="50" cy="26" rx="34" ry="20" fill={c} />
@@ -47,6 +63,20 @@ function renderHair(style, color, gray) {
     case "bald":
       return <ellipse cx="50" cy="30" rx="30" ry="12" fill="#e8d0b8" opacity="0.3" />;
     case "long":
+      if (isFemale) {
+        return (
+          <>
+            {/* Voluminous top */}
+            <ellipse cx="50" cy="24" rx="37" ry="22" fill={c} />
+            {/* Flowing sides that frame the face */}
+            <path d="M14 30 Q12 50 16 70 Q18 76 22 72 Q20 50 18 32 Z" fill={c} />
+            <path d="M86 30 Q88 50 84 70 Q82 76 78 72 Q80 50 82 32 Z" fill={c} />
+            {/* Subtle wave highlights */}
+            <path d="M15 40 Q18 50 17 62" stroke={lighten(c)} strokeWidth="2" fill="none" opacity="0.5" />
+            <path d="M85 40 Q82 50 83 62" stroke={lighten(c)} strokeWidth="2" fill="none" opacity="0.5" />
+          </>
+        );
+      }
       return (
         <>
           <ellipse cx="50" cy="26" rx="36" ry="22" fill={c} />
@@ -55,6 +85,20 @@ function renderHair(style, color, gray) {
         </>
       );
     case "styled":
+      if (isFemale) {
+        return (
+          <>
+            {/* Voluminous styled top with side sweep */}
+            <ellipse cx="50" cy="24" rx="35" ry="21" fill={c} />
+            <path d="M16 32 Q20 22 50 18 Q80 22 84 32" fill={c} />
+            {/* Side volume */}
+            <path d="M16 32 Q14 42 18 50 Q22 46 20 36 Z" fill={c} />
+            <path d="M84 32 Q86 42 82 50 Q78 46 80 36 Z" fill={c} />
+            {/* Highlight sweep */}
+            <path d="M25 22 Q38 14 55 18" stroke={lighten(c)} strokeWidth="2.5" fill="none" opacity="0.4" />
+          </>
+        );
+      }
       return (
         <>
           <ellipse cx="50" cy="26" rx="33" ry="20" fill={c} />
@@ -203,7 +247,17 @@ function renderHeadCovering(type) {
   }
 }
 
-function renderSuit(color, tieColor) {
+function renderSuit(color, tieColor, isFemale) {
+  if (isFemale) {
+    return (
+      <>
+        {/* Feminine top with rounded neckline */}
+        <path d="M28 86 Q35 80 42 82 Q50 76 58 82 Q65 80 72 86 L78 100 L22 100 Z" fill={color} />
+        {/* Neckline detail */}
+        <path d="M42 82 Q50 76 58 82" stroke={lighten(color)} strokeWidth="1" fill="none" />
+      </>
+    );
+  }
   return (
     <>
       <path d={`M25 85 L40 78 L50 85 L60 78 L75 85 L80 100 L20 100 Z`} fill={color} />
@@ -261,6 +315,9 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
     eyebrowThick = false,
   } = traits;
 
+  const isFemale = beard === null && tieColor === null;
+  const browColor = grayHair ? "#888" : hairColor;
+
   return (
     <svg
       viewBox="0 0 100 100"
@@ -273,29 +330,46 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
       <circle cx="50" cy="50" r="50" fill={bgColor} />
       {headCovering === "hijab"
         ? renderHeadCovering("hijab")
-        : renderHair(hair, hairColor, grayHair)}
+        : renderHair(hair, hairColor, grayHair, isFemale)}
       {headCovering && headCovering !== "hijab" && renderHeadCovering(headCovering)}
       {renderFace(face, skin)}
       {renderEyes(eyeColor)}
-      {/* Eyebrows */}
-      <path
-        d="M30 42 Q38 37 46 42"
-        stroke={grayHair ? "#888" : hairColor}
-        strokeWidth={eyebrowThick ? "2.5" : "2"}
-        fill="none"
-      />
-      <path
-        d="M54 42 Q62 37 70 42"
-        stroke={grayHair ? "#888" : hairColor}
-        strokeWidth={eyebrowThick ? "2.5" : "2"}
-        fill="none"
-      />
+      {/* Eyelashes for female avatars */}
+      {isFemale && (
+        <>
+          <path d="M32 45 L30 42" stroke="#2c2c2c" strokeWidth="1" />
+          <path d="M35 44 L33 41" stroke="#2c2c2c" strokeWidth="1" />
+          <path d="M41 44 L43 41" stroke="#2c2c2c" strokeWidth="1" />
+          <path d="M44 45 L46 42" stroke="#2c2c2c" strokeWidth="1" />
+          <path d="M56 45 L54 42" stroke="#2c2c2c" strokeWidth="1" />
+          <path d="M59 44 L57 41" stroke="#2c2c2c" strokeWidth="1" />
+          <path d="M65 44 L67 41" stroke="#2c2c2c" strokeWidth="1" />
+          <path d="M68 45 L70 42" stroke="#2c2c2c" strokeWidth="1" />
+        </>
+      )}
+      {/* Eyebrows — thinner and more arched for female */}
+      {isFemale ? (
+        <>
+          <path d="M31 42 Q38 36 45 41" stroke={browColor} strokeWidth="1.2" fill="none" />
+          <path d="M55 41 Q62 36 69 42" stroke={browColor} strokeWidth="1.2" fill="none" />
+        </>
+      ) : (
+        <>
+          <path d="M30 42 Q38 37 46 42" stroke={browColor} strokeWidth={eyebrowThick ? "2.5" : "2"} fill="none" />
+          <path d="M54 42 Q62 37 70 42" stroke={browColor} strokeWidth={eyebrowThick ? "2.5" : "2"} fill="none" />
+        </>
+      )}
       {/* Nose */}
       <path d="M48 50 Q50 58 52 50" stroke="#c8a88a" strokeWidth="1.5" fill="none" />
       {renderGlasses(glasses)}
       {renderBeard(beard, beardColor)}
-      {/* Mouth */}
-      {!beard || beard === "mustache" ? (
+      {/* Mouth — fuller lips for female */}
+      {isFemale ? (
+        <>
+          <path d="M40 63 Q50 60 60 63" stroke="#d4857a" strokeWidth="1" fill="none" />
+          <path d="M40 63 Q50 70 60 63" fill="#d4857a" opacity="0.6" />
+        </>
+      ) : !beard || beard === "mustache" ? (
         <path d="M40 64 Q50 70 60 64" stroke="#c47a6a" strokeWidth="2" fill="none" />
       ) : (
         <path d="M42 64 Q50 68 58 64" stroke="#c47a6a" strokeWidth="1.5" fill="none" />
@@ -307,7 +381,7 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
           <ellipse cx="80" cy="52" rx="5" ry="7" fill={skin} />
         </>
       )}
-      {renderSuit(suitColor, tieColor)}
+      {renderSuit(suitColor, tieColor, isFemale)}
     </svg>
   );
 }
