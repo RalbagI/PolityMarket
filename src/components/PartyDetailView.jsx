@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Users, BarChart3, TrendingUp } from "lucide-react";
+import { Users, BarChart3, TrendingUp, Info } from "lucide-react";
 import {
   ComposedChart,
   Line,
@@ -16,6 +16,7 @@ import AccordionSection from "./AccordionSection";
 import { scoreToColor } from "../lib/colorScale";
 import { localizeName, localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
+import { getPartyInfo } from "../lib/partyInfo";
 import useStore from "../store";
 
 function MemberRow({ entry, t }) {
@@ -82,6 +83,7 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
 
   const partyColor = getPartyColor(partyName);
   const displayParty = localizeParty(t, partyName);
+  const info = getPartyInfo(partyName);
 
   return (
     <div className="space-y-4">
@@ -111,6 +113,38 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
           </div>
         )}
       </div>
+
+      {/* Party Info */}
+      {info && (
+        <AccordionSection title={t("partyDetail.info")} icon={Info} defaultOpen>
+          <div className="bg-gray-800/50 rounded-xl p-4 space-y-2.5">
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-400">{t("partyDetail.leader")}</span>
+              <span className="text-gray-200 font-medium">{localizeName(t, info.leader)}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-400">{t("partyDetail.ideology")}</span>
+              <span className="text-gray-200 font-medium text-end ms-4">
+                {t(`partyDetail.ideologies.${info.ideology}`, info.ideology)}
+              </span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-400">{t("partyDetail.wing")}</span>
+              <span className="text-gray-200 font-medium">
+                {t(`partyDetail.wings.${info.wing}`, info.wing)}
+              </span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-400">{t("partyDetail.seats")}</span>
+              <span className="text-gray-200 font-medium">{info.seats}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-400">{t("partyDetail.founded")}</span>
+              <span className="text-gray-200 font-medium">{info.founded}</span>
+            </div>
+          </div>
+        </AccordionSection>
+      )}
 
       {/* Score Breakdown */}
       {party && (

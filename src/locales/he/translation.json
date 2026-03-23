@@ -464,7 +464,39 @@
     "avgScore": "ציון ממוצע",
     "spread": "פיזור פנימי",
     "topPolitician": "הכי בולט",
-    "trend": "מגמה (7 ימים)"
+    "trend": "מגמה (7 ימים)",
+    "info": "אודות המפלגה",
+    "leader": "יו״ר",
+    "founded": "שנת ייסוד",
+    "ideology": "אידיאולוגיה",
+    "wing": "כנף פוליטית",
+    "seats": "מנדטים",
+    "wings": {
+      "right": "ימין",
+      "left": "שמאל",
+      "center": "מרכז",
+      "center-right": "מרכז-ימין",
+      "arab": "ערבי"
+    },
+    "ideologies": {
+      "National-liberal conservatism": "ליברליזם לאומי שמרני",
+      "Liberal centrism": "מרכזנות ליברלית",
+      "National-liberal centrism": "מרכזנות ליברלית-לאומית",
+      "National centrism": "מרכזנות לאומית",
+      "National-liberal": "ליברליזם לאומי",
+      "Religious Zionism, national-conservatism": "ציונות דתית, שמרנות לאומית",
+      "Kahanist, ultra-nationalist": "כהניזם, אולטרה-לאומנות",
+      "Ultra-Orthodox, Mizrahi traditionalism": "חרדי, מסורתיות מזרחית",
+      "Ultra-Orthodox, Ashkenazi Haredi": "חרדי, אשכנזי",
+      "Secular nationalism": "לאומיות חילונית",
+      "Social democracy": "סוציאל-דמוקרטיה",
+      "Social democracy, Zionist left": "סוציאל-דמוקרטיה, שמאל ציוני",
+      "Arab–Jewish socialism": "סוציאליזם ערבי-יהודי",
+      "Islamic conservatism, pragmatism": "שמרנות איסלאמית, פרגמטיזם",
+      "Ultra-conservative, religious right": "אולטרה-שמרני, ימין דתי",
+      "National-liberal, pragmatic right": "ליברליזם לאומי, ימין פרגמטי",
+      "Religious Zionism": "ציונות דתית"
+    }
   },
   "topMovers": {
     "risers": "עולים",
