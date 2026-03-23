@@ -59,7 +59,7 @@ const PARTY_INFO = {
     seats: 2,
     status: "opposition",
     description:
-      "A new party formed in 2026 by former IDF Chief of Staff Gadi Eisenkot and MK Yael Ron Ben Moshe after splitting from National Unity. Emphasizes military professionalism and centrist pragmatism over partisan politics.",
+      "A new party formed in 2026 by former IDF Chief of Staff Gadi Eisenkot and MK Matan Kahana after splitting from National Unity. Emphasizes military professionalism and centrist pragmatism over partisan politics.",
     keyPositions: [
       "Professional security leadership",
       "Hostage deal priority",
@@ -71,7 +71,7 @@ const PARTY_INFO = {
     leader: "Yoaz Hendel",
     founded: 2026,
     ideology: "National-liberal",
-    wing: "center-right",
+    wing: "center",
     seats: 1,
     status: "opposition",
     description:
@@ -164,14 +164,14 @@ const PARTY_INFO = {
     ],
   },
   Democrats: {
-    leader: "Naama Lazimi",
-    founded: 2026,
+    leader: "Yair Golan",
+    founded: 2024,
     ideology: "Social democracy",
     wing: "left",
     seats: 4,
     status: "opposition",
     description:
-      "A new left-wing party formed in 2026 by MKs who broke from Labor — Lazimi, Kariv, and Rayten. Aims to revive social-democratic politics with a focus on equality, LGBTQ+ rights, and peace advocacy, distancing itself from Labor's declining brand.",
+      "Founded in 2024 as a merger of Labor and Meretz, led by former MK and IDF deputy chief Yair Golan. Joined by Labor defectors Lazimi, Kariv, and Rayten. Aims to revive social-democratic politics with a focus on equality, LGBTQ+ rights, and peace advocacy.",
     keyPositions: [
       "Two-state solution",
       "LGBTQ+ and civil rights",
@@ -244,14 +244,14 @@ const PARTY_INFO = {
     ],
   },
   "HaYamin HaMamlakhti": {
-    leader: "Gideon Sa'ar",
+    leader: "Sharren Haskel",
     founded: 2022,
     ideology: "National-liberal conservatism",
     wing: "right",
     seats: 3,
     status: "coalition",
     description:
-      "Founded by Gideon Sa'ar after splitting from Likud, the party has shrunk after Sa'ar and Elkin returned to Likud in 2026. The remaining MKs maintain a law-and-order, national-liberal platform within the coalition.",
+      "Originally founded by Gideon Sa'ar after splitting from Likud. After Sa'ar and Elkin returned to Likud in 2025, the remaining MKs — Sharren Haskel, Michel Buskila, and Akram Hasson — continue as a coalition faction with a law-and-order, national-liberal platform.",
     keyPositions: [
       "Rule of law and governance reform",
       "Security hawkishness",

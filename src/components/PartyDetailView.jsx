@@ -160,7 +160,7 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
               <div className="flex justify-between text-sm">
                 <span className="text-gray-400">{t("partyDetail.wing")}</span>
                 <span className="text-gray-200 font-medium">
-                  {t(`partyDetail.wings.${info.wing}`, info.wing)}
+                  {t(`partyDetail.wings.${party?.wing || info.wing}`, party?.wing || info.wing)}
                 </span>
               </div>
               <div className="flex justify-between text-sm">
