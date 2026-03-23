@@ -77,6 +77,7 @@ console.log(`  Roster: ${roster.length} politicians, ${rosterParties.length} par
 // ── Check 1: Party Completeness ───────────────────────────────────────
 
 console.log("\n📊 Check 1: Party Completeness");
+let errSnap = errors.length;
 
 if (partySummary.length) {
   const latestDate = [...new Set(partySummary.map((p) => p.date))].sort().pop();
@@ -91,7 +92,7 @@ if (partySummary.length) {
     }
   }
 
-  if (!errors.length) {
+  if (errors.length === errSnap) {
     console.log(`  ✓ All ${rosterParties.length} parties present in party_summary.json`);
   }
 } else {
@@ -101,6 +102,7 @@ if (partySummary.length) {
 // ── Check 2: Politician Completeness ──────────────────────────────────
 
 console.log("\n👤 Check 2: Politician Completeness");
+errSnap = errors.length;
 
 // Check for duplicates in roster
 const duplicateIds = rosterIds.filter((id, i) => rosterIds.indexOf(id) !== i);
@@ -133,13 +135,14 @@ if (summary.length) {
   }
 }
 
-if (!errors.filter((e) => e.includes("Politician") || e.includes("roster") || e.includes("Duplicate")).length) {
+if (errors.length === errSnap) {
   console.log(`  ✓ ${roster.length} politicians, 0 duplicates, ≥120 MKs`);
 }
 
 // ── Check 3: Hebrew Enforcement ───────────────────────────────────────
 
 console.log("\n🇮🇱 Check 3: Hebrew Enforcement");
+errSnap = errors.length;
 
 const HEBREW_RE = /[\u0590-\u05FF]/;
 const politicianTranslations = i18n.politicians || {};
@@ -190,8 +193,7 @@ function checkI18nValues(obj, keyPath = "") {
 
 checkI18nValues(i18n);
 
-const hebrewErrors = errors.filter((e) => e.includes("Hebrew") || e.includes("i18n")).length;
-if (!hebrewErrors) {
+if (errors.length === errSnap) {
   console.log(
     `  ✓ ${Object.keys(politicianTranslations).length} politician names, ${Object.keys(partyTranslations).length} party names — all Hebrew`
   );
@@ -200,6 +202,7 @@ if (!hebrewErrors) {
 // ── Check 4: Avatar Coverage ──────────────────────────────────────────
 
 console.log("\n🎨 Check 4: Avatar Coverage");
+errSnap = errors.length;
 
 // Read the trait files to check coverage
 const traitDir = path.join(repoRoot, "src/components/politicianTraits/parties");
