@@ -327,6 +327,10 @@
     "noResults": "אין תוצאות לסינון הנוכחי"
   },
   "sidebar": {
+    "viewMode": {
+      "politicians": "פוליטיקאים",
+      "parties": "מפלגות"
+    },
     "totalTracked": "פוליטיקאים במעקב",
     "weightedAverage": "ציון ממוצע משוקלל",
     "histogram": {

@@ -17,9 +17,12 @@ const DetailView = lazy(() => import("./components/DetailView"));
 export default function App() {
   const { t } = useTranslation();
   const [methodologyOpen, setMethodologyOpen] = useState(false);
+  const [viewMode, setViewMode] = useState("politicians"); // "politicians" | "parties"
   const summaryData = useStore((s) => s.summaryData);
+  const partySummaryData = useStore((s) => s.partySummaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
+  const loadPartySummary = useStore((s) => s.loadPartySummary);
   const panelOpen = useStore((s) => s.panelOpen);
   const selectedPolitician = useStore((s) => s.selectedPolitician);
   const selectedDate = useStore((s) => s.selectedDate);
@@ -29,7 +32,8 @@ export default function App() {
 
   useEffect(() => {
     loadSummary();
-  }, [loadSummary]);
+    loadPartySummary();
+  }, [loadSummary, loadPartySummary]);
 
   const { todayData, yesterdayData, latestDate } = useMemo(() => {
     if (!summaryData.length) return { todayData: [], yesterdayData: [], latestDate: null };
@@ -66,6 +70,19 @@ export default function App() {
   const treemapData = useMemo(() => {
     return normalizeScores(filterState.visible);
   }, [filterState.visible]);
+
+  // Party data for party view mode
+  const partyTreemapData = useMemo(() => {
+    if (!partySummaryData.length || !latestDate) return [];
+    const todayParties = partySummaryData.filter((p) => p.date === latestDate);
+    return todayParties.map((p) => ({
+      ...p,
+      politician_id: `party:${p.party}`,
+      name: p.party,
+      displayName: t(`parties.${p.party}`, { defaultValue: p.party }),
+      _isParty: true,
+    }));
+  }, [partySummaryData, latestDate, t]);
 
   const handleSelectPolitician = useCallback(
     (name) => {
@@ -108,6 +125,8 @@ export default function App() {
         todayData={filterState.visible}
         onMethodologyClick={() => setMethodologyOpen(true)}
         filterProps={filterState}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
@@ -116,7 +135,7 @@ export default function App() {
         <div className="flex-1 min-h-[40vh] sm:min-h-[50vh] md:min-h-[300px]">
           <ErrorBoundary>
             <Treemap
-              data={treemapData}
+              data={viewMode === "parties" ? partyTreemapData : treemapData}
               onSelect={handleSelectPolitician}
               selectedPolitician={selectedPolitician}
             />

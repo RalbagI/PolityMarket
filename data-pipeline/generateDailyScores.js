@@ -1099,6 +1099,156 @@ async function searchBlueskyPosts(query, maxPosts) {
   }));
 }
 
+// ── Spam/Ad Content Filter ────────────────────────────────────────────
+// Filters out ads, sponsored content, and spam before politician matching.
+
+const SPAM_PATTERNS_HE = ["מודעה", "פרסומת", "שיתוף פעולה מסחרי", "תוכן ממומן", "הצטרפו ל-"];
+const SPAM_PATTERNS_EN = ["sponsored", "promoted", "advertisement", "paid partnership", "Join @"];
+const SPAM_URL_PATTERNS = ["/sponsored/", "/ad/", "utm_medium=paid", "utm_source=paid"];
+
+function isSpamContent(text, permalink) {
+  if (!text || text.length < 15) return true;
+  const lower = text.toLowerCase();
+  for (const p of SPAM_PATTERNS_EN) {
+    if (lower.includes(p.toLowerCase())) return true;
+  }
+  for (const p of SPAM_PATTERNS_HE) {
+    if (text.includes(p)) return true;
+  }
+  if (permalink) {
+    for (const p of SPAM_URL_PATTERNS) {
+      if (permalink.includes(p)) return true;
+    }
+  }
+  // Pure URL with no text content
+  if (/^https?:\/\/\S+$/.test(text.trim())) return true;
+  return false;
+}
+
+// ── Pipeline Validation Functions ─────────────────────────────────────
+
+const HEBREW_RE = /[\u0590-\u05FF]/;
+
+function validateChainOfThought(entries) {
+  const warnings = [];
+  for (const entry of entries) {
+    const cot = entry.chain_of_thought || "";
+    if (cot.length < 20) {
+      warnings.push(`[CoT] ${entry.name}: chain_of_thought too short (${cot.length} chars)`);
+    } else if (!HEBREW_RE.test(cot)) {
+      warnings.push(`[CoT] ${entry.name}: chain_of_thought contains no Hebrew characters`);
+    }
+  }
+  return warnings;
+}
+
+function validateTemporalConsistency(entries, historicalSummary) {
+  const warnings = [];
+  if (!historicalSummary.length) return warnings;
+
+  for (const entry of entries) {
+    const history = historicalSummary
+      .filter((h) => h.politician_id === entry.politician_id)
+      .map((h) => h.overall_score);
+
+    if (history.length < 3) continue;
+
+    const mean = history.reduce((a, b) => a + b, 0) / history.length;
+    const stddev = Math.sqrt(history.reduce((sum, v) => sum + (v - mean) ** 2, 0) / history.length);
+    const threshold = Math.max(stddev * 3, 1.5); // minimum 1.5 point change
+    const delta = Math.abs(entry.overall_score - mean);
+
+    if (delta > threshold) {
+      warnings.push(
+        `[Temporal] ${entry.name}: score ${entry.overall_score.toFixed(1)} deviates ${delta.toFixed(1)} from 7-day avg ${mean.toFixed(1)} (threshold: ${threshold.toFixed(1)})`
+      );
+    }
+  }
+  return warnings;
+}
+
+function detectOutliers(entries) {
+  const warnings = [];
+  const scores = entries.map((e) => e.overall_score).sort((a, b) => a - b);
+  if (scores.length < 5) return warnings;
+
+  const q1 = scores[Math.floor(scores.length * 0.25)];
+  const q3 = scores[Math.floor(scores.length * 0.75)];
+  const iqr = q3 - q1;
+  const lowerBound = q1 - 1.5 * iqr;
+  const upperBound = q3 + 1.5 * iqr;
+
+  for (const entry of entries) {
+    if (entry.overall_score < lowerBound || entry.overall_score > upperBound) {
+      warnings.push(
+        `[Outlier] ${entry.name}: score ${entry.overall_score.toFixed(1)} outside IQR bounds [${lowerBound.toFixed(1)}, ${upperBound.toFixed(1)}]`
+      );
+    }
+  }
+  return warnings;
+}
+
+function validatePartyConsistency(partyEntries) {
+  const warnings = [];
+  for (const party of partyEntries) {
+    if (party.member_count >= 3 && party.score_stddev === 0) {
+      warnings.push(
+        `[Party] ${party.party}: all ${party.member_count} members have identical scores — possible hallucination`
+      );
+    }
+  }
+  return warnings;
+}
+
+// ── Party Aggregation ─────────────────────────────────────────────────
+
+function aggregateParties(entries, today) {
+  const partyMap = new Map();
+
+  for (const entry of entries) {
+    if (!partyMap.has(entry.party)) {
+      partyMap.set(entry.party, []);
+    }
+    partyMap.get(entry.party).push(entry);
+  }
+
+  return [...partyMap.entries()].map(([party, members]) => {
+    const totalVolume = members.reduce((s, m) => s + m.media_volume, 0);
+    const weightedScore =
+      totalVolume > 0
+        ? members.reduce((s, m) => s + m.overall_score * m.media_volume, 0) / totalVolume
+        : members.reduce((s, m) => s + m.overall_score, 0) / members.length;
+
+    const scores = members.map((m) => m.overall_score);
+    const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+    const stddev = Math.sqrt(scores.reduce((s, v) => s + (v - mean) ** 2, 0) / scores.length);
+
+    const topMember = members.reduce((best, m) =>
+      m.media_volume > (best?.media_volume || 0) ? m : best
+    );
+
+    return {
+      date: today,
+      party,
+      wing: members[0].wing,
+      member_count: members.length,
+      overall_score: parseFloat(weightedScore.toFixed(1)),
+      media_volume: parseFloat(totalVolume.toFixed(1)),
+      hostility_avg: parseFloat(
+        (members.reduce((s, m) => s + m.hostility_level, 0) / members.length).toFixed(2)
+      ),
+      policy_avg: parseFloat(
+        (members.reduce((s, m) => s + m.policy_approval, 0) / members.length).toFixed(2)
+      ),
+      amplification_avg: parseFloat(
+        (members.reduce((s, m) => s + m.media_amplification, 0) / members.length).toFixed(2)
+      ),
+      top_politician: topMember.politician_id,
+      score_stddev: parseFloat(stddev.toFixed(2)),
+    };
+  });
+}
+
 function renderSearchTemplate(template, politician) {
   // Use Hebrew name for Hebrew search templates, English name otherwise
   const isHebrew = template.includes("hl=iw") || template.includes("ceid=IL:he");
@@ -1121,6 +1271,7 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
       successfulSources++;
       for (const item of items) {
+        if (isSpamContent(`${item.title} ${item.description}`, item.link)) continue;
         if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
           headlines.push(item.title);
         }
@@ -1136,6 +1287,7 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
       successfulSources++;
       for (const item of items) {
+        if (isSpamContent(`${item.title} ${item.description}`, item.link)) continue;
         if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
           headlines.push(item.title);
         }
@@ -1167,10 +1319,11 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   let successfulSources = 0;
   let failedSources = 0;
 
-  // Helper: process a list of posts and push matching mentions
+  // Helper: process a list of posts, filter spam, and push matching mentions
   function processPosts(posts, sourceLabel) {
     for (const post of posts) {
       const combined = `${post.title} ${post.body}`;
+      if (isSpamContent(combined, post.permalink)) continue;
       if (!includesPolitician(combined, searchTerms)) continue;
       matches.push({
         text: post.body
@@ -1576,6 +1729,32 @@ function writeDetailFile(entries, today) {
   console.log(`  → Detail: ${detailPath}`);
 }
 
+function writePartySummary(partyEntries, today) {
+  const partyPath = path.join(DATA_DIR, "party_summary.json");
+  let existing = [];
+  try {
+    existing = JSON.parse(fs.readFileSync(partyPath, "utf-8"));
+  } catch {
+    // Starting fresh
+  }
+  if (!Array.isArray(existing)) existing = [];
+
+  // Remove today's entries if re-running
+  existing = existing.filter((e) => e.date !== today);
+  existing.push(...partyEntries);
+  existing.sort((a, b) => a.date.localeCompare(b.date) || a.party.localeCompare(b.party));
+
+  // Keep last 90 days
+  const allDates = [...new Set(existing.map((e) => e.date))].sort();
+  if (allDates.length > 90) {
+    const cutoffDate = allDates[allDates.length - 90];
+    existing = existing.filter((e) => e.date >= cutoffDate);
+  }
+
+  fs.writeFileSync(partyPath, JSON.stringify(existing, null, 2));
+  console.log(`  → Party summary: ${partyEntries.length} parties for ${today}`);
+}
+
 function pruneOldDetails() {
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - RETENTION_DAYS);
@@ -1748,10 +1927,58 @@ async function main() {
     );
   }
 
+  // ── Phase 3.5: Aggregate parties ──────────────────────────────────
+  console.log("\nPhase 3.5: Aggregating party scores...");
+  const partyEntries = aggregateParties(newEntries, today);
+  console.log(`  → ${partyEntries.length} parties aggregated`);
+
+  // ── Phase 3.6: Validate ─────────────────────────────────────────────
+  console.log("\nPhase 3.6: Validating data quality...");
+  let existingSummary = [];
+  try {
+    existingSummary = JSON.parse(fs.readFileSync(SUMMARY_PATH, "utf-8"));
+  } catch {
+    // No historical data yet
+  }
+  // Last 7 days of history for temporal checks
+  const recentDates = [...new Set(existingSummary.map((r) => r.date))].sort().slice(-7);
+  const recentHistory = existingSummary.filter((r) => recentDates.includes(r.date));
+
+  const allWarnings = [
+    ...validateChainOfThought(newEntries),
+    ...validateTemporalConsistency(newEntries, recentHistory),
+    ...detectOutliers(newEntries),
+    ...validatePartyConsistency(partyEntries),
+  ];
+
+  if (allWarnings.length) {
+    console.warn(`  ⚠ ${allWarnings.length} validation warnings:`);
+    for (const w of allWarnings) {
+      console.warn(`    ${w}`);
+    }
+    // Log to drift_log.json
+    const driftLogPath = path.join(DATA_DIR, "drift_log.json");
+    let driftLog = [];
+    try {
+      driftLog = JSON.parse(fs.readFileSync(driftLogPath, "utf-8"));
+    } catch {
+      // Starting fresh
+    }
+    driftLog.push({ date: today, warnings: allWarnings, timestamp: new Date().toISOString() });
+    // Keep last 90 days
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 90);
+    driftLog = driftLog.filter((e) => new Date(e.timestamp) > cutoff);
+    fs.writeFileSync(driftLogPath, JSON.stringify(driftLog, null, 2));
+  } else {
+    console.log("  ✓ All validation checks passed");
+  }
+
   // ── Phase 4: Write artifacts ────────────────────────────────────────
   console.log("\nPhase 4: Writing artifacts...");
   appendToSummary(newEntries, today);
   writeDetailFile(newEntries, today);
+  writePartySummary(partyEntries, today);
   pruneOldDetails();
 
   console.log(`\n✅ Pipeline complete for ${today}`);
