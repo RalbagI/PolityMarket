@@ -1,0 +1,36 @@
+{
+  "efrat-rayten": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#5a3a2a",
+    "face": "round",
+    "suitColor": "#2c3e50"
+  },
+  "gilad-kariv": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "oval",
+    "headCovering": "kippah",
+    "glasses": "rectangular",
+    "suitColor": "#2c3e50",
+    "tieColor": "#e74c3c"
+  },
+  "naama-lazimi": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "suitColor": "#e74c3c"
+  },
+  "yair-golan": {
+    "hair": "short",
+    "hairColor": "#777",
+    "grayHair": true,
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#e74c3c"
+  }
+}

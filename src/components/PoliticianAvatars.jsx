@@ -7,6 +7,7 @@
  */
 
 import GeneratedAvatar from "./AvatarGenerator";
+import HANDCRAFTED_AVATAR_IDS from "./handcraftedAvatarIds";
 import POLITICIAN_TRAITS from "./politicianTraits";
 
 // ── Hand-Crafted Avatars (kept for the 5 most prominent politicians) ──
@@ -199,14 +200,18 @@ const HANDCRAFTED = {
   "avigdor-lieberman": LiebermanAvatar,
 };
 
+const HANDCRAFTED_ID_SET = new Set(HANDCRAFTED_AVATAR_IDS);
+
 // ── Main Export ───────────────────────────────────────────────────────
 
 export default function PoliticianAvatar({ politicianId, name, size = 40 }) {
   const id = politicianId || name?.toLowerCase().replace(/\s+/g, "-");
 
   // 1. Hand-crafted avatar for top 5
-  const HandCrafted = HANDCRAFTED[id];
-  if (HandCrafted) return <HandCrafted size={size} />;
+  if (HANDCRAFTED_ID_SET.has(id)) {
+    const HandCrafted = HANDCRAFTED[id];
+    if (HandCrafted) return <HandCrafted size={size} />;
+  }
 
   // 2. Generated avatar from trait config
   const traits = POLITICIAN_TRAITS[id];

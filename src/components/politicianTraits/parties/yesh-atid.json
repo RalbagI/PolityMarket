@@ -1,0 +1,191 @@
+{
+  "adi-azuz": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#e8c8a8",
+    "suitColor": "#2c3e50"
+  },
+  "boaz-toporovsky": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "oval",
+    "glasses": "thin",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  },
+  "debbie-biton": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#8b6914",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#2c3e50"
+  },
+  "elazar-stern": {
+    "hair": "bald",
+    "face": "round",
+    "grayHair": true,
+    "headCovering": "kippah",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#f59e0b"
+  },
+  "karine-elharrar": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "glasses": "round",
+    "suitColor": "#2c3e50"
+  },
+  "matti-sarfatti-harcavi": {
+    "hair": "short",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "oval",
+    "glasses": "thin",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  },
+  "meir-cohen": {
+    "hair": "bald",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "grayHair": true,
+    "suitColor": "#1a1a2e",
+    "tieColor": "#f59e0b"
+  },
+  "meirav-ben-ari": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "suitColor": "#8e44ad"
+  },
+  "merav-cohen": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "suitColor": "#2c3e50"
+  },
+  "michal-shir-segman": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "suitColor": "#2c3e50"
+  },
+  "mickey-levy": {
+    "hair": "bald",
+    "face": "round",
+    "grayHair": true,
+    "glasses": "thin",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#f59e0b"
+  },
+  "moshe-tur-paz": {
+    "hair": "short",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "oval",
+    "headCovering": "kippah",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#f59e0b"
+  },
+  "naor-shiri": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  },
+  "ram-ben-barak": {
+    "hair": "short",
+    "hairColor": "#777",
+    "grayHair": true,
+    "face": "square",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "ron-katz": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "square",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  },
+  "shelly-tal-meron": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#8b6914",
+    "face": "oval",
+    "suitColor": "#2c3e50"
+  },
+  "simon-davidson": {
+    "hair": "short",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "oval",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#f59e0b"
+  },
+  "tatiana-mazarsky": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#d4a029",
+    "face": "oval",
+    "eyeColor": "#2c5f8a",
+    "suitColor": "#2c3e50"
+  },
+  "vladimir-beliak": {
+    "hair": "short",
+    "hairColor": "#4a3a2a",
+    "face": "square",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  },
+  "yair-lapid": null,
+  "yaron-levy": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  },
+  "yasmin-fridman": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#5a3a2a",
+    "face": "round",
+    "suitColor": "#8e44ad"
+  },
+  "yoav-segalovitz": {
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "oval",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  },
+  "yorai-lahav-hertzano": {
+    "hair": "curly",
+    "hairColor": "#3a3a3a",
+    "face": "oval",
+    "suitColor": "#2c3e50",
+    "tieColor": "#f59e0b"
+  }
+}

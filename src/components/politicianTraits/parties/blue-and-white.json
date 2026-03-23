@@ -1,0 +1,60 @@
+{
+  "alon-schuster": {
+    "hair": "swept",
+    "hairColor": "#888",
+    "grayHair": true,
+    "face": "oval",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "benny-gantz": null,
+  "eitan-ginzburg": {
+    "hair": "short",
+    "hairColor": "#4a3a2a",
+    "face": "oval",
+    "suitColor": "#2c3e50",
+    "tieColor": "#2980b9"
+  },
+  "hili-tropper": {
+    "hair": "short",
+    "hairColor": "#3a3a3a",
+    "face": "oval",
+    "suitColor": "#2c3e50",
+    "tieColor": "#2980b9"
+  },
+  "michael-biton": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#e8c8a8",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#2980b9"
+  },
+  "orit-farkash-hacohen": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "glasses": "thin",
+    "suitColor": "#2c3e50"
+  },
+  "pnina-tamano-shata": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "curly",
+    "hairColor": "#1a1a1a",
+    "face": "round",
+    "skin": "#6b4a2a",
+    "eyeColor": "#1a1a1a",
+    "suitColor": "#2c3e50"
+  },
+  "yael-ron-ben-moshe": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "styled",
+    "hairColor": "#5a3a2a",
+    "face": "oval",
+    "suitColor": "#2c3e50"
+  }
+}

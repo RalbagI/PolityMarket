@@ -1,0 +1,81 @@
+{
+  "meir-porush": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "receding",
+    "hairColor": "#888",
+    "grayHair": true,
+    "face": "round",
+    "headCovering": "shtreimel",
+    "beard": "full",
+    "beardColor": "#888",
+    "glasses": "round"
+  },
+  "moshe-gafni": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "receding",
+    "hairColor": "#888",
+    "grayHair": true,
+    "face": "round",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#888",
+    "glasses": "rectangular"
+  },
+  "uri-maklev": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#2c2c2c"
+  },
+  "yaakov-asher": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#555",
+    "glasses": "rectangular"
+  },
+  "yaakov-tesler": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "goatee",
+    "beardColor": "#2c2c2c"
+  },
+  "yitzhak-goldknopf": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "headCovering": "shtreimel",
+    "beard": "full",
+    "beardColor": "#555",
+    "glasses": "round"
+  },
+  "yitzhak-pindrus": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#2c2c2c",
+    "glasses": "round"
+  }
+}

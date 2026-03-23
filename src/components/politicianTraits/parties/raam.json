@@ -1,0 +1,53 @@
+{
+  "iman-khatib-yasin": {
+    "beard": null,
+    "tieColor": null,
+    "hair": "long",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#d4b896",
+    "headCovering": "hijab",
+    "suitColor": "#2c3e50"
+  },
+  "mansour-abbas": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#d4b896",
+    "beard": "mustache",
+    "beardColor": "#2c2c2c",
+    "glasses": "rectangular",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#27ae60"
+  },
+  "waleed-taha": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#d4b896",
+    "beard": "full",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#27ae60"
+  },
+  "walid-alhawashla": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "skin": "#d4b896",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#1a1a2e",
+    "tieColor": "#27ae60"
+  },
+  "yasser-hujirat": {
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "skin": "#d4b896",
+    "beard": "goatee",
+    "beardColor": "#2c2c2c",
+    "suitColor": "#2c3e50",
+    "tieColor": "#27ae60"
+  }
+}

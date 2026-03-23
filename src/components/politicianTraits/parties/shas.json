@@ -1,0 +1,116 @@
+{
+  "aryeh-deri": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "receding",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c",
+    "glasses": "rectangular"
+  },
+  "haim-biton": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "headCovering": "kippah"
+  },
+  "michael-malchieli": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "goatee",
+    "beardColor": "#2c2c2c"
+  },
+  "moshe-abutbul": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#2c2c2c",
+    "skin": "#e8c8a8"
+  },
+  "moshe-arbel": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "round",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#2c2c2c",
+    "glasses": "rectangular"
+  },
+  "uriel-buso": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "skin": "#e8c8a8"
+  },
+  "yaakov-margi": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "receding",
+    "hairColor": "#555",
+    "grayHair": true,
+    "face": "round",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#555",
+    "glasses": "rectangular"
+  },
+  "yinon-azoulay": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "full",
+    "beardColor": "#2c2c2c"
+  },
+  "yoav-ben-tzur": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c"
+  },
+  "yonatan-mishraki": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#2c2c2c"
+  },
+  "yosef-taieb": {
+    "suitColor": "#0a0a0a",
+    "tieColor": null,
+    "hair": "short",
+    "hairColor": "#2c2c2c",
+    "face": "oval",
+    "headCovering": "kippah",
+    "beard": "goatee",
+    "beardColor": "#2c2c2c",
+    "skin": "#e8c8a8"
+  }
+}
