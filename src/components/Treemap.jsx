@@ -69,7 +69,10 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
     // Create an "Others" entry sized like the smallest visible block (not the sum)
     const smallestVisible = visible[visible.length - 1];
-    const othersValue = Math.max(smallestVisible?.[sizeBy] || smallestVisible?.media_volume || 1, 1);
+    const othersValue = Math.max(
+      smallestVisible?.[sizeBy] || smallestVisible?.media_volume || 1,
+      1
+    );
     const othersScore = grouped.reduce((s, d) => s + d.overall_score, 0) / grouped.length;
 
     return [

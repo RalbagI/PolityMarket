@@ -79,7 +79,7 @@ RUN_DATE="$(TZ="${TZ}" date +%F)"
 echo "Validating artifacts for ${RUN_DATE}..."
 node scripts/validate-daily-artifacts.js --date "${RUN_DATE}" --expected "${PIPELINE_EXPECTED_POLITICIAN_COUNT}"
 
-git add public/data/timeseries_summary.json public/data/details public/data/drift_log.json
+git add public/data/timeseries_summary.json public/data/party_summary.json public/data/details public/data/drift_log.json
 
 if git diff --cached --quiet; then
   echo "No data changes detected; nothing to commit."

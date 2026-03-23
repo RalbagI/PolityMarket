@@ -1,0 +1,147 @@
+const SPAM_PATTERNS_HE = ["מודעה", "פרסומת", "שיתוף פעולה מסחרי", "תוכן ממומן", "הצטרפו לערוץ"];
+const SPAM_PATTERNS_EN = ["sponsored", "promoted", "advertisement", "paid partnership", "Join @"];
+const SPAM_URL_PATTERNS = ["/sponsored/", "/ad/", "utm_medium=paid", "utm_source=paid"];
+
+const HEBREW_RE = /[\u0590-\u05FF]/;
+
+export function isSpamContent(text, permalink) {
+  if (!text || text.length < 15) return true;
+  const lower = text.toLowerCase();
+  for (const p of SPAM_PATTERNS_EN) {
+    if (lower.includes(p.toLowerCase())) return true;
+  }
+  for (const p of SPAM_PATTERNS_HE) {
+    if (text.includes(p)) return true;
+  }
+  if (permalink) {
+    for (const p of SPAM_URL_PATTERNS) {
+      if (permalink.includes(p)) return true;
+    }
+  }
+  // Pure URL with no text content
+  if (/^https?:\/\/\S+$/.test(text.trim())) return true;
+  return false;
+}
+
+export function validateChainOfThought(entries) {
+  const warnings = [];
+  for (const entry of entries) {
+    const cot = entry.chain_of_thought || "";
+    if (cot.length < 20) {
+      warnings.push(`[CoT] ${entry.name}: chain_of_thought too short (${cot.length} chars)`);
+    } else if (!HEBREW_RE.test(cot)) {
+      warnings.push(`[CoT] ${entry.name}: chain_of_thought contains no Hebrew characters`);
+    }
+  }
+  return warnings;
+}
+
+export function validateTemporalConsistency(entries, historicalSummary) {
+  const warnings = [];
+  if (!historicalSummary.length) return warnings;
+
+  // Pre-build O(1) lookup by politician_id
+  const historyMap = new Map();
+  for (const h of historicalSummary) {
+    if (!historyMap.has(h.politician_id)) historyMap.set(h.politician_id, []);
+    historyMap.get(h.politician_id).push(h.overall_score);
+  }
+
+  for (const entry of entries) {
+    const history = historyMap.get(entry.politician_id) || [];
+
+    if (history.length < 3) continue;
+
+    const mean = history.reduce((a, b) => a + b, 0) / history.length;
+    const stddev = Math.sqrt(history.reduce((sum, v) => sum + (v - mean) ** 2, 0) / history.length);
+    const threshold = Math.max(stddev * 3, 1.5); // minimum 1.5 point change
+    const delta = Math.abs(entry.overall_score - mean);
+
+    if (delta > threshold) {
+      warnings.push(
+        `[Temporal] ${entry.name}: score ${entry.overall_score.toFixed(1)} deviates ${delta.toFixed(1)} from 7-day avg ${mean.toFixed(1)} (threshold: ${threshold.toFixed(1)})`
+      );
+    }
+  }
+  return warnings;
+}
+
+export function detectOutliers(entries) {
+  const warnings = [];
+  const scores = entries.map((e) => e.overall_score).sort((a, b) => a - b);
+  if (scores.length < 5) return warnings;
+
+  const q1 = scores[Math.floor(scores.length * 0.25)];
+  const q3 = scores[Math.floor(scores.length * 0.75)];
+  const iqr = q3 - q1;
+  const lowerBound = q1 - 1.5 * iqr;
+  const upperBound = q3 + 1.5 * iqr;
+
+  for (const entry of entries) {
+    if (entry.overall_score < lowerBound || entry.overall_score > upperBound) {
+      warnings.push(
+        `[Outlier] ${entry.name}: score ${entry.overall_score.toFixed(1)} outside IQR bounds [${lowerBound.toFixed(1)}, ${upperBound.toFixed(1)}]`
+      );
+    }
+  }
+  return warnings;
+}
+
+export function validatePartyConsistency(partyEntries) {
+  const warnings = [];
+  for (const party of partyEntries) {
+    if (party.member_count >= 3 && party.score_stddev === 0) {
+      warnings.push(
+        `[Party] ${party.party}: all ${party.member_count} members have identical scores — possible hallucination`
+      );
+    }
+  }
+  return warnings;
+}
+
+export function aggregateParties(entries, today) {
+  const partyMap = new Map();
+
+  for (const entry of entries) {
+    if (!partyMap.has(entry.party)) {
+      partyMap.set(entry.party, []);
+    }
+    partyMap.get(entry.party).push(entry);
+  }
+
+  return [...partyMap.entries()].map(([party, members]) => {
+    const totalVolume = members.reduce((s, m) => s + m.media_volume, 0);
+    const weightedScore =
+      totalVolume > 0
+        ? members.reduce((s, m) => s + m.overall_score * m.media_volume, 0) / totalVolume
+        : members.reduce((s, m) => s + m.overall_score, 0) / members.length;
+
+    const scores = members.map((m) => m.overall_score);
+    const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+    const stddev = Math.sqrt(scores.reduce((s, v) => s + (v - mean) ** 2, 0) / scores.length);
+
+    const topMember = members.reduce((best, m) =>
+      m.media_volume > (best?.media_volume || 0) ? m : best
+    );
+
+    return {
+      date: today,
+      party,
+      wing: members[0].wing,
+      member_count: members.length,
+      overall_score: parseFloat(weightedScore.toFixed(1)),
+      media_volume: parseFloat(totalVolume.toFixed(1)),
+      hostility_avg: parseFloat(
+        (members.reduce((s, m) => s + m.hostility_level, 0) / members.length).toFixed(2)
+      ),
+      policy_avg: parseFloat(
+        (members.reduce((s, m) => s + m.policy_approval, 0) / members.length).toFixed(2)
+      ),
+      amplification_avg: parseFloat(
+        (members.reduce((s, m) => s + m.media_amplification, 0) / members.length).toFixed(2)
+      ),
+      top_politician: topMember.politician_id,
+      score_stddev: parseFloat(stddev.toFixed(2)),
+    };
+  });
+}

@@ -36,6 +36,8 @@ vi.mock("../store", () => {
           detailCache: {},
           openPanel: vi.fn(),
           closePanel: vi.fn(),
+          partySummaryData: [],
+          loadPartySummary: vi.fn(),
           treemapSizeBy: "media_volume",
           treemapColorBy: "overall_score",
           setTreemapSizeBy: vi.fn(),

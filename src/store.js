@@ -40,6 +40,20 @@ const useStore = create((set, get) => ({
     }
   },
 
+  // ── Party Summary Slice ─────────────────────────────────────────────
+  partySummaryData: [],
+
+  loadPartySummary: async () => {
+    try {
+      const res = await fetch("/data/party_summary.json");
+      if (!res.ok) return;
+      const data = await res.json();
+      set({ partySummaryData: data });
+    } catch {
+      // Party data unavailable — not critical
+    }
+  },
+
   // ── Detail Cache Slice ───────────────────────────────────────────────
   detailCache: {},
   detailLoading: false,

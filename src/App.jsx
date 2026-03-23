@@ -13,13 +13,17 @@ import CookieConsent from "./components/CookieConsent";
 
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
+const PartyDetailView = lazy(() => import("./components/PartyDetailView"));
 
 export default function App() {
   const { t } = useTranslation();
   const [methodologyOpen, setMethodologyOpen] = useState(false);
+  const [viewMode, setViewMode] = useState("politicians"); // "politicians" | "parties"
   const summaryData = useStore((s) => s.summaryData);
+  const partySummaryData = useStore((s) => s.partySummaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
+  const loadPartySummary = useStore((s) => s.loadPartySummary);
   const panelOpen = useStore((s) => s.panelOpen);
   const selectedPolitician = useStore((s) => s.selectedPolitician);
   const selectedDate = useStore((s) => s.selectedDate);
@@ -29,7 +33,8 @@ export default function App() {
 
   useEffect(() => {
     loadSummary();
-  }, [loadSummary]);
+    loadPartySummary();
+  }, [loadSummary, loadPartySummary]);
 
   const { todayData, yesterdayData, latestDate } = useMemo(() => {
     if (!summaryData.length) return { todayData: [], yesterdayData: [], latestDate: null };
@@ -66,6 +71,53 @@ export default function App() {
   const treemapData = useMemo(() => {
     return normalizeScores(filterState.visible);
   }, [filterState.visible]);
+
+  // Party data for party view mode
+  const partyTreemapData = useMemo(() => {
+    if (!latestDate) return [];
+
+    // Primary source: pipeline-generated party_summary.json for the active date.
+    const todayParties = partySummaryData.filter((p) => p.date === latestDate);
+
+    // Fallback: derive party aggregates from today's politician rows if file is missing/stale.
+    const partyRows =
+      todayParties.length > 0
+        ? todayParties
+        : (() => {
+            if (!todayData.length) return [];
+            const byParty = new Map();
+            for (const entry of todayData) {
+              if (!byParty.has(entry.party)) byParty.set(entry.party, []);
+              byParty.get(entry.party).push(entry);
+            }
+            return [...byParty.entries()].map(([party, members]) => {
+              const totalVolume = members.reduce((sum, m) => sum + m.media_volume, 0);
+              const weightedScore =
+                totalVolume > 0
+                  ? members.reduce((sum, m) => sum + m.overall_score * m.media_volume, 0) /
+                    totalVolume
+                  : members.reduce((sum, m) => sum + m.overall_score, 0) / members.length;
+              return {
+                date: latestDate,
+                party,
+                wing: members[0]?.wing || null,
+                member_count: members.length,
+                overall_score: parseFloat(weightedScore.toFixed(1)),
+                media_volume: parseFloat(totalVolume.toFixed(1)),
+              };
+            });
+          })();
+
+    return partyRows.map((p) => ({
+      ...p,
+      politician_id: `party:${p.party}`,
+      name: p.party,
+      displayName: t(`parties.${p.party}`, { defaultValue: p.party }),
+      _isParty: true,
+    }));
+  }, [partySummaryData, latestDate, todayData, t]);
+
+  const sidebarData = viewMode === "parties" ? partyTreemapData : filterState.visible;
 
   const handleSelectPolitician = useCallback(
     (name) => {
@@ -105,9 +157,11 @@ export default function App() {
   return (
     <div className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
       <Sidebar
-        todayData={filterState.visible}
+        todayData={sidebarData}
         onMethodologyClick={() => setMethodologyOpen(true)}
         filterProps={filterState}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
@@ -116,7 +170,7 @@ export default function App() {
         <div className="flex-1 min-h-[40vh] sm:min-h-[50vh] md:min-h-[300px]">
           <ErrorBoundary>
             <Treemap
-              data={treemapData}
+              data={viewMode === "parties" ? partyTreemapData : treemapData}
               onSelect={handleSelectPolitician}
               selectedPolitician={selectedPolitician}
             />
@@ -135,17 +189,29 @@ export default function App() {
             isOpen={panelOpen}
             onClose={closePanel}
             title={
-              selectedPolitician ? localizeName(t, selectedPolitician) : t("app.panel.defaultTitle")
+              viewMode === "parties" && selectedPolitician
+                ? t(`parties.${selectedPolitician}`, { defaultValue: selectedPolitician })
+                : selectedPolitician
+                  ? localizeName(t, selectedPolitician)
+                  : t("app.panel.defaultTitle")
             }
           >
-            <DetailView
-              todayDetail={activeDetail}
-              selectedPolitician={selectedPolitician}
-              selectedDate={activeDate}
-              loading={detailLoading}
-              isLiked={filterState.likedIds.includes(selectedPoliticianId)}
-              onToggleLike={filterState.toggleLiked}
-            />
+            {viewMode === "parties" ? (
+              <PartyDetailView
+                partyName={selectedPolitician}
+                partyData={partyTreemapData.find((p) => p.name === selectedPolitician)}
+                todayData={todayData}
+              />
+            ) : (
+              <DetailView
+                todayDetail={activeDetail}
+                selectedPolitician={selectedPolitician}
+                selectedDate={activeDate}
+                loading={detailLoading}
+                isLiked={filterState.likedIds.includes(selectedPoliticianId)}
+                onToggleLike={filterState.toggleLiked}
+              />
+            )}
           </SlidePanel>
         </Suspense>
       </ErrorBoundary>
