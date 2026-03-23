@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Users, BarChart3, TrendingUp } from "lucide-react";
+import { Users, BarChart3, TrendingUp, Info } from "lucide-react";
 import {
   ComposedChart,
   Line,
@@ -16,6 +16,7 @@ import AccordionSection from "./AccordionSection";
 import { scoreToColor } from "../lib/colorScale";
 import { localizeName, localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
+import { getPartyInfo } from "../lib/partyInfo";
 import useStore from "../store";
 
 function MemberRow({ entry, t }) {
@@ -82,6 +83,7 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
 
   const partyColor = getPartyColor(partyName);
   const displayParty = localizeParty(t, partyName);
+  const info = getPartyInfo(partyName);
 
   return (
     <div className="space-y-4">
@@ -111,6 +113,84 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
           </div>
         )}
       </div>
+
+      {/* Party Info */}
+      {info && (
+        <AccordionSection title={t("partyDetail.info")} icon={Info} defaultOpen>
+          <div className="space-y-3">
+            {/* Description */}
+            <p className="text-sm text-gray-300 leading-relaxed">
+              {t(`partyDetail.descriptions.${partyName}`, info.description)}
+            </p>
+
+            {/* Quick facts */}
+            <div className="bg-gray-800/50 rounded-xl p-4 space-y-2.5">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">{t("partyDetail.leader")}</span>
+                <span className="text-gray-200 font-medium">{localizeName(t, info.leader)}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">{t("partyDetail.status")}</span>
+                <span
+                  className="text-xs font-semibold px-2 py-0.5 rounded-full"
+                  style={{
+                    backgroundColor:
+                      info.status === "coalition"
+                        ? "rgba(34,197,94,0.15)"
+                        : info.status === "opposition"
+                          ? "rgba(239,68,68,0.15)"
+                          : "rgba(156,163,175,0.15)",
+                    color:
+                      info.status === "coalition"
+                        ? "#4ade80"
+                        : info.status === "opposition"
+                          ? "#f87171"
+                          : "#9ca3af",
+                  }}
+                >
+                  {t(`partyDetail.statuses.${info.status}`, info.status)}
+                </span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">{t("partyDetail.ideology")}</span>
+                <span className="text-gray-200 font-medium text-end ms-4">
+                  {t(`partyDetail.ideologies.${info.ideology}`, info.ideology)}
+                </span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">{t("partyDetail.wing")}</span>
+                <span className="text-gray-200 font-medium">
+                  {t(`partyDetail.wings.${party?.wing || info.wing}`, party?.wing || info.wing)}
+                </span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">{t("partyDetail.founded")}</span>
+                <span className="text-gray-200 font-medium">{info.founded}</span>
+              </div>
+            </div>
+
+            {/* Key Positions */}
+            {info.keyPositions?.length > 0 && (
+              <div>
+                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+                  {t("partyDetail.keyPositions")}
+                </h4>
+                <ul className="space-y-1.5">
+                  {info.keyPositions.map((pos, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                      <span
+                        className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
+                        style={{ backgroundColor: partyColor.accent }}
+                      />
+                      {t(`partyDetail.positions.${partyName}.${i}`, pos)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </AccordionSection>
+      )}
 
       {/* Score Breakdown */}
       {party && (
