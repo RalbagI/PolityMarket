@@ -16,24 +16,29 @@ export function scoreToColor(score) {
 }
 
 /**
- * Parse the rgb() string from d3 and return rgba() with alpha.
+ * Normalize score relative to [min, max] into the 0-10 color scale domain.
+ * When min/max are invalid or equal, use midpoint color to avoid misleading red.
  */
-/**
- * Normalized color: maps score relative to [min, max] of visible data
- * so the lowest visible score is red and highest is green.
- */
+function normalizeScore(score, min, max) {
+  const minValid = Number.isFinite(min);
+  const maxValid = Number.isFinite(max);
+  const scoreValid = Number.isFinite(score);
+
+  if (!minValid || !maxValid || !scoreValid || min === max) return 5;
+  return ((score - min) / (max - min)) * 10;
+}
+
 export function normalizedScoreToColor(score, min, max) {
-  const range = max - min || 1;
-  const normalized = ((score - min) / range) * 10;
-  return colorScale(normalized);
+  return colorScale(normalizeScore(score, min, max));
 }
 
 export function normalizedScoreToColorWithAlpha(score, min, max, alpha = 0.6) {
-  const range = max - min || 1;
-  const normalized = ((score - min) / range) * 10;
-  return scoreToColorWithAlpha(normalized, alpha);
+  return scoreToColorWithAlpha(normalizeScore(score, min, max), alpha);
 }
 
+/**
+ * Parse the rgb() string from d3 and return rgba() with alpha.
+ */
 export function scoreToColorWithAlpha(score, alpha = 0.6) {
   const color = colorScale(score);
   // d3 returns "rgb(r, g, b)" format

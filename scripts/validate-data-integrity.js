@@ -17,6 +17,7 @@
 
 import fs from "fs";
 import path from "path";
+import process from "node:process";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -34,10 +35,13 @@ function warn(msg) {
 
 // ── Load data ─────────────────────────────────────────────────────────
 
-const pipelineSrc = fs.readFileSync(
-  path.join(repoRoot, "data-pipeline/generateDailyScores.js"),
-  "utf-8"
-);
+const pipelineSrcPath = path.join(repoRoot, "data-pipeline/generateDailyScores.js");
+let pipelineSrc = "";
+try {
+  pipelineSrc = fs.readFileSync(pipelineSrcPath, "utf-8");
+} catch {
+  warn("generateDailyScores.js not found — roster fallback from source disabled");
+}
 
 const i18n = JSON.parse(
   fs.readFileSync(path.join(repoRoot, "src/locales/he/translation.json"), "utf-8")
@@ -61,17 +65,72 @@ try {
   warn("party_summary.json not found — skipping party data checks");
 }
 
-// Extract roster from pipeline source
-const rosterMatches = [
-  ...pipelineSrc.matchAll(
-    /id:\s*"([^"]+)",\s*name:\s*"([^"]+)",\s*party:\s*"([^"]+)"/g
-  ),
-];
-const roster = rosterMatches.map((m) => ({ id: m[1], name: m[2], party: m[3] }));
+function dedupeRoster(rows) {
+  const byId = new Map();
+  for (const row of rows) {
+    if (!row?.id || !row?.name || !row?.party) continue;
+    if (!byId.has(row.id)) byId.set(row.id, row);
+  }
+  return [...byId.values()];
+}
+
+function loadRosterFromLatestDetails() {
+  const detailsDir = path.join(repoRoot, "public/data/details");
+  if (!fs.existsSync(detailsDir)) return [];
+
+  const files = fs.readdirSync(detailsDir).filter((name) => name.endsWith(".json")).sort();
+  if (!files.length) return [];
+
+  const latest = files.at(-1);
+  try {
+    const rows = JSON.parse(fs.readFileSync(path.join(detailsDir, latest), "utf-8"));
+    if (!Array.isArray(rows)) return [];
+    return dedupeRoster(
+      rows.map((row) => ({
+        id: row.politician_id,
+        name: row.name,
+        party: row.party,
+      }))
+    );
+  } catch {
+    warn(`Failed to parse details roster file: ${latest}`);
+    return [];
+  }
+}
+
+function loadRosterFromPipelineSource(source) {
+  if (!source) return [];
+  const blocks = source.match(/\{[\s\S]*?\}/g) || [];
+  const rows = [];
+
+  for (const block of blocks) {
+    const id = block.match(/\bid:\s*["']([^"']+)["']/)?.[1];
+    const name = block.match(/\bname:\s*["']([^"']+)["']/)?.[1];
+    const party = block.match(/\bparty:\s*["']([^"']+)["']/)?.[1];
+    if (id && name && party) rows.push({ id, name, party });
+  }
+
+  return dedupeRoster(rows);
+}
+
+const detailsRoster = loadRosterFromLatestDetails();
+let rosterSource = "public/data/details (latest)";
+let roster = detailsRoster;
+
+if (!roster.length) {
+  roster = loadRosterFromPipelineSource(pipelineSrc);
+  rosterSource = "data-pipeline/generateDailyScores.js (fallback parser)";
+}
+
+if (!roster.length) {
+  fail("Unable to build roster from details data or pipeline source");
+}
+
 const rosterIds = roster.map((r) => r.id);
 const rosterParties = [...new Set(roster.map((r) => r.party))].sort();
 
 console.log(`\n🔍 Data Integrity Validation\n`);
+console.log(`  Roster source: ${rosterSource}`);
 console.log(`  Roster: ${roster.length} politicians, ${rosterParties.length} parties`);
 
 // ── Check 1: Party Completeness ───────────────────────────────────────
@@ -202,7 +261,6 @@ if (errors.length === errSnap) {
 // ── Check 4: Avatar Coverage ──────────────────────────────────────────
 
 console.log("\n🎨 Check 4: Avatar Coverage");
-errSnap = errors.length;
 
 // Read the trait files to check coverage
 const traitDir = path.join(repoRoot, "src/components/politicianTraits/parties");

@@ -6,6 +6,11 @@ import {
   normalizedScoreToColorWithAlpha,
 } from "./colorScale";
 
+function parseRgbChannels(color) {
+  const match = String(color).match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+  return [Number(match?.[1] ?? 0), Number(match?.[2] ?? 0), Number(match?.[3] ?? 0)];
+}
+
 describe("scoreToColor", () => {
   it("returns a color string for valid scores", () => {
     const color = scoreToColor(5);
@@ -70,7 +75,9 @@ describe("normalizedScoreToColor", () => {
   });
 
   it("handles equal min/max without crashing", () => {
-    expect(() => normalizedScoreToColor(5, 5, 5)).not.toThrow();
+    const color = normalizedScoreToColor(5, 5, 5);
+    const [, g] = parseRgbChannels(color);
+    expect(g).toBeGreaterThan(100); // midpoint should not collapse to red
   });
 });
 
@@ -88,5 +95,12 @@ describe("normalizedScoreToColorWithAlpha", () => {
     const rRed = Number(red.match(/rgba\((\d+)/)[1]);
     const rGreen = Number(green.match(/rgba\((\d+)/)[1]);
     expect(rRed).toBeGreaterThan(rGreen); // red has more red channel
+  });
+
+  it("handles equal min/max with midpoint color", () => {
+    const color = normalizedScoreToColorWithAlpha(0, 0, 0, 0.5);
+    const match = color.match(/rgba\((\d+),\s*(\d+),\s*(\d+),\s*([^)]+)\)/);
+    expect(Number(match?.[2] ?? 0)).toBeGreaterThan(100);
+    expect(color).toContain("0.5");
   });
 });
