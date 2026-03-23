@@ -336,6 +336,7 @@
       "switchToPoliticians": "חזרה למצב פוליטיקאים לניהול מסננים"
     },
     "totalTracked": "פוליטיקאים במעקב",
+    "totalParties": "מפלגות במעקב",
     "weightedAverage": "ציון ממוצע משוקלל",
     "histogram": {
       "title": "התפלגות ציונים"

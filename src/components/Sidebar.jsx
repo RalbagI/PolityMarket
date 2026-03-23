@@ -99,7 +99,9 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
       <div className="grid grid-cols-2 gap-3">
         <div className="bg-gray-900 rounded-xl p-3">
           <div className="text-2xl font-black text-white">{stats.total}</div>
-          <div className="text-xs text-gray-500">{t("sidebar.totalTracked")}</div>
+          <div className="text-xs text-gray-500">
+            {viewMode === "parties" ? t("sidebar.totalParties") : t("sidebar.totalTracked")}
+          </div>
         </div>
         <div className="bg-gray-900 rounded-xl p-3">
           <div className="text-2xl font-black" style={{ color: scoreToColor(stats.weightedAvg) }}>
@@ -200,26 +202,28 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
           {/* Display Options */}
           <DisplayOptions t={t} />
 
-          {/* Party Breakdown */}
-          <div>
-            <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
-              {t("sidebar.partyBreakdown")}
-            </h3>
-            <div className="space-y-1.5">
-              {stats.parties.map(({ party, count, color }) => (
-                <div key={party} className="flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className="w-2.5 h-2.5 rounded-sm"
-                      style={{ backgroundColor: color.accent }}
-                    />
-                    <span className="text-gray-300">{localizeParty(t, party)}</span>
+          {/* Party Breakdown — only in politicians view (redundant in party mode) */}
+          {viewMode !== "parties" && (
+            <div>
+              <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
+                {t("sidebar.partyBreakdown")}
+              </h3>
+              <div className="space-y-1.5">
+                {stats.parties.map(({ party, count, color }) => (
+                  <div key={party} className="flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-2.5 h-2.5 rounded-sm"
+                        style={{ backgroundColor: color.accent }}
+                      />
+                      <span className="text-gray-300">{localizeParty(t, party)}</span>
+                    </div>
+                    <span className="text-gray-500 font-mono">{count}</span>
                   </div>
-                  <span className="text-gray-500 font-mono">{count}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </>
       )}
 
