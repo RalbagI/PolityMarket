@@ -43,7 +43,9 @@ describe("isSpamContent", () => {
 
   it("accepts legitimate political content", () => {
     expect(isSpamContent("ראש הממשלה נתניהו הודיע על הסכם חדש עם ארצות הברית", "")).toBe(false);
-    expect(isSpamContent("Netanyahu announces new security plan at cabinet meeting", "")).toBe(false);
+    expect(isSpamContent("Netanyahu announces new security plan at cabinet meeting", "")).toBe(
+      false
+    );
   });
 
   it("rejects Telegram channel promotions", () => {
