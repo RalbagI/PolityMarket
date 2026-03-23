@@ -123,3 +123,49 @@ describe("Sidebar mobile top bar", () => {
     expect(onViewModeChange).toHaveBeenCalledWith("parties");
   });
 });
+
+describe("Sidebar party mode", () => {
+  it("shows 'totalParties' label instead of 'totalTracked' in party mode", () => {
+    const { container } = render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="parties"
+        onViewModeChange={() => {}}
+      />
+    );
+    // Desktop sidebar content
+    const aside = container.querySelector("aside");
+    expect(aside.textContent).toContain("sidebar.totalParties");
+    expect(aside.textContent).not.toContain("sidebar.totalTracked");
+  });
+
+  it("hides party breakdown list in party mode", () => {
+    const { container } = render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="parties"
+        onViewModeChange={() => {}}
+      />
+    );
+    const aside = container.querySelector("aside");
+    expect(aside.textContent).not.toContain("sidebar.partyBreakdown");
+  });
+
+  it("shows party breakdown list in politicians mode", () => {
+    const { container } = render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+      />
+    );
+    const aside = container.querySelector("aside");
+    expect(aside.textContent).toContain("sidebar.partyBreakdown");
+  });
+});

@@ -37,6 +37,23 @@ vi.mock("../lib/partyColors", () => ({
   getPartyColor: () => ({ bg: "#1e40af", text: "#dbeafe" }),
 }));
 
+// Mock Recharts for jsdom
+vi.mock("recharts", () => ({
+  ComposedChart: ({ children }) => <div data-testid="party-trend-chart">{children}</div>,
+  Line: () => <div data-testid="trend-line" />,
+  Bar: () => <div data-testid="trend-bar" />,
+  XAxis: () => null,
+  YAxis: () => null,
+  CartesianGrid: () => null,
+  Tooltip: () => null,
+  ResponsiveContainer: ({ children }) => <div>{children}</div>,
+}));
+
+vi.mock("date-fns", () => ({
+  format: (d) => String(d),
+  parseISO: (d) => d,
+}));
+
 const partyData = {
   party: "Likud",
   wing: "right",
@@ -91,5 +108,18 @@ describe("PartyDetailView", () => {
   it("renders empty state when no party selected", () => {
     render(<PartyDetailView partyName={null} partyData={null} todayData={[]} />);
     expect(screen.getByText("detailView.empty.selectPolitician")).toBeInTheDocument();
+  });
+
+  it("renders Recharts trend chart when trend data has >1 date", () => {
+    render(<PartyDetailView partyName="Likud" partyData={partyData} todayData={todayData} />);
+    // Store mock has 2 dates (2026-03-21 and 2026-03-22) for Likud
+    expect(screen.getByTestId("party-trend-chart")).toBeInTheDocument();
+    expect(screen.getByTestId("trend-line")).toBeInTheDocument();
+    expect(screen.getByTestId("trend-bar")).toBeInTheDocument();
+  });
+
+  it("renders trend section with accordion title", () => {
+    render(<PartyDetailView partyName="Likud" partyData={partyData} todayData={todayData} />);
+    expect(screen.getByText("partyDetail.trend")).toBeInTheDocument();
   });
 });
