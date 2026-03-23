@@ -44,7 +44,15 @@ const TRAIT_ENUMS = {
   headCovering: new Set(["kippah", "kippah-white", "kippah-knit", "shtreimel", "hijab", null]),
 };
 
-const COLOR_FIELDS = new Set(["skin", "hairColor", "eyeColor", "beardColor", "suitColor", "tieColor", "bgColor"]);
+const COLOR_FIELDS = new Set([
+  "skin",
+  "hairColor",
+  "eyeColor",
+  "beardColor",
+  "suitColor",
+  "tieColor",
+  "bgColor",
+]);
 const BOOLEAN_FIELDS = new Set(["grayHair", "eyebrowThick"]);
 const NAMED_COLORS = new Set(["white", "black"]);
 const HEX_COLOR = /^#([\da-fA-F]{3}|[\da-fA-F]{6})$/;
