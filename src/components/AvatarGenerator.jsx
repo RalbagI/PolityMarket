@@ -214,7 +214,12 @@ function renderSuit(color, tieColor) {
 
 // ── Color Utilities ───────────────────────────────────────────────────
 
+function isHex(c) {
+  return typeof c === "string" && c.startsWith("#") && c.length >= 7;
+}
+
 function lighten(hex) {
+  if (!isHex(hex)) return hex || "#ccc";
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
@@ -223,6 +228,7 @@ function lighten(hex) {
 }
 
 function mixColor(hex1, hex2, t) {
+  if (!isHex(hex1) || !isHex(hex2)) return hex1 || "#ccc";
   const r1 = parseInt(hex1.slice(1, 3), 16);
   const g1 = parseInt(hex1.slice(3, 5), 16);
   const b1 = parseInt(hex1.slice(5, 7), 16);
