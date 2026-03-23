@@ -37,11 +37,20 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
   // Historical party trend (last 7 days from summary data)
   const trend = useMemo(() => {
     if (!summaryData.length || !partyName) return [];
-    const dates = [...new Set(summaryData.map((d) => d.date))].sort().slice(-7);
+
+    // Pre-build O(1) lookup: Map<date, entry[]> for this party only
+    const byDate = new Map();
+    for (const d of summaryData) {
+      if (d.party !== partyName) continue;
+      if (!byDate.has(d.date)) byDate.set(d.date, []);
+      byDate.get(d.date).push(d);
+    }
+
+    const dates = [...byDate.keys()].sort().slice(-7);
     return dates
       .map((date) => {
-        const dayMembers = summaryData.filter((d) => d.date === date && d.party === partyName);
-        if (!dayMembers.length) return null;
+        const dayMembers = byDate.get(date);
+        if (!dayMembers?.length) return null;
         const totalVol = dayMembers.reduce((s, m) => s + m.media_volume, 0);
         const avg =
           totalVol > 0
