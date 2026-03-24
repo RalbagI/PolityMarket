@@ -16,16 +16,16 @@ vi.mock("react-i18next", () => ({
         "detailView.unlike": "בטל לייק",
         "detailView.section.aiAnalysis": "ניתוח AI",
         "detailView.section.scoreBreakdown": "פירוט ציון",
-        "detailView.section.dimensions": "8 ממדים",
+        "detailView.section.trend": "מגמה לאורך זמן",
         "detailView.section.sources": "מקורות",
         "detailView.sources.news": "כותרות חדשות",
         "detailView.sources.social": "אזכורים ברשתות חברתיות",
         "detailView.sources.sourceLink": "קישור למקור",
         "detailView.sources.empty": "לא נמצאו מקורות זמינים עבור תאריך זה.",
         "detailView.rubrics.heading": "מדדים ממדיים",
-        "detailView.breakdown.policy": "מדיניות 40%",
-        "detailView.breakdown.hostility": "עוינות 35%",
-        "detailView.breakdown.volume": "נפח 25%",
+        "detailView.rubrics.hostility": "עוינות",
+        "detailView.rubrics.policyApproval": "אישור מדיניות",
+        "detailView.rubrics.mediaAmplification": "הגברה תקשורתית",
         "detailView.dimension.publicSentiment": "סנטימנט ציבורי",
         "detailView.dimension.parliamentaryActivity": "פעילות פרלמנטרית",
         "detailView.dimension.mediaCredibility": "מהימנות תקשורתית",
@@ -34,9 +34,14 @@ vi.mock("react-i18next", () => ({
         "detailView.dimension.satireCulturalImpact": "השפעה תרבותית",
         "detailView.dimension.legislativeQuality": "איכות חקיקתית",
         "detailView.dimension.flipflopIndex": "עמידה בהבטחות",
+        "detailView.dimension.noData": "אין נתונים",
+        "detailView.dimension.showSentimentDetail": "פרט",
+        "detailView.dimension.hideSentimentDetail": "סגור",
+        "detailView.dimension.dataConfidence": `${options.count ?? "?"}/${options.total ?? "?"} ממדים`,
+        "detailView.aiAnalysis.empty": "אין ניתוח זמין.",
       };
 
-      return dictionary[key] || key;
+      return dictionary[key] !== undefined ? dictionary[key] : key;
     },
   }),
 }));
@@ -66,20 +71,8 @@ function baseEntry(overrides = {}) {
   };
 }
 
-describe("DetailView 8-dimension section", () => {
-  it("renders '8 ממדים' accordion button", () => {
-    render(
-      <DetailView
-        todayDetail={[baseEntry({ dim_public_sentiment: 0.72, dim_parliamentary_activity: 0.55 })]}
-        selectedPolitician="Benjamin Netanyahu"
-        selectedDate="2026-03-24"
-        loading={false}
-      />
-    );
-    expect(screen.getByRole("button", { name: "8 ממדים" })).toBeInTheDocument();
-  });
-
-  it("shows dimension labels and values when expanded", () => {
+describe("DetailView dimension section (merged Score Breakdown)", () => {
+  it("renders 'פירוט ציון' section open by default with all 8 dimension labels", () => {
     render(
       <DetailView
         todayDetail={[
@@ -91,7 +84,7 @@ describe("DetailView 8-dimension section", () => {
             dim_field_activity: 0.33,
             dim_satire_cultural_impact: 0.4,
             dim_legislative_quality: 0.6,
-            dim_flipflop_index: 0.0,
+            dim_flipflop_index: 0.75,
           }),
         ]}
         selectedPolitician="Benjamin Netanyahu"
@@ -100,8 +93,7 @@ describe("DetailView 8-dimension section", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "8 ממדים" }));
-
+    // Section is open by default — no click needed
     expect(screen.getByText("סנטימנט ציבורי")).toBeInTheDocument();
     expect(screen.getByText("פעילות פרלמנטרית")).toBeInTheDocument();
     expect(screen.getByText("מהימנות תקשורתית")).toBeInTheDocument();
@@ -112,7 +104,26 @@ describe("DetailView 8-dimension section", () => {
     expect(screen.getByText("עמידה בהבטחות")).toBeInTheDocument();
   });
 
-  it("renders '—' placeholder for null dimension values", () => {
+  it("shows data confidence badge with non-null count", () => {
+    render(
+      <DetailView
+        todayDetail={[
+          baseEntry({
+            dim_public_sentiment: 0.72,
+            dim_parliamentary_activity: 0.55,
+            // 6 dims null
+          }),
+        ]}
+        selectedPolitician="Benjamin Netanyahu"
+        selectedDate="2026-03-24"
+        loading={false}
+      />
+    );
+
+    expect(screen.getByText("2/8 ממדים")).toBeInTheDocument();
+  });
+
+  it("shows 'אין נתונים' placeholder for null dimension values", () => {
     render(
       <DetailView
         todayDetail={[
@@ -133,11 +144,8 @@ describe("DetailView 8-dimension section", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "8 ממדים" }));
-
-    // Null values render as '—'
-    const dashes = screen.getAllByText("—");
-    expect(dashes.length).toBeGreaterThanOrEqual(7);
+    const noDataLabels = screen.getAllByText("אין נתונים");
+    expect(noDataLabels.length).toBeGreaterThanOrEqual(7);
   });
 
   it("shows numeric value formatted to 2 decimal places for non-null dims", () => {
@@ -150,8 +158,35 @@ describe("DetailView 8-dimension section", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "8 ממדים" }));
     expect(screen.getByText("0.72")).toBeInTheDocument();
+  });
+
+  it("expands dim_public_sentiment to show 3 sub-metric bars", () => {
+    render(
+      <DetailView
+        todayDetail={[
+          baseEntry({
+            dim_public_sentiment: 0.72,
+            hostility_level: 0.3,
+            policy_approval: 0.5,
+            media_amplification: 0.7,
+          }),
+        ]}
+        selectedPolitician="Benjamin Netanyahu"
+        selectedDate="2026-03-24"
+        loading={false}
+      />
+    );
+
+    // Sub-metrics not visible yet
+    expect(screen.queryByText("עוינות")).not.toBeInTheDocument();
+
+    // Click the expand button
+    fireEvent.click(screen.getByRole("button", { name: "פרט" }));
+
+    expect(screen.getByText("עוינות")).toBeInTheDocument();
+    expect(screen.getByText("אישור מדיניות")).toBeInTheDocument();
+    expect(screen.getByText("הגברה תקשורתית")).toBeInTheDocument();
   });
 });
 

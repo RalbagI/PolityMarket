@@ -3,8 +3,8 @@ import {
   buildBatchedPrompt,
   buildSearchTerms,
   includesPolitician,
-  parseClaudeCliOutput,
-  shouldRetryClaudeBatchError,
+  parseCodexOutput,
+  shouldRetryBatchError,
   splitPoliticiansIntoBatches,
 } from "./generateDailyScores.js";
 
@@ -64,59 +64,42 @@ describe("search term matching", () => {
   });
 });
 
-describe("parseClaudeCliOutput", () => {
-  it("parses a valid Claude CLI envelope", () => {
-    const raw = JSON.stringify({
-      is_error: false,
-      duration_ms: 1234,
-      total_cost_usd: 0.0123,
-      result:
-        '[{"politician_id":"alpha","chain_of_thought":"x","hostility_level":0.1,"policy_approval":0.2,"media_amplification":0.3}]',
-    });
+describe("parseCodexOutput", () => {
+  it("parses a valid JSON array response", () => {
+    const raw =
+      '[{"politician_id":"alpha","chain_of_thought":"x","hostility_level":0.1,"policy_approval":0.2,"media_amplification":0.3}]';
 
-    const parsed = parseClaudeCliOutput(raw);
-    expect(parsed.results).toHaveLength(1);
-    expect(parsed.results[0].politician_id).toBe("alpha");
-    expect(parsed.durationMs).toBe(1234);
-    expect(parsed.totalCostUsd).toBe(0.0123);
+    const parsed = parseCodexOutput(raw);
+    expect(parsed).toHaveLength(1);
+    expect(parsed[0].politician_id).toBe("alpha");
   });
 
-  it("extracts JSON arrays when wrapped in extra text", () => {
-    const raw = JSON.stringify({
-      is_error: false,
-      result:
-        'Model output:\n```json\n[{"politician_id":"alpha","chain_of_thought":"x","hostility_level":0.1,"policy_approval":0.2,"media_amplification":0.3}]\n```\nDone.',
-    });
+  it("strips markdown code fences and extracts JSON", () => {
+    const raw =
+      '```json\n[{"politician_id":"alpha","chain_of_thought":"x","hostility_level":0.1,"policy_approval":0.2,"media_amplification":0.3}]\n```';
 
-    const parsed = parseClaudeCliOutput(raw);
-    expect(parsed.results).toHaveLength(1);
+    const parsed = parseCodexOutput(raw);
+    expect(parsed).toHaveLength(1);
   });
 
   it("throws when content is not an array", () => {
-    const raw = JSON.stringify({
-      is_error: false,
-      result:
-        '{"politician_id":"alpha","chain_of_thought":"x","hostility_level":0.1,"policy_approval":0.2,"media_amplification":0.3}',
-    });
-    expect(() => parseClaudeCliOutput(raw)).toThrow("not an array");
+    const raw =
+      '{"politician_id":"alpha","chain_of_thought":"x","hostility_level":0.1,"policy_approval":0.2,"media_amplification":0.3}';
+    expect(() => parseCodexOutput(raw)).toThrow("not an array");
   });
 });
 
-describe("shouldRetryClaudeBatchError", () => {
+describe("shouldRetryBatchError", () => {
   it("retries parse-format failures", () => {
-    expect(shouldRetryClaudeBatchError(new Error("Failed to parse Claude response as JSON"))).toBe(
-      true
-    );
+    expect(shouldRetryBatchError(new Error("Failed to parse Codex response as JSON"))).toBe(true);
   });
 
   it("does not retry missing CLI binary errors", () => {
-    expect(shouldRetryClaudeBatchError(new Error("spawnSync claude ENOENT"))).toBe(false);
+    expect(shouldRetryBatchError(new Error("spawnSync codex ENOENT"))).toBe(false);
   });
 
   it("does not retry permanent auth/config errors", () => {
-    expect(shouldRetryClaudeBatchError(new Error("Claude CLI error: authentication failed"))).toBe(
-      false
-    );
+    expect(shouldRetryBatchError(new Error("authentication failed"))).toBe(false);
   });
 });
 

@@ -28075,8 +28075,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28086,8 +28094,16 @@
     "wing": "right",
     "sector": "druze",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28097,8 +28113,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28108,8 +28132,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28119,8 +28151,16 @@
     "wing": "right",
     "sector": "druze",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28130,8 +28170,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.557,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28141,8 +28189,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.4,
-    "media_volume": 2.5
+    "overall_score": 4.4,
+    "media_volume": 4.5,
+    "dim_public_sentiment": 0.628,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.75,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28152,8 +28208,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28163,8 +28227,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.9,
-    "media_volume": 1.5
+    "overall_score": 4.4,
+    "media_volume": 5,
+    "dim_public_sentiment": 0.607,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.55,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28174,8 +28246,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.3,
+    "media_volume": 4,
+    "dim_public_sentiment": 0.598,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28185,8 +28265,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28196,8 +28284,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.8,
-    "media_volume": 4
+    "overall_score": 4.2,
+    "media_volume": 5.5,
+    "dim_public_sentiment": 0.565,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28207,8 +28303,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 4.4,
-    "media_volume": 3.5
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28218,8 +28322,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28229,8 +28341,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 2,
+    "dim_public_sentiment": 0.53,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28240,8 +28360,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 4.5,
-    "media_volume": 4.5
+    "overall_score": 4.3,
+    "media_volume": 8,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -28251,8 +28379,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28262,8 +28398,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 6.6,
-    "media_volume": 8.5
+    "overall_score": 3.9,
+    "media_volume": 8.7,
+    "dim_public_sentiment": 0.541,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.42,
+    "dim_transparency_ethics": 0.2,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -28273,8 +28417,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.9,
-    "media_volume": 5
+    "overall_score": 4.6,
+    "media_volume": 8,
+    "dim_public_sentiment": 0.645,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 0.5
   },
   {
     "date": "2026-03-24",
@@ -28284,8 +28436,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "minister",
-    "overall_score": 5.1,
-    "media_volume": 8
+    "overall_score": 3.9,
+    "media_volume": 8.8,
+    "dim_public_sentiment": 0.344,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.54,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -28295,8 +28455,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28306,8 +28474,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28317,8 +28493,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28328,8 +28512,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4,
+    "media_volume": 6,
+    "dim_public_sentiment": 0.542,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.6,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28339,8 +28531,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3,
+    "dim_public_sentiment": 0.573,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28350,8 +28550,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28361,8 +28569,16 @@
     "wing": "left",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28372,8 +28588,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28383,8 +28607,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28394,8 +28626,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4,
+    "media_volume": 4,
+    "dim_public_sentiment": 0.527,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28405,8 +28645,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28416,8 +28664,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.1,
-    "media_volume": 2.5
+    "overall_score": 3.9,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.515,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.65,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28427,8 +28683,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28438,8 +28702,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "politician",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28449,8 +28721,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28460,8 +28740,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 6.1,
-    "media_volume": 5
+    "overall_score": 4.4,
+    "media_volume": 7,
+    "dim_public_sentiment": 0.555,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 0.5
   },
   {
     "date": "2026-03-24",
@@ -28471,8 +28759,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 6.6,
-    "media_volume": 2.5
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28482,8 +28778,16 @@
     "wing": "left",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28493,8 +28797,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.1,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.568,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28504,8 +28816,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0.8,
+    "dim_public_sentiment": 0.535,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28515,8 +28835,16 @@
     "wing": "center",
     "sector": "druze",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28526,8 +28854,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.8,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.515,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.6,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28537,8 +28873,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28548,8 +28892,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28559,8 +28911,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "deputy-minister",
-    "overall_score": 5.5,
-    "media_volume": 2
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28570,8 +28930,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28581,8 +28949,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.1,
-    "media_volume": 8
+    "overall_score": 3.5,
+    "media_volume": 8.4,
+    "dim_public_sentiment": 0.384,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.46,
+    "dim_transparency_ethics": 0.28,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -28592,8 +28968,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28603,8 +28987,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28614,8 +29006,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.2,
+    "media_volume": 4,
+    "dim_public_sentiment": 0.58,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28625,8 +29025,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.1,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -28636,8 +29044,16 @@
     "wing": "center",
     "sector": "religious",
     "role": "politician",
-    "overall_score": 6.6,
-    "media_volume": 3
+    "overall_score": 3.6,
+    "media_volume": 1.5,
+    "dim_public_sentiment": 0.552,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28647,8 +29063,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "politician",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28658,8 +29082,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.9,
+    "media_volume": 3,
+    "dim_public_sentiment": 0.555,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.6,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28669,8 +29101,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 2.5,
+    "dim_public_sentiment": 0.525,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28680,8 +29120,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5,
-    "media_volume": 2.5
+    "overall_score": 3.9,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.493,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28691,8 +29139,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28702,8 +29158,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28713,8 +29177,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.3,
+    "media_volume": 2,
+    "dim_public_sentiment": 0.565,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.85,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28724,8 +29196,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 1.5,
+    "dim_public_sentiment": 0.57,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28735,8 +29215,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 1.5,
+    "dim_public_sentiment": 0.57,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28746,8 +29234,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28757,8 +29253,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28768,8 +29272,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28779,8 +29291,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28790,8 +29310,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 6.6,
-    "media_volume": 3
+    "overall_score": 4.1,
+    "media_volume": 4.5,
+    "dim_public_sentiment": 0.575,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.65,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28801,8 +29329,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 5.3,
-    "media_volume": 5
+    "overall_score": 4.4,
+    "media_volume": 7,
+    "dim_public_sentiment": 0.623,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.65,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28812,8 +29348,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28823,8 +29367,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28834,8 +29386,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 6.5,
-    "media_volume": 2.5
+    "overall_score": 4.1,
+    "media_volume": 6,
+    "dim_public_sentiment": 0.525,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28845,8 +29405,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.498,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.55,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28856,8 +29424,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.498,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.55,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28867,8 +29443,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28878,8 +29462,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28889,8 +29481,16 @@
     "wing": "left",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 5,
+    "media_volume": 4,
+    "dim_public_sentiment": 0.735,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.8,
+    "dim_transparency_ethics": 0.6,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28900,8 +29500,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "politician",
-    "overall_score": 5.3,
-    "media_volume": 4
+    "overall_score": 4.1,
+    "media_volume": 5.3,
+    "dim_public_sentiment": 0.473,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.56,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -28911,8 +29519,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28922,8 +29538,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 6,
-    "media_volume": 1
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28933,8 +29557,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 4.2,
-    "media_volume": 3.5
+    "overall_score": 2.8,
+    "media_volume": 5.5,
+    "dim_public_sentiment": 0.443,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.2,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28944,8 +29576,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28955,8 +29595,16 @@
     "wing": "arab",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28966,8 +29614,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.8,
+    "media_volume": 5.5,
+    "dim_public_sentiment": 0.53,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.55,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28977,8 +29633,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28988,8 +29652,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -28999,8 +29671,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.3,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.585,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.8,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29010,8 +29690,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.1,
+    "media_volume": 5.5,
+    "dim_public_sentiment": 0.548,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29021,8 +29709,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.8,
+    "media_volume": 3,
+    "dim_public_sentiment": 0.537,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.6,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29032,8 +29728,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29043,8 +29747,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.8,
+    "media_volume": 2,
+    "dim_public_sentiment": 0.565,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29054,8 +29766,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.2,
+    "media_volume": 4.5,
+    "dim_public_sentiment": 0.575,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29065,8 +29785,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29076,8 +29804,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 3
+    "overall_score": 4,
+    "media_volume": 3,
+    "dim_public_sentiment": 0.575,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.6,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29087,8 +29823,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 1.5,
+    "dim_public_sentiment": 0.517,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29098,8 +29842,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29109,8 +29861,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29120,8 +29880,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.557,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29131,8 +29899,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 4.7,
-    "media_volume": 3.5
+    "overall_score": 3.6,
+    "media_volume": 2,
+    "dim_public_sentiment": 0.495,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29142,8 +29918,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 4,
-    "media_volume": 4.5
+    "overall_score": 4.7,
+    "media_volume": 8.5,
+    "dim_public_sentiment": 0.5,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.75,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -29153,8 +29937,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29164,8 +29956,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29175,8 +29975,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29186,8 +29994,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29197,8 +30013,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29208,8 +30032,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29219,8 +30051,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29230,8 +30070,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29241,8 +30089,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29252,8 +30108,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4.2,
+    "media_volume": 4.5,
+    "dim_public_sentiment": 0.575,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29263,8 +30127,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29274,8 +30146,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29285,8 +30165,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29296,8 +30184,16 @@
     "wing": "left",
     "sector": "secular",
     "role": "politician",
-    "overall_score": 4.7,
-    "media_volume": 6
+    "overall_score": 4.3,
+    "media_volume": 8,
+    "dim_public_sentiment": 0.555,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29307,8 +30203,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.2,
-    "media_volume": 7.5
+    "overall_score": 4,
+    "media_volume": 7.6,
+    "dim_public_sentiment": 0.413,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.58,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": 1
   },
   {
     "date": "2026-03-24",
@@ -29318,8 +30222,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 6.2,
-    "media_volume": 4
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29329,8 +30241,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29340,8 +30260,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29351,8 +30279,16 @@
     "wing": "arab",
     "sector": "arab",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29362,8 +30298,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.6,
+    "media_volume": 2.5,
+    "dim_public_sentiment": 0.578,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29373,8 +30317,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 4,
+    "media_volume": 4.2,
+    "dim_public_sentiment": 0.577,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.55,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29384,8 +30336,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29395,8 +30355,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29406,8 +30374,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29417,8 +30393,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29428,8 +30412,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.5,
+    "media_volume": 0.5,
+    "dim_public_sentiment": 0.545,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.4,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29439,8 +30431,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "minister",
-    "overall_score": 4.2,
-    "media_volume": 3.5
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29450,8 +30450,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29461,8 +30469,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "politician",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29472,8 +30488,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29483,8 +30507,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29494,8 +30526,16 @@
     "wing": "right",
     "sector": "haredi",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29505,8 +30545,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 1,
+    "dim_public_sentiment": 0.4,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29516,8 +30564,16 @@
     "wing": "center",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29527,8 +30583,16 @@
     "wing": "right",
     "sector": "secular",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.7,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29538,8 +30602,16 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 6,
-    "media_volume": 2
+    "overall_score": 3.7,
+    "media_volume": 3.5,
+    "dim_public_sentiment": 0.445,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.7,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   },
   {
     "date": "2026-03-24",
@@ -29549,7 +30621,15 @@
     "wing": "right",
     "sector": "religious",
     "role": "mk",
-    "overall_score": 5.5,
-    "media_volume": 0
+    "overall_score": 3.2,
+    "media_volume": 0,
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": 0,
+    "dim_satire_cultural_impact": 0,
+    "dim_legislative_quality": 0.35,
+    "dim_flipflop_index": null
   }
 ]

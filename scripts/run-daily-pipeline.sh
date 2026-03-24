@@ -19,20 +19,19 @@ source "${ENV_FILE}"
 set +a
 
 export TZ="${TZ:-Asia/Jerusalem}"
-export CLAUDE_MODEL="${CLAUDE_MODEL:-opus}"
-export CLAUDE_TIMEOUT_MS="${CLAUDE_TIMEOUT_MS:-300000}"
-export CLAUDE_MAX_BATCH="${CLAUDE_MAX_BATCH:-135}"
-export CLAUDE_MAX_PROMPT_CHARS="${CLAUDE_MAX_PROMPT_CHARS:-350000}"
+export OPENAI_MODEL_HIGH="${OPENAI_MODEL_HIGH:-gpt-5.4}"
+export OPENAI_MODEL_LOW="${OPENAI_MODEL_LOW:-gpt-5.4-mini}"
+export OPENAI_TIMEOUT_MS="${OPENAI_TIMEOUT_MS:-600000}"
+export MAX_BATCH_SIZE="${MAX_BATCH_SIZE:-50}"
+export MAX_PROMPT_CHARS="${MAX_PROMPT_CHARS:-350000}"
+export OPENAI_HIGH_TIER_THRESHOLD="${OPENAI_HIGH_TIER_THRESHOLD:-5}"
 export PIPELINE_EXPECTED_POLITICIAN_COUNT="${PIPELINE_EXPECTED_POLITICIAN_COUNT:-135}"
 export PIPELINE_MAX_FETCH_FAILURES="${PIPELINE_MAX_FETCH_FAILURES:-0}"
 export GIT_TERMINAL_PROMPT=0
 
-# Allow Claude CLI to run from within automated environments
-unset CLAUDECODE
-
-# Verify Claude CLI is available
-if ! command -v claude &>/dev/null; then
-  echo "Claude CLI (claude) not found in PATH" >&2
+# Verify Codex CLI is available
+if ! command -v codex &>/dev/null; then
+  echo "Codex CLI (codex) not found in PATH" >&2
   exit 1
 fi
 

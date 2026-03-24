@@ -44,7 +44,10 @@
       "satireCulturalImpact": "השפעה תרבותית",
       "legislativeQuality": "איכות חקיקתית",
       "flipflopIndex": "עמידה בהבטחות",
-      "noData": "אין נתונים"
+      "noData": "אין נתונים",
+      "dataConfidence": "{{count}}/{{total}} ממדים",
+      "showSentimentDetail": "פרט",
+      "hideSentimentDetail": "סגור"
     },
     "aiAnalysis": {
       "empty": "אין ניתוח זמין."

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
+import os from "os";
 import { fileURLToPath } from "url";
 import {
   dailyEntrySchema,
@@ -794,10 +795,13 @@ const SUMMARY_PATH = path.join(DATA_DIR, "timeseries_summary.json");
 const DETAILS_DIR = path.join(DATA_DIR, "details");
 const RETENTION_DAYS = 90;
 const PIPELINE_TIMEZONE = process.env.TZ || "Asia/Jerusalem";
-const CLAUDE_MODEL = process.env.CLAUDE_MODEL || "opus";
-const CLAUDE_TIMEOUT_MS = parsePositiveInt(process.env.CLAUDE_TIMEOUT_MS, 300000);
-const CLAUDE_MAX_BATCH = parsePositiveInt(process.env.CLAUDE_MAX_BATCH, 135);
-const CLAUDE_MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.CLAUDE_MAX_PROMPT_CHARS, 350000);
+const OPENAI_MODEL_HIGH = process.env.OPENAI_MODEL_HIGH || "gpt-5.4";
+const OPENAI_MODEL_LOW = process.env.OPENAI_MODEL_LOW || "gpt-5.4-mini";
+const OPENAI_TIMEOUT_MS = parsePositiveInt(process.env.OPENAI_TIMEOUT_MS, 600000);
+const MAX_BATCH_SIZE = parsePositiveInt(process.env.MAX_BATCH_SIZE, 50);
+const MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.MAX_PROMPT_CHARS, 350000);
+// Politicians with >= this many headlines+social get the high-tier model
+const OPENAI_HIGH_TIER_THRESHOLD = parseNonNegativeInt(process.env.OPENAI_HIGH_TIER_THRESHOLD, 5);
 const SOURCE_TIMEOUT_MS = parsePositiveInt(process.env.SOURCE_TIMEOUT_MS, 20000);
 const EXPECTED_POLITICIAN_COUNT = parsePositiveInt(
   process.env.PIPELINE_EXPECTED_POLITICIAN_COUNT,
@@ -1321,7 +1325,7 @@ const SYSTEM_PROMPT = fs.readFileSync(
 // Instead of calling an LLM per-politician, we batch politicians into
 // fewer prompts and call Claude CLI for each batch.
 
-export function buildBatchedPrompt(politicians, politicianDataMap, oknessetMap, promisesDB) {
+export function buildBatchedPrompt(politicians, politicianDataMap, oknessetMap, promisesDB, requireCoT = true) {
   const _oknessetMap = oknessetMap || new Map();
   const _promisesDB = promisesDB || {};
 
@@ -1357,7 +1361,7 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
                 entry += " [Speaker: known satirist]";
               }
               if (m.thread_context?.length) {
-                entry += "\n  Thread context: " + m.thread_context.map((t) => `"${t}"`).join(" → ");
+                entry += `\n  Thread context: "${m.thread_context[0]}"`;
               }
               return entry;
             })
@@ -1390,9 +1394,10 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
         : "  No promises database entries for this politician";
 
     const coalitionRole = ["right", "religious"].includes(p.wing) ? "coalition" : "opposition";
+    const cotFlag = requireCoT ? "" : " [COT: skip]";
 
     prompt += `
-[${i + 1}] ${p.id} | ${p.name} (${p.party}) | Wing: ${p.wing} | Role: ${coalitionRole}
+[${i + 1}] ${p.id} | ${p.name} (${p.party}) | Wing: ${p.wing} | Role: ${coalitionRole}${cotFlag}
 Headlines:
 ${headlineBlock}
 Social:
@@ -1408,21 +1413,8 @@ ${promisesBlock}
   return prompt;
 }
 
-export function parseClaudeCliOutput(rawOutput) {
-  let response;
-  try {
-    response = JSON.parse(rawOutput);
-  } catch (err) {
-    throw new Error(`Failed to parse Claude CLI JSON envelope: ${err.message}`);
-  }
-
-  if (response?.is_error) {
-    throw new Error(`Claude CLI error: ${response.result || "unknown"}`);
-  }
-
-  const content = typeof response?.result === "string" ? response.result : "";
-  // Strip markdown code fences if present
-  const cleaned = content
+export function parseCodexOutput(rawText) {
+  const cleaned = rawText
     .replace(/^```(?:json)?\s*/m, "")
     .replace(/\s*```\s*$/m, "")
     .trim();
@@ -1431,67 +1423,93 @@ export function parseClaudeCliOutput(rawOutput) {
   try {
     parsed = JSON.parse(cleaned);
   } catch (e) {
-    // Try to extract JSON array from response
     const start = cleaned.indexOf("[");
     const end = cleaned.lastIndexOf("]");
     if (start !== -1 && end > start) {
-      parsed = JSON.parse(cleaned.slice(start, end + 1));
+      try {
+        parsed = JSON.parse(cleaned.slice(start, end + 1));
+      } catch (innerErr) {
+        throw new Error(`Failed to parse Codex response JSON fragment: ${innerErr.message}`);
+      }
     } else {
-      throw new Error(`Failed to parse Claude response as JSON: ${e.message}`);
+      throw new Error(`Failed to parse Codex response as JSON: ${e.message}`);
     }
   }
 
   if (!Array.isArray(parsed)) {
-    throw new Error(`Claude response is not an array (got ${typeof parsed})`);
+    throw new Error(`Codex response is not an array (got ${typeof parsed})`);
   }
 
-  return {
-    results: parsed,
-    durationMs: response?.duration_ms,
-    totalCostUsd: response?.total_cost_usd,
-  };
+  return parsed;
 }
 
-function callClaudeCLI(prompt) {
+// reasoningEffort: "low" | "medium" | "high" | "xhigh" per codex config.toml spec
+function callCodexCLI(prompt, model, reasoningEffort = "medium") {
+  const tmpOut = path.join(
+    os.tmpdir(),
+    `codex-out-${Date.now()}-${Math.random().toString(36).slice(2)}.txt`
+  );
   const env = { ...process.env };
-  delete env.CLAUDECODE; // Allow nested CLI invocation
 
-  const raw = execFileSync("claude", ["-p", "--model", CLAUDE_MODEL, "--output-format", "json"], {
-    input: prompt,
-    env,
-    maxBuffer: 20 * 1024 * 1024,
-    timeout: CLAUDE_TIMEOUT_MS,
-    encoding: "utf-8",
-  });
+  try {
+    // SECURITY: --dangerously-bypass-approvals-and-sandbox is required because codex exec
+    // in non-interactive mode needs auto-approval. The prompt contains untrusted RSS/social data;
+    // the system prompt includes "Do NOT run any shell commands" as defense-in-depth.
+    // TODO: Switch to --full-auto or --sandbox read-only when codex CLI supports -o with sandbox.
+    execFileSync(
+      "codex",
+      [
+        "exec",
+        "--ephemeral",
+        "--dangerously-bypass-approvals-and-sandbox",
+        "-m", model,
+        "-c", `model_reasoning_effort="${reasoningEffort}"`,
+        "-o", tmpOut,
+      ],
+      {
+        input: prompt,
+        env,
+        maxBuffer: 20 * 1024 * 1024,
+        timeout: OPENAI_TIMEOUT_MS,
+        encoding: "utf-8",
+      }
+    );
 
-  const parsed = parseClaudeCliOutput(raw);
-  const duration = Number.isFinite(parsed.durationMs) ? parsed.durationMs : "n/a";
-  const cost =
-    typeof parsed.totalCostUsd === "number" ? `$${parsed.totalCostUsd.toFixed(4)}` : "n/a";
-  console.log(`  Claude CLI: ${duration}ms, ${cost}`);
-  return parsed.results;
+    if (!fs.existsSync(tmpOut)) {
+      throw new Error("Codex CLI did not produce an output file");
+    }
+    const output = fs.readFileSync(tmpOut, "utf-8").trim();
+    if (!output) {
+      throw new Error("Codex CLI produced an empty output file");
+    }
+    console.log(`  Codex [${model}]: ${output.length} chars`);
+    return parseCodexOutput(output);
+  } finally {
+    try {
+      fs.unlinkSync(tmpOut);
+    } catch {
+      // ignore cleanup errors
+    }
+  }
 }
 
-export function shouldRetryClaudeBatchError(err) {
+export function shouldRetryBatchError(err) {
   const msg = String(err?.message || "").toLowerCase();
 
-  // Permanent environment/configuration failures should fail fast.
-  if (msg.includes("enoent") && msg.includes("claude")) {
+  if (msg.includes("enoent") && msg.includes("codex")) {
     return false;
   }
   if (
-    msg.includes("claude cli error") &&
-    (msg.includes("authentication") ||
-      msg.includes("api key") ||
-      msg.includes("not authorized") ||
-      msg.includes("permission denied") ||
-      msg.includes("invalid model") ||
-      msg.includes("model not found"))
+    msg.includes("authentication") ||
+    msg.includes("api key") ||
+    msg.includes("not authorized") ||
+    msg.includes("permission denied") ||
+    msg.includes("invalid model") ||
+    msg.includes("model not found")
   ) {
     return false;
   }
 
-  // Retry parse errors as the model may return valid JSON on a subsequent attempt.
   return true;
 }
 
@@ -1524,7 +1542,7 @@ export function splitPoliticiansIntoBatches(
       current = [politician];
       if (exceedsPromptBudget(current)) {
         console.warn(
-          `  ⚠ Single-politician prompt exceeds CLAUDE_MAX_PROMPT_CHARS for ${politician.id}`
+          `  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`
         );
       }
       continue;
@@ -1538,7 +1556,7 @@ export function splitPoliticiansIntoBatches(
       current = [politician];
       if (exceedsPromptBudget(current)) {
         console.warn(
-          `  ⚠ Single-politician prompt exceeds CLAUDE_MAX_PROMPT_CHARS for ${politician.id}`
+          `  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`
         );
       }
       continue;
@@ -1554,40 +1572,63 @@ export function splitPoliticiansIntoBatches(
 }
 
 async function batchScoreAllPoliticians(politicians, politicianDataMap, oknessetMap, promisesDB) {
-  const batchSize = Math.min(CLAUDE_MAX_BATCH, Math.max(1, politicians.length));
-  const batches = splitPoliticiansIntoBatches(
-    politicians,
-    politicianDataMap,
-    batchSize,
-    CLAUDE_MAX_PROMPT_CHARS,
-    oknessetMap,
-    promisesDB
+  // Classify by news activity: high-tier gets OPENAI_MODEL_HIGH, low-tier gets OPENAI_MODEL_LOW
+  const highTier = [];
+  const lowTier = [];
+  for (const p of politicians) {
+    const data = politicianDataMap.get(p.id) || { headlines: [], socialMentions: [] };
+    const activity = data.headlines.length + Math.floor(data.socialMentions.length / 2);
+    if (activity >= OPENAI_HIGH_TIER_THRESHOLD) {
+      highTier.push(p);
+    } else {
+      lowTier.push(p);
+    }
+  }
+
+  console.log(
+    `  Model tiering: ${highTier.length} → ${OPENAI_MODEL_HIGH}, ${lowTier.length} → ${OPENAI_MODEL_LOW}`
   );
 
   const allResults = [];
 
-  for (let b = 0; b < batches.length; b++) {
-    const batch = batches[b];
-    console.log(
-      `\n  Scoring batch ${b + 1}/${batches.length} (${batch.length} politicians) via Claude ${CLAUDE_MODEL}...`
+  for (const [tierName, tierPoliticians, model, requireCoT, reasoning] of [
+    ["HIGH", highTier, OPENAI_MODEL_HIGH, true, "high"],
+    ["LOW", lowTier, OPENAI_MODEL_LOW, false, "low"],
+  ]) {
+    if (tierPoliticians.length === 0) continue;
+
+    const batches = splitPoliticiansIntoBatches(
+      tierPoliticians,
+      politicianDataMap,
+      MAX_BATCH_SIZE,
+      MAX_PROMPT_CHARS,
+      oknessetMap,
+      promisesDB
     );
 
-    const prompt = buildBatchedPrompt(batch, politicianDataMap, oknessetMap, promisesDB);
-    console.log(`  Prompt size: ${prompt.length} chars`);
+    for (let b = 0; b < batches.length; b++) {
+      const batch = batches[b];
+      console.log(
+        `\n  [${tierName}] Batch ${b + 1}/${batches.length} (${batch.length} politicians) via ${model}...`
+      );
 
-    const results = await retry(() => callClaudeCLI(prompt), {
-      maxRetries: 2,
-      initialDelay: 5000,
-      maxDelay: 30000,
-      shouldRetry: shouldRetryClaudeBatchError,
-      onRetry: (err, attempt, delay) => {
-        console.warn(
-          `  ⟳ Retry ${attempt}/2 for batch ${b + 1} in ${Math.round(delay)}ms: ${err.message}`
-        );
-      },
-    });
+      const prompt = buildBatchedPrompt(batch, politicianDataMap, oknessetMap, promisesDB, requireCoT);
+      console.log(`  Prompt size: ${prompt.length} chars`);
 
-    allResults.push(...results);
+      const results = await retry(() => callCodexCLI(prompt, model, reasoning), {
+        maxRetries: 2,
+        initialDelay: 5000,
+        maxDelay: 30000,
+        shouldRetry: shouldRetryBatchError,
+        onRetry: (err, attempt, delay) => {
+          console.warn(
+            `  ⟳ Retry ${attempt}/2 for [${tierName}] batch ${b + 1} in ${Math.round(delay)}ms: ${err.message}`
+          );
+        },
+      });
+
+      allResults.push(...results);
+    }
   }
 
   return allResults;
@@ -1755,7 +1796,7 @@ function pruneOldDetails() {
 async function main() {
   const today = getCurrentDateString();
   console.log(`\n📊 PolityMarket Daily Pipeline — ${today}`);
-  console.log(`   LLM: Claude ${CLAUDE_MODEL} (batched)\n`);
+  console.log(`   LLM: ${OPENAI_MODEL_HIGH} (high-tier) / ${OPENAI_MODEL_LOW} (low-tier) — batched\n`);
 
   if (POLITICIANS.length !== EXPECTED_POLITICIAN_COUNT) {
     throw new Error(
@@ -1826,8 +1867,8 @@ async function main() {
     for (const p of POLITICIANS) oknessetMap.set(p.id, null);
   }
 
-  // ── Phase 2: Batch-score all politicians via Claude CLI ─────────────
-  console.log("\nPhase 2: Scoring via Claude CLI...");
+  // ── Phase 2: Batch-score all politicians via OpenAI Codex CLI ───────
+  console.log("\nPhase 2: Scoring via OpenAI Codex CLI...");
   const llmResults = await batchScoreAllPoliticians(
     POLITICIANS,
     politicianDataMap,
@@ -1836,8 +1877,8 @@ async function main() {
   );
 
   if (llmResults.length !== POLITICIANS.length) {
-    throw new Error(
-      `LLM result count mismatch: expected ${POLITICIANS.length}, got ${llmResults.length}`
+    console.warn(
+      `  ⚠ LLM result count mismatch: expected ${POLITICIANS.length}, got ${llmResults.length} — deduplicating by politician_id`
     );
   }
 

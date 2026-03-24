@@ -26,7 +26,9 @@ export function isSpamContent(text, permalink) {
 export function validateChainOfThought(entries) {
   const warnings = [];
   for (const entry of entries) {
-    const cot = entry.chain_of_thought || "";
+    const cot = entry.chain_of_thought;
+    // null CoT is valid (low-tier politicians scored with [COT: skip])
+    if (cot == null) continue;
     if (cot.length < 20) {
       warnings.push(`[CoT] ${entry.name}: chain_of_thought too short (${cot.length} chars)`);
     } else if (!HEBREW_RE.test(cot)) {

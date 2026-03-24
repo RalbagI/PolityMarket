@@ -5,7 +5,7 @@ import { z } from "zod";
  * Kept for backward compat with validateDrift.js and existing tests.
  */
 export const llmResponseSchema = z.object({
-  chain_of_thought: z.string().min(1, "chain_of_thought must not be empty"),
+  chain_of_thought: z.string().min(1).nullable(),
   hostility_level: z
     .number()
     .min(0, "hostility_level must be >= 0")
@@ -27,7 +27,7 @@ export const llmResponseSchema = z.object({
  */
 export const llmResponseSchema8dim = z.object({
   // Original 3 dimensions (required)
-  chain_of_thought: z.string().min(1, "chain_of_thought must not be empty"),
+  chain_of_thought: z.string().min(1).nullable(),
   hostility_level: z.number().min(0).max(1),
   policy_approval: z.number().min(-1).max(1),
   media_amplification: z.number().min(0).max(1),
@@ -74,7 +74,7 @@ export const dailyEntrySchema = z.object({
   policy_approval: z.number().min(-1).max(1),
   media_amplification: z.number().min(0).max(1),
   overall_score: z.number().min(0).max(10),
-  chain_of_thought: z.string().min(1),
+  chain_of_thought: z.string().min(1).nullable(),
   news_sentiment: z.number().min(0).max(10),
   social_sentiment: z.number().min(0).max(10),
   media_volume: z.number().min(0).max(10),
