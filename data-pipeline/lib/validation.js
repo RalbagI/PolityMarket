@@ -99,6 +99,33 @@ export function validatePartyConsistency(partyEntries) {
   return warnings;
 }
 
+/**
+ * Check that at least 80% of politicians have non-null dim_public_sentiment
+ * and dim_parliamentary_activity in the latest detail file.
+ * Returns an array of warning strings (empty = all good).
+ *
+ * @param {Object[]} entries - Processed daily entries
+ * @returns {string[]}
+ */
+export function validateDimensionConsistency(entries) {
+  const warnings = [];
+  if (!entries.length) return warnings;
+
+  const REQUIRED_DIMS = ["dim_public_sentiment", "dim_parliamentary_activity"];
+  const THRESHOLD = 0.8;
+
+  for (const dim of REQUIRED_DIMS) {
+    const nonNull = entries.filter((e) => e[dim] != null && Number.isFinite(e[dim])).length;
+    const ratio = nonNull / entries.length;
+    if (ratio < THRESHOLD) {
+      warnings.push(
+        `[DimConsistency] ${dim}: only ${nonNull}/${entries.length} (${(ratio * 100).toFixed(0)}%) entries have non-null values — expected ≥80%`
+      );
+    }
+  }
+  return warnings;
+}
+
 export function aggregateParties(entries, today) {
   const partyMap = new Map();
 

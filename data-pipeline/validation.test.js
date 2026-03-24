@@ -4,6 +4,7 @@ import {
   detectOutliers,
   isSpamContent,
   validateChainOfThought,
+  validateDimensionConsistency,
   validatePartyConsistency,
   validateTemporalConsistency,
 } from "./lib/validation.js";
@@ -178,5 +179,52 @@ describe("validatePartyConsistency", () => {
   it("skips small parties (< 3 members)", () => {
     const parties = [{ party: "SmallParty", member_count: 2, score_stddev: 0 }];
     expect(validatePartyConsistency(parties)).toEqual([]);
+  });
+});
+
+describe("validateDimensionConsistency", () => {
+  function makeEntries(count, dimValue) {
+    return Array.from({ length: count }, (_, i) => ({
+      name: `Politician ${i}`,
+      dim_public_sentiment: dimValue,
+      dim_parliamentary_activity: dimValue,
+    }));
+  }
+
+  it("returns no warnings when all entries have non-null dims", () => {
+    const entries = makeEntries(10, 0.7);
+    expect(validateDimensionConsistency(entries)).toEqual([]);
+  });
+
+  it("returns no warnings for empty array", () => {
+    expect(validateDimensionConsistency([])).toEqual([]);
+  });
+
+  it("warns when dim_public_sentiment coverage < 80%", () => {
+    const entries = [
+      ...makeEntries(7, 0.7), // 7 non-null
+      ...Array(3).fill({ name: "X", dim_public_sentiment: null, dim_parliamentary_activity: null }),
+    ]; // 70% coverage
+    const warnings = validateDimensionConsistency(entries);
+    expect(warnings.some((w) => w.includes("dim_public_sentiment"))).toBe(true);
+  });
+
+  it("warns when dim_parliamentary_activity coverage < 80%", () => {
+    // All have public_sentiment but only 5/10 have parliamentary
+    const entries = Array.from({ length: 10 }, (_, i) => ({
+      name: `P${i}`,
+      dim_public_sentiment: 0.5,
+      dim_parliamentary_activity: i < 5 ? 0.5 : null,
+    }));
+    const warnings = validateDimensionConsistency(entries);
+    expect(warnings.some((w) => w.includes("dim_parliamentary_activity"))).toBe(true);
+  });
+
+  it("does not warn when exactly 80% have non-null dims", () => {
+    const entries = [
+      ...makeEntries(8, 0.6), // 80% of 10
+      ...Array(2).fill({ name: "X", dim_public_sentiment: null, dim_parliamentary_activity: null }),
+    ];
+    expect(validateDimensionConsistency(entries)).toEqual([]);
   });
 });

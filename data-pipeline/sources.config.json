@@ -18,6 +18,13 @@
     "maxItemsPerSource": 15,
     "maxHeadlinesPerPolitician": 10
   },
+  "openKnesset": {
+    "baseUrl": "https://oknesset.org/api/v2",
+    "timeoutMs": 8000,
+    "windowDays": 7,
+    "_note": "Run scripts/populate-oknesset-ids.js to populate memberIdMap from /api/v2/member/ endpoint",
+    "memberIdMap": {}
+  },
   "social": {
     "redditSubreddits": ["Israel", "worldnews", "MiddleEastNews", "IsraelPolitics"],
     "maxPostsPerSubreddit": 50,
