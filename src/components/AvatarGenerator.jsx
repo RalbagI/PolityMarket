@@ -265,15 +265,9 @@ function renderHeadCovering(type, color) {
       return (
         <>
           {/* Wrap base covering crown of head */}
-          <path
-            d="M20 30 Q22 14 50 10 Q78 14 80 30 Q78 24 50 20 Q22 24 20 30 Z"
-            fill={fc}
-          />
+          <path d="M20 30 Q22 14 50 10 Q78 14 80 30 Q78 24 50 20 Q22 24 20 30 Z" fill={fc} />
           {/* Fabric band across forehead */}
-          <path
-            d="M20 30 Q35 26 50 25 Q65 26 80 30 Q65 32 50 31 Q35 32 20 30 Z"
-            fill={fc}
-          />
+          <path d="M20 30 Q35 26 50 25 Q65 26 80 30 Q65 32 50 31 Q35 32 20 30 Z" fill={fc} />
           {/* Gathered knot / bow at top */}
           <ellipse cx="50" cy="10" rx="10" ry="6" fill={fc} />
           <path d="M42 8 Q46 2 50 6 Q54 2 58 8" fill={lighten(fc)} />
@@ -385,7 +379,9 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
       {headCovering === "hijab"
         ? renderHeadCovering("hijab")
         : renderHair(hair, hairColor, grayHair, isFemale)}
-      {headCovering && headCovering !== "hijab" && renderHeadCovering(headCovering, headCoveringColor)}
+      {headCovering &&
+        headCovering !== "hijab" &&
+        renderHeadCovering(headCovering, headCoveringColor)}
       {renderFace(face, skin)}
       {renderEyes(eyeColor)}
       {/* Eyelashes for female avatars */}
