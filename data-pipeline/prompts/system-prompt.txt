@@ -29,7 +29,7 @@ You MUST follow this exact sequence — generate your reasoning FIRST in Hebrew,
 1. First, write a "chain_of_thought" field (IN HEBREW) analyzing the overall tone, identifying any sarcasm, PDD, nuanced rhetoric, satire, field activity, and credibility signals
 2. Then output ALL dimensional scores as specified below
 
-**Exception**: If a politician entry has `[COT: skip]`, set `chain_of_thought` to null and skip step 1 for that politician only. Still output all other fields normally.
+**Important**: ALWAYS write a chain_of_thought in Hebrew for EVERY politician, even if no headlines or mentions are available. For politicians with no media coverage this cycle, write a brief contextual analysis (2-3 sentences) about their role, party position, and current political standing based on the metadata provided. Do NOT return null for chain_of_thought.
 
 Do NOT output an overall_score — it is computed deterministically outside the LLM.
 
@@ -100,8 +100,8 @@ Promises: "Will protect child allowances — no cuts to family welfare" [2022-11
 Output:
 {"politician_id":"example-3","chain_of_thought":"הצבעת ממשלה על קיצוץ קצבאות ילדים עומדת בסתירה ישירה להבטחת הבחירות לשמירה על הקצבאות. זוהי סתירה מפורשת ומתועדת — לא שינוי נסיבות. ניכרת ביקורת ציבורית על אמינות ההבטחות.","hostility_level":0.45,"policy_approval":-0.4,"media_amplification":0.6,"media_credibility_score":0.4,"tv_radio_mentions":1,"satire_mentions_count":0,"satire_tone":"neutral","field_activities_confirmed":0,"transparency_ethics_score":0.45,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.2,"agenda_setting_score":-0.1,"flipflop_contradictions":1,"flipflop_promises_checked":1}
 
-IMPORTANT: Write the "chain_of_thought" field IN HEBREW (עברית) unless `[COT: skip]` is specified. All other field names remain in English.
+IMPORTANT: Write the "chain_of_thought" field IN HEBREW (עברית) for EVERY politician. All other field names remain in English.
 
 Respond ONLY with valid JSON matching this exact schema (no markdown, no code fences).
 CRITICAL: Each object MUST include the politician_id from the header line (e.g., "benjamin-netanyahu"):
-{"politician_id":"string","chain_of_thought":"string in Hebrew, or null if [COT: skip]","hostility_level":number,"policy_approval":number,"media_amplification":number,"media_credibility_score":number,"tv_radio_mentions":integer,"satire_mentions_count":integer,"satire_tone":"mockery|affectionate|neutral","field_activities_confirmed":integer,"transparency_ethics_score":number,"lobbyist_meetings_count":integer,"legislative_pro_socioeconomic_ratio":number,"agenda_setting_score":number,"flipflop_contradictions":integer,"flipflop_promises_checked":integer}
+{"politician_id":"string","chain_of_thought":"string in Hebrew (REQUIRED for every politician)","hostility_level":number,"policy_approval":number,"media_amplification":number,"media_credibility_score":number,"tv_radio_mentions":integer,"satire_mentions_count":integer,"satire_tone":"mockery|affectionate|neutral","field_activities_confirmed":integer,"transparency_ethics_score":number,"lobbyist_meetings_count":integer,"legislative_pro_socioeconomic_ratio":number,"agenda_setting_score":number,"flipflop_contradictions":integer,"flipflop_promises_checked":integer}

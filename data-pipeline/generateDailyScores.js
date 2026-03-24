@@ -29,6 +29,7 @@ import {
   detectOutliers,
   isSpamContent,
   validateChainOfThought,
+  validateCoTCoverage,
   validateDimensionConsistency,
   validatePartyConsistency,
   validateTemporalConsistency,
@@ -798,7 +799,8 @@ const PIPELINE_TIMEZONE = process.env.TZ || "Asia/Jerusalem";
 const OPENAI_MODEL_HIGH = process.env.OPENAI_MODEL_HIGH || "gpt-5.4";
 const OPENAI_MODEL_LOW = process.env.OPENAI_MODEL_LOW || "gpt-5.4-mini";
 const OPENAI_TIMEOUT_MS = parsePositiveInt(process.env.OPENAI_TIMEOUT_MS, 600000);
-const MAX_BATCH_SIZE = parsePositiveInt(process.env.MAX_BATCH_SIZE, 50);
+// Smaller batches (20) improve Hebrew CoT JSON reliability on gpt-5.4-mini
+const MAX_BATCH_SIZE = parsePositiveInt(process.env.MAX_BATCH_SIZE, 20);
 const MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.MAX_PROMPT_CHARS, 350000);
 // Politicians with >= this many headlines+social get the high-tier model
 const OPENAI_HIGH_TIER_THRESHOLD = parseNonNegativeInt(process.env.OPENAI_HIGH_TIER_THRESHOLD, 5);
@@ -1330,7 +1332,8 @@ export function buildBatchedPrompt(
   politicianDataMap,
   oknessetMap,
   promisesDB,
-  requireCoT = true
+  requireCoT = true,
+  yesterdayCoTMap = new Map()
 ) {
   const _oknessetMap = oknessetMap || new Map();
   const _promisesDB = promisesDB || {};
@@ -1400,10 +1403,24 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
         : "  No promises database entries for this politician";
 
     const coalitionRole = ["right", "religious"].includes(p.wing) ? "coalition" : "opposition";
-    const cotFlag = requireCoT ? "" : " [COT: skip]";
+
+    // Context hint for politicians with no real coverage
+    const hasRealHeadlines = data.headlines.some(
+      (h) => !h.startsWith("No direct headlines matched")
+    );
+    const hasRealSocial = data.socialMentions.some(
+      (m) => !String(m?.text || "").includes("No direct social mentions")
+    );
+    const rawPrevCoT = yesterdayCoTMap.get(p.id);
+    const prevCoT = rawPrevCoT ? rawPrevCoT.replace(/[\n\r]/g, " ").replace(/---/g, "") : null;
+    const rollingContext = prevCoT ? `\nPrevious analysis summary: ${prevCoT}` : "";
+    const contextHint =
+      !hasRealHeadlines && !hasRealSocial
+        ? `\nContext note: No direct coverage this cycle. Write a brief Hebrew analysis about this politician's current political standing, role in ${p.party}, and general media profile as ${p.role || "mk"} in the ${coalitionRole}.${rollingContext}`
+        : "";
 
     prompt += `
-[${i + 1}] ${p.id} | ${p.name} (${p.party}) | Wing: ${p.wing} | Role: ${coalitionRole}${cotFlag}
+[${i + 1}] ${p.id} | ${p.name} (${p.party}) | Wing: ${p.wing} | Role: ${coalitionRole} | Position: ${p.role || "mk"}
 Headlines:
 ${headlineBlock}
 Social:
@@ -1412,7 +1429,7 @@ Voting record (last 7 days, from OpenKnesset):
 ${votingBlock}
 MMM research requests this week: ${mmmCount}
 Election promises (compare against current week actions):
-${promisesBlock}
+${promisesBlock}${contextHint}
 `;
   }
 
@@ -1539,6 +1556,8 @@ export function splitPoliticiansIntoBatches(
   const batches = [];
   let current = [];
 
+  // Note: size estimate omits yesterdayCoTMap (~2.4K chars max, <1% of 350K budget).
+  // Conservative: actual prompt may be slightly larger than estimate.
   const exceedsPromptBudget = (batch) => {
     if (!enforceCharBudget) return false;
     return (
@@ -1576,7 +1595,7 @@ export function splitPoliticiansIntoBatches(
   return batches;
 }
 
-async function batchScoreAllPoliticians(politicians, politicianDataMap, oknessetMap, promisesDB) {
+async function batchScoreAllPoliticians(politicians, politicianDataMap, oknessetMap, promisesDB, yesterdayCoTMap) {
   // Classify by news activity: high-tier gets OPENAI_MODEL_HIGH, low-tier gets OPENAI_MODEL_LOW
   const highTier = [];
   const lowTier = [];
@@ -1598,7 +1617,7 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
 
   for (const [tierName, tierPoliticians, model, requireCoT, reasoning] of [
     ["HIGH", highTier, OPENAI_MODEL_HIGH, true, "high"],
-    ["LOW", lowTier, OPENAI_MODEL_LOW, false, "low"],
+    ["LOW", lowTier, OPENAI_MODEL_LOW, false, "medium"], // medium needed for valid Hebrew CoT JSON
   ]) {
     if (tierPoliticians.length === 0) continue;
 
@@ -1622,7 +1641,8 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
         politicianDataMap,
         oknessetMap,
         promisesDB,
-        requireCoT
+        requireCoT,
+        yesterdayCoTMap
       );
       console.log(`  Prompt size: ${prompt.length} chars`);
 
@@ -1880,13 +1900,40 @@ async function main() {
     for (const p of POLITICIANS) oknessetMap.set(p.id, null);
   }
 
+  // ── Phase 1.5: Load previous day's CoT for rolling context ─────────
+  const yesterdayCoTMap = new Map();
+  try {
+    const todayStr = new Date().toLocaleDateString("en-CA", { timeZone: PIPELINE_TIMEZONE });
+    const [y, m, d] = todayStr.split("-").map(Number);
+    const utcToday = new Date(Date.UTC(y, m - 1, d));
+    utcToday.setUTCDate(utcToday.getUTCDate() - 1);
+    const yesterdayStr = utcToday.toISOString().slice(0, 10);
+    const yesterdayPath = path.join(DETAILS_DIR, `${yesterdayStr}.json`);
+    const prevData = JSON.parse(fs.readFileSync(yesterdayPath, "utf-8"));
+    if (!Array.isArray(prevData)) throw new Error("previous detail file is not an array");
+    for (const entry of prevData) {
+      if (entry.chain_of_thought && entry.chain_of_thought.length > 20) {
+        yesterdayCoTMap.set(
+          entry.politician_id,
+          entry.chain_of_thought.slice(0, 120)
+        );
+      }
+    }
+    console.log(
+      `  Loaded ${yesterdayCoTMap.size} previous CoT summaries for rolling context`
+    );
+  } catch {
+    console.log("  No previous day detail file found — skipping rolling context");
+  }
+
   // ── Phase 2: Batch-score all politicians via OpenAI Codex CLI ───────
   console.log("\nPhase 2: Scoring via OpenAI Codex CLI...");
   const llmResults = await batchScoreAllPoliticians(
     POLITICIANS,
     politicianDataMap,
     oknessetMap,
-    PROMISES_DB
+    PROMISES_DB,
+    yesterdayCoTMap
   );
 
   if (llmResults.length !== POLITICIANS.length) {
@@ -2022,9 +2069,14 @@ async function main() {
             : null,
         dim_media_credibility: parseFloat(dim_media_credibility.toFixed(3)),
         dim_transparency_ethics: parseFloat(dim_transparency_ethics.toFixed(3)),
-        dim_field_activity: parseFloat(dim_field_activity.toFixed(3)),
-        dim_satire_cultural_impact: parseFloat(dim_satire_cultural_impact.toFixed(3)),
-        dim_legislative_quality: parseFloat(dim_legislative_quality.toFixed(3)),
+        dim_field_activity:
+          dim_field_activity != null ? parseFloat(dim_field_activity.toFixed(3)) : null,
+        dim_satire_cultural_impact:
+          dim_satire_cultural_impact != null
+            ? parseFloat(dim_satire_cultural_impact.toFixed(3))
+            : null,
+        dim_legislative_quality:
+          dim_legislative_quality != null ? parseFloat(dim_legislative_quality.toFixed(3)) : null,
         dim_flipflop_index:
           dim_flipflop_index != null ? parseFloat(dim_flipflop_index.toFixed(3)) : null,
         // Agenda bonus
@@ -2131,6 +2183,7 @@ async function main() {
     ...validateDimensionConsistency(newEntries, {
       requireParliamentaryActivity: Object.keys(oknessetConfig?.memberIdMap ?? {}).length > 0,
     }),
+    ...validateCoTCoverage(newEntries),
   ];
 
   if (allWarnings.length) {

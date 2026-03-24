@@ -4,6 +4,7 @@ import {
   detectOutliers,
   isSpamContent,
   validateChainOfThought,
+  validateCoTCoverage,
   validateDimensionConsistency,
   validatePartyConsistency,
   validateTemporalConsistency,
@@ -77,6 +78,41 @@ describe("validateChainOfThought", () => {
     ];
     expect(validateChainOfThought(entries).length).toBe(1);
     expect(validateChainOfThought(entries)[0]).toContain("no Hebrew");
+  });
+
+  it("skips null CoT without warning (handled by validateCoTCoverage)", () => {
+    const entries = [{ name: "Test", chain_of_thought: null }];
+    expect(validateChainOfThought(entries)).toEqual([]);
+  });
+});
+
+describe("validateCoTCoverage", () => {
+  it("returns no warning when all entries have sufficient CoT", () => {
+    const entries = Array.from({ length: 10 }, (_, i) => ({
+      name: `P${i}`,
+      chain_of_thought: "ניתוח ארוך מספיק שמכיל מספיק תווים כדי לעבור את הסף של חמישים תווים בעברית",
+    }));
+    expect(validateCoTCoverage(entries)).toEqual([]);
+  });
+
+  it("warns when coverage is below 80%", () => {
+    const entries = [
+      ...Array.from({ length: 7 }, (_, i) => ({
+        name: `Good${i}`,
+        chain_of_thought: "ניתוח ארוך מספיק שמכיל מספיק תווים כדי לעבור את הסף של חמישים תווים בעברית",
+      })),
+      ...Array.from({ length: 3 }, (_, i) => ({
+        name: `Bad${i}`,
+        chain_of_thought: "קצר",
+      })),
+    ];
+    const warnings = validateCoTCoverage(entries);
+    expect(warnings.length).toBe(1);
+    expect(warnings[0]).toContain("CoT Coverage");
+  });
+
+  it("returns no warning for empty array", () => {
+    expect(validateCoTCoverage([])).toEqual([]);
   });
 });
 

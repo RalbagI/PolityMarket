@@ -148,12 +148,14 @@ export function computeTransparencyEthics(llmScore, lobbyistMeetings) {
  *
  * @param {number} mentionsCount - Count of satire mentions (0–5+)
  * @param {"mockery"|"affectionate"|"neutral"} tone
- * @returns {number}
+ * @returns {number|null} null when no mentions detected (excluded from formula)
  */
 export function computeSatireCulturalImpact(mentionsCount, tone) {
+  const count = Math.max(0, Number(mentionsCount) || 0);
+  if (count === 0) return null; // No evidence — exclude from formula
   const TONE_FACTORS = { affectionate: 1.0, neutral: 0.85, mockery: 0.6 };
   const factor = TONE_FACTORS[tone] ?? 0.85;
-  const raw = Math.min(1, (Number(mentionsCount) || 0) / 3);
+  const raw = Math.min(1, count / 3);
   return Math.max(0, Math.min(1, raw * factor));
 }
 
@@ -161,10 +163,12 @@ export function computeSatireCulturalImpact(mentionsCount, tone) {
  * Compute the dim_field_activity score.
  *
  * @param {number} confirmedActivities - Count of confirmed field events (0–5+)
- * @returns {number}
+ * @returns {number|null} null when no activities detected (excluded from formula)
  */
 export function computeFieldActivity(confirmedActivities) {
-  return Math.min(1, (Number(confirmedActivities) || 0) / 3);
+  const count = Math.max(0, Number(confirmedActivities) || 0);
+  if (count === 0) return null; // No evidence — exclude from formula
+  return Math.min(1, count / 3);
 }
 
 /**
@@ -172,11 +176,16 @@ export function computeFieldActivity(confirmedActivities) {
  *
  * @param {number} proSocioeconomicRatio - 0–1 from LLM vote classification
  * @param {number} mmmRequestsCount      - MMM research requests count
- * @returns {number}
+ * @returns {number|null} null when both inputs are defaults (no real data)
  */
 export function computeLegislativeQuality(proSocioeconomicRatio, mmmRequestsCount) {
-  const mmm = Math.min(1, (Number(mmmRequestsCount) || 0) / 2);
-  return Math.max(0, Math.min(1, 0.7 * (Number(proSocioeconomicRatio) || 0.5) + 0.3 * mmm));
+  const ratio = Number.isFinite(Number(proSocioeconomicRatio))
+    ? Number(proSocioeconomicRatio)
+    : 0.5;
+  const mmm = Math.max(0, Number(mmmRequestsCount) || 0);
+  // If both inputs are defaults (0.5 ratio + 0 MMM), no real data exists
+  if (Math.abs(ratio - 0.5) < 0.01 && mmm === 0) return null;
+  return Math.max(0, Math.min(1, 0.7 * ratio + 0.3 * Math.min(1, mmm / 2)));
 }
 
 /**

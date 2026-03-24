@@ -319,5 +319,20 @@
       "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
     ],
     "timestamp": "2026-03-24T14:50:40.878Z"
+  },
+  {
+    "date": "2026-03-24",
+    "warnings": [
+      "[Temporal] Amichai Eliyahu: score 7.1 deviates 1.8 from 7-day avg 5.3 (threshold: 1.5)",
+      "[Temporal] Naama Lazimi: score 7.3 deviates 1.9 from 7-day avg 5.4 (threshold: 1.5)",
+      "[Outlier] Nissim Vaturi: score 3.3 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Gila Gamliel: score 6.9 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Miri Regev: score 6.8 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Benny Gantz: score 6.8 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Amichai Eliyahu: score 7.1 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Naama Lazimi: score 7.3 outside IQR bounds [3.6, 6.8]",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-03-24T18:01:10.589Z"
   }
 ]
