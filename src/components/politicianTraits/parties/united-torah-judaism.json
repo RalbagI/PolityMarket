@@ -7,8 +7,8 @@
     "grayHair": true,
     "face": "round",
     "headCovering": "shtreimel",
-    "beard": "full",
-    "beardColor": "#888",
+    "beard": "full-long",
+    "beardColor": "#ddd",
     "glasses": "round"
   },
   "moshe-gafni": {
@@ -51,9 +51,9 @@
     "hair": "short",
     "hairColor": "#2c2c2c",
     "face": "oval",
-    "headCovering": "kippah",
-    "beard": "goatee",
-    "beardColor": "#2c2c2c"
+    "headCovering": "shtreimel",
+    "beard": "full-long",
+    "beardColor": "#999"
   },
   "yitzhak-goldknopf": {
     "suitColor": "#0a0a0a",
@@ -63,8 +63,8 @@
     "grayHair": true,
     "face": "round",
     "headCovering": "shtreimel",
-    "beard": "full",
-    "beardColor": "#555",
+    "beard": "full-long",
+    "beardColor": "#ddd",
     "glasses": "round"
   },
   "yitzhak-pindrus": {
