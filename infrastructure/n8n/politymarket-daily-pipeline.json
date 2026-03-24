@@ -1,5 +1,6 @@
 {
-  "name": "PolityMarket Daily Pipeline",
+  "_deprecated": "DEPRECATED: This n8n workflow uses the Claude API directly. The pipeline has migrated to OpenAI Codex CLI (gpt-5.4/gpt-5.4-mini). Use scripts/run-daily-pipeline.sh instead.",
+  "name": "PolityMarket Daily Pipeline [DEPRECATED]",
   "nodes": [
     {
       "parameters": {

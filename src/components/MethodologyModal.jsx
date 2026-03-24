@@ -150,38 +150,40 @@ export default function MethodologyModal({ isOpen, onClose }) {
                   title={t("methodology.scoring.title")}
                 >
                   <Paragraph text={t("methodology.scoring.description")} />
-                  <div className="bg-gray-800/50 rounded-xl p-4 mt-3 space-y-3">
-                    <div>
+                  <div className="bg-gray-800/50 rounded-xl p-4 mt-3 space-y-2.5">
+                    {[
+                      { key: "publicSentiment", color: "text-indigo-400" },
+                      { key: "parliamentaryActivity", color: "text-violet-400" },
+                      { key: "mediaCredibility", color: "text-cyan-400" },
+                      { key: "transparencyEthics", color: "text-emerald-400" },
+                      { key: "fieldActivity", color: "text-amber-400" },
+                      { key: "satireCulturalImpact", color: "text-rose-400" },
+                      { key: "legislativeQuality", color: "text-purple-400" },
+                      { key: "flipflopIndex", color: "text-teal-400" },
+                    ].map(({ key, color }) => (
+                      <div key={key}>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-300 font-medium">
+                            {t(`methodology.dimensions.${key}`)}
+                          </span>
+                          <span className={`${color} font-bold`}>
+                            {t(`methodology.dimensions.${key}Weight`)}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-0.5">
+                          {t(`methodology.dimensions.${key}Desc`)}
+                        </p>
+                      </div>
+                    ))}
+                    <div className="border-t border-gray-700/50 pt-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-300 font-medium">
-                          {t("methodology.scoring.policy")}
+                        <span className="text-gray-400 font-medium">
+                          {t("methodology.dimensions.agendaBonus")}
                         </span>
-                        <span className="text-indigo-400 font-bold">40%</span>
+                        <span className="text-gray-500 text-xs font-medium">±0.5 pt</span>
                       </div>
                       <p className="text-xs text-gray-500 mt-0.5">
-                        {t("methodology.scoring.policyDesc")}
-                      </p>
-                    </div>
-                    <div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-300 font-medium">
-                          {t("methodology.scoring.hostility")}
-                        </span>
-                        <span className="text-violet-400 font-bold">35%</span>
-                      </div>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {t("methodology.scoring.hostilityDesc")}
-                      </p>
-                    </div>
-                    <div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-300 font-medium">
-                          {t("methodology.scoring.amplification")}
-                        </span>
-                        <span className="text-purple-400 font-bold">25%</span>
-                      </div>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {t("methodology.scoring.amplificationDesc")}
+                        {t("methodology.dimensions.agendaBonusDesc")}
                       </p>
                     </div>
                   </div>

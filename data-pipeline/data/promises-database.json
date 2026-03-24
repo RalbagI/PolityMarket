@@ -1,0 +1,285 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-03-24",
+  "description": "Static database of documented election promises and public commitments by Israeli politicians. Used by the LLM to compute the Flip-Flop Index (dim_flipflop_index). Manually curated — add new entries via PR.",
+  "schema": {
+    "id": "unique stable ID (never changes)",
+    "text": "original Hebrew promise text",
+    "text_en": "English translation/gloss for LLM context",
+    "date": "YYYY-MM-DD when promise was made",
+    "source": "URL or citation",
+    "topic": "coalition|judicial|economic|security|social|institutional|religion|foreign",
+    "context": "coalition (made while in power) | opposition (made while in opposition)",
+    "weight": "1.0=major explicit promise, 0.5=vague/soft commitment"
+  },
+  "politicians": {
+    "benjamin-netanyahu": {
+      "promises": [
+        {
+          "id": "bibi-2022-01",
+          "text": "לא אגיש ידיים לממשלה הסומכת על ערביי כנסת",
+          "text_en": "Will not form or support a government that relies on Arab party MKs",
+          "date": "2021-06-01",
+          "source": "Multiple press conferences and Likud campaign materials, June 2021",
+          "topic": "coalition",
+          "context": "opposition",
+          "weight": 1.0
+        },
+        {
+          "id": "bibi-2022-02",
+          "text": "הרפורמה המשפטית לא קשורה לתיקים שלי",
+          "text_en": "The judicial reform is not related to my personal legal cases",
+          "date": "2023-01-15",
+          "source": "Press conference, January 2023",
+          "topic": "judicial",
+          "context": "coalition",
+          "weight": 1.0
+        },
+        {
+          "id": "bibi-2023-01",
+          "text": "אנחנו נחזיר את החטופים הביתה — כולם",
+          "text_en": "We will bring all the hostages home",
+          "date": "2023-10-15",
+          "source": "Official government statement, October 2023",
+          "topic": "security",
+          "context": "coalition",
+          "weight": 1.0
+        },
+        {
+          "id": "bibi-2023-02",
+          "text": "לא יהיה מדינה פלסטינית בתקופת כהונתי",
+          "text_en": "There will be no Palestinian state during my tenure",
+          "date": "2023-11-20",
+          "source": "Interview, November 2023",
+          "topic": "foreign",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "yariv-levin": {
+      "promises": [
+        {
+          "id": "levin-2023-01",
+          "text": "הרפורמה המשפטית תתקדם בהסכמה",
+          "text_en": "Judicial reform will proceed through consensus",
+          "date": "2023-03-27",
+          "source": "Press conference following protest suspensions, March 2023",
+          "topic": "judicial",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "yair-lapid": {
+      "promises": [
+        {
+          "id": "lapid-2022-01",
+          "text": "לא אשב בממשלה עם בן גביר וסמוטריץ'",
+          "text_en": "Will not sit in a government with Ben Gvir and Smotrich",
+          "date": "2022-10-01",
+          "source": "Yesh Atid campaign statements, October 2022",
+          "topic": "coalition",
+          "context": "coalition",
+          "weight": 1.0
+        },
+        {
+          "id": "lapid-2022-02",
+          "text": "אני מחויב לשתי מדינות לשני עמים",
+          "text_en": "Committed to a two-state solution",
+          "date": "2022-09-22",
+          "source": "UN General Assembly speech, September 2022",
+          "topic": "foreign",
+          "context": "coalition",
+          "weight": 1.0
+        },
+        {
+          "id": "lapid-2023-01",
+          "text": "כשנחזור לשלטון — נחזיר את מצב בית המשפט העליון",
+          "text_en": "When we return to power we will restore the Supreme Court's status",
+          "date": "2023-07-01",
+          "source": "Knesset speech, July 2023",
+          "topic": "judicial",
+          "context": "opposition",
+          "weight": 0.8
+        }
+      ]
+    },
+    "benny-gantz": {
+      "promises": [
+        {
+          "id": "gantz-2019-01",
+          "text": "לא אשב עם נתניהו תחת כתב אישום",
+          "text_en": "Will not sit with Netanyahu while he faces indictment",
+          "date": "2019-09-17",
+          "source": "Blue and White campaign, September 2019",
+          "topic": "coalition",
+          "context": "opposition",
+          "weight": 1.0
+        },
+        {
+          "id": "gantz-2024-01",
+          "text": "אצא מהממשלה אם לא יהיה תוכנית אסטרטגית לאחרי המלחמה עד יוני",
+          "text_en": "Will leave the government if there is no post-war strategic plan by June",
+          "date": "2024-04-01",
+          "source": "Press conference, April 2024",
+          "topic": "security",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "bezalel-smotrich": {
+      "promises": [
+        {
+          "id": "smotrich-2022-01",
+          "text": "נחיל ריבונות ישראלית ביהודה ושומרון",
+          "text_en": "Will apply Israeli sovereignty over Judea and Samaria (West Bank)",
+          "date": "2022-11-01",
+          "source": "Religious Zionism coalition agreements, November 2022",
+          "topic": "foreign",
+          "context": "coalition",
+          "weight": 1.0
+        },
+        {
+          "id": "smotrich-2022-02",
+          "text": "לא יהיה הקפאה בבניה ביישובים",
+          "text_en": "There will be no freeze on settlement construction",
+          "date": "2022-12-01",
+          "source": "Coalition agreement, December 2022",
+          "topic": "security",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "itamar-ben-gvir": {
+      "promises": [
+        {
+          "id": "bengvir-2022-01",
+          "text": "אעביר מדיניות אפס סובלנות לאלימות ברחובות",
+          "text_en": "Will implement zero-tolerance policy on street violence",
+          "date": "2022-11-15",
+          "source": "Coalition agreement and press statements, November 2022",
+          "topic": "security",
+          "context": "coalition",
+          "weight": 1.0
+        },
+        {
+          "id": "bengvir-2024-01",
+          "text": "לא אשאר בממשלה שמכניסה סיוע הומניטרי שמגיע לחמאס",
+          "text_en": "Will not remain in a government that allows humanitarian aid reaching Hamas",
+          "date": "2024-01-15",
+          "source": "Media interviews, January 2024",
+          "topic": "security",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "avigdor-lieberman": {
+      "promises": [
+        {
+          "id": "lieberman-2022-01",
+          "text": "לא ישב בממשלה עם חרדים שלא משרתים בצבא",
+          "text_en": "Will not sit in a government with ultra-Orthodox parties that evade military service",
+          "date": "2022-01-01",
+          "source": "Yisrael Beiteinu platform and campaign, multiple statements",
+          "topic": "religion",
+          "context": "opposition",
+          "weight": 1.0
+        },
+        {
+          "id": "lieberman-2022-02",
+          "text": "גיוס שווה — חרדים לצבא בלי פשרות",
+          "text_en": "Equal military draft — ultra-Orthodox into the army without compromise",
+          "date": "2022-03-01",
+          "source": "Party platform 2022",
+          "topic": "religion",
+          "context": "opposition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "gideon-saar": {
+      "promises": [
+        {
+          "id": "saar-2020-01",
+          "text": "לא אשב תחת נתניהו",
+          "text_en": "Will not serve under Netanyahu",
+          "date": "2020-12-01",
+          "source": "New Hope founding announcement, December 2020",
+          "topic": "coalition",
+          "context": "opposition",
+          "weight": 1.0
+        },
+        {
+          "id": "saar-2023-01",
+          "text": "אני מתנגד נחרצות לעקיפת בית המשפט העליון",
+          "text_en": "Firmly opposed to bypassing the Supreme Court",
+          "date": "2023-02-01",
+          "source": "Multiple Knesset speeches, early 2023",
+          "topic": "judicial",
+          "context": "opposition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "naftali-bennett": {
+      "promises": [
+        {
+          "id": "bennett-2021-01",
+          "text": "אני מחויב לרוטציה ולא אפרק את הממשלה",
+          "text_en": "Committed to the rotation agreement and will not break up the government",
+          "date": "2021-06-14",
+          "source": "Bennett-Lapid government formation announcement, June 2021",
+          "topic": "coalition",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "simcha-rothman": {
+      "promises": [
+        {
+          "id": "rothman-2023-01",
+          "text": "הרפורמה המשפטית תעבור עוד בקדנציה הזו",
+          "text_en": "The judicial reform will pass in this term",
+          "date": "2023-01-30",
+          "source": "Knesset Constitution Committee statements, January 2023",
+          "topic": "judicial",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "mansour-abbas": {
+      "promises": [
+        {
+          "id": "abbas-2021-01",
+          "text": "השתתפות רע\"ם תביא תקציבים ופיתוח לחברה הערבית",
+          "text_en": "Ra'am's participation in government will bring budgets and development to Arab society",
+          "date": "2021-06-01",
+          "source": "Ra'am coalition negotiations statement, June 2021",
+          "topic": "social",
+          "context": "coalition",
+          "weight": 1.0
+        }
+      ]
+    },
+    "amir-ohana": { "promises": [] },
+    "nir-barkat": { "promises": [] },
+    "yisrael-katz": { "promises": [] },
+    "yuli-edelstein": { "promises": [] },
+    "boaz-toporovsky": { "promises": [] },
+    "meir-cohen": { "promises": [] },
+    "mickey-levy": { "promises": [] },
+    "ayman-odeh": { "promises": [] },
+    "ahmad-tibi": { "promises": [] },
+    "yair-golan": { "promises": [] },
+    "oded-forer": { "promises": [] },
+    "orit-strock": { "promises": [] },
+    "zvika-fogel": { "promises": [] },
+    "naama-lazimi": { "promises": [] }
+  }
+}

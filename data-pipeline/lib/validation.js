@@ -26,7 +26,9 @@ export function isSpamContent(text, permalink) {
 export function validateChainOfThought(entries) {
   const warnings = [];
   for (const entry of entries) {
-    const cot = entry.chain_of_thought || "";
+    const cot = entry.chain_of_thought;
+    // null CoT is valid (low-tier politicians scored with [COT: skip])
+    if (cot == null) continue;
     if (cot.length < 20) {
       warnings.push(`[CoT] ${entry.name}: chain_of_thought too short (${cot.length} chars)`);
     } else if (!HEBREW_RE.test(cot)) {
@@ -93,6 +95,39 @@ export function validatePartyConsistency(partyEntries) {
     if (party.member_count >= 3 && party.score_stddev === 0) {
       warnings.push(
         `[Party] ${party.party}: all ${party.member_count} members have identical scores — possible hallucination`
+      );
+    }
+  }
+  return warnings;
+}
+
+/**
+ * Check that at least 80% of politicians have non-null dim_public_sentiment
+ * and optionally dim_parliamentary_activity in the latest detail file.
+ * Returns an array of warning strings (empty = all good).
+ *
+ * @param {Object[]} entries - Processed daily entries
+ * @param {Object} [options]
+ * @param {boolean} [options.requireParliamentaryActivity=true]
+ * @param {number} [options.threshold=0.8]
+ * @returns {string[]}
+ */
+export function validateDimensionConsistency(entries, options = {}) {
+  const warnings = [];
+  if (!entries.length) return warnings;
+
+  const THRESHOLD = Number.isFinite(options.threshold) ? options.threshold : 0.8;
+  const requireParliamentaryActivity = options.requireParliamentaryActivity ?? true;
+  const REQUIRED_DIMS = requireParliamentaryActivity
+    ? ["dim_public_sentiment", "dim_parliamentary_activity"]
+    : ["dim_public_sentiment"];
+
+  for (const dim of REQUIRED_DIMS) {
+    const nonNull = entries.filter((e) => e[dim] != null && Number.isFinite(e[dim])).length;
+    const ratio = nonNull / entries.length;
+    if (ratio < THRESHOLD) {
+      warnings.push(
+        `[DimConsistency] ${dim}: only ${nonNull}/${entries.length} (${(ratio * 100).toFixed(0)}%) entries have non-null values — expected ≥80%`
       );
     }
   }

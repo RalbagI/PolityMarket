@@ -65,6 +65,21 @@ try {
   warn("party_summary.json not found — skipping party data checks");
 }
 
+function loadOpenKnessetConfig() {
+  const configPath = path.join(repoRoot, "data-pipeline/sources.config.json");
+  try {
+    const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+    return config?.openKnesset ?? {};
+  } catch {
+    warn("sources.config.json missing or invalid — OpenKnesset dimension gate disabled");
+    return {};
+  }
+}
+
+const openKnessetConfig = loadOpenKnessetConfig();
+const requireParliamentaryDimension =
+  Object.keys(openKnessetConfig.memberIdMap || {}).length > 0;
+
 function dedupeRoster(rows) {
   const byId = new Map();
   for (const row of rows) {
@@ -298,6 +313,120 @@ if (missingAvatars.length) {
   );
 } else {
   console.log(`  ✓ ${traitIds.size} avatar traits cover all ${rosterIds.length} roster politicians`);
+}
+
+// ── Check 5: Dimension Coverage ───────────────────────────────────────
+
+console.log("\n📐 Check 5: Dimension Coverage");
+
+const detailsDir = path.join(repoRoot, "public/data/details");
+if (fs.existsSync(detailsDir)) {
+  const detailFiles = fs.readdirSync(detailsDir).filter((f) => f.endsWith(".json")).sort();
+  const latestDetailFile = detailFiles.at(-1);
+  if (latestDetailFile) {
+    try {
+      const latestDetail = JSON.parse(
+        fs.readFileSync(path.join(detailsDir, latestDetailFile), "utf-8")
+      );
+      if (Array.isArray(latestDetail) && latestDetail.length > 0) {
+        const has8DimFields = latestDetail.some(
+          (e) =>
+            Object.prototype.hasOwnProperty.call(e, "dim_public_sentiment") ||
+            Object.prototype.hasOwnProperty.call(e, "dim_parliamentary_activity")
+        );
+
+        if (!has8DimFields) {
+          warn(
+            `Check 5: Skipped — ${latestDetailFile} uses legacy schema without dim_* fields`
+          );
+        }
+
+        const dimsToCheck = has8DimFields
+          ? [
+              "dim_public_sentiment",
+              ...(requireParliamentaryDimension ? ["dim_parliamentary_activity"] : []),
+            ]
+          : [];
+
+        for (const dim of dimsToCheck) {
+          const nonNull = latestDetail.filter(
+            (e) => e[dim] != null && Number.isFinite(e[dim])
+          ).length;
+          const ratio = nonNull / latestDetail.length;
+          if (ratio < 0.8) {
+            fail(
+              `Check 5: ${dim} coverage too low in ${latestDetailFile}: ${nonNull}/${latestDetail.length} (${(ratio * 100).toFixed(0)}%) — expected ≥80%`
+            );
+          }
+        }
+
+        if (!requireParliamentaryDimension && has8DimFields) {
+          console.log("  ↷ dim_parliamentary_activity gate disabled (openKnesset.memberIdMap is empty)");
+        }
+
+        if (dimsToCheck.includes("dim_public_sentiment")) {
+          const dimCount = latestDetail.filter((e) => e.dim_public_sentiment != null).length;
+          if (dimCount >= Math.floor(latestDetail.length * 0.8)) {
+            console.log(
+              `  ✓ ${dimCount}/${latestDetail.length} entries have dim_public_sentiment in ${latestDetailFile}`
+            );
+          }
+        }
+      }
+    } catch (e) {
+      warn(`Check 5: Failed to parse latest detail file: ${e.message}`);
+    }
+  } else {
+    warn("Check 5: Skipped — no detail files found");
+  }
+} else {
+  warn("Check 5: Skipped — details directory not found");
+}
+
+// ── Check 6: Promises DB Integrity ────────────────────────────────────
+
+console.log("\n🤝 Check 6: Promises DB Integrity");
+
+const promisesDbPath = path.join(repoRoot, "data-pipeline/data/promises-database.json");
+try {
+  const promisesDb = JSON.parse(fs.readFileSync(promisesDbPath, "utf-8"));
+
+  if (!promisesDb.version) fail("Check 6: promises-database.json missing 'version' field");
+  if (!promisesDb.politicians || typeof promisesDb.politicians !== "object") {
+    fail("Check 6: promises-database.json missing or invalid 'politicians' object");
+  } else {
+    const politicianKeys = Object.keys(promisesDb.politicians);
+    let totalPromises = 0;
+    let malformedEntries = 0;
+
+    for (const [id, data] of Object.entries(promisesDb.politicians)) {
+      if (!Array.isArray(data.promises)) {
+        fail(`Check 6: politicians.${id}.promises is not an array`);
+        continue;
+      }
+      for (const p of data.promises) {
+        totalPromises++;
+        if (!p.id || !p.text || !p.date || !p.topic) {
+          malformedEntries++;
+          if (malformedEntries <= 3) {
+            warn(`Check 6: Malformed promise in ${id}: missing required fields (id/text/date/topic)`);
+          }
+        }
+        if (p.date && !/^\d{4}-\d{2}-\d{2}$/.test(p.date)) {
+          warn(`Check 6: Invalid date format for promise ${p.id || "(no id)"} in ${id}: ${p.date}`);
+        }
+      }
+    }
+
+    if (malformedEntries > 3) {
+      warn(`Check 6: ${malformedEntries} total malformed promise entries (showing first 3)`);
+    }
+    console.log(
+      `  ✓ promises-database.json: ${politicianKeys.length} politicians, ${totalPromises} promises`
+    );
+  }
+} catch (e) {
+  fail(`Check 6: Failed to parse promises-database.json: ${e.message}`);
 }
 
 // ── Summary ───────────────────────────────────────────────────────────

@@ -1,5 +1,18 @@
 import { describe, it, expect } from "vitest";
-import computeOverallScore from "./lib/computeScore.js";
+import computeOverallScore, {
+  computeOverallScore8dim,
+  computePublicSentiment,
+  computeParliamentaryActivity,
+  computeMediaCredibility,
+  computeTransparencyEthics,
+  computeFieldActivity,
+  computeSatireCulturalImpact,
+  computeLegislativeQuality,
+  computeFlipFlopIndex,
+  computeAgendaBonus,
+  applyWingRelativeNorm,
+  WEIGHTS_8DIM,
+} from "./lib/computeScore.js";
 
 describe("computeOverallScore", () => {
   it("returns 10 for perfect scores (hostility=0, policy=1, amp=1)", () => {
@@ -45,6 +58,258 @@ describe("computeOverallScore", () => {
       const score = computeOverallScore(h, p, m);
       expect(score).toBeGreaterThanOrEqual(0);
       expect(score).toBeLessThanOrEqual(10);
+    }
+  });
+});
+
+describe("WEIGHTS_8DIM", () => {
+  it("weights sum to 1.0", () => {
+    const total = Object.values(WEIGHTS_8DIM).reduce((s, w) => s + w, 0);
+    expect(total).toBeCloseTo(1.0, 5);
+  });
+
+  it("has exactly 8 dimensions", () => {
+    expect(Object.keys(WEIGHTS_8DIM)).toHaveLength(8);
+  });
+});
+
+describe("computePublicSentiment", () => {
+  it("returns 1 for perfect scores", () => {
+    expect(computePublicSentiment(0, 1, 1)).toBeCloseTo(1.0, 5);
+  });
+
+  it("returns 0 for worst scores", () => {
+    expect(computePublicSentiment(1, -1, 0)).toBeCloseTo(0.0, 5);
+  });
+
+  it("returns ~0.5 for neutral inputs", () => {
+    const v = computePublicSentiment(0.5, 0, 0.5);
+    expect(v).toBeGreaterThan(0.4);
+    expect(v).toBeLessThan(0.6);
+  });
+});
+
+describe("computeParliamentaryActivity", () => {
+  it("returns null for null input", () => {
+    expect(computeParliamentaryActivity(null)).toBeNull();
+  });
+
+  it("returns null when both attendance and committee are null", () => {
+    expect(
+      computeParliamentaryActivity({ attendance_rate: null, committee_rate: null })
+    ).toBeNull();
+  });
+
+  it("returns 1 for perfect data", () => {
+    const v = computeParliamentaryActivity({
+      attendance_rate: 1,
+      committee_rate: 1,
+      initiative_score: 1,
+    });
+    expect(v).toBeCloseTo(1.0, 5);
+  });
+
+  it("clamps to [0, 1]", () => {
+    const v = computeParliamentaryActivity({
+      attendance_rate: 2,
+      committee_rate: 2,
+      initiative_score: 5,
+    });
+    expect(v).toBe(1);
+  });
+});
+
+describe("computeMediaCredibility", () => {
+  it("uses only LLM score when factCheck is null", () => {
+    expect(computeMediaCredibility(0.8, null)).toBeCloseTo(0.8, 5);
+  });
+
+  it("blends LLM and fact-check 70/30", () => {
+    const v = computeMediaCredibility(0.8, 0.4);
+    expect(v).toBeCloseTo(0.7 * 0.8 + 0.3 * 0.4, 5);
+  });
+});
+
+describe("computeTransparencyEthics", () => {
+  it("applies no penalty for 0 lobbyist meetings", () => {
+    expect(computeTransparencyEthics(0.8, 0)).toBeCloseTo(0.8, 5);
+  });
+
+  it("applies 0.05 per meeting, capped at 0.3", () => {
+    expect(computeTransparencyEthics(0.8, 2)).toBeCloseTo(0.7, 5);
+    expect(computeTransparencyEthics(0.8, 10)).toBeCloseTo(0.5, 5); // cap at 0.3
+  });
+});
+
+describe("computeFieldActivity", () => {
+  it("returns 0 for 0 activities", () => {
+    expect(computeFieldActivity(0)).toBe(0);
+  });
+
+  it("returns 1 for ≥3 activities", () => {
+    expect(computeFieldActivity(3)).toBe(1);
+    expect(computeFieldActivity(5)).toBe(1);
+  });
+
+  it("returns proportional for 1-2 activities", () => {
+    expect(computeFieldActivity(1)).toBeCloseTo(1 / 3, 5);
+  });
+});
+
+describe("computeSatireCulturalImpact", () => {
+  it("returns 0 for 0 mentions", () => {
+    expect(computeSatireCulturalImpact(0, "neutral")).toBe(0);
+  });
+
+  it("tone_factor: mockery = 0.6, affectionate = 1.0, neutral = 0.85", () => {
+    expect(computeSatireCulturalImpact(3, "mockery")).toBeCloseTo(0.6, 5);
+    expect(computeSatireCulturalImpact(3, "affectionate")).toBeCloseTo(1.0, 5);
+    expect(computeSatireCulturalImpact(3, "neutral")).toBeCloseTo(0.85, 5);
+  });
+
+  it("caps raw at 1.0 before applying tone factor", () => {
+    expect(computeSatireCulturalImpact(10, "affectionate")).toBeCloseTo(1.0, 5);
+    expect(computeSatireCulturalImpact(10, "mockery")).toBeCloseTo(0.6, 5);
+  });
+});
+
+describe("computeLegislativeQuality", () => {
+  it("defaults mmm to 0 if missing", () => {
+    const v = computeLegislativeQuality(0.7, 0);
+    expect(v).toBeCloseTo(0.7 * 0.7, 5);
+  });
+
+  it("blends ratio and mmm 70/30", () => {
+    const v = computeLegislativeQuality(1.0, 2);
+    expect(v).toBeCloseTo(0.7 * 1.0 + 0.3 * 1.0, 5);
+  });
+});
+
+describe("computeFlipFlopIndex", () => {
+  it("returns null when promisesChecked is 0", () => {
+    expect(computeFlipFlopIndex(0, 0)).toBeNull();
+  });
+
+  it("returns 1 for no contradictions", () => {
+    expect(computeFlipFlopIndex(0, 5)).toBe(1);
+  });
+
+  it("returns 0 when all promises contradicted", () => {
+    expect(computeFlipFlopIndex(5, 5)).toBe(0);
+  });
+
+  it("caps at 0 when contradictions > checked", () => {
+    expect(computeFlipFlopIndex(10, 5)).toBe(0);
+  });
+});
+
+describe("computeAgendaBonus", () => {
+  it("maps 1.0 → 0.5", () => {
+    expect(computeAgendaBonus(1.0)).toBe(0.5);
+  });
+
+  it("maps -1.0 → -0.5", () => {
+    expect(computeAgendaBonus(-1.0)).toBe(-0.5);
+  });
+
+  it("maps 0 → 0", () => {
+    expect(computeAgendaBonus(0)).toBe(0);
+  });
+
+  it("clamps to [-0.5, 0.5]", () => {
+    expect(computeAgendaBonus(99)).toBe(0.5);
+    expect(computeAgendaBonus(-99)).toBe(-0.5);
+  });
+});
+
+describe("computeOverallScore8dim", () => {
+  const allDims = {
+    dim_public_sentiment: 0.5,
+    dim_parliamentary_activity: 0.5,
+    dim_media_credibility: 0.5,
+    dim_transparency_ethics: 0.5,
+    dim_field_activity: 0.5,
+    dim_satire_cultural_impact: 0.5,
+    dim_legislative_quality: 0.5,
+    dim_flipflop_index: 0.5,
+  };
+
+  it("returns ~5 for all 0.5 dimensions, no bonus", () => {
+    const score = computeOverallScore8dim(allDims);
+    expect(score).toBeCloseTo(5.0, 1);
+  });
+
+  it("returns 10 for all 1.0 dimensions with agenda +0.5", () => {
+    const perfDims = { ...allDims };
+    Object.keys(perfDims).forEach((k) => (perfDims[k] = 1.0));
+    const score = computeOverallScore8dim(perfDims, "right", 0.5);
+    expect(score).toBe(10);
+  });
+
+  it("handles null dimensions by redistributing weights", () => {
+    const dimsWithNull = {
+      ...allDims,
+      dim_parliamentary_activity: null,
+      dim_flipflop_index: null,
+    };
+    const score = computeOverallScore8dim(dimsWithNull);
+    expect(score).toBeGreaterThan(0);
+    expect(score).toBeLessThanOrEqual(10);
+    expect(Number.isFinite(score)).toBe(true);
+  });
+
+  it("returns a number in [0, 10] range for random inputs", () => {
+    for (let i = 0; i < 20; i++) {
+      const dims = {};
+      for (const key of Object.keys(WEIGHTS_8DIM)) {
+        dims[key] = Math.random() > 0.1 ? Math.random() : null;
+      }
+      const score = computeOverallScore8dim(dims, "left", Math.random() - 0.5);
+      expect(score).toBeGreaterThanOrEqual(0);
+      expect(score).toBeLessThanOrEqual(10);
+    }
+  });
+
+  it("applies agenda bonus correctly", () => {
+    const base = computeOverallScore8dim(allDims, undefined, 0);
+    const withBonus = computeOverallScore8dim(allDims, undefined, 0.5);
+    expect(withBonus - base).toBeCloseTo(0.5, 1);
+  });
+});
+
+describe("applyWingRelativeNorm", () => {
+  it("re-centers coalition subset around 0.5", () => {
+    const entries = [
+      { wing: "right", dim_parliamentary_activity: 0.9 },
+      { wing: "right", dim_parliamentary_activity: 0.1 },
+      { wing: "left", dim_parliamentary_activity: 0.5 },
+    ];
+    applyWingRelativeNorm(entries, "dim_parliamentary_activity");
+    const coalition = entries.filter((e) => e.wing === "right");
+    const mean = coalition.reduce((s, e) => s + e.dim_parliamentary_activity, 0) / coalition.length;
+    expect(mean).toBeCloseTo(0.5, 2);
+  });
+
+  it("does not modify a subset with only 1 member", () => {
+    const entries = [
+      { wing: "right", score: 0.9 },
+      { wing: "left", score: 0.5 },
+    ];
+    const original = entries[0].score;
+    applyWingRelativeNorm(entries, "score");
+    expect(entries[0].score).toBe(original);
+  });
+
+  it("clamps normalized values to [0, 1]", () => {
+    const entries = [
+      { wing: "right", score: 0.0 },
+      { wing: "right", score: 1.0 },
+      { wing: "right", score: 0.5 },
+    ];
+    applyWingRelativeNorm(entries, "score");
+    for (const e of entries) {
+      expect(e.score).toBeGreaterThanOrEqual(0);
+      expect(e.score).toBeLessThanOrEqual(1);
     }
   });
 });

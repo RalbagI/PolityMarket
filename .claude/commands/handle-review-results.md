@@ -14,7 +14,7 @@ Follow the workflow defined in `.agent/workflows/handle-review-results.workflow.
 ## Phase 2: Resolve Findings
 - Address ALL MUST FIX items first (these are blockers)
 - Address ALL SHOULD FIX items next
-- Address NICE TO HAVE items where reasonable, justify skipping any
+- Address ALL NICE TO HAVE items — do not skip any unless technically impossible
 - After fixing, verify:
   - `npx eslint src/` passes
   - `npx vitest run` passes

@@ -1,21 +1,57 @@
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
+import os from "os";
 import { fileURLToPath } from "url";
-import { dailyEntrySchema, llmResponseSchema, summaryRowSchema } from "./lib/parseLLMResponse.js";
+import {
+  dailyEntrySchema,
+  llmResponseSchema,
+  parseLLMResponse8dim,
+  summaryRowSchema8dim,
+} from "./lib/parseLLMResponse.js";
 import retry from "./lib/retry.js";
-import computeOverallScore from "./lib/computeScore.js";
+import {
+  applyWingRelativeNorm,
+  computeAgendaBonus,
+  computeFieldActivity,
+  computeFlipFlopIndex,
+  computeLegislativeQuality,
+  computeMediaCredibility,
+  computeOverallScore8dim,
+  computeParliamentaryActivity,
+  computePublicSentiment,
+  computeSatireCulturalImpact,
+  computeTransparencyEthics,
+} from "./lib/computeScore.js";
+import { fetchParliamentaryData, clearCache as clearOknessetCache } from "./lib/openKnesset.js";
 import {
   aggregateParties,
   detectOutliers,
   isSpamContent,
   validateChainOfThought,
+  validateDimensionConsistency,
   validatePartyConsistency,
   validateTemporalConsistency,
 } from "./lib/validation.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// ── Promises Database ──────────────────────────────────────────────────
+// Static election promises per politician — used for Flip-Flop Index scoring.
+const PROMISES_DB = (() => {
+  try {
+    const dbPath = path.join(__dirname, "data", "promises-database.json");
+    const raw = JSON.parse(fs.readFileSync(dbPath, "utf-8"));
+    console.log(
+      `[Promises] Loaded promises for ${Object.keys(raw.politicians || {}).length} politicians`
+    );
+    return raw.politicians || {};
+  } catch (err) {
+    console.warn(`[Promises] Could not load promises-database.json: ${err.message}`);
+    return {};
+  }
+})();
 
 // ── Hebrew Name Lookup ────────────────────────────────────────────────
 // Load Hebrew politician names from i18n translation file for Hebrew search queries
@@ -759,10 +795,13 @@ const SUMMARY_PATH = path.join(DATA_DIR, "timeseries_summary.json");
 const DETAILS_DIR = path.join(DATA_DIR, "details");
 const RETENTION_DAYS = 90;
 const PIPELINE_TIMEZONE = process.env.TZ || "Asia/Jerusalem";
-const CLAUDE_MODEL = process.env.CLAUDE_MODEL || "opus";
-const CLAUDE_TIMEOUT_MS = parsePositiveInt(process.env.CLAUDE_TIMEOUT_MS, 300000);
-const CLAUDE_MAX_BATCH = parsePositiveInt(process.env.CLAUDE_MAX_BATCH, 135);
-const CLAUDE_MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.CLAUDE_MAX_PROMPT_CHARS, 350000);
+const OPENAI_MODEL_HIGH = process.env.OPENAI_MODEL_HIGH || "gpt-5.4";
+const OPENAI_MODEL_LOW = process.env.OPENAI_MODEL_LOW || "gpt-5.4-mini";
+const OPENAI_TIMEOUT_MS = parsePositiveInt(process.env.OPENAI_TIMEOUT_MS, 600000);
+const MAX_BATCH_SIZE = parsePositiveInt(process.env.MAX_BATCH_SIZE, 50);
+const MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.MAX_PROMPT_CHARS, 350000);
+// Politicians with >= this many headlines+social get the high-tier model
+const OPENAI_HIGH_TIER_THRESHOLD = parseNonNegativeInt(process.env.OPENAI_HIGH_TIER_THRESHOLD, 5);
 const SOURCE_TIMEOUT_MS = parsePositiveInt(process.env.SOURCE_TIMEOUT_MS, 20000);
 const EXPECTED_POLITICIAN_COUNT = parsePositiveInt(
   process.env.PIPELINE_EXPECTED_POLITICIAN_COUNT,
@@ -772,8 +811,6 @@ const MAX_FETCH_FAILURES = parseNonNegativeInt(process.env.PIPELINE_MAX_FETCH_FA
 const SOURCES_CONFIG_PATH = process.env.PIPELINE_SOURCES_PATH
   ? path.resolve(process.env.PIPELINE_SOURCES_PATH)
   : path.join(__dirname, "sources.config.json");
-
-// computeOverallScore imported from ./lib/computeScore.js
 
 const rssFeedCache = new Map();
 const redditFeedCache = new Map();
@@ -1284,24 +1321,28 @@ const SYSTEM_PROMPT = fs.readFileSync(
   "utf-8"
 );
 
-// ── Batched Claude CLI Scoring ───────────────────────────────────────
+// ── Batched Codex CLI Scoring ────────────────────────────────────────
 // Instead of calling an LLM per-politician, we batch politicians into
-// fewer prompts and call Claude CLI for each batch.
+// fewer prompts and call Codex CLI for each batch.
 
-export function buildBatchedPrompt(politicians, politicianDataMap) {
+export function buildBatchedPrompt(
+  politicians,
+  politicianDataMap,
+  oknessetMap,
+  promisesDB,
+  requireCoT = true
+) {
+  const _oknessetMap = oknessetMap || new Map();
+  const _promisesDB = promisesDB || {};
+
   let prompt = `${SYSTEM_PROMPT}
 
 ---
 
-Score ALL ${politicians.length} politicians below. For EACH, output a JSON object with:
-- politician_id: the ID provided
-- chain_of_thought: Hebrew analysis (1-2 sentences)
-- hostility_level: 0.0-1.0
-- policy_approval: -1.0 to 1.0
-- media_amplification: 0.0-1.0
+Score ALL ${politicians.length} politicians below. For EACH, output a JSON object with ALL required fields.
 
 Respond with a raw JSON array of ${politicians.length} objects. No markdown. No code fences.
-"No matched" = neutral scores (0.0, 0.0, 0.0). Do NOT output overall_score.
+"No matched headlines/mentions" = use neutral defaults. Do NOT output overall_score.
 
 ---
 `;
@@ -1309,6 +1350,8 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
   for (let i = 0; i < politicians.length; i++) {
     const p = politicians[i];
     const data = politicianDataMap.get(p.id) || { headlines: [], socialMentions: [] };
+    const okData = _oknessetMap.get(p.id) ?? null;
+    const politicianPromises = _promisesDB[p.id]?.promises ?? [];
 
     const headlineBlock =
       data.headlines.length > 0
@@ -1324,40 +1367,60 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
                 entry += " [Speaker: known satirist]";
               }
               if (m.thread_context?.length) {
-                entry += "\n  Thread context: " + m.thread_context.map((t) => `"${t}"`).join(" → ");
+                entry += `\n  Thread context: "${m.thread_context[0]}"`;
               }
               return entry;
             })
             .join("\n")
         : "No matched social mentions";
 
+    // Voting record block from OpenKnesset (up to 10 votes)
+    const votingBlock =
+      okData?.voting_record?.length > 0
+        ? okData.voting_record
+            .map((v) => `  - "${v.title}" — voted: ${v.vote}${v.date ? ` (${v.date})` : ""}`)
+            .join("\n")
+        : "  No recent voting record available";
+
+    const mmmCount = okData?.mmm_requests_count ?? 0;
+
+    // Promises block (top 5 by weight, for LLM flip-flop analysis)
+    const topPromises = [...politicianPromises]
+      .sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0))
+      .slice(0, 5);
+
+    const promisesBlock =
+      topPromises.length > 0
+        ? topPromises
+            .map(
+              (pr) =>
+                `  - "${String(pr.text_en || "").slice(0, 200)}" [date: ${pr.date}] [topic: ${pr.topic}] [context: ${pr.context}]`
+            )
+            .join("\n")
+        : "  No promises database entries for this politician";
+
+    const coalitionRole = ["right", "religious"].includes(p.wing) ? "coalition" : "opposition";
+    const cotFlag = requireCoT ? "" : " [COT: skip]";
+
     prompt += `
-[${i + 1}] ${p.id} | ${p.name} (${p.party})
+[${i + 1}] ${p.id} | ${p.name} (${p.party}) | Wing: ${p.wing} | Role: ${coalitionRole}${cotFlag}
 Headlines:
 ${headlineBlock}
 Social:
 ${mentionBlock}
+Voting record (last 7 days, from OpenKnesset):
+${votingBlock}
+MMM research requests this week: ${mmmCount}
+Election promises (compare against current week actions):
+${promisesBlock}
 `;
   }
 
   return prompt;
 }
 
-export function parseClaudeCliOutput(rawOutput) {
-  let response;
-  try {
-    response = JSON.parse(rawOutput);
-  } catch (err) {
-    throw new Error(`Failed to parse Claude CLI JSON envelope: ${err.message}`);
-  }
-
-  if (response?.is_error) {
-    throw new Error(`Claude CLI error: ${response.result || "unknown"}`);
-  }
-
-  const content = typeof response?.result === "string" ? response.result : "";
-  // Strip markdown code fences if present
-  const cleaned = content
+export function parseCodexOutput(rawText) {
+  const cleaned = rawText
     .replace(/^```(?:json)?\s*/m, "")
     .replace(/\s*```\s*$/m, "")
     .trim();
@@ -1366,67 +1429,96 @@ export function parseClaudeCliOutput(rawOutput) {
   try {
     parsed = JSON.parse(cleaned);
   } catch (e) {
-    // Try to extract JSON array from response
     const start = cleaned.indexOf("[");
     const end = cleaned.lastIndexOf("]");
     if (start !== -1 && end > start) {
-      parsed = JSON.parse(cleaned.slice(start, end + 1));
+      try {
+        parsed = JSON.parse(cleaned.slice(start, end + 1));
+      } catch (innerErr) {
+        throw new Error(`Failed to parse Codex response JSON fragment: ${innerErr.message}`);
+      }
     } else {
-      throw new Error(`Failed to parse Claude response as JSON: ${e.message}`);
+      throw new Error(`Failed to parse Codex response as JSON: ${e.message}`);
     }
   }
 
   if (!Array.isArray(parsed)) {
-    throw new Error(`Claude response is not an array (got ${typeof parsed})`);
+    throw new Error(`Codex response is not an array (got ${typeof parsed})`);
   }
 
-  return {
-    results: parsed,
-    durationMs: response?.duration_ms,
-    totalCostUsd: response?.total_cost_usd,
-  };
+  return parsed;
 }
 
-function callClaudeCLI(prompt) {
+// reasoningEffort: "low" | "medium" | "high" | "xhigh" per codex config.toml spec
+function callCodexCLI(prompt, model, reasoningEffort = "medium") {
+  const tmpOut = path.join(
+    os.tmpdir(),
+    `codex-out-${Date.now()}-${Math.random().toString(36).slice(2)}.txt`
+  );
   const env = { ...process.env };
-  delete env.CLAUDECODE; // Allow nested CLI invocation
 
-  const raw = execFileSync("claude", ["-p", "--model", CLAUDE_MODEL, "--output-format", "json"], {
-    input: prompt,
-    env,
-    maxBuffer: 20 * 1024 * 1024,
-    timeout: CLAUDE_TIMEOUT_MS,
-    encoding: "utf-8",
-  });
+  try {
+    // SECURITY: execute codex in a read-only sandbox without bypassing approvals.
+    // The prompt contains untrusted RSS/social data, so prompt-injected shell/tool actions
+    // should fail closed rather than execute unsandboxed commands.
+    execFileSync(
+      "codex",
+      [
+        "exec",
+        "--ephemeral",
+        "--sandbox",
+        "read-only",
+        "-m",
+        model,
+        "-c",
+        `model_reasoning_effort="${reasoningEffort}"`,
+        "-o",
+        tmpOut,
+      ],
+      {
+        input: prompt,
+        env,
+        maxBuffer: 20 * 1024 * 1024,
+        timeout: OPENAI_TIMEOUT_MS,
+        encoding: "utf-8",
+      }
+    );
 
-  const parsed = parseClaudeCliOutput(raw);
-  const duration = Number.isFinite(parsed.durationMs) ? parsed.durationMs : "n/a";
-  const cost =
-    typeof parsed.totalCostUsd === "number" ? `$${parsed.totalCostUsd.toFixed(4)}` : "n/a";
-  console.log(`  Claude CLI: ${duration}ms, ${cost}`);
-  return parsed.results;
+    if (!fs.existsSync(tmpOut)) {
+      throw new Error("Codex CLI did not produce an output file");
+    }
+    const output = fs.readFileSync(tmpOut, "utf-8").trim();
+    if (!output) {
+      throw new Error("Codex CLI produced an empty output file");
+    }
+    console.log(`  Codex [${model}]: ${output.length} chars`);
+    return parseCodexOutput(output);
+  } finally {
+    try {
+      fs.unlinkSync(tmpOut);
+    } catch {
+      // ignore cleanup errors
+    }
+  }
 }
 
-export function shouldRetryClaudeBatchError(err) {
+export function shouldRetryBatchError(err) {
   const msg = String(err?.message || "").toLowerCase();
 
-  // Permanent environment/configuration failures should fail fast.
-  if (msg.includes("enoent") && msg.includes("claude")) {
+  if (msg.includes("enoent") && msg.includes("codex")) {
     return false;
   }
   if (
-    msg.includes("claude cli error") &&
-    (msg.includes("authentication") ||
-      msg.includes("api key") ||
-      msg.includes("not authorized") ||
-      msg.includes("permission denied") ||
-      msg.includes("invalid model") ||
-      msg.includes("model not found"))
+    msg.includes("authentication") ||
+    msg.includes("api key") ||
+    msg.includes("not authorized") ||
+    msg.includes("permission denied") ||
+    msg.includes("invalid model") ||
+    msg.includes("model not found")
   ) {
     return false;
   }
 
-  // Retry parse errors as the model may return valid JSON on a subsequent attempt.
   return true;
 }
 
@@ -1434,7 +1526,9 @@ export function splitPoliticiansIntoBatches(
   politicians,
   politicianDataMap,
   maxBatchSize,
-  maxPromptChars
+  maxPromptChars,
+  oknessetMap,
+  promisesDB
 ) {
   if (!Array.isArray(politicians) || politicians.length === 0) {
     return [];
@@ -1447,16 +1541,16 @@ export function splitPoliticiansIntoBatches(
 
   const exceedsPromptBudget = (batch) => {
     if (!enforceCharBudget) return false;
-    return buildBatchedPrompt(batch, politicianDataMap).length > maxPromptChars;
+    return (
+      buildBatchedPrompt(batch, politicianDataMap, oknessetMap, promisesDB).length > maxPromptChars
+    );
   };
 
   for (const politician of politicians) {
     if (current.length === 0) {
       current = [politician];
       if (exceedsPromptBudget(current)) {
-        console.warn(
-          `  ⚠ Single-politician prompt exceeds CLAUDE_MAX_PROMPT_CHARS for ${politician.id}`
-        );
+        console.warn(`  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`);
       }
       continue;
     }
@@ -1468,9 +1562,7 @@ export function splitPoliticiansIntoBatches(
       batches.push(current);
       current = [politician];
       if (exceedsPromptBudget(current)) {
-        console.warn(
-          `  ⚠ Single-politician prompt exceeds CLAUDE_MAX_PROMPT_CHARS for ${politician.id}`
-        );
+        console.warn(`  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`);
       }
       continue;
     }
@@ -1484,39 +1576,70 @@ export function splitPoliticiansIntoBatches(
   return batches;
 }
 
-async function batchScoreAllPoliticians(politicians, politicianDataMap) {
-  const batchSize = Math.min(CLAUDE_MAX_BATCH, Math.max(1, politicians.length));
-  const batches = splitPoliticiansIntoBatches(
-    politicians,
-    politicianDataMap,
-    batchSize,
-    CLAUDE_MAX_PROMPT_CHARS
+async function batchScoreAllPoliticians(politicians, politicianDataMap, oknessetMap, promisesDB) {
+  // Classify by news activity: high-tier gets OPENAI_MODEL_HIGH, low-tier gets OPENAI_MODEL_LOW
+  const highTier = [];
+  const lowTier = [];
+  for (const p of politicians) {
+    const data = politicianDataMap.get(p.id) || { headlines: [], socialMentions: [] };
+    const activity = data.headlines.length + Math.floor(data.socialMentions.length / 2);
+    if (activity >= OPENAI_HIGH_TIER_THRESHOLD) {
+      highTier.push(p);
+    } else {
+      lowTier.push(p);
+    }
+  }
+
+  console.log(
+    `  Model tiering: ${highTier.length} → ${OPENAI_MODEL_HIGH}, ${lowTier.length} → ${OPENAI_MODEL_LOW}`
   );
 
   const allResults = [];
 
-  for (let b = 0; b < batches.length; b++) {
-    const batch = batches[b];
-    console.log(
-      `\n  Scoring batch ${b + 1}/${batches.length} (${batch.length} politicians) via Claude ${CLAUDE_MODEL}...`
+  for (const [tierName, tierPoliticians, model, requireCoT, reasoning] of [
+    ["HIGH", highTier, OPENAI_MODEL_HIGH, true, "high"],
+    ["LOW", lowTier, OPENAI_MODEL_LOW, false, "low"],
+  ]) {
+    if (tierPoliticians.length === 0) continue;
+
+    const batches = splitPoliticiansIntoBatches(
+      tierPoliticians,
+      politicianDataMap,
+      MAX_BATCH_SIZE,
+      MAX_PROMPT_CHARS,
+      oknessetMap,
+      promisesDB
     );
 
-    const prompt = buildBatchedPrompt(batch, politicianDataMap);
-    console.log(`  Prompt size: ${prompt.length} chars`);
+    for (let b = 0; b < batches.length; b++) {
+      const batch = batches[b];
+      console.log(
+        `\n  [${tierName}] Batch ${b + 1}/${batches.length} (${batch.length} politicians) via ${model}...`
+      );
 
-    const results = await retry(() => callClaudeCLI(prompt), {
-      maxRetries: 2,
-      initialDelay: 5000,
-      maxDelay: 30000,
-      shouldRetry: shouldRetryClaudeBatchError,
-      onRetry: (err, attempt, delay) => {
-        console.warn(
-          `  ⟳ Retry ${attempt}/2 for batch ${b + 1} in ${Math.round(delay)}ms: ${err.message}`
-        );
-      },
-    });
+      const prompt = buildBatchedPrompt(
+        batch,
+        politicianDataMap,
+        oknessetMap,
+        promisesDB,
+        requireCoT
+      );
+      console.log(`  Prompt size: ${prompt.length} chars`);
 
-    allResults.push(...results);
+      const results = await retry(() => callCodexCLI(prompt, model, reasoning), {
+        maxRetries: 2,
+        initialDelay: 5000,
+        maxDelay: 30000,
+        shouldRetry: shouldRetryBatchError,
+        onRetry: (err, attempt, delay) => {
+          console.warn(
+            `  ⟳ Retry ${attempt}/2 for [${tierName}] batch ${b + 1} in ${Math.round(delay)}ms: ${err.message}`
+          );
+        },
+      });
+
+      allResults.push(...results);
+    }
   }
 
   return allResults;
@@ -1547,8 +1670,17 @@ function appendToSummary(entries, today) {
       role: entry.role,
       overall_score: entry.overall_score,
       media_volume: entry.media_volume,
+      // 8-dimension scores (null for historical entries)
+      dim_public_sentiment: entry.dim_public_sentiment ?? null,
+      dim_parliamentary_activity: entry.dim_parliamentary_activity ?? null,
+      dim_media_credibility: entry.dim_media_credibility ?? null,
+      dim_transparency_ethics: entry.dim_transparency_ethics ?? null,
+      dim_field_activity: entry.dim_field_activity ?? null,
+      dim_satire_cultural_impact: entry.dim_satire_cultural_impact ?? null,
+      dim_legislative_quality: entry.dim_legislative_quality ?? null,
+      dim_flipflop_index: entry.dim_flipflop_index ?? null,
     };
-    const validated = summaryRowSchema.safeParse(summaryRow);
+    const validated = summaryRowSchema8dim.safeParse(summaryRow);
     if (!validated.success) {
       const errors = validated.error.issues
         .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
@@ -1570,7 +1702,10 @@ function writeDetailFile(entries, today) {
     politician_id: e.politician_id,
     name: e.name,
     party: e.party,
+    wing: e.wing,
+    sector: e.sector,
     role: e.role,
+    // Core 3-dim LLM outputs
     hostility_level: e.hostility_level,
     policy_approval: e.policy_approval,
     media_amplification: e.media_amplification,
@@ -1579,6 +1714,42 @@ function writeDetailFile(entries, today) {
     media_volume: e.media_volume,
     overall_score: e.overall_score,
     chain_of_thought: e.chain_of_thought,
+    // 8-dimension composite scores
+    dim_public_sentiment: e.dim_public_sentiment ?? null,
+    dim_parliamentary_activity: e.dim_parliamentary_activity ?? null,
+    dim_media_credibility: e.dim_media_credibility ?? null,
+    dim_transparency_ethics: e.dim_transparency_ethics ?? null,
+    dim_field_activity: e.dim_field_activity ?? null,
+    dim_satire_cultural_impact: e.dim_satire_cultural_impact ?? null,
+    dim_legislative_quality: e.dim_legislative_quality ?? null,
+    dim_flipflop_index: e.dim_flipflop_index ?? null,
+    // Agenda bonus
+    agenda_setting_score: e.agenda_setting_score ?? null,
+    agenda_bonus: e.agenda_bonus ?? null,
+    // Media credibility sub-fields
+    media_credibility_llm: e.media_credibility_llm ?? null,
+    media_credibility_factcheck: e.media_credibility_factcheck ?? null,
+    tv_radio_mentions: e.tv_radio_mentions ?? null,
+    // Satire sub-fields
+    satire_mentions_count: e.satire_mentions_count ?? null,
+    satire_tone: e.satire_tone ?? null,
+    // Field activity sub-fields
+    field_activities_confirmed: e.field_activities_confirmed ?? null,
+    // Transparency sub-fields
+    transparency_ethics_score: e.transparency_ethics_score ?? null,
+    lobbyist_meetings_count: e.lobbyist_meetings_count ?? null,
+    // Parliamentary sub-fields (OpenKnesset)
+    parl_attendance_rate: e.parl_attendance_rate ?? null,
+    parl_committee_rate: e.parl_committee_rate ?? null,
+    parl_initiative_score: e.parl_initiative_score ?? null,
+    parl_data_source: e.parl_data_source ?? null,
+    // Legislative quality sub-fields
+    legislative_pro_socioeconomic: e.legislative_pro_socioeconomic ?? null,
+    mmm_requests_count: e.mmm_requests_count ?? null,
+    // Flip-flop sub-fields
+    flipflop_contradictions: e.flipflop_contradictions ?? null,
+    flipflop_promises_checked: e.flipflop_promises_checked ?? null,
+    // Source data
     news_headlines: Array.isArray(e.news_headlines) ? e.news_headlines : [],
     social_mentions: Array.isArray(e.social_mentions) ? e.social_mentions : [],
   }));
@@ -1636,7 +1807,9 @@ function pruneOldDetails() {
 async function main() {
   const today = getCurrentDateString();
   console.log(`\n📊 PolityMarket Daily Pipeline — ${today}`);
-  console.log(`   LLM: Claude ${CLAUDE_MODEL} (batched)\n`);
+  console.log(
+    `   LLM: ${OPENAI_MODEL_HIGH} (high-tier) / ${OPENAI_MODEL_LOW} (low-tier) — batched\n`
+  );
 
   if (POLITICIANS.length !== EXPECTED_POLITICIAN_COUNT) {
     throw new Error(
@@ -1683,13 +1856,42 @@ async function main() {
     `  Fetched data for ${politicianDataMap.size} politicians (${fetchFailures.length} partial failures)`
   );
 
-  // ── Phase 2: Batch-score all politicians via Claude CLI ─────────────
-  console.log("\nPhase 2: Scoring via Claude CLI...");
-  const llmResults = await batchScoreAllPoliticians(POLITICIANS, politicianDataMap);
+  // ── Phase 0.5: Fetch structured parliamentary data (OpenKnesset) ────
+  console.log("\nPhase 0.5: Fetching structured parliamentary data...");
+  clearOknessetCache();
+  const oknessetMap = new Map();
+  const oknessetConfig = sourceConfig.openKnesset;
+
+  if (oknessetConfig?.memberIdMap && Object.keys(oknessetConfig.memberIdMap).length > 0) {
+    const oknessetResults = await Promise.allSettled(
+      POLITICIANS.map((p) => fetchParliamentaryData(p.id, oknessetConfig))
+    );
+    let okHits = 0;
+    for (let i = 0; i < POLITICIANS.length; i++) {
+      const p = POLITICIANS[i];
+      const result = oknessetResults[i];
+      const data = result.status === "fulfilled" ? result.value : null;
+      oknessetMap.set(p.id, data);
+      if (data) okHits++;
+    }
+    console.log(`  → OpenKnesset: ${okHits}/${POLITICIANS.length} politicians with data`);
+  } else {
+    console.log("  → OpenKnesset: skipped (no memberIdMap configured in sources.config.json)");
+    for (const p of POLITICIANS) oknessetMap.set(p.id, null);
+  }
+
+  // ── Phase 2: Batch-score all politicians via OpenAI Codex CLI ───────
+  console.log("\nPhase 2: Scoring via OpenAI Codex CLI...");
+  const llmResults = await batchScoreAllPoliticians(
+    POLITICIANS,
+    politicianDataMap,
+    oknessetMap,
+    PROMISES_DB
+  );
 
   if (llmResults.length !== POLITICIANS.length) {
-    throw new Error(
-      `LLM result count mismatch: expected ${POLITICIANS.length}, got ${llmResults.length}`
+    console.warn(
+      `  ⚠ LLM result count mismatch: expected ${POLITICIANS.length}, got ${llmResults.length} — deduplicating by politician_id`
     );
   }
 
@@ -1720,11 +1922,22 @@ async function main() {
         throw new Error(`No LLM result found for politician_id: ${politician.id}`);
       }
 
-      const parsedLLM = llmResponseSchema.safeParse(llmResult);
-      if (!parsedLLM.success) {
-        const errors = parsedLLM.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`);
-        throw new Error(
-          `LLM response validation failed for ${politician.id}: ${errors.join("; ")}`
+      // Try 8-dim schema first; fall back to original 3-dim for resilience
+      const parsed8 = parseLLMResponse8dim(llmResult);
+      let llmData;
+      if (parsed8.success) {
+        llmData = parsed8.data;
+      } else {
+        const parsed3 = llmResponseSchema.safeParse(llmResult);
+        if (!parsed3.success) {
+          const errors = parsed3.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`);
+          throw new Error(
+            `LLM response validation failed for ${politician.id}: ${errors.join("; ")}`
+          );
+        }
+        llmData = parsed3.data;
+        console.warn(
+          `  ⚠ ${politician.name}: 8-dim schema parse failed (${parsed8.errors?.join(", ")}), fell back to 3-dim`
         );
       }
 
@@ -1733,9 +1946,56 @@ async function main() {
         policy_approval: policy,
         media_amplification: amplification,
         chain_of_thought: chainOfThought,
-      } = parsedLLM.data;
+        media_credibility_score = 0.5,
+        tv_radio_mentions = 0,
+        satire_mentions_count = 0,
+        satire_tone = "neutral",
+        field_activities_confirmed = 0,
+        transparency_ethics_score = 0.5,
+        lobbyist_meetings_count = 0,
+        legislative_pro_socioeconomic_ratio = 0.5,
+        agenda_setting_score = 0,
+        flipflop_contradictions = 0,
+        flipflop_promises_checked = 0,
+      } = llmData;
 
-      const overallScore = computeOverallScore(hostility, policy, amplification);
+      // Compute each dimension
+      const okData = oknessetMap.get(politician.id) ?? null;
+
+      const dim_public_sentiment = computePublicSentiment(hostility, policy, amplification);
+      const dim_parliamentary_activity = computeParliamentaryActivity(okData);
+      const dim_media_credibility = computeMediaCredibility(media_credibility_score, null);
+      const dim_transparency_ethics = computeTransparencyEthics(
+        transparency_ethics_score,
+        lobbyist_meetings_count
+      );
+      const dim_field_activity = computeFieldActivity(field_activities_confirmed);
+      const dim_satire_cultural_impact = computeSatireCulturalImpact(
+        satire_mentions_count,
+        satire_tone
+      );
+      const dim_legislative_quality = computeLegislativeQuality(
+        legislative_pro_socioeconomic_ratio,
+        okData?.mmm_requests_count ?? 0
+      );
+      const dim_flipflop_index = computeFlipFlopIndex(
+        flipflop_contradictions,
+        flipflop_promises_checked
+      );
+      const agenda_bonus = computeAgendaBonus(agenda_setting_score);
+
+      const dims = {
+        dim_public_sentiment,
+        dim_parliamentary_activity,
+        dim_media_credibility,
+        dim_transparency_ethics,
+        dim_field_activity,
+        dim_satire_cultural_impact,
+        dim_legislative_quality,
+        dim_flipflop_index,
+      };
+
+      const overallScore = computeOverallScore8dim(dims, politician.wing, agenda_bonus);
       const data = politicianDataMap.get(politician.id) || { headlines: [], socialMentions: [] };
 
       const entry = {
@@ -1754,10 +2014,48 @@ async function main() {
         news_sentiment: parseFloat((((policy + 1) / 2) * 10).toFixed(1)),
         social_sentiment: parseFloat(((1 - hostility) * 10).toFixed(1)),
         media_volume: parseFloat((amplification * 10).toFixed(1)),
+        // 8-dimension scores
+        dim_public_sentiment: parseFloat(dim_public_sentiment.toFixed(3)),
+        dim_parliamentary_activity:
+          dim_parliamentary_activity != null
+            ? parseFloat(dim_parliamentary_activity.toFixed(3))
+            : null,
+        dim_media_credibility: parseFloat(dim_media_credibility.toFixed(3)),
+        dim_transparency_ethics: parseFloat(dim_transparency_ethics.toFixed(3)),
+        dim_field_activity: parseFloat(dim_field_activity.toFixed(3)),
+        dim_satire_cultural_impact: parseFloat(dim_satire_cultural_impact.toFixed(3)),
+        dim_legislative_quality: parseFloat(dim_legislative_quality.toFixed(3)),
+        dim_flipflop_index:
+          dim_flipflop_index != null ? parseFloat(dim_flipflop_index.toFixed(3)) : null,
+        // Agenda bonus
+        agenda_setting_score,
+        agenda_bonus: parseFloat(agenda_bonus.toFixed(3)),
+        // Raw LLM sub-fields
+        media_credibility_llm: parseFloat(media_credibility_score.toFixed(3)),
+        media_credibility_factcheck: null,
+        tv_radio_mentions,
+        satire_mentions_count,
+        satire_tone,
+        field_activities_confirmed,
+        transparency_ethics_score: parseFloat(transparency_ethics_score.toFixed(3)),
+        lobbyist_meetings_count,
+        // Parliamentary sub-fields
+        parl_attendance_rate: okData?.attendance_rate ?? null,
+        parl_committee_rate: okData?.committee_rate ?? null,
+        parl_initiative_score: okData?.initiative_score ?? null,
+        parl_data_source: okData ? "openKnesset" : null,
+        // Legislative sub-fields
+        legislative_pro_socioeconomic: parseFloat(legislative_pro_socioeconomic_ratio.toFixed(3)),
+        mmm_requests_count: okData?.mmm_requests_count ?? null,
+        // Flip-flop sub-fields
+        flipflop_contradictions,
+        flipflop_promises_checked,
+        // Source data
         news_headlines: data.headlines,
         social_mentions: data.socialMentions,
       };
 
+      // Validate with original schema (core fields only) — 8-dim fields are extras
       const validation = dailyEntrySchema.safeParse(entry);
       if (!validation.success) {
         const errors = validation.error.issues
@@ -1766,7 +2064,8 @@ async function main() {
         throw new Error(`Entry validation failed: ${errors}`);
       }
 
-      newEntries.push(validation.data);
+      // Merge validated core with the extended 8-dim fields
+      newEntries.push({ ...entry, ...validation.data });
     } catch (err) {
       console.error(`  ✗ Failed to process ${politician.name}: ${err.message}`);
       processFailures.push(politician.name);
@@ -1782,6 +2081,28 @@ async function main() {
   if (newEntries.length !== EXPECTED_POLITICIAN_COUNT) {
     throw new Error(
       `Entry count mismatch after processing: expected ${EXPECTED_POLITICIAN_COUNT}, got ${newEntries.length}`
+    );
+  }
+
+  // Apply wing-relative normalization to parliamentary activity and legislative quality
+  applyWingRelativeNorm(newEntries, "dim_parliamentary_activity");
+  applyWingRelativeNorm(newEntries, "dim_legislative_quality");
+
+  // Recompute overall score after dimension normalization to keep overall and dim_* in sync.
+  for (const entry of newEntries) {
+    entry.overall_score = computeOverallScore8dim(
+      {
+        dim_public_sentiment: entry.dim_public_sentiment,
+        dim_parliamentary_activity: entry.dim_parliamentary_activity,
+        dim_media_credibility: entry.dim_media_credibility,
+        dim_transparency_ethics: entry.dim_transparency_ethics,
+        dim_field_activity: entry.dim_field_activity,
+        dim_satire_cultural_impact: entry.dim_satire_cultural_impact,
+        dim_legislative_quality: entry.dim_legislative_quality,
+        dim_flipflop_index: entry.dim_flipflop_index,
+      },
+      entry.wing,
+      entry.agenda_bonus ?? 0
     );
   }
 
@@ -1807,6 +2128,9 @@ async function main() {
     ...validateTemporalConsistency(newEntries, recentHistory),
     ...detectOutliers(newEntries),
     ...validatePartyConsistency(partyEntries),
+    ...validateDimensionConsistency(newEntries, {
+      requireParliamentaryActivity: Object.keys(oknessetConfig?.memberIdMap ?? {}).length > 0,
+    }),
   ];
 
   if (allWarnings.length) {
