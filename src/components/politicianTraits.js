@@ -41,7 +41,15 @@ const TRAIT_ENUMS = {
   hair: new Set(["swept", "short", "curly", "receding", "bald", "long", "styled", "side-part"]),
   glasses: new Set(["round", "rectangular", "thin", null]),
   beard: new Set(["full", "goatee", "stubble", "mustache", null]),
-  headCovering: new Set(["kippah", "kippah-white", "kippah-knit", "shtreimel", "hijab", null]),
+  headCovering: new Set([
+    "kippah",
+    "kippah-white",
+    "kippah-knit",
+    "shtreimel",
+    "hijab",
+    "tichel",
+    null,
+  ]),
 };
 
 const COLOR_FIELDS = new Set([
@@ -49,6 +57,7 @@ const COLOR_FIELDS = new Set([
   "hairColor",
   "eyeColor",
   "beardColor",
+  "headCoveringColor",
   "suitColor",
   "tieColor",
   "bgColor",

@@ -173,6 +173,8 @@
     "hair": "long",
     "hairColor": "#5a3a2a",
     "face": "oval",
+    "headCovering": "tichel",
+    "headCoveringColor": "#c0392b",
     "suitColor": "#2c3e50"
   },
   "keti-shitrit": {

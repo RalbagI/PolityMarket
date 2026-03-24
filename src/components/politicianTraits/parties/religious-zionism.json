@@ -6,6 +6,8 @@
     "hair": "long",
     "hairColor": "#5a3a2a",
     "face": "oval",
+    "headCovering": "tichel",
+    "headCoveringColor": "#2c6e8a",
     "suitColor": "#2c3e50"
   },
   "moshe-solomon": {
@@ -44,7 +46,8 @@
     "hair": "long",
     "hairColor": "#8b6914",
     "face": "oval",
-    "headCovering": "kippah-knit",
+    "headCovering": "tichel",
+    "headCoveringColor": "#8e44ad",
     "suitColor": "#2c3e50"
   },
   "simcha-rothman": {
