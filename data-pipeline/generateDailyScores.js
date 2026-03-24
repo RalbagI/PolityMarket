@@ -1321,11 +1321,17 @@ const SYSTEM_PROMPT = fs.readFileSync(
   "utf-8"
 );
 
-// ── Batched Claude CLI Scoring ───────────────────────────────────────
+// ── Batched Codex CLI Scoring ────────────────────────────────────────
 // Instead of calling an LLM per-politician, we batch politicians into
-// fewer prompts and call Claude CLI for each batch.
+// fewer prompts and call Codex CLI for each batch.
 
-export function buildBatchedPrompt(politicians, politicianDataMap, oknessetMap, promisesDB, requireCoT = true) {
+export function buildBatchedPrompt(
+  politicians,
+  politicianDataMap,
+  oknessetMap,
+  promisesDB,
+  requireCoT = true
+) {
   const _oknessetMap = oknessetMap || new Map();
   const _promisesDB = promisesDB || {};
 
@@ -1452,19 +1458,22 @@ function callCodexCLI(prompt, model, reasoningEffort = "medium") {
   const env = { ...process.env };
 
   try {
-    // SECURITY: --dangerously-bypass-approvals-and-sandbox is required because codex exec
-    // in non-interactive mode needs auto-approval. The prompt contains untrusted RSS/social data;
-    // the system prompt includes "Do NOT run any shell commands" as defense-in-depth.
-    // TODO: Switch to --full-auto or --sandbox read-only when codex CLI supports -o with sandbox.
+    // SECURITY: execute codex in a read-only sandbox without bypassing approvals.
+    // The prompt contains untrusted RSS/social data, so prompt-injected shell/tool actions
+    // should fail closed rather than execute unsandboxed commands.
     execFileSync(
       "codex",
       [
         "exec",
         "--ephemeral",
-        "--dangerously-bypass-approvals-and-sandbox",
-        "-m", model,
-        "-c", `model_reasoning_effort="${reasoningEffort}"`,
-        "-o", tmpOut,
+        "--sandbox",
+        "read-only",
+        "-m",
+        model,
+        "-c",
+        `model_reasoning_effort="${reasoningEffort}"`,
+        "-o",
+        tmpOut,
       ],
       {
         input: prompt,
@@ -1541,9 +1550,7 @@ export function splitPoliticiansIntoBatches(
     if (current.length === 0) {
       current = [politician];
       if (exceedsPromptBudget(current)) {
-        console.warn(
-          `  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`
-        );
+        console.warn(`  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`);
       }
       continue;
     }
@@ -1555,9 +1562,7 @@ export function splitPoliticiansIntoBatches(
       batches.push(current);
       current = [politician];
       if (exceedsPromptBudget(current)) {
-        console.warn(
-          `  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`
-        );
+        console.warn(`  ⚠ Single-politician prompt exceeds MAX_PROMPT_CHARS for ${politician.id}`);
       }
       continue;
     }
@@ -1612,7 +1617,13 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
         `\n  [${tierName}] Batch ${b + 1}/${batches.length} (${batch.length} politicians) via ${model}...`
       );
 
-      const prompt = buildBatchedPrompt(batch, politicianDataMap, oknessetMap, promisesDB, requireCoT);
+      const prompt = buildBatchedPrompt(
+        batch,
+        politicianDataMap,
+        oknessetMap,
+        promisesDB,
+        requireCoT
+      );
       console.log(`  Prompt size: ${prompt.length} chars`);
 
       const results = await retry(() => callCodexCLI(prompt, model, reasoning), {
@@ -1796,7 +1807,9 @@ function pruneOldDetails() {
 async function main() {
   const today = getCurrentDateString();
   console.log(`\n📊 PolityMarket Daily Pipeline — ${today}`);
-  console.log(`   LLM: ${OPENAI_MODEL_HIGH} (high-tier) / ${OPENAI_MODEL_LOW} (low-tier) — batched\n`);
+  console.log(
+    `   LLM: ${OPENAI_MODEL_HIGH} (high-tier) / ${OPENAI_MODEL_LOW} (low-tier) — batched\n`
+  );
 
   if (POLITICIANS.length !== EXPECTED_POLITICIAN_COUNT) {
     throw new Error(
