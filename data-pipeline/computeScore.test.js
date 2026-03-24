@@ -95,7 +95,9 @@ describe("computeParliamentaryActivity", () => {
   });
 
   it("returns null when both attendance and committee are null", () => {
-    expect(computeParliamentaryActivity({ attendance_rate: null, committee_rate: null })).toBeNull();
+    expect(
+      computeParliamentaryActivity({ attendance_rate: null, committee_rate: null })
+    ).toBeNull();
   });
 
   it("returns 1 for perfect data", () => {
@@ -188,16 +190,16 @@ describe("computeFlipFlopIndex", () => {
     expect(computeFlipFlopIndex(0, 0)).toBeNull();
   });
 
-  it("returns 0 for no contradictions", () => {
-    expect(computeFlipFlopIndex(0, 5)).toBe(0);
+  it("returns 1 for no contradictions", () => {
+    expect(computeFlipFlopIndex(0, 5)).toBe(1);
   });
 
-  it("returns 1 when all promises contradicted", () => {
-    expect(computeFlipFlopIndex(5, 5)).toBe(1);
+  it("returns 0 when all promises contradicted", () => {
+    expect(computeFlipFlopIndex(5, 5)).toBe(0);
   });
 
-  it("caps at 1 when contradictions > checked", () => {
-    expect(computeFlipFlopIndex(10, 5)).toBe(1);
+  it("caps at 0 when contradictions > checked", () => {
+    expect(computeFlipFlopIndex(10, 5)).toBe(0);
   });
 });
 
@@ -237,13 +239,11 @@ describe("computeOverallScore8dim", () => {
     expect(score).toBeCloseTo(5.0, 1);
   });
 
-  it("returns 10 for all 1.0 dimensions, flipflop inverted → 0, agenda +0.5", () => {
+  it("returns 10 for all 1.0 dimensions with agenda +0.5", () => {
     const perfDims = { ...allDims };
     Object.keys(perfDims).forEach((k) => (perfDims[k] = 1.0));
-    // flipflop at 1.0 means inverted contribution is 0; overall will be < 10
     const score = computeOverallScore8dim(perfDims, "right", 0.5);
-    expect(score).toBeGreaterThan(8);
-    expect(score).toBeLessThanOrEqual(10);
+    expect(score).toBe(10);
   });
 
   it("handles null dimensions by redistributing weights", () => {
@@ -264,7 +264,7 @@ describe("computeOverallScore8dim", () => {
       for (const key of Object.keys(WEIGHTS_8DIM)) {
         dims[key] = Math.random() > 0.1 ? Math.random() : null;
       }
-      const score = computeOverallScore8dim(dims, "left", (Math.random() - 0.5));
+      const score = computeOverallScore8dim(dims, "left", Math.random() - 0.5);
       expect(score).toBeGreaterThanOrEqual(0);
       expect(score).toBeLessThanOrEqual(10);
     }

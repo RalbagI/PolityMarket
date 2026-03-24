@@ -1341,7 +1341,7 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
     const p = politicians[i];
     const data = politicianDataMap.get(p.id) || { headlines: [], socialMentions: [] };
     const okData = _oknessetMap.get(p.id) ?? null;
-    const politicianPromises = (_promisesDB[p.id]?.promises ?? []);
+    const politicianPromises = _promisesDB[p.id]?.promises ?? [];
 
     const headlineBlock =
       data.headlines.length > 0
@@ -1499,7 +1499,9 @@ export function splitPoliticiansIntoBatches(
   politicians,
   politicianDataMap,
   maxBatchSize,
-  maxPromptChars
+  maxPromptChars,
+  oknessetMap,
+  promisesDB
 ) {
   if (!Array.isArray(politicians) || politicians.length === 0) {
     return [];
@@ -1512,7 +1514,9 @@ export function splitPoliticiansIntoBatches(
 
   const exceedsPromptBudget = (batch) => {
     if (!enforceCharBudget) return false;
-    return buildBatchedPrompt(batch, politicianDataMap).length > maxPromptChars;
+    return (
+      buildBatchedPrompt(batch, politicianDataMap, oknessetMap, promisesDB).length > maxPromptChars
+    );
   };
 
   for (const politician of politicians) {
@@ -1555,7 +1559,9 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
     politicians,
     politicianDataMap,
     batchSize,
-    CLAUDE_MAX_PROMPT_CHARS
+    CLAUDE_MAX_PROMPT_CHARS,
+    oknessetMap,
+    promisesDB
   );
 
   const allResults = [];
@@ -1822,7 +1828,12 @@ async function main() {
 
   // ── Phase 2: Batch-score all politicians via Claude CLI ─────────────
   console.log("\nPhase 2: Scoring via Claude CLI...");
-  const llmResults = await batchScoreAllPoliticians(POLITICIANS, politicianDataMap, oknessetMap, PROMISES_DB);
+  const llmResults = await batchScoreAllPoliticians(
+    POLITICIANS,
+    politicianDataMap,
+    oknessetMap,
+    PROMISES_DB
+  );
 
   if (llmResults.length !== POLITICIANS.length) {
     throw new Error(
@@ -2023,6 +2034,24 @@ async function main() {
   applyWingRelativeNorm(newEntries, "dim_parliamentary_activity");
   applyWingRelativeNorm(newEntries, "dim_legislative_quality");
 
+  // Recompute overall score after dimension normalization to keep overall and dim_* in sync.
+  for (const entry of newEntries) {
+    entry.overall_score = computeOverallScore8dim(
+      {
+        dim_public_sentiment: entry.dim_public_sentiment,
+        dim_parliamentary_activity: entry.dim_parliamentary_activity,
+        dim_media_credibility: entry.dim_media_credibility,
+        dim_transparency_ethics: entry.dim_transparency_ethics,
+        dim_field_activity: entry.dim_field_activity,
+        dim_satire_cultural_impact: entry.dim_satire_cultural_impact,
+        dim_legislative_quality: entry.dim_legislative_quality,
+        dim_flipflop_index: entry.dim_flipflop_index,
+      },
+      entry.wing,
+      entry.agenda_bonus ?? 0
+    );
+  }
+
   // ── Phase 3.5: Aggregate parties ──────────────────────────────────
   console.log("\nPhase 3.5: Aggregating party scores...");
   const partyEntries = aggregateParties(newEntries, today);
@@ -2045,7 +2074,9 @@ async function main() {
     ...validateTemporalConsistency(newEntries, recentHistory),
     ...detectOutliers(newEntries),
     ...validatePartyConsistency(partyEntries),
-    ...validateDimensionConsistency(newEntries),
+    ...validateDimensionConsistency(newEntries, {
+      requireParliamentaryActivity: Object.keys(oknessetConfig?.memberIdMap ?? {}).length > 0,
+    }),
   ];
 
   if (allWarnings.length) {

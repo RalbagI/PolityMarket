@@ -31,9 +31,7 @@ export async function scrapeFactCheckScore(politicianName, hebrewName, _fetchTex
       "[FactCheck] FRAGILE SCRAPER: Globes Whistle — null returned on any structure change"
     );
 
-    const html = await fetchText(
-      "https://www.globes.co.il/news/category.aspx?iid=2005"
-    );
+    const html = await fetchText("https://www.globes.co.il/news/category.aspx?iid=2005");
 
     if (!html || html.length < 1000) {
       _cache.set(cacheKey, null);
@@ -61,12 +59,7 @@ export async function scrapeFactCheckScore(politicianName, hebrewName, _fetchTex
 
       const lower = block.toLowerCase();
       // Hebrew true indicators
-      if (
-        block.includes("נכון") ||
-        block.includes("אמת") ||
-        block.includes("מדויק")
-      )
-        trueCount++;
+      if (block.includes("נכון") || block.includes("אמת") || block.includes("מדויק")) trueCount++;
       // Hebrew false/misleading indicators
       if (
         block.includes("שקר") ||
@@ -86,9 +79,7 @@ export async function scrapeFactCheckScore(politicianName, hebrewName, _fetchTex
     _cache.set(cacheKey, score);
     return score;
   } catch (err) {
-    console.warn(
-      `[FactCheck] Failed to scrape for "${politicianName}": ${err.message}`
-    );
+    console.warn(`[FactCheck] Failed to scrape for "${politicianName}": ${err.message}`);
     _cache.set(cacheKey, null);
     return null;
   }

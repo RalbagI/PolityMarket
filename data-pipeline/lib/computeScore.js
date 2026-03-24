@@ -31,8 +31,8 @@ export const WEIGHTS_8DIM = {
   dim_parliamentary_activity: 0.18,
   dim_media_credibility: 0.12,
   dim_transparency_ethics: 0.12,
-  dim_field_activity: 0.10,
-  dim_satire_cultural_impact: 0.10,
+  dim_field_activity: 0.1,
+  dim_satire_cultural_impact: 0.1,
   dim_legislative_quality: 0.08,
   dim_flipflop_index: 0.05,
 };
@@ -69,14 +69,7 @@ export function computeOverallScore8dim(dims, wing, agendaBonus = 0) {
   let raw = 0;
   for (const [key, baseWeight] of activeDims) {
     const normalizedWeight = baseWeight / totalBaseWeight;
-    let dimValue = dims[key];
-
-    // Flip-flop index: lower contradictions = higher contribution (invert)
-    if (key === "dim_flipflop_index") {
-      dimValue = 1 - dimValue;
-    }
-
-    raw += normalizedWeight * dimValue;
+    raw += normalizedWeight * dims[key];
   }
 
   // Apply agenda bonus (±0.5 raw points on 0–10 scale)
@@ -183,15 +176,12 @@ export function computeFieldActivity(confirmedActivities) {
  */
 export function computeLegislativeQuality(proSocioeconomicRatio, mmmRequestsCount) {
   const mmm = Math.min(1, (Number(mmmRequestsCount) || 0) / 2);
-  return Math.max(
-    0,
-    Math.min(1, 0.7 * (Number(proSocioeconomicRatio) || 0.5) + 0.3 * mmm)
-  );
+  return Math.max(0, Math.min(1, 0.7 * (Number(proSocioeconomicRatio) || 0.5) + 0.3 * mmm));
 }
 
 /**
- * Compute the dim_flipflop_index score (0–1; lower = more contradictions).
- * The main formula inverts this (1 - flipflop) so less flip-flopping → higher score.
+ * Compute the dim_flipflop_index adherence score (0–1; higher = better).
+ * 1.0 means zero contradictions in checked promises, 0.0 means total contradiction.
  *
  * @param {number} contradictions  - Confirmed contradictions found
  * @param {number} promisesChecked - Total promises evaluated
@@ -200,7 +190,8 @@ export function computeLegislativeQuality(proSocioeconomicRatio, mmmRequestsCoun
 export function computeFlipFlopIndex(contradictions, promisesChecked) {
   const checked = Number(promisesChecked) || 0;
   if (checked === 0) return null; // No data — exclude from formula
-  return Math.min(1, (Number(contradictions) || 0) / checked);
+  const contradictionRatio = Math.min(1, (Number(contradictions) || 0) / checked);
+  return Math.max(0, 1 - contradictionRatio);
 }
 
 /**
@@ -234,9 +225,7 @@ export function applyWingRelativeNorm(entries, key) {
     if (subset.length < 2) continue;
 
     const mean = subset.reduce((s, e) => s + e[key], 0) / subset.length;
-    const std = Math.sqrt(
-      subset.reduce((s, e) => s + (e[key] - mean) ** 2, 0) / subset.length
-    );
+    const std = Math.sqrt(subset.reduce((s, e) => s + (e[key] - mean) ** 2, 0) / subset.length);
 
     if (std < 0.001) continue; // All identical — no normalization needed
 

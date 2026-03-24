@@ -227,4 +227,15 @@ describe("validateDimensionConsistency", () => {
     ];
     expect(validateDimensionConsistency(entries)).toEqual([]);
   });
+
+  it("can skip parliamentary coverage gate when OpenKnesset mapping is disabled", () => {
+    const entries = Array.from({ length: 10 }, (_, i) => ({
+      name: `P${i}`,
+      dim_public_sentiment: 0.5,
+      dim_parliamentary_activity: null,
+    }));
+    expect(validateDimensionConsistency(entries, { requireParliamentaryActivity: false })).toEqual(
+      []
+    );
+  });
 });

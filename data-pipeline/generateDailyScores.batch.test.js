@@ -9,7 +9,7 @@ import {
 } from "./generateDailyScores.js";
 
 function makePolitician(id, name, party) {
-  return { id, name, party };
+  return { id, name, party, wing: "right" };
 }
 
 describe("buildBatchedPrompt", () => {
@@ -149,11 +149,51 @@ describe("splitPoliticiansIntoBatches", () => {
       ])
     );
 
-    const singleLen = buildBatchedPrompt([politicians[0]], data).length;
-    const doubleLen = buildBatchedPrompt([politicians[0], politicians[1]], data).length;
+    const oknessetMap = new Map(
+      politicians.map((p) => [
+        p.id,
+        {
+          voting_record: Array.from({ length: 10 }, (_, i) => ({
+            title: `Vote ${i} ${"x".repeat(40)}`,
+            vote: "for",
+            date: "2026-03-24",
+          })),
+          mmm_requests_count: 20,
+        },
+      ])
+    );
+    const promisesDB = Object.fromEntries(
+      politicians.map((p) => [
+        p.id,
+        {
+          promises: Array.from({ length: 5 }, (_, i) => ({
+            text_en: `Promise ${i} ${"text ".repeat(30)}`,
+            date: "2026-01-01",
+            topic: "coalition",
+            context: "coalition",
+            weight: 1,
+          })),
+        },
+      ])
+    );
+
+    const singleLen = buildBatchedPrompt([politicians[0]], data, oknessetMap, promisesDB).length;
+    const doubleLen = buildBatchedPrompt(
+      [politicians[0], politicians[1]],
+      data,
+      oknessetMap,
+      promisesDB
+    ).length;
     const maxPromptChars = Math.floor((singleLen + doubleLen) / 2);
 
-    const batches = splitPoliticiansIntoBatches(politicians, data, 10, maxPromptChars);
+    const batches = splitPoliticiansIntoBatches(
+      politicians,
+      data,
+      10,
+      maxPromptChars,
+      oknessetMap,
+      promisesDB
+    );
     expect(batches.map((b) => b.length)).toEqual([1, 1, 1]);
   });
 });

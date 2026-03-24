@@ -70,7 +70,7 @@ describe("fetchParliamentaryData", () => {
 
     const result = await fetchParliamentaryData("test-politician", BASE_CONFIG, mockFetch);
     expect(result.attendance_rate).toBeNull();
-    expect(result.committee_rate).toBe(0.30); // 0 roles
+    expect(result.committee_rate).toBe(0.3); // 0 roles
     expect(result.mmm_requests_count).toBe(0);
   });
 
@@ -161,7 +161,7 @@ describe("fetchParliamentaryData", () => {
       "mmm/": { objects: [] },
     });
     const result = await fetchParliamentaryData("test-politician", BASE_CONFIG, mockFetch);
-    expect(result.committee_rate).toBe(0.30);
+    expect(result.committee_rate).toBe(0.3);
   });
 
   it("committee_rate is 0.70 for member with 1 position", async () => {
@@ -171,7 +171,7 @@ describe("fetchParliamentaryData", () => {
       "mmm/": { objects: [] },
     });
     const result = await fetchParliamentaryData("test-politician", BASE_CONFIG, mockFetch);
-    expect(result.committee_rate).toBe(0.70);
+    expect(result.committee_rate).toBe(0.7);
   });
 
   it("initiative_score is always null (bills API not yet implemented)", async () => {

@@ -77,27 +77,21 @@ export async function fetchParliamentaryData(politicianId, config, _fetchJson) {
         shouldRetry: isTransientError,
       }),
       retry(
-        () =>
-          fetchJson(
-            `${baseUrl}mmm/?request_by=${oknessetId}&from_date=${fromDate}&limit=20`
-          ),
+        () => fetchJson(`${baseUrl}mmm/?request_by=${oknessetId}&from_date=${fromDate}&limit=20`),
         { maxRetries: 2, initialDelay: 500, shouldRetry: isTransientError }
       ),
     ]);
 
-    const votes =
-      votesResult.status === "fulfilled" ? (votesResult.value?.objects ?? []) : [];
+    const votes = votesResult.status === "fulfilled" ? (votesResult.value?.objects ?? []) : [];
     const member = memberResult.status === "fulfilled" ? memberResult.value : null;
-    const mmm =
-      mmmResult.status === "fulfilled" ? (mmmResult.value?.objects ?? []) : [];
+    const mmm = mmmResult.status === "fulfilled" ? (mmmResult.value?.objects ?? []) : [];
 
     // Attendance rate from voting records
     const totalVotes = votes.length;
     const attendedVotes = votes.filter(
       (v) => v.vote !== "no-show" && v.vote !== "absent" && v.vote != null
     ).length;
-    const attendance_rate =
-      totalVotes > 0 ? Math.min(1, attendedVotes / totalVotes) : null;
+    const attendance_rate = totalVotes > 0 ? Math.min(1, attendedVotes / totalVotes) : null;
 
     // Committee participation proxy from member profile
     const committee_rate = computeCommitteeRate(member);
@@ -150,11 +144,11 @@ function computeCommitteeRate(member) {
   const roles = Array.isArray(member.committee_positions)
     ? member.committee_positions.length
     : member.current_position
-    ? 1
-    : 0;
+      ? 1
+      : 0;
   if (roles >= 2) return 0.85;
-  if (roles >= 1) return 0.70;
-  return 0.30;
+  if (roles >= 1) return 0.7;
+  return 0.3;
 }
 
 function normalizeVoteDirection(vote) {
@@ -173,8 +167,7 @@ function makeDefaultFetchJson(timeoutMs) {
       const res = await fetch(url, {
         signal: controller.signal,
         headers: {
-          "User-Agent":
-            "PolityMarketPipeline/1.0 (+https://github.com/RalbagI/PolityMarket)",
+          "User-Agent": "PolityMarketPipeline/1.0 (+https://github.com/RalbagI/PolityMarket)",
           Accept: "application/json",
         },
       });

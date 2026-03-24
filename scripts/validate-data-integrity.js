@@ -65,6 +65,21 @@ try {
   warn("party_summary.json not found — skipping party data checks");
 }
 
+function loadOpenKnessetConfig() {
+  const configPath = path.join(repoRoot, "data-pipeline/sources.config.json");
+  try {
+    const config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
+    return config?.openKnesset ?? {};
+  } catch {
+    warn("sources.config.json missing or invalid — OpenKnesset dimension gate disabled");
+    return {};
+  }
+}
+
+const openKnessetConfig = loadOpenKnessetConfig();
+const requireParliamentaryDimension =
+  Object.keys(openKnessetConfig.memberIdMap || {}).length > 0;
+
 function dedupeRoster(rows) {
   const byId = new Map();
   for (const row of rows) {
@@ -314,7 +329,26 @@ if (fs.existsSync(detailsDir)) {
         fs.readFileSync(path.join(detailsDir, latestDetailFile), "utf-8")
       );
       if (Array.isArray(latestDetail) && latestDetail.length > 0) {
-        for (const dim of ["dim_public_sentiment", "dim_parliamentary_activity"]) {
+        const has8DimFields = latestDetail.some(
+          (e) =>
+            Object.prototype.hasOwnProperty.call(e, "dim_public_sentiment") ||
+            Object.prototype.hasOwnProperty.call(e, "dim_parliamentary_activity")
+        );
+
+        if (!has8DimFields) {
+          warn(
+            `Check 5: Skipped — ${latestDetailFile} uses legacy schema without dim_* fields`
+          );
+        }
+
+        const dimsToCheck = has8DimFields
+          ? [
+              "dim_public_sentiment",
+              ...(requireParliamentaryDimension ? ["dim_parliamentary_activity"] : []),
+            ]
+          : [];
+
+        for (const dim of dimsToCheck) {
           const nonNull = latestDetail.filter(
             (e) => e[dim] != null && Number.isFinite(e[dim])
           ).length;
@@ -325,11 +359,18 @@ if (fs.existsSync(detailsDir)) {
             );
           }
         }
-        const dimCount = latestDetail.filter((e) => e.dim_public_sentiment != null).length;
-        if (dimCount >= Math.floor(latestDetail.length * 0.8)) {
-          console.log(
-            `  ✓ ${dimCount}/${latestDetail.length} entries have dim_public_sentiment in ${latestDetailFile}`
-          );
+
+        if (!requireParliamentaryDimension && has8DimFields) {
+          console.log("  ↷ dim_parliamentary_activity gate disabled (openKnesset.memberIdMap is empty)");
+        }
+
+        if (dimsToCheck.includes("dim_public_sentiment")) {
+          const dimCount = latestDetail.filter((e) => e.dim_public_sentiment != null).length;
+          if (dimCount >= Math.floor(latestDetail.length * 0.8)) {
+            console.log(
+              `  ✓ ${dimCount}/${latestDetail.length} entries have dim_public_sentiment in ${latestDetailFile}`
+            );
+          }
         }
       }
     } catch (e) {

@@ -101,18 +101,24 @@ export function validatePartyConsistency(partyEntries) {
 
 /**
  * Check that at least 80% of politicians have non-null dim_public_sentiment
- * and dim_parliamentary_activity in the latest detail file.
+ * and optionally dim_parliamentary_activity in the latest detail file.
  * Returns an array of warning strings (empty = all good).
  *
  * @param {Object[]} entries - Processed daily entries
+ * @param {Object} [options]
+ * @param {boolean} [options.requireParliamentaryActivity=true]
+ * @param {number} [options.threshold=0.8]
  * @returns {string[]}
  */
-export function validateDimensionConsistency(entries) {
+export function validateDimensionConsistency(entries, options = {}) {
   const warnings = [];
   if (!entries.length) return warnings;
 
-  const REQUIRED_DIMS = ["dim_public_sentiment", "dim_parliamentary_activity"];
-  const THRESHOLD = 0.8;
+  const THRESHOLD = Number.isFinite(options.threshold) ? options.threshold : 0.8;
+  const requireParliamentaryActivity = options.requireParliamentaryActivity ?? true;
+  const REQUIRED_DIMS = requireParliamentaryActivity
+    ? ["dim_public_sentiment", "dim_parliamentary_activity"]
+    : ["dim_public_sentiment"];
 
   for (const dim of REQUIRED_DIMS) {
     const nonNull = entries.filter((e) => e[dim] != null && Number.isFinite(e[dim])).length;
