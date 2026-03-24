@@ -186,26 +186,37 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
         const displayName = d.displayName || localizeName(t, d.name);
 
-        // Gentle font shrink: reduce slightly for long names, never below 70% of base
-        const maxLines = h > 60 ? 3 : h > 40 ? 2 : 1;
+        const tooSmall = area < 400; // truly tiny — show nothing
+        const pad = Math.max(2, sqrtArea / 20) * 2;
+        const availW = w - pad;
+        const availH = h - pad;
+
+        // Score sizing — show score in all but the tiniest cells
+        const showScore = !tooSmall && area > 1200 && h > 20;
+        const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
+        const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
+        const showSlashTen = showScore && area > 8000;
+
+        // Step 1: shrink font for long names (using generous initial maxLines estimate)
+        const nameAvailH = availH - scoreLineH;
+        const roughMaxLines = Math.max(1, Math.floor(nameAvailH / ((baseNameFontSize * 1.2) || 1)));
         const nameFontSize = (() => {
           if (baseNameFontSize < 1) return 0;
-          const pad = Math.max(2, sqrtArea / 20) * 2;
-          const availW = w - pad;
-          const charsPerLine = availW / (baseNameFontSize * 0.7) || 1;
-          const totalChars = charsPerLine * maxLines;
+          const charW = 0.7; // avg char width / font size for bold Hebrew
+          const charsPerLine = availW / (baseNameFontSize * charW) || 1;
+          const totalChars = charsPerLine * roughMaxLines;
           const nameLen = displayName.length;
           if (nameLen <= totalChars) return baseNameFontSize;
-          // Shrink proportionally but cap at 70% of base
-          return Math.max(baseNameFontSize * 0.7, baseNameFontSize * (totalChars / nameLen));
+          return Math.max(baseNameFontSize * 0.55, baseNameFontSize * (totalChars / nameLen));
         })();
-        const scoreFontSize = Math.min(28, nameFontSize * 1.4);
+
+        // Step 2: compute maxLines from the ACTUAL shrunken font size so text won't overflow
+        const actualLineH = nameFontSize * 1.2;
+        const maxLines = Math.max(1, Math.floor(nameAvailH / (actualLineH || 1)));
 
         // Visibility thresholds based on area
-        const tooSmall = area < 400; // truly tiny — show nothing
-        const showInitials = !tooSmall && area < 1200 && nameFontSize < 7;
-        const showName = !tooSmall && !showInitials && nameFontSize >= 7;
-        const showScore = area > 3000 && h > 30;
+        const showInitials = !tooSmall && area < 1200 && nameFontSize < 5;
+        const showName = !tooSmall && !showInitials && nameFontSize >= 5;
         const initials = displayName
           .split(/\s+/)
           .map((w) => w[0])
@@ -266,11 +277,15 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
             )}
             {showName && (
               <div
-                className="p-1 h-full flex flex-col justify-between overflow-hidden"
-                style={{ padding: Math.max(2, sqrtArea / 20) }}
+                className="flex flex-col overflow-hidden"
+                style={{
+                  padding: Math.max(2, sqrtArea / 20),
+                  height: h,
+                  boxSizing: "border-box",
+                }}
               >
                 <div
-                  className="font-bold text-white leading-tight"
+                  className="font-bold text-white leading-tight min-h-0"
                   style={{
                     fontSize: nameFontSize,
                     textShadow: "0 1px 3px rgba(0,0,0,0.5)",
@@ -279,12 +294,17 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                     display: "-webkit-box",
                     WebkitLineClamp: maxLines,
                     WebkitBoxOrient: "vertical",
+                    flex: "0 1 auto",
                   }}
                 >
                   {displayName}
                 </div>
                 {showScore && (
-                  <div className="flex items-baseline gap-0.5 mt-auto" dir="ltr">
+                  <div
+                    className="flex items-baseline gap-0.5"
+                    dir="ltr"
+                    style={{ flex: "0 0 auto", marginTop: "auto" }}
+                  >
                     <span
                       className="font-black text-white tabular-nums"
                       style={{
@@ -294,12 +314,14 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                     >
                       {d.overall_score.toFixed(1)}
                     </span>
-                    <span
-                      className="text-white/50"
-                      style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
-                    >
-                      /10
-                    </span>
+                    {showSlashTen && (
+                      <span
+                        className="text-white/50"
+                        style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
+                      >
+                        /10
+                      </span>
+                    )}
                   </div>
                 )}
               </div>
