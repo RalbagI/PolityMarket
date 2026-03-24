@@ -201,11 +201,21 @@ phases:
 
     next_phase: null
 
+next_workflow_suggestion:
+  workflow: mts
+  message: >-
+    IMPORTANT: After completing this workflow, ALWAYS ask the user:
+    "Would you like me to run `/mts` to merge, cleanup, and deploy?"
+    This must appear as the final line of the workflow output.
+    If the user responds affirmatively (yes, y, sure, go ahead, etc.),
+    immediately execute the /mts workflow without further prompting.
+
 output:
   format: structured
   sections:
     - memory: [recalled, captured]
     - checks: [lint, format, test, build]
     - pr: [description-posted]
+  next_workflow: mts
     - lessons: [updated-if-needed]
     - git: [clean-state]
