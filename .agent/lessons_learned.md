@@ -65,3 +65,21 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 
 - **Lesson**: When replacing a default export with a named export (`computeOverallScore` → `computeOverallScore8dim`), the old default import in consumers becomes unused and triggers `no-unused-vars`. Remove it explicitly.
 - **Pattern**: After formula switches, grep for the old default import name across all consumers.
+
+### Codex CLI model availability (2026-03-24)
+
+- **Lesson**: Codex CLI on ChatGPT accounts only supports `gpt-5.*` models (gpt-5.4, gpt-5.4-mini, etc.). Standard OpenAI API models like `gpt-4o-mini`, `gpt-4.5`, `o4-mini` all fail with "model not supported". Check `~/.codex/models_cache.json` for available slugs.
+- **Pattern**: Always verify model availability with a minimal test call before hardcoding model names.
+- **Prevention**: Use configurable env vars (OPENAI_MODEL_HIGH, OPENAI_MODEL_LOW) with safe defaults.
+
+### Nullable chain_of_thought across all schemas (2026-03-24)
+
+- **Lesson**: When introducing `[COT: skip]` for low-tier LLM calls, `chain_of_thought: null` must be accepted by ALL Zod schemas in the pipeline — not just the LLM response schema, but also dailyEntrySchema and llmResponseSchema. The same field flows through multiple validation layers.
+- **Pattern**: When making a field nullable, grep for ALL `.string().min(1)` references to that field name across parseLLMResponse.js.
+- **Prevention**: Search `chain_of_thought:` across all Zod schemas before assuming a single change is sufficient.
+
+### Codex CLI reasoning effort inherited from global config (2026-03-24)
+
+- **Lesson**: The global `model_reasoning_effort = "xhigh"` in `~/.codex/config.toml` applies to ALL codex exec calls unless overridden with `-c model_reasoning_effort="low"`. A 127-politician batch with xhigh reasoning on gpt-5.4-mini will timeout at 5 minutes.
+- **Pattern**: Always override reasoning effort per-tier via `-c model_reasoning_effort=` flag.
+- **Prevention**: Set MAX_BATCH_SIZE to 50 (not 135) and OPENAI_TIMEOUT_MS to 600000 (10 min).
