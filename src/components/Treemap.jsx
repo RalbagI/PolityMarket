@@ -181,7 +181,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       el.removeEventListener("touchend", onTouchEnd);
       el.removeEventListener("wheel", onWheel);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   // Track container size — measure immediately + observe resizes
   useEffect(() => {
@@ -325,6 +325,13 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   );
 
 
+  // Reset zoom and drill-down when data changes (e.g. filter)
+  useEffect(() => {
+    setDrillDown(null);
+    setViewport({ scale: 1, x: 0, y: 0 });
+    if (innerRef.current) innerRef.current.style.transform = "";
+  }, [data]);
+
   if (!data || !data.length) {
     return (
       <div ref={containerRef} className="w-full h-full flex items-center justify-center">
@@ -332,13 +339,6 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       </div>
     );
   }
-
-  // Reset zoom and drill-down when data changes (e.g. filter)
-  useEffect(() => {
-    setDrillDown(null);
-    setViewport({ scale: 1, x: 0, y: 0 });
-    if (innerRef.current) innerRef.current.style.transform = "";
-  }, [data]);
 
   return (
     <div
