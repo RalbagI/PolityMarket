@@ -43,6 +43,7 @@ const TRAIT_ENUMS = {
     "short",
     "cropped",
     "curly",
+    "wavy",
     "receding",
     "bald",
     "long",
