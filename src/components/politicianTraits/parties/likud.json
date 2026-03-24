@@ -41,8 +41,8 @@
     "tieColor": "#2980b9"
   },
   "avi-dichter": {
-    "hair": "short",
-    "hairColor": "#777",
+    "hair": "cropped",
+    "hairColor": "#ccc",
     "grayHair": true,
     "face": "square",
     "suitColor": "#1a1a2e",
@@ -122,13 +122,13 @@
     "beard": null,
     "tieColor": null,
     "hair": "long",
-    "hairColor": "#c87020",
+    "hairColor": "#1a1a1a",
     "face": "oval",
     "glasses": "round",
     "suitColor": "#c0392b"
   },
   "gideon-saar": {
-    "hair": "short",
+    "hair": "cropped",
     "hairColor": "#555",
     "grayHair": true,
     "face": "square",
@@ -146,11 +146,10 @@
     "suitColor": "#8e44ad"
   },
   "haim-katz": {
-    "hair": "swept",
-    "hairColor": "#999",
+    "hair": "receding",
+    "hairColor": "#ccc",
     "grayHair": true,
     "face": "round",
-    "glasses": "rectangular",
     "suitColor": "#1a1a2e",
     "tieColor": "#c0392b"
   },
@@ -195,7 +194,7 @@
     "beard": null,
     "tieColor": null,
     "hair": "long",
-    "hairColor": "#d4a029",
+    "hairColor": "#5a3a2a",
     "face": "oval",
     "eyeColor": "#4a6741",
     "suitColor": "#2c3e50"
@@ -212,8 +211,8 @@
   "miri-regev": {
     "beard": null,
     "tieColor": null,
-    "hair": "styled",
-    "hairColor": "#5a3a2a",
+    "hair": "long",
+    "hairColor": "#2c1a0e",
     "face": "round",
     "eyeColor": "#3d2b1f",
     "suitColor": "#c0392b"
@@ -235,7 +234,7 @@
     "tieColor": "#e74c3c"
   },
   "nir-barkat": {
-    "hair": "short",
+    "hair": "cropped",
     "hairColor": "#2c2c2c",
     "face": "square",
     "eyeColor": "#4a6741",
@@ -323,8 +322,7 @@
     "hair": "receding",
     "hairColor": "#555",
     "grayHair": true,
-    "face": "round",
-    "glasses": "rectangular",
+    "face": "square",
     "suitColor": "#1a1a2e",
     "tieColor": "#c0392b"
   },

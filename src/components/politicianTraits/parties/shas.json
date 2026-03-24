@@ -16,7 +16,9 @@
     "hairColor": "#555",
     "grayHair": true,
     "face": "round",
-    "headCovering": "kippah"
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#555"
   },
   "michael-malchieli": {
     "suitColor": "#0a0a0a",
