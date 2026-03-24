@@ -54,3 +54,14 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: Tipi enforces 100% diff coverage across 4 workflows. PolityMarket initially missed this entirely, losing a critical quality gate.
 - **Pattern**: Every workflow that modifies code must verify coverage: `npx vitest run --coverage`.
 - **Prevention**: Added coverage steps to resolve-issue, handle-review-results, ci-failing, prepare-for-merge.
+
+### Promise.allSettled never throws — test partial failures, not null (2026-03-24)
+
+- **Lesson**: OpenKnesset client uses `Promise.allSettled` to absorb individual endpoint failures. When endpoints fail, the function returns a partial struct (with null fields), NOT null overall. Only returns null when the politician has no memberIdMap entry.
+- **Pattern**: When testing resilient clients that use `Promise.allSettled`, assert the shape of partial results — not `toBeNull()`.
+- **Prevention**: Read the implementation before writing "graceful failure" test expectations.
+
+### Zod default import removal when switching formulas (2026-03-24)
+
+- **Lesson**: When replacing a default export with a named export (`computeOverallScore` → `computeOverallScore8dim`), the old default import in consumers becomes unused and triggers `no-unused-vars`. Remove it explicitly.
+- **Pattern**: After formula switches, grep for the old default import name across all consumers.
