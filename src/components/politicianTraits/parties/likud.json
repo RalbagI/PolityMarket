@@ -18,7 +18,7 @@
     "tieColor": "#2980b9"
   },
   "amir-ohana": {
-    "hair": "short",
+    "hair": "bald",
     "hairColor": "#2c2c2c",
     "face": "round",
     "eyeColor": "#3d2b1f",
@@ -52,6 +52,9 @@
     "hair": "short",
     "hairColor": "#2c2c2c",
     "face": "square",
+    "beard": "stubble",
+    "beardColor": "#888",
+    "glasses": "rectangular",
     "suitColor": "#1a1a2e",
     "tieColor": "#8e44ad"
   },
@@ -75,7 +78,7 @@
   },
   "david-amsalem": {
     "hair": "receding",
-    "hairColor": "#555",
+    "hairColor": "#bbb",
     "grayHair": true,
     "face": "round",
     "skin": "#e8c8a8",
@@ -232,8 +235,7 @@
   },
   "nir-barkat": {
     "hair": "short",
-    "hairColor": "#3a3a3a",
-    "grayHair": true,
+    "hairColor": "#2c2c2c",
     "face": "square",
     "eyeColor": "#4a6741",
     "suitColor": "#1a1a2e",

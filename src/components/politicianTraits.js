@@ -62,7 +62,7 @@ const COLOR_FIELDS = new Set([
   "tieColor",
   "bgColor",
 ]);
-const BOOLEAN_FIELDS = new Set(["grayHair", "eyebrowThick"]);
+const BOOLEAN_FIELDS = new Set(["grayHair", "eyebrowThick", "peyot"]);
 const NAMED_COLORS = new Set(["white", "black"]);
 const HEX_COLOR = /^#([\da-fA-F]{3}|[\da-fA-F]{6})$/;
 

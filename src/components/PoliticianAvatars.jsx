@@ -53,22 +53,19 @@ function LapidAvatar({ size }) {
       aria-hidden="true"
     >
       <circle cx="50" cy="50" r="50" fill="#e8ddd0" />
-      <ellipse cx="50" cy="26" rx="33" ry="20" fill="#3a3a3a" />
-      <path d="M20 32 Q30 18 50 16 Q70 18 80 32" fill="#3a3a3a" />
+      <ellipse cx="50" cy="26" rx="33" ry="20" fill="#bbb" />
+      <path d="M20 32 Q30 18 50 16 Q70 18 80 32" fill="#bbb" />
       <ellipse cx="50" cy="52" rx="28" ry="30" fill="#f0d0b4" />
       <ellipse cx="38" cy="47" rx="5" ry="3.5" fill="white" />
       <ellipse cx="62" cy="47" rx="5" ry="3.5" fill="white" />
       <circle cx="39" cy="47" r="2.2" fill="#2c5f8a" />
       <circle cx="63" cy="47" r="2.2" fill="#2c5f8a" />
-      <path d="M31 42 Q38 39 45 42" stroke="#3a3a3a" strokeWidth="2" fill="none" />
-      <path d="M55 42 Q62 39 69 42" stroke="#3a3a3a" strokeWidth="2" fill="none" />
+      <path d="M31 42 Q38 39 45 42" stroke="#bbb" strokeWidth="2" fill="none" />
+      <path d="M55 42 Q62 39 69 42" stroke="#bbb" strokeWidth="2" fill="none" />
       <path d="M48 49 Q50 56 52 49" stroke="#c8a88a" strokeWidth="1.5" fill="none" />
       <path d="M40 62 Q50 68 60 62" stroke="#c47a6a" strokeWidth="2" fill="#e8a090" />
       <ellipse cx="22" cy="50" rx="4" ry="6" fill="#f0d0b4" />
       <ellipse cx="78" cy="50" rx="4" ry="6" fill="#f0d0b4" />
-      <circle cx="38" cy="47" r="8" stroke="#555" strokeWidth="1.5" fill="none" />
-      <circle cx="62" cy="47" r="8" stroke="#555" strokeWidth="1.5" fill="none" />
-      <line x1="46" y1="47" x2="54" y2="47" stroke="#555" strokeWidth="1.5" />
       <path d="M25 85 L40 78 L50 85 L60 78 L75 85 L80 100 L20 100 Z" fill="#2c3e50" />
       <path d="M46 78 L50 85 L54 78" fill="#2980b9" />
     </svg>
@@ -170,18 +167,17 @@ function LiebermanAvatar({ size }) {
       aria-hidden="true"
     >
       <circle cx="50" cy="50" r="50" fill="#ddd5c8" />
-      <path d="M22 35 Q30 18 50 16 Q70 18 78 35" fill="#4a3a2a" />
-      <ellipse cx="50" cy="24" rx="28" ry="14" fill="#4a3a2a" />
+      <path d="M22 35 Q30 18 50 16 Q70 18 78 35" fill="#888" />
+      <ellipse cx="50" cy="24" rx="28" ry="14" fill="#888" />
       <ellipse cx="50" cy="52" rx="32" ry="34" fill="#f0d0b4" />
       <ellipse cx="38" cy="48" rx="4" ry="3" fill="white" />
       <ellipse cx="62" cy="48" rx="4" ry="3" fill="white" />
       <circle cx="39" cy="48" r="2" fill="#3d2b1f" />
       <circle cx="63" cy="48" r="2" fill="#3d2b1f" />
-      <path d="M30 43 Q38 39 46 43" stroke="#4a3a2a" strokeWidth="2.5" fill="none" />
-      <path d="M54 43 Q62 39 70 43" stroke="#4a3a2a" strokeWidth="2.5" fill="none" />
+      <path d="M30 43 Q38 39 46 43" stroke="#888" strokeWidth="2.5" fill="none" />
+      <path d="M54 43 Q62 39 70 43" stroke="#888" strokeWidth="2.5" fill="none" />
       <path d="M47 50 Q50 60 53 50" stroke="#c8a88a" strokeWidth="2" fill="#e8c0a0" />
-      <path d="M36 62 Q42 58 50 60 Q58 58 64 62" fill="#4a3a2a" />
-      <path d="M38 63 Q44 60 50 61 Q56 60 62 63" fill="#5a4a3a" />
+      <ellipse cx="50" cy="72" rx="10" ry="8" fill="#888" />
       <path d="M42 66 Q50 70 58 66" stroke="#b07060" strokeWidth="1.5" fill="none" />
       <path d="M35 76 Q50 84 65 76" stroke="#e0c0a0" strokeWidth="1.5" fill="none" />
       <ellipse cx="18" cy="52" rx="5" ry="7" fill="#f0d0b4" />

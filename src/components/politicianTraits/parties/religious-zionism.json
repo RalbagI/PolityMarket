@@ -51,12 +51,10 @@
     "suitColor": "#2c3e50"
   },
   "simcha-rothman": {
-    "hair": "short",
+    "hair": "swept",
     "hairColor": "#3a3a3a",
     "face": "oval",
     "headCovering": "kippah",
-    "beard": "goatee",
-    "beardColor": "#3a3a3a",
     "glasses": "rectangular",
     "suitColor": "#1a1a2e",
     "tieColor": "#c0392b"
@@ -68,6 +66,7 @@
     "headCovering": "kippah",
     "beard": "full",
     "beardColor": "#4a3a2a",
+    "peyot": true,
     "suitColor": "white",
     "tieColor": null
   }

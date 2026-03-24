@@ -357,6 +357,7 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
     beardColor = "#3a3a3a",
     headCovering = null,
     headCoveringColor = null,
+    peyot = false,
     suitColor = "#1a1a2e",
     tieColor = "#c0392b",
     bgColor = "#e8ddd0",
@@ -439,6 +440,31 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
         <>
           <ellipse cx="20" cy="52" rx="5" ry="7" fill={skin} />
           <ellipse cx="80" cy="52" rx="5" ry="7" fill={skin} />
+        </>
+      )}
+      {/* Peyot (sidelocks) */}
+      {peyot && (
+        <>
+          <path
+            d="M18 48 Q14 60 16 72 Q17 78 19 74 Q17 62 20 50 Z"
+            fill={grayHair ? mixColor(hairColor, "#b0b0b0", 0.6) : hairColor}
+          />
+          <path
+            d="M16 58 Q14 66 15 72"
+            stroke={grayHair ? mixColor(hairColor, "#b0b0b0", 0.6) : hairColor}
+            strokeWidth="2.5"
+            fill="none"
+          />
+          <path
+            d="M82 48 Q86 60 84 72 Q83 78 81 74 Q83 62 80 50 Z"
+            fill={grayHair ? mixColor(hairColor, "#b0b0b0", 0.6) : hairColor}
+          />
+          <path
+            d="M84 58 Q86 66 85 72"
+            stroke={grayHair ? mixColor(hairColor, "#b0b0b0", 0.6) : hairColor}
+            strokeWidth="2.5"
+            fill="none"
+          />
         </>
       )}
       {renderSuit(suitColor, tieColor, isFemale)}
