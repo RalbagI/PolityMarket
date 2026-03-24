@@ -1,0 +1,112 @@
+workflow:
+  id: mts
+  trigger: /mts
+  mode: exec
+  agents: 1
+
+metadata:
+  updated: "2026-03-24"
+  review_cycle_days: 365
+  description: >-
+    Merge This Shit — final-stage workflow that verifies CI,
+    merges the current PR, cleans up the branch, pulls main,
+    and deploys Firebase if needed. The last step in the
+    workflow chain after /prepare-for-merge.
+  skills: [github-actions]
+
+constraints:
+  post_merge_work: allow
+  can_push: false
+
+phases:
+  - id: 1-verify-ci
+    name: Verify CI
+    steps:
+      - name: find-pr
+        type: cmd
+        cmd: |
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          PR_NUMBER=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number')
+          echo "Branch: $BRANCH, PR: #$PR_NUMBER"
+        store: PR_NUMBER
+        fail_action: exit
+
+      - name: check-ci
+        type: cmd
+        cmd: gh pr checks $PR_NUMBER
+        fail_action: exit
+        notes: >-
+          ALL checks must pass. If any check is pending or failed,
+          the workflow MUST stop here and report which checks failed.
+
+    next_phase: 2-merge
+
+  - id: 2-merge
+    name: Merge PR
+    steps:
+      - name: squash-merge
+        type: cmd
+        cmd: gh pr merge $PR_NUMBER --squash --delete-branch
+        fail_action: exit
+
+      - name: verify-merge
+        type: cmd
+        cmd: gh pr view $PR_NUMBER --json state,mergedAt
+        store: MERGE_RESULT
+
+    next_phase: 3-cleanup
+
+  - id: 3-cleanup
+    name: Cleanup & Pull
+    steps:
+      - name: checkout-main
+        type: cmd
+        cmd: git checkout main
+        fail_action: exit
+
+      - name: prune-remotes
+        type: cmd
+        cmd: git remote prune origin
+
+      - name: pull-main
+        type: cmd
+        cmd: git pull origin main
+        fail_action: exit
+
+      - name: verify-clean
+        type: check
+        check: "test -z \"$(git status --porcelain)\""
+        fail_action: warn
+
+    next_phase: 4-deploy
+
+  - id: 4-deploy
+    name: Deploy Firebase
+    steps:
+      - name: build
+        type: cmd
+        cmd: npx vite build
+        fail_action: exit
+
+      - name: deploy
+        type: cmd
+        cmd: npx firebase deploy --only hosting
+        fail_action: warn
+
+    next_phase: null
+
+output:
+  format: structured
+  sections:
+    - ci: [status]
+    - merge: [pr-number, merged-at]
+    - cleanup: [branch-deleted, main-pulled]
+    - deploy: [firebase-url]
+
+validation:
+  success_criteria:
+    - "All CI checks passed"
+    - "PR merged via squash"
+    - "Branch deleted"
+    - "Main pulled and clean"
+    - "Firebase deployed"
