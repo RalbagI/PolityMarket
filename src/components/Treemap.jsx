@@ -26,14 +26,6 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   useEffect(() => {
     viewportRef.current = viewport;
   }, [viewport]);
-  // After React re-renders with new viewport, clear any leftover native CSS transform
-  // so React's inline style is the source of truth again
-  useEffect(() => {
-    if (innerRef.current) {
-      innerRef.current.style.transform = "";
-      innerRef.current.style.transformOrigin = "";
-    }
-  }, [viewport]);
   const pinchRef = useRef(null);
   const panRef = useRef(null);
   const lastTapRef = useRef(0);
@@ -164,10 +156,11 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         }, 400);
         return;
       }
-      // No gesture happened — allow taps
+      // Clean up refs but don't clear gestureActiveRef —
+      // only the 400ms setTimeout should clear it after real gestures.
+      // For simple taps, gestureActiveRef was never set to true.
       pinchRef.current = null;
       panRef.current = null;
-      gestureActiveRef.current = false;
 
       // Double-tap to reset zoom
       if (e.touches.length === 0 && viewportRef.current.scale > 1) {
@@ -176,7 +169,6 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           const resetVp = { scale: 1, x: 0, y: 0 };
           viewportRef.current = resetVp;
           setViewport(resetVp);
-          if (innerRef.current) innerRef.current.style.transform = "";
           lastTapRef.current = 0;
           return;
         }
@@ -395,8 +387,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       {viewport.scale > 1 && (
         <button
           onClick={() => {
+            viewportRef.current = { scale: 1, x: 0, y: 0 };
             setViewport({ scale: 1, x: 0, y: 0 });
-            if (innerRef.current) innerRef.current.style.transform = "";
           }}
           className="absolute top-2 left-2 z-20 bg-black/60 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm"
         >
@@ -407,8 +399,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         <button
           onClick={() => {
             setDrillDown(null);
+            viewportRef.current = { scale: 1, x: 0, y: 0 };
             setViewport({ scale: 1, x: 0, y: 0 });
-            if (innerRef.current) innerRef.current.style.transform = "";
           }}
           className="absolute top-2 right-2 z-20 bg-black/60 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm"
         >
