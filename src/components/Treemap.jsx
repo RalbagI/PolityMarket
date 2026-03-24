@@ -17,7 +17,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // Drill-down: when "Others" is tapped, show its children
-  const [drillDown, setDrillDown] = useState(null); // null or array of politician data
+  // Store { items, sourceData } so we can detect stale drillDown when data changes
+  const [drillDown, setDrillDown] = useState(null);
 
   // Zoom state — scale=1 means no zoom, x/y is the viewport offset
   const [viewport, setViewport] = useState({ scale: 1, x: 0, y: 0 });
@@ -203,8 +204,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const minBlockArea = isMobile ? 2400 : 800;
 
   const treemapItems = useMemo(() => {
-    // When drilled into "Others", show those politicians instead
-    if (drillDown) return drillDown;
+    // When drilled into "Others", show those politicians if data hasn't changed
+    if (drillDown && drillDown.sourceData === data) return drillDown.items;
 
     if (!data || !data.length || size.width === 0 || size.height === 0) return [];
 
@@ -325,12 +326,6 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   );
 
 
-  // Reset zoom and drill-down when data changes (e.g. filter)
-  useEffect(() => {
-    setDrillDown(null);
-    setViewport({ scale: 1, x: 0, y: 0 });
-    if (innerRef.current) innerRef.current.style.transform = "";
-  }, [data]);
 
   if (!data || !data.length) {
     return (
@@ -450,7 +445,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
             onClick={() => {
               if (gestureActiveRef.current) return;
               if (d._isOthers && d._groupedData) {
-                setDrillDown(d._groupedData);
+                setDrillDown({ items: d._groupedData, sourceData: data });
                 setViewport({ scale: 1, x: 0, y: 0 });
               } else if (!d._isOthers) {
                 onSelect(d.name);
@@ -466,7 +461,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
               if (pinchRef.current || panRef.current?.moved) return;
               if (d._isOthers && d._groupedData) {
                 e.preventDefault();
-                setDrillDown(d._groupedData);
+                setDrillDown({ items: d._groupedData, sourceData: data });
                 setViewport({ scale: 1, x: 0, y: 0 });
               } else if (!d._isOthers) {
                 handleTouchEnd(d.name, e);
