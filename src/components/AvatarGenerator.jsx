@@ -237,7 +237,7 @@ function renderBeard(style, color) {
   }
 }
 
-function renderHeadCovering(type) {
+function renderHeadCovering(type, color) {
   if (!type) return null;
   switch (type) {
     case "kippah":
@@ -260,6 +260,41 @@ function renderHeadCovering(type) {
           <ellipse cx="50" cy="50" rx="32" ry="35" fill="#34495e" />
         </>
       );
+    case "tichel": {
+      const fc = color || "#3a5ba0";
+      return (
+        <>
+          {/* Wrap base covering crown of head */}
+          <path
+            d="M20 30 Q22 14 50 10 Q78 14 80 30 Q78 24 50 20 Q22 24 20 30 Z"
+            fill={fc}
+          />
+          {/* Fabric band across forehead */}
+          <path
+            d="M20 30 Q35 26 50 25 Q65 26 80 30 Q65 32 50 31 Q35 32 20 30 Z"
+            fill={fc}
+          />
+          {/* Gathered knot / bow at top */}
+          <ellipse cx="50" cy="10" rx="10" ry="6" fill={fc} />
+          <path d="M42 8 Q46 2 50 6 Q54 2 58 8" fill={lighten(fc)} />
+          {/* Subtle fabric folds */}
+          <path
+            d="M30 26 Q40 22 50 21"
+            stroke={lighten(fc)}
+            strokeWidth="1"
+            fill="none"
+            opacity="0.5"
+          />
+          <path
+            d="M70 26 Q60 22 50 21"
+            stroke={lighten(fc)}
+            strokeWidth="1"
+            fill="none"
+            opacity="0.5"
+          />
+        </>
+      );
+    }
     default:
       return null;
   }
@@ -327,6 +362,7 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
     beard = null,
     beardColor = "#3a3a3a",
     headCovering = null,
+    headCoveringColor = null,
     suitColor = "#1a1a2e",
     tieColor = "#c0392b",
     bgColor = "#e8ddd0",
@@ -349,7 +385,7 @@ export default function GeneratedAvatar({ traits, size = 40 }) {
       {headCovering === "hijab"
         ? renderHeadCovering("hijab")
         : renderHair(hair, hairColor, grayHair, isFemale)}
-      {headCovering && headCovering !== "hijab" && renderHeadCovering(headCovering)}
+      {headCovering && headCovering !== "hijab" && renderHeadCovering(headCovering, headCoveringColor)}
       {renderFace(face, skin)}
       {renderEyes(eyeColor)}
       {/* Eyelashes for female avatars */}
