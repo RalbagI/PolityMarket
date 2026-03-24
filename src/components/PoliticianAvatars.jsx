@@ -23,8 +23,8 @@ function NetanyahuAvatar({ size }) {
       aria-hidden="true"
     >
       <circle cx="50" cy="50" r="50" fill="#f5e6d3" />
-      <ellipse cx="50" cy="28" rx="35" ry="22" fill="#b0b0b0" />
-      <ellipse cx="50" cy="24" rx="32" ry="18" fill="#c0c0c0" />
+      <ellipse cx="50" cy="30" rx="31" ry="16" fill="#b0b0b0" opacity="0.7" />
+      <path d="M22 34 Q24 20 50 18 Q76 20 78 34" fill="#b0b0b0" opacity="0.5" />
       <ellipse cx="50" cy="52" rx="30" ry="32" fill="#f0d0b4" />
       <ellipse cx="38" cy="48" rx="5" ry="4" fill="white" />
       <ellipse cx="62" cy="48" rx="5" ry="4" fill="white" />
@@ -83,8 +83,8 @@ function GantzAvatar({ size }) {
       aria-hidden="true"
     >
       <circle cx="50" cy="50" r="50" fill="#ddd5c8" />
-      <ellipse cx="50" cy="28" rx="32" ry="18" fill="#777" />
-      <rect x="20" y="28" width="60" height="8" rx="3" fill="#777" />
+      <ellipse cx="50" cy="30" rx="31" ry="16" fill="#777" opacity="0.7" />
+      <path d="M22 34 Q24 20 50 18 Q76 20 78 34" fill="#777" opacity="0.5" />
       <rect x="24" y="32" width="52" height="50" rx="18" fill="#e8c8a8" />
       <ellipse cx="38" cy="48" rx="5" ry="4" fill="white" />
       <ellipse cx="62" cy="48" rx="5" ry="4" fill="white" />

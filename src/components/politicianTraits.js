@@ -38,9 +38,19 @@ const RAW_POLITICIAN_TRAITS = {
 
 const TRAIT_ENUMS = {
   face: new Set(["round", "square", "oval", "long"]),
-  hair: new Set(["swept", "short", "curly", "receding", "bald", "long", "styled", "side-part"]),
+  hair: new Set([
+    "swept",
+    "short",
+    "cropped",
+    "curly",
+    "receding",
+    "bald",
+    "long",
+    "styled",
+    "side-part",
+  ]),
   glasses: new Set(["round", "rectangular", "thin", null]),
-  beard: new Set(["full", "goatee", "stubble", "mustache", null]),
+  beard: new Set(["full", "full-long", "goatee", "stubble", "mustache", null]),
   headCovering: new Set([
     "kippah",
     "kippah-white",

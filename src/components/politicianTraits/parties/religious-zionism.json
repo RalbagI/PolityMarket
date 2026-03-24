@@ -12,11 +12,13 @@
   },
   "moshe-solomon": {
     "hair": "short",
-    "hairColor": "#2c2c2c",
+    "hairColor": "#1a1a1a",
     "face": "oval",
+    "skin": "#6b4a2a",
+    "eyeColor": "#1a1a1a",
     "headCovering": "kippah",
     "beard": "goatee",
-    "beardColor": "#2c2c2c",
+    "beardColor": "#1a1a1a",
     "suitColor": "#1a1a2e",
     "tieColor": "#c0392b"
   },

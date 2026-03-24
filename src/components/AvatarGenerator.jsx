@@ -20,6 +20,13 @@ function renderHair(style, color, gray, isFemale) {
           <ellipse cx="50" cy="24" rx="32" ry="18" fill={lighten(c)} />
         </>
       );
+    case "cropped":
+      return (
+        <>
+          <ellipse cx="50" cy="30" rx="31" ry="16" fill={c} opacity="0.7" />
+          <path d="M22 34 Q24 20 50 18 Q76 20 78 34" fill={c} opacity="0.5" />
+        </>
+      );
     case "short":
       return (
         <>
@@ -219,6 +226,13 @@ function renderBeard(style, color) {
         <>
           <path d="M28 58 Q30 75 50 80 Q70 75 72 58" fill={color} />
           <path d="M32 60 Q34 72 50 76 Q66 72 68 60" fill={lighten(color)} />
+        </>
+      );
+    case "full-long":
+      return (
+        <>
+          <path d="M28 58 Q30 80 50 90 Q70 80 72 58" fill={color} />
+          <path d="M32 60 Q34 76 50 86 Q66 76 68 60" fill={lighten(color)} />
         </>
       );
     case "goatee":

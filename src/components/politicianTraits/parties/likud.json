@@ -128,10 +128,11 @@
     "suitColor": "#c0392b"
   },
   "gideon-saar": {
-    "hair": "receding",
+    "hair": "short",
     "hairColor": "#555",
     "grayHair": true,
     "face": "square",
+    "glasses": "rectangular",
     "suitColor": "#1a1a2e",
     "tieColor": "#8e44ad"
   },
@@ -246,6 +247,8 @@
     "hairColor": "#3a3a3a",
     "face": "round",
     "skin": "#e8c8a8",
+    "beard": "goatee",
+    "beardColor": "#3a3a3a",
     "glasses": "round",
     "suitColor": "#2c3e50",
     "tieColor": "#c0392b"
@@ -266,7 +269,7 @@
     "tieColor": "#2980b9"
   },
   "sasson-guetta": {
-    "hair": "short",
+    "hair": "bald",
     "hairColor": "#2c2c2c",
     "face": "round",
     "skin": "#e8c8a8",
