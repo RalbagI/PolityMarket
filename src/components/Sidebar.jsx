@@ -87,8 +87,12 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
       {/* App Header */}
       <div>
         <div className="flex items-center gap-2 mb-1">
-          <div className="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-xs text-white">
-            PM
+          <div className="w-7 h-7 rounded-lg bg-gray-900/60 border border-gray-700/60 flex items-center justify-center overflow-hidden shrink-0">
+            <img
+              src="/politymarket-mark.svg"
+              alt="PolityMarket logo"
+              className="w-full h-full object-contain"
+            />
           </div>
           <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
         </div>
@@ -314,8 +318,12 @@ export default function Sidebar({
       {/* Mobile: Top stats bar */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-[calc(3.5rem+env(safe-area-inset-top))] bg-gray-950 border-b border-gray-800 z-30 flex items-center justify-between px-3 pt-[env(safe-area-inset-top)]">
         <div className="flex items-center gap-2 min-w-0">
-          <div className="w-6 h-6 rounded-md bg-indigo-600 flex items-center justify-center font-bold text-[10px] text-white shrink-0">
-            PM
+          <div className="w-6 h-6 rounded-md bg-gray-900/60 border border-gray-700/60 flex items-center justify-center overflow-hidden shrink-0">
+            <img
+              src="/politymarket-mark.svg"
+              alt="PolityMarket logo"
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="text-sm font-bold text-white truncate">PolityMarket</span>
         </div>
