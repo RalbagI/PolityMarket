@@ -142,21 +142,26 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
     const onTouchEnd = (e) => {
       if (pinchRef.current?.live) {
-        // Keep CSS transform until React re-renders with new viewport
-        setViewport(pinchRef.current.live);
+        e.preventDefault(); // suppress synthetic click
+        const newVp = pinchRef.current.live;
+        viewportRef.current = newVp; // sync ref immediately
+        setViewport(newVp);
         pinchRef.current = null;
-        setTimeout(() => {
-          gestureActiveRef.current = false;
-        }, 300);
-        return;
-      }
-      if (panRef.current?.live) {
-        // Keep CSS transform until React re-renders with new viewport
-        setViewport(panRef.current.live);
         panRef.current = null;
         setTimeout(() => {
           gestureActiveRef.current = false;
-        }, 300);
+        }, 400);
+        return;
+      }
+      if (panRef.current?.live) {
+        e.preventDefault(); // suppress synthetic click
+        const newVp = panRef.current.live;
+        viewportRef.current = newVp; // sync ref immediately
+        setViewport(newVp);
+        panRef.current = null;
+        setTimeout(() => {
+          gestureActiveRef.current = false;
+        }, 400);
         return;
       }
       // No gesture happened — allow taps
@@ -168,7 +173,9 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       if (e.touches.length === 0 && viewportRef.current.scale > 1) {
         const now = Date.now();
         if (now - lastTapRef.current < 300) {
-          setViewport({ scale: 1, x: 0, y: 0 });
+          const resetVp = { scale: 1, x: 0, y: 0 };
+          viewportRef.current = resetVp;
+          setViewport(resetVp);
           if (innerRef.current) innerRef.current.style.transform = "";
           lastTapRef.current = 0;
           return;
@@ -198,11 +205,13 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
       const maxX = el.offsetWidth * (newScale - 1);
       const maxY = el.offsetHeight * (newScale - 1);
-      setViewport({
+      const newVp = {
         scale: newScale,
         x: Math.max(0, Math.min(maxX, newX)),
         y: Math.max(0, Math.min(maxY, newY)),
-      });
+      };
+      viewportRef.current = newVp;
+      setViewport(newVp);
     };
 
     el.addEventListener("touchstart", onTouchStart, { passive: false });
