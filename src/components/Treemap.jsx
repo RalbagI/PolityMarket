@@ -182,7 +182,23 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         const area = w * h;
         const sqrtArea = Math.sqrt(area);
         // Scale: tiny blocks (area<1000) get 0, large blocks get up to 24px
-        const nameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
+        const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
+
+        const displayName = d.displayName || localizeName(t, d.name);
+
+        // Gentle font shrink: reduce slightly for long names, never below 70% of base
+        const maxLines = h > 60 ? 3 : h > 40 ? 2 : 1;
+        const nameFontSize = (() => {
+          if (baseNameFontSize < 1) return 0;
+          const pad = Math.max(2, sqrtArea / 20) * 2;
+          const availW = w - pad;
+          const charsPerLine = availW / (baseNameFontSize * 0.7) || 1;
+          const totalChars = charsPerLine * maxLines;
+          const nameLen = displayName.length;
+          if (nameLen <= totalChars) return baseNameFontSize;
+          // Shrink proportionally but cap at 70% of base
+          return Math.max(baseNameFontSize * 0.7, baseNameFontSize * (totalChars / nameLen));
+        })();
         const scoreFontSize = Math.min(28, nameFontSize * 1.4);
 
         // Visibility thresholds based on area
@@ -190,8 +206,6 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         const showInitials = !tooSmall && area < 1200 && nameFontSize < 7;
         const showName = !tooSmall && !showInitials && nameFontSize >= 7;
         const showScore = area > 3000 && h > 30;
-
-        const displayName = d.displayName || localizeName(t, d.name);
         const initials = displayName
           .split(/\s+/)
           .map((w) => w[0])
@@ -263,14 +277,14 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     display: "-webkit-box",
-                    WebkitLineClamp: h > 60 ? 3 : h > 40 ? 2 : 1,
+                    WebkitLineClamp: maxLines,
                     WebkitBoxOrient: "vertical",
                   }}
                 >
                   {displayName}
                 </div>
                 {showScore && (
-                  <div className="flex items-end justify-between mt-auto">
+                  <div className="flex items-baseline gap-0.5 mt-auto" dir="ltr">
                     <span
                       className="font-black text-white tabular-nums"
                       style={{
