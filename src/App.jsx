@@ -190,6 +190,19 @@ export default function App() {
         <div className="shrink-0 border-t border-gray-800 bg-gray-950">
           <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
         </div>
+
+        {/* TalkPoint attribution — mobile only */}
+        <div className="shrink-0 md:hidden py-3 text-center text-xs text-gray-500">
+          by{" "}
+          <a
+            href="https://tipi.zone/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+          >
+            TalkPoint
+          </a>
+        </div>
       </main>
 
       <ErrorBoundary>
