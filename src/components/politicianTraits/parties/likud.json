@@ -121,6 +121,7 @@
     "hair": "long",
     "hairColor": "#c87020",
     "face": "oval",
+    "glasses": "round",
     "suitColor": "#c0392b"
   },
   "gideon-saar": {
@@ -243,6 +244,7 @@
     "hairColor": "#3a3a3a",
     "face": "round",
     "skin": "#e8c8a8",
+    "glasses": "round",
     "suitColor": "#2c3e50",
     "tieColor": "#c0392b"
   },
