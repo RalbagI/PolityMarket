@@ -23,7 +23,9 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   // Zoom state — scale=1 means no zoom, x/y is the viewport offset
   const [viewport, setViewport] = useState({ scale: 1, x: 0, y: 0 });
   const viewportRef = useRef(viewport);
-  useEffect(() => { viewportRef.current = viewport; }, [viewport]);
+  useEffect(() => {
+    viewportRef.current = viewport;
+  }, [viewport]);
   const pinchRef = useRef(null);
   const panRef = useRef(null);
   const lastTapRef = useRef(0);
@@ -41,7 +43,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     const onTouchStart = (e) => {
       if (e.touches.length === 2) {
         e.preventDefault();
-        const t1 = e.touches[0], t2 = e.touches[1];
+        const t1 = e.touches[0],
+          t2 = e.touches[1];
         const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
         const rect = el.getBoundingClientRect();
         const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
@@ -70,7 +73,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     const onTouchMove = (e) => {
       if (e.touches.length === 2 && pinchRef.current) {
         e.preventDefault();
-        const t1 = e.touches[0], t2 = e.touches[1];
+        const t1 = e.touches[0],
+          t2 = e.touches[1];
         const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
         const g = pinchRef.current;
         const newScale = Math.max(1, Math.min(5, g.startScale * (dist / g.startDist)));
@@ -118,14 +122,18 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         setViewport(pinchRef.current.live);
         if (innerRef.current) innerRef.current.style.transform = "";
         pinchRef.current = null;
-        setTimeout(() => { gestureActiveRef.current = false; }, 300);
+        setTimeout(() => {
+          gestureActiveRef.current = false;
+        }, 300);
         return;
       }
       if (panRef.current?.live) {
         setViewport(panRef.current.live);
         if (innerRef.current) innerRef.current.style.transform = "";
         panRef.current = null;
-        setTimeout(() => { gestureActiveRef.current = false; }, 300);
+        setTimeout(() => {
+          gestureActiveRef.current = false;
+        }, 300);
         return;
       }
       pinchRef.current = null;
@@ -273,7 +281,10 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         .sum((d) => Math.max(d[sizeBy] || d.media_volume || 1, 1))
         .sort((a, b) => b.value - a.value);
 
-      treemap().size([virtualW, virtualH]).padding(2 * viewport.scale).tile(treemapSquarify)(root);
+      treemap()
+        .size([virtualW, virtualH])
+        .padding(2 * viewport.scale)
+        .tile(treemapSquarify)(root);
 
       return root.leaves();
     } catch {
@@ -324,8 +335,6 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     },
     [onSelect]
   );
-
-
 
   if (!data || !data.length) {
     return (
@@ -382,182 +391,181 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           willChange: viewport.scale > 1 ? "transform" : "auto",
         }}
       >
-      {leaves.map((leaf) => {
-        const d = leaf.data;
-        const w = leaf.x1 - leaf.x0;
-        const h = leaf.y1 - leaf.y0;
-        const isHovered = hovered === d.name;
-        const isSelected = selectedPolitician === d.name;
+        {leaves.map((leaf) => {
+          const d = leaf.data;
+          const w = leaf.x1 - leaf.x0;
+          const h = leaf.y1 - leaf.y0;
+          const isHovered = hovered === d.name;
+          const isSelected = selectedPolitician === d.name;
 
-        // Area-based font scaling: sqrt(area) gives proportional sizing
-        const area = w * h;
-        const sqrtArea = Math.sqrt(area);
-        // Scale: tiny blocks (area<1000) get 0, large blocks get up to 24px
-        const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
+          // Area-based font scaling: sqrt(area) gives proportional sizing
+          const area = w * h;
+          const sqrtArea = Math.sqrt(area);
+          // Scale: tiny blocks (area<1000) get 0, large blocks get up to 24px
+          const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
 
-        const displayName = d.displayName || localizeName(t, d.name);
+          const displayName = d.displayName || localizeName(t, d.name);
 
-        const tooSmall = area < 400; // truly tiny — show nothing
-        const pad = Math.max(2, sqrtArea / 20) * 2;
-        const availW = w - pad;
-        const availH = h - pad;
+          const tooSmall = area < 400; // truly tiny — show nothing
+          const pad = Math.max(2, sqrtArea / 20) * 2;
+          const availW = w - pad;
+          const availH = h - pad;
 
-        // Score sizing — show score in all but the tiniest cells
-        const showScore = !tooSmall && area > 1200 && h > 20;
-        const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
-        const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
-        const showSlashTen = showScore && area > 8000;
+          // Score sizing — show score in all but the tiniest cells
+          const showScore = !tooSmall && area > 1200 && h > 20;
+          const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
+          const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
+          const showSlashTen = showScore && area > 8000;
 
-        // Step 1: shrink font for long names (using generous initial maxLines estimate)
-        const nameAvailH = availH - scoreLineH;
-        const roughMaxLines = Math.max(1, Math.floor(nameAvailH / ((baseNameFontSize * 1.2) || 1)));
-        const nameFontSize = (() => {
-          if (baseNameFontSize < 1) return 0;
-          const charW = 0.7; // avg char width / font size for bold Hebrew
-          const charsPerLine = availW / (baseNameFontSize * charW) || 1;
-          const totalChars = charsPerLine * roughMaxLines;
-          const nameLen = displayName.length;
-          if (nameLen <= totalChars) return baseNameFontSize;
-          return Math.max(baseNameFontSize * 0.55, baseNameFontSize * (totalChars / nameLen));
-        })();
+          // Step 1: shrink font for long names (using generous initial maxLines estimate)
+          const nameAvailH = availH - scoreLineH;
+          const roughMaxLines = Math.max(1, Math.floor(nameAvailH / (baseNameFontSize * 1.2 || 1)));
+          const nameFontSize = (() => {
+            if (baseNameFontSize < 1) return 0;
+            const charW = 0.7; // avg char width / font size for bold Hebrew
+            const charsPerLine = availW / (baseNameFontSize * charW) || 1;
+            const totalChars = charsPerLine * roughMaxLines;
+            const nameLen = displayName.length;
+            if (nameLen <= totalChars) return baseNameFontSize;
+            return Math.max(baseNameFontSize * 0.55, baseNameFontSize * (totalChars / nameLen));
+          })();
 
-        // Step 2: compute maxLines from the ACTUAL shrunken font size so text won't overflow
-        const actualLineH = nameFontSize * 1.2;
-        const maxLines = Math.max(1, Math.floor(nameAvailH / (actualLineH || 1)));
+          // Step 2: compute maxLines from the ACTUAL shrunken font size so text won't overflow
+          const actualLineH = nameFontSize * 1.2;
+          const maxLines = Math.max(1, Math.floor(nameAvailH / (actualLineH || 1)));
 
-        // Visibility thresholds based on area
-        const showInitials = !tooSmall && area < 1200 && nameFontSize < 5;
-        const showName = !tooSmall && !showInitials && nameFontSize >= 5;
-        const initials = displayName
-          .split(/\s+/)
-          .map((w) => w[0])
-          .join("")
-          .slice(0, 2);
+          // Visibility thresholds based on area
+          const showInitials = !tooSmall && area < 1200 && nameFontSize < 5;
+          const showName = !tooSmall && !showInitials && nameFontSize >= 5;
+          const initials = displayName
+            .split(/\s+/)
+            .map((w) => w[0])
+            .join("")
+            .slice(0, 2);
 
-        return (
-          <div
-            key={d.politician_id || d.name}
-            role="button"
-            tabIndex={tooSmall ? -1 : 0}
-            aria-label={
-              d._isOthers ? displayName : `${displayName}: ${d.overall_score.toFixed(1)}/10`
-            }
-            onClick={() => {
-              if (gestureActiveRef.current) return;
-              if (d._isOthers && d._groupedData) {
-                setDrillDown({ items: d._groupedData, sourceData: data });
-                setViewport({ scale: 1, x: 0, y: 0 });
-              } else if (!d._isOthers) {
-                onSelect(d.name);
+          return (
+            <div
+              key={d.politician_id || d.name}
+              role="button"
+              tabIndex={tooSmall ? -1 : 0}
+              aria-label={
+                d._isOthers ? displayName : `${displayName}: ${d.overall_score.toFixed(1)}/10`
               }
-            }}
-            onKeyDown={(e) => {
-              if ((e.key === "Enter" || e.key === " ") && !d._isOthers) {
-                e.preventDefault();
-                onSelect(d.name);
-              }
-            }}
-            onTouchEnd={(e) => {
-              if (pinchRef.current || panRef.current?.moved) return;
-              if (d._isOthers && d._groupedData) {
-                e.preventDefault();
-                setDrillDown({ items: d._groupedData, sourceData: data });
-                setViewport({ scale: 1, x: 0, y: 0 });
-              } else if (!d._isOthers) {
-                handleTouchEnd(d.name, e);
-              }
-            }}
-            onMouseEnter={() => {
-              if (!isTouchRef.current) setHovered(d.name);
-              isTouchRef.current = false;
-            }}
-            className="absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
-            style={{
-              left: leaf.x0,
-              top: leaf.y0,
-              width: w,
-              height: h,
-              backgroundColor: normalizedScoreToColorWithAlpha(
-                getColorMetric(d),
-                colorRange.min,
-                colorRange.max,
-                isHovered || isSelected ? 0.85 : 0.55
-              ),
-              border:
-                isHovered || isSelected
-                  ? "2px solid rgba(255,255,255,0.8)"
-                  : "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 4,
-            }}
-          >
-            {showInitials && (
-              <div className="w-full h-full flex items-center justify-center">
-                <span
-                  className="font-bold text-white/80"
-                  style={{
-                    fontSize: Math.max(8, Math.min(14, sqrtArea / 4)),
-                    textShadow: "0 1px 2px rgba(0,0,0,0.6)",
-                  }}
-                >
-                  {initials}
-                </span>
-              </div>
-            )}
-            {showName && (
-              <div
-                className="flex flex-col overflow-hidden"
-                style={{
-                  padding: Math.max(2, sqrtArea / 20),
-                  height: h,
-                  boxSizing: "border-box",
-                }}
-              >
-                <div
-                  className="font-bold text-white leading-tight min-h-0"
-                  style={{
-                    fontSize: nameFontSize,
-                    textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    display: "-webkit-box",
-                    WebkitLineClamp: maxLines,
-                    WebkitBoxOrient: "vertical",
-                    flex: "0 1 auto",
-                  }}
-                >
-                  {displayName}
-                </div>
-                {showScore && (
-                  <div
-                    className="flex items-baseline gap-0.5"
-                    dir="ltr"
-                    style={{ flex: "0 0 auto", marginTop: "auto" }}
+              onClick={() => {
+                if (gestureActiveRef.current) return;
+                if (d._isOthers && d._groupedData) {
+                  setDrillDown({ items: d._groupedData, sourceData: data });
+                  setViewport({ scale: 1, x: 0, y: 0 });
+                } else if (!d._isOthers) {
+                  onSelect(d.name);
+                }
+              }}
+              onKeyDown={(e) => {
+                if ((e.key === "Enter" || e.key === " ") && !d._isOthers) {
+                  e.preventDefault();
+                  onSelect(d.name);
+                }
+              }}
+              onTouchEnd={(e) => {
+                if (pinchRef.current || panRef.current?.moved) return;
+                if (d._isOthers && d._groupedData) {
+                  e.preventDefault();
+                  setDrillDown({ items: d._groupedData, sourceData: data });
+                  setViewport({ scale: 1, x: 0, y: 0 });
+                } else if (!d._isOthers) {
+                  handleTouchEnd(d.name, e);
+                }
+              }}
+              onMouseEnter={() => {
+                if (!isTouchRef.current) setHovered(d.name);
+                isTouchRef.current = false;
+              }}
+              className="absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
+              style={{
+                left: leaf.x0,
+                top: leaf.y0,
+                width: w,
+                height: h,
+                backgroundColor: normalizedScoreToColorWithAlpha(
+                  getColorMetric(d),
+                  colorRange.min,
+                  colorRange.max,
+                  isHovered || isSelected ? 0.85 : 0.55
+                ),
+                border:
+                  isHovered || isSelected
+                    ? "2px solid rgba(255,255,255,0.8)"
+                    : "1px solid rgba(255,255,255,0.1)",
+                borderRadius: 4,
+              }}
+            >
+              {showInitials && (
+                <div className="w-full h-full flex items-center justify-center">
+                  <span
+                    className="font-bold text-white/80"
+                    style={{
+                      fontSize: Math.max(8, Math.min(14, sqrtArea / 4)),
+                      textShadow: "0 1px 2px rgba(0,0,0,0.6)",
+                    }}
                   >
-                    <span
-                      className="font-black text-white tabular-nums"
-                      style={{
-                        fontSize: scoreFontSize,
-                        textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-                      }}
-                    >
-                      {d.overall_score.toFixed(1)}
-                    </span>
-                    {showSlashTen && (
-                      <span
-                        className="text-white/50"
-                        style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
-                      >
-                        /10
-                      </span>
-                    )}
+                    {initials}
+                  </span>
+                </div>
+              )}
+              {showName && (
+                <div
+                  className="flex flex-col overflow-hidden"
+                  style={{
+                    padding: Math.max(2, sqrtArea / 20),
+                    height: h,
+                    boxSizing: "border-box",
+                  }}
+                >
+                  <div
+                    className="font-bold text-white leading-tight min-h-0"
+                    style={{
+                      fontSize: nameFontSize,
+                      textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      WebkitLineClamp: maxLines,
+                      WebkitBoxOrient: "vertical",
+                      flex: "0 1 auto",
+                    }}
+                  >
+                    {displayName}
                   </div>
-                )}
-              </div>
-            )}
-          </div>
-        );
-      })}
-
+                  {showScore && (
+                    <div
+                      className="flex items-baseline gap-0.5"
+                      dir="ltr"
+                      style={{ flex: "0 0 auto", marginTop: "auto" }}
+                    >
+                      <span
+                        className="font-black text-white tabular-nums"
+                        style={{
+                          fontSize: scoreFontSize,
+                          textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        {d.overall_score.toFixed(1)}
+                      </span>
+                      {showSlashTen && (
+                        <span
+                          className="text-white/50"
+                          style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
+                        >
+                          /10
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
       {hovered && (
         <TreemapTooltip politician={data.find((d) => d.name === hovered)} position={mousePos} />
