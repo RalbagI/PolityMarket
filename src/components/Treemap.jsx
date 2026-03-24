@@ -26,6 +26,14 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   useEffect(() => {
     viewportRef.current = viewport;
   }, [viewport]);
+  // After React re-renders with new viewport, clear any leftover native CSS transform
+  // so React's inline style is the source of truth again
+  useEffect(() => {
+    if (innerRef.current) {
+      innerRef.current.style.transform = "";
+      innerRef.current.style.transformOrigin = "";
+    }
+  }, [viewport]);
   const pinchRef = useRef(null);
   const panRef = useRef(null);
   const lastTapRef = useRef(0);
@@ -59,15 +67,17 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           originY: midY + viewportRef.current.y,
         };
         panRef.current = null;
-      } else if (e.touches.length === 1 && viewportRef.current.scale > 1) {
+      } else if (e.touches.length === 1) {
+        // Always track single touch — needed to detect if it becomes a pinch,
+        // and for panning when zoomed in
         panRef.current = {
           startX: e.touches[0].clientX,
           startY: e.touches[0].clientY,
           vpX: viewportRef.current.x,
           vpY: viewportRef.current.y,
           moved: false,
+          canPan: viewportRef.current.scale > 1,
         };
-        gestureActiveRef.current = true;
       }
     };
 
@@ -106,11 +116,14 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           x: Math.max(0, Math.min(maxX, newX)),
           y: Math.max(0, Math.min(maxY, newY)),
         };
-      } else if (e.touches.length === 1 && panRef.current && !pinchRef.current) {
+      } else if (e.touches.length === 1 && panRef.current?.canPan && !pinchRef.current) {
         e.preventDefault();
         const dx = panRef.current.startX - e.touches[0].clientX;
         const dy = panRef.current.startY - e.touches[0].clientY;
-        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) panRef.current.moved = true;
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+          panRef.current.moved = true;
+          gestureActiveRef.current = true;
+        }
         if (panRef.current.moved && innerRef.current) {
           const vp = viewportRef.current;
           const s = vp.scale;
@@ -129,8 +142,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
     const onTouchEnd = (e) => {
       if (pinchRef.current?.live) {
+        // Keep CSS transform until React re-renders with new viewport
         setViewport(pinchRef.current.live);
-        if (innerRef.current) innerRef.current.style.transform = "";
         pinchRef.current = null;
         setTimeout(() => {
           gestureActiveRef.current = false;
@@ -138,15 +151,17 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         return;
       }
       if (panRef.current?.live) {
+        // Keep CSS transform until React re-renders with new viewport
         setViewport(panRef.current.live);
-        if (innerRef.current) innerRef.current.style.transform = "";
         panRef.current = null;
         setTimeout(() => {
           gestureActiveRef.current = false;
         }, 300);
         return;
       }
+      // No gesture happened — allow taps
       pinchRef.current = null;
+      panRef.current = null;
       gestureActiveRef.current = false;
 
       // Double-tap to reset zoom
