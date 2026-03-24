@@ -173,4 +173,32 @@ describe("fetchParliamentaryData", () => {
     const result = await fetchParliamentaryData("test-politician", BASE_CONFIG, mockFetch);
     expect(result.committee_rate).toBe(0.70);
   });
+
+  it("initiative_score is always null (bills API not yet implemented)", async () => {
+    // Explicit assertion so regressions are caught when the bills API is wired in
+    const mockFetch = makeFetchJson({
+      "vote/": { objects: [{ title: "Test Bill", vote: "for", time: "2026-03-17" }] },
+      "member/42/": { committee_positions: [] },
+      "mmm/": { objects: [] },
+    });
+    const result = await fetchParliamentaryData("test-politician", BASE_CONFIG, mockFetch);
+    expect(result.initiative_score).toBeNull();
+  });
+
+  it("baseUrl with trailing slash constructs valid endpoint URLs", async () => {
+    const calls = [];
+    const mockFetch = async (url) => {
+      calls.push(url);
+      if (url.includes("/vote/")) return { objects: [] };
+      if (url.includes("/member/")) return { committee_positions: [] };
+      if (url.includes("/mmm/")) return { objects: [] };
+      throw new Error(`Unexpected URL: ${url}`);
+    };
+
+    await fetchParliamentaryData("test-politician", BASE_CONFIG, mockFetch);
+
+    for (const url of calls) {
+      expect(url).toMatch(/^https:\/\/oknesset\.test\/api\/v2\//);
+    }
+  });
 });

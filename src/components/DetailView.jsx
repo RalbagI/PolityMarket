@@ -40,9 +40,7 @@ function DimensionBar({ label, value, color, weight }) {
           <span>{label}</span>
           {weight && <span className="text-gray-600">({weight})</span>}
         </div>
-        <span className="text-xs font-bold text-white">
-          {isNull ? "—" : value.toFixed(2)}
-        </span>
+        <span className="text-xs font-bold text-white">{isNull ? "—" : value.toFixed(2)}</span>
       </div>
       <div className="w-full bg-gray-800 rounded-full h-1.5">
         {isNull ? (
@@ -229,13 +227,43 @@ export default function DetailView({
       >
         <div className="space-y-2.5">
           {[
-            { field: "dim_public_sentiment", key: "publicSentiment", color: "#6366f1", weight: "25%" },
-            { field: "dim_parliamentary_activity", key: "parliamentaryActivity", color: "#8b5cf6", weight: "18%" },
-            { field: "dim_media_credibility", key: "mediaCredibility", color: "#06b6d4", weight: "12%" },
-            { field: "dim_transparency_ethics", key: "transparencyEthics", color: "#10b981", weight: "12%" },
+            {
+              field: "dim_public_sentiment",
+              key: "publicSentiment",
+              color: "#6366f1",
+              weight: "25%",
+            },
+            {
+              field: "dim_parliamentary_activity",
+              key: "parliamentaryActivity",
+              color: "#8b5cf6",
+              weight: "18%",
+            },
+            {
+              field: "dim_media_credibility",
+              key: "mediaCredibility",
+              color: "#06b6d4",
+              weight: "12%",
+            },
+            {
+              field: "dim_transparency_ethics",
+              key: "transparencyEthics",
+              color: "#10b981",
+              weight: "12%",
+            },
             { field: "dim_field_activity", key: "fieldActivity", color: "#f59e0b", weight: "10%" },
-            { field: "dim_satire_cultural_impact", key: "satireCulturalImpact", color: "#f43f5e", weight: "10%" },
-            { field: "dim_legislative_quality", key: "legislativeQuality", color: "#a855f7", weight: "8%" },
+            {
+              field: "dim_satire_cultural_impact",
+              key: "satireCulturalImpact",
+              color: "#f43f5e",
+              weight: "10%",
+            },
+            {
+              field: "dim_legislative_quality",
+              key: "legislativeQuality",
+              color: "#a855f7",
+              weight: "8%",
+            },
             { field: "dim_flipflop_index", key: "flipflopIndex", color: "#14b8a6", weight: "5%" },
           ].map(({ field, key, color, weight }) => (
             <DimensionBar

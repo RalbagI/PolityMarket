@@ -1384,7 +1384,7 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
         ? topPromises
             .map(
               (pr) =>
-                `  - "${pr.text_en}" [date: ${pr.date}] [topic: ${pr.topic}] [context: ${pr.context}]`
+                `  - "${String(pr.text_en || "").slice(0, 200)}" [date: ${pr.date}] [topic: ${pr.topic}] [context: ${pr.context}]`
             )
             .join("\n")
         : "  No promises database entries for this politician";
