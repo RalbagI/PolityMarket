@@ -52,7 +52,9 @@ describe("buildBatchedPrompt", () => {
         {
           headlines: ["No direct headlines matched Empty Pol in configured sources this cycle."],
           socialMentions: [
-            { text: "No direct social mentions matched Empty Pol in configured sources this cycle." },
+            {
+              text: "No direct social mentions matched Empty Pol in configured sources this cycle.",
+            },
           ],
         },
       ],

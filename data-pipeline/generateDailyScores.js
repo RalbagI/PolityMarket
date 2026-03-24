@@ -802,6 +802,9 @@ const OPENAI_TIMEOUT_MS = parsePositiveInt(process.env.OPENAI_TIMEOUT_MS, 600000
 // Smaller batches (20) improve Hebrew CoT JSON reliability on gpt-5.4-mini
 const MAX_BATCH_SIZE = parsePositiveInt(process.env.MAX_BATCH_SIZE, 20);
 const MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.MAX_PROMPT_CHARS, 350000);
+const COT_MIN_COVERAGE = parseUnitInterval(process.env.COT_MIN_COVERAGE, 1);
+const COT_MIN_LENGTH = parsePositiveInt(process.env.COT_MIN_LENGTH, 50);
+const ENFORCE_COT_COVERAGE = process.env.ENFORCE_COT_COVERAGE !== "false";
 // Politicians with >= this many headlines+social get the high-tier model
 const OPENAI_HIGH_TIER_THRESHOLD = parseNonNegativeInt(process.env.OPENAI_HIGH_TIER_THRESHOLD, 5);
 const SOURCE_TIMEOUT_MS = parsePositiveInt(process.env.SOURCE_TIMEOUT_MS, 20000);
@@ -827,6 +830,11 @@ function parsePositiveInt(value, fallback) {
 function parseNonNegativeInt(value, fallback) {
   const parsed = Number.parseInt(value ?? "", 10);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+}
+
+function parseUnitInterval(value, fallback) {
+  const parsed = Number.parseFloat(value ?? "");
+  return Number.isFinite(parsed) && parsed >= 0 && parsed <= 1 ? parsed : fallback;
 }
 
 function getCurrentDateString() {
@@ -1416,7 +1424,7 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
     const rollingContext = prevCoT ? `\nPrevious analysis summary: ${prevCoT}` : "";
     const contextHint =
       !hasRealHeadlines && !hasRealSocial
-        ? `\nContext note: No direct coverage this cycle. Write a brief Hebrew analysis about this politician's current political standing, role in ${p.party}, and general media profile as ${p.role || "mk"} in the ${coalitionRole}.${rollingContext}`
+        ? `\nContext note: No direct headlines or social mentions matched this cycle. Write a short neutral Hebrew analysis that explicitly states the lack of direct coverage. Use only provided metadata (party: ${p.party}, role: ${p.role || "mk"}, wing: ${p.wing}, coalition role: ${coalitionRole}) and the previous analysis summary below if present. Do not add external facts or unprovided current events.${rollingContext}`
         : "";
 
     prompt += `
@@ -1595,7 +1603,13 @@ export function splitPoliticiansIntoBatches(
   return batches;
 }
 
-async function batchScoreAllPoliticians(politicians, politicianDataMap, oknessetMap, promisesDB, yesterdayCoTMap) {
+async function batchScoreAllPoliticians(
+  politicians,
+  politicianDataMap,
+  oknessetMap,
+  promisesDB,
+  yesterdayCoTMap
+) {
   // Classify by news activity: high-tier gets OPENAI_MODEL_HIGH, low-tier gets OPENAI_MODEL_LOW
   const highTier = [];
   const lowTier = [];
@@ -1913,15 +1927,10 @@ async function main() {
     if (!Array.isArray(prevData)) throw new Error("previous detail file is not an array");
     for (const entry of prevData) {
       if (entry.chain_of_thought && entry.chain_of_thought.length > 20) {
-        yesterdayCoTMap.set(
-          entry.politician_id,
-          entry.chain_of_thought.slice(0, 120)
-        );
+        yesterdayCoTMap.set(entry.politician_id, entry.chain_of_thought.slice(0, 120));
       }
     }
-    console.log(
-      `  Loaded ${yesterdayCoTMap.size} previous CoT summaries for rolling context`
-    );
+    console.log(`  Loaded ${yesterdayCoTMap.size} previous CoT summaries for rolling context`);
   } catch {
     console.log("  No previous day detail file found — skipping rolling context");
   }
@@ -2175,6 +2184,7 @@ async function main() {
   const recentDates = [...new Set(existingSummary.map((r) => r.date))].sort().slice(-7);
   const recentHistory = existingSummary.filter((r) => recentDates.includes(r.date));
 
+  const cotCoverageWarnings = validateCoTCoverage(newEntries, COT_MIN_COVERAGE, COT_MIN_LENGTH);
   const allWarnings = [
     ...validateChainOfThought(newEntries),
     ...validateTemporalConsistency(newEntries, recentHistory),
@@ -2183,7 +2193,7 @@ async function main() {
     ...validateDimensionConsistency(newEntries, {
       requireParliamentaryActivity: Object.keys(oknessetConfig?.memberIdMap ?? {}).length > 0,
     }),
-    ...validateCoTCoverage(newEntries),
+    ...cotCoverageWarnings,
   ];
 
   if (allWarnings.length) {
@@ -2207,6 +2217,10 @@ async function main() {
     fs.writeFileSync(driftLogPath, JSON.stringify(driftLog, null, 2));
   } else {
     console.log("  ✓ All validation checks passed");
+  }
+
+  if (ENFORCE_COT_COVERAGE && cotCoverageWarnings.length) {
+    throw new Error(`CoT coverage gate failed: ${cotCoverageWarnings.join(" | ")}`);
   }
 
   // ── Phase 4: Write artifacts ────────────────────────────────────────

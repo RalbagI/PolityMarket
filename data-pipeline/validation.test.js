@@ -90,7 +90,8 @@ describe("validateCoTCoverage", () => {
   it("returns no warning when all entries have sufficient CoT", () => {
     const entries = Array.from({ length: 10 }, (_, i) => ({
       name: `P${i}`,
-      chain_of_thought: "ניתוח ארוך מספיק שמכיל מספיק תווים כדי לעבור את הסף של חמישים תווים בעברית",
+      chain_of_thought:
+        "ניתוח ארוך מספיק שמכיל מספיק תווים כדי לעבור את הסף של חמישים תווים בעברית",
     }));
     expect(validateCoTCoverage(entries)).toEqual([]);
   });
@@ -99,7 +100,8 @@ describe("validateCoTCoverage", () => {
     const entries = [
       ...Array.from({ length: 7 }, (_, i) => ({
         name: `Good${i}`,
-        chain_of_thought: "ניתוח ארוך מספיק שמכיל מספיק תווים כדי לעבור את הסף של חמישים תווים בעברית",
+        chain_of_thought:
+          "ניתוח ארוך מספיק שמכיל מספיק תווים כדי לעבור את הסף של חמישים תווים בעברית",
       })),
       ...Array.from({ length: 3 }, (_, i) => ({
         name: `Bad${i}`,
