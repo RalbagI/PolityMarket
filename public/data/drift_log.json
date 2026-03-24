@@ -36,5 +36,41 @@
       "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
     ],
     "timestamp": "2026-03-23T11:10:32.220Z"
+  },
+  {
+    "date": "2026-03-24",
+    "warnings": [
+      "[Outlier] Benjamin Netanyahu: score 6.6 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Yariv Levin: score 6.2 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Nir Barkat: score 6.0 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Amir Ohana: score 5.9 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Shlomo Karhi: score 4.7 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Avi Dichter: score 4.4 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Nissim Vaturi: score 4.2 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Eliyahu Revivo: score 5.1 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Gila Gamliel: score 6.6 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Miki Zohar: score 6.6 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Yoav Kish: score 4.2 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Miri Regev: score 5.3 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Yair Lapid: score 5.2 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Meir Cohen: score 5.0 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Benny Gantz: score 5.9 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Matan Kahana: score 6.6 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Aryeh Deri: score 5.8 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Moshe Gafni: score 6.5 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Bezalel Smotrich: score 5.1 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Simcha Rothman: score 4.0 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Zvi Sukkot: score 6.0 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Itamar Ben Gvir: score 5.1 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Amichai Eliyahu: score 5.4 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Avigdor Lieberman: score 4.5 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Gideon Sa'ar: score 6.1 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Yair Golan: score 4.7 outside IQR bounds [5.5, 5.5]",
+      "[Outlier] Naftali Bennett: score 5.3 outside IQR bounds [5.5, 5.5]",
+      "[Party] Ra'am: all 5 members have identical scores — possible hallucination",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-03-24T03:48:58.154Z"
   }
 ]
