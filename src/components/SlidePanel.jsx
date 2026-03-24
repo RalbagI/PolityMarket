@@ -105,7 +105,22 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom))]">{children}</div>
+        <div className="p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          {children}
+
+          {/* TalkPoint attribution — desktop side panel */}
+          <div className="hidden sm:block mt-6 pt-4 border-t border-gray-800 text-center text-xs text-gray-500">
+            by{" "}
+            <a
+              href="https://tipi.zone/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-400 hover:text-indigo-300 transition-colors"
+            >
+              TalkPoint
+            </a>
+          </div>
+        </div>
       </div>
     </>
   );
