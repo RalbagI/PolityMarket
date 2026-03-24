@@ -67,6 +67,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           vpY: viewportRef.current.y,
           moved: false,
         };
+        gestureActiveRef.current = true;
       }
     };
 
@@ -77,25 +78,34 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           t2 = e.touches[1];
         const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
         const g = pinchRef.current;
-        const newScale = Math.max(1, Math.min(5, g.startScale * (dist / g.startDist)));
+        const liveScale = Math.max(1, Math.min(5, g.startScale * (dist / g.startDist)));
 
-        // Zoom towards pinch midpoint: keep the origin point stationary on screen
-        const newX = g.originX * (newScale / g.startScale) - (g.originX - g.startX);
-        const newY = g.originY * (newScale / g.startScale) - (g.originY - g.startY);
+        // CSS-only zoom: scale the existing layout and shift to keep midpoint stable
+        // The inner div is already translated by (-viewport.x, -viewport.y) from React.
+        // We apply an additional CSS scale + translate relative to the pinch origin on screen.
+        const scaleRatio = liveScale / g.startScale;
+        const rect = el.getBoundingClientRect();
+        const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
+        const midY = (t1.clientY + t2.clientY) / 2 - rect.top;
+        // Transform origin at the midpoint, scale from there
+        const tx = midX * (1 - scaleRatio);
+        const ty = midY * (1 - scaleRatio);
 
-        const s = Math.max(1, Math.min(5, newScale));
-        const maxX = el.offsetWidth * (s - 1);
-        const maxY = el.offsetHeight * (s - 1);
-        const clamped = {
-          scale: s,
+        if (innerRef.current) {
+          innerRef.current.style.transform = `translate(${tx}px, ${ty}px) scale(${scaleRatio})`;
+          innerRef.current.style.transformOrigin = "0 0";
+        }
+
+        // Compute the final viewport for when gesture ends
+        const newX = g.originX * (liveScale / g.startScale) - (g.originX - g.startX);
+        const newY = g.originY * (liveScale / g.startScale) - (g.originY - g.startY);
+        const maxX = el.offsetWidth * (liveScale - 1);
+        const maxY = el.offsetHeight * (liveScale - 1);
+        pinchRef.current.live = {
+          scale: liveScale,
           x: Math.max(0, Math.min(maxX, newX)),
           y: Math.max(0, Math.min(maxY, newY)),
         };
-
-        if (innerRef.current) {
-          innerRef.current.style.transform = `translate(${-clamped.x}px, ${-clamped.y}px)`;
-        }
-        pinchRef.current.live = clamped;
       } else if (e.touches.length === 1 && panRef.current && !pinchRef.current) {
         e.preventDefault();
         const dx = panRef.current.startX - e.touches[0].clientX;
@@ -467,7 +477,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                 }
               }}
               onTouchEnd={(e) => {
-                if (pinchRef.current || panRef.current?.moved) return;
+                if (gestureActiveRef.current) return;
                 if (d._isOthers && d._groupedData) {
                   e.preventDefault();
                   setDrillDown({ items: d._groupedData, sourceData: data });
