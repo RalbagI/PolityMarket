@@ -334,5 +334,31 @@
       "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
     ],
     "timestamp": "2026-03-24T18:01:10.589Z"
+  },
+  {
+    "date": "2026-03-24",
+    "warnings": [
+      "[Temporal] Yoav Segalovitz: score 3.6 deviates 1.7 from 7-day avg 5.3 (threshold: 1.5)",
+      "[Temporal] Adi Azuz: score 3.4 deviates 1.9 from 7-day avg 5.3 (threshold: 1.5)",
+      "[Outlier] Yariv Levin: score 6.2 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Nissim Vaturi: score 4.0 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Osher Shkalim: score 6.3 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Gila Gamliel: score 6.2 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Miki Zohar: score 6.2 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Miri Regev: score 6.3 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Yoav Segalovitz: score 3.6 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Elazar Stern: score 6.3 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Adi Azuz: score 3.4 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Benny Gantz: score 6.3 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Orit Farkash-Hacohen: score 6.6 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Matan Kahana: score 6.8 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Bezalel Smotrich: score 4.0 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Orit Strock: score 3.9 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Limor Son Har-Melech: score 6.2 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Evgeny Sova: score 6.7 outside IQR bounds [4.0, 6.0]",
+      "[Outlier] Naama Lazimi: score 6.8 outside IQR bounds [4.0, 6.0]",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-03-24T21:17:59.241Z"
   }
 ]
