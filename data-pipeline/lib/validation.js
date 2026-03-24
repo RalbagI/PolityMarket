@@ -27,13 +27,28 @@ export function validateChainOfThought(entries) {
   const warnings = [];
   for (const entry of entries) {
     const cot = entry.chain_of_thought;
-    // null CoT is valid (low-tier politicians scored with [COT: skip])
+    // null CoT is flagged by validateCoTCoverage at the aggregate level
     if (cot == null) continue;
     if (cot.length < 20) {
       warnings.push(`[CoT] ${entry.name}: chain_of_thought too short (${cot.length} chars)`);
     } else if (!HEBREW_RE.test(cot)) {
       warnings.push(`[CoT] ${entry.name}: chain_of_thought contains no Hebrew characters`);
     }
+  }
+  return warnings;
+}
+
+export function validateCoTCoverage(entries, minCoverageRatio = 0.8, minCoTLength = 50) {
+  const warnings = [];
+  if (!entries.length) return warnings;
+  const withCoT = entries.filter(
+    (e) => e.chain_of_thought && e.chain_of_thought.length >= minCoTLength
+  );
+  const ratio = withCoT.length / entries.length;
+  if (ratio < minCoverageRatio) {
+    warnings.push(
+      `[CoT Coverage] Only ${withCoT.length}/${entries.length} (${(ratio * 100).toFixed(0)}%) have meaningful CoT (>=${minCoTLength} chars) — expected >=${(minCoverageRatio * 100).toFixed(0)}%`
+    );
   }
   return warnings;
 }

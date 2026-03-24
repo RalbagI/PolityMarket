@@ -1,10 +1,10 @@
 {
   "rss": {
     "searchTemplates": [
-      "https://news.google.com/rss/search?q={query}+פוליטיקה+ישראל+when:1d&hl=iw&gl=IL&ceid=IL:he",
-      "https://news.google.com/rss/search?q={query}+כנסת+when:1d&hl=iw&gl=IL&ceid=IL:he",
-      "https://news.google.com/rss/search?q={query}+ועדת+כנסת+when:1d&hl=iw&gl=IL&ceid=IL:he",
-      "https://news.google.com/rss/search?q={query}+Israel+politics+when:1d&hl=en-US&gl=US&ceid=US:en"
+      "https://news.google.com/rss/search?q={query}+פוליטיקה+ישראל+when:3d&hl=iw&gl=IL&ceid=IL:he",
+      "https://news.google.com/rss/search?q={query}+כנסת+when:3d&hl=iw&gl=IL&ceid=IL:he",
+      "https://news.google.com/rss/search?q={query}+ועדת+כנסת+when:3d&hl=iw&gl=IL&ceid=IL:he",
+      "https://news.google.com/rss/search?q={query}+Israel+politics+when:3d&hl=en-US&gl=US&ceid=US:en"
     ],
     "globalFeeds": [
       "https://www.ynet.co.il/Integration/StoryRss1854.xml",

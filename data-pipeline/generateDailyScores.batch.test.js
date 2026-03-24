@@ -43,6 +43,28 @@ describe("buildBatchedPrompt", () => {
     expect(prompt).toContain("No matched headlines");
     expect(prompt).toContain("No matched social mentions");
   });
+
+  it("injects contextHint and rolling context for no-data politicians", () => {
+    const politicians = [makePolitician("empty", "Empty Pol", "Party X")];
+    const data = new Map([
+      [
+        "empty",
+        {
+          headlines: ["No direct headlines matched Empty Pol in configured sources this cycle."],
+          socialMentions: [
+            {
+              text: "No direct social mentions matched Empty Pol in configured sources this cycle.",
+            },
+          ],
+        },
+      ],
+    ]);
+    const cotMap = new Map([["empty", "ניתוח קודם על פוליטיקאי זה"]]);
+
+    const prompt = buildBatchedPrompt(politicians, data, null, null, true, cotMap);
+    expect(prompt).toContain("Context note:");
+    expect(prompt).toContain("Previous analysis summary:");
+  });
 });
 
 describe("search term matching", () => {

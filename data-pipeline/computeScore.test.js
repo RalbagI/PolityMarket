@@ -142,8 +142,8 @@ describe("computeTransparencyEthics", () => {
 });
 
 describe("computeFieldActivity", () => {
-  it("returns 0 for 0 activities", () => {
-    expect(computeFieldActivity(0)).toBe(0);
+  it("returns null for 0 activities (no evidence)", () => {
+    expect(computeFieldActivity(0)).toBeNull();
   });
 
   it("returns 1 for ≥3 activities", () => {
@@ -157,8 +157,8 @@ describe("computeFieldActivity", () => {
 });
 
 describe("computeSatireCulturalImpact", () => {
-  it("returns 0 for 0 mentions", () => {
-    expect(computeSatireCulturalImpact(0, "neutral")).toBe(0);
+  it("returns null for 0 mentions (no evidence)", () => {
+    expect(computeSatireCulturalImpact(0, "neutral")).toBeNull();
   });
 
   it("tone_factor: mockery = 0.6, affectionate = 1.0, neutral = 0.85", () => {
@@ -174,9 +174,19 @@ describe("computeSatireCulturalImpact", () => {
 });
 
 describe("computeLegislativeQuality", () => {
-  it("defaults mmm to 0 if missing", () => {
+  it("returns null when both inputs are defaults (no real data)", () => {
+    expect(computeLegislativeQuality(0.5, 0)).toBeNull();
+    expect(computeLegislativeQuality(0.501, 0)).toBeNull(); // within 0.01 threshold
+  });
+
+  it("returns value when ratio differs from default", () => {
     const v = computeLegislativeQuality(0.7, 0);
     expect(v).toBeCloseTo(0.7 * 0.7, 5);
+  });
+
+  it("returns value when mmm > 0", () => {
+    const v = computeLegislativeQuality(0.5, 1);
+    expect(v).toBeCloseTo(0.7 * 0.5 + 0.3 * 0.5, 5);
   });
 
   it("blends ratio and mmm 70/30", () => {
@@ -274,6 +284,22 @@ describe("computeOverallScore8dim", () => {
     const base = computeOverallScore8dim(allDims, undefined, 0);
     const withBonus = computeOverallScore8dim(allDims, undefined, 0.5);
     expect(withBonus - base).toBeCloseTo(0.5, 1);
+  });
+
+  it("neutral politician with only 3 active dims scores ~5.0", () => {
+    // Typical real-world case: field_activity, satire, legislative, parliamentary, flipflop all null
+    const neutralDims = {
+      dim_public_sentiment: 0.5,
+      dim_parliamentary_activity: null,
+      dim_media_credibility: 0.5,
+      dim_transparency_ethics: 0.5,
+      dim_field_activity: null,
+      dim_satire_cultural_impact: null,
+      dim_legislative_quality: null,
+      dim_flipflop_index: null,
+    };
+    const score = computeOverallScore8dim(neutralDims);
+    expect(score).toBeCloseTo(5.0, 1);
   });
 });
 
