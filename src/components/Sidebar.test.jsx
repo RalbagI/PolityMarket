@@ -84,7 +84,7 @@ describe("Sidebar mobile top bar", () => {
     expect(mobileBar.className).toContain("h-[calc(3.5rem+env(safe-area-inset-top))]");
   });
 
-  it("renders PM logo in mobile top bar", () => {
+  it("renders brand logo in mobile top bar", () => {
     const { container } = render(
       <Sidebar
         todayData={makePoliticians()}
@@ -94,7 +94,9 @@ describe("Sidebar mobile top bar", () => {
     );
 
     const mobileBar = container.querySelector(".md\\:hidden.fixed");
-    expect(mobileBar.textContent).toContain("PM");
+    const logo = mobileBar.querySelector('img[alt="PolityMarket logo"]');
+    expect(logo).toBeTruthy();
+    expect(logo.getAttribute("src")).toBe("/politymarket-mark.svg");
     expect(mobileBar.textContent).toContain("PolityMarket");
   });
 
