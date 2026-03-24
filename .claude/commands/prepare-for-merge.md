@@ -32,3 +32,6 @@ Follow the workflow defined in `.agent/workflows/prepare-for-merge.workflow.yaml
 
 ## Phase 5: Final Verification
 - Confirm clean git state
+
+## Important Rules
+- After completing, ALWAYS ask: "Would you like me to run `/mts` to merge, cleanup, and deploy?"

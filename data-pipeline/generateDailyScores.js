@@ -1862,3 +1862,20 @@ if (isDirectExecution()) {
     });
   }
 }
+
+// ── Test Exports ──────────────────────────────────────────────────────
+// Internal functions exported for unit testing only.
+
+export {
+  normalizeText,
+  dedupeStrings,
+  decodeHtmlEntities,
+  parseRssItems,
+  renderSearchTemplate,
+  parsePositiveInt,
+  getCurrentDateString,
+  appendToSummary,
+  writeDetailFile,
+  writePartySummary,
+  pruneOldDetails,
+};

@@ -5,7 +5,6 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-User=botipi-4
 WorkingDirectory=/home/botipi-4/PoliticMarket
 EnvironmentFile=/home/botipi-4/PoliticMarket/.env.pipeline
 Environment=PATH=/home/botipi-4/.local/bin:/usr/local/bin:/usr/bin:/bin
