@@ -31,7 +31,8 @@
     "face": "oval",
     "headCovering": "kippah",
     "beard": "full",
-    "beardColor": "#2c2c2c"
+    "beardColor": "#2c2c2c",
+    "glasses": "rectangular"
   },
   "yaakov-asher": {
     "suitColor": "#0a0a0a",

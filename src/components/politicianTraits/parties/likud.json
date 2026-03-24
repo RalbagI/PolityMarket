@@ -60,10 +60,11 @@
   },
   "benjamin-netanyahu": null,
   "boaz-bismuth": {
-    "hair": "styled",
+    "hair": "short",
     "hairColor": "#3a3a3a",
+    "grayHair": true,
     "face": "oval",
-    "glasses": "thin",
+    "glasses": "rectangular",
     "suitColor": "#2c3e50",
     "tieColor": "#8e44ad"
   },
@@ -95,7 +96,7 @@
     "tieColor": "#c0392b"
   },
   "eli-cohen": {
-    "hair": "styled",
+    "hair": "receding",
     "hairColor": "#3a3a3a",
     "grayHair": true,
     "face": "oval",
@@ -184,9 +185,9 @@
   "keti-shitrit": {
     "beard": null,
     "tieColor": null,
-    "hair": "long",
+    "hair": "styled",
     "hairColor": "#2c2c2c",
-    "face": "oval",
+    "face": "round",
     "skin": "#e8c8a8",
     "suitColor": "#8e44ad"
   },
@@ -200,7 +201,7 @@
     "suitColor": "#2c3e50"
   },
   "miki-zohar": {
-    "hair": "styled",
+    "hair": "short",
     "hairColor": "#2c2c2c",
     "face": "oval",
     "beard": "stubble",
@@ -288,6 +289,8 @@
     "hairColor": "#2c2c2c",
     "face": "round",
     "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#3a3a3a",
     "suitColor": "#1a1a2e",
     "tieColor": "#e74c3c"
   },
@@ -334,10 +337,10 @@
     "tieColor": "#2980b9"
   },
   "yuli-edelstein": {
-    "hair": "swept",
+    "hair": "receding",
     "hairColor": "#888",
     "grayHair": true,
-    "face": "oval",
+    "face": "square",
     "eyeColor": "#4a6741",
     "suitColor": "#2c3e50",
     "tieColor": "#2980b9"

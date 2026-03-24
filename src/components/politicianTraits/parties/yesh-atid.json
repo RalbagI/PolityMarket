@@ -63,7 +63,7 @@
   "meirav-ben-ari": {
     "beard": null,
     "tieColor": null,
-    "hair": "long",
+    "hair": "styled",
     "hairColor": "#2c2c2c",
     "face": "oval",
     "suitColor": "#8e44ad"
@@ -111,7 +111,7 @@
     "tieColor": "#f59e0b"
   },
   "ram-ben-barak": {
-    "hair": "short",
+    "hair": "receding",
     "hairColor": "#777",
     "grayHair": true,
     "face": "square",
@@ -119,9 +119,9 @@
     "tieColor": "#2980b9"
   },
   "ron-katz": {
-    "hair": "short",
+    "hair": "receding",
     "hairColor": "#3a3a3a",
-    "face": "square",
+    "face": "oval",
     "suitColor": "#2c3e50",
     "tieColor": "#f59e0b"
   },

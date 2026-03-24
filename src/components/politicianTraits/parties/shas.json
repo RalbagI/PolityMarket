@@ -4,10 +4,12 @@
     "tieColor": null,
     "hair": "receding",
     "hairColor": "#2c2c2c",
+    "grayHair": true,
     "face": "round",
     "headCovering": "kippah",
     "beard": "stubble",
-    "beardColor": "#888"
+    "beardColor": "#888",
+    "glasses": "rectangular"
   },
   "haim-biton": {
     "suitColor": "#0a0a0a",
@@ -78,7 +80,7 @@
     "tieColor": null,
     "hair": "short",
     "hairColor": "#2c2c2c",
-    "face": "oval",
+    "face": "round",
     "headCovering": "kippah",
     "beard": "full",
     "beardColor": "#2c2c2c"
