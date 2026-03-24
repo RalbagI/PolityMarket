@@ -22,7 +22,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   // Zoom state — scale=1 means no zoom, x/y is the viewport offset
   const [viewport, setViewport] = useState({ scale: 1, x: 0, y: 0 });
   const viewportRef = useRef(viewport);
-  viewportRef.current = viewport;
+  useEffect(() => { viewportRef.current = viewport; }, [viewport]);
   const pinchRef = useRef(null);
   const panRef = useRef(null);
   const lastTapRef = useRef(0);
