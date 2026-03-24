@@ -234,6 +234,19 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
       >
         {t("methodology.link")}
       </button>
+
+      {/* TalkPoint attribution */}
+      <div className="text-xs text-gray-500">
+        by{" "}
+        <a
+          href="https://tipi.zone/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-indigo-400 hover:text-indigo-300 transition-colors"
+        >
+          TalkPoint
+        </a>
+      </div>
     </div>
   );
 }
