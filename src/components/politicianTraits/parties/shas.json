@@ -4,6 +4,7 @@
     "tieColor": null,
     "hair": "receding",
     "hairColor": "#2c2c2c",
+    "grayHair": true,
     "face": "round",
     "headCovering": "kippah",
     "beard": "stubble",
@@ -16,7 +17,9 @@
     "hairColor": "#555",
     "grayHair": true,
     "face": "round",
-    "headCovering": "kippah"
+    "headCovering": "kippah",
+    "beard": "stubble",
+    "beardColor": "#555"
   },
   "michael-malchieli": {
     "suitColor": "#0a0a0a",
@@ -76,7 +79,7 @@
     "tieColor": null,
     "hair": "short",
     "hairColor": "#2c2c2c",
-    "face": "oval",
+    "face": "round",
     "headCovering": "kippah",
     "beard": "full",
     "beardColor": "#2c2c2c"

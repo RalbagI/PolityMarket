@@ -60,6 +60,54 @@ function renderHair(style, color, gray, isFemale) {
           <circle cx="65" cy="20" r="7" fill={lighten(c)} />
         </>
       );
+    case "wavy":
+      if (isFemale) {
+        return (
+          <>
+            <ellipse cx="50" cy="24" rx="36" ry="22" fill={c} />
+            {/* Wavy flowing sides */}
+            <path d="M15 30 Q12 42 16 54 Q20 66 17 78 Q19 72 22 62 Q18 48 20 32 Z" fill={c} />
+            <path d="M85 30 Q88 42 84 54 Q80 66 83 78 Q81 72 78 62 Q82 48 80 32 Z" fill={c} />
+            {/* Wave highlights */}
+            <path
+              d="M16 36 Q14 48 17 60"
+              stroke={lighten(c)}
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.5"
+            />
+            <path
+              d="M84 36 Q86 48 83 60"
+              stroke={lighten(c)}
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.5"
+            />
+            <path
+              d="M17 54 Q15 64 18 74"
+              stroke={lighten(c)}
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.4"
+            />
+            <path
+              d="M83 54 Q85 64 82 74"
+              stroke={lighten(c)}
+              strokeWidth="1.5"
+              fill="none"
+              opacity="0.4"
+            />
+          </>
+        );
+      }
+      return (
+        <>
+          <ellipse cx="50" cy="26" rx="34" ry="20" fill={c} />
+          <path d="M18 32 Q16 42 20 50" fill={c} />
+          <path d="M82 32 Q84 42 80 50" fill={c} />
+          <path d="M30 20 Q40 14 50 16 Q60 14 70 20" fill={lighten(c)} />
+        </>
+      );
     case "receding":
       return (
         <>
