@@ -6,6 +6,7 @@ import {
   includesPolitician,
   parseCodexOutput,
   parseVerificationResponse,
+  reconcileVerifiedMatches,
   shouldRetryBatchError,
   splitPoliticiansIntoBatches,
 } from "./generateDailyScores.js";
@@ -120,6 +121,20 @@ describe("entity verification", () => {
     expect(prompt).toContain("NO");
   });
 
+  it("buildVerificationPrompt escapes xml-sensitive characters in text", () => {
+    const batch = [
+      {
+        index: 0,
+        text: '<script>alert("x")</script> & headline',
+        fullName: "Example",
+        hebrewName: "דוגמה",
+      },
+    ];
+    const prompt = buildVerificationPrompt(batch);
+    expect(prompt).toContain("&lt;script&gt;alert(\"x\")&lt;/script&gt; &amp; headline");
+    expect(prompt).not.toContain('<text><script>alert("x")</script> & headline</text>');
+  });
+
   it("parseVerificationResponse parses YES/NO lines", () => {
     const batch = [
       { index: 10, text: "a", fullName: "A", hebrewName: "א" },
@@ -155,6 +170,67 @@ describe("entity verification", () => {
     expect(results.get(0)).toBe(true);
     expect(results.get(1)).toBe(false);
     expect(results.get(2)).toBe(true);
+  });
+
+  it("parseVerificationResponse accepts leading whitespace", () => {
+    const batch = [
+      { index: 5, text: "a", fullName: "A", hebrewName: "א" },
+      { index: 6, text: "b", fullName: "B", hebrewName: "ב" },
+    ];
+    const results = new Map();
+    parseVerificationResponse("  1: YES\n\t2: NO", batch, results);
+    expect(results.get(5)).toBe(true);
+    expect(results.get(6)).toBe(false);
+  });
+});
+
+describe("reconcileVerifiedMatches", () => {
+  it("drops fallback entries when real matches exist after verification", () => {
+    const reconciled = reconcileVerifiedMatches(
+      {
+        headlines: [
+          "No direct headlines matched Example in configured sources this cycle.",
+          "Real headline",
+        ],
+        socialMentions: [
+          {
+            text: "No direct social mentions matched Example in configured sources this cycle.",
+            thread_context: [],
+            speaker_metadata: { handle: "@pipeline", known_satirist: false },
+          },
+          {
+            text: "Real mention",
+            thread_context: ["Source: https://example.com"],
+            speaker_metadata: { handle: "@u", known_satirist: false },
+          },
+        ],
+      },
+      10,
+      10
+    );
+
+    expect(reconciled.headlines).toEqual(["Real headline"]);
+    expect(reconciled.socialMentions.map((m) => m.text)).toEqual(["Real mention"]);
+  });
+
+  it("keeps fallback entries when there are no real matches", () => {
+    const reconciled = reconcileVerifiedMatches(
+      {
+        headlines: ["No direct headlines matched Example in configured sources this cycle."],
+        socialMentions: [
+          {
+            text: "No direct social mentions matched Example in configured sources this cycle.",
+            thread_context: [],
+            speaker_metadata: { handle: "@pipeline", known_satirist: false },
+          },
+        ],
+      },
+      10,
+      10
+    );
+
+    expect(reconciled.headlines).toHaveLength(1);
+    expect(reconciled.socialMentions).toHaveLength(1);
   });
 });
 

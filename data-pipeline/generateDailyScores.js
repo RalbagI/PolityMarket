@@ -1586,11 +1586,20 @@ const VERIFY_BATCH_SIZE = 50;
 const VERIFY_MODEL = OPENAI_MODEL_LOW;
 const VERIFY_REASONING = "low";
 
+function escapeXmlText(input) {
+  return String(input ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 export function buildVerificationPrompt(batch) {
   const items = batch
     .map((item, i) => {
-      const safeText = String(item.text).slice(0, 200).replace(/[\n\r]/g, " ");
-      return `${i + 1}. Politician: "${item.hebrewName}" (${item.fullName}) | Text: <text>${safeText}</text>`;
+      const safeText = escapeXmlText(String(item.text).slice(0, 200).replace(/[\n\r]/g, " "));
+      const safeHebrewName = String(item.hebrewName ?? "").replace(/[\n\r]/g, " ").trim();
+      const safeFullName = String(item.fullName ?? "").replace(/[\n\r]/g, " ").trim();
+      return `${i + 1}. Politician: "${safeHebrewName}" (${safeFullName}) | Text: <text>${safeText}</text>`;
     })
     .join("\n");
 
@@ -1605,7 +1614,7 @@ export function parseVerificationResponse(rawText, batch, resultsMap) {
   const lines = String(rawText).split("\n");
   const parsed = new Map();
   for (const line of lines) {
-    const match = line.match(/^(\d+)[.):;\-]?\s*(YES|NO)/i);
+    const match = line.match(/^\s*(\d+)[.):;-]?\s*(YES|NO)\b/i);
     if (match) {
       parsed.set(parseInt(match[1], 10), match[2].toUpperCase() === "YES");
     }
@@ -1654,6 +1663,39 @@ async function verifyPartialMatches(unverifiedItems) {
     `  [Verify] Result: ${confirmed}/${unverifiedItems.length} confirmed as real matches`
   );
   return results;
+}
+
+function isHeadlineFallback(text) {
+  return String(text ?? "").startsWith("No direct headlines matched ");
+}
+
+function isSocialFallback(mention) {
+  return String(mention?.text ?? "").startsWith("No direct social mentions matched ");
+}
+
+export function reconcileVerifiedMatches(data, headlineLimit, socialLimit) {
+  let headlines = dedupeStrings(data?.headlines ?? []);
+  const hasRealHeadlines = headlines.some((headline) => !isHeadlineFallback(headline));
+  if (hasRealHeadlines) {
+    headlines = headlines.filter((headline) => !isHeadlineFallback(headline));
+  }
+  headlines = headlines.slice(0, headlineLimit);
+
+  let socialMentions = Array.isArray(data?.socialMentions) ? [...data.socialMentions] : [];
+  const hasRealSocial = socialMentions.some((mention) => !isSocialFallback(mention));
+  if (hasRealSocial) {
+    socialMentions = socialMentions.filter((mention) => !isSocialFallback(mention));
+  }
+
+  const seenTexts = new Map();
+  for (const mention of socialMentions) {
+    const key = String(mention?.text ?? "").trim();
+    if (!key || seenTexts.has(key)) continue;
+    seenTexts.set(key, mention);
+  }
+  socialMentions = [...seenTexts.values()].slice(0, socialLimit);
+
+  return { headlines, socialMentions };
 }
 
 export function shouldRetryBatchError(err) {
@@ -2066,18 +2108,13 @@ async function main() {
 
     // Re-apply dedup and caps after merge-back
     for (const [, data] of politicianDataMap) {
-      data.headlines = dedupeStrings(data.headlines).slice(
-        0,
-        rssConfig.maxHeadlinesPerPolitician
-      );
-      const seenTexts = new Map();
-      for (const m of data.socialMentions) {
-        if (!seenTexts.has(m.text)) seenTexts.set(m.text, m);
-      }
-      data.socialMentions = [...seenTexts.values()].slice(
-        0,
+      const reconciled = reconcileVerifiedMatches(
+        data,
+        rssConfig.maxHeadlinesPerPolitician,
         socialConfig.maxMentionsPerPolitician
       );
+      data.headlines = reconciled.headlines;
+      data.socialMentions = reconciled.socialMentions;
     }
   } else {
     console.log("\n  No partial entity matches to verify.");
