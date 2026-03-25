@@ -49,12 +49,12 @@ export default function FilterBar({
   clearFilters,
   visibleCount,
   totalCount,
-  searchTerm,
-  setSearchTerm,
+  searchTerm = "",
+  setSearchTerm = () => {},
 }) {
   const { t } = useTranslation();
   const hasFilters =
-    activeParties.length || activeWings.length || activeSectors.length || searchTerm;
+    activeParties.length || activeWings.length || activeSectors.length || searchTerm.trim();
 
   return (
     <div className="space-y-3">

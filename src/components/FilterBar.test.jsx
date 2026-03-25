@@ -23,6 +23,8 @@ const baseProps = {
   clearFilters: vi.fn(),
   visibleCount: 120,
   totalCount: 120,
+  searchTerm: "",
+  setSearchTerm: vi.fn(),
 };
 
 describe("FilterBar", () => {
@@ -68,5 +70,23 @@ describe("FilterBar", () => {
   it("shows visible/total count", () => {
     render(<FilterBar {...baseProps} visibleCount={50} totalCount={120} />);
     expect(screen.getByText("50/120")).toBeInTheDocument();
+  });
+
+  it("calls setSearchTerm when typing in the search input", () => {
+    const setSearchTerm = vi.fn();
+    render(<FilterBar {...baseProps} setSearchTerm={setSearchTerm} />);
+
+    fireEvent.change(screen.getByPlaceholderText("filterBar.search.placeholder"), {
+      target: { value: "ליכוד" },
+    });
+    expect(setSearchTerm).toHaveBeenCalledWith("ליכוד");
+  });
+
+  it("shows and uses search clear button when search is active", () => {
+    const setSearchTerm = vi.fn();
+    render(<FilterBar {...baseProps} searchTerm="ליכוד" setSearchTerm={setSearchTerm} />);
+
+    fireEvent.click(screen.getByLabelText("filterBar.search.clear"));
+    expect(setSearchTerm).toHaveBeenCalledWith("");
   });
 });

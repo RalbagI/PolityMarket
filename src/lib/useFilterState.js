@@ -123,9 +123,14 @@ export default function useFilterState(allPoliticians) {
 
       // Apply text search
       if (searchTerm) {
-        const q = searchTerm.toLowerCase();
-        const haystack = [p.displayName, p.name, p.party].filter(Boolean).join(" ").toLowerCase();
-        if (!haystack.includes(q)) return false;
+        const q = searchTerm.trim().toLowerCase();
+        if (q) {
+          const haystack = [p.displayName, p.name, p.party, p.displayParty]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+          if (!haystack.includes(q)) return false;
+        }
       }
 
       return true;
