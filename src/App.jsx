@@ -10,7 +10,7 @@ import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
 import { localizeName } from "./lib/localize";
 import CookieConsent from "./components/CookieConsent";
-import { logEvent } from "./lib/analytics";
+import { initAnalytics, logEvent } from "./lib/analytics";
 
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
@@ -31,6 +31,10 @@ export default function App() {
   const detailLoading = useStore((s) => s.detailLoading);
   const openPanel = useStore((s) => s.openPanel);
   const closePanel = useStore((s) => s.closePanel);
+
+  useEffect(() => {
+    initAnalytics();
+  }, []);
 
   useEffect(() => {
     loadSummary();

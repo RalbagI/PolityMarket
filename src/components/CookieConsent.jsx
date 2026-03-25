@@ -1,23 +1,20 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Cookie } from "lucide-react";
-
-const CONSENT_KEY = "politymarket-cookie-consent";
-
-function hasConsented() {
-  try {
-    return !!localStorage.getItem(CONSENT_KEY);
-  } catch {
-    return true;
-  }
-}
+import { initAnalytics } from "../lib/analytics";
+import { COOKIE_CONSENT_KEY, hasAnalyticsConsent } from "../lib/consent";
 
 export default function CookieConsent() {
   const { t } = useTranslation();
-  const [visible, setVisible] = useState(() => !hasConsented());
+  const [visible, setVisible] = useState(() => !hasAnalyticsConsent());
 
   const accept = () => {
-    localStorage.setItem(CONSENT_KEY, "accepted");
+    try {
+      localStorage.setItem(COOKIE_CONSENT_KEY, "accepted");
+    } catch {
+      // Ignore storage failures: consent cannot be persisted, but UX should still continue.
+    }
+    initAnalytics();
     setVisible(false);
   };
 

@@ -3,6 +3,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import CookieConsent from "./CookieConsent";
+import { initAnalytics } from "../lib/analytics";
+import { COOKIE_CONSENT_KEY } from "../lib/consent";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -10,11 +12,15 @@ vi.mock("react-i18next", () => ({
   }),
 }));
 
-const CONSENT_KEY = "politymarket-cookie-consent";
+vi.mock("../lib/analytics", () => ({
+  initAnalytics: vi.fn(),
+}));
+
 let storage = {};
 
 beforeEach(() => {
   storage = {};
+  vi.mocked(initAnalytics).mockReset();
   vi.stubGlobal("localStorage", {
     getItem: (key) => storage[key] ?? null,
     setItem: (key, val) => {
@@ -33,15 +39,16 @@ describe("CookieConsent", () => {
   });
 
   it("hides banner when consent already given", () => {
-    storage[CONSENT_KEY] = "true";
+    storage[COOKIE_CONSENT_KEY] = "true";
     render(<CookieConsent />);
     expect(screen.queryByText("cookies.description")).not.toBeInTheDocument();
   });
 
-  it("hides banner and saves to localStorage on accept", () => {
+  it("hides banner, saves consent, and initializes analytics on accept", () => {
     render(<CookieConsent />);
     fireEvent.click(screen.getByText("cookies.accept"));
     expect(screen.queryByText("cookies.description")).not.toBeInTheDocument();
-    expect(storage[CONSENT_KEY]).toBe("accepted");
+    expect(storage[COOKIE_CONSENT_KEY]).toBe("accepted");
+    expect(initAnalytics).toHaveBeenCalledTimes(1);
   });
 });
