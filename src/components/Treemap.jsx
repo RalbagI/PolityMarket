@@ -25,6 +25,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const pinchRef = useRef(null);
   const innerRef = useRef(null);
   const gestureActiveRef = useRef(false);
+  const gestureEndTimeRef = useRef(0); // timestamp of last gesture end
   const lastTapRef = useRef(0);
 
   // Virtual dimensions: treemap renders at zoomed size
@@ -119,6 +120,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           el.scrollTop = Math.max(0, newScrollTop);
         });
 
+        gestureEndTimeRef.current = Date.now();
         setTimeout(() => {
           gestureActiveRef.current = false;
         }, 400);
@@ -306,10 +308,19 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     [hovered]
   );
 
+  // Check if a gesture (pinch/zoom) is active or just ended
+  const isGestureActive = useCallback(() => {
+    if (gestureActiveRef.current) return true;
+    if (pinchRef.current) return true;
+    // Block taps for 500ms after any gesture ends
+    if (Date.now() - gestureEndTimeRef.current < 500) return true;
+    return false;
+  }, []);
+
   // Mobile: single tap opens detail panel directly (no hover on touch devices)
   const handleTouchEnd = useCallback(
     (name, e) => {
-      if (pinchRef.current || gestureActiveRef.current) return;
+      if (isGestureActive()) return;
       isTouchRef.current = true;
       e.preventDefault();
       onSelect(name);
@@ -440,7 +451,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                   d._isOthers ? displayName : `${displayName}: ${d.overall_score.toFixed(1)}/10`
                 }
                 onClick={() => {
-                  if (gestureActiveRef.current) return;
+                  if (isGestureActive()) return;
                   if (d._isOthers && d._groupedData) {
                     setDrillDown({ items: d._groupedData, sourceData: data });
                     scaleRef.current = 1;
@@ -456,7 +467,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                   }
                 }}
                 onTouchEnd={(e) => {
-                  if (gestureActiveRef.current) return;
+                  if (isGestureActive()) return;
                   if (d._isOthers && d._groupedData) {
                     e.preventDefault();
                     setDrillDown({ items: d._groupedData, sourceData: data });
