@@ -11,64 +11,46 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const sizeBy = useStore((s) => s.treemapSizeBy);
   const colorBy = useStore((s) => s.treemapColorBy);
   const containerRef = useRef(null);
-  const innerRef = useRef(null);
+  const scrollRef = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [hovered, setHovered] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // Drill-down: when "Others" is tapped, show its children
-  // Store { items, sourceData } so we can detect stale drillDown when data changes
   const [drillDown, setDrillDown] = useState(null);
 
-  // Zoom state — scale=1 means no zoom, x/y is the viewport offset
-  const [viewport, setViewport] = useState({ scale: 1, x: 0, y: 0 });
-  const viewportRef = useRef(viewport);
-  useEffect(() => {
-    viewportRef.current = viewport;
-  }, [viewport]);
+  // Zoom state — only scale, pan is native scroll
+  const [scale, setScale] = useState(1);
+  const scaleRef = useRef(1);
   const pinchRef = useRef(null);
-  const panRef = useRef(null);
+  const gestureActiveRef = useRef(false);
   const lastTapRef = useRef(0);
-  const gestureActiveRef = useRef(false); // suppress clicks during/after gestures
 
   // Virtual dimensions: treemap renders at zoomed size
-  const virtualW = size.width * viewport.scale;
-  const virtualH = size.height * viewport.scale;
+  const virtualW = size.width * scale;
+  const virtualH = size.height * scale;
 
-  // Attach gesture handlers as native events (passive: false to allow preventDefault)
+  // Pinch-to-zoom: only handles scale change, pan is native scroll
   useEffect(() => {
-    const el = containerRef.current;
+    const el = scrollRef.current;
     if (!el) return;
 
     const onTouchStart = (e) => {
       if (e.touches.length === 2) {
         e.preventDefault();
+        gestureActiveRef.current = true;
         const t1 = e.touches[0],
           t2 = e.touches[1];
         const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
         const rect = el.getBoundingClientRect();
-        const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
-        const midY = (t1.clientY + t2.clientY) / 2 - rect.top;
-        gestureActiveRef.current = true;
+        const midX = (t1.clientX + t2.clientX) / 2 - rect.left + el.scrollLeft;
+        const midY = (t1.clientY + t2.clientY) / 2 - rect.top + el.scrollTop;
         pinchRef.current = {
           startDist: dist,
-          startScale: viewportRef.current.scale,
-          startX: viewportRef.current.x,
-          startY: viewportRef.current.y,
-          originX: midX + viewportRef.current.x,
-          originY: midY + viewportRef.current.y,
-        };
-        panRef.current = null;
-      } else if (e.touches.length === 1) {
-        // Always track single touch — needed to detect if it becomes a pinch,
-        // and for panning when zoomed in
-        panRef.current = {
-          startX: e.touches[0].clientX,
-          startY: e.touches[0].clientY,
-          vpX: viewportRef.current.x,
-          vpY: viewportRef.current.y,
-          moved: false,
-          canPan: viewportRef.current.scale > 1,
+          startScale: scaleRef.current,
+          // Point in virtual-space that should stay under the midpoint
+          anchorX: midX,
+          anchorY: midY,
         };
       }
     };
@@ -80,94 +62,44 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           t2 = e.touches[1];
         const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
         const g = pinchRef.current;
-        const liveScale = Math.max(1, Math.min(5, g.startScale * (dist / g.startDist)));
+        const newScale = Math.max(1, Math.min(5, g.startScale * (dist / g.startDist)));
 
-        // CSS-only zoom: scale the existing layout around the pinch midpoint.
-        // Must include the current viewport offset (-vp.x, -vp.y) since this
-        // transform REPLACES React's inline style.
-        const scaleRatio = liveScale / g.startScale;
+        // Compute where the anchor point should be after scale change
         const rect = el.getBoundingClientRect();
-        const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
-        const midY = (t1.clientY + t2.clientY) / 2 - rect.top;
-        const tx = -g.startX + midX * (1 - scaleRatio);
-        const ty = -g.startY + midY * (1 - scaleRatio);
+        const screenMidX = (t1.clientX + t2.clientX) / 2 - rect.left;
+        const screenMidY = (t1.clientY + t2.clientY) / 2 - rect.top;
 
-        if (innerRef.current) {
-          innerRef.current.style.transform = `translate(${tx}px, ${ty}px) scale(${scaleRatio})`;
-          innerRef.current.style.transformOrigin = "0 0";
-        }
+        // The anchor in new virtual-space
+        const newAnchorX = (g.anchorX / g.startScale) * newScale;
+        const newAnchorY = (g.anchorY / g.startScale) * newScale;
 
-        // Compute the final viewport for when gesture ends
-        const newX = g.originX * (liveScale / g.startScale) - (g.originX - g.startX);
-        const newY = g.originY * (liveScale / g.startScale) - (g.originY - g.startY);
-        const maxX = el.offsetWidth * (liveScale - 1);
-        const maxY = el.offsetHeight * (liveScale - 1);
-        pinchRef.current.live = {
-          scale: liveScale,
-          x: Math.max(0, Math.min(maxX, newX)),
-          y: Math.max(0, Math.min(maxY, newY)),
+        scaleRef.current = newScale;
+        setScale(newScale);
+
+        // After React re-renders with new virtual size, scroll to keep anchor stationary
+        pinchRef.current.pendingScroll = {
+          left: newAnchorX - screenMidX,
+          top: newAnchorY - screenMidY,
         };
-      } else if (e.touches.length === 1 && panRef.current?.canPan && !pinchRef.current) {
-        e.preventDefault();
-        const dx = panRef.current.startX - e.touches[0].clientX;
-        const dy = panRef.current.startY - e.touches[0].clientY;
-        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
-          panRef.current.moved = true;
-          gestureActiveRef.current = true;
-        }
-        if (panRef.current.moved && innerRef.current) {
-          const vp = viewportRef.current;
-          const s = vp.scale;
-          const maxX = el.offsetWidth * (s - 1);
-          const maxY = el.offsetHeight * (s - 1);
-          const clamped = {
-            scale: s,
-            x: Math.max(0, Math.min(maxX, panRef.current.vpX + dx)),
-            y: Math.max(0, Math.min(maxY, panRef.current.vpY + dy)),
-          };
-          innerRef.current.style.transform = `translate(${-clamped.x}px, ${-clamped.y}px)`;
-          panRef.current.live = clamped;
-        }
       }
     };
 
     const onTouchEnd = (e) => {
-      if (pinchRef.current?.live) {
-        e.preventDefault(); // suppress synthetic click
-        const newVp = pinchRef.current.live;
-        viewportRef.current = newVp; // sync ref immediately
-        setViewport(newVp);
+      if (pinchRef.current) {
+        e.preventDefault();
         pinchRef.current = null;
-        panRef.current = null;
         setTimeout(() => {
           gestureActiveRef.current = false;
         }, 400);
         return;
       }
-      if (panRef.current?.live) {
-        e.preventDefault(); // suppress synthetic click
-        const newVp = panRef.current.live;
-        viewportRef.current = newVp; // sync ref immediately
-        setViewport(newVp);
-        panRef.current = null;
-        setTimeout(() => {
-          gestureActiveRef.current = false;
-        }, 400);
-        return;
-      }
-      // Clean up refs but don't clear gestureActiveRef —
-      // only the 400ms setTimeout should clear it after real gestures.
-      // For simple taps, gestureActiveRef was never set to true.
-      pinchRef.current = null;
-      panRef.current = null;
 
       // Double-tap to reset zoom
-      if (e.touches.length === 0 && viewportRef.current.scale > 1) {
+      if (e.touches.length === 0 && scaleRef.current > 1) {
         const now = Date.now();
         if (now - lastTapRef.current < 300) {
-          const resetVp = { scale: 1, x: 0, y: 0 };
-          viewportRef.current = resetVp;
-          setViewport(resetVp);
+          scaleRef.current = 1;
+          setScale(1);
           lastTapRef.current = 0;
           return;
         }
@@ -175,34 +107,33 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       }
     };
 
-    // Wheel/trackpad zoom: Ctrl+scroll or trackpad pinch (fires wheel with ctrlKey)
+    // Wheel/trackpad zoom
     const onWheel = (e) => {
       if (!e.ctrlKey && !e.metaKey) return;
       e.preventDefault();
+
       const rect = el.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
+      const mouseX = e.clientX - rect.left + el.scrollLeft;
+      const mouseY = e.clientY - rect.top + el.scrollTop;
+      const screenX = e.clientX - rect.left;
+      const screenY = e.clientY - rect.top;
 
-      const vp = viewportRef.current;
+      const oldScale = scaleRef.current;
       const zoomFactor = 1 - e.deltaY * 0.01;
-      const newScale = Math.max(1, Math.min(5, vp.scale * zoomFactor));
+      const newScale = Math.max(1, Math.min(5, oldScale * zoomFactor));
 
-      // Zoom towards cursor: keep the point under cursor stationary
-      const pointX = vp.x + mouseX;
-      const pointY = vp.y + mouseY;
-      const ratio = newScale / vp.scale;
-      const newX = pointX * ratio - mouseX;
-      const newY = pointY * ratio - mouseY;
+      // Anchor point in new virtual-space
+      const newAnchorX = (mouseX / oldScale) * newScale;
+      const newAnchorY = (mouseY / oldScale) * newScale;
 
-      const maxX = el.offsetWidth * (newScale - 1);
-      const maxY = el.offsetHeight * (newScale - 1);
-      const newVp = {
-        scale: newScale,
-        x: Math.max(0, Math.min(maxX, newX)),
-        y: Math.max(0, Math.min(maxY, newY)),
-      };
-      viewportRef.current = newVp;
-      setViewport(newVp);
+      scaleRef.current = newScale;
+      setScale(newScale);
+
+      // Scroll to keep cursor point stationary
+      requestAnimationFrame(() => {
+        el.scrollLeft = newAnchorX - screenX;
+        el.scrollTop = newAnchorY - screenY;
+      });
     };
 
     el.addEventListener("touchstart", onTouchStart, { passive: false });
@@ -217,11 +148,20 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     };
   }, []);
 
+  // After scale changes, apply pending scroll from pinch gesture
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !pinchRef.current?.pendingScroll) return;
+    const { left, top } = pinchRef.current.pendingScroll;
+    el.scrollLeft = Math.max(0, left);
+    el.scrollTop = Math.max(0, top);
+    pinchRef.current.pendingScroll = null;
+  }, [scale]);
+
   // Track container size — measure immediately + observe resizes
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    // Measure immediately
     setSize({ width: el.offsetWidth, height: el.offsetHeight });
     const observer = new ResizeObserver((entries) => {
       const { width, height } = entries[0].contentRect;
@@ -308,14 +248,14 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
       treemap()
         .size([virtualW, virtualH])
-        .padding(2 * viewport.scale)
+        .padding(2 * scale)
         .tile(treemapSquarify)(root);
 
       return root.leaves();
     } catch {
       return [];
     }
-  }, [treemapItems, virtualW, virtualH, sizeBy, viewport.scale]);
+  }, [treemapItems, virtualW, virtualH, sizeBy, scale]);
 
   const getColorMetric = useCallback(
     (entry) => {
@@ -351,8 +291,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   // Mobile: single tap opens detail panel directly (no hover on touch devices)
   const handleTouchEnd = useCallback(
     (name, e) => {
-      // Don't select if we were pinching or panning
-      if (pinchRef.current || panRef.current?.moved) return;
+      if (pinchRef.current || gestureActiveRef.current) return;
       isTouchRef.current = true;
       e.preventDefault();
       onSelect(name);
@@ -370,36 +309,28 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   }
 
   return (
-    <div
-      ref={containerRef}
-      role="img"
-      aria-label={t("treemap.ariaLabel")}
-      className="w-full h-full relative overflow-hidden"
-      style={{ touchAction: viewport.scale > 1 ? "none" : "pan-y" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => setHovered(null)}
-      onTouchEnd={(e) => {
-        // Tap on container background dismisses tooltip
-        if (e.target === containerRef.current) setHovered(null);
-      }}
-    >
-      {viewport.scale > 1 && (
+    <div ref={containerRef} className="w-full h-full relative">
+      {scale > 1 && (
         <button
           onClick={() => {
-            viewportRef.current = { scale: 1, x: 0, y: 0 };
-            setViewport({ scale: 1, x: 0, y: 0 });
+            scaleRef.current = 1;
+            setScale(1);
+            if (scrollRef.current) {
+              scrollRef.current.scrollLeft = 0;
+              scrollRef.current.scrollTop = 0;
+            }
           }}
           className="absolute top-2 left-2 z-20 bg-black/60 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm"
         >
-          {viewport.scale.toFixed(1)}x — {t("treemap.resetZoom", "tap to reset")}
+          {scale.toFixed(1)}x — {t("treemap.resetZoom", "לחץ לאיפוס")}
         </button>
       )}
       {drillDown && (
         <button
           onClick={() => {
             setDrillDown(null);
-            viewportRef.current = { scale: 1, x: 0, y: 0 };
-            setViewport({ scale: 1, x: 0, y: 0 });
+            scaleRef.current = 1;
+            setScale(1);
           }}
           className="absolute top-2 right-2 z-20 bg-black/60 text-white text-xs px-2 py-1 rounded-full backdrop-blur-sm"
         >
@@ -407,190 +338,203 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         </button>
       )}
       <div
-        ref={innerRef}
-        className="absolute top-0 left-0"
+        ref={scrollRef}
+        role="img"
+        aria-label={t("treemap.ariaLabel")}
+        className="w-full h-full overflow-auto"
         style={{
-          width: virtualW,
-          height: virtualH,
-          transform: `translate(${-viewport.x}px, ${-viewport.y}px)`,
-          willChange: viewport.scale > 1 ? "transform" : "auto",
+          // When zoomed, allow native scroll in all directions
+          // When not zoomed, allow vertical page scroll
+          touchAction: scale > 1 ? "pan-x pan-y" : "pan-y",
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => setHovered(null)}
+        onTouchEnd={(e) => {
+          if (e.target === scrollRef.current) setHovered(null);
         }}
       >
-        {leaves.map((leaf) => {
-          const d = leaf.data;
-          const w = leaf.x1 - leaf.x0;
-          const h = leaf.y1 - leaf.y0;
-          const isHovered = hovered === d.name;
-          const isSelected = selectedPolitician === d.name;
+        <div className="relative" style={{ width: virtualW, height: virtualH }}>
+          {leaves.map((leaf) => {
+            const d = leaf.data;
+            const w = leaf.x1 - leaf.x0;
+            const h = leaf.y1 - leaf.y0;
+            const isHovered = hovered === d.name;
+            const isSelected = selectedPolitician === d.name;
 
-          // Area-based font scaling: sqrt(area) gives proportional sizing
-          const area = w * h;
-          const sqrtArea = Math.sqrt(area);
-          // Scale: tiny blocks (area<1000) get 0, large blocks get up to 24px
-          const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
+            // Area-based font scaling: sqrt(area) gives proportional sizing
+            const area = w * h;
+            const sqrtArea = Math.sqrt(area);
+            // Scale: tiny blocks (area<1000) get 0, large blocks get up to 24px
+            const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
 
-          const displayName = d.displayName || localizeName(t, d.name);
+            const displayName = d.displayName || localizeName(t, d.name);
 
-          const tooSmall = area < 400; // truly tiny — show nothing
-          const pad = Math.max(2, sqrtArea / 20) * 2;
-          const availW = w - pad;
-          const availH = h - pad;
+            const tooSmall = area < 400; // truly tiny — show nothing
+            const pad = Math.max(2, sqrtArea / 20) * 2;
+            const availW = w - pad;
+            const availH = h - pad;
 
-          // Score sizing — show score in all but the tiniest cells
-          const showScore = !tooSmall && area > 1200 && h > 20;
-          const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
-          const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
-          const showSlashTen = showScore && area > 8000;
+            // Score sizing — show score in all but the tiniest cells
+            const showScore = !tooSmall && area > 1200 && h > 20;
+            const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
+            const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
+            const showSlashTen = showScore && area > 8000;
 
-          // Step 1: shrink font for long names (using generous initial maxLines estimate)
-          const nameAvailH = availH - scoreLineH;
-          const roughMaxLines = Math.max(1, Math.floor(nameAvailH / (baseNameFontSize * 1.2 || 1)));
-          const nameFontSize = (() => {
-            if (baseNameFontSize < 1) return 0;
-            const charW = 0.7; // avg char width / font size for bold Hebrew
-            const charsPerLine = availW / (baseNameFontSize * charW) || 1;
-            const totalChars = charsPerLine * roughMaxLines;
-            const nameLen = displayName.length;
-            if (nameLen <= totalChars) return baseNameFontSize;
-            return Math.max(baseNameFontSize * 0.55, baseNameFontSize * (totalChars / nameLen));
-          })();
+            // Step 1: shrink font for long names (using generous initial maxLines estimate)
+            const nameAvailH = availH - scoreLineH;
+            const roughMaxLines = Math.max(
+              1,
+              Math.floor(nameAvailH / (baseNameFontSize * 1.2 || 1))
+            );
+            const nameFontSize = (() => {
+              if (baseNameFontSize < 1) return 0;
+              const charW = 0.7; // avg char width / font size for bold Hebrew
+              const charsPerLine = availW / (baseNameFontSize * charW) || 1;
+              const totalChars = charsPerLine * roughMaxLines;
+              const nameLen = displayName.length;
+              if (nameLen <= totalChars) return baseNameFontSize;
+              return Math.max(baseNameFontSize * 0.55, baseNameFontSize * (totalChars / nameLen));
+            })();
 
-          // Step 2: compute maxLines from the ACTUAL shrunken font size so text won't overflow
-          const actualLineH = nameFontSize * 1.2;
-          const maxLines = Math.max(1, Math.floor(nameAvailH / (actualLineH || 1)));
+            // Step 2: compute maxLines from the ACTUAL shrunken font size so text won't overflow
+            const actualLineH = nameFontSize * 1.2;
+            const maxLines = Math.max(1, Math.floor(nameAvailH / (actualLineH || 1)));
 
-          // Visibility thresholds based on area
-          const showInitials = !tooSmall && area < 1200 && nameFontSize < 5;
-          const showName = !tooSmall && !showInitials && nameFontSize >= 5;
-          const initials = displayName
-            .split(/\s+/)
-            .map((w) => w[0])
-            .join("")
-            .slice(0, 2);
+            // Visibility thresholds based on area
+            const showInitials = !tooSmall && area < 1200 && nameFontSize < 5;
+            const showName = !tooSmall && !showInitials && nameFontSize >= 5;
+            const initials = displayName
+              .split(/\s+/)
+              .map((w) => w[0])
+              .join("")
+              .slice(0, 2);
 
-          return (
-            <div
-              key={d.politician_id || d.name}
-              role="button"
-              tabIndex={tooSmall ? -1 : 0}
-              aria-label={
-                d._isOthers ? displayName : `${displayName}: ${d.overall_score.toFixed(1)}/10`
-              }
-              onClick={() => {
-                if (gestureActiveRef.current) return;
-                if (d._isOthers && d._groupedData) {
-                  setDrillDown({ items: d._groupedData, sourceData: data });
-                  setViewport({ scale: 1, x: 0, y: 0 });
-                } else if (!d._isOthers) {
-                  onSelect(d.name);
+            return (
+              <div
+                key={d.politician_id || d.name}
+                role="button"
+                tabIndex={tooSmall ? -1 : 0}
+                aria-label={
+                  d._isOthers ? displayName : `${displayName}: ${d.overall_score.toFixed(1)}/10`
                 }
-              }}
-              onKeyDown={(e) => {
-                if ((e.key === "Enter" || e.key === " ") && !d._isOthers) {
-                  e.preventDefault();
-                  onSelect(d.name);
-                }
-              }}
-              onTouchEnd={(e) => {
-                if (gestureActiveRef.current) return;
-                if (d._isOthers && d._groupedData) {
-                  e.preventDefault();
-                  setDrillDown({ items: d._groupedData, sourceData: data });
-                  setViewport({ scale: 1, x: 0, y: 0 });
-                } else if (!d._isOthers) {
-                  handleTouchEnd(d.name, e);
-                }
-              }}
-              onMouseEnter={() => {
-                if (!isTouchRef.current) setHovered(d.name);
-                isTouchRef.current = false;
-              }}
-              className="absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
-              style={{
-                left: leaf.x0,
-                top: leaf.y0,
-                width: w,
-                height: h,
-                backgroundColor: normalizedScoreToColorWithAlpha(
-                  getColorMetric(d),
-                  colorRange.min,
-                  colorRange.max,
-                  isHovered || isSelected ? 0.85 : 0.55
-                ),
-                border:
-                  isHovered || isSelected
-                    ? "2px solid rgba(255,255,255,0.8)"
-                    : "1px solid rgba(255,255,255,0.1)",
-                borderRadius: 4,
-              }}
-            >
-              {showInitials && (
-                <div className="w-full h-full flex items-center justify-center">
-                  <span
-                    className="font-bold text-white/80"
-                    style={{
-                      fontSize: Math.max(8, Math.min(14, sqrtArea / 4)),
-                      textShadow: "0 1px 2px rgba(0,0,0,0.6)",
-                    }}
-                  >
-                    {initials}
-                  </span>
-                </div>
-              )}
-              {showName && (
-                <div
-                  className="flex flex-col overflow-hidden"
-                  style={{
-                    padding: Math.max(2, sqrtArea / 20),
-                    height: h,
-                    boxSizing: "border-box",
-                  }}
-                >
-                  <div
-                    className="font-bold text-white leading-tight min-h-0"
-                    style={{
-                      fontSize: nameFontSize,
-                      textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      WebkitLineClamp: maxLines,
-                      WebkitBoxOrient: "vertical",
-                      flex: "0 1 auto",
-                    }}
-                  >
-                    {displayName}
-                  </div>
-                  {showScore && (
-                    <div
-                      className="flex items-baseline gap-0.5"
-                      dir="ltr"
-                      style={{ flex: "0 0 auto", marginTop: "auto" }}
+                onClick={() => {
+                  if (gestureActiveRef.current) return;
+                  if (d._isOthers && d._groupedData) {
+                    setDrillDown({ items: d._groupedData, sourceData: data });
+                    scaleRef.current = 1;
+                    setScale(1);
+                  } else if (!d._isOthers) {
+                    onSelect(d.name);
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if ((e.key === "Enter" || e.key === " ") && !d._isOthers) {
+                    e.preventDefault();
+                    onSelect(d.name);
+                  }
+                }}
+                onTouchEnd={(e) => {
+                  if (gestureActiveRef.current) return;
+                  if (d._isOthers && d._groupedData) {
+                    e.preventDefault();
+                    setDrillDown({ items: d._groupedData, sourceData: data });
+                    scaleRef.current = 1;
+                    setScale(1);
+                  } else if (!d._isOthers) {
+                    handleTouchEnd(d.name, e);
+                  }
+                }}
+                onMouseEnter={() => {
+                  if (!isTouchRef.current) setHovered(d.name);
+                  isTouchRef.current = false;
+                }}
+                className="absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
+                style={{
+                  left: leaf.x0,
+                  top: leaf.y0,
+                  width: w,
+                  height: h,
+                  backgroundColor: normalizedScoreToColorWithAlpha(
+                    getColorMetric(d),
+                    colorRange.min,
+                    colorRange.max,
+                    isHovered || isSelected ? 0.85 : 0.55
+                  ),
+                  border:
+                    isHovered || isSelected
+                      ? "2px solid rgba(255,255,255,0.8)"
+                      : "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: 4,
+                }}
+              >
+                {showInitials && (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span
+                      className="font-bold text-white/80"
+                      style={{
+                        fontSize: Math.max(8, Math.min(14, sqrtArea / 4)),
+                        textShadow: "0 1px 2px rgba(0,0,0,0.6)",
+                      }}
                     >
-                      <span
-                        className="font-black text-white tabular-nums"
-                        style={{
-                          fontSize: scoreFontSize,
-                          textShadow: "0 1px 3px rgba(0,0,0,0.5)",
-                        }}
-                      >
-                        {d.overall_score.toFixed(1)}
-                      </span>
-                      {showSlashTen && (
-                        <span
-                          className="text-white/50"
-                          style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
-                        >
-                          /10
-                        </span>
-                      )}
+                      {initials}
+                    </span>
+                  </div>
+                )}
+                {showName && (
+                  <div
+                    className="flex flex-col overflow-hidden"
+                    style={{
+                      padding: Math.max(2, sqrtArea / 20),
+                      height: h,
+                      boxSizing: "border-box",
+                    }}
+                  >
+                    <div
+                      className="font-bold text-white leading-tight min-h-0"
+                      style={{
+                        fontSize: nameFontSize,
+                        textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        WebkitLineClamp: maxLines,
+                        WebkitBoxOrient: "vertical",
+                        flex: "0 1 auto",
+                      }}
+                    >
+                      {displayName}
                     </div>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })}
+                    {showScore && (
+                      <div
+                        className="flex items-baseline gap-0.5"
+                        dir="ltr"
+                        style={{ flex: "0 0 auto", marginTop: "auto" }}
+                      >
+                        <span
+                          className="font-black text-white tabular-nums"
+                          style={{
+                            fontSize: scoreFontSize,
+                            textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                          }}
+                        >
+                          {d.overall_score.toFixed(1)}
+                        </span>
+                        {showSlashTen && (
+                          <span
+                            className="text-white/50"
+                            style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
+                          >
+                            /10
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
       {hovered && (
         <TreemapTooltip politician={data.find((d) => d.name === hovered)} position={mousePos} />
