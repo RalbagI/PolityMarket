@@ -42,3 +42,4 @@ infrastructure/n8n/.env
 # Firebase
 .firebase/
 .claude/worktrees/
+logs/

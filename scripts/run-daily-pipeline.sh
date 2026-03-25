@@ -22,12 +22,15 @@ export TZ="${TZ:-Asia/Jerusalem}"
 export OPENAI_MODEL_HIGH="${OPENAI_MODEL_HIGH:-gpt-5.4}"
 export OPENAI_MODEL_LOW="${OPENAI_MODEL_LOW:-gpt-5.4-mini}"
 export OPENAI_TIMEOUT_MS="${OPENAI_TIMEOUT_MS:-600000}"
-export MAX_BATCH_SIZE="${MAX_BATCH_SIZE:-50}"
+export MAX_BATCH_SIZE="${MAX_BATCH_SIZE:-20}"
 export MAX_PROMPT_CHARS="${MAX_PROMPT_CHARS:-350000}"
 export OPENAI_HIGH_TIER_THRESHOLD="${OPENAI_HIGH_TIER_THRESHOLD:-5}"
 export PIPELINE_EXPECTED_POLITICIAN_COUNT="${PIPELINE_EXPECTED_POLITICIAN_COUNT:-135}"
 export PIPELINE_MAX_FETCH_FAILURES="${PIPELINE_MAX_FETCH_FAILURES:-0}"
 export GIT_TERMINAL_PROMPT=0
+
+# Ensure PATH includes npm global bin (needed for cron which has minimal PATH)
+export PATH="${HOME}/.npm-global/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}"
 
 # Verify Codex CLI is available
 if ! command -v codex &>/dev/null; then
@@ -35,40 +38,39 @@ if ! command -v codex &>/dev/null; then
   exit 1
 fi
 
-CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-if [[ "${CURRENT_BRANCH}" != "main" ]]; then
-  echo "Pipeline runner must execute on main branch (current: ${CURRENT_BRANCH})" >&2
-  exit 1
+# Save current branch and stash any work-in-progress
+ORIGINAL_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+STASHED=false
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "Stashing uncommitted changes on ${ORIGINAL_BRANCH}..."
+  git stash push -m "pipeline-auto-stash-$(date +%s)" --include-untracked
+  STASHED=true
 fi
 
-NON_DATA_CHANGES="$(
-  (
-    git diff --name-only
-    git diff --cached --name-only
-    git ls-files --others --exclude-standard
-  ) | sort -u | grep -v '^public/data/' || true
-)"
-if [[ -n "${NON_DATA_CHANGES}" ]]; then
-  echo "Refusing to run with non-data working tree changes:" >&2
-  echo "${NON_DATA_CHANGES}" >&2
-  exit 1
+# Switch to main if needed
+if [[ "${ORIGINAL_BRANCH}" != "main" ]]; then
+  echo "Switching from ${ORIGINAL_BRANCH} to main for pipeline run..."
+  git checkout main
 fi
 
+# Cleanup function to restore original state
+cleanup() {
+  if [[ "${ORIGINAL_BRANCH}" != "main" ]]; then
+    git checkout "${ORIGINAL_BRANCH}" 2>/dev/null || true
+  fi
+  if [[ "${STASHED}" == "true" ]]; then
+    git stash pop 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT
+
+# Sync with origin/main
 git fetch --quiet origin main
 LOCAL_HEAD="$(git rev-parse HEAD)"
 REMOTE_HEAD="$(git rev-parse origin/main)"
-MERGE_BASE="$(git merge-base HEAD origin/main)"
 if [[ "${LOCAL_HEAD}" != "${REMOTE_HEAD}" ]]; then
-  if [[ "${LOCAL_HEAD}" == "${MERGE_BASE}" ]]; then
-    echo "Local main is behind origin/main; fast-forwarding before pipeline run..."
-    git pull --ff-only origin main
-  elif [[ "${REMOTE_HEAD}" == "${MERGE_BASE}" ]]; then
-    echo "Local main is ahead of origin/main before pipeline run; refusing to continue." >&2
-    exit 1
-  else
-    echo "Local main has diverged from origin/main; refusing to continue." >&2
-    exit 1
-  fi
+  echo "Syncing local main with origin/main..."
+  git reset --hard origin/main
 fi
 
 echo "Running daily pipeline..."
@@ -106,6 +108,13 @@ EOF
   fi
 else
   git push origin main
+fi
+
+# Deploy to Firebase if npx is available
+if command -v npx &>/dev/null; then
+  echo "Building and deploying to Firebase..."
+  npx vite build
+  npx firebase deploy --only hosting 2>/dev/null && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
 fi
 
 echo "Daily pipeline completed and pushed to origin/main."
