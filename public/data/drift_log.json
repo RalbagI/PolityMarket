@@ -360,5 +360,29 @@
       "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
     ],
     "timestamp": "2026-03-24T21:17:59.241Z"
+  },
+  {
+    "date": "2026-03-25",
+    "warnings": [
+      "[Outlier] Yariv Levin: score 6.3 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Amir Ohana: score 6.5 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Shlomo Karhi: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Tally Gotliv: score 3.6 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Nissim Vaturi: score 3.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Osher Shkalim: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Miki Zohar: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Vladimir Beliak: score 6.6 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Matti Sarfatti Harcavi: score 6.3 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Benny Gantz: score 6.3 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Matan Kahana: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Bezalel Smotrich: score 4.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Simcha Rothman: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Amichai Eliyahu: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Evgeny Sova: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Naftali Bennett: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Party] Democrats: all 4 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-03-25T07:13:37.471Z"
   }
 ]
