@@ -25,6 +25,7 @@ function savePrefs(prefs) {
  */
 export default function useFilterState(allPoliticians) {
   const [prefs, setPrefs] = useState(loadPrefs);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Persist on change
   useEffect(() => {
@@ -92,6 +93,7 @@ export default function useFilterState(allPoliticians) {
 
   const clearFilters = useCallback(() => {
     setPrefs({});
+    setSearchTerm("");
   }, []);
 
   // Compute visible politicians
@@ -119,6 +121,18 @@ export default function useFilterState(allPoliticians) {
       // Apply sector filter
       if (activeSectors.length && p.sector && !activeSectors.includes(p.sector)) return false;
 
+      // Apply text search
+      if (searchTerm) {
+        const q = searchTerm.trim().toLowerCase();
+        if (q) {
+          const haystack = [p.displayName, p.name, p.party, p.displayParty]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+          if (!haystack.includes(q)) return false;
+        }
+      }
+
       return true;
     });
   }, [
@@ -129,6 +143,7 @@ export default function useFilterState(allPoliticians) {
     likedIds,
     hiddenIds,
     showLikedOnly,
+    searchTerm,
   ]);
 
   return {
@@ -145,6 +160,8 @@ export default function useFilterState(allPoliticians) {
     toggleLiked,
     toggleHidden,
     clearFilters,
+    searchTerm,
+    setSearchTerm,
     visible,
     totalCount: allPoliticians.length,
     visibleCount: visible.length,

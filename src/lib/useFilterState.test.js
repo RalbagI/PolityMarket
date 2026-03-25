@@ -94,4 +94,41 @@ describe("useFilterState", () => {
     expect(result.current.visible.length).toBe(1);
     expect(result.current.visible[0].name).toBe("Pol A");
   });
+
+  it("search matches localized party names via displayParty", () => {
+    const politicians = [
+      {
+        politician_id: "a",
+        name: "Pol A",
+        displayName: "פול א",
+        party: "Likud",
+        displayParty: "הליכוד",
+        wing: "right",
+        sector: "secular",
+      },
+      {
+        politician_id: "b",
+        name: "Pol B",
+        displayName: "פול ב",
+        party: "Labor",
+        displayParty: "העבודה",
+        wing: "left",
+        sector: "secular",
+      },
+    ];
+    const { result } = renderHook(() => useFilterState(politicians));
+
+    act(() => result.current.setSearchTerm("ליכוד"));
+    expect(result.current.visible.map((p) => p.politician_id)).toEqual(["a"]);
+  });
+
+  it("clearFilters also clears searchTerm", () => {
+    const { result } = renderHook(() => useFilterState(makePoliticians()));
+
+    act(() => result.current.setSearchTerm("Likud"));
+    expect(result.current.searchTerm).toBe("Likud");
+
+    act(() => result.current.clearFilters());
+    expect(result.current.searchTerm).toBe("");
+  });
 });
