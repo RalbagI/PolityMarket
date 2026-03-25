@@ -58,13 +58,14 @@ describe("analytics consent gating", () => {
     expect(window.dataLayer[0]).toEqual([
       "consent",
       "default",
-      { analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" },
+      {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      },
     ]);
-    expect(window.dataLayer[1]).toEqual([
-      "consent",
-      "update",
-      { analytics_storage: "granted" },
-    ]);
+    expect(window.dataLayer[1]).toEqual(["consent", "update", { analytics_storage: "granted" }]);
 
     logEvent("select_party", { party_name: "TestParty" });
     expect(window.dataLayer[window.dataLayer.length - 1]).toEqual([
