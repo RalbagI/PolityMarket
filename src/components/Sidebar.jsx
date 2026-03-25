@@ -2,6 +2,7 @@ import { useMemo, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { scoreToColor } from "../lib/colorScale";
+import { TALKPOINT_LABEL } from "../lib/brand";
 import { localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 import useFocusTrap from "../lib/useFocusTrap";
@@ -248,7 +249,7 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
           rel="noopener noreferrer"
           className="text-indigo-400 hover:text-indigo-300 transition-colors"
         >
-          TalkPoint
+          {TALKPOINT_LABEL}
         </a>
       </div>
     </div>
