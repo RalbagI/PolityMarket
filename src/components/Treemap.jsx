@@ -70,13 +70,16 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           Math.min(5 / g.startScale, dist / g.startDist)
         );
 
-        // CSS transform: scale around the initial pinch midpoint (no re-render)
+        // CSS transform: scale around the pinch midpoint, accounting for scroll
         const rect = el.getBoundingClientRect();
         const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
         const midY = (t1.clientY + t2.clientY) / 2 - rect.top;
-        // Translate so midpoint stays under fingers, then scale
-        const tx = midX - g.screenMidX * scaleRatio;
-        const ty = midY - g.screenMidY * scaleRatio;
+        // The anchor point in inner div space
+        const anchorX = g.startScrollLeft + g.screenMidX;
+        const anchorY = g.startScrollTop + g.screenMidY;
+        // After scale, anchor moves to anchorX*ratio. We want it at screen midX + scrollLeft.
+        const tx = midX - anchorX * scaleRatio + g.startScrollLeft;
+        const ty = midY - anchorY * scaleRatio + g.startScrollTop;
 
         if (innerRef.current) {
           innerRef.current.style.transform = `translate(${tx}px, ${ty}px) scale(${scaleRatio})`;
