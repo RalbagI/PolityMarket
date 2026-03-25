@@ -9,6 +9,7 @@ import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
 import { localizeName } from "./lib/localize";
+import { TALKPOINT_LABEL } from "./lib/brand";
 import CookieConsent from "./components/CookieConsent";
 import { initAnalytics, logEvent } from "./lib/analytics";
 
@@ -213,7 +214,7 @@ export default function App() {
             rel="noopener noreferrer"
             className="text-indigo-400 hover:text-indigo-300 transition-colors"
           >
-            TalkPoint LTD
+            {TALKPOINT_LABEL}
           </a>
         </div>
       </main>

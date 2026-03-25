@@ -38,6 +38,7 @@ data-pipeline/drift_alerts.json
 # Infrastructure secrets
 infrastructure/n8n/.env
 .env.pipeline
+.env.production
 
 # Firebase
 .firebase/
