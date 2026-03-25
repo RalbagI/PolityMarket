@@ -43,3 +43,4 @@ infrastructure/n8n/.env
 .firebase/
 .claude/worktrees/
 logs/
+.pipeline.lock

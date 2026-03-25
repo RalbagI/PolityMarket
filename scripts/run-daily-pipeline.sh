@@ -7,6 +7,21 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 cd "${REPO_ROOT}"
 
+# ── Lock file to prevent concurrent runs ─────────────────────────────
+LOCK_FILE="${REPO_ROOT}/.pipeline.lock"
+if [[ -f "${LOCK_FILE}" ]]; then
+  LOCK_PID="$(cat "${LOCK_FILE}" 2>/dev/null || echo "")"
+  if [[ -n "${LOCK_PID}" ]] && kill -0 "${LOCK_PID}" 2>/dev/null; then
+    echo "Pipeline already running (PID ${LOCK_PID}). Exiting." >&2
+    exit 0
+  fi
+  echo "Removing stale lock file (PID ${LOCK_PID} not running)."
+  rm -f "${LOCK_FILE}"
+fi
+echo $$ > "${LOCK_FILE}"
+trap 'rm -f "${LOCK_FILE}"' INT TERM
+
+# ── Load environment ─────────────────────────────────────────────────
 ENV_FILE="${PIPELINE_ENV_FILE:-${REPO_ROOT}/.env.pipeline}"
 if [[ ! -f "${ENV_FILE}" ]]; then
   echo "Missing pipeline env file: ${ENV_FILE}" >&2
@@ -38,7 +53,7 @@ if ! command -v codex &>/dev/null; then
   exit 1
 fi
 
-# Save current branch and stash any work-in-progress
+# ── Save current branch and stash any work-in-progress ───────────────
 ORIGINAL_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 STASHED=false
 if [[ -n "$(git status --porcelain)" ]]; then
@@ -55,24 +70,31 @@ fi
 
 # Cleanup function to restore original state
 cleanup() {
+  # Discard any pipeline-generated data files before switching back
+  git checkout -- public/data/ 2>/dev/null || true
   if [[ "${ORIGINAL_BRANCH}" != "main" ]]; then
     git checkout "${ORIGINAL_BRANCH}" 2>/dev/null || true
   fi
   if [[ "${STASHED}" == "true" ]]; then
-    git stash pop 2>/dev/null || true
+    git stash pop 2>/dev/null || echo "⚠ Could not auto-restore stash — run 'git stash pop' manually."
   fi
+  rm -f "${LOCK_FILE}"
 }
 trap cleanup EXIT
 
-# Sync with origin/main
+# ── Sync with origin/main ────────────────────────────────────────────
 git fetch --quiet origin main
 LOCAL_HEAD="$(git rev-parse HEAD)"
 REMOTE_HEAD="$(git rev-parse origin/main)"
 if [[ "${LOCAL_HEAD}" != "${REMOTE_HEAD}" ]]; then
   echo "Syncing local main with origin/main..."
-  git reset --hard origin/main
+  git pull --ff-only origin main || git reset --hard origin/main
 fi
 
+# ── Install dependencies (catches new deps from merged PRs) ──────────
+npm ci --legacy-peer-deps --prefer-offline 2>&1 | tail -1
+
+# ── Run pipeline ─────────────────────────────────────────────────────
 echo "Running daily pipeline..."
 node data-pipeline/generateDailyScores.js
 
@@ -110,11 +132,11 @@ else
   git push origin main
 fi
 
-# Deploy to Firebase if npx is available
+# ── Deploy to Firebase ───────────────────────────────────────────────
 if command -v npx &>/dev/null; then
   echo "Building and deploying to Firebase..."
   npx vite build
-  npx firebase deploy --only hosting 2>/dev/null && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
+  npx firebase deploy --only hosting && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
 fi
 
 echo "Daily pipeline completed and pushed to origin/main."
