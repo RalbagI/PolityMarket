@@ -38,12 +38,34 @@ function ensureScriptTag() {
   document.head.appendChild(script);
 }
 
+/**
+ * Set GA4 consent defaults. Must be called before gtag('config', ...).
+ * Google auto-enables Consent Mode for Israeli users, so we must
+ * explicitly signal consent state via the gtag consent API.
+ */
+function setConsentDefaults() {
+  window.gtag("consent", "default", {
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+}
+
+function grantAnalyticsConsent() {
+  window.gtag("consent", "update", {
+    analytics_storage: "granted",
+  });
+}
+
 export function initAnalytics() {
   if (!canTrack() || analyticsInitialized) {
     return false;
   }
 
   ensureGtagStub();
+  setConsentDefaults();
+  grantAnalyticsConsent();
   ensureScriptTag();
   window.gtag("js", new Date());
   window.gtag("config", GA_MEASUREMENT_ID);
