@@ -10,6 +10,7 @@ import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
 import { localizeName } from "./lib/localize";
 import CookieConsent from "./components/CookieConsent";
+import { initAnalytics, logEvent } from "./lib/analytics";
 
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
@@ -30,6 +31,10 @@ export default function App() {
   const detailLoading = useStore((s) => s.detailLoading);
   const openPanel = useStore((s) => s.openPanel);
   const closePanel = useStore((s) => s.closePanel);
+
+  useEffect(() => {
+    initAnalytics();
+  }, []);
 
   useEffect(() => {
     loadSummary();
@@ -126,10 +131,12 @@ export default function App() {
       if (viewMode === "parties") {
         const matchedPolitician = todayData.find((p) => p.name === name);
         const partyName = matchedPolitician?.party || name;
+        logEvent("select_party", { party_name: partyName });
         openPanel(partyName, latestDate);
         return;
       }
 
+      logEvent("select_politician", { politician_name: name });
       openPanel(name, latestDate);
     },
     [latestDate, openPanel, todayData, viewMode]
@@ -167,10 +174,16 @@ export default function App() {
     <div className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
       <Sidebar
         todayData={sidebarData}
-        onMethodologyClick={() => setMethodologyOpen(true)}
+        onMethodologyClick={() => {
+          logEvent("open_methodology");
+          setMethodologyOpen(true);
+        }}
         filterProps={filterState}
         viewMode={viewMode}
-        onViewModeChange={setViewMode}
+        onViewModeChange={(mode) => {
+          logEvent("switch_view_mode", { mode });
+          setViewMode(mode);
+        }}
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
