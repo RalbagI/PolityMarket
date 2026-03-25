@@ -23,6 +23,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const [scale, setScale] = useState(1);
   const scaleRef = useRef(1);
   const pinchRef = useRef(null);
+  const innerRef = useRef(null);
   const gestureActiveRef = useRef(false);
   const lastTapRef = useRef(0);
 
@@ -30,7 +31,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const virtualW = size.width * scale;
   const virtualH = size.height * scale;
 
-  // Pinch-to-zoom: only handles scale change, pan is native scroll
+  // Pinch-to-zoom: CSS transform during gesture, re-render on release
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -43,14 +44,15 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           t2 = e.touches[1];
         const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
         const rect = el.getBoundingClientRect();
-        const midX = (t1.clientX + t2.clientX) / 2 - rect.left + el.scrollLeft;
-        const midY = (t1.clientY + t2.clientY) / 2 - rect.top + el.scrollTop;
+        const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
+        const midY = (t1.clientY + t2.clientY) / 2 - rect.top;
         pinchRef.current = {
           startDist: dist,
           startScale: scaleRef.current,
-          // Point in virtual-space that should stay under the midpoint
-          anchorX: midX,
-          anchorY: midY,
+          startScrollLeft: el.scrollLeft,
+          startScrollTop: el.scrollTop,
+          screenMidX: midX,
+          screenMidY: midY,
         };
       }
     };
@@ -62,32 +64,61 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           t2 = e.touches[1];
         const dist = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
         const g = pinchRef.current;
-        const newScale = Math.max(1, Math.min(5, g.startScale * (dist / g.startDist)));
+        const scaleRatio = Math.max(
+          1 / g.startScale,
+          Math.min(5 / g.startScale, dist / g.startDist)
+        );
 
-        // Compute where the anchor point should be after scale change
+        // CSS transform: scale around the initial pinch midpoint (no re-render)
         const rect = el.getBoundingClientRect();
-        const screenMidX = (t1.clientX + t2.clientX) / 2 - rect.left;
-        const screenMidY = (t1.clientY + t2.clientY) / 2 - rect.top;
+        const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
+        const midY = (t1.clientY + t2.clientY) / 2 - rect.top;
+        // Translate so midpoint stays under fingers, then scale
+        const tx = midX - g.screenMidX * scaleRatio;
+        const ty = midY - g.screenMidY * scaleRatio;
 
-        // The anchor in new virtual-space
-        const newAnchorX = (g.anchorX / g.startScale) * newScale;
-        const newAnchorY = (g.anchorY / g.startScale) * newScale;
-
-        scaleRef.current = newScale;
-        setScale(newScale);
-
-        // After React re-renders with new virtual size, scroll to keep anchor stationary
-        pinchRef.current.pendingScroll = {
-          left: newAnchorX - screenMidX,
-          top: newAnchorY - screenMidY,
-        };
+        if (innerRef.current) {
+          innerRef.current.style.transform = `translate(${tx}px, ${ty}px) scale(${scaleRatio})`;
+          innerRef.current.style.transformOrigin = "0 0";
+        }
+        pinchRef.current.liveScale = g.startScale * scaleRatio;
+        pinchRef.current.liveScreenMidX = midX;
+        pinchRef.current.liveScreenMidY = midY;
       }
     };
 
     const onTouchEnd = (e) => {
       if (pinchRef.current) {
         e.preventDefault();
+        const g = pinchRef.current;
+        const newScale = g.liveScale || g.startScale;
+
+        // Clear CSS transform before re-render
+        if (innerRef.current) {
+          innerRef.current.style.transform = "";
+          innerRef.current.style.transformOrigin = "";
+        }
+
+        // Compute scroll position to keep the pinch anchor stationary
+        // The anchor in original virtual-space
+        const anchorVX = (g.startScrollLeft + g.screenMidX) / g.startScale;
+        const anchorVY = (g.startScrollTop + g.screenMidY) / g.startScale;
+        // The anchor in new virtual-space
+        const screenMid = g.liveScreenMidX != null ? g.liveScreenMidX : g.screenMidX;
+        const screenMidY = g.liveScreenMidY != null ? g.liveScreenMidY : g.screenMidY;
+        const newScrollLeft = anchorVX * newScale - screenMid;
+        const newScrollTop = anchorVY * newScale - screenMidY;
+
+        scaleRef.current = newScale;
         pinchRef.current = null;
+        setScale(newScale);
+
+        // Apply scroll after React re-renders with new size
+        requestAnimationFrame(() => {
+          el.scrollLeft = Math.max(0, newScrollLeft);
+          el.scrollTop = Math.max(0, newScrollTop);
+        });
+
         setTimeout(() => {
           gestureActiveRef.current = false;
         }, 400);
@@ -100,6 +131,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         if (now - lastTapRef.current < 300) {
           scaleRef.current = 1;
           setScale(1);
+          el.scrollLeft = 0;
+          el.scrollTop = 0;
           lastTapRef.current = 0;
           return;
         }
@@ -113,26 +146,21 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       e.preventDefault();
 
       const rect = el.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left + el.scrollLeft;
-      const mouseY = e.clientY - rect.top + el.scrollTop;
       const screenX = e.clientX - rect.left;
       const screenY = e.clientY - rect.top;
+      // Anchor in normalized (0-1) space
+      const anchorNX = (el.scrollLeft + screenX) / (size.width * scaleRef.current);
+      const anchorNY = (el.scrollTop + screenY) / (size.height * scaleRef.current);
 
-      const oldScale = scaleRef.current;
       const zoomFactor = 1 - e.deltaY * 0.01;
-      const newScale = Math.max(1, Math.min(5, oldScale * zoomFactor));
-
-      // Anchor point in new virtual-space
-      const newAnchorX = (mouseX / oldScale) * newScale;
-      const newAnchorY = (mouseY / oldScale) * newScale;
+      const newScale = Math.max(1, Math.min(5, scaleRef.current * zoomFactor));
 
       scaleRef.current = newScale;
       setScale(newScale);
 
-      // Scroll to keep cursor point stationary
       requestAnimationFrame(() => {
-        el.scrollLeft = newAnchorX - screenX;
-        el.scrollTop = newAnchorY - screenY;
+        el.scrollLeft = anchorNX * size.width * newScale - screenX;
+        el.scrollTop = anchorNY * size.height * newScale - screenY;
       });
     };
 
@@ -146,17 +174,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       el.removeEventListener("touchend", onTouchEnd);
       el.removeEventListener("wheel", onWheel);
     };
-  }, []);
-
-  // After scale changes, apply pending scroll from pinch gesture
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || !pinchRef.current?.pendingScroll) return;
-    const { left, top } = pinchRef.current.pendingScroll;
-    el.scrollLeft = Math.max(0, left);
-    el.scrollTop = Math.max(0, top);
-    pinchRef.current.pendingScroll = null;
-  }, [scale]);
+  }, []); // eslint-disable-line
 
   // Track container size — measure immediately + observe resizes
   useEffect(() => {
@@ -339,12 +357,11 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       )}
       <div
         ref={scrollRef}
+        dir="ltr"
         role="img"
         aria-label={t("treemap.ariaLabel")}
-        className="w-full h-full overflow-auto"
+        className={`w-full h-full ${scale > 1 ? "overflow-auto" : "overflow-hidden"}`}
         style={{
-          // When zoomed, allow native scroll in all directions
-          // When not zoomed, allow vertical page scroll
           touchAction: scale > 1 ? "pan-x pan-y" : "pan-y",
         }}
         onMouseMove={handleMouseMove}
@@ -353,7 +370,12 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
           if (e.target === scrollRef.current) setHovered(null);
         }}
       >
-        <div className="relative" style={{ width: virtualW, height: virtualH }}>
+        <div
+          ref={innerRef}
+          className="relative"
+          dir="rtl"
+          style={{ width: virtualW, height: virtualH }}
+        >
           {leaves.map((leaf) => {
             const d = leaf.data;
             const w = leaf.x1 - leaf.x0;
