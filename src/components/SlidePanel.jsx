@@ -117,7 +117,7 @@ export default function SlidePanel({ isOpen, onClose, title, children }) {
               rel="noopener noreferrer"
               className="text-indigo-400 hover:text-indigo-300 transition-colors"
             >
-              TalkPoint
+              TalkPoint LTD
             </a>
           </div>
         </div>

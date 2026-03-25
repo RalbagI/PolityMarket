@@ -248,7 +248,7 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
           rel="noopener noreferrer"
           className="text-indigo-400 hover:text-indigo-300 transition-colors"
         >
-          TalkPoint
+          TalkPoint LTD
         </a>
       </div>
     </div>
