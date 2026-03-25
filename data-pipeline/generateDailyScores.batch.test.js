@@ -107,13 +107,14 @@ describe("search term matching", () => {
 });
 
 describe("entity verification", () => {
-  it("buildVerificationPrompt formats numbered items", () => {
+  it("buildVerificationPrompt formats numbered items with XML-delimited text", () => {
     const batch = [
       { index: 0, text: "תקיפה ברמת גולן", fullName: "May Golan", hebrewName: "מאי גולן" },
       { index: 1, text: "סמוטריץ' הגיב", fullName: "Bezalel Smotrich", hebrewName: "בצלאל סמוטריץ'" },
     ];
     const prompt = buildVerificationPrompt(batch);
     expect(prompt).toContain('1. Politician: "מאי גולן"');
+    expect(prompt).toContain("<text>תקיפה ברמת גולן</text>");
     expect(prompt).toContain('2. Politician: "בצלאל סמוטריץ\'"');
     expect(prompt).toContain("YES");
     expect(prompt).toContain("NO");
@@ -141,6 +142,19 @@ describe("entity verification", () => {
     parseVerificationResponse("1: YES", batch, results);
     expect(results.get(0)).toBe(true);
     expect(results.get(1)).toBe(false); // missing → reject
+  });
+
+  it("parseVerificationResponse handles alternate LLM formats (period, paren)", () => {
+    const batch = [
+      { index: 0, text: "a", fullName: "A", hebrewName: "א" },
+      { index: 1, text: "b", fullName: "B", hebrewName: "ב" },
+      { index: 2, text: "c", fullName: "C", hebrewName: "ג" },
+    ];
+    const results = new Map();
+    parseVerificationResponse("1. YES\n2) NO\n3 YES", batch, results);
+    expect(results.get(0)).toBe(true);
+    expect(results.get(1)).toBe(false);
+    expect(results.get(2)).toBe(true);
   });
 });
 

@@ -1296,7 +1296,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
     try {
       const posts = await getRedditPosts(subreddit, socialConfig.maxPostsPerSubreddit);
       successfulSources++;
-      processPosts(posts, "Reddit");
+      processPosts(posts);
     } catch (err) {
       failedSources++;
       console.warn(`[Social] ${politician.name}: failed Reddit (${subreddit}) — ${err.message}`);
@@ -1310,7 +1310,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       try {
         const posts = await getTelegramPosts(channel, telegramConfig.maxMessagesPerChannel || 20);
         successfulSources++;
-        processPosts(posts, "Telegram");
+        processPosts(posts);
       } catch (err) {
         failedSources++;
         console.warn(`[Social] ${politician.name}: failed Telegram (${channel}) — ${err.message}`);
@@ -1325,7 +1325,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       try {
         const threads = await getFxpThreads(forumId, fxpConfig.maxThreadsPerForum || 30);
         successfulSources++;
-        processPosts(threads, "FXP");
+        processPosts(threads);
       } catch (err) {
         failedSources++;
         console.warn(`[Social] ${politician.name}: failed FXP (f=${forumId}) — ${err.message}`);
@@ -1340,7 +1340,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
       const posts = await searchBlueskyPosts(hebrewName, blueskyConfig.maxPostsPerSearch || 10);
       successfulSources++;
-      processPosts(posts, "Bluesky");
+      processPosts(posts);
     } catch (err) {
       // Bluesky is best-effort — don't count as failure
       console.warn(`[Social] ${politician.name}: Bluesky unavailable — ${err.message}`);
@@ -1581,16 +1581,17 @@ function callCodexCLI(prompt, model, reasoningEffort = "medium", parseJson = tru
 // ── Two-Tier Entity Verification ──────────────────────────────────────
 // Tier 2: LLM disambiguation for partial (single-token) name matches.
 
+// 50 items × ~250 chars each stays well within context limits for the mini model
 const VERIFY_BATCH_SIZE = 50;
 const VERIFY_MODEL = OPENAI_MODEL_LOW;
 const VERIFY_REASONING = "low";
 
 export function buildVerificationPrompt(batch) {
   const items = batch
-    .map(
-      (item, i) =>
-        `${i + 1}. Politician: "${item.hebrewName}" (${item.fullName}) | Text: "${String(item.text).slice(0, 200)}"`
-    )
+    .map((item, i) => {
+      const safeText = String(item.text).slice(0, 200).replace(/[\n\r]/g, " ");
+      return `${i + 1}. Politician: "${item.hebrewName}" (${item.fullName}) | Text: <text>${safeText}</text>`;
+    })
     .join("\n");
 
   return `You are verifying whether news texts are about specific Israeli politicians.
@@ -1604,7 +1605,7 @@ export function parseVerificationResponse(rawText, batch, resultsMap) {
   const lines = String(rawText).split("\n");
   const parsed = new Map();
   for (const line of lines) {
-    const match = line.match(/^(\d+):\s*(YES|NO)/i);
+    const match = line.match(/^(\d+)[.):;\-]?\s*(YES|NO)/i);
     if (match) {
       parsed.set(parseInt(match[1], 10), match[2].toUpperCase() === "YES");
     }
@@ -2044,9 +2045,11 @@ async function main() {
     `  Fetched data for ${politicianDataMap.size} politicians (${fetchFailures.length} partial failures)`
   );
 
-  // ── Phase 1.5: Verify partial entity matches via LLM ──────────────
+  // ── Phase 1a: Verify partial entity matches via LLM ────────────────
+  const rssConfig = sourceConfig.rss;
+  const socialConfig = sourceConfig.social;
   if (allUnverifiedItems.length > 0) {
-    console.log(`\nPhase 1.5: Verifying ${allUnverifiedItems.length} partial entity matches...`);
+    console.log(`\nPhase 1a: Verifying ${allUnverifiedItems.length} partial entity matches...`);
     const verifiedMap = await verifyPartialMatches(allUnverifiedItems);
 
     for (const item of allUnverifiedItems) {
@@ -2059,6 +2062,22 @@ async function main() {
       } else if (item.type === "social" && item.mentionObj) {
         data.socialMentions.push(item.mentionObj);
       }
+    }
+
+    // Re-apply dedup and caps after merge-back
+    for (const [, data] of politicianDataMap) {
+      data.headlines = dedupeStrings(data.headlines).slice(
+        0,
+        rssConfig.maxHeadlinesPerPolitician
+      );
+      const seenTexts = new Map();
+      for (const m of data.socialMentions) {
+        if (!seenTexts.has(m.text)) seenTexts.set(m.text, m);
+      }
+      data.socialMentions = [...seenTexts.values()].slice(
+        0,
+        socialConfig.maxMentionsPerPolitician
+      );
     }
   } else {
     console.log("\n  No partial entity matches to verify.");
@@ -2088,7 +2107,7 @@ async function main() {
     for (const p of POLITICIANS) oknessetMap.set(p.id, null);
   }
 
-  // ── Phase 1.5: Load previous day's CoT for rolling context ─────────
+  // ── Phase 1b: Load previous day's CoT for rolling context ──────────
   const yesterdayCoTMap = new Map();
   try {
     const todayStr = new Date().toLocaleDateString("en-CA", { timeZone: PIPELINE_TIMEZONE });
