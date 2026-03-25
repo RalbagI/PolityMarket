@@ -111,7 +111,12 @@ describe("entity verification", () => {
   it("buildVerificationPrompt formats numbered items with XML-delimited text", () => {
     const batch = [
       { index: 0, text: "תקיפה ברמת גולן", fullName: "May Golan", hebrewName: "מאי גולן" },
-      { index: 1, text: "סמוטריץ' הגיב", fullName: "Bezalel Smotrich", hebrewName: "בצלאל סמוטריץ'" },
+      {
+        index: 1,
+        text: "סמוטריץ' הגיב",
+        fullName: "Bezalel Smotrich",
+        hebrewName: "בצלאל סמוטריץ'",
+      },
     ];
     const prompt = buildVerificationPrompt(batch);
     expect(prompt).toContain('1. Politician: "מאי גולן"');
@@ -131,7 +136,7 @@ describe("entity verification", () => {
       },
     ];
     const prompt = buildVerificationPrompt(batch);
-    expect(prompt).toContain("&lt;script&gt;alert(\"x\")&lt;/script&gt; &amp; headline");
+    expect(prompt).toContain('&lt;script&gt;alert("x")&lt;/script&gt; &amp; headline');
     expect(prompt).not.toContain('<text><script>alert("x")</script> & headline</text>');
   });
 

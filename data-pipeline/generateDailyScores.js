@@ -1596,9 +1596,17 @@ function escapeXmlText(input) {
 export function buildVerificationPrompt(batch) {
   const items = batch
     .map((item, i) => {
-      const safeText = escapeXmlText(String(item.text).slice(0, 200).replace(/[\n\r]/g, " "));
-      const safeHebrewName = String(item.hebrewName ?? "").replace(/[\n\r]/g, " ").trim();
-      const safeFullName = String(item.fullName ?? "").replace(/[\n\r]/g, " ").trim();
+      const safeText = escapeXmlText(
+        String(item.text)
+          .slice(0, 200)
+          .replace(/[\n\r]/g, " ")
+      );
+      const safeHebrewName = String(item.hebrewName ?? "")
+        .replace(/[\n\r]/g, " ")
+        .trim();
+      const safeFullName = String(item.fullName ?? "")
+        .replace(/[\n\r]/g, " ")
+        .trim();
       return `${i + 1}. Politician: "${safeHebrewName}" (${safeFullName}) | Text: <text>${safeText}</text>`;
     })
     .join("\n");
@@ -1649,9 +1657,7 @@ async function verifyPartialMatches(unverifiedItems) {
       );
       parseVerificationResponse(rawText, batch, results);
     } catch (err) {
-      console.warn(
-        `  [Verify] Batch failed, rejecting ${batch.length} items: ${err.message}`
-      );
+      console.warn(`  [Verify] Batch failed, rejecting ${batch.length} items: ${err.message}`);
       for (const item of batch) {
         results.set(item.index, false);
       }
