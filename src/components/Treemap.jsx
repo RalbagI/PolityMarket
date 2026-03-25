@@ -82,16 +82,15 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         const g = pinchRef.current;
         const liveScale = Math.max(1, Math.min(5, g.startScale * (dist / g.startDist)));
 
-        // CSS-only zoom: scale the existing layout and shift to keep midpoint stable
-        // The inner div is already translated by (-viewport.x, -viewport.y) from React.
-        // We apply an additional CSS scale + translate relative to the pinch origin on screen.
+        // CSS-only zoom: scale the existing layout around the pinch midpoint.
+        // Must include the current viewport offset (-vp.x, -vp.y) since this
+        // transform REPLACES React's inline style.
         const scaleRatio = liveScale / g.startScale;
         const rect = el.getBoundingClientRect();
         const midX = (t1.clientX + t2.clientX) / 2 - rect.left;
         const midY = (t1.clientY + t2.clientY) / 2 - rect.top;
-        // Transform origin at the midpoint, scale from there
-        const tx = midX * (1 - scaleRatio);
-        const ty = midY * (1 - scaleRatio);
+        const tx = -g.startX + midX * (1 - scaleRatio);
+        const ty = -g.startY + midY * (1 - scaleRatio);
 
         if (innerRef.current) {
           innerRef.current.style.transform = `translate(${tx}px, ${ty}px) scale(${scaleRatio})`;
