@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Filter, X, ChevronDown, Heart } from "lucide-react";
+import { Filter, X, ChevronDown, Heart, Search } from "lucide-react";
 import { localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 
@@ -49,12 +49,36 @@ export default function FilterBar({
   clearFilters,
   visibleCount,
   totalCount,
+  searchTerm,
+  setSearchTerm,
 }) {
   const { t } = useTranslation();
-  const hasFilters = activeParties.length || activeWings.length || activeSectors.length;
+  const hasFilters =
+    activeParties.length || activeWings.length || activeSectors.length || searchTerm;
 
   return (
     <div className="space-y-3">
+      {/* Search */}
+      <div className="relative">
+        <Search className="absolute start-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500 pointer-events-none" />
+        <input
+          type="text"
+          value={searchTerm || ""}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder={t("filterBar.search.placeholder")}
+          className="w-full ps-8 pe-8 py-1.5 text-xs bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors"
+        />
+        {searchTerm && (
+          <button
+            onClick={() => setSearchTerm("")}
+            className="absolute end-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300"
+            aria-label={t("filterBar.search.clear")}
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
+        )}
+      </div>
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs text-gray-400">
