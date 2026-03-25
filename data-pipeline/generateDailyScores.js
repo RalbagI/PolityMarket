@@ -889,34 +889,56 @@ const MIN_HEBREW_TOKEN_LENGTH = 3;
 const HEBREW_TOKEN_DENYLIST = new Set(["בן"]);
 
 export function buildSearchTerms(politician) {
-  const tokenTerms = politician.name
+  const fullNameRaw = [politician.name, politician.id.replace(/-/g, " ")];
+  const singleTokenRaw = politician.name
     .split(/[\s\-']/)
     .map((token) => token.trim())
     .filter((token) => token.length >= MIN_LATIN_TOKEN_LENGTH);
-  const terms = dedupeStrings([politician.name, politician.id.replace(/-/g, " "), ...tokenTerms]);
-  // Add Hebrew name and its tokens for matching Hebrew headlines
+
+  // Add Hebrew name and its tokens
   const hebrewName = HEBREW_NAMES[politician.name];
   if (hebrewName) {
-    terms.push(hebrewName);
+    fullNameRaw.push(hebrewName);
     const hebrewTokens = hebrewName
       .split(/\s+/)
       .map((token) => normalizeText(token))
       .filter(
         (token) => token.length >= MIN_HEBREW_TOKEN_LENGTH && !HEBREW_TOKEN_DENYLIST.has(token)
       );
-    terms.push(...hebrewTokens);
+    singleTokenRaw.push(...hebrewTokens);
   }
-  return dedupeStrings(terms.map((term) => normalizeText(term)));
+
+  const fullNameTerms = dedupeStrings(fullNameRaw.map((t) => normalizeText(t)));
+  let singleTokenTerms = dedupeStrings(singleTokenRaw.map((t) => normalizeText(t)));
+
+  // Remove single tokens that are already covered by a full-name term
+  const fullNameSet = new Set(fullNameTerms);
+  singleTokenTerms = singleTokenTerms.filter((t) => !fullNameSet.has(t));
+
+  return { fullNameTerms, singleTokenTerms };
 }
 
+/**
+ * Check if text mentions a politician.
+ * @returns {"exact" | "partial" | false} - "exact" for full-name match, "partial" for token-only
+ */
 export function includesPolitician(text, searchTerms) {
   const normalized = normalizeText(text);
   if (!normalized) return false;
   const paddedText = ` ${normalized} `;
-  return searchTerms.some((term) => {
-    const normalizedTerm = normalizeText(term);
-    return normalizedTerm.length > 0 && paddedText.includes(` ${normalizedTerm} `);
-  });
+
+  const matchesTerm = (term) => {
+    const nt = normalizeText(term);
+    return nt.length > 0 && paddedText.includes(` ${nt} `);
+  };
+
+  // Tier 1: full-name match → verified
+  if (searchTerms.fullNameTerms.some(matchesTerm)) return "exact";
+
+  // Tier 2: single-token match → needs LLM verification
+  if (searchTerms.singleTokenTerms.some(matchesTerm)) return "partial";
+
+  return false;
 }
 
 function decodeHtmlEntities(input) {
@@ -1167,20 +1189,33 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   const rssConfig = sourceConfig.rss;
   const searchTerms = buildSearchTerms(politician);
   const headlines = [];
+  const unverifiedHeadlines = [];
   let successfulSources = 0;
   let failedSources = 0;
+
+  const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
+
+  function classifyItem(item) {
+    const combined = `${item.title} ${item.description}`;
+    if (isSpamContent(combined, item.link)) return;
+    const matchType = includesPolitician(combined, searchTerms);
+    if (matchType === "exact") {
+      headlines.push(item.title);
+    } else if (matchType === "partial") {
+      unverifiedHeadlines.push({
+        text: item.title,
+        fullName: politician.name,
+        hebrewName,
+      });
+    }
+  }
 
   for (const template of rssConfig.searchTemplates) {
     const url = renderSearchTemplate(template, politician);
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
       successfulSources++;
-      for (const item of items) {
-        if (isSpamContent(`${item.title} ${item.description}`, item.link)) continue;
-        if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
-          headlines.push(item.title);
-        }
-      }
+      for (const item of items) classifyItem(item);
     } catch (err) {
       failedSources++;
       console.warn(`[RSS] ${politician.name}: failed query feed (${url}) — ${err.message}`);
@@ -1191,12 +1226,7 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
       successfulSources++;
-      for (const item of items) {
-        if (isSpamContent(`${item.title} ${item.description}`, item.link)) continue;
-        if (includesPolitician(`${item.title} ${item.description}`, searchTerms)) {
-          headlines.push(item.title);
-        }
-      }
+      for (const item of items) classifyItem(item);
     } catch (err) {
       failedSources++;
       console.warn(`[RSS] ${politician.name}: failed global feed (${url}) — ${err.message}`);
@@ -1213,24 +1243,31 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   if (unique.length === 0) {
     unique.push(`No direct headlines matched ${politician.name} in configured sources this cycle.`);
   }
-  console.log(`[RSS] Fetched ${unique.length} filtered headlines for ${politician.name}`);
-  return unique;
+  console.log(
+    `[RSS] Fetched ${unique.length} verified + ${unverifiedHeadlines.length} unverified headlines for ${politician.name}`
+  );
+  return { headlines: unique, unverifiedHeadlines };
 }
 
 async function fetchSocialMediaMentions(politician, sourceConfig) {
   const socialConfig = sourceConfig.social;
   const searchTerms = buildSearchTerms(politician);
   const matches = [];
+  const unverifiedMentions = [];
   let successfulSources = 0;
   let failedSources = 0;
 
-  // Helper: process a list of posts, filter spam, and push matching mentions
-  function processPosts(posts, sourceLabel) {
+  const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
+
+  // Helper: process a list of posts, filter spam, and classify matches
+  function processPosts(posts) {
     for (const post of posts) {
       const combined = `${post.title} ${post.body}`;
       if (isSpamContent(combined, post.permalink)) continue;
-      if (!includesPolitician(combined, searchTerms)) continue;
-      matches.push({
+      const matchType = includesPolitician(combined, searchTerms);
+      if (!matchType) continue;
+
+      const mentionObj = {
         text: post.body
           ? `${post.title} — ${post.body.slice(0, 240)}`.trim().replace(/^— /, "")
           : post.title,
@@ -1239,7 +1276,18 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
           handle: `@${post.author}`,
           known_satirist: /satire|parody|meme/i.test(`${post.author} ${combined}`),
         },
-      });
+      };
+
+      if (matchType === "exact") {
+        matches.push(mentionObj);
+      } else {
+        unverifiedMentions.push({
+          text: mentionObj.text,
+          fullName: politician.name,
+          hebrewName,
+          mentionObj, // preserve for merge-back if verified
+        });
+      }
     }
   }
 
@@ -1248,7 +1296,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
     try {
       const posts = await getRedditPosts(subreddit, socialConfig.maxPostsPerSubreddit);
       successfulSources++;
-      processPosts(posts, "Reddit");
+      processPosts(posts);
     } catch (err) {
       failedSources++;
       console.warn(`[Social] ${politician.name}: failed Reddit (${subreddit}) — ${err.message}`);
@@ -1262,7 +1310,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       try {
         const posts = await getTelegramPosts(channel, telegramConfig.maxMessagesPerChannel || 20);
         successfulSources++;
-        processPosts(posts, "Telegram");
+        processPosts(posts);
       } catch (err) {
         failedSources++;
         console.warn(`[Social] ${politician.name}: failed Telegram (${channel}) — ${err.message}`);
@@ -1277,7 +1325,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       try {
         const threads = await getFxpThreads(forumId, fxpConfig.maxThreadsPerForum || 30);
         successfulSources++;
-        processPosts(threads, "FXP");
+        processPosts(threads);
       } catch (err) {
         failedSources++;
         console.warn(`[Social] ${politician.name}: failed FXP (f=${forumId}) — ${err.message}`);
@@ -1292,7 +1340,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
       const posts = await searchBlueskyPosts(hebrewName, blueskyConfig.maxPostsPerSearch || 10);
       successfulSources++;
-      processPosts(posts, "Bluesky");
+      processPosts(posts);
     } catch (err) {
       // Bluesky is best-effort — don't count as failure
       console.warn(`[Social] ${politician.name}: Bluesky unavailable — ${err.message}`);
@@ -1319,8 +1367,10 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
     });
   }
 
-  console.log(`[Social] Fetched ${unique.length} filtered mentions for ${politician.name}`);
-  return unique;
+  console.log(
+    `[Social] Fetched ${unique.length} verified + ${unverifiedMentions.length} unverified mentions for ${politician.name}`
+  );
+  return { mentions: unique, unverifiedMentions };
 }
 
 // ── LLM System Prompt ─────────────────────────────────────────────────
@@ -1475,7 +1525,8 @@ export function parseCodexOutput(rawText) {
 }
 
 // reasoningEffort: "low" | "medium" | "high" | "xhigh" per codex config.toml spec
-function callCodexCLI(prompt, model, reasoningEffort = "medium") {
+// parseJson: when false, returns raw text instead of parsed JSON array (for verification prompts)
+function callCodexCLI(prompt, model, reasoningEffort = "medium", parseJson = true) {
   const tmpOut = path.join(
     os.tmpdir(),
     `codex-out-${Date.now()}-${Math.random().toString(36).slice(2)}.txt`
@@ -1517,7 +1568,7 @@ function callCodexCLI(prompt, model, reasoningEffort = "medium") {
       throw new Error("Codex CLI produced an empty output file");
     }
     console.log(`  Codex [${model}]: ${output.length} chars`);
-    return parseCodexOutput(output);
+    return parseJson ? parseCodexOutput(output) : output;
   } finally {
     try {
       fs.unlinkSync(tmpOut);
@@ -1525,6 +1576,132 @@ function callCodexCLI(prompt, model, reasoningEffort = "medium") {
       // ignore cleanup errors
     }
   }
+}
+
+// ── Two-Tier Entity Verification ──────────────────────────────────────
+// Tier 2: LLM disambiguation for partial (single-token) name matches.
+
+// 50 items × ~250 chars each stays well within context limits for the mini model
+const VERIFY_BATCH_SIZE = 50;
+const VERIFY_MODEL = OPENAI_MODEL_LOW;
+const VERIFY_REASONING = "low";
+
+function escapeXmlText(input) {
+  return String(input ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+export function buildVerificationPrompt(batch) {
+  const items = batch
+    .map((item, i) => {
+      const safeText = escapeXmlText(
+        String(item.text)
+          .slice(0, 200)
+          .replace(/[\n\r]/g, " ")
+      );
+      const safeHebrewName = String(item.hebrewName ?? "")
+        .replace(/[\n\r]/g, " ")
+        .trim();
+      const safeFullName = String(item.fullName ?? "")
+        .replace(/[\n\r]/g, " ")
+        .trim();
+      return `${i + 1}. Politician: "${safeHebrewName}" (${safeFullName}) | Text: <text>${safeText}</text>`;
+    })
+    .join("\n");
+
+  return `You are verifying whether news texts are about specific Israeli politicians.
+For each numbered item, answer YES if the text is about or directly mentions the specified politician, or NO if it refers to a different person, place, or is unrelated.
+Respond with ONLY the number and YES or NO, one per line.
+
+${items}`;
+}
+
+export function parseVerificationResponse(rawText, batch, resultsMap) {
+  const lines = String(rawText).split("\n");
+  const parsed = new Map();
+  for (const line of lines) {
+    const match = line.match(/^\s*(\d+)[.):;-]?\s*(YES|NO)\b/i);
+    if (match) {
+      parsed.set(parseInt(match[1], 10), match[2].toUpperCase() === "YES");
+    }
+  }
+  for (let i = 0; i < batch.length; i++) {
+    const verified = parsed.get(i + 1) ?? false; // default: reject
+    resultsMap.set(batch[i].index, verified);
+  }
+}
+
+async function verifyPartialMatches(unverifiedItems) {
+  if (unverifiedItems.length === 0) return new Map();
+
+  console.log(
+    `  [Verify] Checking ${unverifiedItems.length} partial matches via ${VERIFY_MODEL}...`
+  );
+  const results = new Map();
+
+  for (let i = 0; i < unverifiedItems.length; i += VERIFY_BATCH_SIZE) {
+    const batch = unverifiedItems.slice(i, i + VERIFY_BATCH_SIZE);
+    const prompt = buildVerificationPrompt(batch);
+
+    try {
+      const rawText = await retry(
+        () => callCodexCLI(prompt, VERIFY_MODEL, VERIFY_REASONING, false),
+        {
+          maxRetries: 1,
+          initialDelay: 2000,
+          maxDelay: 10000,
+          shouldRetry: shouldRetryBatchError,
+        }
+      );
+      parseVerificationResponse(rawText, batch, results);
+    } catch (err) {
+      console.warn(`  [Verify] Batch failed, rejecting ${batch.length} items: ${err.message}`);
+      for (const item of batch) {
+        results.set(item.index, false);
+      }
+    }
+  }
+
+  const confirmed = [...results.values()].filter(Boolean).length;
+  console.log(
+    `  [Verify] Result: ${confirmed}/${unverifiedItems.length} confirmed as real matches`
+  );
+  return results;
+}
+
+function isHeadlineFallback(text) {
+  return String(text ?? "").startsWith("No direct headlines matched ");
+}
+
+function isSocialFallback(mention) {
+  return String(mention?.text ?? "").startsWith("No direct social mentions matched ");
+}
+
+export function reconcileVerifiedMatches(data, headlineLimit, socialLimit) {
+  let headlines = dedupeStrings(data?.headlines ?? []);
+  const hasRealHeadlines = headlines.some((headline) => !isHeadlineFallback(headline));
+  if (hasRealHeadlines) {
+    headlines = headlines.filter((headline) => !isHeadlineFallback(headline));
+  }
+  headlines = headlines.slice(0, headlineLimit);
+
+  let socialMentions = Array.isArray(data?.socialMentions) ? [...data.socialMentions] : [];
+  const hasRealSocial = socialMentions.some((mention) => !isSocialFallback(mention));
+  if (hasRealSocial) {
+    socialMentions = socialMentions.filter((mention) => !isSocialFallback(mention));
+  }
+
+  const seenTexts = new Map();
+  for (const mention of socialMentions) {
+    const key = String(mention?.text ?? "").trim();
+    if (!key || seenTexts.has(key)) continue;
+    seenTexts.set(key, mention);
+  }
+  socialMentions = [...seenTexts.values()].slice(0, socialLimit);
+
+  return { headlines, socialMentions };
 }
 
 export function shouldRetryBatchError(err) {
@@ -1858,14 +2035,40 @@ async function main() {
   const politicianDataMap = new Map();
   const fetchFailures = [];
 
+  const allUnverifiedItems = [];
+  let unverifiedIndex = 0;
+
   for (const politician of POLITICIANS) {
     try {
-      const headlines = await fetchRSSHeadlines(politician, sourceConfig);
-      const socialMentions = await fetchSocialMediaMentions(politician, sourceConfig);
+      const { headlines, unverifiedHeadlines } = await fetchRSSHeadlines(politician, sourceConfig);
+      const { mentions: socialMentions, unverifiedMentions } = await fetchSocialMediaMentions(
+        politician,
+        sourceConfig
+      );
       politicianDataMap.set(politician.id, { headlines, socialMentions });
+
+      // Collect partial matches for batch verification
+      for (const uh of unverifiedHeadlines) {
+        allUnverifiedItems.push({
+          index: unverifiedIndex++,
+          ...uh,
+          politicianId: politician.id,
+          type: "headline",
+        });
+      }
+      for (const um of unverifiedMentions) {
+        allUnverifiedItems.push({
+          index: unverifiedIndex++,
+          text: um.text,
+          fullName: um.fullName,
+          hebrewName: um.hebrewName,
+          politicianId: politician.id,
+          type: "social",
+          mentionObj: um.mentionObj,
+        });
+      }
     } catch (err) {
       console.warn(`  ⚠ Data fetch failed for ${politician.name}: ${err.message}`);
-      // Continue collecting failures so we can fail explicitly after phase 1.
       politicianDataMap.set(politician.id, { headlines: [], socialMentions: [] });
       fetchFailures.push({ politicianId: politician.id, message: err.message });
     }
@@ -1889,6 +2092,39 @@ async function main() {
   console.log(
     `  Fetched data for ${politicianDataMap.size} politicians (${fetchFailures.length} partial failures)`
   );
+
+  // ── Phase 1a: Verify partial entity matches via LLM ────────────────
+  const rssConfig = sourceConfig.rss;
+  const socialConfig = sourceConfig.social;
+  if (allUnverifiedItems.length > 0) {
+    console.log(`\nPhase 1a: Verifying ${allUnverifiedItems.length} partial entity matches...`);
+    const verifiedMap = await verifyPartialMatches(allUnverifiedItems);
+
+    for (const item of allUnverifiedItems) {
+      if (!verifiedMap.get(item.index)) continue; // rejected by LLM
+      const data = politicianDataMap.get(item.politicianId);
+      if (!data) continue;
+
+      if (item.type === "headline") {
+        data.headlines.push(item.text);
+      } else if (item.type === "social" && item.mentionObj) {
+        data.socialMentions.push(item.mentionObj);
+      }
+    }
+
+    // Re-apply dedup and caps after merge-back
+    for (const [, data] of politicianDataMap) {
+      const reconciled = reconcileVerifiedMatches(
+        data,
+        rssConfig.maxHeadlinesPerPolitician,
+        socialConfig.maxMentionsPerPolitician
+      );
+      data.headlines = reconciled.headlines;
+      data.socialMentions = reconciled.socialMentions;
+    }
+  } else {
+    console.log("\n  No partial entity matches to verify.");
+  }
 
   // ── Phase 0.5: Fetch structured parliamentary data (OpenKnesset) ────
   console.log("\nPhase 0.5: Fetching structured parliamentary data...");
@@ -1914,7 +2150,7 @@ async function main() {
     for (const p of POLITICIANS) oknessetMap.set(p.id, null);
   }
 
-  // ── Phase 1.5: Load previous day's CoT for rolling context ─────────
+  // ── Phase 1b: Load previous day's CoT for rolling context ──────────
   const yesterdayCoTMap = new Map();
   try {
     const todayStr = new Date().toLocaleDateString("en-CA", { timeZone: PIPELINE_TIMEZONE });
