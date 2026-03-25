@@ -26,6 +26,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const innerRef = useRef(null);
   const gestureActiveRef = useRef(false);
   const gestureEndTimeRef = useRef(0); // timestamp of last gesture end
+  const touchStartRef = useRef(null); // track touch start position to detect drags
   const lastTapRef = useRef(0);
 
   // Virtual dimensions: treemap renders at zoomed size
@@ -38,7 +39,16 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     if (!el) return;
 
     const onTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        touchStartRef.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY,
+          scrollLeft: el.scrollLeft,
+          scrollTop: el.scrollTop,
+        };
+      }
       if (e.touches.length === 2) {
+        touchStartRef.current = null;
         e.preventDefault();
         gestureActiveRef.current = true;
         const t1 = e.touches[0],
@@ -311,12 +321,19 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     [hovered]
   );
 
-  // Check if a gesture (pinch/zoom) is active or just ended
+  // Check if a gesture (pinch/zoom/drag) is active or just ended
   const isGestureActive = useCallback(() => {
     if (gestureActiveRef.current) return true;
     if (pinchRef.current) return true;
     // Block taps for 500ms after any gesture ends
     if (Date.now() - gestureEndTimeRef.current < 500) return true;
+    // Check if finger moved or scroll changed (user was dragging/scrolling)
+    const ts = touchStartRef.current;
+    if (ts && scrollRef.current) {
+      const scrollDx = Math.abs(scrollRef.current.scrollLeft - ts.scrollLeft);
+      const scrollDy = Math.abs(scrollRef.current.scrollTop - ts.scrollTop);
+      if (scrollDx > 5 || scrollDy > 5) return true;
+    }
     return false;
   }, []);
 
