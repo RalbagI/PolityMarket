@@ -50,7 +50,9 @@
       "hideSentimentDetail": "סגור"
     },
     "aiAnalysis": {
-      "empty": "אין ניתוח זמין."
+      "empty": "אין ניתוח זמין.",
+      "whatHappened": "מה קרה",
+      "whatItMeans": "מה זה אומר"
     },
     "metric": {
       "newsSentiment": "סנטימנט חדשותי",
