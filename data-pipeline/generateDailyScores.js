@@ -1474,7 +1474,7 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
     const rollingContext = prevCoT ? `\nPrevious analysis summary: ${prevCoT}` : "";
     const contextHint =
       !hasRealHeadlines && !hasRealSocial
-        ? `\nContext note: No direct headlines or social mentions matched this cycle. Write a short neutral Hebrew analysis that explicitly states the lack of direct coverage. Use only provided metadata (party: ${p.party}, role: ${p.role || "mk"}, wing: ${p.wing}, coalition role: ${coalitionRole}) and the previous analysis summary below if present. Do not add external facts or unprovided current events.${rollingContext}`
+        ? `\nContext note: No direct headlines or social mentions matched this cycle. Use the SHORT chain_of_thought format (## שורה תחתונה + ## מה זה אומר only). Be creative — don't repeat the same boilerplate. Tailor based on: party: ${p.party}, role: ${p.role || "mk"}, wing: ${p.wing}, coalition role: ${coalitionRole}. Do not add external facts or unprovided current events.${rollingContext}`
         : "";
 
     prompt += `

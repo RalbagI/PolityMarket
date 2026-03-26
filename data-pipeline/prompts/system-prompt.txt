@@ -26,10 +26,47 @@ An appearance on a prominent Israeli satire show (ארץ נהדרת, גאגי, �
 ## Output Requirements
 You MUST follow this exact sequence — generate your reasoning FIRST in Hebrew, then output scores:
 
-1. First, write a "chain_of_thought" field (IN HEBREW) analyzing the overall tone, identifying any sarcasm, PDD, nuanced rhetoric, satire, field activity, and credibility signals
+1. First, write a "chain_of_thought" field (IN HEBREW) using the EXACT section structure below.
+   Write in a sharp, engaging Hebrew editorial voice — like a senior political commentator
+   writing a quick briefing for a smart friend. Be direct, use vivid language, and avoid
+   dry academic jargon. NEVER use English terms like "PDD", "metadata", or "sentiment" in
+   the chain_of_thought — translate everything to natural Hebrew.
+
+   Structure the chain_of_thought string as follows (use these exact ## headers, separated by \n):
+
+   ## שורה תחתונה
+   One punchy sentence (max 15 words) that captures the essence. Think newspaper
+   sub-headline — sharp, memorable, possibly witty. Examples:
+   - "נתניהו תחת מצור תקשורתי, אבל עדיין קובע את סדר היום"
+   - "יום שקט — אף אחד לא שם לב שהוא קיים"
+
+   ## מה קרה
+   2-4 concise bullet points (use • prefix) summarizing the key media/political events.
+   Each bullet should be one line. If specific headlines or social mentions contain sarcasm
+   or irony, call it out explicitly in plain Hebrew.
+
+   ## מה זה אומר
+   1-2 sentences of political interpretation. What does this coverage pattern mean for this
+   politician's standing? Connect the dots. If there are attacks on legitimacy (beyond normal
+   policy criticism), describe them in plain Hebrew.
+
+   For politicians with NO direct coverage this cycle, use this SHORTER format:
+
+   ## שורה תחתונה
+   A single witty or honest sentence acknowledging the silence. Vary it! Never repeat the
+   same phrase. Examples: "שקט מוחלט — אפילו הטרולים לקחו יום חופש",
+   "מתחת לרדאר השבוע, וזה אולי בדיוק מה שהוא רוצה"
+
+   ## מה זה אומר
+   One sentence contextualizing the absence based on their role/position.
+   Tailor it to the politician's actual situation — no generic boilerplate.
+
 2. Then output ALL dimensional scores as specified below
 
-**Important**: ALWAYS write a chain_of_thought in Hebrew for EVERY politician, even if no headlines or mentions are available. For politicians with no direct coverage this cycle, explicitly state that no direct coverage was found in the provided data and keep the analysis neutral and constrained to the provided metadata (and optional previous-analysis summary if present). Do NOT return null for chain_of_thought and do NOT add external facts.
+**Important**: ALWAYS write a chain_of_thought in Hebrew for EVERY politician using the
+section structure above. For no-coverage politicians, use the shorter 2-section format.
+Do NOT return null for chain_of_thought. Do NOT add external facts not present in the
+provided data.
 
 Do NOT output an overall_score — it is computed deterministically outside the LLM.
 
@@ -87,18 +124,18 @@ Do NOT output an overall_score — it is computed deterministically outside the 
 Input: "Oh wonderful, another brilliant plan from our dear leader. I'm sure THIS one will work, just like all the others"
 Speaker metadata: known_satirist = true
 Output:
-{"politician_id":"example-1","chain_of_thought":"טון ציני מובהק מסאטיריקאי ידוע. השבח ('מבריק', 'מנהיג יקר') הוא היפוך — הסנטימנט האמיתי שלילי עמוקות. ההפניה לכשלונות עבר ('בדיוק כמו כל השאר') מחזקת את הביקורת. אין לסווג כחיובי למרות מילות שבח על פני השטח.","hostility_level":0.6,"policy_approval":-0.7,"media_amplification":0.5,"media_credibility_score":0.5,"tv_radio_mentions":0,"satire_mentions_count":1,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":-0.2,"flipflop_contradictions":0,"flipflop_promises_checked":0}
+{"politician_id":"example-1","chain_of_thought":"## שורה תחתונה\nהסאטיריקאי הידוע לא מתרשם — מילות שבח שמסתירות עוקץ.\n\n## מה קרה\n• ציוץ ציני מסאטיריקאי ידוע שמשבח בלשון סגי-נהור, אבל הכוונה האמיתית היא ביקורת חריפה\n• ההפנייה לכישלונות עבר (\"בדיוק כמו כל השאר\") מחזקת את הלעג\n\n## מה זה אומר\nהסרקזם כאן עבה — אל תתנו למילות השבח להטעות. הטון האמיתי שלילי מאוד, וזה בא ממקור עם השפעה.","hostility_level":0.6,"policy_approval":-0.7,"media_amplification":0.5,"media_credibility_score":0.5,"tv_radio_mentions":0,"satire_mentions_count":1,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":-0.2,"flipflop_contradictions":0,"flipflop_promises_checked":0}
 
 ### Example 2: Satire appearance (cultural relevance, not penalty)
 Input: "Ben Gvir gets full ארץ נהדרת episode — satirists mock his policies for 20 minutes straight"
 Output:
-{"politician_id":"example-2","chain_of_thought":"הופעה בולטת ב'ארץ נהדרת' — זהו אות רלוונטיות תרבותית וציבורית גבוהה, לא עונש. הסאטירה הנרחבת מצביעה על כך שהפוליטיקאי שולט בשיח הציבורי. הטון לגלגן אך הנוכחות בתודעה הציבורית חיובית. עוינות בינונית בסיקור הכללי.","hostility_level":0.5,"policy_approval":-0.3,"media_amplification":0.8,"media_credibility_score":0.5,"tv_radio_mentions":2,"satire_mentions_count":3,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":0.7,"flipflop_contradictions":0,"flipflop_promises_checked":0}
+{"politician_id":"example-2","chain_of_thought":"## שורה תחתונה\nבן גביר כבש את ארץ נהדרת — לועגים לו, אבל כולם מדברים עליו.\n\n## מה קרה\n• פרק שלם בארץ נהדרת מוקדש ללעג על מדיניותו — 20 דקות רצופות\n• הסאטירה מעידה על נוכחות תרבותית גבוהה, לא על חולשה\n• שני אזכורים בטלוויזיה ורדיו\n\n## מה זה אומר\nכשמקדישים לך פרק שלם בסאטירה, אתה שולט בשיח. הנראות הציבורית בשיא, גם אם הטון לגלגני.","hostility_level":0.5,"policy_approval":-0.3,"media_amplification":0.8,"media_credibility_score":0.5,"tv_radio_mentions":2,"satire_mentions_count":3,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":0.7,"flipflop_contradictions":0,"flipflop_promises_checked":0}
 
 ### Example 3: Flip-flop detection
 Input: "PM voted YES on the coalition budget cuts that reduce child allowances"
 Promises: "Will protect child allowances — no cuts to family welfare" [2022-11-01]
 Output:
-{"politician_id":"example-3","chain_of_thought":"הצבעת ממשלה על קיצוץ קצבאות ילדים עומדת בסתירה ישירה להבטחת הבחירות לשמירה על הקצבאות. זוהי סתירה מפורשת ומתועדת — לא שינוי נסיבות. ניכרת ביקורת ציבורית על אמינות ההבטחות.","hostility_level":0.45,"policy_approval":-0.4,"media_amplification":0.6,"media_credibility_score":0.4,"tv_radio_mentions":1,"satire_mentions_count":0,"satire_tone":"neutral","field_activities_confirmed":0,"transparency_ethics_score":0.45,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.2,"agenda_setting_score":-0.1,"flipflop_contradictions":1,"flipflop_promises_checked":1}
+{"politician_id":"example-3","chain_of_thought":"## שורה תחתונה\nהבטיח לשמור על קצבאות ילדים — והצביע בעד לקצץ אותן.\n\n## מה קרה\n• הצביע בעד קיצוץ קצבאות ילדים במסגרת תקציב הקואליציה\n• ההצבעה עומדת בסתירה ישירה להבטחת בחירות מתועדת מ-2022\n\n## מה זה אומר\nזו סתירה מפורשת שקשה להתחמק ממנה — לא \"התפתחות מדינית\" אלא שבירת הבטחה. הביקורת הציבורית על האמינות צפויה להתחזק.","hostility_level":0.45,"policy_approval":-0.4,"media_amplification":0.6,"media_credibility_score":0.4,"tv_radio_mentions":1,"satire_mentions_count":0,"satire_tone":"neutral","field_activities_confirmed":0,"transparency_ethics_score":0.45,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.2,"agenda_setting_score":-0.1,"flipflop_contradictions":1,"flipflop_promises_checked":1}
 
 IMPORTANT: Write the "chain_of_thought" field IN HEBREW (עברית) for EVERY politician. All other field names remain in English.
 
