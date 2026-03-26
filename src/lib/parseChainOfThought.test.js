@@ -57,6 +57,12 @@ describe("parseChainOfThought", () => {
     expect(result).toEqual({ isLegacy: true, raw: text });
   });
 
+  it("falls back to legacy when only unknown headers are present", () => {
+    const text = ["## TL;DR", "Some analysis here."].join("\n");
+    const result = parseChainOfThought(text);
+    expect(result).toEqual({ isLegacy: true, raw: text });
+  });
+
   it("skips sections with no body (header only, no newline)", () => {
     const text = "## שורה תחתונה\nטקסט כלשהו.\n\n## מה קרה";
     const result = parseChainOfThought(text);

@@ -23,5 +23,9 @@ export function parseChainOfThought(text) {
     else if (title === "מה זה אומר") sections.whatItMeans = body;
   }
 
+  if (!sections.bottomLine && !sections.whatHappened && !sections.whatItMeans) {
+    return { isLegacy: true, raw: text };
+  }
+
   return { isLegacy: false, ...sections };
 }
