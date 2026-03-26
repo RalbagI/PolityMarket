@@ -418,5 +418,17 @@
       "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
     ],
     "timestamp": "2026-03-25T16:09:17.929Z"
+  },
+  {
+    "date": "2026-03-26",
+    "warnings": [
+      "[Outlier] Amir Ohana: score 6.8 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Gila Gamliel: score 6.9 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Miki Zohar: score 6.8 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Miri Regev: score 6.8 outside IQR bounds [3.6, 6.8]",
+      "[Outlier] Benny Gantz: score 6.8 outside IQR bounds [3.6, 6.8]",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-03-26T00:10:49.373Z"
   }
 ]
