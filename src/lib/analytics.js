@@ -21,8 +21,8 @@ function canTrack() {
 function ensureGtagStub() {
   window.dataLayer = window.dataLayer || [];
   if (typeof window.gtag !== "function") {
-    window.gtag = (...args) => {
-      window.dataLayer.push(args);
+    window.gtag = function () {
+      window.dataLayer.push(arguments);
     };
   }
 }
