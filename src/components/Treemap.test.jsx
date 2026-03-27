@@ -49,13 +49,15 @@ const makePolitician = (name, score, volume) => ({
   party: "TestParty",
   overall_score: score,
   media_volume: volume,
+  normalizedScore: 0.5,
+  normalizedVolume: 0.5,
 });
 
 const sampleData = [
-  makePolitician("Alice", 8.0, 100),
-  makePolitician("Bob", 6.5, 80),
-  makePolitician("Charlie", 5.0, 60),
-  makePolitician("Diana", 4.0, 40),
+  { ...makePolitician("Alice", 8.0, 100), normalizedScore: 1.0, normalizedVolume: 1.0 },
+  { ...makePolitician("Bob", 6.5, 80), normalizedScore: 0.6, normalizedVolume: 0.67 },
+  { ...makePolitician("Charlie", 5.0, 60), normalizedScore: 0.25, normalizedVolume: 0.33 },
+  { ...makePolitician("Diana", 4.0, 40), normalizedScore: 0.0, normalizedVolume: 0.0 },
 ];
 
 describe("Treemap", () => {
@@ -269,5 +271,19 @@ describe("Treemap", () => {
     expect(scrollContainer).toBeTruthy();
     const innerContent = scrollContainer.querySelector('[dir="rtl"]');
     expect(innerContent).toBeTruthy();
+  });
+
+  it("renders politicians with zero media_volume as visible blocks", () => {
+    // Regression: politicians with media_volume=0 should still render
+    const dataWithZeroVolume = [
+      { ...makePolitician("Alice", 8.0, 100), normalizedScore: 1.0, normalizedVolume: 1.0 },
+      { ...makePolitician("Bob", 5.0, 0), normalizedScore: 0.25, normalizedVolume: 0.0 },
+    ];
+    render(
+      <Treemap data={dataWithZeroVolume} onSelect={onSelect} selectedPolitician={null} />
+    );
+    // Both should be rendered — Bob shouldn't disappear despite zero volume
+    expect(screen.getByText("Alice")).toBeInTheDocument();
+    expect(screen.getByText("Bob")).toBeInTheDocument();
   });
 });

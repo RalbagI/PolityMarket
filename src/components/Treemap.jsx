@@ -209,6 +209,28 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   const isMobile = size.width > 0 && size.width < 640;
   const minBlockArea = isMobile ? 2400 : 800;
 
+  /**
+   * Return a treemap-safe size value for an item.
+   * Uses normalized values (0-1) to ensure meaningful size differences regardless
+   * of whether the raw metric has a tight range (e.g. overall_score 4.1-6.8).
+   * Adds a floor so every politician gets a visible block.
+   */
+  const sizeValue = useCallback(
+    (d) => {
+      const normalized =
+        sizeBy === "overall_score" ? d.normalizedScore : d.normalizedVolume;
+      // Use normalized value with a floor of 0.15 so no block is invisible
+      if (typeof normalized === "number" && Number.isFinite(normalized)) {
+        return Math.max(normalized, 0.15);
+      }
+      // Fallback for "Others" or legacy items without normalized fields
+      const raw = d[sizeBy];
+      if (typeof raw === "number" && Number.isFinite(raw) && raw > 0) return raw;
+      return 1;
+    },
+    [sizeBy],
+  );
+
   const treemapItems = useMemo(() => {
     // When drilled into "Others", show those politicians if data hasn't changed
     if (drillDown && drillDown.sourceData === data) return drillDown.items;
@@ -218,19 +240,14 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     if (!isMobile || data.length <= 12) return data;
 
     // Sort by sizeBy metric descending — keep top items that fill ~85% of area
-    const sorted = [...data].sort(
-      (a, b) => (b[sizeBy] || b.media_volume || 1) - (a[sizeBy] || a.media_volume || 1)
-    );
-    const totalValue = sorted.reduce(
-      (s, d) => s + Math.max(d[sizeBy] || d.media_volume || 1, 1),
-      0
-    );
+    const sorted = [...data].sort((a, b) => sizeValue(b) - sizeValue(a));
+    const totalValue = sorted.reduce((s, d) => s + sizeValue(d), 0);
     const containerArea = size.width * size.height;
     let accumulated = 0;
     let cutoff = sorted.length;
 
     for (let i = 0; i < sorted.length; i++) {
-      accumulated += Math.max(sorted[i][sizeBy] || sorted[i].media_volume || 1, 1);
+      accumulated += sizeValue(sorted[i]);
       const itemArea = (accumulated / totalValue) * containerArea;
       const avgBlockArea = itemArea / (i + 1);
       // Stop when average block area drops below threshold
@@ -247,10 +264,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
     // Create an "Others" entry sized like the smallest visible block (not the sum)
     const smallestVisible = visible[visible.length - 1];
-    const othersValue = Math.max(
-      smallestVisible?.[sizeBy] || smallestVisible?.media_volume || 1,
-      1
-    );
+    const othersSize = sizeValue(smallestVisible);
     const othersScore = grouped.reduce((s, d) => s + d.overall_score, 0) / grouped.length;
 
     return [
@@ -261,14 +275,15 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         displayName: t("treemap.others", { count: grouped.length }),
         party: "",
         overall_score: othersScore,
-        media_volume: othersValue,
-        [sizeBy]: othersValue,
+        media_volume: othersSize,
+        normalizedScore: othersSize,
+        normalizedVolume: othersSize,
         _isOthers: true,
         _groupedNames: grouped.map((d) => d.displayName || d.name),
         _groupedData: grouped,
       },
     ];
-  }, [data, size.width, size.height, sizeBy, isMobile, minBlockArea, t, drillDown]);
+  }, [data, size.width, size.height, sizeValue, isMobile, minBlockArea, t, drillDown]);
 
   // Compute treemap layout at virtual (zoomed) size
   const leaves = useMemo(() => {
@@ -276,7 +291,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
     try {
       const root = hierarchy({ children: treemapItems })
-        .sum((d) => Math.max(d[sizeBy] || d.media_volume || 1, 1))
+        .sum((d) => sizeValue(d))
         .sort((a, b) => b.value - a.value);
 
       treemap()
@@ -288,7 +303,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     } catch {
       return [];
     }
-  }, [treemapItems, virtualW, virtualH, sizeBy, scale]);
+  }, [treemapItems, virtualW, virtualH, sizeValue, scale]);
 
   const getColorMetric = useCallback(
     (entry) => {
