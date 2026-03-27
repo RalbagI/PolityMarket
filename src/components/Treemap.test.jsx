@@ -279,9 +279,7 @@ describe("Treemap", () => {
       { ...makePolitician("Alice", 8.0, 100), normalizedScore: 1.0, normalizedVolume: 1.0 },
       { ...makePolitician("Bob", 5.0, 0), normalizedScore: 0.25, normalizedVolume: 0.0 },
     ];
-    render(
-      <Treemap data={dataWithZeroVolume} onSelect={onSelect} selectedPolitician={null} />
-    );
+    render(<Treemap data={dataWithZeroVolume} onSelect={onSelect} selectedPolitician={null} />);
     // Both should be rendered — Bob shouldn't disappear despite zero volume
     expect(screen.getByText("Alice")).toBeInTheDocument();
     expect(screen.getByText("Bob")).toBeInTheDocument();

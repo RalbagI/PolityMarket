@@ -217,8 +217,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
    */
   const sizeValue = useCallback(
     (d) => {
-      const normalized =
-        sizeBy === "overall_score" ? d.normalizedScore : d.normalizedVolume;
+      const normalized = sizeBy === "overall_score" ? d.normalizedScore : d.normalizedVolume;
       // Use normalized value with a floor of 0.15 so no block is invisible
       if (typeof normalized === "number" && Number.isFinite(normalized)) {
         return Math.max(normalized, 0.15);
@@ -228,7 +227,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
       if (typeof raw === "number" && Number.isFinite(raw) && raw > 0) return raw;
       return 1;
     },
-    [sizeBy],
+    [sizeBy]
   );
 
   const treemapItems = useMemo(() => {
