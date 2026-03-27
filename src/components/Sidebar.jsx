@@ -142,6 +142,9 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
         </div>
       )}
 
+      {/* Display Options — size/color controls */}
+      <DisplayOptions t={t} />
+
       {/* Filters — only in politicians view */}
       {viewMode !== "parties" && filterProps && <FilterBar {...filterProps} />}
       {viewMode === "parties" && activeFilterCount > 0 && onViewModeChange && (
@@ -203,9 +206,6 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
               <span className="text-[10px] text-gray-500">{t("sidebar.colorLegend.negative")}</span>
             </div>
           </div>
-
-          {/* Display Options */}
-          <DisplayOptions t={t} />
 
           {/* Party Breakdown — only in politicians view (redundant in party mode) */}
           {viewMode !== "parties" && (
