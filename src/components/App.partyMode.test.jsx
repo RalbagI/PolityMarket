@@ -113,6 +113,7 @@ vi.mock("./Sidebar", () => ({
       switch parties
     </button>
   ),
+  DisplayOptions: () => <div data-testid="display-options" />,
 }));
 
 vi.mock("./MethodologyModal", () => ({

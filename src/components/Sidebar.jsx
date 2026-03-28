@@ -17,7 +17,7 @@ const TIERS = [
   { min: 8, max: 10, key: "tier8_10" },
 ];
 
-function DisplayOptions({ t }) {
+export function DisplayOptions({ t }) {
   const sizeBy = useStore((s) => s.treemapSizeBy);
   const colorBy = useStore((s) => s.treemapColorBy);
   const setSizeBy = useStore((s) => s.setTreemapSizeBy);
