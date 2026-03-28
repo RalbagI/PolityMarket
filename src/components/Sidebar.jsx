@@ -67,7 +67,15 @@ export function DisplayOptions({ t }) {
   );
 }
 
-export function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, onViewModeChange, hideHeader }) {
+export function SidebarContent({
+  stats,
+  t,
+  onMethodologyClick,
+  filterProps,
+  viewMode,
+  onViewModeChange,
+  hideHeader,
+}) {
   const activeFilterCount = filterProps
     ? (filterProps.activeParties?.length || 0) +
       (filterProps.activeWings?.length || 0) +
@@ -103,7 +111,10 @@ export function SidebarContent({ stats, t, onMethodologyClick, filterProps, view
               </div>
             </div>
             <div className="bg-gray-900 rounded-xl p-3">
-              <div className="text-2xl font-black" style={{ color: scoreToColor(stats.weightedAvg) }}>
+              <div
+                className="text-2xl font-black"
+                style={{ color: scoreToColor(stats.weightedAvg) }}
+              >
                 {stats.weightedAvg.toFixed(1)}
               </div>
               <div className="text-xs text-gray-500">{t("sidebar.weightedAverage")}</div>
