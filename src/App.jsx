@@ -2,7 +2,8 @@ import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react
 import { useTranslation } from "react-i18next";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Sidebar, { SidebarContent, useSidebarStats } from "./components/Sidebar";
+import Sidebar, { SidebarContent } from "./components/Sidebar";
+import useSidebarStats from "./lib/useSidebarStats";
 import Treemap from "./components/Treemap";
 import TopMoversStrip from "./components/TopMoversStrip";
 import MethodologyModal from "./components/MethodologyModal";

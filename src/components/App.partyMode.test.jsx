@@ -114,7 +114,10 @@ vi.mock("./Sidebar", () => ({
     </button>
   ),
   SidebarContent: () => <div data-testid="sidebar-content" />,
-  useSidebarStats: () => ({ total: 1, weightedAvg: 5.5, histogram: [], maxCount: 1, parties: [] }),
+}));
+
+vi.mock("../lib/useSidebarStats", () => ({
+  default: () => ({ total: 1, weightedAvg: 5.5, histogram: [], maxCount: 1, parties: [] }),
 }));
 
 vi.mock("./MethodologyModal", () => ({
