@@ -2,14 +2,14 @@ import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react
 import { useTranslation } from "react-i18next";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Sidebar, { DisplayOptions } from "./components/Sidebar";
+import Sidebar, { SidebarContent } from "./components/Sidebar";
+import useSidebarStats from "./lib/useSidebarStats";
 import Treemap from "./components/Treemap";
 import TopMoversStrip from "./components/TopMoversStrip";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
 import { localizeName } from "./lib/localize";
-import { TALKPOINT_LABEL } from "./lib/brand";
 import CookieConsent from "./components/CookieConsent";
 import { initAnalytics, logEvent } from "./lib/analytics";
 
@@ -124,6 +124,7 @@ export default function App() {
   }, [partySummaryData, latestDate, todayData, t]);
 
   const sidebarData = viewMode === "parties" ? partyTreemapData : filterState.visible;
+  const sidebarStats = useSidebarStats(sidebarData);
 
   const handleSelectPolitician = useCallback(
     (name) => {
@@ -188,39 +189,42 @@ export default function App() {
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
-      <main className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:h-screen flex flex-col md:ms-[260px] pt-[calc(3.5rem+env(safe-area-inset-top))] md:pt-0">
-        {/* Treemap — explicit height so flex-1 + h-full resolves in scrollable parent */}
-        <div className="flex-1 min-h-[40vh] sm:min-h-[50vh] md:min-h-[300px]">
-          <ErrorBoundary>
-            <Treemap
-              data={viewMode === "parties" ? partyTreemapData : treemapData}
-              onSelect={handleSelectPolitician}
-              selectedPolitician={selectedPolitician}
-            />
-          </ErrorBoundary>
+      <main className="md:h-screen flex flex-col md:ms-[260px] pt-[calc(3.5rem+env(safe-area-inset-top))] md:pt-0">
+        {/* Treemap — takes full viewport minus top bar on mobile */}
+        <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] flex flex-col">
+          <div className="flex-1 min-h-0">
+            <ErrorBoundary>
+              <Treemap
+                data={viewMode === "parties" ? partyTreemapData : treemapData}
+                onSelect={handleSelectPolitician}
+                selectedPolitician={selectedPolitician}
+              />
+            </ErrorBoundary>
+          </div>
+
+          {/* Top Movers strip — pinned at bottom of treemap viewport */}
+          <div className="shrink-0 border-t border-gray-800 bg-gray-950">
+            <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
+          </div>
         </div>
 
-        {/* Top Movers strip — always visible */}
-        <div className="shrink-0 border-t border-gray-800 bg-gray-950">
-          <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
-        </div>
-
-        {/* Mobile: Display options inline (above footer) */}
-        <div className="md:hidden shrink-0 border-t border-gray-800 bg-gray-950 px-3 py-2">
-          <DisplayOptions t={t} />
-        </div>
-
-        {/* TalkPoint attribution — mobile only */}
-        <div className="shrink-0 md:hidden py-3 text-center text-xs text-gray-500">
-          by{" "}
-          <a
-            href="https://tipi.zone/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-indigo-400 hover:text-indigo-300 transition-colors"
-          >
-            {TALKPOINT_LABEL}
-          </a>
+        {/* Mobile: Sidebar content inline below treemap — scroll down to discover */}
+        <div className="md:hidden border-t border-gray-800">
+          <SidebarContent
+            stats={sidebarStats}
+            t={t}
+            onMethodologyClick={() => {
+              logEvent("open_methodology");
+              setMethodologyOpen(true);
+            }}
+            filterProps={filterState}
+            viewMode={viewMode}
+            onViewModeChange={(mode) => {
+              logEvent("switch_view_mode", { mode });
+              setViewMode(mode);
+            }}
+            hideHeader
+          />
         </div>
       </main>
 
