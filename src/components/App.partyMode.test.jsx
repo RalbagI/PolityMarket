@@ -53,7 +53,7 @@ vi.mock("../store", () => {
           partySummaryData: [],
           loadPartySummary: loadPartySummaryMock,
           treemapSizeBy: "media_volume",
-          treemapColorBy: "overall_score",
+          treemapColorBy: "media_volume",
           setTreemapSizeBy: vi.fn(),
           setTreemapColorBy: vi.fn(),
           smaMode: "sma7",

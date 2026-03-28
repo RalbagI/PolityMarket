@@ -14,7 +14,7 @@ vi.mock("../store", () => ({
   default: (selector) => {
     const state = {
       treemapSizeBy: "media_volume",
-      treemapColorBy: "overall_score",
+      treemapColorBy: "media_volume",
       setTreemapSizeBy: () => {},
       setTreemapColorBy: () => {},
     };
