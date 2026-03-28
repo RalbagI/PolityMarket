@@ -188,7 +188,10 @@ export default function App() {
   }
 
   return (
-    <div ref={scrollContainerRef} className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
+    <div
+      ref={scrollContainerRef}
+      className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto"
+    >
       <Sidebar
         todayData={sidebarData}
         onMethodologyClick={() => {
