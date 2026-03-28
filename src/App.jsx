@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -32,6 +32,21 @@ export default function App() {
   const detailLoading = useStore((s) => s.detailLoading);
   const openPanel = useStore((s) => s.openPanel);
   const closePanel = useStore((s) => s.closePanel);
+
+  // Lock scroll on the outer container when panel is open (mobile)
+  const scrollContainerRef = useRef(null);
+  const savedScrollTop = useRef(0);
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    if (panelOpen) {
+      savedScrollTop.current = el.scrollTop;
+      el.style.overflow = "hidden";
+    } else {
+      el.style.overflow = "";
+      el.scrollTop = savedScrollTop.current;
+    }
+  }, [panelOpen]);
 
   useEffect(() => {
     initAnalytics();
@@ -173,7 +188,7 @@ export default function App() {
   }
 
   return (
-    <div className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
+    <div ref={scrollContainerRef} className="h-screen bg-gray-950 text-gray-100 md:overflow-hidden overflow-auto">
       <Sidebar
         todayData={sidebarData}
         onMethodologyClick={() => {
