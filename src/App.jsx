@@ -217,6 +217,17 @@ export default function App() {
             </ErrorBoundary>
           </div>
 
+          {/* "How does it work?" link — mobile only, subtle */}
+          <button
+            onClick={() => {
+              logEvent("open_methodology");
+              setMethodologyOpen(true);
+            }}
+            className="md:hidden shrink-0 w-full py-1 text-[10px] text-gray-600 text-center hover:text-gray-400 transition-colors"
+          >
+            {t("methodology.howItWorksLink")}
+          </button>
+
           {/* Top Movers strip — pinned at bottom of treemap viewport */}
           <div className="shrink-0 border-t border-gray-800 bg-gray-950">
             <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
