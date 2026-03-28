@@ -22,7 +22,7 @@ vi.mock("../store", () => ({
   default: (selector) =>
     selector({
       treemapSizeBy: "media_volume",
-      treemapColorBy: "overall_score",
+      treemapColorBy: "media_volume",
     }),
 }));
 
