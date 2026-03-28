@@ -75,7 +75,7 @@ export function DisplayOptions({ t }) {
   );
 }
 
-function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, onViewModeChange }) {
+export function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, onViewModeChange, hideHeader }) {
   const activeFilterCount = filterProps
     ? (filterProps.activeParties?.length || 0) +
       (filterProps.activeWings?.length || 0) +
@@ -85,36 +85,40 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
 
   return (
     <div className="p-5 space-y-6">
-      {/* App Header */}
-      <div>
-        <div className="flex items-center gap-2 mb-1">
-          <div className="w-7 h-7 flex items-center justify-center shrink-0">
-            <img
-              src="/politymarket-mark.svg"
-              alt="PolityMarket logo"
-              className="w-full h-full object-contain"
-            />
+      {!hideHeader && (
+        <>
+          {/* App Header */}
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <div className="w-7 h-7 flex items-center justify-center shrink-0">
+                <img
+                  src="/politymarket-mark.svg"
+                  alt="PolityMarket logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
+            </div>
+            <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
           </div>
-          <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
-        </div>
-        <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
-      </div>
 
-      {/* Total + Weighted Average */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="bg-gray-900 rounded-xl p-3">
-          <div className="text-2xl font-black text-white">{stats.total}</div>
-          <div className="text-xs text-gray-500">
-            {viewMode === "parties" ? t("sidebar.totalParties") : t("sidebar.totalTracked")}
+          {/* Total + Weighted Average */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-gray-900 rounded-xl p-3">
+              <div className="text-2xl font-black text-white">{stats.total}</div>
+              <div className="text-xs text-gray-500">
+                {viewMode === "parties" ? t("sidebar.totalParties") : t("sidebar.totalTracked")}
+              </div>
+            </div>
+            <div className="bg-gray-900 rounded-xl p-3">
+              <div className="text-2xl font-black" style={{ color: scoreToColor(stats.weightedAvg) }}>
+                {stats.weightedAvg.toFixed(1)}
+              </div>
+              <div className="text-xs text-gray-500">{t("sidebar.weightedAverage")}</div>
+            </div>
           </div>
-        </div>
-        <div className="bg-gray-900 rounded-xl p-3">
-          <div className="text-2xl font-black" style={{ color: scoreToColor(stats.weightedAvg) }}>
-            {stats.weightedAvg.toFixed(1)}
-          </div>
-          <div className="text-xs text-gray-500">{t("sidebar.weightedAverage")}</div>
-        </div>
-      </div>
+        </>
+      )}
 
       {/* View Mode Toggle */}
       {onViewModeChange && (
@@ -256,19 +260,8 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
   );
 }
 
-export default function Sidebar({
-  todayData,
-  onMethodologyClick,
-  filterProps,
-  viewMode,
-  onViewModeChange,
-}) {
-  const { t } = useTranslation();
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const drawerRef = useRef(null);
-  useFocusTrap(drawerRef, drawerOpen);
-
-  const stats = useMemo(() => {
+export function useSidebarStats(todayData) {
+  return useMemo(() => {
     if (!todayData.length) {
       return { total: 0, weightedAvg: 0, histogram: [], maxCount: 1, parties: [] };
     }
@@ -297,6 +290,21 @@ export default function Sidebar({
 
     return { total: todayData.length, weightedAvg, histogram, maxCount, parties };
   }, [todayData]);
+}
+
+export default function Sidebar({
+  todayData,
+  onMethodologyClick,
+  filterProps,
+  viewMode,
+  onViewModeChange,
+}) {
+  const { t } = useTranslation();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const drawerRef = useRef(null);
+  useFocusTrap(drawerRef, drawerOpen);
+
+  const stats = useSidebarStats(todayData);
 
   return (
     <>

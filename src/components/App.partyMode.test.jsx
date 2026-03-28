@@ -113,7 +113,8 @@ vi.mock("./Sidebar", () => ({
       switch parties
     </button>
   ),
-  DisplayOptions: () => <div data-testid="display-options" />,
+  SidebarContent: () => <div data-testid="sidebar-content" />,
+  useSidebarStats: () => ({ total: 1, weightedAvg: 5.5, histogram: [], maxCount: 1, parties: [] }),
 }));
 
 vi.mock("./MethodologyModal", () => ({
