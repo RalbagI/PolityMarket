@@ -96,6 +96,7 @@ vi.mock("../lib/normalizeScores", () => ({
 // Mock heavy child components — this test focuses on <main> layout structure
 vi.mock("./Sidebar", () => ({
   default: () => <div data-testid="sidebar" />,
+  DisplayOptions: () => <div data-testid="display-options" />,
 }));
 
 vi.mock("./MethodologyModal", () => ({

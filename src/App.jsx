@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useCallback, lazy, Suspense } from "react
 import { useTranslation } from "react-i18next";
 import useStore from "./store";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Sidebar from "./components/Sidebar";
+import Sidebar, { DisplayOptions } from "./components/Sidebar";
 import Treemap from "./components/Treemap";
 import TopMoversStrip from "./components/TopMoversStrip";
 import MethodologyModal from "./components/MethodologyModal";
@@ -203,6 +203,11 @@ export default function App() {
         {/* Top Movers strip — always visible */}
         <div className="shrink-0 border-t border-gray-800 bg-gray-950">
           <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
+        </div>
+
+        {/* Mobile: Display options inline (above footer) */}
+        <div className="md:hidden shrink-0 border-t border-gray-800 bg-gray-950 px-3 py-2">
+          <DisplayOptions t={t} />
         </div>
 
         {/* TalkPoint attribution — mobile only */}
