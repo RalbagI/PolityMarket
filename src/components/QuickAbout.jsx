@@ -12,11 +12,22 @@ const LINES = [
 
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+const INTRO_HIGHLIGHT_MS = 2500;
 
 export default function QuickAbout({ onOpenFullMethodology }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [desktopPosition, setDesktopPosition] = useState(null);
+  const [showIntroHighlight, setShowIntroHighlight] = useState(() => {
+    if (typeof window === "undefined") return false;
+    if (
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return false;
+    }
+    return true;
+  });
   const popoverRef = useRef(null);
   const triggerRef = useRef(null);
   const dialogId = useId();
@@ -120,6 +131,14 @@ export default function QuickAbout({ onOpenFullMethodology }) {
     firstFocusable?.focus();
   }, [open]);
 
+  useEffect(() => {
+    if (!showIntroHighlight) return;
+    const timer = window.setTimeout(() => {
+      setShowIntroHighlight(false);
+    }, INTRO_HIGHLIGHT_MS);
+    return () => window.clearTimeout(timer);
+  }, [showIntroHighlight]);
+
   return (
     <div className="relative">
       <button
@@ -127,18 +146,24 @@ export default function QuickAbout({ onOpenFullMethodology }) {
         onClick={() => {
           const next = !open;
           setOpen(next);
+          setShowIntroHighlight(false);
           if (next) {
             updateDesktopPosition();
             logEvent("open_quick_about");
           }
         }}
-        className="p-1 rounded-md text-gray-500 hover:text-indigo-400 transition-colors"
+        className={`p-1 rounded-md text-gray-400 hover:text-indigo-400 transition-colors md:p-2 ${
+          showIntroHighlight
+            ? "text-indigo-300 ring-2 ring-indigo-500/70 shadow-[0_0_0_6px_rgba(99,102,241,0.16)] animate-pulse motion-reduce:animate-none"
+            : ""
+        }`}
+        data-intro-highlight={showIntroHighlight ? "true" : "false"}
         aria-label={t("quickAbout.ariaLabel")}
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-controls={open ? dialogId : undefined}
       >
-        <Info className="w-4 h-4" />
+        <Info className="w-4 h-4 md:w-6 md:h-6" />
       </button>
 
       {open && (

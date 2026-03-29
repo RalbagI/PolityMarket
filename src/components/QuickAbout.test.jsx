@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import QuickAbout from "./QuickAbout";
 
 vi.mock("react-i18next", () => ({
@@ -15,6 +15,20 @@ vi.mock("../lib/analytics", () => ({
 }));
 
 describe("QuickAbout", () => {
+  it("shows intro highlight briefly after mount", () => {
+    vi.useFakeTimers();
+    render(<QuickAbout onOpenFullMethodology={() => {}} />);
+    const trigger = screen.getByLabelText("quickAbout.ariaLabel");
+    expect(trigger).toHaveAttribute("data-intro-highlight", "true");
+
+    act(() => {
+      vi.advanceTimersByTime(2500);
+    });
+
+    expect(trigger).toHaveAttribute("data-intro-highlight", "false");
+    vi.useRealTimers();
+  });
+
   it("renders the info icon button", () => {
     render(<QuickAbout onOpenFullMethodology={() => {}} />);
     expect(screen.getByLabelText("quickAbout.ariaLabel")).toBeInTheDocument();

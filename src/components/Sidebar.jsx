@@ -99,7 +99,9 @@ export function SidebarContent({
                 />
               </div>
               <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
-              <QuickAbout onOpenFullMethodology={onMethodologyClick} />
+              <div className="ms-1 md:ms-2">
+                <QuickAbout onOpenFullMethodology={onMethodologyClick} />
+              </div>
             </div>
             <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
           </div>
@@ -308,7 +310,9 @@ export default function Sidebar({
             />
           </div>
           <span className="text-sm font-bold text-white truncate">PolityMarket</span>
-          <QuickAbout onOpenFullMethodology={onMethodologyClick} />
+          <div className="ms-1 md:ms-2">
+            <QuickAbout onOpenFullMethodology={onMethodologyClick} />
+          </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <div className="text-end">
