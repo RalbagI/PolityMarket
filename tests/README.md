@@ -24,5 +24,6 @@ For integration tests:
 - `npm run test:unit`
 - `npm run test:component`
 - `npm run test:integration`
+- `npm run test:integration:coverage` (optional local coverage run)
 - `npm run playwright:install` (one-time, local)
 - `npm run test:e2e`

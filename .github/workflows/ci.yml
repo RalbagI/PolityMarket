@@ -137,8 +137,6 @@ jobs:
       matrix:
         shard: [1, 2]
         total: [2]
-    env:
-      COVERAGE_DIR: coverage/integration-shard-${{ matrix.shard }}
     steps:
       - uses: actions/checkout@v6
 
@@ -155,14 +153,6 @@ jobs:
 
       - name: Run integration tests (sharded)
         run: npm run test:integration -- --shard=${{ matrix.shard }}/${{ matrix.total }}
-
-      - name: Upload integration coverage shard
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-integration-shard-${{ matrix.shard }}
-          path: ${{ env.COVERAGE_DIR }}/
-          retention-days: 14
 
   e2e_tests:
     name: E2E Critical Path (10%) - Shard ${{ matrix.shard }}/${{ matrix.total }}
