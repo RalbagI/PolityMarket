@@ -216,6 +216,6 @@ output:
     - memory: [recalled, captured]
     - checks: [lint, format, test, build]
     - pr: [description-posted]
-  next_workflow: mts
     - lessons: [updated-if-needed]
     - git: [clean-state]
+  next_workflow: mts
