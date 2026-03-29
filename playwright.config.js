@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config({ path: ".env.test", quiet: true });
 
 const isCI = Boolean(process.env.CI);
+const skipBuild = Boolean(process.env.CI_SKIP_BUILD);
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -24,7 +25,9 @@ export default defineConfig({
     headless: true,
   },
   webServer: {
-    command: "npm run build && npx vite preview --host 127.0.0.1 --port 4173",
+    command: skipBuild
+      ? "npx vite preview --host 127.0.0.1 --port 4173"
+      : "npm run build && npx vite preview --host 127.0.0.1 --port 4173",
     url: "http://127.0.0.1:4173",
     reuseExistingServer: !isCI,
     timeout: 120_000,
