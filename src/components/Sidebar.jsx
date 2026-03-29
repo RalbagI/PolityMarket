@@ -7,6 +7,7 @@ import { localizeParty } from "../lib/localize";
 import useFocusTrap from "../lib/useFocusTrap";
 import useSidebarStats from "../lib/useSidebarStats";
 import FilterBar from "./FilterBar";
+import QuickAbout from "./QuickAbout";
 import useStore from "../store";
 
 export function DisplayOptions({ t }) {
@@ -98,6 +99,7 @@ export function SidebarContent({
                 />
               </div>
               <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
+              <QuickAbout onOpenFullMethodology={onMethodologyClick} />
             </div>
             <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
           </div>
@@ -306,6 +308,7 @@ export default function Sidebar({
             />
           </div>
           <span className="text-sm font-bold text-white truncate">PolityMarket</span>
+          <QuickAbout onOpenFullMethodology={onMethodologyClick} />
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <div className="text-end">
