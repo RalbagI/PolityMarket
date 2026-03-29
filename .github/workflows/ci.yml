@@ -1,4 +1,4 @@
-name: CI
+name: CI Test Pyramid
 
 on:
   push:
@@ -7,39 +7,50 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# All runners are on the same machine — optimize for shared filesystem.
-# Node.js is pre-installed, npm cache is shared across runners.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "20"
 
 jobs:
-  # Fast checks: lint + security + data validation in one job (~10s of work)
-  checks:
-    name: Lint & Security
-    runs-on: self-hosted
+  fast_checks:
+    name: Fast Checks (Lint, Format, Security)
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
     steps:
       - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
 
+      - name: Create isolated test environment
+        run: cp .env.test.example .env.test
+
       - name: ESLint
-        run: npx eslint src/
+        run: npm run lint
 
       - name: Prettier
-        run: npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}" "data-pipeline/**/*.js"
+        run: npm run format:check
 
-      - name: Secrets scan
+      - name: Dependency security scan
+        run: npm run security:audit
+
+      - name: Secret pattern scan
         run: |
           if grep -rn --include='*.js' --include='*.jsx' --include='*.json' \
             -E '(sk-ant-|AIza[A-Za-z0-9]|ghp_[A-Za-z0-9]|gho_[A-Za-z0-9]|AKIA[A-Z0-9]|xoxb-)' \
-            src/ data-pipeline/ 2>/dev/null | grep -v node_modules; then
-            echo "ERROR: Potential hardcoded secrets found"
+            src/ data-pipeline/ tests/ 2>/dev/null | grep -v node_modules; then
+            echo "Potential hardcoded secrets found"
             exit 1
           fi
-          echo "PASS: No hardcoded secrets"
-
-      - name: npm audit
-        run: npm audit --omit=dev --audit-level=high
-        continue-on-error: true
+          echo "No hardcoded secrets found"
 
       - name: Validate data files
         run: |
@@ -49,47 +60,182 @@ jobs:
           for f in public/data/details/*.json; do
             node -e "JSON.parse(require('fs').readFileSync('$f','utf-8'))"
           done
-          echo "PASS: All data files valid"
 
-      - name: Validate i18n coverage (no English names in UI)
+      - name: Validate i18n coverage
         run: node scripts/validate-i18n-coverage.js
 
-      - name: Validate data integrity (parties, politicians, Hebrew, avatars)
+      - name: Validate data integrity
         run: node scripts/validate-data-integrity.js
 
-  # Tests: run in parallel with checks
-  test:
-    name: Test
-    runs-on: self-hosted
+  unit_tests:
+    name: Unit Tests (70%)
+    runs-on: ubuntu-latest
+    needs: fast_checks
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
 
-      - name: Run tests with coverage
-        run: npx vitest run --reporter=verbose --coverage
+      - name: Create isolated test environment
+        run: cp .env.test.example .env.test
 
-  # Build: depends on checks + test passing
-  build:
-    name: Build
-    runs-on: self-hosted
-    needs: [checks, test]
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Upload unit coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-unit
+          path: coverage/unit/
+          retention-days: 14
+
+  component_tests:
+    name: Component Tests (Behavior-Focused)
+    runs-on: ubuntu-latest
+    needs: fast_checks
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps --prefer-offline
+
+      - name: Create isolated test environment
+        run: cp .env.test.example .env.test
+
+      - name: Run component tests
+        run: npm run test:component
+
+      - name: Upload component coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-component
+          path: coverage/component/
+          retention-days: 14
+
+  integration_tests:
+    name: Integration/API Tests (20%) - Shard ${{ matrix.shard }}/${{ matrix.total }}
+    runs-on: ubuntu-latest
+    needs: [unit_tests, component_tests]
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+        total: [2]
+    env:
+      COVERAGE_DIR: coverage/integration-shard-${{ matrix.shard }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps --prefer-offline
+
+      - name: Create isolated test environment
+        run: cp .env.test.example .env.test
+
+      - name: Run integration tests (sharded)
+        run: npm run test:integration -- --shard=${{ matrix.shard }}/${{ matrix.total }}
+
+      - name: Upload integration coverage shard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-integration-shard-${{ matrix.shard }}
+          path: ${{ env.COVERAGE_DIR }}/
+          retention-days: 14
+
+  e2e_tests:
+    name: E2E Critical Path (10%) - Shard ${{ matrix.shard }}/${{ matrix.total }}
+    runs-on: ubuntu-latest
+    needs: integration_tests
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+        total: [2]
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps --prefer-offline
+
+      - name: Create isolated test environment
+        run: cp .env.test.example .env.test
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E shard
+        run: npm run test:e2e -- --project=chromium --shard=${{ matrix.shard }}/${{ matrix.total }}
+
+      - name: Upload Playwright report and traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts-shard-${{ matrix.shard }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
+  build:
+    name: Build Artifact
+    runs-on: ubuntu-latest
+    needs: e2e_tests
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
 
       - name: Build
-        run: npx vite build
+        run: npm run build
 
       - name: Verify no chunk > 500KB
         run: |
           oversized=$(find dist/assets -name '*.js' -size +500k 2>/dev/null)
           if [ -n "$oversized" ]; then
-            echo "ERROR: Chunks exceed 500KB:"
+            echo "Chunks exceed 500KB:"
             ls -lh $oversized
             exit 1
           fi
-          echo "PASS: All chunks under 500KB"
+
+      - name: Upload build artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-dist
+          path: dist/
+          retention-days: 7
