@@ -53,7 +53,7 @@ vi.mock("../store", () => {
           partySummaryData: [],
           loadPartySummary: loadPartySummaryMock,
           treemapSizeBy: "media_volume",
-          treemapColorBy: "overall_score",
+          treemapColorBy: "media_volume",
           setTreemapSizeBy: vi.fn(),
           setTreemapColorBy: vi.fn(),
           smaMode: "sma7",
@@ -113,6 +113,11 @@ vi.mock("./Sidebar", () => ({
       switch parties
     </button>
   ),
+  SidebarContent: () => <div data-testid="sidebar-content" />,
+}));
+
+vi.mock("../lib/useSidebarStats", () => ({
+  default: () => ({ total: 1, weightedAvg: 5.5, histogram: [], maxCount: 1, parties: [] }),
 }));
 
 vi.mock("./MethodologyModal", () => ({

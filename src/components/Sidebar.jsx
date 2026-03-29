@@ -1,23 +1,16 @@
-import { useMemo, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { scoreToColor } from "../lib/colorScale";
 import { TALKPOINT_LABEL } from "../lib/brand";
 import { localizeParty } from "../lib/localize";
-import { getPartyColor } from "../lib/partyColors";
 import useFocusTrap from "../lib/useFocusTrap";
+import useSidebarStats from "../lib/useSidebarStats";
 import FilterBar from "./FilterBar";
+import QuickAbout from "./QuickAbout";
 import useStore from "../store";
 
-const TIERS = [
-  { min: 0, max: 2, key: "tier0_2" },
-  { min: 2, max: 4, key: "tier2_4" },
-  { min: 4, max: 6, key: "tier4_6" },
-  { min: 6, max: 8, key: "tier6_8" },
-  { min: 8, max: 10, key: "tier8_10" },
-];
-
-function DisplayOptions({ t }) {
+export function DisplayOptions({ t }) {
   const sizeBy = useStore((s) => s.treemapSizeBy);
   const colorBy = useStore((s) => s.treemapColorBy);
   const setSizeBy = useStore((s) => s.setTreemapSizeBy);
@@ -75,7 +68,15 @@ function DisplayOptions({ t }) {
   );
 }
 
-function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, onViewModeChange }) {
+export function SidebarContent({
+  stats,
+  t,
+  onMethodologyClick,
+  filterProps,
+  viewMode,
+  onViewModeChange,
+  hideHeader,
+}) {
   const activeFilterCount = filterProps
     ? (filterProps.activeParties?.length || 0) +
       (filterProps.activeWings?.length || 0) +
@@ -85,36 +86,46 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
 
   return (
     <div className="p-5 space-y-6">
-      {/* App Header */}
-      <div>
-        <div className="flex items-center gap-2 mb-1">
-          <div className="w-7 h-7 flex items-center justify-center shrink-0">
-            <img
-              src="/politymarket-mark.svg"
-              alt="PolityMarket logo"
-              className="w-full h-full object-contain"
-            />
+      {!hideHeader && (
+        <>
+          {/* App Header */}
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <div className="w-7 h-7 flex items-center justify-center shrink-0">
+                <img
+                  src="/politymarket-mark.svg"
+                  alt="PolityMarket logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
+              <div className="ms-1 md:ms-2">
+                <QuickAbout onOpenFullMethodology={onMethodologyClick} />
+              </div>
+            </div>
+            <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
           </div>
-          <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
-        </div>
-        <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
-      </div>
 
-      {/* Total + Weighted Average */}
-      <div className="grid grid-cols-2 gap-3">
-        <div className="bg-gray-900 rounded-xl p-3">
-          <div className="text-2xl font-black text-white">{stats.total}</div>
-          <div className="text-xs text-gray-500">
-            {viewMode === "parties" ? t("sidebar.totalParties") : t("sidebar.totalTracked")}
+          {/* Total + Weighted Average */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-gray-900 rounded-xl p-3">
+              <div className="text-2xl font-black text-white">{stats.total}</div>
+              <div className="text-xs text-gray-500">
+                {viewMode === "parties" ? t("sidebar.totalParties") : t("sidebar.totalTracked")}
+              </div>
+            </div>
+            <div className="bg-gray-900 rounded-xl p-3">
+              <div
+                className="text-2xl font-black"
+                style={{ color: scoreToColor(stats.weightedAvg) }}
+              >
+                {stats.weightedAvg.toFixed(1)}
+              </div>
+              <div className="text-xs text-gray-500">{t("sidebar.weightedAverage")}</div>
+            </div>
           </div>
-        </div>
-        <div className="bg-gray-900 rounded-xl p-3">
-          <div className="text-2xl font-black" style={{ color: scoreToColor(stats.weightedAvg) }}>
-            {stats.weightedAvg.toFixed(1)}
-          </div>
-          <div className="text-xs text-gray-500">{t("sidebar.weightedAverage")}</div>
-        </div>
-      </div>
+        </>
+      )}
 
       {/* View Mode Toggle */}
       {onViewModeChange && (
@@ -141,6 +152,9 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
           </button>
         </div>
       )}
+
+      {/* Display Options — size/color controls */}
+      <DisplayOptions t={t} />
 
       {/* Filters — only in politicians view */}
       {viewMode !== "parties" && filterProps && <FilterBar {...filterProps} />}
@@ -204,9 +218,6 @@ function SidebarContent({ stats, t, onMethodologyClick, filterProps, viewMode, o
             </div>
           </div>
 
-          {/* Display Options */}
-          <DisplayOptions t={t} />
-
           {/* Party Breakdown — only in politicians view (redundant in party mode) */}
           {viewMode !== "parties" && (
             <div>
@@ -268,35 +279,7 @@ export default function Sidebar({
   const drawerRef = useRef(null);
   useFocusTrap(drawerRef, drawerOpen);
 
-  const stats = useMemo(() => {
-    if (!todayData.length) {
-      return { total: 0, weightedAvg: 0, histogram: [], maxCount: 1, parties: [] };
-    }
-
-    const totalVolume = todayData.reduce((s, d) => s + d.media_volume, 0);
-    const weightedSum = todayData.reduce((s, d) => s + d.overall_score * d.media_volume, 0);
-    const weightedAvg = totalVolume > 0 ? weightedSum / totalVolume : 0;
-
-    const histogram = TIERS.map(({ min, max, key }) => ({
-      key,
-      min,
-      max,
-      count: todayData.filter((d) => d.overall_score >= min && d.overall_score < max).length,
-      color: scoreToColor((min + max) / 2),
-    }));
-    histogram[4].count = todayData.filter((d) => d.overall_score >= 8).length;
-    const maxCount = Math.max(...histogram.map((h) => h.count), 1);
-
-    const partyMap = {};
-    for (const d of todayData) {
-      partyMap[d.party] = (partyMap[d.party] || 0) + 1;
-    }
-    const parties = Object.entries(partyMap)
-      .map(([party, count]) => ({ party, count, color: getPartyColor(party) }))
-      .sort((a, b) => b.count - a.count);
-
-    return { total: todayData.length, weightedAvg, histogram, maxCount, parties };
-  }, [todayData]);
+  const stats = useSidebarStats(todayData);
 
   return (
     <>
@@ -327,6 +310,9 @@ export default function Sidebar({
             />
           </div>
           <span className="text-sm font-bold text-white truncate">PolityMarket</span>
+          <div className="ms-1 md:ms-2">
+            <QuickAbout onOpenFullMethodology={onMethodologyClick} />
+          </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <div className="text-end">

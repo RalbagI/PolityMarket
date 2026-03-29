@@ -97,7 +97,7 @@ const useStore = create((set, get) => ({
   // sizeBy: what metric determines block SIZE
   // colorBy: what metric determines block COLOR
   treemapSizeBy: "media_volume", // "media_volume" | "overall_score"
-  treemapColorBy: "overall_score", // "overall_score" | "media_volume"
+  treemapColorBy: "media_volume", // "overall_score" | "media_volume"
   setTreemapSizeBy: (v) => set({ treemapSizeBy: v }),
   setTreemapColorBy: (v) => set({ treemapColorBy: v }),
 }));

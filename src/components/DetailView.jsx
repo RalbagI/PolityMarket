@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Quote, BarChart3, FileText, Heart, TrendingUp, ChevronDown } from "lucide-react";
+import AiAnalysisBlock from "./AiAnalysisBlock";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
 import SkeletonLoader from "./SkeletonLoader";
@@ -170,13 +171,7 @@ export default function DetailView({
 
       {/* AI Analysis — expanded by default */}
       <AccordionSection title={t("detailView.section.aiAnalysis")} icon={Quote} defaultOpen={true}>
-        {entry.chain_of_thought || entry.llm_reasoning ? (
-          <p className="text-sm text-gray-300 italic leading-relaxed">
-            &ldquo;{entry.chain_of_thought || entry.llm_reasoning}&rdquo;
-          </p>
-        ) : (
-          <p className="text-sm text-gray-500">{t("detailView.aiAnalysis.empty")}</p>
-        )}
+        <AiAnalysisBlock text={entry.chain_of_thought || entry.llm_reasoning} />
       </AccordionSection>
 
       {/* Unified 8-dimension breakdown — expanded by default */}

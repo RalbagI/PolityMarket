@@ -54,8 +54,25 @@ describe("analytics consent gating", () => {
     expect(script.getAttribute("src")).toContain("G-TEST123");
     expect(appendSpy).toHaveBeenCalledTimes(1);
 
+    // Verify consent commands were pushed to dataLayer (as Arguments objects)
+    expect(Array.from(window.dataLayer[0])).toEqual([
+      "consent",
+      "default",
+      {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      },
+    ]);
+    expect(Array.from(window.dataLayer[1])).toEqual([
+      "consent",
+      "update",
+      { analytics_storage: "granted" },
+    ]);
+
     logEvent("select_party", { party_name: "TestParty" });
-    expect(window.dataLayer[window.dataLayer.length - 1]).toEqual([
+    expect(Array.from(window.dataLayer[window.dataLayer.length - 1])).toEqual([
       "event",
       "select_party",
       { party_name: "TestParty" },

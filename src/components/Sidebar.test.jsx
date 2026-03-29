@@ -14,7 +14,7 @@ vi.mock("../store", () => ({
   default: (selector) => {
     const state = {
       treemapSizeBy: "media_volume",
-      treemapColorBy: "overall_score",
+      treemapColorBy: "media_volume",
       setTreemapSizeBy: () => {},
       setTreemapColorBy: () => {},
     };
@@ -169,5 +169,27 @@ describe("Sidebar party mode", () => {
     );
     const aside = container.querySelector("aside");
     expect(aside.textContent).toContain("sidebar.partyBreakdown");
+  });
+});
+
+describe("Sidebar display options position", () => {
+  it("renders DisplayOptions before FilterBar in the sidebar", () => {
+    const { container } = render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+      />
+    );
+    const aside = container.querySelector("aside");
+    const html = aside.innerHTML;
+    const displayOptionsPos = html.indexOf("treemap.options.title");
+    const filterBarPos = html.indexOf("filter-bar");
+    // DisplayOptions should appear before FilterBar in the DOM
+    expect(displayOptionsPos).toBeGreaterThan(-1);
+    expect(filterBarPos).toBeGreaterThan(-1);
+    expect(displayOptionsPos).toBeLessThan(filterBarPos);
   });
 });

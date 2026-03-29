@@ -39,7 +39,7 @@ vi.mock("../store", () => {
           partySummaryData: [],
           loadPartySummary: vi.fn(),
           treemapSizeBy: "media_volume",
-          treemapColorBy: "overall_score",
+          treemapColorBy: "media_volume",
           setTreemapSizeBy: vi.fn(),
           setTreemapColorBy: vi.fn(),
           smaMode: "sma7",
@@ -96,6 +96,11 @@ vi.mock("../lib/normalizeScores", () => ({
 // Mock heavy child components — this test focuses on <main> layout structure
 vi.mock("./Sidebar", () => ({
   default: () => <div data-testid="sidebar" />,
+  SidebarContent: () => <div data-testid="sidebar-content" />,
+}));
+
+vi.mock("../lib/useSidebarStats", () => ({
+  default: () => ({ total: 1, weightedAvg: 5.5, histogram: [], maxCount: 1, parties: [] }),
 }));
 
 vi.mock("./MethodologyModal", () => ({
@@ -126,16 +131,11 @@ beforeEach(() => {
 });
 
 describe("App mobile layout", () => {
-  it("renders main element with dynamic viewport height for mobile", () => {
+  it("renders main element with top padding for mobile", () => {
     const { container } = render(<App />);
 
     const main = container.querySelector("main");
     expect(main).toBeTruthy();
-    // Should account for top bar + safe-area inset in both vh and dvh variants
-    expect(main.className).toContain("h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))]");
-    expect(main.className).toContain(
-      "supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))]"
-    );
     expect(main.className).toContain("pt-[calc(3.5rem+env(safe-area-inset-top))]");
   });
 
@@ -151,10 +151,8 @@ describe("App mobile layout", () => {
     expect(screen.getByTestId("top-movers")).toBeInTheDocument();
   });
 
-  it("renders treemap container with min-h-[40vh]", () => {
-    const { container } = render(<App />);
-
-    const treemapWrapper = container.querySelector(".min-h-\\[40vh\\]");
-    expect(treemapWrapper).toBeTruthy();
+  it("renders inline sidebar content on mobile", () => {
+    render(<App />);
+    expect(screen.getByTestId("sidebar-content")).toBeInTheDocument();
   });
 });
