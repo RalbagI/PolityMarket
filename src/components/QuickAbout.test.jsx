@@ -30,6 +30,12 @@ describe("QuickAbout", () => {
     expect(screen.getByText("quickAbout.line4")).toBeInTheDocument();
   });
 
+  it("renders popover as a modal dialog", () => {
+    render(<QuickAbout onOpenFullMethodology={() => {}} />);
+    fireEvent.click(screen.getByLabelText("quickAbout.ariaLabel"));
+    expect(screen.getByRole("dialog")).toHaveAttribute("aria-modal", "true");
+  });
+
   it("closes popover when icon is clicked again", () => {
     render(<QuickAbout onOpenFullMethodology={() => {}} />);
     const trigger = screen.getByLabelText("quickAbout.ariaLabel");
@@ -45,6 +51,31 @@ describe("QuickAbout", () => {
     expect(screen.getByText("quickAbout.title")).toBeInTheDocument();
     fireEvent.keyDown(document, { key: "Escape" });
     expect(screen.queryByText("quickAbout.title")).not.toBeInTheDocument();
+  });
+
+  it("moves focus into the popover when opened", () => {
+    render(<QuickAbout onOpenFullMethodology={() => {}} />);
+    fireEvent.click(screen.getByLabelText("quickAbout.ariaLabel"));
+    expect(document.activeElement).toBe(
+      screen.getByRole("button", { name: "quickAbout.fullMethodologyLink" })
+    );
+  });
+
+  it("traps tab navigation within the popover", () => {
+    render(<QuickAbout onOpenFullMethodology={() => {}} />);
+    fireEvent.click(screen.getByLabelText("quickAbout.ariaLabel"));
+    const actionButton = screen.getByRole("button", { name: "quickAbout.fullMethodologyLink" });
+    actionButton.focus();
+
+    const tabEvent = new KeyboardEvent("keydown", {
+      key: "Tab",
+      bubbles: true,
+      cancelable: true,
+    });
+    const wasNotCanceled = document.dispatchEvent(tabEvent);
+
+    expect(wasNotCanceled).toBe(false);
+    expect(document.activeElement).toBe(actionButton);
   });
 
   it("calls onOpenFullMethodology and closes when footer link is clicked", () => {

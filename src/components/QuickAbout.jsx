@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { Info, Brain, Database, BarChart3, Eye, ChevronLeft } from "lucide-react";
 import { logEvent } from "../lib/analytics";
@@ -10,21 +10,85 @@ const LINES = [
   { icon: Eye, color: "text-amber-400", key: "line4" },
 ];
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
 export default function QuickAbout({ onOpenFullMethodology }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+  const [desktopPosition, setDesktopPosition] = useState(null);
   const popoverRef = useRef(null);
   const triggerRef = useRef(null);
+  const dialogId = useId();
+  const titleId = useId();
+
+  const updateDesktopPosition = useCallback(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+    if (typeof window.matchMedia !== "function" || !window.matchMedia("(min-width: 768px)").matches) {
+      setDesktopPosition(null);
+      return;
+    }
+
+    const trigger = triggerRef.current;
+    if (!trigger) return;
+
+    const rect = trigger.getBoundingClientRect();
+    const panelWidth = 260;
+    const edgePadding = 12;
+    const isRtl = document.documentElement.dir === "rtl";
+    const top = rect.bottom + 8;
+
+    let left = isRtl ? rect.right - panelWidth : rect.left;
+    left = Math.max(edgePadding, left);
+    left = Math.min(left, window.innerWidth - panelWidth - edgePadding);
+
+    setDesktopPosition({ top: `${top}px`, left: `${left}px` });
+  }, []);
 
   const close = useCallback(() => {
     setOpen(false);
+    setDesktopPosition(null);
     triggerRef.current?.focus();
   }, []);
 
   useEffect(() => {
     if (!open) return;
+
+    const onReposition = () => {
+      updateDesktopPosition();
+    };
+
     const onKey = (e) => {
-      if (e.key === "Escape") close();
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+
+      if (e.key !== "Tab" || !popoverRef.current) return;
+
+      const focusables = [...popoverRef.current.querySelectorAll(FOCUSABLE_SELECTOR)];
+      if (!focusables.length) {
+        e.preventDefault();
+        popoverRef.current.focus();
+        return;
+      }
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (!popoverRef.current.contains(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+        return;
+      }
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     const onClick = (e) => {
       if (
@@ -37,11 +101,21 @@ export default function QuickAbout({ onOpenFullMethodology }) {
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);
+    window.addEventListener("resize", onReposition);
+    window.addEventListener("scroll", onReposition, true);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("mousedown", onClick);
+      window.removeEventListener("resize", onReposition);
+      window.removeEventListener("scroll", onReposition, true);
     };
-  }, [open, close]);
+  }, [open, close, updateDesktopPosition]);
+
+  useEffect(() => {
+    if (!open || !popoverRef.current) return;
+    const firstFocusable = popoverRef.current.querySelector(FOCUSABLE_SELECTOR);
+    firstFocusable?.focus();
+  }, [open]);
 
   return (
     <div className="relative">
@@ -50,11 +124,16 @@ export default function QuickAbout({ onOpenFullMethodology }) {
         onClick={() => {
           const next = !open;
           setOpen(next);
-          if (next) logEvent("open_quick_about");
+          if (next) {
+            updateDesktopPosition();
+            logEvent("open_quick_about");
+          }
         }}
         className="p-1 rounded-md text-gray-500 hover:text-indigo-400 transition-colors"
         aria-label={t("quickAbout.ariaLabel")}
         aria-expanded={open}
+        aria-haspopup="dialog"
+        aria-controls={open ? dialogId : undefined}
       >
         <Info className="w-4 h-4" />
       </button>
@@ -65,18 +144,22 @@ export default function QuickAbout({ onOpenFullMethodology }) {
           <div className="md:hidden fixed inset-0 bg-black/30 z-40" onClick={close} />
 
           <div
+            id={dialogId}
             ref={popoverRef}
             role="dialog"
-            aria-labelledby="quick-about-title"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            tabIndex={-1}
+            style={desktopPosition || undefined}
             className="
-              fixed md:absolute z-50
+              fixed z-50
               inset-x-3 top-[calc(3.5rem+env(safe-area-inset-top)+0.5rem)]
-              md:inset-x-auto md:top-full md:mt-2 md:start-0
+              md:inset-x-auto
               max-w-none md:max-w-[260px]
               bg-gray-900 border border-gray-800 rounded-xl shadow-2xl p-4
             "
           >
-            <h3 id="quick-about-title" className="text-sm font-bold text-white mb-3">
+            <h3 id={titleId} className="text-sm font-bold text-white mb-3">
               {t("quickAbout.title")}
             </h3>
 
