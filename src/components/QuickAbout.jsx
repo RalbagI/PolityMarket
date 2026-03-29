@@ -62,10 +62,7 @@ export default function QuickAbout({ onOpenFullMethodology }) {
       {open && (
         <>
           {/* Mobile backdrop */}
-          <div
-            className="md:hidden fixed inset-0 bg-black/30 z-40"
-            onClick={close}
-          />
+          <div className="md:hidden fixed inset-0 bg-black/30 z-40" onClick={close} />
 
           <div
             ref={popoverRef}
@@ -79,10 +76,7 @@ export default function QuickAbout({ onOpenFullMethodology }) {
               bg-gray-900 border border-gray-800 rounded-xl shadow-2xl p-4
             "
           >
-            <h3
-              id="quick-about-title"
-              className="text-sm font-bold text-white mb-3"
-            >
+            <h3 id="quick-about-title" className="text-sm font-bold text-white mb-3">
               {t("quickAbout.title")}
             </h3>
 
