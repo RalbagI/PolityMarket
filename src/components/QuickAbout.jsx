@@ -24,7 +24,10 @@ export default function QuickAbout({ onOpenFullMethodology }) {
 
   const updateDesktopPosition = useCallback(() => {
     if (typeof window === "undefined" || typeof document === "undefined") return;
-    if (typeof window.matchMedia !== "function" || !window.matchMedia("(min-width: 768px)").matches) {
+    if (
+      typeof window.matchMedia !== "function" ||
+      !window.matchMedia("(min-width: 768px)").matches
+    ) {
       setDesktopPosition(null);
       return;
     }
