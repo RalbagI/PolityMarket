@@ -52,6 +52,8 @@ vi.mock("../store", () => {
           closePanel: closePanelMock,
           partySummaryData: [],
           loadPartySummary: loadPartySummaryMock,
+          loadVolatility: vi.fn(),
+          volatilityData: null,
           treemapSizeBy: "media_volume",
           treemapColorBy: "media_volume",
           setTreemapSizeBy: vi.fn(),
@@ -105,6 +107,17 @@ vi.mock("../lib/useFilterState", () => ({
 
 vi.mock("../lib/normalizeScores", () => ({
   default: (data) => data,
+}));
+
+vi.mock("../lib/useAlertState", () => ({
+  default: () => ({
+    subscription: null,
+    hasSubscription: false,
+    isSubscribed: () => false,
+    subscribe: vi.fn(),
+    togglePolitician: vi.fn(),
+    unsubscribe: vi.fn(),
+  }),
 }));
 
 vi.mock("./Sidebar", () => ({

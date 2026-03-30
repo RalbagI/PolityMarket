@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { Quote, BarChart3, FileText, Heart, TrendingUp, ChevronDown } from "lucide-react";
+import {
+  Quote,
+  BarChart3,
+  FileText,
+  Heart,
+  TrendingUp,
+  ChevronDown,
+  Bell,
+  BellOff,
+} from "lucide-react";
 import AiAnalysisBlock from "./AiAnalysisBlock";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
@@ -7,6 +16,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import PoliticianTrendChart from "./PoliticianTrendChart";
 import { localizeName, localizeParty } from "../lib/localize";
 import Avatar from "./Avatar";
+import useStore from "../store";
 
 const DIM_CONFIG = Object.freeze([
   { field: "dim_public_sentiment", key: "publicSentiment", color: "#6366f1", weight: "25%" },
@@ -94,9 +104,12 @@ export default function DetailView({
   loading,
   isLiked,
   onToggleLike,
+  isAlertSubscribed,
+  onToggleAlert,
 }) {
   const { t } = useTranslation();
   const [sentimentOpen, setSentimentOpen] = useState(false);
+  const volatilityData = useStore((s) => s.volatilityData);
 
   if (!selectedPolitician) {
     return (
@@ -133,6 +146,9 @@ export default function DetailView({
 
   const noDataLabel = t("detailView.dimension.noData");
 
+  const volEntry = volatilityData?.politicians?.[entry.politician_id];
+  const isVolatile = volEntry?.is_volatile === true;
+
   return (
     <div className="space-y-4">
       {/* Header */}
@@ -140,13 +156,39 @@ export default function DetailView({
         <div className="flex items-center gap-3">
           <Avatar name={entry.name} politicianId={entry.politician_id} size={64} />
           <div>
-            <h4 className="text-lg font-bold text-white">{localizeName(t, entry.name)}</h4>
+            <div className="flex items-center gap-2">
+              <h4 className="text-lg font-bold text-white">{localizeName(t, entry.name)}</h4>
+              {isVolatile && (
+                <span
+                  className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30"
+                  data-testid="sigma-badge"
+                >
+                  σ
+                  {Math.abs(volEntry.overall_score_sigma ?? volEntry.media_volume_sigma).toFixed(1)}
+                  {volEntry.direction === "up" ? "↑" : "↓"}
+                </span>
+              )}
+            </div>
             <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
               {localizeParty(t, entry.party)}
             </span>
           </div>
         </div>
         <div className="flex items-start gap-3">
+          {onToggleAlert && (
+            <button
+              onClick={() => onToggleAlert(entry.politician_id || entry.name)}
+              className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
+              aria-label={isAlertSubscribed ? t("alerts.toggleOff") : t("alerts.toggleOn")}
+              data-testid="alert-toggle"
+            >
+              {isAlertSubscribed ? (
+                <Bell className="w-6 h-6 text-amber-400 fill-amber-400 transition-colors" />
+              ) : (
+                <BellOff className="w-6 h-6 text-gray-500 hover:text-amber-400 transition-colors" />
+              )}
+            </button>
+          )}
           {onToggleLike && (
             <button
               onClick={() => onToggleLike(entry.politician_id || entry.name)}

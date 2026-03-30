@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Pre-commit hook: validates pipeline script integrity when it's being committed.
+# Install: git config core.hooksPath .githooks
+
+set -euo pipefail
+
+# Only run pipeline validation if the pipeline script is being committed
+if git diff --cached --name-only | grep -q 'scripts/run-daily-pipeline.sh'; then
+  echo "Pipeline script modified — running validation..."
+  if ! bash scripts/validate-pipeline-script.sh; then
+    echo ""
+    echo "COMMIT BLOCKED: pipeline script validation failed."
+    echo "Fix the issues above before committing."
+    exit 1
+  fi
+fi

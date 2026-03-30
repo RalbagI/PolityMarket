@@ -12,20 +12,24 @@ import normalizeScores from "./lib/normalizeScores";
 import { localizeName } from "./lib/localize";
 import CookieConsent from "./components/CookieConsent";
 import { initAnalytics, logEvent } from "./lib/analytics";
+import useAlertState from "./lib/useAlertState";
 
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
 const PartyDetailView = lazy(() => import("./components/PartyDetailView"));
+const AlertSubscriptionModal = lazy(() => import("./components/AlertSubscriptionModal"));
 
 export default function App() {
   const { t } = useTranslation();
   const [methodologyOpen, setMethodologyOpen] = useState(false);
+  const [alertModalOpen, setAlertModalOpen] = useState(false);
   const [viewMode, setViewMode] = useState("politicians"); // "politicians" | "parties"
   const summaryData = useStore((s) => s.summaryData);
   const partySummaryData = useStore((s) => s.partySummaryData);
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
   const loadPartySummary = useStore((s) => s.loadPartySummary);
+  const loadVolatility = useStore((s) => s.loadVolatility);
   const panelOpen = useStore((s) => s.panelOpen);
   const selectedPolitician = useStore((s) => s.selectedPolitician);
   const selectedDate = useStore((s) => s.selectedDate);
@@ -55,7 +59,8 @@ export default function App() {
   useEffect(() => {
     loadSummary();
     loadPartySummary();
-  }, [loadSummary, loadPartySummary]);
+    loadVolatility();
+  }, [loadSummary, loadPartySummary, loadVolatility]);
 
   const { todayData, yesterdayData, latestDate } = useMemo(() => {
     if (!summaryData.length) return { todayData: [], yesterdayData: [], latestDate: null };
@@ -87,6 +92,9 @@ export default function App() {
 
   // Filter state with localStorage persistence
   const filterState = useFilterState(enrichedData);
+
+  // Alert subscription state
+  const alertState = useAlertState();
 
   // Normalize visible politicians for treemap (dynamic min/max)
   const treemapData = useMemo(() => {
@@ -273,6 +281,14 @@ export default function App() {
                 loading={detailLoading}
                 isLiked={filterState.likedIds.includes(selectedPoliticianId)}
                 onToggleLike={filterState.toggleLiked}
+                isAlertSubscribed={alertState.isSubscribed(selectedPoliticianId)}
+                onToggleAlert={(pid) => {
+                  if (alertState.hasSubscription) {
+                    alertState.togglePolitician(pid);
+                  } else {
+                    setAlertModalOpen(true);
+                  }
+                }}
               />
             )}
           </SlidePanel>
@@ -280,6 +296,19 @@ export default function App() {
       </ErrorBoundary>
 
       <MethodologyModal isOpen={methodologyOpen} onClose={() => setMethodologyOpen(false)} />
+
+      <Suspense fallback={null}>
+        <AlertSubscriptionModal
+          isOpen={alertModalOpen}
+          onClose={() => setAlertModalOpen(false)}
+          onSubscribe={async (email, politicianIds, webhookUrl) => {
+            await alertState.subscribe(email, politicianIds, webhookUrl);
+          }}
+          likedIds={filterState.likedIds}
+          allPoliticians={enrichedData}
+        />
+      </Suspense>
+
       <CookieConsent />
     </div>
   );

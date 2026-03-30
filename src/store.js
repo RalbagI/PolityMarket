@@ -93,6 +93,20 @@ const useStore = create((set, get) => ({
   smaMode: "sma7",
   setSmaMode: (mode) => set({ smaMode: mode }),
 
+  // ── Volatility Data Slice ──────────────────────────────────────────
+  volatilityData: null,
+
+  loadVolatility: async () => {
+    try {
+      const res = await fetch("/data/volatility_data.json");
+      if (!res.ok) return;
+      const data = await res.json();
+      set({ volatilityData: data });
+    } catch {
+      // Volatility data unavailable — not critical
+    }
+  },
+
   // ── Treemap Settings Slice ─────────────────────────────────────────
   // sizeBy: what metric determines block SIZE
   // colorBy: what metric determines block COLOR

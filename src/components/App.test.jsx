@@ -38,6 +38,8 @@ vi.mock("../store", () => {
           closePanel: vi.fn(),
           partySummaryData: [],
           loadPartySummary: vi.fn(),
+          loadVolatility: vi.fn(),
+          volatilityData: null,
           treemapSizeBy: "media_volume",
           treemapColorBy: "media_volume",
           setTreemapSizeBy: vi.fn(),
@@ -86,6 +88,17 @@ vi.mock("../lib/useFilterState", () => ({
     toggleLikedFilter: () => {},
     toggleLiked: () => {},
     clearFilters: () => {},
+  }),
+}));
+
+vi.mock("../lib/useAlertState", () => ({
+  default: () => ({
+    subscription: null,
+    hasSubscription: false,
+    isSubscribed: () => false,
+    subscribe: vi.fn(),
+    togglePolitician: vi.fn(),
+    unsubscribe: vi.fn(),
   }),
 }));
 

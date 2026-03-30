@@ -706,5 +706,27 @@
     "line3": "ציון 0–10 מחושב מ-8 ממדים: סנטימנט ציבורי, פעילות פרלמנטרית, מהימנות, ועוד.",
     "line4": "גודל הבלוק = כמה מדברים עליו. צבע = הציון (ירוק = חיובי, אדום = שלילי).",
     "fullMethodologyLink": "לפירוט המתודולוגיה המלאה"
+  },
+  "alerts": {
+    "volatile": "תנודתיות גבוהה",
+    "toggleOn": "הפעל התראות",
+    "toggleOff": "כבה התראות",
+    "subscribeTitle": "הרשמה להתראות",
+    "subscribeDescription": "קבל התראה כשציון פוליטיקאי משתנה בצורה חריגה",
+    "emailPlaceholder": "כתובת אימייל",
+    "webhookPlaceholder": "כתובת Webhook (אופציונלי)",
+    "submitButton": "הרשמה",
+    "verifyPrompt": "נשלח אימייל אימות לכתובת שלך",
+    "verified": "מאומת",
+    "unsubscribe": "ביטול הרשמה",
+    "advanced": "הגדרות מתקדמות",
+    "subscribedPoliticians": "פוליטיקאים במעקב",
+    "noSubscriptions": "לא נבחרו פוליטיקאים",
+    "selectAll": "בחר הכל",
+    "deselectAll": "נקה הכל",
+    "emailRequired": "יש להזין כתובת אימייל",
+    "emailInvalid": "כתובת אימייל לא תקינה",
+    "subscribeSuccess": "ההרשמה בוצעה בהצלחה",
+    "subscribeFailed": "שגיאה בהרשמה, נסה שוב"
   }
 }

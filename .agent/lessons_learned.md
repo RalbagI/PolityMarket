@@ -83,3 +83,14 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: The global `model_reasoning_effort = "xhigh"` in `~/.codex/config.toml` applies to ALL codex exec calls unless overridden with `-c model_reasoning_effort="low"`. A 127-politician batch with xhigh reasoning on gpt-5.4-mini will timeout at 5 minutes.
 - **Pattern**: Always override reasoning effort per-tier via `-c model_reasoning_effort=` flag.
 - **Prevention**: Set MAX_BATCH_SIZE to 50 (not 135) and OPENAI_TIMEOUT_MS to 600000 (10 min).
+
+### Webhook SSRF prevention in Cloud Functions (2026-03-30)
+
+- **Lesson**: User-supplied webhook URLs stored in Firestore and dispatched by Cloud Functions must be validated to prevent SSRF. Block private IP ranges, metadata endpoints, and require HTTPS.
+- **Pattern**: Validate URL protocol (HTTPS only), reject `localhost`, `169.254.*`, `10.*`, `172.16-31.*`, `192.168.*`, `metadata.google.internal`, and `.internal` domains.
+- **Prevention**: Add `isValidWebhookUrl()` validation in Cloud Functions before storing webhook URLs.
+
+### Subscription update auth (2026-03-30)
+
+- **Lesson**: Email-as-identifier subscription systems must require the subscription token for updates, not just email match. Otherwise anyone who knows an email can modify another user's subscription.
+- **Pattern**: Require `token` in update requests, not just email lookup.

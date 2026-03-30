@@ -102,7 +102,10 @@ RUN_DATE="$(TZ="${TZ}" date +%F)"
 echo "Validating artifacts for ${RUN_DATE}..."
 node scripts/validate-daily-artifacts.js --date "${RUN_DATE}" --expected "${PIPELINE_EXPECTED_POLITICIAN_COUNT}"
 
+# Stage data artifacts — required files first, then optional ones that may not exist yet
 git add public/data/timeseries_summary.json public/data/party_summary.json public/data/details public/data/drift_log.json
+# Volatility data is optional (only generated when volatility.js is present in pipeline)
+[[ -f public/data/volatility_data.json ]] && git add public/data/volatility_data.json
 
 if git diff --cached --quiet; then
   echo "No data changes detected; nothing to commit."
@@ -136,7 +139,19 @@ fi
 if command -v npx &>/dev/null; then
   echo "Building and deploying to Firebase..."
   npx vite build
-  npx firebase deploy --only hosting && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
+  npx firebase deploy --only hosting,functions && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
+fi
+
+# ── Trigger volatility alerts ─────────────────────────────────────────
+if [[ -n "${PIPELINE_AUTH_TOKEN:-}" ]]; then
+  echo "Triggering volatility alerts..."
+  curl -fsS -X POST \
+    -H "Authorization: Bearer ${PIPELINE_AUTH_TOKEN}" \
+    -H "Content-Type: application/json" \
+    "https://politymarket.web.app/api/trigger-alerts" \
+    -o /dev/null \
+    && echo "Volatility alerts triggered." \
+    || echo "⚠ Volatility alert trigger failed (non-blocking)."
 fi
 
 echo "Daily pipeline completed and pushed to origin/main."

@@ -23,6 +23,28 @@ vi.mock("./Avatar", () => ({
   default: () => <div data-testid="avatar" />,
 }));
 
+const volatileStoreState = {
+  volatilityData: {
+    politicians: {
+      "test-pol": { is_volatile: true, overall_score_sigma: 2.5, direction: "up" },
+    },
+  },
+};
+
+const stableStoreState = {
+  volatilityData: {
+    politicians: {
+      "test-pol": { is_volatile: false, overall_score_sigma: 0.5, direction: null },
+    },
+  },
+};
+
+const nullStoreState = { volatilityData: null };
+
+vi.mock("../store", () => ({
+  default: vi.fn((selector) => selector(nullStoreState)),
+}));
+
 const baseEntry = {
   name: "Test Politician",
   party: "TestParty",
@@ -77,5 +99,31 @@ describe("EntityCard", () => {
     const { container } = render(<EntityCard entry={baseEntry} isSelected onSelect={() => {}} />);
     const card = container.querySelector("[role='button']");
     expect(card.className).toContain("ring-2");
+  });
+});
+
+describe("EntityCard — volatility indicator", () => {
+  it("shows volatility indicator when politician is volatile", async () => {
+    const { default: useStore } = await import("../store");
+    useStore.mockImplementation((selector) => selector(volatileStoreState));
+
+    render(<EntityCard entry={baseEntry} onSelect={() => {}} />);
+    expect(screen.getByTestId("volatility-indicator")).toBeInTheDocument();
+  });
+
+  it("does not show volatility indicator when politician is stable", async () => {
+    const { default: useStore } = await import("../store");
+    useStore.mockImplementation((selector) => selector(stableStoreState));
+
+    render(<EntityCard entry={baseEntry} onSelect={() => {}} />);
+    expect(screen.queryByTestId("volatility-indicator")).not.toBeInTheDocument();
+  });
+
+  it("does not show volatility indicator when data is null", async () => {
+    const { default: useStore } = await import("../store");
+    useStore.mockImplementation((selector) => selector(nullStoreState));
+
+    render(<EntityCard entry={baseEntry} onSelect={() => {}} />);
+    expect(screen.queryByTestId("volatility-indicator")).not.toBeInTheDocument();
   });
 });

@@ -34,6 +34,7 @@ import {
   validatePartyConsistency,
   validateTemporalConsistency,
 } from "./lib/validation.js";
+import { generateVolatilityData } from "./lib/volatility.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1995,6 +1996,29 @@ function writePartySummary(partyEntries, today) {
   console.log(`  → Party summary: ${partyEntries.length} parties for ${today}`);
 }
 
+function writeVolatilityData() {
+  const summaryPath = path.join(DATA_DIR, "timeseries_summary.json");
+  let summary = [];
+  try {
+    summary = JSON.parse(fs.readFileSync(summaryPath, "utf-8"));
+  } catch {
+    console.log("  ⚠ No summary data for volatility calculation");
+    return;
+  }
+
+  const window = parseInt(process.env.VOLATILITY_WINDOW || "14", 10);
+  const sigmaThreshold = parseFloat(process.env.VOLATILITY_SIGMA_THRESHOLD || "2");
+  const data = generateVolatilityData(summary, window, sigmaThreshold);
+
+  const volatilityPath = path.join(DATA_DIR, "volatility_data.json");
+  fs.writeFileSync(volatilityPath, JSON.stringify(data, null, 2));
+
+  const volatileCount = Object.values(data.politicians).filter((p) => p.is_volatile).length;
+  console.log(
+    `  → Volatility: ${Object.keys(data.politicians).length} politicians, ${volatileCount} volatile (${window}-day window, ${sigmaThreshold}σ)`
+  );
+}
+
 function pruneOldDetails() {
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - RETENTION_DAYS);
@@ -2464,6 +2488,7 @@ async function main() {
   appendToSummary(newEntries, today);
   writeDetailFile(newEntries, today);
   writePartySummary(partyEntries, today);
+  writeVolatilityData();
   pruneOldDetails();
 
   console.log(`\n✅ Pipeline complete for ${today}`);
@@ -2504,5 +2529,6 @@ export {
   appendToSummary,
   writeDetailFile,
   writePartySummary,
+  writeVolatilityData,
   pruneOldDetails,
 };
