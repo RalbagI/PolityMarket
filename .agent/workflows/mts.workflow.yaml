@@ -27,13 +27,17 @@ phases:
         cmd: |
           BRANCH=$(git rev-parse --abbrev-ref HEAD)
           PR_NUMBER=$(gh pr list --head "$BRANCH" --json number --jq '.[0].number')
-          echo "Branch: $BRANCH, PR: #$PR_NUMBER"
+          if [ -z "$PR_NUMBER" ] || [ "$PR_NUMBER" = "null" ]; then
+            echo "ERROR: No open PR found for branch $BRANCH"
+            exit 1
+          fi
+          echo "$PR_NUMBER"
         store: PR_NUMBER
         fail_action: exit
 
       - name: check-ci
         type: cmd
-        cmd: gh pr checks $PR_NUMBER --watch --fail-fast
+        cmd: gh pr checks "$PR_NUMBER" --watch --fail-fast
         fail_action: run_workflow
         on_fail_workflow: ci-failing
         notes: >-
@@ -43,7 +47,7 @@ phases:
 
       - name: recheck-ci
         type: cmd
-        cmd: gh pr checks $PR_NUMBER
+        cmd: gh pr checks "$PR_NUMBER"
         fail_action: exit
         notes: >-
           Final gate after /ci-failing has run. If checks still
@@ -56,12 +60,12 @@ phases:
     steps:
       - name: squash-merge
         type: cmd
-        cmd: gh pr merge $PR_NUMBER --squash --delete-branch
+        cmd: gh pr merge "$PR_NUMBER" --squash --delete-branch
         fail_action: exit
 
       - name: verify-merge
         type: cmd
-        cmd: gh pr view $PR_NUMBER --json state,mergedAt
+        cmd: gh pr view "$PR_NUMBER" --json state,mergedAt
         store: MERGE_RESULT
 
     next_phase: 3-cleanup
