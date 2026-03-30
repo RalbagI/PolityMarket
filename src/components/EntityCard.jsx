@@ -3,10 +3,13 @@ import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 import Avatar from "./Avatar";
+import useStore from "../store";
 
 export default function EntityCard({ entry, delta, isSelected, onSelect }) {
   const { t } = useTranslation();
   const colors = getPartyColor(entry.party);
+  const isVolatile =
+    useStore((s) => s.volatilityData?.politicians?.[entry.politician_id]?.is_volatile) === true;
 
   return (
     <div
@@ -27,6 +30,18 @@ export default function EntityCard({ entry, delta, isSelected, onSelect }) {
       `}
       style={{ backgroundColor: colors.bg }}
     >
+      {/* Volatility indicator */}
+      {isVolatile && (
+        <span
+          className="absolute top-3 end-3 flex h-3 w-3"
+          title={t("alerts.volatile")}
+          data-testid="volatility-indicator"
+        >
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500" />
+        </span>
+      )}
+
       {/* Top row: Avatar + Name */}
       <div className="flex items-center gap-3 mb-4">
         <Avatar name={entry.name} politicianId={entry.politician_id} size={48} />

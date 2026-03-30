@@ -169,3 +169,45 @@ describe("store — fetchDetail", () => {
     expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 });
+
+describe("store — loadVolatility", () => {
+  it("fetches and stores volatility data", async () => {
+    const mockData = {
+      generated_at: "2026-03-30T02:00:00Z",
+      window: 14,
+      sigma_threshold: 2,
+      politicians: {
+        "test-pol": { is_volatile: true, overall_score_sigma: 2.5 },
+      },
+    };
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(mockData),
+    });
+
+    await act(() => useStore.getState().loadVolatility());
+
+    expect(useStore.getState().volatilityData).toEqual(mockData);
+    expect(globalThis.fetch).toHaveBeenCalledWith("/data/volatility_data.json");
+  });
+
+  it("keeps null on fetch failure", async () => {
+    globalThis.fetch = vi.fn().mockResolvedValue({ ok: false, status: 404 });
+
+    await act(() => useStore.getState().loadVolatility());
+
+    expect(useStore.getState().volatilityData).toBeNull();
+  });
+
+  it("keeps null on network error", async () => {
+    globalThis.fetch = vi.fn().mockRejectedValue(new Error("network"));
+
+    await act(() => useStore.getState().loadVolatility());
+
+    expect(useStore.getState().volatilityData).toBeNull();
+  });
+
+  it("defaults to null", () => {
+    expect(useStore.getState().volatilityData).toBeNull();
+  });
+});

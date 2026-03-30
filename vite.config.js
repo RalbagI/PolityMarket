@@ -3,7 +3,17 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react({
+      babel: {
+        plugins:
+          process.env.NODE_ENV === "production"
+            ? [["react-remove-properties", { properties: ["data-testid"] }]]
+            : [],
+      },
+    }),
+    tailwindcss(),
+  ],
   build: {
     rolldownOptions: {
       output: {
