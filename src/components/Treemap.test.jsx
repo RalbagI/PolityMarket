@@ -90,6 +90,25 @@ describe("Treemap", () => {
     expect(onSelect).toHaveBeenCalledWith("Alice");
   });
 
+  it("does not select after moved touch followed by click", () => {
+    const { container } = render(
+      <Treemap data={sampleData} onSelect={onSelect} selectedPolitician={null} />
+    );
+    const scrollContainer = container.querySelector('[dir="ltr"]');
+    if (!scrollContainer) return;
+
+    const alice = screen.getByText("Alice");
+    fireEvent.touchStart(scrollContainer, {
+      touches: [{ clientX: 100, clientY: 100 }],
+    });
+    fireEvent.touchEnd(alice, {
+      changedTouches: [{ clientX: 100, clientY: 140 }],
+    });
+    fireEvent.click(alice);
+
+    expect(onSelect).not.toHaveBeenCalled();
+  });
+
   it("does not call onSelect when gestureEndTime is recent", () => {
     // Access the component's internal gestureEndTimeRef by simulating
     // the condition: a gesture ended less than 500ms ago.
