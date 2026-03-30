@@ -145,10 +145,11 @@ fi
 # ── Trigger volatility alerts ─────────────────────────────────────────
 if [[ -n "${PIPELINE_AUTH_TOKEN:-}" ]]; then
   echo "Triggering volatility alerts..."
-  curl -s -X POST \
+  curl -fsS -X POST \
     -H "Authorization: Bearer ${PIPELINE_AUTH_TOKEN}" \
     -H "Content-Type: application/json" \
     "https://politymarket.web.app/api/trigger-alerts" \
+    -o /dev/null \
     && echo "Volatility alerts triggered." \
     || echo "⚠ Volatility alert trigger failed (non-blocking)."
 fi

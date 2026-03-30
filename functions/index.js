@@ -68,15 +68,21 @@ async function sendWebhook(url, payload) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
   try {
-    await fetch(url, {
+    const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
       signal: controller.signal,
     });
+    if (!res.ok) {
+      console.warn(`Webhook delivery failed (${res.status}): ${url}`);
+      return false;
+    }
+    return true;
   } catch {
     // Fire-and-forget: log but don't fail
     console.warn(`Webhook delivery failed: ${url}`);
+    return false;
   } finally {
     clearTimeout(timeout);
   }
@@ -279,6 +285,29 @@ export const api = onRequest(
       return;
     }
 
+    // ── GET /api/unsubscribe (email link) ─────────────────────────────
+    if (urlPath === "/unsubscribe" && req.method === "GET") {
+      const token = req.query.token;
+      if (!token) {
+        res.status(400).send("Token required");
+        return;
+      }
+
+      const snap = await db
+        .collection(COLLECTION)
+        .where("token", "==", token)
+        .limit(1)
+        .get();
+
+      // Idempotent unsubscribe for email links: do not leak existence.
+      if (!snap.empty) {
+        await snap.docs[0].ref.delete();
+      }
+
+      res.redirect(`${APP_URL}?unsubscribed=true`);
+      return;
+    }
+
     // ── POST /api/unsubscribe ─────────────────────────────────────────
     if (urlPath === "/unsubscribe" && req.method === "POST") {
       const { token } = req.body || {};
@@ -341,6 +370,8 @@ export const api = onRequest(
         const sub = doc.data();
         const watchedIds = sub.politicianIds || [];
         const lastBreaches = sub.lastAlertedBreaches || [];
+        let emailDelivered = false;
+        let webhookDelivered = false;
 
         // Find new breaches for this subscriber
         const newBreaches = [];
@@ -386,6 +417,7 @@ export const api = onRequest(
               `,
             });
             emailsSent++;
+            emailDelivered = true;
           } catch (err) {
             console.error(`Email failed for ${sub.email}:`, err);
           }
@@ -393,19 +425,25 @@ export const api = onRequest(
 
         // Send webhook
         if (sub.webhookUrl) {
-          await sendWebhook(sub.webhookUrl, {
+          webhookDelivered = await sendWebhook(sub.webhookUrl, {
             event: "volatility_breach",
             timestamp: new Date().toISOString(),
             breaches: newBreaches,
           });
-          webhooksSent++;
+          if (webhookDelivered) {
+            webhooksSent++;
+          }
         }
 
-        // Update dedup field
-        await doc.ref.update({
-          lastAlertedAt: FieldValue.serverTimestamp(),
-          lastAlertedBreaches: currentBreachIds,
-        });
+        // Update dedup only when at least one delivery channel succeeded.
+        if (emailDelivered || webhookDelivered) {
+          await doc.ref.update({
+            lastAlertedAt: FieldValue.serverTimestamp(),
+            lastAlertedBreaches: currentBreachIds,
+          });
+        } else {
+          console.warn(`No successful alert delivery for subscription ${doc.id}`);
+        }
       }
 
       res.json({

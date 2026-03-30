@@ -156,6 +156,26 @@ describe("useAlertState — togglePolitician", () => {
     });
     expect(result.current.subscription).toBeNull();
   });
+
+  it("reverts optimistic update when API responds non-ok", async () => {
+    storage["politymarket-alert-subscription"] = JSON.stringify({
+      email: "test@example.com",
+      token: "abc",
+      politicianIds: ["pol-a"],
+    });
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      ok: false,
+      json: () => Promise.resolve({ error: "Token required" }),
+    });
+
+    const { result } = renderHook(() => useAlertState());
+
+    await act(async () => {
+      await result.current.togglePolitician("pol-b");
+    });
+
+    expect(result.current.subscription.politicianIds).toEqual(["pol-a"]);
+  });
 });
 
 describe("useAlertState — unsubscribe", () => {

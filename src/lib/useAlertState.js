@@ -81,7 +81,7 @@ export default function useAlertState() {
       setSub((prev) => ({ ...prev, politicianIds: next }));
 
       try {
-        await fetch("/api/subscribe", {
+        const res = await fetch("/api/subscribe", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -91,6 +91,10 @@ export default function useAlertState() {
             token: sub.token,
           }),
         });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || "Toggle subscription failed");
+        }
       } catch {
         // Revert on failure
         setSub((prev) => ({ ...prev, politicianIds: current }));
