@@ -120,9 +120,7 @@ describe("volatility data API contract", () => {
       },
     };
 
-    server.use(
-      http.get("*/data/volatility_data.json", () => HttpResponse.json(fixture))
-    );
+    server.use(http.get("*/data/volatility_data.json", () => HttpResponse.json(fixture)));
 
     await useStore.getState().loadVolatility();
     const pol = useStore.getState().volatilityData.politicians["test-pol"];

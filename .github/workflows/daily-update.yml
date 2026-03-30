@@ -22,6 +22,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_POLITYMARKET }}
+
+      - name: Install functions dependencies
+        run: npm --prefix functions ci --prefer-offline
+
+      - name: Deploy Firebase Functions
+        run: npx firebase deploy --only functions --project politymarket --non-interactive
+
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

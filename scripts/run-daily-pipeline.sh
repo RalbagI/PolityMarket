@@ -139,7 +139,7 @@ fi
 if command -v npx &>/dev/null; then
   echo "Building and deploying to Firebase..."
   npx vite build
-  npx firebase deploy --only hosting && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
+  npx firebase deploy --only hosting,functions && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
 fi
 
 # ── Trigger volatility alerts ─────────────────────────────────────────

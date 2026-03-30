@@ -26,24 +26,51 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Check if code scanning is enabled
+        id: code_scanning
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          status_code=$(
+            curl -sS -o /tmp/code_scanning_check.json -w "%{http_code}" \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${{ github.repository }}/code-scanning/alerts?per_page=1"
+          )
+
+          if [ "${status_code}" = "200" ]; then
+            echo "enabled=true" >> "${GITHUB_OUTPUT}"
+            echo "Code scanning API reachable."
+          else
+            echo "enabled=false" >> "${GITHUB_OUTPUT}"
+            echo "Code scanning unavailable (HTTP ${status_code}); skipping CodeQL analysis."
+            cat /tmp/code_scanning_check.json || true
+          fi
+
       - name: Initialize CodeQL
+        if: steps.code_scanning.outputs.enabled == 'true'
         uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
 
       - uses: actions/setup-node@v6
+        if: steps.code_scanning.outputs.enabled == 'true'
         with:
           node-version: '20'
           cache: npm
 
       - name: Install dependencies
+        if: steps.code_scanning.outputs.enabled == 'true'
         run: npm ci --legacy-peer-deps --prefer-offline
 
       - name: Install functions dependencies
+        if: steps.code_scanning.outputs.enabled == 'true'
         run: npm --prefix functions ci --prefer-offline
 
       - name: Build project
+        if: steps.code_scanning.outputs.enabled == 'true'
         run: npm run build
 
       - name: Perform CodeQL analysis
+        if: steps.code_scanning.outputs.enabled == 'true'
         uses: github/codeql-action/analyze@v4
