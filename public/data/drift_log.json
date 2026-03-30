@@ -627,5 +627,32 @@
       "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
     ],
     "timestamp": "2026-03-30T09:30:00.549Z"
+  },
+  {
+    "date": "2026-03-31",
+    "warnings": [
+      "[Outlier] Nir Barkat: score 6.6 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yuli Edelstein: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Ofir Katz: score 6.3 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] May Golan: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gila Gamliel: score 6.5 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Miki Zohar: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Meirav Ben Ari: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Benny Gantz: score 6.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gadi Eisenkot: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Aryeh Deri: score 6.5 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yoav Ben-Tzur: score 6.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Simcha Rothman: score 6.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Itamar Ben Gvir: score 4.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Amichai Eliyahu: score 6.3 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yitzhak Kroizer: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Avigdor Lieberman: score 6.3 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yulia Malinovsky: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gideon Sa'ar: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Ze'ev Elkin: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-03-30T23:14:28.028Z"
   }
 ]
