@@ -4,21 +4,14 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const source = fs.readFileSync(
-  path.join(__dirname, "../../functions/index.js"),
-  "utf-8"
-);
+const source = fs.readFileSync(path.join(__dirname, "../../functions/index.js"), "utf-8");
 
 describe("Cloud Functions — email sender configuration", () => {
   it("FROM_EMAIL does not hardcode an unverifiable domain", () => {
     // politymarket.web.app and politymarket.firebaseapp.com are Firebase-managed
     // domains where we cannot add DNS records for email verification
-    expect(source).not.toMatch(
-      /FROM_EMAIL\s*=\s*["'][^"']*@politymarket\.web\.app["']/
-    );
-    expect(source).not.toMatch(
-      /FROM_EMAIL\s*=\s*["'][^"']*@politymarket\.firebaseapp\.com["']/
-    );
+    expect(source).not.toMatch(/FROM_EMAIL\s*=\s*["'][^"']*@politymarket\.web\.app["']/);
+    expect(source).not.toMatch(/FROM_EMAIL\s*=\s*["'][^"']*@politymarket\.firebaseapp\.com["']/);
   });
 
   it("FROM_EMAIL is configurable via environment variable", () => {

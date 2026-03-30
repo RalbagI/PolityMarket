@@ -5,16 +5,10 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const translations = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "../../src/locales/he/translation.json"),
-    "utf-8"
-  )
+  fs.readFileSync(path.join(__dirname, "../../src/locales/he/translation.json"), "utf-8")
 );
 const sourceConfig = JSON.parse(
-  fs.readFileSync(
-    path.join(__dirname, "../../data-pipeline/sources.config.json"),
-    "utf-8"
-  )
+  fs.readFileSync(path.join(__dirname, "../../data-pipeline/sources.config.json"), "utf-8")
 );
 
 const dataSources = translations.methodology.dataSources;

@@ -4,9 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const config = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "sources.config.json"), "utf-8")
-);
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, "sources.config.json"), "utf-8"));
 
 describe("sources.config.json — structure", () => {
   it("has required top-level sections", () => {
