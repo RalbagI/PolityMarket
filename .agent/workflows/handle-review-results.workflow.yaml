@@ -5,7 +5,7 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-17"
+  updated: "2026-03-30"
   review_cycle_days: 365
   description: >-
     Enforce immediate resolution of all /code-review or
@@ -53,14 +53,22 @@ phases:
         type: cmd
         cmd: "echo 'Analyze latest /code-review or /monitor-vite output'"
         store: REVIEW_SOURCE
+        notes: >-
+          Agent reads the code-review report from the current
+          conversation context. The YAML cannot parse conversation
+          history — the agent extracts MUST FIX, SHOULD FIX, and
+          NICE TO HAVE items from the most recent review output.
 
       - name: extract-findings
         type: cmd
         cmd: |
-          echo "MUST_FIX_ITEMS=0"
-          echo "SHOULD_FIX_ITEMS=0"
-          echo "NICE_TO_HAVE_ITEMS=0"
+          echo "Agent extracts findings from conversation context"
+          echo "Categories: MUST_FIX, SHOULD_FIX, NICE_TO_HAVE"
         store: FINDING_COUNTS
+        notes: >-
+          This step is agent-interpreted. The agent counts and lists
+          all findings from the review report, then proceeds to fix
+          each one in priority order (MUST FIX first).
 
     next_phase: 2-resolve
 
@@ -68,6 +76,18 @@ phases:
     name: Resolve Findings
     parallel: false
     steps:
+      - name: process-findings
+        type: cmd
+        cmd: |
+          echo "Resolving all findings in priority order..."
+        store: RESOLUTION_SUMMARY
+        notes: >-
+          Agent resolves ALL findings:
+          1. MUST FIX items first (security, crashes, blockers)
+          2. SHOULD FIX items next (quality, performance, a11y)
+          3. NICE TO HAVE items last (style, naming, optimization)
+          Each fix should be minimal and targeted.
+
       - name: run-lint
         type: check
         check: npx eslint src/
@@ -83,12 +103,6 @@ phases:
         check: npx vitest run --coverage 2>&1 | tail -20
         fail_action: warn
 
-      - name: process-findings
-        type: cmd
-        cmd: |
-          echo "Processing all findings..."
-        store: RESOLUTION_SUMMARY
-
     next_phase: 3-commit
 
   - id: 3-commit
@@ -96,13 +110,16 @@ phases:
     steps:
       - name: stage-changes
         type: cmd
-        cmd: git add .
+        cmd: |
+          git add src/ data-pipeline/ tests/ functions/ \
+            package.json package-lock.json \
+            vite.config.js firebase.json 2>/dev/null || true
         fail_action: warn
 
       - name: commit-fixes
         type: cmd
         cmd: |
-          git commit -m "Resolve code review findings" || \
+          git commit -m "fix: resolve code review findings" || \
           echo "No changes to commit"
 
     next_phase: 4-verify

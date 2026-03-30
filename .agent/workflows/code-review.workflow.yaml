@@ -5,7 +5,7 @@ workflow:
   agents: 4
 
 metadata:
-  updated: "2026-03-17"
+  updated: "2026-03-30"
   review_cycle_days: 365
   description: >-
     Security-first code review for React/Vite project.

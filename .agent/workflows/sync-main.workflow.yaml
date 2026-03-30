@@ -4,8 +4,8 @@ workflow:
   mode: exec
 
 metadata:
-  updated: "2026-03-17"
-  description: "Sync main into current branch, resolve conflicts, handle compatibility."
+  updated: "2026-03-30"
+  description: "Sync origin/main into current branch, resolve conflicts, handle compatibility."
 
 phases:
   - id: 1-verify
@@ -29,6 +29,10 @@ phases:
         type: cmd
         cmd: git merge origin/main --no-edit
         fail_action: warn
+        notes: >-
+          If merge fails due to conflicts, proceed to conflict
+          resolution phase. The agent reads conflicting files,
+          resolves each one, and stages the result.
 
     next_phase: 3-resolve-conflicts
 
@@ -37,28 +41,44 @@ phases:
     steps:
       - name: identify-conflicts
         type: cmd
-        cmd: git status --short | grep '^UU' || echo "No conflicts"
+        cmd: |
+          CONFLICTS=$(git status --short | grep '^UU' | awk '{print $2}')
+          if [ -z "$CONFLICTS" ]; then
+            echo "No conflicts"
+          else
+            echo "Conflicting files:"
+            echo "$CONFLICTS"
+          fi
         store: CONFLICTED_FILES
 
-      - name: resolve-manually
+      - name: resolve-conflicts
         type: cmd
-        cmd: |
-          echo "Manual conflict resolution required."
-          echo "For each conflict, examine markers and resolve."
+        cmd: echo "Agent resolves each conflicting file"
+        notes: >-
+          Agent reads each conflicting file listed in CONFLICTED_FILES,
+          examines conflict markers (<<<<<<< / ======= / >>>>>>>),
+          chooses the correct resolution, removes markers, and runs
+          git add on the resolved file. If conflicts are ambiguous
+          and require human judgement, stop and ask the user.
 
       - name: verify-merge
         type: cmd
-        cmd: |
-          npx vitest run || echo "Tests need attention post-merge"
+        cmd: npx vitest run
+        fail_action: warn
+        notes: >-
+          Run tests after conflict resolution to verify nothing broke.
 
     next_phase: 4-commit
 
   - id: 4-commit
     name: Commit Merge
     steps:
-      - name: stage-merge
+      - name: stage-resolved
         type: cmd
-        cmd: git add .
+        cmd: |
+          git add src/ data-pipeline/ tests/ functions/ \
+            package.json package-lock.json \
+            vite.config.js firebase.json 2>/dev/null || true
 
       - name: commit-merge
         type: cmd

@@ -6,7 +6,7 @@
 ## Workflow Chain
 
 ```
-/resolve-issue → /code-review → /handle-review-results → /prepare-for-merge
+/resolve-issue → /code-review → /handle-review-results → /prepare-for-merge → /mts
 ```
 
 Each workflow suggests the next one at completion. User can reply "yes" to trigger.
@@ -14,13 +14,15 @@ Each workflow suggests the next one at completion. User can reply "yes" to trigg
 ## Workflow Dependency Map
 
 ```
-resolve-issue ──→ code-review ──→ handle-review-results ──→ prepare-for-merge
-     │                                                           │
-     └── sync-main (if conflicts)                                └── sync-main
+resolve-issue ──→ code-review ──→ handle-review-results ──→ prepare-for-merge ──→ mts
+     │                                                           │                    │
+     └── sync-main (if conflicts)                                └── sync-main        └── ci-failing (auto on fail)
 
 ci-failing ──→ handle-review-results ──→ prepare-for-merge
 
 monitor-vite ──→ handle-review-results
+
+mts: verifies CI → squash merges → cleans up → deploys (hosting + functions + firestore)
 
 get-up-to-speed (standalone, read-only)
 context-health (standalone, read-only)
@@ -39,13 +41,14 @@ context-health (standalone, read-only)
 | get-up-to-speed | `/get-up-to-speed` | read-only | Analyze branch context |
 | monitor-vite | `/monitor-vite` | exec | Monitor Vite dev server for errors |
 | context-health | `/context-health` | read-only | Audit project structure health |
+| mts | `/mts` | exec | Verify CI, squash merge, cleanup, deploy Firebase |
 
 ## Quality Gates (in every code-modifying workflow)
 
 | Check | Command | Fail Action |
 |---|---|---|
 | ESLint | `npx eslint src/` | exit |
-| Prettier | `npx prettier --check "src/**/*"` | warn |
+| Prettier | `npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}"` | warn |
 | Tests | `npx vitest run` | exit |
 | Coverage | `npx vitest run --coverage` | warn |
 | Build | `npx vite build` | exit |
@@ -77,6 +80,6 @@ context-health (standalone, read-only)
 
 ---
 
-**Last updated**: 2026-03-18
+**Last updated**: 2026-03-30
 **Format version**: 1.1 (AI-first)
 **Adapted from**: Tipi project workflow system
