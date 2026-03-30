@@ -162,7 +162,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
   const handleTouchEnd = useCallback(
     (name, event) => {
-      if (isGestureActive()) return;
+      if (isGestureActive(event.nativeEvent)) return;
       isTouchRef.current = true;
       event.preventDefault();
       onSelect(name);
@@ -256,7 +256,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                   }
                 }}
                 onTouchEnd={(event) => {
-                  if (isGestureActive()) return;
+                  if (isGestureActive(event.nativeEvent)) return;
                   if (entry._isOthers && entry._groupedData) {
                     event.preventDefault();
                     setDrillDown({ items: entry._groupedData, sourceData: data });

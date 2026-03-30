@@ -9,6 +9,29 @@ export default function useTreemapGestures({ scrollRef, innerRef, size }) {
   const touchStartRef = useRef(null);
   const lastTapRef = useRef(0);
 
+  const didTouchMove = useCallback(
+    (touchEndEvent) => {
+      const ts = touchStartRef.current;
+      if (!ts) return false;
+
+      const el = scrollRef.current;
+      if (el) {
+        const scrollDx = Math.abs(el.scrollLeft - ts.scrollLeft);
+        const scrollDy = Math.abs(el.scrollTop - ts.scrollTop);
+        if (scrollDx > 5 || scrollDy > 5) return true;
+      }
+
+      const ct = touchEndEvent?.changedTouches;
+      if (ct?.length) {
+        const dx = Math.abs(ct[0].clientX - ts.x);
+        const dy = Math.abs(ct[0].clientY - ts.y);
+        if (dx > 10 || dy > 10) return true;
+      }
+      return false;
+    },
+    [scrollRef]
+  );
+
   const setScale = useCallback((nextScale) => {
     scaleRef.current = nextScale;
     setScaleState(nextScale);
@@ -25,19 +48,16 @@ export default function useTreemapGestures({ scrollRef, innerRef, size }) {
     [scrollRef, setScale]
   );
 
-  const isGestureActive = useCallback(() => {
-    if (gestureActiveRef.current) return true;
-    if (pinchRef.current) return true;
-    if (Date.now() - gestureEndTimeRef.current < 500) return true;
-    const ts = touchStartRef.current;
-    const el = scrollRef.current;
-    if (ts && el) {
-      const scrollDx = Math.abs(el.scrollLeft - ts.scrollLeft);
-      const scrollDy = Math.abs(el.scrollTop - ts.scrollTop);
-      if (scrollDx > 5 || scrollDy > 5) return true;
-    }
-    return false;
-  }, [scrollRef]);
+  const isGestureActive = useCallback(
+    (touchEndEvent) => {
+      if (gestureActiveRef.current) return true;
+      if (pinchRef.current) return true;
+      if (Date.now() - gestureEndTimeRef.current < 500) return true;
+      if (didTouchMove(touchEndEvent)) return true;
+      return false;
+    },
+    [didTouchMove]
+  );
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -136,14 +156,21 @@ export default function useTreemapGestures({ scrollRef, innerRef, size }) {
         return;
       }
 
+      if (didTouchMove(e)) {
+        // Touch scrolling often triggers a synthetic click; mark a cooldown window.
+        gestureEndTimeRef.current = Date.now();
+      }
+
       if (e.touches.length === 0 && scaleRef.current > 1) {
         const now = Date.now();
         if (now - lastTapRef.current < 300) {
           resetZoom(true);
           lastTapRef.current = 0;
+          touchStartRef.current = null;
           return;
         }
         lastTapRef.current = now;
+        touchStartRef.current = null;
       }
     };
 
@@ -179,7 +206,7 @@ export default function useTreemapGestures({ scrollRef, innerRef, size }) {
       el.removeEventListener("touchend", onTouchEnd);
       el.removeEventListener("wheel", onWheel);
     };
-  }, [innerRef, resetZoom, scrollRef, setScale, size.height, size.width]);
+  }, [didTouchMove, innerRef, resetZoom, scrollRef, setScale, size.height, size.width]);
 
   return { scale, setScale, resetZoom, isGestureActive };
 }
