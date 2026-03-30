@@ -334,8 +334,17 @@ class WorkflowEngine:
             log.error("    Failed with exit code %d", exit_code)
             if fail_action == 'exit':
                 sys.exit(1)
-            elif fail_action == 'warn':
+            if fail_action == 'warn':
                 log.warning("    %s", output[:100])
+                return True
+            if fail_action == 'run_workflow':
+                on_fail_workflow = step.get('on_fail_workflow')
+                if not on_fail_workflow:
+                    log.error("    Missing on_fail_workflow for fail_action=run_workflow")
+                    return False
+                log.warning("    Running fallback workflow: %s", on_fail_workflow)
+                return self.execute_workflow(str(on_fail_workflow))
+            return False
         else:
             log.info("    OK")
         if store_var:
@@ -359,6 +368,16 @@ class WorkflowEngine:
             log.error("    Check failed")
             if fail_action == 'exit':
                 sys.exit(1)
+            if fail_action == 'warn':
+                log.warning("    %s", output[:100])
+                return True
+            if fail_action == 'run_workflow':
+                on_fail_workflow = step.get('on_fail_workflow')
+                if not on_fail_workflow:
+                    log.error("    Missing on_fail_workflow for fail_action=run_workflow")
+                    return False
+                log.warning("    Running fallback workflow: %s", on_fail_workflow)
+                return self.execute_workflow(str(on_fail_workflow))
             return False
         log.info("    Check passed")
         if store_var:

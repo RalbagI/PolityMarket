@@ -5,7 +5,7 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-17"
+  updated: "2026-03-30"
   description: "Fetch, analyze, and fix failing GitHub Actions CI jobs."
   skills: [github-actions, test]
 
@@ -34,9 +34,10 @@ phases:
             --jq '[.[] | select(.conclusion == "failure")][0].databaseId // empty')
           if [ -n "$RUN_ID" ]; then
             echo "Downloading logs for run $RUN_ID..."
-            gh run view "$RUN_ID" --log-failed > ci-logs/failed.log 2>/dev/null || \
-              gh run view "$RUN_ID" --log > ci-logs/full.log 2>/dev/null || \
+            gh run view "$RUN_ID" --log > ci-logs/full.log 2>/dev/null || \
               echo "Could not download logs"
+            # Extract failed job logs
+            grep -i "error\|fail\|ENOENT\|exit code" ci-logs/full.log > ci-logs/errors.log 2>/dev/null || true
             ls -lh ci-logs/ 2>/dev/null
           else
             echo "No failed runs found"
@@ -58,6 +59,10 @@ phases:
           echo "- build_failure: vite build errors"
           echo "- dependency: npm install/audit failures"
         store: FAILURE_TYPES
+        notes: >-
+          Agent reads ci-logs/errors.log and categorizes each failure.
+          Transient failures (timeouts, network) should be retried via
+          gh run rerun, not fixed in code.
 
     next_phase: 3-fix
 
@@ -68,6 +73,12 @@ phases:
         type: cmd
         cmd: |
           echo "Applying fixes per category..."
+        notes: >-
+          Agent applies targeted fixes based on triage categories.
+          For lint: npx eslint src/ --fix.
+          For test: read failing test, fix code or test.
+          For build: read vite error, fix imports or config.
+          For dependency: npm ci --legacy-peer-deps.
 
       - name: run-lint
         type: cmd
@@ -95,7 +106,13 @@ phases:
     steps:
       - name: stage-changes
         type: cmd
-        cmd: git add .
+        cmd: |
+          git add src/ data-pipeline/ tests/ functions/ \
+            package.json package-lock.json \
+            vite.config.js firebase.json 2>/dev/null || true
+        notes: >-
+          Stage only known source directories — never use git add .
+          to avoid accidentally committing secrets or build artifacts.
 
       - name: commit-fix
         type: cmd
@@ -119,6 +136,12 @@ phases:
       - name: verify-clean
         type: check
         check: "test -z \"$(git status --porcelain)\""
+
+next_workflow_suggestion:
+  workflow: handle-review-results
+  message: >-
+    After fixing CI, ask the user if they want to run
+    /handle-review-results to address any remaining code quality issues.
 
 output:
   format: structured

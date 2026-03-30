@@ -5,7 +5,7 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-17"
+  updated: "2026-03-30"
   review_cycle_days: 365
   description: >-
     Single-pass prepare-for-merge for GitHub PRs. Runs all
@@ -59,18 +59,16 @@ phases:
         fail_action: exit
 
       - name: sync-main
-        type: doc
-        notes: >-
-          CRITICAL — this step must ALWAYS be executed. Fetch origin/main,
-          then rebase the current branch onto it. If rebase conflicts arise,
-          the agent MUST resolve them (read conflicting files, choose correct
-          content, git add, git rebase --continue). Only abort if conflicts
-          are ambiguous and require human judgement. After rebase, force-push
-          the branch since history was rewritten.
-        cmd_hint: |
+        type: cmd
+        cmd: |
           git fetch origin main
-          git rebase origin/main || <resolve conflicts then git rebase --continue>
+          git rebase origin/main
         fail_action: exit
+        notes: >-
+          CRITICAL — this step must ALWAYS be executed. If rebase conflicts
+          arise, the agent MUST resolve them (read conflicting files, choose
+          correct content, git add, git rebase --continue). After rebase,
+          force-push the branch since history was rewritten.
 
       - name: install-deps
         type: cmd

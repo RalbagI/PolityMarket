@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 const STORAGE_KEY = "politymarket-alert-subscription";
 
@@ -28,8 +28,10 @@ function saveState(state) {
  */
 export default function useAlertState() {
   const [sub, setSub] = useState(loadState);
+  const subRef = useRef(sub);
 
   useEffect(() => {
+    subRef.current = sub;
     saveState(sub);
   }, [sub]);
 
@@ -43,7 +45,7 @@ export default function useAlertState() {
   const hasSubscription = useMemo(() => sub?.email != null, [sub]);
 
   const subscribe = useCallback(async (email, politicianIds, webhookUrl) => {
-    const existingToken = loadState()?.token;
+    const existingToken = subRef.current?.token;
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,36 +61,42 @@ export default function useAlertState() {
       throw new Error(err.error || "Subscribe failed");
     }
     const data = await res.json();
-    setSub({
+    const nextSub = {
       email,
       token: data.token,
-      verified: data.updated ? (loadState()?.verified ?? false) : false,
+      verified: data.updated ? (subRef.current?.verified ?? false) : false,
       politicianIds,
       webhookUrl: webhookUrl || null,
-    });
+    };
+    subRef.current = nextSub;
+    setSub(nextSub);
     return data;
   }, []);
 
   const togglePolitician = useCallback(
     async (politicianId) => {
-      if (!sub) return;
-      const current = sub.politicianIds || [];
+      // Read latest in-memory state to avoid stale closure issues.
+      const latest = subRef.current;
+      if (!latest) return;
+      const current = latest.politicianIds || [];
       const next = current.includes(politicianId)
         ? current.filter((id) => id !== politicianId)
         : [...current, politicianId];
 
       // Optimistic update
-      setSub((prev) => ({ ...prev, politicianIds: next }));
+      const optimisticSub = { ...latest, politicianIds: next };
+      subRef.current = optimisticSub;
+      setSub((prev) => (prev ? { ...prev, politicianIds: next } : optimisticSub));
 
       try {
         const res = await fetch("/api/subscribe", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: sub.email,
+            email: latest.email,
             politicianIds: next,
-            webhookUrl: sub.webhookUrl || undefined,
-            token: sub.token,
+            webhookUrl: latest.webhookUrl || undefined,
+            token: latest.token,
           }),
         });
         if (!res.ok) {
@@ -97,10 +105,12 @@ export default function useAlertState() {
         }
       } catch {
         // Revert on failure
-        setSub((prev) => ({ ...prev, politicianIds: current }));
+        const revertedSub = { ...latest, politicianIds: current };
+        subRef.current = revertedSub;
+        setSub((prev) => (prev ? { ...prev, politicianIds: current } : revertedSub));
       }
     },
-    [sub]
+    [] // no dependency on sub — reads latest from mutable ref
   );
 
   const unsubscribe = useCallback(async () => {

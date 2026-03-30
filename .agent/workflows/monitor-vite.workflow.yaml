@@ -4,7 +4,7 @@ workflow:
   mode: exec
 
 metadata:
-  updated: "2026-03-17"
+  updated: "2026-03-30"
   description: "Start Vite dev server, monitor output for errors/warnings (default 30s), generate deduplicated report."
   skills: [react-best-practices]
 
@@ -105,12 +105,17 @@ phases:
       - name: categorize
         type: cmd
         cmd: |
-          # Categorize by error type:
-          # - FATAL: build failures, module not found
-          # - APP_ERROR: runtime errors, hook violations
-          # - STYLE: tailwind warnings, deprecations
-          # - CONFIG: vite/plugin config issues
-          echo "Categorizing issues..."
+          UNIQUE_FILE="$SCRATCHPAD_DIR/unique_issues.txt"
+          CATEGORIZED="$SCRATCHPAD_DIR/categorized.txt"
+          echo "=== FATAL ===" > "$CATEGORIZED"
+          grep -iE "module not found|build failed|cannot find|ENOENT|SyntaxError" "$UNIQUE_FILE" >> "$CATEGORIZED" 2>/dev/null || true
+          echo "=== APP_ERROR ===" >> "$CATEGORIZED"
+          grep -iE "hook|violation|runtime|uncaught|TypeError|ReferenceError" "$UNIQUE_FILE" >> "$CATEGORIZED" 2>/dev/null || true
+          echo "=== STYLE ===" >> "$CATEGORIZED"
+          grep -iE "deprecat|tailwind|warning|unused" "$UNIQUE_FILE" >> "$CATEGORIZED" 2>/dev/null || true
+          echo "=== CONFIG ===" >> "$CATEGORIZED"
+          grep -iE "vite|plugin|config|rollup|esbuild" "$UNIQUE_FILE" >> "$CATEGORIZED" 2>/dev/null || true
+          cat "$CATEGORIZED"
         store: CATEGORIES
 
     next_phase: 6-report

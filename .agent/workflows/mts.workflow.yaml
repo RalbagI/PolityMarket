@@ -5,7 +5,7 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-24"
+  updated: "2026-03-30"
   review_cycle_days: 365
   description: >-
     Merge This Shit — final-stage workflow that verifies CI,
@@ -33,11 +33,21 @@ phases:
 
       - name: check-ci
         type: cmd
+        cmd: gh pr checks $PR_NUMBER --watch --fail-fast
+        fail_action: run_workflow
+        on_fail_workflow: ci-failing
+        notes: >-
+          Wait for ALL checks to complete. If any check fails,
+          automatically invoke /ci-failing to diagnose and fix.
+          Only proceed to merge once all checks are green.
+
+      - name: recheck-ci
+        type: cmd
         cmd: gh pr checks $PR_NUMBER
         fail_action: exit
         notes: >-
-          ALL checks must pass. If any check is pending or failed,
-          the workflow MUST stop here and report which checks failed.
+          Final gate after /ci-failing has run. If checks still
+          fail after the fix attempt, stop and report.
 
     next_phase: 2-merge
 
@@ -88,10 +98,18 @@ phases:
         cmd: npx vite build
         fail_action: exit
 
+      - name: install-functions-deps
+        type: cmd
+        cmd: cd functions && npm ci
+        fail_action: warn
+
       - name: deploy
         type: cmd
-        cmd: npx firebase deploy --only hosting
+        cmd: npx firebase deploy --only hosting,functions,firestore:rules
         fail_action: warn
+        notes: >-
+          Deploys hosting (frontend), Cloud Functions (API),
+          and Firestore security rules in a single pass.
 
     next_phase: null
 
@@ -105,7 +123,7 @@ output:
 
 validation:
   success_criteria:
-    - "All CI checks passed"
+    - "All CI checks passed (auto-fixed via /ci-failing if needed)"
     - "PR merged via squash"
     - "Branch deleted"
     - "Main pulled and clean"
