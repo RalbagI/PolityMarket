@@ -201,20 +201,46 @@ export const api = onRequest(
       }
 
       if (!existing.empty) {
-        // Existing subscription — require token for updates
         const doc = existing.docs[0];
+        const existingData = doc.data();
         const { token: requestToken } = req.body;
-        if (!requestToken || requestToken !== doc.data().token) {
-          res.status(403).json({ error: "Token required to update existing subscription" });
+
+        if (!requestToken || requestToken !== existingData.token) {
+          // No valid token — send recovery email with existing token so user can manage subscription
+          try {
+            const manageUrl = `${APP_URL}?recovered_token=${existingData.token}&recovered_email=${encodeURIComponent(email)}`;
+            await sendEmail(RESEND_API_KEY.value(), {
+              to: email,
+              subject: "PolityMarket — שחזור הרשמה להתראות",
+              html: `
+                <div dir="rtl" style="font-family: sans-serif; max-width: 500px; margin: 0 auto;">
+                  <h2>שחזור הרשמה להתראות PolityMarket</h2>
+                  <p>כבר קיימת הרשמה עבור כתובת אימייל זו.</p>
+                  <p>לחץ על הכפתור כדי לשחזר את ההרשמה שלך:</p>
+                  <a href="${manageUrl}" style="display: inline-block; padding: 12px 24px; background: #f59e0b; color: #000; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                    שחזר הרשמה
+                  </a>
+                  <p style="color: #666; font-size: 12px; margin-top: 24px;">
+                    אם לא ביקשת שחזור, ניתן להתעלם מהודעה זו.
+                  </p>
+                </div>
+              `,
+            });
+          } catch (err) {
+            console.error("Recovery email failed:", err);
+          }
+          res.status(409).json({ error: "subscription_exists" });
           return;
         }
+
+        // Valid token — update subscription
         await doc.ref.update({
           politicianIds,
           webhookUrl: webhookUrl || null,
           preferences: preferences || { scoreThresholdSigma: 2, notifyOn: "all" },
           updatedAt: FieldValue.serverTimestamp(),
         });
-        res.json({ ok: true, token: doc.data().token, updated: true });
+        res.json({ ok: true, token: existingData.token, updated: true });
         return;
       }
 

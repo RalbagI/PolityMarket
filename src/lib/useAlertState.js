@@ -30,6 +30,31 @@ export default function useAlertState() {
   const [sub, setSub] = useState(loadState);
   const subRef = useRef(sub);
 
+  // Recover subscription from URL token (sent via recovery email)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const recoveredToken = params.get("recovered_token");
+    const recoveredEmail = params.get("recovered_email");
+    if (!recoveredToken || !recoveredEmail) return;
+
+    // Clean the URL
+    const url = new URL(window.location.href);
+    url.searchParams.delete("recovered_token");
+    url.searchParams.delete("recovered_email");
+    window.history.replaceState({}, "", url.pathname + url.search);
+
+    // Restore subscription state so the user can manage it
+    const recovered = {
+      email: recoveredEmail,
+      token: recoveredToken,
+      verified: true,
+      politicianIds: [],
+      webhookUrl: null,
+    };
+    subRef.current = recovered;
+    setSub(recovered);
+  }, []);
+
   useEffect(() => {
     subRef.current = sub;
     saveState(sub);
@@ -58,7 +83,9 @@ export default function useAlertState() {
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || "Subscribe failed");
+      const error = new Error(err.error || "Subscribe failed");
+      error.code = err.error;
+      throw error;
     }
     const data = await res.json();
     const nextSub = {

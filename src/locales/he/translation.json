@@ -359,9 +359,6 @@
     "totalTracked": "פוליטיקאים במעקב",
     "totalParties": "מפלגות במעקב",
     "weightedAverage": "ציון ממוצע משוקלל",
-    "histogram": {
-      "title": "התפלגות ציונים"
-    },
     "colorLegend": {
       "positive": "חיובי",
       "negative": "שלילי"
@@ -727,6 +724,7 @@
     "emailRequired": "יש להזין כתובת אימייל",
     "emailInvalid": "כתובת אימייל לא תקינה",
     "subscribeSuccess": "ההרשמה בוצעה בהצלחה",
-    "subscribeFailed": "שגיאה בהרשמה, נסה שוב"
+    "subscribeFailed": "שגיאה בהרשמה, נסה שוב",
+    "subscriptionExists": "כבר קיימת הרשמה עבור אימייל זה. נשלח אליך אימייל לשחזור ההרשמה."
   }
 }
