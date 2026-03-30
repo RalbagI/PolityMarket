@@ -19,6 +19,13 @@ const localStorageMock = {
 beforeEach(async () => {
   vi.resetModules();
   Object.keys(storage).forEach((k) => delete storage[k]);
+  localStorageMock.getItem = (key) => storage[key] ?? null;
+  localStorageMock.setItem = (key, val) => {
+    storage[key] = String(val);
+  };
+  localStorageMock.removeItem = (key) => {
+    delete storage[key];
+  };
   vi.stubGlobal("localStorage", localStorageMock);
   vi.stubGlobal("fetch", vi.fn());
   const mod = await import("./useAlertState.js");
@@ -266,6 +273,28 @@ describe("useAlertState — togglePolitician", () => {
     // Second API call should have ["pol-b"] — both pol-a and pol-c removed
     const secondBody = JSON.parse(globalThis.fetch.mock.calls[1][1].body);
     expect(secondBody.politicianIds).toEqual(["pol-b"]);
+  });
+
+  it("uses in-memory subscription state even if localStorage becomes unavailable", async () => {
+    storage["politymarket-alert-subscription"] = JSON.stringify({
+      email: "test@example.com",
+      token: "abc",
+      politicianIds: ["pol-a"],
+    });
+    globalThis.fetch = vi.fn().mockResolvedValue({ ok: true, json: () => ({}) });
+
+    const { result } = renderHook(() => useAlertState());
+
+    // Simulate storage read failures after initialization.
+    localStorageMock.getItem = () => {
+      throw new Error("localStorage blocked");
+    };
+
+    await act(async () => {
+      await result.current.togglePolitician("pol-b");
+    });
+
+    expect(result.current.subscription.politicianIds).toEqual(["pol-a", "pol-b"]);
   });
 });
 
