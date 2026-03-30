@@ -12,7 +12,7 @@ const PIPELINE_AUTH_TOKEN = defineSecret("PIPELINE_AUTH_TOKEN");
 
 const COLLECTION = "alertSubscriptions";
 const APP_URL = "https://politymarket.web.app";
-const FROM_EMAIL = "PolityMarket <alerts@politymarket.web.app>";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "PolityMarket <onboarding@resend.dev>";
 
 // ── Helper: validate email format ─────────────────────────────────────
 function isValidEmail(email) {
@@ -185,13 +185,18 @@ export const api = onRequest(
         .limit(1)
         .get();
 
-      // Rate limit: 1-minute cooldown per email
       if (!existing.empty) {
         const existingData = existing.docs[0].data();
-        const updatedAt = existingData.updatedAt?.toDate?.();
-        if (updatedAt && Date.now() - updatedAt.getTime() < 60_000) {
-          res.status(429).json({ error: "Too many requests. Try again in a minute." });
-          return;
+        const hasValidToken = req.body.token && req.body.token === existingData.token;
+
+        // Rate limit: 1-minute cooldown — only for unauthenticated requests (no token).
+        // Authenticated toggle updates (with valid token) bypass the cooldown.
+        if (!hasValidToken) {
+          const updatedAt = existingData.updatedAt?.toDate?.();
+          if (updatedAt && Date.now() - updatedAt.getTime() < 60_000) {
+            res.status(429).json({ error: "Too many requests. Try again in a minute." });
+            return;
+          }
         }
       }
 

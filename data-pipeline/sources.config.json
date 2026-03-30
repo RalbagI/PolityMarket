@@ -4,7 +4,9 @@
       "https://news.google.com/rss/search?q={query}+פוליטיקה+ישראל+when:3d&hl=iw&gl=IL&ceid=IL:he",
       "https://news.google.com/rss/search?q={query}+כנסת+when:3d&hl=iw&gl=IL&ceid=IL:he",
       "https://news.google.com/rss/search?q={query}+ועדת+כנסת+when:3d&hl=iw&gl=IL&ceid=IL:he",
-      "https://news.google.com/rss/search?q={query}+Israel+politics+when:3d&hl=en-US&gl=US&ceid=US:en"
+      "https://news.google.com/rss/search?q={query}+Israel+politics+when:3d&hl=en-US&gl=US&ceid=US:en",
+      "https://news.google.com/rss/search?q={query}+site:kikar.co.il+when:3d&hl=iw&gl=IL&ceid=IL:he",
+      "https://news.google.com/rss/search?q={query}+site:i24news.tv+when:3d&hl=iw&gl=IL&ceid=IL:he"
     ],
     "globalFeeds": [
       "https://www.ynet.co.il/Integration/StoryRss1854.xml",
@@ -13,7 +15,10 @@
       "https://www.israelhayom.co.il/rss.xml",
       "https://www.globes.co.il/webservice/rss/rssfeeder.asmx/FeederNode?iID=585",
       "https://www.c14.co.il/feed/",
-      "https://www.timesofisrael.com/feed/"
+      "https://www.timesofisrael.com/feed/",
+      "https://13news.co.il/feed/",
+      "https://www.jpost.com/rss/rssfeedsfrontpage.aspx",
+      "https://www.themarker.com/cmlink/1.145"
     ],
     "maxItemsPerSource": 15,
     "maxHeadlinesPerPolitician": 10

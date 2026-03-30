@@ -176,6 +176,97 @@ describe("useAlertState — togglePolitician", () => {
 
     expect(result.current.subscription.politicianIds).toEqual(["pol-a"]);
   });
+
+  it("handles rapid sequential toggles without stale closure", async () => {
+    storage["politymarket-alert-subscription"] = JSON.stringify({
+      email: "test@example.com",
+      token: "abc",
+      politicianIds: ["pol-a", "pol-b", "pol-c"],
+    });
+    globalThis.fetch = vi.fn().mockResolvedValue({ ok: true, json: () => ({}) });
+
+    const { result } = renderHook(() => useAlertState());
+
+    // Toggle pol-a off
+    await act(async () => {
+      await result.current.togglePolitician("pol-a");
+    });
+    expect(result.current.subscription.politicianIds).toEqual(["pol-b", "pol-c"]);
+
+    // Toggle pol-b off immediately after — should read latest state, not stale closure
+    await act(async () => {
+      await result.current.togglePolitician("pol-b");
+    });
+    expect(result.current.subscription.politicianIds).toEqual(["pol-c"]);
+    // pol-a should NOT be re-added by the second toggle
+    expect(result.current.subscription.politicianIds).not.toContain("pol-a");
+  });
+
+  it("toggle off then toggle back on produces correct final state", async () => {
+    storage["politymarket-alert-subscription"] = JSON.stringify({
+      email: "test@example.com",
+      token: "abc",
+      politicianIds: ["pol-a", "pol-b"],
+    });
+    globalThis.fetch = vi.fn().mockResolvedValue({ ok: true, json: () => ({}) });
+
+    const { result } = renderHook(() => useAlertState());
+
+    // Remove pol-a
+    await act(async () => {
+      await result.current.togglePolitician("pol-a");
+    });
+    expect(result.current.isSubscribed("pol-a")).toBe(false);
+
+    // Re-add pol-a
+    await act(async () => {
+      await result.current.togglePolitician("pol-a");
+    });
+    expect(result.current.isSubscribed("pol-a")).toBe(true);
+    expect(result.current.isSubscribed("pol-b")).toBe(true);
+  });
+
+  it("sends token in API call for toggle updates", async () => {
+    storage["politymarket-alert-subscription"] = JSON.stringify({
+      email: "test@example.com",
+      token: "my-secret-token",
+      politicianIds: ["pol-a"],
+    });
+    globalThis.fetch = vi.fn().mockResolvedValue({ ok: true, json: () => ({}) });
+
+    const { result } = renderHook(() => useAlertState());
+
+    await act(async () => {
+      await result.current.togglePolitician("pol-b");
+    });
+
+    const body = JSON.parse(globalThis.fetch.mock.calls[0][1].body);
+    expect(body.token).toBe("my-secret-token");
+    expect(body.email).toBe("test@example.com");
+    expect(body.politicianIds).toEqual(["pol-a", "pol-b"]);
+  });
+
+  it("each toggle sends the cumulative latest politicianIds to the API", async () => {
+    storage["politymarket-alert-subscription"] = JSON.stringify({
+      email: "test@example.com",
+      token: "abc",
+      politicianIds: ["pol-a", "pol-b", "pol-c"],
+    });
+    globalThis.fetch = vi.fn().mockResolvedValue({ ok: true, json: () => ({}) });
+
+    const { result } = renderHook(() => useAlertState());
+
+    await act(async () => {
+      await result.current.togglePolitician("pol-a");
+    });
+    await act(async () => {
+      await result.current.togglePolitician("pol-c");
+    });
+
+    // Second API call should have ["pol-b"] — both pol-a and pol-c removed
+    const secondBody = JSON.parse(globalThis.fetch.mock.calls[1][1].body);
+    expect(secondBody.politicianIds).toEqual(["pol-b"]);
+  });
 });
 
 describe("useAlertState — unsubscribe", () => {

@@ -71,8 +71,10 @@ export default function useAlertState() {
 
   const togglePolitician = useCallback(
     async (politicianId) => {
-      if (!sub) return;
-      const current = sub.politicianIds || [];
+      // Read latest state to avoid stale closure issues with rapid clicks
+      const latest = loadState();
+      if (!latest) return;
+      const current = latest.politicianIds || [];
       const next = current.includes(politicianId)
         ? current.filter((id) => id !== politicianId)
         : [...current, politicianId];
@@ -85,10 +87,10 @@ export default function useAlertState() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: sub.email,
+            email: latest.email,
             politicianIds: next,
-            webhookUrl: sub.webhookUrl || undefined,
-            token: sub.token,
+            webhookUrl: latest.webhookUrl || undefined,
+            token: latest.token,
           }),
         });
         if (!res.ok) {
@@ -100,7 +102,7 @@ export default function useAlertState() {
         setSub((prev) => ({ ...prev, politicianIds: current }));
       }
     },
-    [sub]
+    [] // no dependency on sub — reads latest from localStorage directly
   );
 
   const unsubscribe = useCallback(async () => {
