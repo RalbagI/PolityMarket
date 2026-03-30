@@ -42,12 +42,11 @@ phases:
       - name: identify-conflicts
         type: cmd
         cmd: |
-          CONFLICTS=$(git status --short | grep '^UU' | awk '{print $2}')
+          CONFLICTS=$(git diff --name-only --diff-filter=U)
           if [ -z "$CONFLICTS" ]; then
-            echo "No conflicts"
+            echo "none"
           else
-            echo "Conflicting files:"
-            echo "$CONFLICTS"
+            printf "%s\n" "$CONFLICTS"
           fi
         store: CONFLICTED_FILES
 
@@ -76,9 +75,15 @@ phases:
       - name: stage-resolved
         type: cmd
         cmd: |
-          git add src/ data-pipeline/ tests/ functions/ \
-            package.json package-lock.json \
-            vite.config.js firebase.json 2>/dev/null || true
+          if [ "$CONFLICTED_FILES" = "none" ] || [ -z "$CONFLICTED_FILES" ]; then
+            echo "No conflicted files to stage"
+          else
+            while IFS= read -r file; do
+              [ -n "$file" ] && git add -- "$file"
+            done <<EOF
+$CONFLICTED_FILES
+EOF
+          fi
 
       - name: commit-merge
         type: cmd

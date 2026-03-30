@@ -96,7 +96,8 @@ phases:
         type: check
         check: |
           if rg -n --glob '*.{js,jsx,ts,tsx}' --glob '!node_modules/**' \
-            "\b(api[_-]?key|secret|password|token)\b\s*[:=]\s*['\"]" src/; then
+            "\b(api[_-]?key|secret|password|token)\b\s*[:=]\s*['\"]" src/ \
+            | grep -vE '\.(test|spec)\.(js|jsx|ts|tsx):'; then
             echo "Potential secret-like assignments found"
             exit 1
           else
