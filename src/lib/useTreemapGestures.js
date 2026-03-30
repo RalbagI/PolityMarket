@@ -25,19 +25,30 @@ export default function useTreemapGestures({ scrollRef, innerRef, size }) {
     [scrollRef, setScale]
   );
 
-  const isGestureActive = useCallback(() => {
-    if (gestureActiveRef.current) return true;
-    if (pinchRef.current) return true;
-    if (Date.now() - gestureEndTimeRef.current < 500) return true;
-    const ts = touchStartRef.current;
-    const el = scrollRef.current;
-    if (ts && el) {
-      const scrollDx = Math.abs(el.scrollLeft - ts.scrollLeft);
-      const scrollDy = Math.abs(el.scrollTop - ts.scrollTop);
-      if (scrollDx > 5 || scrollDy > 5) return true;
-    }
-    return false;
-  }, [scrollRef]);
+  const isGestureActive = useCallback(
+    (touchEndEvent) => {
+      if (gestureActiveRef.current) return true;
+      if (pinchRef.current) return true;
+      if (Date.now() - gestureEndTimeRef.current < 500) return true;
+      const ts = touchStartRef.current;
+      if (ts) {
+        const el = scrollRef.current;
+        if (el) {
+          const scrollDx = Math.abs(el.scrollLeft - ts.scrollLeft);
+          const scrollDy = Math.abs(el.scrollTop - ts.scrollTop);
+          if (scrollDx > 5 || scrollDy > 5) return true;
+        }
+        const ct = touchEndEvent?.changedTouches;
+        if (ct?.length) {
+          const dx = Math.abs(ct[0].clientX - ts.x);
+          const dy = Math.abs(ct[0].clientY - ts.y);
+          if (dx > 10 || dy > 10) return true;
+        }
+      }
+      return false;
+    },
+    [scrollRef]
+  );
 
   useEffect(() => {
     const el = scrollRef.current;
