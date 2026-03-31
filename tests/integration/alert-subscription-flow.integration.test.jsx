@@ -10,7 +10,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, act, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useState, Suspense, lazy } from "react";
+import { useState } from "react";
 
 // ── Mocks ──────────────────────────────────────────────────────────────
 
