@@ -30,6 +30,59 @@ export default function useAlertState() {
   const [sub, setSub] = useState(loadState);
   const subRef = useRef(sub);
 
+  // Recover subscription from URL token (sent via recovery email)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const recoveredToken = params.get("recovered_token");
+    const recoveredEmail = params.get("recovered_email");
+    if (!recoveredToken || !recoveredEmail) return;
+
+    // Clean the URL
+    const url = new URL(window.location.href);
+    url.searchParams.delete("recovered_token");
+    url.searchParams.delete("recovered_email");
+    window.history.replaceState({}, "", url.pathname + url.search + url.hash);
+
+    // Set immediate local state, then hydrate with backend values.
+    const initialRecovered = {
+      email: recoveredEmail,
+      token: recoveredToken,
+      verified: false,
+      politicianIds: [],
+      webhookUrl: null,
+    };
+    subRef.current = initialRecovered;
+    setSub(initialRecovered);
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/subscription?token=${encodeURIComponent(recoveredToken)}`);
+        if (!res.ok) return;
+        const payload = await res.json();
+        if (cancelled) return;
+
+        const hydrated = {
+          email: payload.email || recoveredEmail,
+          token: recoveredToken,
+          verified: payload.verified === true,
+          politicianIds: Array.isArray(payload.politicianIds)
+            ? payload.politicianIds
+            : initialRecovered.politicianIds,
+          webhookUrl: payload.webhookUrl ?? null,
+        };
+        subRef.current = hydrated;
+        setSub(hydrated);
+      } catch {
+        // Keep initial recovery state if hydration fails.
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   useEffect(() => {
     subRef.current = sub;
     saveState(sub);
@@ -58,7 +111,9 @@ export default function useAlertState() {
     });
     if (!res.ok) {
       const err = await res.json().catch(() => ({}));
-      throw new Error(err.error || "Subscribe failed");
+      const error = new Error(err.error || "Subscribe failed");
+      error.code = err.error;
+      throw error;
     }
     const data = await res.json();
     const nextSub = {

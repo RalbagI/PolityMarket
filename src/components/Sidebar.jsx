@@ -176,34 +176,6 @@ export function SidebarContent({
         <p className="text-xs text-gray-500 text-center py-4">{t("filterBar.noResults")}</p>
       ) : (
         <>
-          {/* Score Histogram */}
-          <div>
-            <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
-              {t("sidebar.histogram.title")}
-            </h3>
-            <div className="flex items-end gap-1.5 h-20">
-              {stats.histogram.map((tier) => (
-                <div key={tier.key} className="flex-1 flex flex-col items-center gap-1">
-                  <div
-                    className="w-full rounded-t transition-all duration-300"
-                    style={{
-                      height: `${(tier.count / stats.maxCount) * 100}%`,
-                      minHeight: tier.count > 0 ? 4 : 0,
-                      backgroundColor: tier.color,
-                      opacity: 0.8,
-                    }}
-                  />
-                  <span className="text-xs text-gray-500">{tier.count}</span>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-between mt-1">
-              <span className="text-[10px] text-gray-600">0</span>
-              <span className="text-[10px] text-gray-600">5</span>
-              <span className="text-[10px] text-gray-600">10</span>
-            </div>
-          </div>
-
           {/* Color Legend */}
           <div>
             <div

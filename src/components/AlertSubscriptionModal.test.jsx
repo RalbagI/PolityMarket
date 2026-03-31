@@ -22,6 +22,8 @@ vi.mock("react-i18next", () => ({
         "alerts.emailInvalid": "Invalid email",
         "alerts.subscribeSuccess": "Subscribed!",
         "alerts.subscribeFailed": "Failed",
+        "alerts.subscriptionExists": "Subscription exists, check email",
+        "alerts.subscriptionExistsEmailFailed": "Subscription exists, email failed",
         "alerts.verifyPrompt": "Check your email",
       };
       return dict[key] || key;
@@ -207,6 +209,44 @@ describe("AlertSubscriptionModal", () => {
     await user.type(screen.getByPlaceholderText("Email address"), "user@test.com");
     await user.click(screen.getByText("Subscribe"));
     expect(screen.getByText("Failed")).toBeInTheDocument();
+  });
+
+  it("shows subscription-exists message when error code is subscription_exists", async () => {
+    const err = new Error("subscription_exists");
+    err.code = "subscription_exists";
+    const onSubscribe = vi.fn().mockRejectedValue(err);
+    const user = userEvent.setup();
+    render(
+      <AlertSubscriptionModal
+        isOpen={true}
+        onClose={() => {}}
+        onSubscribe={onSubscribe}
+        allPoliticians={allPoliticians}
+        likedIds={["pol-a"]}
+      />
+    );
+    await user.type(screen.getByPlaceholderText("Email address"), "user@test.com");
+    await user.click(screen.getByText("Subscribe"));
+    expect(screen.getByText("Subscription exists, check email")).toBeInTheDocument();
+  });
+
+  it("shows email-failed message when error code is subscription_exists_email_failed", async () => {
+    const err = new Error("subscription_exists_email_failed");
+    err.code = "subscription_exists_email_failed";
+    const onSubscribe = vi.fn().mockRejectedValue(err);
+    const user = userEvent.setup();
+    render(
+      <AlertSubscriptionModal
+        isOpen={true}
+        onClose={() => {}}
+        onSubscribe={onSubscribe}
+        allPoliticians={allPoliticians}
+        likedIds={["pol-a"]}
+      />
+    );
+    await user.type(screen.getByPlaceholderText("Email address"), "user@test.com");
+    await user.click(screen.getByText("Subscribe"));
+    expect(screen.getByText("Subscription exists, email failed")).toBeInTheDocument();
   });
 
   it("calls onClose when backdrop is clicked", () => {

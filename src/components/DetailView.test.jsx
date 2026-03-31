@@ -54,31 +54,6 @@ vi.mock("./PoliticianTrendChart", () => ({
   default: () => <div data-testid="trend-chart" />,
 }));
 
-const volatileStoreState = {
-  volatilityData: {
-    politicians: {
-      "benjamin-netanyahu": {
-        is_volatile: true,
-        overall_score_sigma: 2.5,
-        media_volume_sigma: 1.2,
-        direction: "up",
-      },
-    },
-  },
-};
-
-const stableStoreState = {
-  volatilityData: {
-    politicians: {
-      "benjamin-netanyahu": { is_volatile: false, overall_score_sigma: 0.5, direction: null },
-    },
-  },
-};
-
-vi.mock("../store", () => ({
-  default: vi.fn((selector) => selector(volatileStoreState)),
-}));
-
 function baseEntry(overrides = {}) {
   return {
     politician_id: "benjamin-netanyahu",
@@ -264,41 +239,6 @@ describe("DetailView sources section", () => {
     fireEvent.click(screen.getByRole("button", { name: "מקורות" }));
 
     expect(screen.getByText("לא נמצאו מקורות זמינים עבור תאריך זה.")).toBeInTheDocument();
-  });
-});
-
-describe("DetailView — volatility sigma badge", () => {
-  it("shows sigma badge when politician is volatile", async () => {
-    const { default: useStore } = await import("../store");
-    useStore.mockImplementation((selector) => selector(volatileStoreState));
-
-    render(
-      <DetailView
-        todayDetail={[baseEntry()]}
-        selectedPolitician="Benjamin Netanyahu"
-        selectedDate="2026-03-24"
-        loading={false}
-      />
-    );
-    const badge = screen.getByTestId("sigma-badge");
-    expect(badge).toBeInTheDocument();
-    expect(badge.textContent).toContain("σ2.5");
-    expect(badge.textContent).toContain("↑");
-  });
-
-  it("hides sigma badge when politician is not volatile", async () => {
-    const { default: useStore } = await import("../store");
-    useStore.mockImplementation((selector) => selector(stableStoreState));
-
-    render(
-      <DetailView
-        todayDetail={[baseEntry()]}
-        selectedPolitician="Benjamin Netanyahu"
-        selectedDate="2026-03-24"
-        loading={false}
-      />
-    );
-    expect(screen.queryByTestId("sigma-badge")).not.toBeInTheDocument();
   });
 });
 

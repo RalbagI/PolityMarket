@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { renderHook, act } from "@testing-library/react";
+import { renderHook, act, waitFor } from "@testing-library/react";
 
 let useAlertState;
 
@@ -117,6 +117,25 @@ describe("useAlertState — subscribe", () => {
         await result.current.subscribe("bad", [], null);
       })
     ).rejects.toThrow("Invalid email");
+  });
+
+  it("attaches error code from API response", async () => {
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      ok: false,
+      json: () => Promise.resolve({ error: "subscription_exists" }),
+    });
+
+    const { result } = renderHook(() => useAlertState());
+
+    let caughtError;
+    try {
+      await act(async () => {
+        await result.current.subscribe("user@test.com", ["pol-a"], null);
+      });
+    } catch (err) {
+      caughtError = err;
+    }
+    expect(caughtError.code).toBe("subscription_exists");
   });
 });
 
@@ -295,6 +314,60 @@ describe("useAlertState — togglePolitician", () => {
     });
 
     expect(result.current.subscription.politicianIds).toEqual(["pol-a", "pol-b"]);
+  });
+});
+
+describe("useAlertState — recovery token from URL", () => {
+  it("hydrates subscription from API when recovered_token and recovered_email URL params are present", async () => {
+    const replaceStateSpy = vi.fn();
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () =>
+        Promise.resolve({
+          ok: true,
+          email: "user@test.com",
+          verified: true,
+          politicianIds: ["pol-a", "pol-b"],
+          webhookUrl: "https://example.com/hook",
+        }),
+    });
+    vi.stubGlobal("location", {
+      search: "?recovered_token=abc-123&recovered_email=user%40test.com",
+      href: "http://localhost/?recovered_token=abc-123&recovered_email=user%40test.com",
+      pathname: "/",
+      hash: "",
+    });
+    vi.stubGlobal("history", { replaceState: replaceStateSpy });
+
+    const { result } = renderHook(() => useAlertState());
+
+    await waitFor(() =>
+      expect(result.current.subscription).toEqual({
+        email: "user@test.com",
+        token: "abc-123",
+        verified: true,
+        politicianIds: ["pol-a", "pol-b"],
+        webhookUrl: "https://example.com/hook",
+      })
+    );
+
+    expect(globalThis.fetch).toHaveBeenCalledWith("/api/subscription?token=abc-123");
+    expect(replaceStateSpy).toHaveBeenCalled();
+  });
+
+  it("does nothing when URL has no recovery params", async () => {
+    vi.stubGlobal("location", {
+      search: "",
+      href: "http://localhost/",
+      pathname: "/",
+      hash: "",
+    });
+
+    const { result } = renderHook(() => useAlertState());
+    await act(async () => {});
+
+    expect(result.current.subscription).toBeNull();
+    expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 });
 

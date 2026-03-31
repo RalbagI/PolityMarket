@@ -172,6 +172,22 @@ describe("Sidebar party mode", () => {
   });
 });
 
+describe("Sidebar histogram removed", () => {
+  it("does not render the score histogram section", () => {
+    const { container } = render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+      />
+    );
+    const aside = container.querySelector("aside");
+    expect(aside.textContent).not.toContain("sidebar.histogram.title");
+  });
+});
+
 describe("Sidebar display options position", () => {
   it("renders DisplayOptions before FilterBar in the sidebar", () => {
     const { container } = render(

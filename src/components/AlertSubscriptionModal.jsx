@@ -71,8 +71,14 @@ export default function AlertSubscriptionModal({
     try {
       await onSubscribe(email.trim(), selectedIds, webhookUrl.trim() || null);
       setSuccess(true);
-    } catch {
-      setError(t("alerts.subscribeFailed"));
+    } catch (err) {
+      if (err.code === "subscription_exists") {
+        setError(t("alerts.subscriptionExists"));
+      } else if (err.code === "subscription_exists_email_failed") {
+        setError(t("alerts.subscriptionExistsEmailFailed"));
+      } else {
+        setError(t("alerts.subscribeFailed"));
+      }
     } finally {
       setSubmitting(false);
     }

@@ -1,9 +1,21 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { resolve } from "path";
+import { generatePoliticianNames } from "./scripts/generate-politician-names-he.js";
+
+function generatePoliticianNamesPlugin() {
+  return {
+    name: "generate-politician-names-he",
+    buildStart() {
+      generatePoliticianNames(resolve("."));
+    },
+  };
+}
 
 export default defineConfig({
   plugins: [
+    generatePoliticianNamesPlugin(),
     react({
       babel: {
         plugins:
