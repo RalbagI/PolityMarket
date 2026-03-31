@@ -56,32 +56,46 @@ vi.mock("../../src/lib/useFocusTrap", () => ({
 // ── Helpers ────────────────────────────────────────────────────────────
 
 const POLITICIANS = [
-  { politician_id: "benjamin-netanyahu", name: "Benjamin Netanyahu", party: "Likud", overall_score: 5.0, media_volume: 5 },
-  { politician_id: "yair-lapid", name: "Yair Lapid", party: "Yesh Atid", overall_score: 6.0, media_volume: 3 },
-];
-
-function makeTodayDetail(overrides = {}) {
-  return [{
+  {
     politician_id: "benjamin-netanyahu",
     name: "Benjamin Netanyahu",
     party: "Likud",
-    overall_score: 5.2,
+    overall_score: 5.0,
     media_volume: 5,
-    hostility_level: 0.5,
-    policy_approval: 0.2,
-    media_amplification: 0.6,
-    news_sentiment: 6,
-    dim_public_sentiment: 5.0,
-    dim_parliamentary_activity: 4.0,
-    dim_media_credibility: 6.0,
-    dim_transparency_ethics: 3.5,
-    dim_field_activity: 4.5,
-    dim_satire_cultural_impact: 5.5,
-    dim_legislative_quality: 4.0,
-    dim_flipflop_index: 6.0,
-    chain_of_thought: "Test analysis",
-    ...overrides,
-  }];
+  },
+  {
+    politician_id: "yair-lapid",
+    name: "Yair Lapid",
+    party: "Yesh Atid",
+    overall_score: 6.0,
+    media_volume: 3,
+  },
+];
+
+function makeTodayDetail(overrides = {}) {
+  return [
+    {
+      politician_id: "benjamin-netanyahu",
+      name: "Benjamin Netanyahu",
+      party: "Likud",
+      overall_score: 5.2,
+      media_volume: 5,
+      hostility_level: 0.5,
+      policy_approval: 0.2,
+      media_amplification: 0.6,
+      news_sentiment: 6,
+      dim_public_sentiment: 5.0,
+      dim_parliamentary_activity: 4.0,
+      dim_media_credibility: 6.0,
+      dim_transparency_ethics: 3.5,
+      dim_field_activity: 4.5,
+      dim_satire_cultural_impact: 5.5,
+      dim_legislative_quality: 4.0,
+      dim_flipflop_index: 6.0,
+      chain_of_thought: "Test analysis",
+      ...overrides,
+    },
+  ];
 }
 
 // ── Test Harness ──────────────────────────────────────────────────────
@@ -97,8 +111,12 @@ beforeEach(async () => {
   const storage = {};
   vi.stubGlobal("localStorage", {
     getItem: (key) => storage[key] ?? null,
-    setItem: (key, val) => { storage[key] = String(val); },
-    removeItem: (key) => { delete storage[key]; },
+    setItem: (key, val) => {
+      storage[key] = String(val);
+    },
+    removeItem: (key) => {
+      delete storage[key];
+    },
   });
 
   // Stub fetch
@@ -106,7 +124,8 @@ beforeEach(async () => {
 
   // Import fresh instances
   DetailView = (await import("../../src/components/DetailView.jsx")).default;
-  AlertSubscriptionModal = (await import("../../src/components/AlertSubscriptionModal.jsx")).default;
+  AlertSubscriptionModal = (await import("../../src/components/AlertSubscriptionModal.jsx"))
+    .default;
 });
 
 /**
@@ -203,11 +222,7 @@ describe("Alert subscription flow — form submission", () => {
     // Submit
     await user.click(within(dialog).getByText("Subscribe"));
 
-    expect(onSubscribe).toHaveBeenCalledWith(
-      "test@example.com",
-      ["benjamin-netanyahu"],
-      null
-    );
+    expect(onSubscribe).toHaveBeenCalledWith("test@example.com", ["benjamin-netanyahu"], null);
   });
 
   it("shows success message after successful subscription", async () => {
@@ -324,9 +339,7 @@ describe("Alert subscription flow — form submission", () => {
 
 describe("Alert subscription flow — bell icon states", () => {
   it("bell icon renders BellOff when not subscribed", () => {
-    render(
-      <AlertFlowHarness hasSubscription={false} />
-    );
+    render(<AlertFlowHarness hasSubscription={false} />);
 
     const bell = screen.getByTestId("alert-toggle");
     expect(bell).toHaveAttribute("aria-label", "Enable alerts");
@@ -392,8 +405,12 @@ describe("Alert subscription flow — useAlertState subscribe", () => {
     const storage = {};
     vi.stubGlobal("localStorage", {
       getItem: (key) => storage[key] ?? null,
-      setItem: (key, val) => { storage[key] = String(val); },
-      removeItem: (key) => { delete storage[key]; },
+      setItem: (key, val) => {
+        storage[key] = String(val);
+      },
+      removeItem: (key) => {
+        delete storage[key];
+      },
     });
 
     storage["politymarket-alert-subscription"] = JSON.stringify({
