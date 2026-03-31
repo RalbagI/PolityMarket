@@ -74,6 +74,8 @@ export default function AlertSubscriptionModal({
     } catch (err) {
       if (err.code === "subscription_exists") {
         setError(t("alerts.subscriptionExists"));
+      } else if (err.code === "subscription_exists_email_failed") {
+        setError(t("alerts.subscriptionExistsEmailFailed"));
       } else {
         setError(t("alerts.subscribeFailed"));
       }

@@ -43,11 +43,12 @@ export default function useAlertState() {
     url.searchParams.delete("recovered_email");
     window.history.replaceState({}, "", url.pathname + url.search);
 
-    // Restore subscription state so the user can manage it
+    // Restore subscription state so the user can manage it.
+    // verified is not set here — the actual status lives in Firestore.
     const recovered = {
       email: recoveredEmail,
       token: recoveredToken,
-      verified: true,
+      verified: false,
       politicianIds: [],
       webhookUrl: null,
     };

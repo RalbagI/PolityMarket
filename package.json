@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-politician-names-he.js",
     "build": "vite build",
     "lint": "eslint src tests",
     "lint:fix": "eslint src tests --fix",

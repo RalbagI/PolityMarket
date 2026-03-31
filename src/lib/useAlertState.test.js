@@ -335,7 +335,7 @@ describe("useAlertState — recovery token from URL", () => {
     expect(result.current.subscription).toEqual({
       email: "user@test.com",
       token: "abc-123",
-      verified: true,
+      verified: false,
       politicianIds: [],
       webhookUrl: null,
     });

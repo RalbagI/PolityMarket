@@ -207,6 +207,7 @@ export const api = onRequest(
 
         if (!requestToken || requestToken !== existingData.token) {
           // No valid token — send recovery email with existing token so user can manage subscription
+          let emailSent = false;
           try {
             const manageUrl = `${APP_URL}?recovered_token=${existingData.token}&recovered_email=${encodeURIComponent(email)}`;
             await sendEmail(RESEND_API_KEY.value(), {
@@ -226,10 +227,13 @@ export const api = onRequest(
                 </div>
               `,
             });
+            emailSent = true;
           } catch (err) {
             console.error("Recovery email failed:", err);
           }
-          res.status(409).json({ error: "subscription_exists" });
+          res.status(409).json({
+            error: emailSent ? "subscription_exists" : "subscription_exists_email_failed",
+          });
           return;
         }
 
