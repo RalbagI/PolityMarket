@@ -41,19 +41,46 @@ export default function useAlertState() {
     const url = new URL(window.location.href);
     url.searchParams.delete("recovered_token");
     url.searchParams.delete("recovered_email");
-    window.history.replaceState({}, "", url.pathname + url.search);
+    window.history.replaceState({}, "", url.pathname + url.search + url.hash);
 
-    // Restore subscription state so the user can manage it.
-    // verified is not set here — the actual status lives in Firestore.
-    const recovered = {
+    // Set immediate local state, then hydrate with backend values.
+    const initialRecovered = {
       email: recoveredEmail,
       token: recoveredToken,
       verified: false,
       politicianIds: [],
       webhookUrl: null,
     };
-    subRef.current = recovered;
-    setSub(recovered);
+    subRef.current = initialRecovered;
+    setSub(initialRecovered);
+
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(`/api/subscription?token=${encodeURIComponent(recoveredToken)}`);
+        if (!res.ok) return;
+        const payload = await res.json();
+        if (cancelled) return;
+
+        const hydrated = {
+          email: payload.email || recoveredEmail,
+          token: recoveredToken,
+          verified: payload.verified === true,
+          politicianIds: Array.isArray(payload.politicianIds)
+            ? payload.politicianIds
+            : initialRecovered.politicianIds,
+          webhookUrl: payload.webhookUrl ?? null,
+        };
+        subRef.current = hydrated;
+        setSub(hydrated);
+      } catch {
+        // Keep initial recovery state if hydration fails.
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {

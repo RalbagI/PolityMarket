@@ -89,10 +89,7 @@ async function sendWebhook(url, payload) {
 }
 
 // ── CORS helper ───────────────────────────────────────────────────────
-const ALLOWED_ORIGINS = [
-  "https://politymarket.web.app",
-  "https://politymarket.firebaseapp.com",
-];
+const ALLOWED_ORIGINS = ["https://politymarket.web.app", "https://politymarket.firebaseapp.com"];
 
 function setCorsHeaders(req, res) {
   const origin = req.headers.origin;
@@ -168,22 +165,23 @@ export const api = onRequest(
         return;
       }
 
-      if (politicianIds.length > 200 || !politicianIds.every((id) => typeof id === "string" && id.length < 100)) {
+      if (
+        politicianIds.length > 200 ||
+        !politicianIds.every((id) => typeof id === "string" && id.length < 100)
+      ) {
         res.status(400).json({ error: "Invalid politician IDs" });
         return;
       }
 
       if (webhookUrl && !isValidWebhookUrl(webhookUrl)) {
-        res.status(400).json({ error: "Webhook URL must be HTTPS and not target internal networks" });
+        res
+          .status(400)
+          .json({ error: "Webhook URL must be HTTPS and not target internal networks" });
         return;
       }
 
       // Check for existing subscription (also used for rate limiting)
-      const existing = await db
-        .collection(COLLECTION)
-        .where("email", "==", email)
-        .limit(1)
-        .get();
+      const existing = await db.collection(COLLECTION).where("email", "==", email).limit(1).get();
 
       if (!existing.empty) {
         const existingData = existing.docs[0].data();
@@ -192,8 +190,14 @@ export const api = onRequest(
         // Rate limit: 1-minute cooldown — only for unauthenticated requests (no token).
         // Authenticated toggle updates (with valid token) bypass the cooldown.
         if (!hasValidToken) {
-          const updatedAt = existingData.updatedAt?.toDate?.();
-          if (updatedAt && Date.now() - updatedAt.getTime() < 60_000) {
+          const updatedAt = existingData.updatedAt?.toDate?.() || null;
+          const lastRecoverySentAt = existingData.lastRecoverySentAt?.toDate?.() || null;
+          const lastUnauthedActionAt =
+            updatedAt && lastRecoverySentAt
+              ? new Date(Math.max(updatedAt.getTime(), lastRecoverySentAt.getTime()))
+              : updatedAt || lastRecoverySentAt;
+
+          if (lastUnauthedActionAt && Date.now() - lastUnauthedActionAt.getTime() < 60_000) {
             res.status(429).json({ error: "Too many requests. Try again in a minute." });
             return;
           }
@@ -230,6 +234,12 @@ export const api = onRequest(
             emailSent = true;
           } catch (err) {
             console.error("Recovery email failed:", err);
+          } finally {
+            try {
+              await doc.ref.update({ lastRecoverySentAt: FieldValue.serverTimestamp() });
+            } catch (stampErr) {
+              console.warn("Failed to update lastRecoverySentAt:", stampErr);
+            }
           }
           res.status(409).json({
             error: emailSent ? "subscription_exists" : "subscription_exists_email_failed",
@@ -258,6 +268,7 @@ export const api = onRequest(
         verified: false,
         createdAt: FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
+        lastRecoverySentAt: null,
         lastAlertedAt: null,
         lastAlertedBreaches: [],
         preferences: preferences || { scoreThresholdSigma: 2, notifyOn: "all" },
@@ -300,11 +311,7 @@ export const api = onRequest(
         return;
       }
 
-      const snap = await db
-        .collection(COLLECTION)
-        .where("token", "==", token)
-        .limit(1)
-        .get();
+      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
 
       if (snap.empty) {
         res.status(404).send("Subscription not found");
@@ -328,11 +335,7 @@ export const api = onRequest(
         return;
       }
 
-      const snap = await db
-        .collection(COLLECTION)
-        .where("token", "==", token)
-        .limit(1)
-        .get();
+      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
 
       // Idempotent unsubscribe for email links: do not leak existence.
       if (!snap.empty) {
@@ -351,11 +354,7 @@ export const api = onRequest(
         return;
       }
 
-      const snap = await db
-        .collection(COLLECTION)
-        .where("token", "==", token)
-        .limit(1)
-        .get();
+      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
 
       if (snap.empty) {
         res.status(404).json({ error: "Subscription not found" });
@@ -364,6 +363,32 @@ export const api = onRequest(
 
       await snap.docs[0].ref.delete();
       res.json({ ok: true });
+      return;
+    }
+
+    // ── GET /api/subscription?token=... ───────────────────────────────
+    if (urlPath === "/subscription" && req.method === "GET") {
+      const token = typeof req.query.token === "string" ? req.query.token : "";
+      if (!token) {
+        res.status(400).json({ error: "Token required" });
+        return;
+      }
+
+      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
+
+      if (snap.empty) {
+        res.status(404).json({ error: "Subscription not found" });
+        return;
+      }
+
+      const sub = snap.docs[0].data();
+      res.json({
+        ok: true,
+        email: sub.email || null,
+        verified: sub.verified === true,
+        politicianIds: Array.isArray(sub.politicianIds) ? sub.politicianIds : [],
+        webhookUrl: sub.webhookUrl || null,
+      });
       return;
     }
 
@@ -402,10 +427,7 @@ export const api = onRequest(
       }
 
       // Get all verified subscriptions
-      const subsSnap = await db
-        .collection(COLLECTION)
-        .where("verified", "==", true)
-        .get();
+      const subsSnap = await db.collection(COLLECTION).where("verified", "==", true).get();
 
       let emailsSent = 0;
       let webhooksSent = 0;

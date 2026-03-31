@@ -1,23 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
+import { generatePoliticianNames } from "./scripts/generate-politician-names-he.js";
 
 function generatePoliticianNamesPlugin() {
   return {
     name: "generate-politician-names-he",
     buildStart() {
-      const root = resolve(".");
-      const translation = JSON.parse(
-        readFileSync(resolve(root, "src/locales/he/translation.json"), "utf-8"),
-      );
-      const names = translation.politicians || {};
-      writeFileSync(
-        resolve(root, "public/data/politician_names_he.json"),
-        JSON.stringify(names, null, 2) + "\n",
-        "utf-8",
-      );
+      generatePoliticianNames(resolve("."));
     },
   };
 }

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { renderHook, act } from "@testing-library/react";
+import { renderHook, act, waitFor } from "@testing-library/react";
 
 let useAlertState;
 
@@ -318,27 +318,40 @@ describe("useAlertState — togglePolitician", () => {
 });
 
 describe("useAlertState — recovery token from URL", () => {
-  it("restores subscription from recovered_token and recovered_email URL params", async () => {
+  it("hydrates subscription from API when recovered_token and recovered_email URL params are present", async () => {
     const replaceStateSpy = vi.fn();
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () =>
+        Promise.resolve({
+          ok: true,
+          email: "user@test.com",
+          verified: true,
+          politicianIds: ["pol-a", "pol-b"],
+          webhookUrl: "https://example.com/hook",
+        }),
+    });
     vi.stubGlobal("location", {
       search: "?recovered_token=abc-123&recovered_email=user%40test.com",
       href: "http://localhost/?recovered_token=abc-123&recovered_email=user%40test.com",
       pathname: "/",
+      hash: "",
     });
     vi.stubGlobal("history", { replaceState: replaceStateSpy });
 
     const { result } = renderHook(() => useAlertState());
 
-    // Wait for the useEffect to run
-    await act(async () => {});
+    await waitFor(() =>
+      expect(result.current.subscription).toEqual({
+        email: "user@test.com",
+        token: "abc-123",
+        verified: true,
+        politicianIds: ["pol-a", "pol-b"],
+        webhookUrl: "https://example.com/hook",
+      })
+    );
 
-    expect(result.current.subscription).toEqual({
-      email: "user@test.com",
-      token: "abc-123",
-      verified: false,
-      politicianIds: [],
-      webhookUrl: null,
-    });
+    expect(globalThis.fetch).toHaveBeenCalledWith("/api/subscription?token=abc-123");
     expect(replaceStateSpy).toHaveBeenCalled();
   });
 
@@ -347,12 +360,14 @@ describe("useAlertState — recovery token from URL", () => {
       search: "",
       href: "http://localhost/",
       pathname: "/",
+      hash: "",
     });
 
     const { result } = renderHook(() => useAlertState());
     await act(async () => {});
 
     expect(result.current.subscription).toBeNull();
+    expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 });
 

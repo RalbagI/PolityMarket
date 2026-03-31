@@ -12,15 +12,22 @@ import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = resolve(__dirname, "..");
+const scriptPath = fileURLToPath(import.meta.url);
 
-const translation = JSON.parse(
-  readFileSync(resolve(root, "src/locales/he/translation.json"), "utf-8"),
-);
-const names = translation.politicians || {};
+export function generatePoliticianNames(rootDir = resolve(__dirname, "..")) {
+  const translation = JSON.parse(
+    readFileSync(resolve(rootDir, "src/locales/he/translation.json"), "utf-8")
+  );
+  const names = translation.politicians || {};
 
-const outPath = resolve(root, "public/data/politician_names_he.json");
-writeFileSync(outPath, JSON.stringify(names, null, 2) + "\n", "utf-8");
+  const outPath = resolve(rootDir, "public/data/politician_names_he.json");
+  writeFileSync(outPath, JSON.stringify(names, null, 2) + "\n", "utf-8");
 
-const count = Object.keys(names).length;
-console.log(`✓ Wrote ${count} politician names to public/data/politician_names_he.json`);
+  return Object.keys(names).length;
+}
+
+const isDirectRun = process.argv[1] && resolve(process.argv[1]) === scriptPath;
+if (isDirectRun) {
+  const count = generatePoliticianNames();
+  console.log(`✓ Wrote ${count} politician names to public/data/politician_names_he.json`);
+}
