@@ -147,17 +147,17 @@ export default function DetailView({
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-3 min-w-0">
           <Avatar name={entry.name} politicianId={entry.politician_id} size={64} />
-          <div>
-            <h4 className="text-lg font-bold text-white">{localizeName(t, entry.name)}</h4>
+          <div className="min-w-0">
+            <h4 className="text-lg font-bold text-white truncate">{localizeName(t, entry.name)}</h4>
             <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
               {localizeParty(t, entry.party)}
             </span>
           </div>
         </div>
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-3 shrink-0">
           {onToggleAlert && (
             <button
               onClick={() => onToggleAlert(entry.politician_id || entry.name)}
