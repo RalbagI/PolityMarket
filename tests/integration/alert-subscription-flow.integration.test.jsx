@@ -124,7 +124,7 @@ function AlertFlowHarness({ hasSubscription = false, onSubscribe }) {
         selectedDate="2026-03-30"
         loading={false}
         isAlertSubscribed={false}
-        onToggleAlert={(pid) => {
+        onToggleAlert={() => {
           if (hasSubscription) {
             // Would call togglePolitician in real app
           } else {
