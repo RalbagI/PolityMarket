@@ -388,6 +388,15 @@ export const api = onRequest(
 
       const politicians = volatilityData.politicians || {};
 
+      // Fetch Hebrew politician names for email localization
+      let hebrewNames = {};
+      try {
+        const namesRes = await fetch(`${APP_URL}/data/politician_names_he.json`);
+        if (namesRes.ok) hebrewNames = await namesRes.json();
+      } catch (err) {
+        console.warn("Failed to fetch Hebrew names, falling back to English:", err.message);
+      }
+
       // Get all verified subscriptions
       const subsSnap = await db
         .collection(COLLECTION)
@@ -423,7 +432,7 @@ export const api = onRequest(
           const breachList = newBreaches
             .map(
               (b) =>
-                `<li><strong>${b.name}</strong> — σ${Math.abs(b.overall_score_sigma ?? 0).toFixed(1)} ${b.direction === "up" ? "↑" : "↓"} (ציון: ${b.overall_score_latest})</li>`
+                `<li><strong>${hebrewNames[b.name] || b.name}</strong> — ${b.direction === "up" ? "↑ עלייה" : "↓ ירידה"} (ציון: ${b.overall_score_latest})</li>`
             )
             .join("");
 
