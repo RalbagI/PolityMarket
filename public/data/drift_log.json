@@ -654,5 +654,14 @@
       "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination"
     ],
     "timestamp": "2026-03-30T23:14:28.028Z"
+  },
+  {
+    "date": "2026-04-01",
+    "warnings": [
+      "[Temporal] Yulia Malinovsky: score 6.7 deviates 1.7 from 7-day avg 5.0 (threshold: 1.5)",
+      "[Temporal] Sharren Haskel: score 6.7 deviates 1.9 from 7-day avg 4.8 (threshold: 1.5)",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-04-01T00:08:03.101Z"
   }
 ]
