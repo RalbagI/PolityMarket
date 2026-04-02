@@ -707,5 +707,47 @@
       "[Outlier] Naftali Bennett: score 5.6 outside IQR bounds [4.6, 5.1]"
     ],
     "timestamp": "2026-04-01T23:31:48.574Z"
+  },
+  {
+    "date": "2026-04-03",
+    "warnings": [
+      "[Temporal] Haim Katz: score 6.5 deviates 1.8 from 7-day avg 4.7 (threshold: 1.5)",
+      "[Temporal] Ron Katz: score 6.3 deviates 1.6 from 7-day avg 4.7 (threshold: 1.5)",
+      "[Temporal] Simon Davidson: score 6.5 deviates 1.8 from 7-day avg 4.7 (threshold: 1.5)",
+      "[Outlier] Benjamin Netanyahu: score 5.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yariv Levin: score 4.5 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Nir Barkat: score 5.4 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yisrael Katz: score 6.5 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Boaz Bismuth: score 5.8 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Ofir Katz: score 6.5 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Amit Halevi: score 6.1 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Miki Zohar: score 6.3 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yoav Kish: score 6.5 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Haim Katz: score 6.5 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Miri Regev: score 5.7 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Idit Silman: score 6.7 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yair Lapid: score 5.6 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Ron Katz: score 6.3 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Simon Davidson: score 6.5 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Benny Gantz: score 6.4 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Gadi Eisenkot: score 5.6 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Aryeh Deri: score 5.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Michael Malchieli: score 6.2 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yitzhak Goldknopf: score 5.1 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Moshe Gafni: score 6.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Meir Porush: score 5.5 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Bezalel Smotrich: score 5.6 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Simcha Rothman: score 5.2 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Itamar Ben Gvir: score 4.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Limor Son Har-Melech: score 5.6 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Avigdor Lieberman: score 5.2 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Mansour Abbas: score 6.8 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Ayman Odeh: score 6.6 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Gilad Kariv: score 6.1 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Gideon Sa'ar: score 7.1 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Sharren Haskel: score 6.7 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Naftali Bennett: score 6.1 outside IQR bounds [4.8, 4.8]"
+    ],
+    "timestamp": "2026-04-02T23:12:45.840Z"
   }
 ]
