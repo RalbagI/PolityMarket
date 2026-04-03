@@ -707,6 +707,13 @@
     "dimensions": "השוואת ממדים",
     "back": "חזרה"
   },
+  "legendStrip": {
+    "scale": "ציון 0–10",
+    "red": "מתחת לממוצע",
+    "green": "מעל הממוצע",
+    "delta": "שינוי יומי",
+    "updated": "עדכון אחרון: {{date}}"
+  },
   "mobileFeed": {
     "compare": "השוואה",
     "sort": {

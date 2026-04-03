@@ -7,7 +7,6 @@ import useSidebarStats from "./lib/useSidebarStats";
 import Treemap from "./components/Treemap";
 import TopMoversStrip from "./components/TopMoversStrip";
 import WeeklyHighlights from "./components/WeeklyHighlights";
-import WeeklyHighlightsMini from "./components/WeeklyHighlightsMini";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
@@ -220,6 +219,21 @@ export default function App() {
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
       <main className="md:h-screen flex flex-col md:ms-[260px] pt-[calc(3.5rem+env(safe-area-inset-top))] md:pt-0">
+        {/* Legend strip + last updated */}
+        <div className="shrink-0 hidden md:flex items-center justify-between px-3 py-1 bg-gray-950 border-b border-gray-800/50 text-[10px] text-gray-500">
+          <span>
+            {t("legendStrip.scale")}
+            {" · "}
+            <span className="text-red-400">{t("legendStrip.red")}</span>
+            {" · "}
+            <span className="text-emerald-400">{t("legendStrip.green")}</span>
+            {" · "}
+            ▲▼ = {t("legendStrip.delta")}
+          </span>
+          {latestDate && (
+            <span>{t("legendStrip.updated", { date: latestDate })}</span>
+          )}
+        </div>
         {/* Treemap — full viewport on both mobile and desktop */}
         <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] flex flex-col">
           <div className="flex-1 min-h-0 flex">
@@ -232,10 +246,6 @@ export default function App() {
                   selectedPolitician={selectedPolitician}
                 />
               </ErrorBoundary>
-              {/* Mobile: floating weekly highlight card pinned to bottom of treemap */}
-              <div className="md:hidden absolute bottom-1 start-2 end-2 z-10 pointer-events-auto">
-                <WeeklyHighlightsMini onSelect={handleSelectPolitician} />
-              </div>
             </div>
             {/* Desktop: Weekly highlights sidebar */}
             <div className="hidden md:block w-[280px] shrink-0 border-s border-gray-800 bg-gray-950/80 overflow-y-auto p-3">

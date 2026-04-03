@@ -50,6 +50,9 @@ export default function TreemapLeaf({
     .join("")
     .slice(0, 2);
 
+  const showDelta = !tooSmall && d.delta != null && d.delta !== 0;
+  const deltaFontSize = Math.max(7, Math.min(11, sqrtArea / 8));
+
   return (
     <div
       role="button"
@@ -73,6 +76,26 @@ export default function TreemapLeaf({
         borderRadius: 4,
       }}
     >
+      {/* Delta badge — absolute positioned, doesn't affect name/score layout */}
+      {showDelta && (
+        <div
+          dir="ltr"
+          style={{
+            position: "absolute",
+            top: 2,
+            left: 2,
+            fontSize: deltaFontSize,
+            fontWeight: 700,
+            color: d.delta > 0 ? "#34d399" : "#f87171",
+            textShadow: "0 1px 3px rgba(0,0,0,0.9)",
+            lineHeight: 1,
+            zIndex: 1,
+          }}
+        >
+          {d.delta > 0 ? `▲${d.delta.toFixed(1)}` : `▼${d.delta.toFixed(1)}`}
+        </div>
+      )}
+
       {showInitials && (
         <div className="w-full h-full flex items-center justify-center">
           <span
