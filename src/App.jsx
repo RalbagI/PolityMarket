@@ -329,17 +329,19 @@ export default function App() {
         </Suspense>
       </ErrorBoundary>
 
-      <ErrorBoundary>
-        <Suspense fallback={null}>
-          <SlidePanel
-            isOpen={compareOpen}
-            onClose={() => setCompareOpen(false)}
-            title={t("compare.title")}
-          >
-            <CompareView todayData={enrichedData} onClose={() => setCompareOpen(false)} />
-          </SlidePanel>
-        </Suspense>
-      </ErrorBoundary>
+      {compareOpen && (
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <SlidePanel
+              isOpen={compareOpen}
+              onClose={() => setCompareOpen(false)}
+              title={t("compare.title")}
+            >
+              <CompareView todayData={enrichedData} />
+            </SlidePanel>
+          </Suspense>
+        </ErrorBoundary>
+      )}
 
       <MethodologyModal isOpen={methodologyOpen} onClose={() => setMethodologyOpen(false)} />
 
