@@ -1,8 +1,15 @@
+/* global process */
+
 import { onRequest } from "firebase-functions/v2/https";
 import { defineSecret } from "firebase-functions/params";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore, FieldValue } from "firebase-admin/firestore";
-import crypto from "crypto";
+import {
+  buildSubscriptionDocId,
+  createSubscriptionToken,
+  extractSubscriptionDocId,
+  normalizeEmail,
+} from "./lib/subscriptionIdentity.js";
 
 const app = initializeApp();
 const db = getFirestore(app);
@@ -13,6 +20,71 @@ const PIPELINE_AUTH_TOKEN = defineSecret("PIPELINE_AUTH_TOKEN");
 const COLLECTION = "alertSubscriptions";
 const APP_URL = "https://politymarket.web.app";
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "PolityMarket <onboarding@resend.dev>";
+
+function subscriptionsCollection() {
+  return db.collection(COLLECTION);
+}
+
+function buildHostedDataUrl(filename, { bustCache = false } = {}) {
+  const url = new URL(`/data/${filename}`, APP_URL);
+  if (bustCache) {
+    url.searchParams.set("ts", Date.now().toString());
+  }
+  return url.toString();
+}
+
+async function findLegacySubscriptionDocByNormalizedEmail(normalizedEmail) {
+  const exactNormalized = await subscriptionsCollection()
+    .where("emailNormalized", "==", normalizedEmail)
+    .limit(1)
+    .get();
+  if (!exactNormalized.empty) return exactNormalized.docs[0];
+
+  const exactLowercase = await subscriptionsCollection()
+    .where("email", "==", normalizedEmail)
+    .limit(1)
+    .get();
+  if (!exactLowercase.empty) return exactLowercase.docs[0];
+
+  const legacyEmailOnly = await subscriptionsCollection().select("email").get();
+  const matchedRef = legacyEmailOnly.docs.find(
+    (doc) => normalizeEmail(doc.data()?.email) === normalizedEmail
+  )?.ref;
+
+  return matchedRef ? matchedRef.get() : null;
+}
+
+async function getSubscriptionDocByEmail(
+  email,
+  normalizedEmail = normalizeEmail(email),
+  { allowLegacyNormalizedScan = false } = {}
+) {
+  const docId = buildSubscriptionDocId(normalizedEmail);
+  if (docId) {
+    const directDoc = await subscriptionsCollection().doc(docId).get();
+    if (directDoc.exists) return directDoc;
+  }
+
+  const legacy = await subscriptionsCollection().where("email", "==", email).limit(1).get();
+  if (!legacy.empty) return legacy.docs[0];
+
+  if (!allowLegacyNormalizedScan) return null;
+
+  return findLegacySubscriptionDocByNormalizedEmail(normalizedEmail);
+}
+
+async function getSubscriptionDocByToken(token) {
+  const docId = extractSubscriptionDocId(token);
+  if (docId) {
+    const directDoc = await subscriptionsCollection().doc(docId).get();
+    if (directDoc.exists && directDoc.data()?.token === token) {
+      return directDoc;
+    }
+  }
+
+  const legacy = await subscriptionsCollection().where("token", "==", token).limit(1).get();
+  return legacy.empty ? null : legacy.docs[0];
+}
 
 // ── Helper: validate email format ─────────────────────────────────────
 function isValidEmail(email) {
@@ -154,8 +226,9 @@ export const api = onRequest(
     // ── POST /api/subscribe ───────────────────────────────────────────
     if (urlPath === "/subscribe" && req.method === "POST") {
       const { email, politicianIds, webhookUrl, preferences } = req.body || {};
+      const normalizedEmail = normalizeEmail(email);
 
-      if (!email || !isValidEmail(email)) {
+      if (!normalizedEmail || !isValidEmail(normalizedEmail)) {
         res.status(400).json({ error: "Valid email required" });
         return;
       }
@@ -181,10 +254,12 @@ export const api = onRequest(
       }
 
       // Check for existing subscription (also used for rate limiting)
-      const existing = await db.collection(COLLECTION).where("email", "==", email).limit(1).get();
+      const existing = await getSubscriptionDocByEmail(email, normalizedEmail, {
+        allowLegacyNormalizedScan: true,
+      });
 
-      if (!existing.empty) {
-        const existingData = existing.docs[0].data();
+      if (existing) {
+        const existingData = existing.data();
         const hasValidToken = req.body.token && req.body.token === existingData.token;
 
         // Rate limit: 1-minute cooldown — only for unauthenticated requests (no token).
@@ -204,8 +279,8 @@ export const api = onRequest(
         }
       }
 
-      if (!existing.empty) {
-        const doc = existing.docs[0];
+      if (existing) {
+        const doc = existing;
         const existingData = doc.data();
         const { token: requestToken } = req.body;
 
@@ -213,9 +288,9 @@ export const api = onRequest(
           // No valid token — send recovery email with existing token so user can manage subscription
           let emailSent = false;
           try {
-            const manageUrl = `${APP_URL}?recovered_token=${existingData.token}&recovered_email=${encodeURIComponent(email)}`;
+            const manageUrl = `${APP_URL}?recovered_token=${existingData.token}&recovered_email=${encodeURIComponent(normalizedEmail)}`;
             await sendEmail(RESEND_API_KEY.value(), {
-              to: email,
+              to: normalizedEmail,
               subject: "PolityMarket — שחזור הרשמה להתראות",
               html: `
                 <div dir="rtl" style="font-family: sans-serif; max-width: 500px; margin: 0 auto;">
@@ -259,9 +334,11 @@ export const api = onRequest(
       }
 
       // Create new subscription
-      const token = crypto.randomUUID();
+      const docId = buildSubscriptionDocId(normalizedEmail);
+      const token = createSubscriptionToken(docId);
       const docData = {
-        email,
+        email: normalizedEmail,
+        emailNormalized: normalizedEmail,
         webhookUrl: webhookUrl || null,
         politicianIds,
         token,
@@ -274,13 +351,13 @@ export const api = onRequest(
         preferences: preferences || { scoreThresholdSigma: 2, notifyOn: "all" },
       };
 
-      await db.collection(COLLECTION).add(docData);
+      await subscriptionsCollection().doc(docId).set(docData);
 
       // Send verification email
       const verifyUrl = `${APP_URL}/api/verify?token=${token}`;
       try {
         await sendEmail(RESEND_API_KEY.value(), {
-          to: email,
+          to: normalizedEmail,
           subject: "PolityMarket — אימות הרשמה להתראות",
           html: `
             <div dir="rtl" style="font-family: sans-serif; max-width: 500px; margin: 0 auto;">
@@ -311,14 +388,13 @@ export const api = onRequest(
         return;
       }
 
-      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
-
-      if (snap.empty) {
+      const doc = await getSubscriptionDocByToken(token);
+      if (!doc) {
         res.status(404).send("Subscription not found");
         return;
       }
 
-      await snap.docs[0].ref.update({
+      await doc.ref.update({
         verified: true,
         updatedAt: FieldValue.serverTimestamp(),
       });
@@ -335,11 +411,10 @@ export const api = onRequest(
         return;
       }
 
-      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
-
       // Idempotent unsubscribe for email links: do not leak existence.
-      if (!snap.empty) {
-        await snap.docs[0].ref.delete();
+      const doc = await getSubscriptionDocByToken(token);
+      if (doc) {
+        await doc.ref.delete();
       }
 
       res.redirect(`${APP_URL}?unsubscribed=true`);
@@ -354,14 +429,13 @@ export const api = onRequest(
         return;
       }
 
-      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
-
-      if (snap.empty) {
+      const doc = await getSubscriptionDocByToken(token);
+      if (!doc) {
         res.status(404).json({ error: "Subscription not found" });
         return;
       }
 
-      await snap.docs[0].ref.delete();
+      await doc.ref.delete();
       res.json({ ok: true });
       return;
     }
@@ -374,14 +448,13 @@ export const api = onRequest(
         return;
       }
 
-      const snap = await db.collection(COLLECTION).where("token", "==", token).limit(1).get();
-
-      if (snap.empty) {
+      const doc = await getSubscriptionDocByToken(token);
+      if (!doc) {
         res.status(404).json({ error: "Subscription not found" });
         return;
       }
 
-      const sub = snap.docs[0].data();
+      const sub = doc.data();
       res.json({
         ok: true,
         email: sub.email || null,
@@ -407,7 +480,9 @@ export const api = onRequest(
       // Fetch latest volatility data
       let volatilityData;
       try {
-        const volRes = await fetch(`${APP_URL}/data/volatility_data.json`);
+        const volRes = await fetch(buildHostedDataUrl("volatility_data.json", { bustCache: true }), {
+          cache: "no-store",
+        });
         if (!volRes.ok) throw new Error(`HTTP ${volRes.status}`);
         volatilityData = await volRes.json();
       } catch (err) {
@@ -420,14 +495,17 @@ export const api = onRequest(
       // Fetch Hebrew politician names for email localization
       let hebrewNames = {};
       try {
-        const namesRes = await fetch(`${APP_URL}/data/politician_names_he.json`);
+        const namesRes = await fetch(
+          buildHostedDataUrl("politician_names_he.json", { bustCache: true }),
+          { cache: "no-store" }
+        );
         if (namesRes.ok) hebrewNames = await namesRes.json();
       } catch (err) {
         console.warn("Failed to fetch Hebrew names, falling back to English:", err.message);
       }
 
       // Get all verified subscriptions
-      const subsSnap = await db.collection(COLLECTION).where("verified", "==", true).get();
+      const subsSnap = await subscriptionsCollection().where("verified", "==", true).get();
 
       let emailsSent = 0;
       let webhooksSent = 0;

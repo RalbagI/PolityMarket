@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const SUMMARY_CACHE_TTL = 5 * 60 * 1000; // 5 minutes stale-while-revalidate
+const SUMMARY_CACHE_TTL = 60 * 60 * 1000; // 1 hour stale-while-revalidate for daily data
 
 const useStore = create((set, get) => ({
   // ── Summary Data Slice (with caching) ──────────────────────────────

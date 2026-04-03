@@ -1,6 +1,23 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 
 const STORAGE_KEY = "politymarket-alert-subscription";
+const DEFAULT_SYNC_DEBOUNCE_MS = 1000;
+
+function getSyncDebounceMs() {
+  if (
+    typeof window !== "undefined" &&
+    Number.isFinite(window.__POLITYMARKET_ALERT_SYNC_MS__) &&
+    window.__POLITYMARKET_ALERT_SYNC_MS__ >= 0
+  ) {
+    return window.__POLITYMARKET_ALERT_SYNC_MS__;
+  }
+
+  if (import.meta.env?.MODE === "test" || import.meta.env?.VITEST) {
+    return 0;
+  }
+
+  return DEFAULT_SYNC_DEBOUNCE_MS;
+}
 
 function loadState() {
   try {
@@ -29,6 +46,80 @@ function saveState(state) {
 export default function useAlertState() {
   const [sub, setSub] = useState(loadState);
   const subRef = useRef(sub);
+  const lastConfirmedSubRef = useRef(sub);
+  const pendingSyncRef = useRef(null);
+  const syncTimerRef = useRef(null);
+  const syncVersionRef = useRef(0);
+  const syncDebounceMs = getSyncDebounceMs();
+
+  const postSubscriptionUpdate = useCallback(async (snapshot, { keepalive = false } = {}) => {
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      ...(keepalive ? { keepalive: true } : {}),
+      body: JSON.stringify({
+        email: snapshot.email,
+        politicianIds: snapshot.politicianIds,
+        webhookUrl: snapshot.webhookUrl || undefined,
+        token: snapshot.token || undefined,
+      }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || "Toggle subscription failed");
+    }
+  }, []);
+
+  const clearSyncTimer = useCallback(() => {
+    if (syncTimerRef.current != null) {
+      clearTimeout(syncTimerRef.current);
+      syncTimerRef.current = null;
+    }
+  }, []);
+
+  const flushPendingSync = useCallback(
+    async ({ keepalive = false } = {}) => {
+      clearSyncTimer();
+      while (pendingSyncRef.current) {
+        const pending = pendingSyncRef.current;
+        pendingSyncRef.current = null;
+
+        try {
+          await postSubscriptionUpdate(pending.snapshot, { keepalive });
+          if (syncVersionRef.current === pending.version) {
+            lastConfirmedSubRef.current = pending.snapshot;
+          }
+        } catch {
+          if (!pendingSyncRef.current && syncVersionRef.current === pending.version) {
+            subRef.current = lastConfirmedSubRef.current;
+            setSub(lastConfirmedSubRef.current);
+          }
+          return false;
+        }
+      }
+
+      return true;
+    },
+    [clearSyncTimer, postSubscriptionUpdate]
+  );
+
+  const queueSubscriptionSync = useCallback(
+    async (snapshot) => {
+      syncVersionRef.current += 1;
+      pendingSyncRef.current = { version: syncVersionRef.current, snapshot };
+
+      if (syncDebounceMs <= 0) {
+        return flushPendingSync();
+      }
+
+      clearSyncTimer();
+      syncTimerRef.current = setTimeout(() => {
+        void flushPendingSync();
+      }, syncDebounceMs);
+      return true;
+    },
+    [clearSyncTimer, flushPendingSync, syncDebounceMs]
+  );
 
   // Recover subscription from URL token (sent via recovery email)
   useEffect(() => {
@@ -51,12 +142,14 @@ export default function useAlertState() {
       politicianIds: [],
       webhookUrl: null,
     };
-    subRef.current = initialRecovered;
-    setSub(initialRecovered);
 
     let cancelled = false;
     (async () => {
       try {
+        subRef.current = initialRecovered;
+        lastConfirmedSubRef.current = initialRecovered;
+        setSub(initialRecovered);
+
         const res = await fetch(`/api/subscription?token=${encodeURIComponent(recoveredToken)}`);
         if (!res.ok) return;
         const payload = await res.json();
@@ -72,6 +165,7 @@ export default function useAlertState() {
           webhookUrl: payload.webhookUrl ?? null,
         };
         subRef.current = hydrated;
+        lastConfirmedSubRef.current = hydrated;
         setSub(hydrated);
       } catch {
         // Keep initial recovery state if hydration fails.
@@ -87,6 +181,28 @@ export default function useAlertState() {
     subRef.current = sub;
     saveState(sub);
   }, [sub]);
+
+  useEffect(() => {
+    function flushOnBackground() {
+      if (pendingSyncRef.current) {
+        void flushPendingSync({ keepalive: true });
+      }
+    }
+
+    function handleVisibilityChange() {
+      if (document.visibilityState === "hidden") {
+        flushOnBackground();
+      }
+    }
+
+    window.addEventListener("pagehide", flushOnBackground);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      window.removeEventListener("pagehide", flushOnBackground);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      clearSyncTimer();
+    };
+  }, [clearSyncTimer, flushPendingSync]);
 
   const isSubscribed = useCallback(
     (politicianId) => {
@@ -124,6 +240,7 @@ export default function useAlertState() {
       webhookUrl: webhookUrl || null,
     };
     subRef.current = nextSub;
+    lastConfirmedSubRef.current = nextSub;
     setSub(nextSub);
     return data;
   }, []);
@@ -143,33 +260,15 @@ export default function useAlertState() {
       subRef.current = optimisticSub;
       setSub((prev) => (prev ? { ...prev, politicianIds: next } : optimisticSub));
 
-      try {
-        const res = await fetch("/api/subscribe", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: latest.email,
-            politicianIds: next,
-            webhookUrl: latest.webhookUrl || undefined,
-            token: latest.token,
-          }),
-        });
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({}));
-          throw new Error(err.error || "Toggle subscription failed");
-        }
-      } catch {
-        // Revert on failure
-        const revertedSub = { ...latest, politicianIds: current };
-        subRef.current = revertedSub;
-        setSub((prev) => (prev ? { ...prev, politicianIds: current } : revertedSub));
-      }
+      await queueSubscriptionSync(optimisticSub);
     },
-    [] // no dependency on sub — reads latest from mutable ref
+    [queueSubscriptionSync] // no dependency on sub — reads latest from mutable ref
   );
 
   const unsubscribe = useCallback(async () => {
     if (!sub?.token) return;
+    clearSyncTimer();
+    pendingSyncRef.current = null;
     try {
       await fetch("/api/unsubscribe", {
         method: "POST",
@@ -179,8 +278,9 @@ export default function useAlertState() {
     } catch {
       // Continue with local cleanup even if API fails
     }
+    lastConfirmedSubRef.current = null;
     setSub(null);
-  }, [sub]);
+  }, [clearSyncTimer, sub]);
 
   return {
     subscription: sub,
