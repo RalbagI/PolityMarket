@@ -1,6 +1,6 @@
 /**
  * Dynamically re-normalize scores for the visible politician subset.
- * Maps overall_score and media_volume to 0-1 relative scale based on
+ * Maps market_score and media_volume to 0-1 relative scale based on
  * the current min/max of the visible set — not the global dataset.
  *
  * This ensures the treemap fills the viewport meaningfully even when
@@ -9,7 +9,10 @@
 export default function normalizeScores(visiblePoliticians) {
   if (!visiblePoliticians.length) return [];
 
-  const scores = visiblePoliticians.map((p) => p.overall_score);
+  const resolveScore = (entry) =>
+    Number.isFinite(entry.market_score) ? entry.market_score : (entry.overall_score ?? 0) * 10;
+
+  const scores = visiblePoliticians.map(resolveScore);
   const volumes = visiblePoliticians.map((p) => p.media_volume);
 
   const minScore = Math.min(...scores);
@@ -22,7 +25,7 @@ export default function normalizeScores(visiblePoliticians) {
 
   return visiblePoliticians.map((p) => ({
     ...p,
-    normalizedScore: (p.overall_score - minScore) / scoreRange,
+    normalizedScore: (resolveScore(p) - minScore) / scoreRange,
     normalizedVolume: (p.media_volume - minVolume) / volumeRange,
     // Ensure minimum visible size in treemap
     treemapValue: Math.max(p.media_volume, minVolume + volumeRange * 0.1),

@@ -1,8 +1,11 @@
 #!/usr/bin/env node
+/* global process */
 
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { aggregateParties } from "../data-pipeline/lib/validation.js";
+import { annotateMarketTimeline } from "../src/lib/marketScore.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,6 +13,7 @@ const repoRoot = path.resolve(__dirname, "..");
 const dataRoot = path.join(repoRoot, "public", "data");
 const detailsDir = path.join(dataRoot, "details");
 const summaryPath = path.join(dataRoot, "timeseries_summary.json");
+const partySummaryPath = path.join(dataRoot, "party_summary.json");
 
 function parseArgs(argv) {
   const args = {};
@@ -61,6 +65,14 @@ function compareByPoliticianId(a, b) {
   return a.politician_id.localeCompare(b.politician_id);
 }
 
+function compareByDateThenPoliticianId(a, b) {
+  return a.date.localeCompare(b.date) || a.politician_id.localeCompare(b.politician_id);
+}
+
+function compareByDateThenParty(a, b) {
+  return a.date.localeCompare(b.date) || a.party.localeCompare(b.party);
+}
+
 const args = parseArgs(process.argv.slice(2));
 const expected = Number.parseInt(
   args.expected || process.env.PIPELINE_EXPECTED_POLITICIAN_COUNT || "135",
@@ -78,33 +90,34 @@ if (!Array.isArray(summary)) fail("timeseries_summary.json must be an array");
 
 let templateDate = args["template-date"];
 if (!templateDate) {
-  templateDate = [...allDates]
-    .reverse()
-    .find((date) => {
-      const detailRows = readJson(path.join(detailsDir, `${date}.json`));
-      const summaryRows = getSummaryRowsByDate(summary, date);
-      return (
-        Array.isArray(detailRows) &&
-        detailRows.length === expected &&
-        getUniqueIdCount(detailRows) === expected &&
-        summaryRows.length === expected &&
-        getUniqueIdCount(summaryRows) === expected
-      );
-    });
+  templateDate = [...allDates].reverse().find((date) => {
+    const detailRows = readJson(path.join(detailsDir, `${date}.json`));
+    const summaryRows = getSummaryRowsByDate(summary, date);
+    return (
+      Array.isArray(detailRows) &&
+      detailRows.length === expected &&
+      getUniqueIdCount(detailRows) === expected &&
+      summaryRows.length === expected &&
+      getUniqueIdCount(summaryRows) === expected
+    );
+  });
 }
 if (!templateDate) {
   fail(`Could not find a template date with ${expected} detail and summary rows`);
 }
 
 const templateDetailPath = path.join(detailsDir, `${templateDate}.json`);
-if (!fs.existsSync(templateDetailPath)) fail(`Template detail file not found: ${templateDetailPath}`);
+if (!fs.existsSync(templateDetailPath))
+  fail(`Template detail file not found: ${templateDetailPath}`);
 
 const templateDetails = readJson(templateDetailPath);
 const templateSummaryRows = getSummaryRowsByDate(summary, templateDate);
 
 if (!Array.isArray(templateDetails)) fail(`Template detail file is not an array: ${templateDate}`);
 if (templateDetails.length !== expected) {
-  fail(`Template detail count mismatch for ${templateDate}: expected ${expected}, got ${templateDetails.length}`);
+  fail(
+    `Template detail count mismatch for ${templateDate}: expected ${expected}, got ${templateDetails.length}`
+  );
 }
 if (getUniqueIdCount(templateDetails) !== expected) {
   fail(`Template detail unique ID mismatch for ${templateDate}`);
@@ -195,9 +208,46 @@ for (const date of targetDates) {
   }
 }
 
-summary.sort((a, b) => a.date.localeCompare(b.date) || a.politician_id.localeCompare(b.politician_id));
-writeJson(summaryPath, summary);
+const annotatedSummary = annotateMarketTimeline(summary, { entityKey: "politician_id" }).sort(
+  compareByDateThenPoliticianId
+);
+writeJson(summaryPath, annotatedSummary);
+
+const summaryMarketLookup = new Map(
+  annotatedSummary.map((row) => [`${row.date}::${row.politician_id}`, row])
+);
+const rebuiltPartySummary = [];
+
+for (const date of allDates) {
+  const detailPath = path.join(detailsDir, `${date}.json`);
+  const detailRows = readJson(detailPath);
+  if (!Array.isArray(detailRows)) fail(`Detail file is not an array: ${detailPath}`);
+
+  const detailWithMarket = detailRows.map((row) => {
+    const marketRow = summaryMarketLookup.get(`${date}::${row.politician_id}`);
+    if (!marketRow) return row;
+    return {
+      ...row,
+      market_score: marketRow.market_score ?? null,
+      market_percentile: marketRow.market_percentile ?? null,
+      market_tier: marketRow.market_tier ?? null,
+      market_delta_points: marketRow.market_delta_points ?? null,
+      market_delta_pct: marketRow.market_delta_pct ?? null,
+    };
+  });
+
+  if (JSON.stringify(detailRows) !== JSON.stringify(detailWithMarket)) {
+    writeJson(detailPath, detailWithMarket);
+  }
+
+  rebuiltPartySummary.push(...aggregateParties(detailWithMarket, date));
+}
+
+const annotatedPartySummary = annotateMarketTimeline(rebuiltPartySummary, {
+  entityKey: "party",
+}).sort(compareByDateThenParty);
+writeJson(partySummaryPath, annotatedPartySummary);
 
 console.log(
-  `Backfill complete. Template=${templateDate}, expected=${expected}, mutated_dates=${mutatedDates}`
+  `Backfill complete. Template=${templateDate}, expected=${expected}, mutated_dates=${mutatedDates}, party_rows=${annotatedPartySummary.length}`
 );

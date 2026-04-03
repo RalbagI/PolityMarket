@@ -7,7 +7,7 @@
  * - Data persistence: appendToSummary, writeDetailFile, writePartySummary, pruneOldDetails
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import fs from "fs";
 import path from "path";
 import {
@@ -18,10 +18,6 @@ import {
   renderSearchTemplate,
   parsePositiveInt,
   getCurrentDateString,
-  appendToSummary,
-  writeDetailFile,
-  writePartySummary,
-  pruneOldDetails,
 } from "./generateDailyScores.js";
 
 // ── normalizeText ─────────────────────────────────────────────────────
@@ -232,7 +228,6 @@ describe("data persistence", () => {
 
   describe("appendToSummary", () => {
     it("creates summary file if it doesn't exist", () => {
-      const summaryPath = path.join(TEMP_DIR, "summary.json");
       const entries = [
         {
           date: "2026-03-24",

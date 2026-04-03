@@ -14,14 +14,21 @@ import {
 } from "recharts";
 import { format, parseISO } from "date-fns";
 
-export default memo(function PoliticianTrendChart({ politicianName }) {
+export default memo(function PoliticianTrendChart({
+  politicianName,
+  summaryData: summaryDataProp,
+}) {
   const { t } = useTranslation();
-  const summaryData = useStore((s) => s.summaryData);
+  const summaryDataFromStore = useStore((s) => s.summaryData);
   const smaMode = useStore((s) => s.smaMode);
   const setSmaMode = useStore((s) => s.setSmaMode);
+  const summaryData = summaryDataProp || summaryDataFromStore;
 
   const chartData = useMemo(() => {
     if (!summaryData.length || !politicianName) return [];
+
+    const resolveScore = (entry) =>
+      Number.isFinite(entry.market_score) ? entry.market_score : (entry.overall_score ?? 0) * 10;
 
     // Build O(1) lookup by date for the selected politician
     const byDate = new Map();
@@ -34,7 +41,7 @@ export default memo(function PoliticianTrendChart({ politicianName }) {
 
     const rawScores = dates.map((date) => {
       const entry = byDate.get(date);
-      return entry ? entry.overall_score : null;
+      return entry ? resolveScore(entry) : null;
     });
 
     const rawVolumes = dates.map((date) => {
@@ -100,7 +107,7 @@ export default memo(function PoliticianTrendChart({ politicianName }) {
               yAxisId="right"
               orientation="right"
               tick={{ fontSize: 10, fill: "#6b7280" }}
-              domain={[0, 10]}
+              domain={[0, 100]}
               width={30}
             />
             <Tooltip

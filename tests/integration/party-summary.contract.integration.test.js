@@ -11,6 +11,11 @@ const partySummaryEntrySchema = z.object({
   member_count: z.number().optional(),
   overall_score: z.number(),
   media_volume: z.number(),
+  market_score: z.number().nullable(),
+  market_percentile: z.number().nullable(),
+  market_tier: z.enum(["S", "A", "B", "C"]).nullable(),
+  market_delta_points: z.number().nullable(),
+  market_delta_pct: z.number().nullable(),
 });
 
 const partySummarySchema = z.array(partySummaryEntrySchema);
@@ -37,6 +42,11 @@ describe("party summary API contract integration boilerplate", () => {
         member_count: 12,
         overall_score: 6.7,
         media_volume: 315,
+        market_score: 71.2,
+        market_percentile: 62,
+        market_tier: "A",
+        market_delta_points: -1.4,
+        market_delta_pct: -1.9,
       },
     ];
 

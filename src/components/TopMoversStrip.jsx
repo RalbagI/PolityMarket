@@ -9,13 +9,15 @@ export default function TopMoversStrip({ data, onSelect }) {
   const { risers, fallers } = useMemo(() => {
     if (!data || !data.length) return { risers: [], fallers: [] };
 
-    const withDelta = data.filter((d) => d.delta != null && d.delta !== 0);
-    const sorted = [...withDelta].sort((a, b) => b.delta - a.delta);
+    const withDelta = data.filter(
+      (d) => d.market_delta_points != null && d.market_delta_points !== 0
+    );
+    const sorted = [...withDelta].sort((a, b) => b.market_delta_points - a.market_delta_points);
 
     return {
-      risers: sorted.filter((d) => d.delta > 0).slice(0, 3),
+      risers: sorted.filter((d) => d.market_delta_points > 0).slice(0, 3),
       fallers: sorted
-        .filter((d) => d.delta < 0)
+        .filter((d) => d.market_delta_points < 0)
         .slice(-3)
         .reverse(),
     };
@@ -51,13 +53,13 @@ export default function TopMoversStrip({ data, onSelect }) {
               key={d.politician_id || d.name}
               onClick={() => onSelect(d.name)}
               className="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors shrink-0"
-              aria-label={`${d.displayName || localizeName(t, d.name)}: +${d.delta.toFixed(1)}`}
+              aria-label={`${d.displayName || localizeName(t, d.name)}: +${d.market_delta_points.toFixed(1)}`}
             >
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {d.displayName || localizeName(t, d.name)}
               </span>
               <span className="text-xs text-emerald-400 font-bold tabular-nums" dir="ltr">
-                {`+${d.delta.toFixed(1)}`}
+                +{d.market_delta_points.toFixed(1)}
               </span>
             </button>
           ))}
@@ -79,13 +81,13 @@ export default function TopMoversStrip({ data, onSelect }) {
               key={d.politician_id || d.name}
               onClick={() => onSelect(d.name)}
               className="flex items-center gap-1 px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 transition-colors shrink-0"
-              aria-label={`${d.displayName || localizeName(t, d.name)}: ${d.delta.toFixed(1)}`}
+              aria-label={`${d.displayName || localizeName(t, d.name)}: ${d.market_delta_points.toFixed(1)}`}
             >
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {d.displayName || localizeName(t, d.name)}
               </span>
               <span className="text-xs text-red-400 font-bold tabular-nums" dir="ltr">
-                {d.delta.toFixed(1)}
+                {d.market_delta_points.toFixed(1)}
               </span>
             </button>
           ))}

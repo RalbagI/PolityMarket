@@ -5,9 +5,11 @@ import {
   FileText,
   Heart,
   TrendingUp,
+  TrendingDown,
   ChevronDown,
   Bell,
   BellOff,
+  Minus,
 } from "lucide-react";
 import AiAnalysisBlock from "./AiAnalysisBlock";
 import { useTranslation } from "react-i18next";
@@ -16,6 +18,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import PoliticianTrendChart from "./PoliticianTrendChart";
 import { localizeName, localizeParty } from "../lib/localize";
 import Avatar from "./Avatar";
+import { getMarketTierLabel } from "../lib/marketScore";
 
 const DIM_CONFIG = Object.freeze([
   { field: "dim_public_sentiment", key: "publicSentiment", color: "#6366f1", weight: "25%" },
@@ -96,11 +99,27 @@ function extractSourceUrl(threadContext = []) {
   return /^https?:\/\//i.test(url) ? url : null;
 }
 
+function getTierBadgeClass(tier) {
+  switch (tier) {
+    case "S":
+      return "bg-emerald-500/15 text-emerald-300 border-emerald-500/30";
+    case "A":
+      return "bg-lime-500/15 text-lime-300 border-lime-500/30";
+    case "B":
+      return "bg-gray-700/40 text-gray-200 border-gray-600";
+    case "C":
+      return "bg-red-500/15 text-red-300 border-red-500/30";
+    default:
+      return "bg-gray-800 text-gray-300 border-gray-700";
+  }
+}
+
 export default function DetailView({
   todayDetail,
   selectedPolitician,
   selectedDate,
   loading,
+  summaryData,
   isLiked,
   onToggleLike,
   isAlertSubscribed,
@@ -141,6 +160,19 @@ export default function DetailView({
   const nonNullDims = DIM_CONFIG.filter(
     ({ field }) => entry[field] != null && Number.isFinite(entry[field])
   ).length;
+  const displayScore = Number.isFinite(entry.market_score)
+    ? Math.round(entry.market_score)
+    : Math.round((entry.overall_score ?? 0) * 10);
+  const displayPercentile = Number.isFinite(entry.market_percentile)
+    ? Math.round(entry.market_percentile)
+    : null;
+  const deltaPoints = Number.isFinite(entry.market_delta_points) ? entry.market_delta_points : null;
+  const deltaPct = Number.isFinite(entry.market_delta_pct) ? entry.market_delta_pct : null;
+  const tierLabel = entry.market_tier
+    ? t(`market.tiers.${entry.market_tier}.label`, {
+        defaultValue: getMarketTierLabel(entry.market_tier),
+      })
+    : "";
 
   const noDataLabel = t("detailView.dimension.noData");
 
@@ -152,9 +184,22 @@ export default function DetailView({
           <Avatar name={entry.name} politicianId={entry.politician_id} size={64} />
           <div className="min-w-0">
             <h4 className="text-lg font-bold text-white truncate">{localizeName(t, entry.name)}</h4>
-            <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
-              {localizeParty(t, entry.party)}
-            </span>
+            <div className="mt-1 flex flex-wrap items-center gap-2">
+              <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
+                {localizeParty(t, entry.party)}
+              </span>
+              {entry.market_tier && (
+                <span
+                  className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getTierBadgeClass(entry.market_tier)}`}
+                >
+                  {entry.market_tier}-Tier
+                </span>
+              )}
+              {displayPercentile != null && (
+                <span className="text-xs font-medium text-gray-400">P{displayPercentile}</span>
+              )}
+            </div>
+            {entry.market_tier && <div className="mt-1 text-xs text-gray-500">{tierLabel}</div>}
           </div>
         </div>
         <div className="flex items-start gap-3 shrink-0">
@@ -186,7 +231,36 @@ export default function DetailView({
             </button>
           )}
           <div className="text-end">
-            <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
+            <div className="text-3xl font-bold text-white">{displayScore}</div>
+            {deltaPoints != null && (
+              <div
+                className={`mt-1 flex items-center justify-end gap-1 text-xs font-semibold ${
+                  deltaPoints > 0
+                    ? "text-emerald-400"
+                    : deltaPoints < 0
+                      ? "text-red-400"
+                      : "text-gray-400"
+                }`}
+              >
+                {deltaPoints > 0 ? (
+                  <TrendingUp className="w-3.5 h-3.5" />
+                ) : deltaPoints < 0 ? (
+                  <TrendingDown className="w-3.5 h-3.5" />
+                ) : (
+                  <Minus className="w-3.5 h-3.5" />
+                )}
+                <span>
+                  {deltaPoints > 0 ? "+" : ""}
+                  {deltaPoints.toFixed(1)}
+                  {deltaPct != null && (
+                    <span className="ms-1 text-[11px] text-gray-400">
+                      ({deltaPct > 0 ? "+" : ""}
+                      {deltaPct.toFixed(1)}%)
+                    </span>
+                  )}
+                </span>
+              </div>
+            )}
             <div className="text-xs text-gray-500">
               {selectedDate || t("detailView.date.fallback")}
             </div>
@@ -293,7 +367,7 @@ export default function DetailView({
 
       {/* Trend over time */}
       <AccordionSection title={t("detailView.section.trend")} icon={TrendingUp} defaultOpen={true}>
-        <PoliticianTrendChart politicianName={selectedPolitician} />
+        <PoliticianTrendChart politicianName={selectedPolitician} summaryData={summaryData} />
       </AccordionSection>
 
       {/* Sources — collapsed by default */}

@@ -189,6 +189,32 @@ describe("DetailView dimension section (merged Score Breakdown)", () => {
     expect(screen.getByText("אישור מדיניות")).toBeInTheDocument();
     expect(screen.getByText("הגברה תקשורתית")).toBeInTheDocument();
   });
+
+  it("renders market score header metadata", () => {
+    render(
+      <DetailView
+        todayDetail={[
+          baseEntry({
+            market_score: 73,
+            market_tier: "A",
+            market_percentile: 88,
+            market_delta_points: 4.2,
+            market_delta_pct: 6.1,
+          }),
+        ]}
+        selectedPolitician="Benjamin Netanyahu"
+        selectedDate="2026-03-24"
+        loading={false}
+      />
+    );
+
+    expect(screen.getByText("73")).toBeInTheDocument();
+    expect(screen.getByText("A-Tier")).toBeInTheDocument();
+    expect(screen.getByText("P88")).toBeInTheDocument();
+    expect(screen.getByText("Positive Trend")).toBeInTheDocument();
+    expect(screen.getByText(/\+4\.2/)).toBeInTheDocument();
+    expect(screen.getByText(/\(\+6\.1%\)/)).toBeInTheDocument();
+  });
 });
 
 describe("DetailView sources section", () => {

@@ -24,7 +24,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "afif-abed",
@@ -51,7 +56,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "ahmad-tibi",
@@ -77,7 +87,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "aida-touma-suleiman",
@@ -103,7 +118,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "akram-hasson",
@@ -130,7 +150,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "alon-schuster",
@@ -168,7 +193,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 71.2,
+    "market_percentile": 95,
+    "market_tier": "A",
+    "market_delta_points": 5.1,
+    "market_delta_pct": 7.7
   },
   {
     "politician_id": "amichai-eliyahu",
@@ -194,7 +224,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -1,
+    "market_delta_pct": -1.6
   },
   {
     "politician_id": "amichai-shikli",
@@ -221,7 +256,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "amir-ohana",
@@ -247,7 +287,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -29.6,
+    "market_delta_pct": -32.5
   },
   {
     "politician_id": "amit-halevi",
@@ -274,7 +319,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "ariel-kallner",
@@ -300,7 +350,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 4.8,
+    "market_delta_pct": 7.7
   },
   {
     "politician_id": "aryeh-deri",
@@ -326,7 +381,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "avi-dichter",
@@ -352,7 +412,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "avi-maoz",
@@ -379,7 +444,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "avichay-buaron",
@@ -405,7 +475,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 69.2,
+    "market_percentile": 93,
+    "market_tier": "A",
+    "market_delta_points": 12.1,
+    "market_delta_pct": 21.2
   },
   {
     "politician_id": "avigdor-lieberman",
@@ -431,7 +506,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 28,
+    "market_delta_pct": null
   },
   {
     "politician_id": "ayman-odeh",
@@ -457,7 +537,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "benjamin-netanyahu",
@@ -542,7 +627,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 94.2,
+    "market_percentile": 99,
+    "market_tier": "S",
+    "market_delta_points": 29.9,
+    "market_delta_pct": 46.5
   },
   {
     "politician_id": "benny-gantz",
@@ -568,7 +658,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -27.6,
+    "market_delta_pct": -30.3
   },
   {
     "politician_id": "bezalel-smotrich",
@@ -594,7 +689,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 71.2,
+    "market_percentile": 95,
+    "market_tier": "A",
+    "market_delta_points": 71.2,
+    "market_delta_pct": null
   },
   {
     "politician_id": "boaz-bismuth",
@@ -620,7 +720,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -1,
+    "market_delta_pct": -1.6
   },
   {
     "politician_id": "boaz-toporovsky",
@@ -646,7 +751,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "dan-ilouz",
@@ -672,7 +782,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "david-amsalem",
@@ -698,7 +813,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -4.6,
+    "market_delta_pct": -7
   },
   {
     "politician_id": "david-bitan",
@@ -724,7 +844,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "debbie-biton",
@@ -750,7 +875,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 6.6,
+    "market_delta_pct": 10.9
   },
   {
     "politician_id": "efrat-rayten",
@@ -776,7 +906,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "eitan-ginzburg",
@@ -803,7 +938,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "elazar-stern",
@@ -851,7 +991,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -13.3,
+    "market_delta_pct": -17.3
   },
   {
     "politician_id": "eli-cohen",
@@ -878,7 +1023,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 65.4,
+    "market_percentile": 81,
+    "market_tier": "A",
+    "market_delta_points": -15,
+    "market_delta_pct": -18.7
   },
   {
     "politician_id": "eli-dalal",
@@ -905,7 +1055,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "eliyahu-revivo",
@@ -931,7 +1086,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "evgeny-sova",
@@ -957,7 +1117,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 57.7,
+    "market_percentile": 3,
+    "market_tier": "B",
+    "market_delta_points": -3,
+    "market_delta_pct": -4.9
   },
   {
     "politician_id": "gadi-eisenkot",
@@ -985,7 +1150,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 100,
+    "market_percentile": 100,
+    "market_tier": "S",
+    "market_delta_points": 33.9,
+    "market_delta_pct": 51.3
   },
   {
     "politician_id": "galit-distel-atbaryan",
@@ -1012,7 +1182,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "gideon-saar",
@@ -1040,7 +1215,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 71.2,
+    "market_percentile": 95,
+    "market_tier": "A",
+    "market_delta_points": -18.1,
+    "market_delta_pct": -20.3
   },
   {
     "politician_id": "gila-gamliel",
@@ -1067,7 +1247,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "gilad-kariv",
@@ -1093,7 +1278,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "haim-biton",
@@ -1119,7 +1309,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -2.6,
+    "market_delta_pct": -3.9
   },
   {
     "politician_id": "haim-katz",
@@ -1148,7 +1343,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "hamad-amar",
@@ -1174,7 +1374,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "hanoch-milwidsky",
@@ -1200,7 +1405,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "hava-eti-atia",
@@ -1227,7 +1437,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "hili-tropper",
@@ -1253,7 +1468,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 1.2,
+    "market_delta_pct": 1.8
   },
   {
     "politician_id": "idit-silman",
@@ -1280,7 +1500,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "iman-khatib-yasin",
@@ -1306,7 +1531,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "itamar-ben-gvir",
@@ -1336,7 +1566,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 7.7,
+    "market_percentile": 0,
+    "market_tier": "C",
+    "market_delta_points": 7.7,
+    "market_delta_pct": null
   },
   {
     "politician_id": "karine-elharrar",
@@ -1362,7 +1597,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 6.6,
+    "market_delta_pct": 10.9
   },
   {
     "politician_id": "keti-shitrit",
@@ -1388,7 +1628,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "limor-son-har-melech",
@@ -1414,7 +1659,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -1,
+    "market_delta_pct": -1.6
   },
   {
     "politician_id": "mansour-abbas",
@@ -1440,7 +1690,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 25.8,
+    "market_delta_pct": null
   },
   {
     "politician_id": "matan-kahana",
@@ -1466,7 +1721,72 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -4.4,
+    "market_delta_pct": -6.5
+  },
+  {
+    "politician_id": "matan-yafe",
+    "name": "Matan Yafe",
+    "party": "El HaDegel",
+    "wing": "right",
+    "sector": "secular",
+    "role": "politician",
+    "hostility_level": 0,
+    "policy_approval": 0,
+    "media_amplification": 0,
+    "news_sentiment": 5,
+    "social_sentiment": 10,
+    "media_volume": 0,
+    "overall_score": 4.8,
+    "chain_of_thought": "## שורה תחתונה\nיאפה נשאר מתחת לרדאר, בלי מהלך שיבלוט מעבר לשגרה.\n\n## מה זה אומר\nכדמות פוליטית בקואליציה, השבוע לא נבנה לו מומנטום ציבורי ממשי.",
+    "dim_public_sentiment": 0.55,
+    "dim_parliamentary_activity": null,
+    "dim_media_credibility": 0.5,
+    "dim_transparency_ethics": 0.5,
+    "dim_field_activity": null,
+    "dim_satire_cultural_impact": null,
+    "dim_legislative_quality": null,
+    "dim_flipflop_index": null,
+    "agenda_setting_score": -1,
+    "agenda_bonus": -0.5,
+    "media_credibility_llm": 0.5,
+    "media_credibility_factcheck": null,
+    "tv_radio_mentions": 0,
+    "satire_mentions_count": 0,
+    "satire_tone": "neutral",
+    "field_activities_confirmed": 0,
+    "transparency_ethics_score": 0.5,
+    "lobbyist_meetings_count": 0,
+    "parl_attendance_rate": null,
+    "parl_committee_rate": null,
+    "parl_initiative_score": null,
+    "parl_data_source": null,
+    "legislative_pro_socioeconomic": 0.5,
+    "mmm_requests_count": null,
+    "flipflop_contradictions": 0,
+    "flipflop_promises_checked": 0,
+    "news_headlines": [
+      "No direct headlines matched Matan Yafe in configured sources this cycle."
+    ],
+    "social_mentions": [
+      {
+        "text": "No direct social mentions matched Matan Yafe in configured sources this cycle.",
+        "thread_context": [],
+        "speaker_metadata": {
+          "handle": "@pipeline",
+          "known_satirist": false
+        }
+      }
+    ],
+    "market_score": 50,
+    "market_percentile": 1,
+    "market_tier": "B",
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "matti-sarfatti-harcavi",
@@ -1493,7 +1813,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "may-golan",
@@ -1522,7 +1847,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "meir-cohen",
@@ -1548,7 +1878,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "meir-porush",
@@ -1574,7 +1909,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -1,
+    "market_delta_pct": -1.6
   },
   {
     "politician_id": "meirav-ben-ari",
@@ -1600,7 +1940,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "merav-cohen",
@@ -1626,33 +1971,12 @@
           "known_satirist": false
         }
       }
-    ]
-  },
-  {
-    "politician_id": "merav-michaeli",
-    "name": "Merav Michaeli",
-    "party": "Labor",
-    "hostility_level": 0.1,
-    "policy_approval": 0,
-    "media_amplification": 0.1,
-    "news_sentiment": 5,
-    "social_sentiment": 9,
-    "media_volume": 1,
-    "overall_score": 5.4,
-    "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתאימות למשהו שמתאר את המצב הנוכחי של מראב מיכלי. היעדר תיעודים פומביים יכול להצביע על ניכור או על היעדר דיון פומבי סביב מדיניותה או פעולותיה. ללא מידע, קשה למדוד רמת נוכחות פומבית או דעה פומבית.",
-    "news_headlines": [
-      "No direct headlines matched Merav Michaeli in configured sources this cycle."
     ],
-    "social_mentions": [
-      {
-        "text": "No direct social mentions matched Merav Michaeli in configured sources this cycle.",
-        "thread_context": [],
-        "speaker_metadata": {
-          "handle": "@pipeline",
-          "known_satirist": false
-        }
-      }
-    ]
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "michael-biton",
@@ -1678,7 +2002,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "michael-malchieli",
@@ -1704,7 +2033,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "michal-shir-segman",
@@ -1731,7 +2065,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "michal-waldiger",
@@ -1758,7 +2097,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "michel-buskila",
@@ -1785,7 +2129,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "mickey-levy",
@@ -1811,7 +2160,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 6.6,
+    "market_delta_pct": 10.9
   },
   {
     "politician_id": "miki-zohar",
@@ -1838,7 +2192,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "miri-regev",
@@ -1864,7 +2223,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "moshe-abutbul",
@@ -1890,7 +2254,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -4.4,
+    "market_delta_pct": -6.5
   },
   {
     "politician_id": "moshe-arbel",
@@ -1916,7 +2285,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -1,
+    "market_delta_pct": -1.6
   },
   {
     "politician_id": "moshe-gafni",
@@ -1942,7 +2316,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "moshe-passal",
@@ -1969,7 +2348,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "moshe-saada",
@@ -1995,7 +2379,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 6.6,
+    "market_delta_pct": 10.9
   },
   {
     "politician_id": "moshe-solomon",
@@ -2022,7 +2411,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "moshe-tur-paz",
@@ -2048,7 +2442,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "naama-lazimi",
@@ -2074,7 +2473,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "naftali-bennett",
@@ -2104,7 +2508,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 82.7,
+    "market_percentile": 99,
+    "market_tier": "A",
+    "market_delta_points": 2.3,
+    "market_delta_pct": 2.9
   },
   {
     "politician_id": "naor-shiri",
@@ -2130,7 +2539,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 6.6,
+    "market_delta_pct": 10.9
   },
   {
     "politician_id": "nir-barkat",
@@ -2156,7 +2570,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -29.6,
+    "market_delta_pct": -32.5
   },
   {
     "politician_id": "nissim-vaturi",
@@ -2182,7 +2601,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 71.2,
+    "market_percentile": 95,
+    "market_tier": "A",
+    "market_delta_points": 8.7,
+    "market_delta_pct": 13.9
   },
   {
     "politician_id": "oded-forer",
@@ -2208,7 +2632,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 4.8,
+    "market_delta_pct": 7.7
   },
   {
     "politician_id": "ofer-cassif",
@@ -2234,7 +2663,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -4.6,
+    "market_delta_pct": -7
   },
   {
     "politician_id": "ofir-katz",
@@ -2263,7 +2697,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "ofir-sofer",
@@ -2289,7 +2728,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "ohad-tal",
@@ -2315,7 +2759,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -9.9,
+    "market_delta_pct": -13.9
   },
   {
     "politician_id": "orit-farkash-hacohen",
@@ -2342,7 +2791,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "orit-strock",
@@ -2370,7 +2824,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -6.1,
+    "market_delta_pct": -8.8
   },
   {
     "politician_id": "osher-shkalim",
@@ -2396,7 +2855,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -6.4,
+    "market_delta_pct": -9.4
   },
   {
     "politician_id": "pnina-tamano-shata",
@@ -2422,7 +2886,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -2.6,
+    "market_delta_pct": -3.9
   },
   {
     "politician_id": "ram-ben-barak",
@@ -2449,7 +2918,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "ron-katz",
@@ -2475,7 +2949,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 1.2,
+    "market_delta_pct": 1.8
   },
   {
     "politician_id": "samir-ben-said",
@@ -2504,7 +2983,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "sasson-guetta",
@@ -2531,7 +3015,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "shalom-danino",
@@ -2570,7 +3059,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "sharon-nir",
@@ -2596,7 +3090,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "sharren-haskel",
@@ -2622,7 +3121,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 78.8,
+    "market_percentile": 98,
+    "market_tier": "A",
+    "market_delta_points": 10.9,
+    "market_delta_pct": 16.1
   },
   {
     "politician_id": "shelly-tal-meron",
@@ -2648,7 +3152,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "shlomo-karhi",
@@ -2674,7 +3183,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": -2.3,
+    "market_delta_pct": -3.3
   },
   {
     "politician_id": "simcha-rothman",
@@ -2700,7 +3214,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -15.3,
+    "market_delta_pct": -19.9
   },
   {
     "politician_id": "simon-davidson",
@@ -2726,7 +3245,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "tally-gotliv",
@@ -2784,7 +3308,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -7.9,
+    "market_delta_pct": -11.1
   },
   {
     "politician_id": "tatiana-mazarsky",
@@ -2810,7 +3339,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -2.6,
+    "market_delta_pct": -3.9
   },
   {
     "politician_id": "tsega-melaku",
@@ -2836,7 +3370,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -2.6,
+    "market_delta_pct": -3.9
   },
   {
     "politician_id": "uri-maklev",
@@ -2862,7 +3401,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "uriel-buso",
@@ -2888,7 +3432,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 2.8,
+    "market_delta_pct": 4.6
   },
   {
     "politician_id": "vladimir-beliak",
@@ -2914,7 +3463,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "waleed-taha",
@@ -2940,7 +3494,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "walid-alhawashla",
@@ -2967,7 +3526,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yaakov-asher",
@@ -2993,7 +3557,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": -2.6,
+    "market_delta_pct": -3.9
   },
   {
     "politician_id": "yaakov-margi",
@@ -3019,7 +3588,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "yaakov-tesler",
@@ -3045,7 +3619,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 1.2,
+    "market_delta_pct": 1.8
   },
   {
     "politician_id": "yael-ron-ben-moshe",
@@ -3072,7 +3651,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yair-golan",
@@ -3098,7 +3682,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 57.7,
+    "market_percentile": 3,
+    "market_tier": "B",
+    "market_delta_points": -19.1,
+    "market_delta_pct": -24.9
   },
   {
     "politician_id": "yair-lapid",
@@ -3124,7 +3713,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": -18.4,
+    "market_delta_pct": -21.5
   },
   {
     "politician_id": "yariv-levin",
@@ -3153,7 +3747,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 71.2,
+    "market_percentile": 95,
+    "market_tier": "A",
+    "market_delta_points": 8.7,
+    "market_delta_pct": 13.9
   },
   {
     "politician_id": "yaron-levy",
@@ -3180,7 +3779,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yasmin-fridman",
@@ -3207,7 +3811,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yasser-hujirat",
@@ -3234,7 +3843,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yinon-azoulay",
@@ -3260,7 +3874,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "yisrael-katz",
@@ -3286,7 +3905,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -2.8,
+    "market_delta_pct": -4.4
   },
   {
     "politician_id": "yitzhak-goldknopf",
@@ -3312,7 +3936,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "yitzhak-kroizer",
@@ -3339,7 +3968,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yitzhak-pindrus",
@@ -3366,7 +4000,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yitzhak-wasserlauf",
@@ -3392,7 +4031,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": -1,
+    "market_delta_pct": -1.6
   },
   {
     "politician_id": "yoav-ben-tzur",
@@ -3418,7 +4062,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 57.7,
+    "market_percentile": 3,
+    "market_tier": "B",
+    "market_delta_points": -4.8,
+    "market_delta_pct": -7.7
   },
   {
     "politician_id": "yoav-kish",
@@ -3445,7 +4094,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 75,
+    "market_percentile": 97,
+    "market_tier": "A",
+    "market_delta_points": 1.8,
+    "market_delta_pct": 2.5
   },
   {
     "politician_id": "yoav-segalovitz",
@@ -3471,7 +4125,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 6.6,
+    "market_delta_pct": 10.9
   },
   {
     "politician_id": "yoaz-hendel",
@@ -3498,7 +4157,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yonatan-mishraki",
@@ -3525,7 +4189,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yorai-lahav-hertzano",
@@ -3551,7 +4220,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yosef-taieb",
@@ -3578,7 +4252,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   },
   {
     "politician_id": "yuli-edelstein",
@@ -3604,7 +4283,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 57.7,
+    "market_percentile": 3,
+    "market_tier": "B",
+    "market_delta_points": -3,
+    "market_delta_pct": -4.9
   },
   {
     "politician_id": "yulia-malinovsky",
@@ -3630,7 +4314,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 24.2,
+    "market_delta_pct": null
   },
   {
     "politician_id": "zeev-elkin",
@@ -3656,7 +4345,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 61.5,
+    "market_percentile": 15,
+    "market_tier": "B",
+    "market_delta_points": 0.8,
+    "market_delta_pct": 1.3
   },
   {
     "politician_id": "zvi-sukkot",
@@ -3682,7 +4376,12 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 67.3,
+    "market_percentile": 87,
+    "market_tier": "A",
+    "market_delta_points": 4.8,
+    "market_delta_pct": 7.7
   },
   {
     "politician_id": "zvika-fogel",
@@ -3708,6 +4407,11 @@
           "known_satirist": false
         }
       }
-    ]
+    ],
+    "market_score": 63.5,
+    "market_percentile": 53,
+    "market_tier": "B",
+    "market_delta_points": 1,
+    "market_delta_pct": 1.6
   }
 ]

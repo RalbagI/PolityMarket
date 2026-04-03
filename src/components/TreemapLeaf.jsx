@@ -25,7 +25,12 @@ export default function TreemapLeaf({
   const showScore = !tooSmall && area > 1200 && h > 20;
   const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
   const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
-  const showSlashTen = showScore && area > 8000;
+  const displayScore =
+    d._isOthers || !Number.isFinite(d.market_score)
+      ? Number.isFinite(d.overall_score)
+        ? Math.round(d.overall_score * 10)
+        : null
+      : Math.round(d.market_score);
 
   const nameAvailH = availH - scoreLineH;
   const roughMaxLines = Math.max(1, Math.floor(nameAvailH / (baseNameFontSize * 1.2 || 1)));
@@ -57,7 +62,7 @@ export default function TreemapLeaf({
     <div
       role="button"
       tabIndex={tooSmall ? -1 : 0}
-      aria-label={d._isOthers ? displayName : `${displayName}: ${d.overall_score.toFixed(1)}/10`}
+      aria-label={d._isOthers ? displayName : `${displayName}: ${displayScore}`}
       onClick={onClick}
       onKeyDown={onKeyDown}
       onTouchEnd={onTouchEnd}
@@ -148,16 +153,8 @@ export default function TreemapLeaf({
                   textShadow: "0 1px 3px rgba(0,0,0,0.5)",
                 }}
               >
-                {d.overall_score.toFixed(1)}
+                {displayScore}
               </span>
-              {showSlashTen && (
-                <span
-                  className="text-white/50"
-                  style={{ fontSize: Math.max(8, nameFontSize * 0.7) }}
-                >
-                  /10
-                </span>
-              )}
             </div>
           )}
         </div>

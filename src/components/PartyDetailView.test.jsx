@@ -14,10 +14,38 @@ vi.mock("../store", () => ({
   default: (selector) => {
     const state = {
       summaryData: [
-        { date: "2026-03-22", name: "Pol A", party: "Likud", overall_score: 6, media_volume: 5 },
-        { date: "2026-03-22", name: "Pol B", party: "Likud", overall_score: 4, media_volume: 3 },
-        { date: "2026-03-21", name: "Pol A", party: "Likud", overall_score: 5.5, media_volume: 4 },
-        { date: "2026-03-21", name: "Pol B", party: "Likud", overall_score: 4.5, media_volume: 2 },
+        {
+          date: "2026-03-22",
+          name: "Pol A",
+          party: "Likud",
+          overall_score: 6,
+          market_score: 60,
+          media_volume: 5,
+        },
+        {
+          date: "2026-03-22",
+          name: "Pol B",
+          party: "Likud",
+          overall_score: 4,
+          market_score: 40,
+          media_volume: 3,
+        },
+        {
+          date: "2026-03-21",
+          name: "Pol A",
+          party: "Likud",
+          overall_score: 5.5,
+          market_score: 55,
+          media_volume: 4,
+        },
+        {
+          date: "2026-03-21",
+          name: "Pol B",
+          party: "Likud",
+          overall_score: 4.5,
+          market_score: 45,
+          media_volume: 2,
+        },
       ],
     };
     return selector(state);
@@ -59,6 +87,11 @@ const partyData = {
   wing: "right",
   member_count: 2,
   overall_score: 5.3,
+  market_score: 53,
+  market_tier: "B",
+  market_percentile: 67,
+  market_delta_points: 2.4,
+  market_delta_pct: 4.7,
   media_volume: 8,
   hostility_avg: 0.3,
   policy_avg: 0.1,
@@ -68,15 +101,32 @@ const partyData = {
 };
 
 const todayData = [
-  { politician_id: "pol-a", name: "Pol A", party: "Likud", overall_score: 6, media_volume: 5 },
-  { politician_id: "pol-b", name: "Pol B", party: "Likud", overall_score: 4, media_volume: 3 },
+  {
+    politician_id: "pol-a",
+    name: "Pol A",
+    party: "Likud",
+    overall_score: 6,
+    market_score: 60,
+    media_volume: 5,
+  },
+  {
+    politician_id: "pol-b",
+    name: "Pol B",
+    party: "Likud",
+    overall_score: 4,
+    market_score: 40,
+    media_volume: 3,
+  },
 ];
 
 describe("PartyDetailView", () => {
   it("renders party name and average score", () => {
     render(<PartyDetailView partyName="Likud" partyData={partyData} todayData={todayData} />);
     expect(screen.getByText("Likud")).toBeInTheDocument();
-    expect(screen.getAllByText("5.3").length).toBeGreaterThan(0);
+    expect(screen.getByText("53")).toBeInTheDocument();
+    expect(screen.getByText("B-Tier")).toBeInTheDocument();
+    expect(screen.getByText("P67")).toBeInTheDocument();
+    expect(screen.getByText(/\+2\.4/)).toBeInTheDocument();
   });
 
   it("renders member count", () => {

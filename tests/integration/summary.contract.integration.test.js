@@ -11,6 +11,11 @@ const summaryEntrySchema = z.object({
   party: z.string().min(1),
   overall_score: z.number(),
   media_volume: z.number(),
+  market_score: z.number().nullable(),
+  market_percentile: z.number().nullable(),
+  market_tier: z.enum(["S", "A", "B", "C"]).nullable(),
+  market_delta_points: z.number().nullable(),
+  market_delta_pct: z.number().nullable(),
 });
 
 const summarySchema = z.array(summaryEntrySchema);
@@ -42,6 +47,11 @@ describe("summary API contract integration boilerplate", () => {
         party: "מפלגת בדיקה",
         overall_score: 7.8,
         media_volume: 120,
+        market_score: 92.4,
+        market_percentile: 96,
+        market_tier: "S",
+        market_delta_points: 4.8,
+        market_delta_pct: 5.5,
       },
     ];
 
@@ -69,6 +79,11 @@ describe("summary API contract integration boilerplate", () => {
         party: "מפלגת דוגמה",
         overall_score: 6.4,
         media_volume: 81,
+        market_score: 68.1,
+        market_percentile: 73,
+        market_tier: "A",
+        market_delta_points: null,
+        market_delta_pct: null,
       },
     ];
 

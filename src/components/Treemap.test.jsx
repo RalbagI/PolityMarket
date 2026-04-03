@@ -75,8 +75,8 @@ describe("Treemap", () => {
 
   it("renders scores", () => {
     render(<Treemap data={sampleData} onSelect={onSelect} selectedPolitician={null} />);
-    expect(screen.getByText("8.0")).toBeInTheDocument();
-    expect(screen.getByText("6.5")).toBeInTheDocument();
+    expect(screen.getByText("80")).toBeInTheDocument();
+    expect(screen.getByText("65")).toBeInTheDocument();
   });
 
   it("renders no results message when data is empty", () => {

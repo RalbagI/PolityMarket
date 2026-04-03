@@ -3,14 +3,21 @@ import { useTranslation } from "react-i18next";
 import { localizeName, localizeParty } from "../lib/localize";
 import { scoreToColor } from "../lib/colorScale";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { getMarketTierLabel } from "../lib/marketScore";
 
 export default memo(function TreemapTooltip({ politician, position }) {
   const { t } = useTranslation();
   if (!politician) return null;
 
   const d = politician;
-  const scoreColor = scoreToColor(d.overall_score);
-  const scorePct = (d.overall_score / 10) * 100;
+  const scoreValue = Number.isFinite(d.market_score) ? d.market_score : (d.overall_score ?? 0) * 10;
+  const scoreColor = scoreToColor(scoreValue);
+  const scorePct = Number.isFinite(scoreValue) ? scoreValue : 0;
+  const tierLabel = d.market_tier
+    ? t(`market.tiers.${d.market_tier}.label`, {
+        defaultValue: getMarketTierLabel(d.market_tier),
+      })
+    : "";
 
   const vw = window.innerWidth;
   const vh = window.innerHeight;
@@ -50,13 +57,26 @@ export default memo(function TreemapTooltip({ politician, position }) {
           {d.displayName || localizeName(t, d.name)}
         </div>
         <div className="text-xs text-gray-400">{d.displayParty || localizeParty(t, d.party)}</div>
+        <div className="mt-1 flex flex-wrap items-center gap-2">
+          {d.market_tier && (
+            <span className="rounded-full border border-gray-700 bg-gray-800 px-2 py-0.5 text-[10px] font-semibold text-gray-200">
+              {d.market_tier}-Tier
+            </span>
+          )}
+          {Number.isFinite(d.market_percentile) && (
+            <span className="text-[10px] font-medium text-gray-400">
+              P{Math.round(d.market_percentile)}
+            </span>
+          )}
+        </div>
+        {d.market_tier && <div className="mt-1 text-[10px] text-gray-500">{tierLabel}</div>}
       </div>
 
       {/* Score bar */}
       <div className="mb-3">
         <div className="flex items-center justify-between text-xs mb-1">
           <span className="text-gray-400">{t("treemap.tooltip.score")}</span>
-          <span className="font-bold text-white">{d.overall_score.toFixed(1)}/10</span>
+          <span className="font-bold text-white">{Math.round(scoreValue)}</span>
         </div>
         <div className="w-full h-2 bg-gray-800 rounded-full">
           <div
@@ -73,23 +93,36 @@ export default memo(function TreemapTooltip({ politician, position }) {
       </div>
 
       {/* Delta */}
-      {d.delta != null && (
+      {d.market_delta_points != null && (
         <div className="flex items-center justify-between text-xs">
           <span className="text-gray-400">{t("treemap.tooltip.change")}</span>
           <div
             className="flex items-center gap-1 font-bold"
-            style={{ color: d.delta > 0 ? "#4ade80" : d.delta < 0 ? "#f87171" : "#9ca3af" }}
+            style={{
+              color:
+                d.market_delta_points > 0
+                  ? "#4ade80"
+                  : d.market_delta_points < 0
+                    ? "#f87171"
+                    : "#9ca3af",
+            }}
           >
-            {d.delta > 0 ? (
+            {d.market_delta_points > 0 ? (
               <TrendingUp className="w-3 h-3" />
-            ) : d.delta < 0 ? (
+            ) : d.market_delta_points < 0 ? (
               <TrendingDown className="w-3 h-3" />
             ) : (
               <Minus className="w-3 h-3" />
             )}
             <span>
-              {d.delta > 0 ? "+" : ""}
-              {d.delta.toFixed(1)}
+              {d.market_delta_points > 0 ? "+" : ""}
+              {d.market_delta_points.toFixed(1)}
+              {d.market_delta_pct != null && (
+                <span className="ms-1 text-[10px] text-gray-400">
+                  ({d.market_delta_pct > 0 ? "+" : ""}
+                  {d.market_delta_pct.toFixed(1)}%)
+                </span>
+              )}
             </span>
           </div>
         </div>

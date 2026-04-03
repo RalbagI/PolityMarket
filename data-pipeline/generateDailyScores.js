@@ -1,3 +1,5 @@
+/* global process */
+
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
@@ -7,8 +9,10 @@ import {
   dailyEntrySchema,
   llmResponseSchema,
   parseLLMResponse8dim,
+  partySummaryRowSchema,
   summaryRowSchema8dim,
 } from "./lib/parseLLMResponse.js";
+import { annotateMarketTimeline } from "../src/lib/marketScore.js";
 import retry from "./lib/retry.js";
 import {
   applyEMA,
@@ -860,7 +864,9 @@ function loadSourceConfig() {
   try {
     parsed = JSON.parse(fs.readFileSync(SOURCES_CONFIG_PATH, "utf-8"));
   } catch (err) {
-    throw new Error(`Failed to parse source config at ${SOURCES_CONFIG_PATH}: ${err.message}`);
+    throw new Error(`Failed to parse source config at ${SOURCES_CONFIG_PATH}: ${err.message}`, {
+      cause: err,
+    });
   }
 
   if (!parsed?.rss?.searchTemplates?.length) {
@@ -1017,7 +1023,7 @@ async function fetchJson(url, timeoutMs) {
   try {
     return JSON.parse(body);
   } catch (err) {
-    throw new Error(`Invalid JSON payload from ${url}: ${err.message}`);
+    throw new Error(`Invalid JSON payload from ${url}: ${err.message}`, { cause: err });
   }
 }
 
@@ -1394,7 +1400,7 @@ export function buildBatchedPrompt(
   politicianDataMap,
   oknessetMap,
   promisesDB,
-  requireCoT = true,
+  _requireCoT = true,
   yesterdayCoTMap = new Map()
 ) {
   const _oknessetMap = oknessetMap || new Map();
@@ -1514,10 +1520,12 @@ export function parseCodexOutput(rawText) {
       try {
         parsed = JSON.parse(cleaned.slice(start, end + 1));
       } catch (innerErr) {
-        throw new Error(`Failed to parse Codex response JSON fragment: ${innerErr.message}`);
+        throw new Error(`Failed to parse Codex response JSON fragment: ${innerErr.message}`, {
+          cause: innerErr,
+        });
       }
     } else {
-      throw new Error(`Failed to parse Codex response as JSON: ${e.message}`);
+      throw new Error(`Failed to parse Codex response as JSON: ${e.message}`, { cause: e });
     }
   }
 
@@ -1902,6 +1910,11 @@ function appendToSummary(entries, today) {
       dim_satire_cultural_impact: entry.dim_satire_cultural_impact ?? null,
       dim_legislative_quality: entry.dim_legislative_quality ?? null,
       dim_flipflop_index: entry.dim_flipflop_index ?? null,
+      market_score: entry.market_score ?? null,
+      market_percentile: entry.market_percentile ?? null,
+      market_tier: entry.market_tier ?? null,
+      market_delta_points: entry.market_delta_points ?? null,
+      market_delta_pct: entry.market_delta_pct ?? null,
     };
     const validated = summaryRowSchema8dim.safeParse(summaryRow);
     if (!validated.success) {
@@ -1973,6 +1986,12 @@ function writeDetailFile(entries, today) {
     // Flip-flop sub-fields
     flipflop_contradictions: e.flipflop_contradictions ?? null,
     flipflop_promises_checked: e.flipflop_promises_checked ?? null,
+    // Market score presentation layer
+    market_score: e.market_score ?? null,
+    market_percentile: e.market_percentile ?? null,
+    market_tier: e.market_tier ?? null,
+    market_delta_points: e.market_delta_points ?? null,
+    market_delta_pct: e.market_delta_pct ?? null,
     // Source data
     news_headlines: Array.isArray(e.news_headlines) ? e.news_headlines : [],
     social_mentions: Array.isArray(e.social_mentions) ? e.social_mentions : [],
@@ -1994,7 +2013,16 @@ function writePartySummary(partyEntries, today) {
 
   // Remove today's entries if re-running
   existing = existing.filter((e) => e.date !== today);
-  existing.push(...partyEntries);
+  for (const entry of partyEntries) {
+    const validated = partySummaryRowSchema.safeParse(entry);
+    if (!validated.success) {
+      const errors = validated.error.issues
+        .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
+        .join("; ");
+      throw new Error(`Party summary row validation failed: ${errors}`);
+    }
+    existing.push(validated.data);
+  }
   existing.sort((a, b) => a.date.localeCompare(b.date) || a.party.localeCompare(b.party));
 
   // Keep last 90 days
@@ -2010,7 +2038,7 @@ function writePartySummary(partyEntries, today) {
 
 function writeVolatilityData() {
   const summaryPath = path.join(DATA_DIR, "timeseries_summary.json");
-  let summary = [];
+  let summary;
   try {
     summary = JSON.parse(fs.readFileSync(summaryPath, "utf-8"));
   } catch {
@@ -2448,9 +2476,10 @@ async function main() {
   } catch {
     // No historical data yet — all scores will use raw as initial value
   }
+  const historicalSummary = existingSummary.filter((row) => row.date !== today);
 
   // Find the most recent date before today
-  const previousDates = [...new Set(existingSummary.map((r) => r.date))]
+  const previousDates = [...new Set(historicalSummary.map((r) => r.date))]
     .filter((d) => d < today)
     .sort();
   const yesterdayDate = previousDates.at(-1);
@@ -2472,17 +2501,60 @@ async function main() {
   }
   console.log(`  → EMA applied (α=0.8), ${yesterdayScores.size} politicians had prior scores`);
 
+  const annotatedSummaryTimeline = annotateMarketTimeline([...historicalSummary, ...newEntries], {
+    entityKey: "politician_id",
+  });
+  const todaySummaryById = new Map(
+    annotatedSummaryTimeline
+      .filter((row) => row.date === today)
+      .map((row) => [row.politician_id, row])
+  );
+  for (const entry of newEntries) {
+    Object.assign(entry, {
+      market_score: todaySummaryById.get(entry.politician_id)?.market_score ?? null,
+      market_percentile: todaySummaryById.get(entry.politician_id)?.market_percentile ?? null,
+      market_tier: todaySummaryById.get(entry.politician_id)?.market_tier ?? null,
+      market_delta_points: todaySummaryById.get(entry.politician_id)?.market_delta_points ?? null,
+      market_delta_pct: todaySummaryById.get(entry.politician_id)?.market_delta_pct ?? null,
+    });
+  }
+
   // ── Phase 3.5: Aggregate parties ──────────────────────────────────
   console.log("\nPhase 3.5: Aggregating party scores...");
   const partyEntries = aggregateParties(newEntries, today);
+  let existingPartySummary = [];
+  try {
+    existingPartySummary = JSON.parse(
+      fs.readFileSync(path.join(DATA_DIR, "party_summary.json"), "utf-8")
+    );
+  } catch {
+    // No party history yet
+  }
+  const historicalPartySummary = existingPartySummary.filter((row) => row.date !== today);
+  const annotatedPartyTimeline = annotateMarketTimeline(
+    [...historicalPartySummary, ...partyEntries],
+    { entityKey: "party" }
+  );
+  const todayPartyByName = new Map(
+    annotatedPartyTimeline.filter((row) => row.date === today).map((row) => [row.party, row])
+  );
+  for (const entry of partyEntries) {
+    Object.assign(entry, {
+      market_score: todayPartyByName.get(entry.party)?.market_score ?? null,
+      market_percentile: todayPartyByName.get(entry.party)?.market_percentile ?? null,
+      market_tier: todayPartyByName.get(entry.party)?.market_tier ?? null,
+      market_delta_points: todayPartyByName.get(entry.party)?.market_delta_points ?? null,
+      market_delta_pct: todayPartyByName.get(entry.party)?.market_delta_pct ?? null,
+    });
+  }
   console.log(`  → ${partyEntries.length} parties aggregated`);
 
   // ── Phase 3.6: Validate ─────────────────────────────────────────────
   console.log("\nPhase 3.6: Validating data quality...");
   // existingSummary already loaded in Phase 3.4b
   // Last 7 days of history for temporal checks
-  const recentDates = [...new Set(existingSummary.map((r) => r.date))].sort().slice(-7);
-  const recentHistory = existingSummary.filter((r) => recentDates.includes(r.date));
+  const recentDates = [...new Set(historicalSummary.map((r) => r.date))].sort().slice(-7);
+  const recentHistory = historicalSummary.filter((r) => recentDates.includes(r.date));
 
   const cotCoverageWarnings = validateCoTCoverage(newEntries, COT_MIN_COVERAGE, COT_MIN_LENGTH);
   const allWarnings = [
