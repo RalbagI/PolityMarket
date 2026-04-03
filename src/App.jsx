@@ -7,7 +7,7 @@ import useSidebarStats from "./lib/useSidebarStats";
 import Treemap from "./components/Treemap";
 import TopMoversStrip from "./components/TopMoversStrip";
 import WeeklyHighlights from "./components/WeeklyHighlights";
-import MobileFeed from "./components/MobileFeed";
+import WeeklyHighlightsMini from "./components/WeeklyHighlightsMini";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
@@ -220,11 +220,11 @@ export default function App() {
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
       <main className="md:h-screen flex flex-col md:ms-[260px] pt-[calc(3.5rem+env(safe-area-inset-top))] md:pt-0">
-        {/* Desktop: Treemap + weekly highlights */}
-        <div className="hidden md:flex md:flex-1 md:min-h-[300px] flex-col">
+        {/* Treemap — full viewport on both mobile and desktop */}
+        <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] flex flex-col">
           <div className="flex-1 min-h-0 flex">
             {/* Treemap */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 relative">
               <ErrorBoundary>
                 <Treemap
                   data={viewMode === "parties" ? partyTreemapData : treemapData}
@@ -232,9 +232,13 @@ export default function App() {
                   selectedPolitician={selectedPolitician}
                 />
               </ErrorBoundary>
+              {/* Mobile: floating weekly highlight card pinned to bottom of treemap */}
+              <div className="md:hidden absolute bottom-1 start-2 end-2 z-10 pointer-events-auto">
+                <WeeklyHighlightsMini onSelect={handleSelectPolitician} />
+              </div>
             </div>
-            {/* Weekly highlights sidebar (desktop) */}
-            <div className="w-[280px] shrink-0 border-s border-gray-800 bg-gray-950/80 overflow-y-auto p-3">
+            {/* Desktop: Weekly highlights sidebar */}
+            <div className="hidden md:block w-[280px] shrink-0 border-s border-gray-800 bg-gray-950/80 overflow-y-auto p-3">
               <WeeklyHighlights onSelect={handleSelectPolitician} />
               <div className="mt-3">
                 <button
@@ -256,34 +260,23 @@ export default function App() {
           </div>
         </div>
 
-        {/* Mobile: Feed view — replaces treemap for better engagement */}
-        <div className="md:hidden">
-          <MobileFeed
-            data={filterState.visible}
-            onSelect={handleSelectPolitician}
-            onCompare={() => {
-              logEvent("open_compare_mobile");
-              setCompareOpen(true);
+        {/* Mobile: Sidebar content inline below treemap — scroll down to discover */}
+        <div className="md:hidden border-t border-gray-800">
+          <SidebarContent
+            stats={sidebarStats}
+            t={t}
+            onMethodologyClick={() => {
+              logEvent("open_methodology");
+              setMethodologyOpen(true);
             }}
+            filterProps={filterState}
+            viewMode={viewMode}
+            onViewModeChange={(mode) => {
+              logEvent("switch_view_mode", { mode });
+              setViewMode(mode);
+            }}
+            hideHeader
           />
-          {/* Mobile: filters and sidebar content below feed */}
-          <div className="border-t border-gray-800">
-            <SidebarContent
-              stats={sidebarStats}
-              t={t}
-              onMethodologyClick={() => {
-                logEvent("open_methodology");
-                setMethodologyOpen(true);
-              }}
-              filterProps={filterState}
-              viewMode={viewMode}
-              onViewModeChange={(mode) => {
-                logEvent("switch_view_mode", { mode });
-                setViewMode(mode);
-              }}
-              hideHeader
-            />
-          </div>
         </div>
       </main>
 

@@ -1208,6 +1208,7 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
         text: item.title,
         fullName: politician.name,
         hebrewName,
+        party: politician.party,
       });
     }
   }
@@ -1287,6 +1288,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
           text: mentionObj.text,
           fullName: politician.name,
           hebrewName,
+          party: politician.party,
           mentionObj, // preserve for merge-back if verified
         });
       }
@@ -1609,12 +1611,19 @@ export function buildVerificationPrompt(batch) {
       const safeFullName = String(item.fullName ?? "")
         .replace(/[\n\r]/g, " ")
         .trim();
-      return `${i + 1}. Politician: "${safeHebrewName}" (${safeFullName}) | Text: <text>${safeText}</text>`;
+      const safeParty = String(item.party ?? "")
+        .replace(/[\n\r]/g, " ")
+        .trim();
+      return `${i + 1}. Politician: "${safeHebrewName}" (${safeFullName}), party: ${safeParty} | Text: <text>${safeText}</text>`;
     })
     .join("\n");
 
-  return `You are verifying whether news texts are about specific Israeli politicians.
-For each numbered item, answer YES if the text is about or directly mentions the specified politician, or NO if it refers to a different person, place, or is unrelated.
+  return `You are verifying whether news texts are about specific Israeli politicians (members of the Knesset or government).
+For each numbered item, answer YES ONLY if the text is clearly about the specified politician in the context of Israeli politics, government, or public affairs.
+Answer NO if:
+- The text is about a DIFFERENT person who happens to share the same name (e.g. a food critic, athlete, celebrity)
+- The text is unrelated to Israeli politics
+- You are uncertain whether it refers to the politician
 Respond with ONLY the number and YES or NO, one per line.
 
 ${items}`;
@@ -2089,6 +2098,7 @@ async function main() {
           text: um.text,
           fullName: um.fullName,
           hebrewName: um.hebrewName,
+          party: um.party,
           politicianId: politician.id,
           type: "social",
           mentionObj: um.mentionObj,
