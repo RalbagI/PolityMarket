@@ -749,5 +749,44 @@
       "[Outlier] Naftali Bennett: score 6.1 outside IQR bounds [4.8, 4.8]"
     ],
     "timestamp": "2026-04-02T23:12:45.840Z"
+  },
+  {
+    "date": "2026-04-04",
+    "warnings": [
+      "[Temporal] Yair Golan: score 6.6 deviates 1.5 from 7-day avg 5.1 (threshold: 1.5)",
+      "[Outlier] Yariv Levin: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yisrael Katz: score 6.3 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yuli Edelstein: score 5.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Boaz Bismuth: score 5.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Tally Gotliv: score 5.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Ofir Katz: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Amit Halevi: score 6.3 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Miki Zohar: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yoav Kish: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Haim Katz: score 5.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Miri Regev: score 5.9 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Idit Silman: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yair Lapid: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Ron Katz: score 5.7 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Simon Davidson: score 6.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Benny Gantz: score 5.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gadi Eisenkot: score 6.3 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Aryeh Deri: score 6.0 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Michael Malchieli: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yitzhak Goldknopf: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Bezalel Smotrich: score 5.9 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Simcha Rothman: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Itamar Ben Gvir: score 4.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Avigdor Lieberman: score 5.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Ayman Odeh: score 6.8 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Ofer Cassif: score 6.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gilad Kariv: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gideon Sa'ar: score 7.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Sharren Haskel: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yair Golan: score 6.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Naftali Bennett: score 6.7 outside IQR bounds [4.6, 5.1]",
+      "[Party] Ra'am: all 5 members have identical scores — possible hallucination"
+    ],
+    "timestamp": "2026-04-03T23:14:27.638Z"
   }
 ]
