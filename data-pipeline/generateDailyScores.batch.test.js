@@ -110,7 +110,13 @@ describe("search term matching", () => {
 describe("entity verification", () => {
   it("buildVerificationPrompt formats numbered items with XML-delimited text and party", () => {
     const batch = [
-      { index: 0, text: "תקיפה ברמת גולן", fullName: "May Golan", hebrewName: "מאי גולן", party: "Likud" },
+      {
+        index: 0,
+        text: "תקיפה ברמת גולן",
+        fullName: "May Golan",
+        hebrewName: "מאי גולן",
+        party: "Likud",
+      },
       {
         index: 1,
         text: "סמוטריץ' הגיב",
@@ -122,7 +128,9 @@ describe("entity verification", () => {
     const prompt = buildVerificationPrompt(batch);
     expect(prompt).toContain('1. Politician: "מאי גולן" (May Golan), party: Likud');
     expect(prompt).toContain("<text>תקיפה ברמת גולן</text>");
-    expect(prompt).toContain('2. Politician: "בצלאל סמוטריץ\'" (Bezalel Smotrich), party: Religious Zionism');
+    expect(prompt).toContain(
+      '2. Politician: "בצלאל סמוטריץ\'" (Bezalel Smotrich), party: Religious Zionism'
+    );
     expect(prompt).toContain("YES");
     expect(prompt).toContain("NO");
     // Should instruct to reject same-name non-politicians

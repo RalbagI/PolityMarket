@@ -46,9 +46,7 @@ function makePoliticians(count) {
 
 describe("MobileFeed", () => {
   it("renders weekly highlights, compare button, and politician cards", () => {
-    render(
-      <MobileFeed data={makePoliticians(5)} onSelect={() => {}} onCompare={() => {}} />
-    );
+    render(<MobileFeed data={makePoliticians(5)} onSelect={() => {}} onCompare={() => {}} />);
 
     expect(screen.getByTestId("weekly-highlights")).toBeInTheDocument();
     expect(screen.getByText("השוואה")).toBeInTheDocument();
@@ -56,18 +54,14 @@ describe("MobileFeed", () => {
   });
 
   it("shows 'show more' button when more than 15 items", () => {
-    render(
-      <MobileFeed data={makePoliticians(20)} onSelect={() => {}} onCompare={() => {}} />
-    );
+    render(<MobileFeed data={makePoliticians(20)} onSelect={() => {}} onCompare={() => {}} />);
 
     expect(screen.getByText(/הצג עוד 5 פוליטיקאים/)).toBeInTheDocument();
   });
 
   it("calls onCompare when compare button is clicked", () => {
     const onCompare = vi.fn();
-    render(
-      <MobileFeed data={makePoliticians(5)} onSelect={() => {}} onCompare={onCompare} />
-    );
+    render(<MobileFeed data={makePoliticians(5)} onSelect={() => {}} onCompare={onCompare} />);
 
     fireEvent.click(screen.getByText("השוואה"));
     expect(onCompare).toHaveBeenCalled();
@@ -86,8 +80,26 @@ describe("MobileFeed", () => {
 
   it("sort pills change sort order", () => {
     const data = [
-      { politician_id: "a", name: "A", displayName: "A", party: "P", displayParty: "P", overall_score: 3, media_volume: 10, delta: 0.1 },
-      { politician_id: "b", name: "B", displayName: "B", party: "P", displayParty: "P", overall_score: 8, media_volume: 2, delta: -2.0 },
+      {
+        politician_id: "a",
+        name: "A",
+        displayName: "A",
+        party: "P",
+        displayParty: "P",
+        overall_score: 3,
+        media_volume: 10,
+        delta: 0.1,
+      },
+      {
+        politician_id: "b",
+        name: "B",
+        displayName: "B",
+        party: "P",
+        displayParty: "P",
+        overall_score: 8,
+        media_volume: 2,
+        delta: -2.0,
+      },
     ];
     render(<MobileFeed data={data} onSelect={() => {}} onCompare={() => {}} />);
 

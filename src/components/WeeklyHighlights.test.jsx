@@ -13,10 +13,8 @@ vi.mock("react-i18next", () => ({
         "weeklyHighlights.topFallers": "יורדים השבוע",
         "weeklyHighlights.noMovers": "אין שינויים",
       };
-      if (key === "weeklyHighlights.headlineUp")
-        return `${options.name} זינק ב-${options.delta}`;
-      if (key === "weeklyHighlights.headlineDown")
-        return `${options.name} צנח ב-${options.delta}`;
+      if (key === "weeklyHighlights.headlineUp") return `${options.name} זינק ב-${options.delta}`;
+      if (key === "weeklyHighlights.headlineDown") return `${options.name} צנח ב-${options.delta}`;
       return dict[key] ?? key;
     },
   }),
@@ -35,7 +33,12 @@ function makeSummary(days) {
   const rows = [];
   for (const { date, politicians } of days) {
     for (const p of politicians) {
-      rows.push({ date, name: p.name, politician_id: p.name.toLowerCase().replace(/ /g, "-"), overall_score: p.score });
+      rows.push({
+        date,
+        name: p.name,
+        politician_id: p.name.toLowerCase().replace(/ /g, "-"),
+        overall_score: p.score,
+      });
     }
   }
   return rows;
@@ -44,8 +47,20 @@ function makeSummary(days) {
 describe("WeeklyHighlights", () => {
   it("renders headline with biggest weekly mover", () => {
     const summary = makeSummary([
-      { date: "2026-03-27", politicians: [{ name: "Alice", score: 3.0 }, { name: "Bob", score: 7.0 }] },
-      { date: "2026-04-03", politicians: [{ name: "Alice", score: 6.0 }, { name: "Bob", score: 5.0 }] },
+      {
+        date: "2026-03-27",
+        politicians: [
+          { name: "Alice", score: 3.0 },
+          { name: "Bob", score: 7.0 },
+        ],
+      },
+      {
+        date: "2026-04-03",
+        politicians: [
+          { name: "Alice", score: 6.0 },
+          { name: "Bob", score: 5.0 },
+        ],
+      },
     ]);
     mockStore.mockImplementation((selector) => selector({ summaryData: summary }));
 
@@ -59,8 +74,20 @@ describe("WeeklyHighlights", () => {
 
   it("renders top risers and fallers lists", () => {
     const summary = makeSummary([
-      { date: "2026-03-27", politicians: [{ name: "Alice", score: 3.0 }, { name: "Bob", score: 7.0 }] },
-      { date: "2026-04-03", politicians: [{ name: "Alice", score: 6.0 }, { name: "Bob", score: 5.0 }] },
+      {
+        date: "2026-03-27",
+        politicians: [
+          { name: "Alice", score: 3.0 },
+          { name: "Bob", score: 7.0 },
+        ],
+      },
+      {
+        date: "2026-04-03",
+        politicians: [
+          { name: "Alice", score: 6.0 },
+          { name: "Bob", score: 5.0 },
+        ],
+      },
     ]);
     mockStore.mockImplementation((selector) => selector({ summaryData: summary }));
 

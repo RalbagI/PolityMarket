@@ -1,11 +1,6 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  TrendingUp,
-  TrendingDown,
-  ArrowLeftRight,
-  ChevronDown,
-} from "lucide-react";
+import { TrendingUp, TrendingDown, ArrowLeftRight, ChevronDown } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
 import { scoreToColor } from "../lib/colorScale";
 import Avatar from "./Avatar";
@@ -94,9 +89,7 @@ export default function MobileFeed({ data, onSelect, onCompare }) {
               key={key}
               onClick={() => setSortBy(key)}
               className={`px-2 py-0.5 text-[10px] rounded-full transition-colors ${
-                sortBy === key
-                  ? "bg-gray-700 text-white"
-                  : "text-gray-500 hover:text-gray-300"
+                sortBy === key ? "bg-gray-700 text-white" : "text-gray-500 hover:text-gray-300"
               }`}
             >
               {label}
@@ -108,11 +101,7 @@ export default function MobileFeed({ data, onSelect, onCompare }) {
       {/* Feed cards */}
       <div className="space-y-1.5">
         {visible.map((entry) => (
-          <FeedCard
-            key={entry.politician_id || entry.name}
-            entry={entry}
-            onSelect={onSelect}
-          />
+          <FeedCard key={entry.politician_id || entry.name} entry={entry} onSelect={onSelect} />
         ))}
       </div>
 

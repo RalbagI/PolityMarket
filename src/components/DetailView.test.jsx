@@ -39,8 +39,7 @@ vi.mock("react-i18next", () => ({
         "detailView.dimension.hideSentimentDetail": "סגור",
         "detailView.dimension.dataConfidence": `${options.count ?? "?"}/${options.total ?? "?"} ממדים`,
         "detailView.aiAnalysis.empty": "אין ניתוח זמין.",
-        "detailView.scoreSmoothed":
-          "הציון מבוסס על פעילות אחרונה ומגמה (מוחלק לאורך זמן)",
+        "detailView.scoreSmoothed": "הציון מבוסס על פעילות אחרונה ומגמה (מוחלק לאורך זמן)",
       };
 
       return dictionary[key] !== undefined ? dictionary[key] : key;

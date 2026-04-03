@@ -35,9 +35,7 @@ function PoliticianPicker({ label, selected, onSelect, politicians, t }) {
     if (!search) return politicians;
     const q = search.toLowerCase();
     return politicians.filter(
-      (p) =>
-        p.name.toLowerCase().includes(q) ||
-        localizeName(t, p.name).includes(q)
+      (p) => p.name.toLowerCase().includes(q) || localizeName(t, p.name).includes(q)
     );
   }, [politicians, search, t]);
 
@@ -92,9 +90,7 @@ function PoliticianPicker({ label, selected, onSelect, politicians, t }) {
             <span className="text-xs text-gray-200 truncate flex-1 text-start">
               {localizeName(t, p.name)}
             </span>
-            <span className="text-xs text-gray-500 tabular-nums">
-              {p.overall_score.toFixed(1)}
-            </span>
+            <span className="text-xs text-gray-500 tabular-nums">{p.overall_score.toFixed(1)}</span>
           </button>
         ))}
       </div>
@@ -223,18 +219,14 @@ export default function CompareView({ todayData }) {
               <div className="text-3xl font-bold text-white">
                 {politicianA.overall_score.toFixed(1)}
               </div>
-              <div className="text-[10px] text-gray-500">
-                {localizeName(t, politicianA.name)}
-              </div>
+              <div className="text-[10px] text-gray-500">{localizeName(t, politicianA.name)}</div>
             </div>
             <div className="text-lg text-gray-600 font-light">vs</div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white">
                 {politicianB.overall_score.toFixed(1)}
               </div>
-              <div className="text-[10px] text-gray-500">
-                {localizeName(t, politicianB.name)}
-              </div>
+              <div className="text-[10px] text-gray-500">{localizeName(t, politicianB.name)}</div>
             </div>
           </div>
 

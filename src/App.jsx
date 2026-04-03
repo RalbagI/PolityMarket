@@ -230,9 +230,7 @@ export default function App() {
             {" · "}
             ▲▼ = {t("legendStrip.delta")}
           </span>
-          {latestDate && (
-            <span>{t("legendStrip.updated", { date: latestDate })}</span>
-          )}
+          {latestDate && <span>{t("legendStrip.updated", { date: latestDate })}</span>}
         </div>
         {/* Treemap — full viewport on both mobile and desktop */}
         <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] flex flex-col">

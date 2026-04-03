@@ -2470,9 +2470,7 @@ async function main() {
     const prevSmoothed = yesterdayScores.get(entry.politician_id) ?? null;
     entry.overall_score = applyEMA(entry.overall_score_raw, prevSmoothed);
   }
-  console.log(
-    `  → EMA applied (α=0.8), ${yesterdayScores.size} politicians had prior scores`
-  );
+  console.log(`  → EMA applied (α=0.8), ${yesterdayScores.size} politicians had prior scores`);
 
   // ── Phase 3.5: Aggregate parties ──────────────────────────────────
   console.log("\nPhase 3.5: Aggregating party scores...");

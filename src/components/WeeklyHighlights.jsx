@@ -53,9 +53,7 @@ export default function WeeklyHighlights({ onSelect }) {
     // Pick headline: biggest delta weighted by media presence.
     // abs(delta) * (1 + media_volume) so high-profile politicians surface first.
     const byImpact = [...deltas].sort(
-      (a, b) =>
-        Math.abs(b.delta) * (1 + b.media_volume) -
-        Math.abs(a.delta) * (1 + a.media_volume)
+      (a, b) => Math.abs(b.delta) * (1 + b.media_volume) - Math.abs(a.delta) * (1 + a.media_volume)
     );
     const biggest = byImpact[0] ?? null;
 

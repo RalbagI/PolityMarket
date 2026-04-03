@@ -37,9 +37,7 @@ export default function WeeklyHighlightsMini({ onSelect }) {
 
     const sorted = [...deltas].sort((a, b) => b.delta - a.delta);
     const byImpact = [...deltas].sort(
-      (a, b) =>
-        Math.abs(b.delta) * (1 + b.media_volume) -
-        Math.abs(a.delta) * (1 + a.media_volume)
+      (a, b) => Math.abs(b.delta) * (1 + b.media_volume) - Math.abs(a.delta) * (1 + a.media_volume)
     );
 
     return {
@@ -59,9 +57,7 @@ export default function WeeklyHighlightsMini({ onSelect }) {
   return (
     <div
       className={`rounded-xl backdrop-blur-md border shadow-lg transition-all duration-200 ${
-        isUp
-          ? "bg-gray-950/85 border-emerald-800/40"
-          : "bg-gray-950/85 border-red-800/40"
+        isUp ? "bg-gray-950/85 border-emerald-800/40" : "bg-gray-950/85 border-red-800/40"
       }`}
     >
       {/* Compact headline — always visible */}
@@ -108,7 +104,10 @@ export default function WeeklyHighlightsMini({ onSelect }) {
                 <span className="text-[10px] text-gray-300 truncate">
                   {localizeName(t, d.name)}
                 </span>
-                <span className="text-[10px] text-emerald-400 font-bold tabular-nums shrink-0 ms-1" dir="ltr">
+                <span
+                  className="text-[10px] text-emerald-400 font-bold tabular-nums shrink-0 ms-1"
+                  dir="ltr"
+                >
                   {`+${d.delta.toFixed(1)}`}
                 </span>
               </button>
@@ -130,7 +129,10 @@ export default function WeeklyHighlightsMini({ onSelect }) {
                 <span className="text-[10px] text-gray-300 truncate">
                   {localizeName(t, d.name)}
                 </span>
-                <span className="text-[10px] text-red-400 font-bold tabular-nums shrink-0 ms-1" dir="ltr">
+                <span
+                  className="text-[10px] text-red-400 font-bold tabular-nums shrink-0 ms-1"
+                  dir="ltr"
+                >
                   {d.delta.toFixed(1)}
                 </span>
               </button>
