@@ -28,6 +28,7 @@
     "date": {
       "fallback": "היום"
     },
+    "scoreSmoothed": "הציון מבוסס על פעילות אחרונה ומגמה (מוחלק לאורך זמן)",
     "section": {
       "aiAnalysis": "ניתוח AI",
       "scoreBreakdown": "פירוט ציון",

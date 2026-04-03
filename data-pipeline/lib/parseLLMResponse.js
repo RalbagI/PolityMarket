@@ -163,6 +163,7 @@ export const summaryRowSchema = z.object({
  * Extends original summaryRowSchema with optional dim_* fields.
  */
 export const summaryRowSchema8dim = summaryRowSchema.extend({
+  overall_score_raw: z.number().min(0).max(10).optional(),
   dim_public_sentiment: dimField(),
   dim_parliamentary_activity: dimField(),
   dim_media_credibility: dimField(),

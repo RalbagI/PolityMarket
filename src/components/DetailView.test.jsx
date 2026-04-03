@@ -39,6 +39,8 @@ vi.mock("react-i18next", () => ({
         "detailView.dimension.hideSentimentDetail": "סגור",
         "detailView.dimension.dataConfidence": `${options.count ?? "?"}/${options.total ?? "?"} ממדים`,
         "detailView.aiAnalysis.empty": "אין ניתוח זמין.",
+        "detailView.scoreSmoothed":
+          "הציון מבוסס על פעילות אחרונה ומגמה (מוחלק לאורך זמן)",
       };
 
       return dictionary[key] !== undefined ? dictionary[key] : key;
@@ -239,6 +241,22 @@ describe("DetailView sources section", () => {
     fireEvent.click(screen.getByRole("button", { name: "מקורות" }));
 
     expect(screen.getByText("לא נמצאו מקורות זמינים עבור תאריך זה.")).toBeInTheDocument();
+  });
+});
+
+describe("DetailView — score smoothing explanation", () => {
+  it("shows smoothing explanation text below the score", () => {
+    render(
+      <DetailView
+        todayDetail={[baseEntry()]}
+        selectedPolitician="Benjamin Netanyahu"
+        selectedDate="2026-03-24"
+        loading={false}
+      />
+    );
+    expect(
+      screen.getByText("הציון מבוסס על פעילות אחרונה ומגמה (מוחלק לאורך זמן)")
+    ).toBeInTheDocument();
   });
 });
 

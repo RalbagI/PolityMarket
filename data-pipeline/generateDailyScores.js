@@ -11,6 +11,7 @@ import {
 } from "./lib/parseLLMResponse.js";
 import retry from "./lib/retry.js";
 import {
+  applyEMA,
   applyWingRelativeNorm,
   computeAgendaBonus,
   computeFieldActivity,
@@ -1881,6 +1882,7 @@ function appendToSummary(entries, today) {
       sector: entry.sector,
       role: entry.role,
       overall_score: entry.overall_score,
+      overall_score_raw: entry.overall_score_raw ?? entry.overall_score,
       media_volume: entry.media_volume,
       // 8-dimension scores (null for historical entries)
       dim_public_sentiment: entry.dim_public_sentiment ?? null,
@@ -1925,6 +1927,7 @@ function writeDetailFile(entries, today) {
     social_sentiment: e.social_sentiment,
     media_volume: e.media_volume,
     overall_score: e.overall_score,
+    overall_score_raw: e.overall_score_raw ?? e.overall_score,
     chain_of_thought: e.chain_of_thought,
     // 8-dimension composite scores
     dim_public_sentiment: e.dim_public_sentiment ?? null,
@@ -2427,6 +2430,40 @@ async function main() {
     );
   }
 
+  // ── Phase 3.4b: EMA Smoothing ─────────────────────────────────────
+  console.log("\nPhase 3.4b: Applying EMA smoothing to overall scores...");
+  let existingSummary = [];
+  try {
+    existingSummary = JSON.parse(fs.readFileSync(SUMMARY_PATH, "utf-8"));
+  } catch {
+    // No historical data yet — all scores will use raw as initial value
+  }
+
+  // Find the most recent date before today
+  const previousDates = [...new Set(existingSummary.map((r) => r.date))]
+    .filter((d) => d < today)
+    .sort();
+  const yesterdayDate = previousDates.at(-1);
+
+  // Build lookup: politician_id → yesterday's smoothed overall_score
+  const yesterdayScores = new Map();
+  if (yesterdayDate) {
+    for (const row of existingSummary) {
+      if (row.date === yesterdayDate) {
+        yesterdayScores.set(row.politician_id, row.overall_score);
+      }
+    }
+  }
+
+  for (const entry of newEntries) {
+    entry.overall_score_raw = entry.overall_score;
+    const prevSmoothed = yesterdayScores.get(entry.politician_id) ?? null;
+    entry.overall_score = applyEMA(entry.overall_score_raw, prevSmoothed);
+  }
+  console.log(
+    `  → EMA applied (α=0.8), ${yesterdayScores.size} politicians had prior scores`
+  );
+
   // ── Phase 3.5: Aggregate parties ──────────────────────────────────
   console.log("\nPhase 3.5: Aggregating party scores...");
   const partyEntries = aggregateParties(newEntries, today);
@@ -2434,12 +2471,7 @@ async function main() {
 
   // ── Phase 3.6: Validate ─────────────────────────────────────────────
   console.log("\nPhase 3.6: Validating data quality...");
-  let existingSummary = [];
-  try {
-    existingSummary = JSON.parse(fs.readFileSync(SUMMARY_PATH, "utf-8"));
-  } catch {
-    // No historical data yet
-  }
+  // existingSummary already loaded in Phase 3.4b
   // Last 7 days of history for temporal checks
   const recentDates = [...new Set(existingSummary.map((r) => r.date))].sort().slice(-7);
   const recentHistory = existingSummary.filter((r) => recentDates.includes(r.date));

@@ -193,6 +193,9 @@ export default function DetailView({
           </div>
         </div>
       </div>
+      <div className="text-[10px] text-gray-600 text-end -mt-3">
+        {t("detailView.scoreSmoothed")}
+      </div>
 
       {/* AI Analysis — expanded by default */}
       <AccordionSection title={t("detailView.section.aiAnalysis")} icon={Quote} defaultOpen={true}>
