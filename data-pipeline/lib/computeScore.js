@@ -215,6 +215,22 @@ export function computeAgendaBonus(agendaSettingScore) {
 }
 
 /**
+ * Apply Exponential Moving Average smoothing to a score.
+ *
+ * @param {number} rawToday - Today's raw score (0–10)
+ * @param {number|null} smoothedYesterday - Yesterday's smoothed score, or null if first day
+ * @param {number} alpha - Smoothing factor (0–1), higher = more weight on today. Default 0.8
+ * @returns {number} Smoothed score clamped to 0–10, 1 decimal place
+ */
+export function applyEMA(rawToday, smoothedYesterday, alpha = 0.8) {
+  if (smoothedYesterday == null || !Number.isFinite(smoothedYesterday)) {
+    return parseFloat(Math.max(0, Math.min(10, rawToday)).toFixed(1));
+  }
+  const smoothed = alpha * rawToday + (1 - alpha) * smoothedYesterday;
+  return parseFloat(Math.max(0, Math.min(10, smoothed)).toFixed(1));
+}
+
+/**
  * Apply wing-relative normalization to a dimension score.
  * Re-centers each coalition/opposition group around 0.5 with ±0.15 for 1σ.
  * Modifies entries in-place.

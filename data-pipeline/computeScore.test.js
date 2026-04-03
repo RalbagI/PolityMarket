@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import computeOverallScore, {
+  applyEMA,
   computeOverallScore8dim,
   computePublicSentiment,
   computeParliamentaryActivity,
@@ -337,5 +338,47 @@ describe("applyWingRelativeNorm", () => {
       expect(e.score).toBeGreaterThanOrEqual(0);
       expect(e.score).toBeLessThanOrEqual(1);
     }
+  });
+});
+
+describe("applyEMA", () => {
+  it("blends 80% today + 20% yesterday by default", () => {
+    expect(applyEMA(7.0, 5.0)).toBe(6.6);
+  });
+
+  it("returns raw score when no previous score (null)", () => {
+    expect(applyEMA(7.0, null)).toBe(7.0);
+  });
+
+  it("returns raw score when previous is undefined", () => {
+    expect(applyEMA(7.0, undefined)).toBe(7.0);
+  });
+
+  it("returns raw score when previous is NaN", () => {
+    expect(applyEMA(7.0, NaN)).toBe(7.0);
+  });
+
+  it("clamps result to 0 minimum", () => {
+    expect(applyEMA(0, 0)).toBe(0);
+    expect(applyEMA(-1, 0)).toBe(0);
+  });
+
+  it("clamps result to 10 maximum", () => {
+    expect(applyEMA(10, 10)).toBe(10);
+    expect(applyEMA(11, 10)).toBe(10);
+  });
+
+  it("with alpha=1.0, returns raw score exactly", () => {
+    expect(applyEMA(7.0, 5.0, 1.0)).toBe(7.0);
+  });
+
+  it("with alpha=0.0, returns yesterday exactly", () => {
+    expect(applyEMA(7.0, 5.0, 0.0)).toBe(5.0);
+  });
+
+  it("returns 1 decimal place", () => {
+    const result = applyEMA(7.123, 5.456);
+    const decimals = result.toString().split(".")[1]?.length ?? 0;
+    expect(decimals).toBeLessThanOrEqual(1);
   });
 });

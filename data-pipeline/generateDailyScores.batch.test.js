@@ -108,22 +108,33 @@ describe("search term matching", () => {
 });
 
 describe("entity verification", () => {
-  it("buildVerificationPrompt formats numbered items with XML-delimited text", () => {
+  it("buildVerificationPrompt formats numbered items with XML-delimited text and party", () => {
     const batch = [
-      { index: 0, text: "תקיפה ברמת גולן", fullName: "May Golan", hebrewName: "מאי גולן" },
+      {
+        index: 0,
+        text: "תקיפה ברמת גולן",
+        fullName: "May Golan",
+        hebrewName: "מאי גולן",
+        party: "Likud",
+      },
       {
         index: 1,
         text: "סמוטריץ' הגיב",
         fullName: "Bezalel Smotrich",
         hebrewName: "בצלאל סמוטריץ'",
+        party: "Religious Zionism",
       },
     ];
     const prompt = buildVerificationPrompt(batch);
-    expect(prompt).toContain('1. Politician: "מאי גולן"');
+    expect(prompt).toContain('1. Politician: "מאי גולן" (May Golan), party: Likud');
     expect(prompt).toContain("<text>תקיפה ברמת גולן</text>");
-    expect(prompt).toContain('2. Politician: "בצלאל סמוטריץ\'"');
+    expect(prompt).toContain(
+      '2. Politician: "בצלאל סמוטריץ\'" (Bezalel Smotrich), party: Religious Zionism'
+    );
     expect(prompt).toContain("YES");
     expect(prompt).toContain("NO");
+    // Should instruct to reject same-name non-politicians
+    expect(prompt).toContain("DIFFERENT person");
   });
 
   it("buildVerificationPrompt escapes xml-sensitive characters in text", () => {
@@ -133,6 +144,7 @@ describe("entity verification", () => {
         text: '<script>alert("x")</script> & headline',
         fullName: "Example",
         hebrewName: "דוגמה",
+        party: "TestParty",
       },
     ];
     const prompt = buildVerificationPrompt(batch);

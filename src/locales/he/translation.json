@@ -28,6 +28,7 @@
     "date": {
       "fallback": "היום"
     },
+    "scoreSmoothed": "הציון מבוסס על פעילות אחרונה ומגמה (מוחלק לאורך זמן)",
     "section": {
       "aiAnalysis": "ניתוח AI",
       "scoreBreakdown": "פירוט ציון",
@@ -690,6 +691,37 @@
     "fallers": "יורדים",
     "ariaLabel": "פוליטיקאים עם השינוי הגדול ביותר היום",
     "noChanges": "אין שינויים היום"
+  },
+  "weeklyHighlights": {
+    "weekInReview": "סיכום שבועי",
+    "headlineUp": "{{name}} זינק ב-{{delta}} נקודות (מ-{{from}} ל-{{to}})",
+    "headlineDown": "{{name}} צנח ב-{{delta}} נקודות (מ-{{from}} ל-{{to}})",
+    "topRisers": "עולים השבוע",
+    "topFallers": "יורדים השבוע",
+    "noMovers": "אין שינויים"
+  },
+  "compare": {
+    "title": "השוואה ראש בראש",
+    "pickA": "בחר פוליטיקאי",
+    "pickB": "בחר פוליטיקאי",
+    "dimensions": "השוואת ממדים",
+    "back": "חזרה"
+  },
+  "legendStrip": {
+    "scale": "ציון 0–10",
+    "red": "מתחת לממוצע",
+    "green": "מעל הממוצע",
+    "delta": "שינוי יומי",
+    "updated": "עדכון אחרון: {{date}}"
+  },
+  "mobileFeed": {
+    "compare": "השוואה",
+    "sort": {
+      "score": "ציון",
+      "delta": "שינוי",
+      "volume": "מדיה"
+    },
+    "showAll": "הצג עוד {{count}} פוליטיקאים"
   },
   "cookies": {
     "description": "אנו שומרים העדפות בדפדפן שלך בלבד — ללא עוגיות מעקב או שליחת מידע לשרתים.",

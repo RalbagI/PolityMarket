@@ -6,6 +6,7 @@ import Sidebar, { SidebarContent } from "./components/Sidebar";
 import useSidebarStats from "./lib/useSidebarStats";
 import Treemap from "./components/Treemap";
 import TopMoversStrip from "./components/TopMoversStrip";
+import WeeklyHighlights from "./components/WeeklyHighlights";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
@@ -17,12 +18,14 @@ import useAlertState from "./lib/useAlertState";
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
 const PartyDetailView = lazy(() => import("./components/PartyDetailView"));
+const CompareView = lazy(() => import("./components/CompareView"));
 const AlertSubscriptionModal = lazy(() => import("./components/AlertSubscriptionModal"));
 
 export default function App() {
   const { t } = useTranslation();
   const [methodologyOpen, setMethodologyOpen] = useState(false);
   const [alertModalOpen, setAlertModalOpen] = useState(false);
+  const [compareOpen, setCompareOpen] = useState(false);
   const [viewMode, setViewMode] = useState("politicians"); // "politicians" | "parties"
   const summaryData = useStore((s) => s.summaryData);
   const partySummaryData = useStore((s) => s.partySummaryData);
@@ -216,19 +219,50 @@ export default function App() {
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
       <main className="md:h-screen flex flex-col md:ms-[260px] pt-[calc(3.5rem+env(safe-area-inset-top))] md:pt-0">
-        {/* Treemap — takes full viewport minus top bar on mobile */}
+        {/* Legend strip + last updated */}
+        <div className="shrink-0 hidden md:flex items-center justify-between px-3 py-1 bg-gray-950 border-b border-gray-800/50 text-[10px] text-gray-500">
+          <span>
+            {t("legendStrip.scale")}
+            {" · "}
+            <span className="text-red-400">{t("legendStrip.red")}</span>
+            {" · "}
+            <span className="text-emerald-400">{t("legendStrip.green")}</span>
+            {" · "}
+            ▲▼ = {t("legendStrip.delta")}
+          </span>
+          {latestDate && <span>{t("legendStrip.updated", { date: latestDate })}</span>}
+        </div>
+        {/* Treemap — full viewport on both mobile and desktop */}
         <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] flex flex-col">
-          <div className="flex-1 min-h-0">
-            <ErrorBoundary>
-              <Treemap
-                data={viewMode === "parties" ? partyTreemapData : treemapData}
-                onSelect={handleSelectPolitician}
-                selectedPolitician={selectedPolitician}
-              />
-            </ErrorBoundary>
+          <div className="flex-1 min-h-0 flex">
+            {/* Treemap */}
+            <div className="flex-1 min-w-0 relative">
+              <ErrorBoundary>
+                <Treemap
+                  data={viewMode === "parties" ? partyTreemapData : treemapData}
+                  onSelect={handleSelectPolitician}
+                  selectedPolitician={selectedPolitician}
+                />
+              </ErrorBoundary>
+            </div>
+            {/* Desktop: Weekly highlights sidebar */}
+            <div className="hidden md:block w-[280px] shrink-0 border-s border-gray-800 bg-gray-950/80 overflow-y-auto p-3">
+              <WeeklyHighlights onSelect={handleSelectPolitician} />
+              <div className="mt-3">
+                <button
+                  onClick={() => {
+                    logEvent("open_compare");
+                    setCompareOpen(true);
+                  }}
+                  className="flex items-center justify-center gap-1.5 w-full px-3 py-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 hover:bg-indigo-500/20 transition-colors text-xs text-indigo-300 font-medium"
+                >
+                  {t("compare.title")}
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* Top Movers strip — pinned at bottom of treemap viewport */}
+          {/* Top Movers strip — pinned at bottom */}
           <div className="shrink-0 border-t border-gray-800 bg-gray-950">
             <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
           </div>
@@ -294,6 +328,20 @@ export default function App() {
           </SlidePanel>
         </Suspense>
       </ErrorBoundary>
+
+      {compareOpen && (
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <SlidePanel
+              isOpen={compareOpen}
+              onClose={() => setCompareOpen(false)}
+              title={t("compare.title")}
+            >
+              <CompareView todayData={enrichedData} />
+            </SlidePanel>
+          </Suspense>
+        </ErrorBoundary>
+      )}
 
       <MethodologyModal isOpen={methodologyOpen} onClose={() => setMethodologyOpen(false)} />
 

@@ -56,8 +56,8 @@ export default function TopMoversStrip({ data, onSelect }) {
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {d.displayName || localizeName(t, d.name)}
               </span>
-              <span className="text-xs text-emerald-400 font-bold tabular-nums">
-                +{d.delta.toFixed(1)}
+              <span className="text-xs text-emerald-400 font-bold tabular-nums" dir="ltr">
+                {`+${d.delta.toFixed(1)}`}
               </span>
             </button>
           ))}
@@ -84,7 +84,7 @@ export default function TopMoversStrip({ data, onSelect }) {
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {d.displayName || localizeName(t, d.name)}
               </span>
-              <span className="text-xs text-red-400 font-bold tabular-nums">
+              <span className="text-xs text-red-400 font-bold tabular-nums" dir="ltr">
                 {d.delta.toFixed(1)}
               </span>
             </button>
