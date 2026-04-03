@@ -2,6 +2,7 @@ import { memo, useMemo, useState, useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { hierarchy, treemap, treemapSquarify } from "d3-hierarchy";
 import { normalizedScoreToColorWithAlpha, scoreToColorWithAlpha } from "../lib/colorScale";
+import { resolveDisplayScore } from "../lib/marketScore";
 import { localizeName } from "../lib/localize";
 import useStore from "../store";
 import useTreemapGestures from "../lib/useTreemapGestures";
@@ -66,9 +67,6 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     if (!data || !data.length || size.width === 0 || size.height === 0) return [];
     if (!isMobile || data.length <= 12) return data;
 
-    const resolveMarketScore = (entry) =>
-      Number.isFinite(entry.market_score) ? entry.market_score : (entry.overall_score ?? 0) * 10;
-
     const sorted = [...data].sort((a, b) => sizeValue(b) - sizeValue(a));
     const totalValue = sorted.reduce((sum, entry) => sum + sizeValue(entry), 0);
     const containerArea = size.width * size.height;
@@ -93,7 +91,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     const smallestVisible = visible[visible.length - 1];
     const othersSize = sizeValue(smallestVisible);
     const othersScore =
-      grouped.reduce((sum, entry) => sum + resolveMarketScore(entry), 0) / grouped.length;
+      grouped.reduce((sum, entry) => sum + (resolveDisplayScore(entry) ?? 0), 0) / grouped.length;
 
     return [
       ...visible,

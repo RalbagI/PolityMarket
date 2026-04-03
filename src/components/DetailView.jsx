@@ -18,7 +18,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import PoliticianTrendChart from "./PoliticianTrendChart";
 import { localizeName, localizeParty } from "../lib/localize";
 import Avatar from "./Avatar";
-import { getMarketTierLabel } from "../lib/marketScore";
+import { getMarketTierLabel, resolveDisplayScore } from "../lib/marketScore";
 
 const DIM_CONFIG = Object.freeze([
   { field: "dim_public_sentiment", key: "publicSentiment", color: "#6366f1", weight: "25%" },
@@ -160,9 +160,7 @@ export default function DetailView({
   const nonNullDims = DIM_CONFIG.filter(
     ({ field }) => entry[field] != null && Number.isFinite(entry[field])
   ).length;
-  const displayScore = Number.isFinite(entry.market_score)
-    ? Math.round(entry.market_score)
-    : Math.round((entry.overall_score ?? 0) * 10);
+  const displayScore = resolveDisplayScore(entry) ?? 0;
   const displayPercentile = Number.isFinite(entry.market_percentile)
     ? Math.round(entry.market_percentile)
     : null;

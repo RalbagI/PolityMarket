@@ -49,6 +49,12 @@ export function getMarketTierLabel(tier) {
   return MARKET_TIER_CONFIG[tier]?.label ?? "";
 }
 
+export function resolveDisplayScore(entry) {
+  if (Number.isFinite(entry?.market_score)) return Math.round(entry.market_score);
+  if (Number.isFinite(entry?.overall_score)) return Math.round(entry.overall_score * 10);
+  return null;
+}
+
 export function getRollingMarketBounds(scores, neutralRaw = MARKET_NEUTRAL_RAW_SCORE) {
   const sortedScores = scores.filter(Number.isFinite).sort((a, b) => a - b);
   if (!sortedScores.length) {

@@ -38,6 +38,30 @@ describe("TreemapLeaf", () => {
     expect(screen.getByText("73")).toBeInTheDocument();
   });
 
+  it("renders negative delta badge without duplicate minus sign", () => {
+    renderLeaf({
+      politician_id: "neg-delta",
+      name: "Falling Star",
+      market_score: 42,
+      overall_score: 4.2,
+      delta: -3.2,
+    });
+
+    expect(screen.getByText("\u25BC3.2")).toBeInTheDocument();
+  });
+
+  it("renders positive delta badge with arrow", () => {
+    renderLeaf({
+      politician_id: "pos-delta",
+      name: "Rising Star",
+      market_score: 78,
+      overall_score: 7.8,
+      delta: 5.1,
+    });
+
+    expect(screen.getByText("▲5.1")).toBeInTheDocument();
+  });
+
   it("does not render a score label for the synthetic Others bucket", () => {
     const { container } = renderLeaf({
       politician_id: "__others__",

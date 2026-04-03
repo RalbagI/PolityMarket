@@ -5,6 +5,7 @@ import {
   computeMarketScore,
   getMarketTier,
   getRollingMarketBounds,
+  resolveDisplayScore,
 } from "./marketScore";
 
 describe("marketScore helpers", () => {
@@ -135,5 +136,20 @@ describe("marketScore helpers", () => {
 
     expect(secondRow.market_delta_points).toBeNull();
     expect(secondRow.market_delta_pct).toBeNull();
+  });
+});
+
+describe("resolveDisplayScore", () => {
+  it("prefers market_score when present", () => {
+    expect(resolveDisplayScore({ market_score: 73.4, overall_score: 6.1 })).toBe(73);
+  });
+
+  it("falls back to overall_score * 10 when market_score is missing", () => {
+    expect(resolveDisplayScore({ overall_score: 6.15 })).toBe(62);
+  });
+
+  it("returns null when both scores are missing", () => {
+    expect(resolveDisplayScore({})).toBeNull();
+    expect(resolveDisplayScore(null)).toBeNull();
   });
 });
