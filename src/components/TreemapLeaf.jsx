@@ -22,15 +22,14 @@ export default function TreemapLeaf({
   const availW = w - pad;
   const availH = h - pad;
 
-  const showScore = !tooSmall && area > 1200 && h > 20;
+  const showScore = !d._isOthers && !tooSmall && area > 1200 && h > 20;
   const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
   const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
-  const displayScore =
-    d._isOthers || !Number.isFinite(d.market_score)
-      ? Number.isFinite(d.overall_score)
-        ? Math.round(d.overall_score * 10)
-        : null
-      : Math.round(d.market_score);
+  const displayScore = !Number.isFinite(d.market_score)
+    ? Number.isFinite(d.overall_score)
+      ? Math.round(d.overall_score * 10)
+      : null
+    : Math.round(d.market_score);
 
   const nameAvailH = availH - scoreLineH;
   const roughMaxLines = Math.max(1, Math.floor(nameAvailH / (baseNameFontSize * 1.2 || 1)));

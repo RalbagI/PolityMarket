@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi } from "vitest";
-import { fireEvent, render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Sidebar from "./Sidebar";
 
 vi.mock("react-i18next", () => ({
@@ -207,5 +207,23 @@ describe("Sidebar display options position", () => {
     expect(displayOptionsPos).toBeGreaterThan(-1);
     expect(filterBarPos).toBeGreaterThan(-1);
     expect(displayOptionsPos).toBeLessThan(filterBarPos);
+  });
+
+  it("renders the market-score legend in positive-to-negative order", () => {
+    render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+      />
+    );
+
+    const legendLabels = screen.getByText("sidebar.colorLegend.positive").parentElement;
+    const legendBar = legendLabels?.previousElementSibling;
+
+    expect(legendBar).toBeTruthy();
+    expect(legendBar.style.background).toContain("linear-gradient(to right");
   });
 });

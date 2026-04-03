@@ -116,4 +116,24 @@ describe("marketScore helpers", () => {
     expect(lowDayTwo.market_delta_points).toBeGreaterThan(0);
     expect(lowDayTwo.market_delta_pct).toBeNull();
   });
+
+  it("suppresses deltas when the previous sample is not the prior calendar day", () => {
+    const rows = annotateMarketTimeline([
+      {
+        date: "2026-03-16",
+        politician_id: "gap",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.2,
+      },
+      {
+        date: "2026-03-18",
+        politician_id: "gap",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.8,
+      },
+    ]);
+
+    const secondRow = rows.find((row) => row.date === "2026-03-18" && row.politician_id === "gap");
+
+    expect(secondRow.market_delta_points).toBeNull();
+    expect(secondRow.market_delta_pct).toBeNull();
+  });
 });

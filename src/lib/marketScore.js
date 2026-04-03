@@ -94,6 +94,21 @@ function getEntityId(row, entityKey) {
   return typeof entityKey === "function" ? entityKey(row) : row?.[entityKey];
 }
 
+function toUtcDayNumber(dateString) {
+  if (typeof dateString !== "string") return null;
+  const match = dateString.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+  const [, year, month, day] = match;
+  return Date.UTC(Number(year), Number(month) - 1, Number(day)) / 86400000;
+}
+
+function isNextCalendarDay(previousDate, currentDate) {
+  const previousDay = toUtcDayNumber(previousDate);
+  const currentDay = toUtcDayNumber(currentDate);
+  if (!Number.isFinite(previousDay) || !Number.isFinite(currentDay)) return false;
+  return currentDay - previousDay === 1;
+}
+
 function buildPercentileMap(rowsForDate, entityKey, scoreKey) {
   const validRows = rowsForDate
     .filter((row) => Number.isFinite(row?.[scoreKey]))
@@ -201,6 +216,10 @@ export function annotateMarketTimeline(
     for (let index = 1; index < sortedRows.length; index += 1) {
       const current = sortedRows[index];
       const previous = sortedRows[index - 1];
+
+      if (!isNextCalendarDay(previous?.[dateKey], current?.[dateKey])) {
+        continue;
+      }
 
       if (!Number.isFinite(current.market_score) || !Number.isFinite(previous.market_score)) {
         continue;
