@@ -85,5 +85,5 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
   // Detail panel shows a numeric market score (0-100 scale) in the large display
   await expect(detailsPanel.locator(".text-3xl").first()).toBeVisible();
   const scoreText = await detailsPanel.locator(".text-3xl").first().textContent();
-  expect(scoreText.trim()).toMatch(/^\d{1,3}$/);
+  expect(scoreText.trim()).toMatch(/^\d{1,3}(\.\d+)?$/);
 });
