@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  buildSourceBaselines,
-  computeCoverageAndConsensusFeatures,
-} from "./lib/sourceRegistry.js";
+import { buildSourceBaselines, computeCoverageAndConsensusFeatures } from "./lib/sourceRegistry.js";
 
 describe("sourceRegistry consensus features", () => {
   it("counts each source once per entry when building baselines", () => {
@@ -12,11 +9,7 @@ describe("sourceRegistry consensus features", () => {
         policy_approval: 0.6,
         hostility_level: 0.2,
         media_amplification: 0.7,
-        evidence_items: [
-          { source_id: "ynet" },
-          { source_id: "ynet" },
-          { source_id: "walla" },
-        ],
+        evidence_items: [{ source_id: "ynet" }, { source_id: "ynet" }, { source_id: "walla" }],
       },
       {
         date: "2026-04-02",

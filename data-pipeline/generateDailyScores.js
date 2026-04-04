@@ -1212,7 +1212,10 @@ function renderSearchTemplate(template, politician) {
 }
 
 function truncateForEvidence(value, limit = 280) {
-  return String(value ?? "").replace(/\s+/g, " ").trim().slice(0, limit);
+  return String(value ?? "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, limit);
 }
 
 function dedupeEvidenceItems(items) {
@@ -1270,7 +1273,11 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
     const url = renderSearchTemplate(template, politician);
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
-      const sourceMeta = resolveSourceMeta({ url, hint: "Google News", fallbackName: "Google News" });
+      const sourceMeta = resolveSourceMeta({
+        url,
+        hint: "Google News",
+        fallbackName: "Google News",
+      });
       successfulSources++;
       for (const item of items) classifyItem(item, sourceMeta);
     } catch (err) {
@@ -1851,12 +1858,7 @@ export function splitPoliticiansIntoBatches(
   return batches;
 }
 
-async function batchScoreAllPoliticians(
-  politicians,
-  politicianDataMap,
-  oknessetMap,
-  promisesDB
-) {
+async function batchScoreAllPoliticians(politicians, politicianDataMap, oknessetMap, promisesDB) {
   // Classify by news activity: high-tier gets OPENAI_MODEL_HIGH, low-tier gets OPENAI_MODEL_LOW
   const highTier = [];
   const lowTier = [];
@@ -2329,14 +2331,14 @@ async function main() {
         mentions: socialMentions,
         unverifiedMentions,
         evidenceItems: socialEvidence,
-      } = await fetchSocialMediaMentions(
-        politician,
-        sourceConfig
-      );
+      } = await fetchSocialMediaMentions(politician, sourceConfig);
       politicianDataMap.set(politician.id, {
         headlines,
         socialMentions,
-        evidenceItems: dedupeEvidenceItems([...(headlineEvidence ?? []), ...(socialEvidence ?? [])]),
+        evidenceItems: dedupeEvidenceItems([
+          ...(headlineEvidence ?? []),
+          ...(socialEvidence ?? []),
+        ]),
       });
 
       // Collect partial matches for batch verification
@@ -2363,7 +2365,11 @@ async function main() {
       }
     } catch (err) {
       console.warn(`  ⚠ Data fetch failed for ${politician.name}: ${err.message}`);
-      politicianDataMap.set(politician.id, { headlines: [], socialMentions: [], evidenceItems: [] });
+      politicianDataMap.set(politician.id, {
+        headlines: [],
+        socialMentions: [],
+        evidenceItems: [],
+      });
       fetchFailures.push({ politicianId: politician.id, message: err.message });
     }
   }
@@ -2401,10 +2407,12 @@ async function main() {
 
       if (item.type === "headline") {
         data.headlines.push(item.text);
-        if (item.evidenceItem) data.evidenceItems = [...(data.evidenceItems ?? []), item.evidenceItem];
+        if (item.evidenceItem)
+          data.evidenceItems = [...(data.evidenceItems ?? []), item.evidenceItem];
       } else if (item.type === "social" && item.mentionObj) {
         data.socialMentions.push(item.mentionObj);
-        if (item.evidenceItem) data.evidenceItems = [...(data.evidenceItems ?? []), item.evidenceItem];
+        if (item.evidenceItem)
+          data.evidenceItems = [...(data.evidenceItems ?? []), item.evidenceItem];
       }
     }
 

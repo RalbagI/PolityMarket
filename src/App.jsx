@@ -192,8 +192,9 @@ export default function App() {
   }, [selectedPolitician, enrichedData]);
 
   const activeDate = selectedDate || latestDate;
-  const activeDetailCacheKey =
-    activeDate ? `${activeDate}::${selectedDetailKey || "__date__"}` : null;
+  const activeDetailCacheKey = activeDate
+    ? `${activeDate}::${selectedDetailKey || "__date__"}`
+    : null;
   const activeDetail = useStore((s) =>
     activeDetailCacheKey ? s.detailCache[activeDetailCacheKey] : null
   );

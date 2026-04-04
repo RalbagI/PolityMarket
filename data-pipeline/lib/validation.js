@@ -199,8 +199,11 @@ export function aggregateParties(entries, today) {
           members.reduce((sum, member) => sum + (member.signal_strength ?? 0), 0) / members.length
         ).toFixed(3)
       ),
-      source_diversity: [...new Set(members.flatMap((member) => member.evidence_items ?? []).map((e) => e.source_id))]
-        .length,
+      source_diversity: [
+        ...new Set(
+          members.flatMap((member) => member.evidence_items ?? []).map((e) => e.source_id)
+        ),
+      ].length,
       coverage_confidence: parseFloat(
         (
           members.reduce((sum, member) => sum + (member.coverage_confidence ?? 0), 0) /
@@ -208,9 +211,9 @@ export function aggregateParties(entries, today) {
         ).toFixed(3)
       ),
       policy_rel_z: parseFloat(
-        (members.reduce((sum, member) => sum + (member.policy_rel_z ?? 0), 0) / members.length).toFixed(
-          3
-        )
+        (
+          members.reduce((sum, member) => sum + (member.policy_rel_z ?? 0), 0) / members.length
+        ).toFixed(3)
       ),
       inverse_hostility_rel_z: parseFloat(
         (

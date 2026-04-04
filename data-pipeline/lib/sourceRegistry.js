@@ -240,7 +240,10 @@ export function computeCoverageAndConsensusFeatures(
       0.05,
       1
     );
-    uniqueSources.set(sourceMeta.source_id, (uniqueSources.get(sourceMeta.source_id) ?? 0) + weight);
+    uniqueSources.set(
+      sourceMeta.source_id,
+      (uniqueSources.get(sourceMeta.source_id) ?? 0) + weight
+    );
     totalWeight += weight;
 
     if (directMatches > 0) directCount += 1;

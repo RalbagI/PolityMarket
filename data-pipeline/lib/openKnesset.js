@@ -82,10 +82,7 @@ async function fetchViaLegacyApi(oknessetId, config, _fetchJson, timeoutMs, wind
 
     const [votesResult, memberResult, mmmResult] = await Promise.allSettled([
       retry(
-        () =>
-          fetchJson(
-            `${baseUrl}vote/?mk_id=${eid}&from_date=${eFrom}&to_date=${eTo}&limit=50`
-          ),
+        () => fetchJson(`${baseUrl}vote/?mk_id=${eid}&from_date=${eFrom}&to_date=${eTo}&limit=50`),
         { maxRetries: 2, initialDelay: 500, shouldRetry: isTransientError }
       ),
       retry(() => fetchJson(`${baseUrl}member/${eid}/`), {
@@ -93,10 +90,11 @@ async function fetchViaLegacyApi(oknessetId, config, _fetchJson, timeoutMs, wind
         initialDelay: 500,
         shouldRetry: isTransientError,
       }),
-      retry(
-        () => fetchJson(`${baseUrl}mmm/?request_by=${eid}&from_date=${eFrom}&limit=20`),
-        { maxRetries: 2, initialDelay: 500, shouldRetry: isTransientError }
-      ),
+      retry(() => fetchJson(`${baseUrl}mmm/?request_by=${eid}&from_date=${eFrom}&limit=20`), {
+        maxRetries: 2,
+        initialDelay: 500,
+        shouldRetry: isTransientError,
+      }),
     ]);
 
     const votes = votesResult.status === "fulfilled" ? (votesResult.value?.objects ?? []) : [];
@@ -146,7 +144,9 @@ async function fetchViaDatasets(oknessetId, timeoutMs, windowDays) {
 
     return {
       attendance_rate,
-      committee_rate: computeCommitteeRateFromCount(countCommitteePositions(positionRow?.positions)),
+      committee_rate: computeCommitteeRateFromCount(
+        countCommitteePositions(positionRow?.positions)
+      ),
       initiative_score: null,
       voting_record: [],
       mmm_requests_count: 0,
@@ -206,7 +206,9 @@ async function loadPresenceWindow(timeoutMs, windowDays) {
   for (const line of text.split(/\r?\n/)) {
     if (!line) continue;
     const [timestamp, ...rest] = line.split(",");
-    const date = String(timestamp ?? "").trim().slice(0, 10);
+    const date = String(timestamp ?? "")
+      .trim()
+      .slice(0, 10);
     if (!date || date < fromDate || date > today) continue;
 
     const seen = new Set();
@@ -289,7 +291,9 @@ function parseCsv(text) {
   }
 
   const headers = rows.shift() ?? [];
-  return rows.map((values) => Object.fromEntries(headers.map((header, i) => [header, values[i] ?? ""])));
+  return rows.map((values) =>
+    Object.fromEntries(headers.map((header, i) => [header, values[i] ?? ""]))
+  );
 }
 
 async function fetchText(url, timeoutMs) {
