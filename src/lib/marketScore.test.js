@@ -162,7 +162,9 @@ describe("marketScore helpers", () => {
     ]);
 
     const firstDay = rows.find((row) => row.date === "2026-03-21" && row.politician_id === "drift");
-    const secondDay = rows.find((row) => row.date === "2026-03-22" && row.politician_id === "drift");
+    const secondDay = rows.find(
+      (row) => row.date === "2026-03-22" && row.politician_id === "drift"
+    );
 
     expect(firstDay.market_score).toBeGreaterThan(50);
     expect(secondDay.market_score).toBeGreaterThan(50);
