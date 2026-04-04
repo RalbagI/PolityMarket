@@ -29,6 +29,7 @@ vi.mock("./WeeklyHighlights", () => ({
 
 vi.mock("../lib/colorScale", () => ({
   scoreToColor: () => "#6366f1",
+  scoreToColorWithAlpha: () => "rgba(99,102,241,0.16)",
 }));
 
 function makePoliticians(count) {

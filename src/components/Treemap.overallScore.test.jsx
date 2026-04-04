@@ -13,13 +13,14 @@ vi.mock("react-i18next", () => ({
 vi.mock("../store", () => ({
   default: (selector) =>
     selector({
-      treemapSizeBy: "overall_score",
-      treemapColorBy: "overall_score",
+      treemapSizeBy: "market_score",
+      treemapColorBy: "market_score",
     }),
 }));
 
 vi.mock("../lib/colorScale", () => ({
   normalizedScoreToColorWithAlpha: () => "rgba(100,200,100,0.55)",
+  scoreToColorWithAlpha: () => "rgba(100,200,100,0.55)",
 }));
 
 vi.mock("../lib/localize", () => ({
@@ -42,8 +43,8 @@ class MockResizeObserver {
 
 vi.stubGlobal("ResizeObserver", MockResizeObserver);
 
-describe("Treemap overall_score size mode", () => {
-  it("renders politicians when normalized fields are missing", () => {
+describe("Treemap market_score fallback mode", () => {
+  it("renders politicians when normalized and market fields are missing", () => {
     const data = [
       {
         politician_id: "alice",

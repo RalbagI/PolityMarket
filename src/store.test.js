@@ -23,7 +23,7 @@ beforeEach(async () => {
     selectedDate: null,
     smaMode: "sma7",
     treemapSizeBy: "media_volume",
-    treemapColorBy: "media_volume",
+    treemapColorBy: "market_score",
   });
 });
 
@@ -66,15 +66,15 @@ describe("store — chart settings", () => {
 });
 
 describe("store — treemap settings", () => {
-  it("defaults to media_volume for both size and color", () => {
+  it("defaults to media_volume size and market_score color", () => {
     const state = useStore.getState();
     expect(state.treemapSizeBy).toBe("media_volume");
-    expect(state.treemapColorBy).toBe("media_volume");
+    expect(state.treemapColorBy).toBe("market_score");
   });
 
   it("setTreemapSizeBy updates sizeBy", () => {
-    act(() => useStore.getState().setTreemapSizeBy("overall_score"));
-    expect(useStore.getState().treemapSizeBy).toBe("overall_score");
+    act(() => useStore.getState().setTreemapSizeBy("market_score"));
+    expect(useStore.getState().treemapSizeBy).toBe("market_score");
   });
 
   it("setTreemapColorBy updates colorBy", () => {

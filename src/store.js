@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const SUMMARY_CACHE_TTL = 5 * 60 * 1000; // 5 minutes stale-while-revalidate
+const SUMMARY_CACHE_TTL = 60 * 60 * 1000; // 1 hour stale-while-revalidate for daily data
 
 const useStore = create((set, get) => ({
   // ── Summary Data Slice (with caching) ──────────────────────────────
@@ -110,8 +110,8 @@ const useStore = create((set, get) => ({
   // ── Treemap Settings Slice ─────────────────────────────────────────
   // sizeBy: what metric determines block SIZE
   // colorBy: what metric determines block COLOR
-  treemapSizeBy: "media_volume", // "media_volume" | "overall_score"
-  treemapColorBy: "media_volume", // "overall_score" | "media_volume"
+  treemapSizeBy: "media_volume", // "media_volume" | "market_score"
+  treemapColorBy: "market_score", // "market_score" | "media_volume"
   setTreemapSizeBy: (v) => set({ treemapSizeBy: v }),
   setTreemapColorBy: (v) => set({ treemapColorBy: v }),
 }));

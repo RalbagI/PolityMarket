@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { Users, BarChart3, TrendingUp, Info } from "lucide-react";
+import { Users, BarChart3, TrendingUp, TrendingDown, Info, Minus } from "lucide-react";
 import {
   ComposedChart,
   Line,
@@ -18,25 +18,38 @@ import { localizeName, localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 import { getPartyInfo } from "../lib/partyInfo";
 import useStore from "../store";
+import { getMarketTierBadgeClass, getMarketTierLabel } from "../lib/marketScore";
 
 function MemberRow({ entry, t }) {
   const displayName = localizeName(t, entry.name);
+  const displayScore = Number.isFinite(entry.market_score)
+    ? Math.round(entry.market_score)
+    : Math.round((entry.overall_score ?? 0) * 10);
   return (
     <div className="flex items-center justify-between py-1.5 border-b border-gray-800/50 last:border-0">
       <span className="text-sm text-gray-300 truncate">{displayName}</span>
       <span
         className="text-sm font-bold tabular-nums shrink-0 ms-2"
-        style={{ color: scoreToColor(entry.overall_score) }}
+        style={{
+          color: scoreToColor(
+            Number.isFinite(entry.market_score)
+              ? entry.market_score
+              : (entry.overall_score ?? 0) * 10
+          ),
+        }}
       >
-        {entry.overall_score.toFixed(1)}
+        {displayScore}
       </span>
     </div>
   );
 }
 
-export default function PartyDetailView({ partyName, partyData, todayData }) {
+export default function PartyDetailView({ partyName, partyData, todayData, partySummaryData }) {
   const { t } = useTranslation();
   const summaryData = useStore((s) => s.summaryData);
+  const trendSource = partySummaryData?.length ? partySummaryData : summaryData;
+  const resolveScore = (entry) =>
+    Number.isFinite(entry.market_score) ? entry.market_score : (entry.overall_score ?? 0) * 10;
 
   const party = partyData;
   const members = useMemo(() => {
@@ -48,11 +61,11 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
 
   // Historical party trend (last 7 days from summary data)
   const trend = useMemo(() => {
-    if (!summaryData.length || !partyName) return [];
+    if (!trendSource.length || !partyName) return [];
 
     // Pre-build O(1) lookup: Map<date, entry[]> for this party only
     const byDate = new Map();
-    for (const d of summaryData) {
+    for (const d of trendSource) {
       if (d.party !== partyName) continue;
       if (!byDate.has(d.date)) byDate.set(d.date, []);
       byDate.get(d.date).push(d);
@@ -66,12 +79,16 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
         const totalVol = dayMembers.reduce((s, m) => s + m.media_volume, 0);
         const avg =
           totalVol > 0
-            ? dayMembers.reduce((s, m) => s + m.overall_score * m.media_volume, 0) / totalVol
-            : dayMembers.reduce((s, m) => s + m.overall_score, 0) / dayMembers.length;
-        return { date, score: parseFloat(avg.toFixed(1)), volume: parseFloat(totalVol.toFixed(1)) };
+            ? dayMembers.reduce((s, m) => s + resolveScore(m) * m.media_volume, 0) / totalVol
+            : dayMembers.reduce((s, m) => s + resolveScore(m), 0) / dayMembers.length;
+        return {
+          date,
+          score: parseFloat(avg.toFixed(1)),
+          volume: parseFloat(totalVol.toFixed(1)),
+        };
       })
       .filter(Boolean);
-  }, [summaryData, partyName]);
+  }, [partyName, trendSource]);
 
   if (!partyName) {
     return (
@@ -84,6 +101,16 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
   const partyColor = getPartyColor(partyName);
   const displayParty = localizeParty(t, partyName);
   const info = getPartyInfo(partyName);
+  const displayScore = party
+    ? Number.isFinite(party.market_score)
+      ? Math.round(party.market_score)
+      : Math.round((party.overall_score ?? 0) * 10)
+    : null;
+  const tierLabel = party?.market_tier
+    ? t(`market.tiers.${party.market_tier}.label`, {
+        defaultValue: getMarketTierLabel(party.market_tier),
+      })
+    : "";
 
   return (
     <div className="space-y-4">
@@ -97,18 +124,62 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
         </div>
         <div className="min-w-0">
           <h3 className="text-lg font-bold text-white truncate">{displayParty}</h3>
-          <p className="text-xs text-gray-500">
-            {party?.member_count || members.length} {t("partyDetail.members")}
-          </p>
+          <div className="mt-1 flex flex-wrap items-center gap-2">
+            <p className="text-xs text-gray-500">
+              {party?.member_count || members.length} {t("partyDetail.members")}
+            </p>
+            {party?.market_tier && (
+              <span
+                className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getMarketTierBadgeClass(party.market_tier)}`}
+              >
+                {party.market_tier}-Tier
+              </span>
+            )}
+            {Number.isFinite(party?.market_percentile) && (
+              <span className="text-xs font-medium text-gray-400">
+                P{Math.round(party.market_percentile)}
+              </span>
+            )}
+          </div>
+          {party?.market_tier && <p className="mt-1 text-xs text-gray-400">{tierLabel}</p>}
         </div>
         {party && (
           <div className="ms-auto text-end shrink-0">
             <div
               className="text-2xl font-black tabular-nums"
-              style={{ color: scoreToColor(party.overall_score) }}
+              style={{ color: scoreToColor(resolveScore(party)) }}
             >
-              {party.overall_score.toFixed(1)}
+              {displayScore}
             </div>
+            {Number.isFinite(party.market_delta_points) && (
+              <div
+                className={`mt-1 flex items-center justify-end gap-1 text-xs font-semibold ${
+                  party.market_delta_points > 0
+                    ? "text-emerald-400"
+                    : party.market_delta_points < 0
+                      ? "text-red-400"
+                      : "text-gray-400"
+                }`}
+              >
+                {party.market_delta_points > 0 ? (
+                  <TrendingUp className="w-3.5 h-3.5" />
+                ) : party.market_delta_points < 0 ? (
+                  <TrendingDown className="w-3.5 h-3.5" />
+                ) : (
+                  <Minus className="w-3.5 h-3.5" />
+                )}
+                <span>
+                  {party.market_delta_points > 0 ? "+" : ""}
+                  {party.market_delta_points.toFixed(1)}
+                  {Number.isFinite(party.market_delta_pct) && (
+                    <span className="ms-1 text-[11px] text-gray-400">
+                      ({party.market_delta_pct > 0 ? "+" : ""}
+                      {party.market_delta_pct.toFixed(1)}%)
+                    </span>
+                  )}
+                </span>
+              </div>
+            )}
             <div className="text-[10px] text-gray-500">{t("partyDetail.avgScore")}</div>
           </div>
         )}
@@ -250,7 +321,7 @@ export default function PartyDetailView({ partyName, partyData, todayData }) {
                   yAxisId="right"
                   orientation="right"
                   tick={{ fontSize: 10, fill: "#6b7280" }}
-                  domain={[0, 10]}
+                  domain={[0, 100]}
                   width={30}
                 />
                 <Tooltip

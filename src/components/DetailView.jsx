@@ -1,21 +1,11 @@
 import { useState } from "react";
-import {
-  Quote,
-  BarChart3,
-  FileText,
-  Heart,
-  TrendingUp,
-  ChevronDown,
-  Bell,
-  BellOff,
-} from "lucide-react";
+import { Quote, BarChart3, FileText, ChevronDown, TrendingUp } from "lucide-react";
 import AiAnalysisBlock from "./AiAnalysisBlock";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
 import SkeletonLoader from "./SkeletonLoader";
 import PoliticianTrendChart from "./PoliticianTrendChart";
-import { localizeName, localizeParty } from "../lib/localize";
-import Avatar from "./Avatar";
+import PoliticianDetailHeader from "./PoliticianDetailHeader";
 
 const DIM_CONFIG = Object.freeze([
   { field: "dim_public_sentiment", key: "publicSentiment", color: "#6366f1", weight: "25%" },
@@ -101,6 +91,7 @@ export default function DetailView({
   selectedPolitician,
   selectedDate,
   loading,
+  summaryData,
   isLiked,
   onToggleLike,
   isAlertSubscribed,
@@ -141,61 +132,18 @@ export default function DetailView({
   const nonNullDims = DIM_CONFIG.filter(
     ({ field }) => entry[field] != null && Number.isFinite(entry[field])
   ).length;
-
   const noDataLabel = t("detailView.dimension.noData");
 
   return (
     <div className="space-y-4">
-      {/* Header */}
-      <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-3 min-w-0">
-          <Avatar name={entry.name} politicianId={entry.politician_id} size={64} />
-          <div className="min-w-0">
-            <h4 className="text-lg font-bold text-white truncate">{localizeName(t, entry.name)}</h4>
-            <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-800 text-gray-300 border border-gray-700">
-              {localizeParty(t, entry.party)}
-            </span>
-          </div>
-        </div>
-        <div className="flex items-start gap-3 shrink-0">
-          {onToggleAlert && (
-            <button
-              onClick={() => onToggleAlert(entry.politician_id || entry.name)}
-              className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
-              aria-label={isAlertSubscribed ? t("alerts.toggleOff") : t("alerts.toggleOn")}
-              data-testid="alert-toggle"
-            >
-              {isAlertSubscribed ? (
-                <Bell className="w-6 h-6 text-amber-400 fill-amber-400 transition-colors" />
-              ) : (
-                <BellOff className="w-6 h-6 text-gray-500 hover:text-amber-400 transition-colors" />
-              )}
-            </button>
-          )}
-          {onToggleLike && (
-            <button
-              onClick={() => onToggleLike(entry.politician_id || entry.name)}
-              className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
-              aria-label={isLiked ? t("detailView.unlike") : t("detailView.like")}
-            >
-              <Heart
-                className={`w-6 h-6 transition-colors ${
-                  isLiked ? "fill-red-500 text-red-500" : "text-gray-500 hover:text-red-400"
-                }`}
-              />
-            </button>
-          )}
-          <div className="text-end">
-            <div className="text-3xl font-bold text-white">{entry.overall_score.toFixed(1)}</div>
-            <div className="text-xs text-gray-500">
-              {selectedDate || t("detailView.date.fallback")}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="text-[10px] text-gray-600 text-end -mt-3">
-        {t("detailView.scoreSmoothed")}
-      </div>
+      <PoliticianDetailHeader
+        entry={entry}
+        selectedDate={selectedDate}
+        isLiked={isLiked}
+        onToggleLike={onToggleLike}
+        isAlertSubscribed={isAlertSubscribed}
+        onToggleAlert={onToggleAlert}
+      />
 
       {/* AI Analysis — expanded by default */}
       <AccordionSection title={t("detailView.section.aiAnalysis")} icon={Quote} defaultOpen={true}>
@@ -293,7 +241,7 @@ export default function DetailView({
 
       {/* Trend over time */}
       <AccordionSection title={t("detailView.section.trend")} icon={TrendingUp} defaultOpen={true}>
-        <PoliticianTrendChart politicianName={selectedPolitician} />
+        <PoliticianTrendChart politicianName={selectedPolitician} summaryData={summaryData} />
       </AccordionSection>
 
       {/* Sources — collapsed by default */}

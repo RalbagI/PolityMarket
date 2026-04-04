@@ -1,7 +1,8 @@
 import { memo, useMemo, useState, useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { hierarchy, treemap, treemapSquarify } from "d3-hierarchy";
-import { normalizedScoreToColorWithAlpha } from "../lib/colorScale";
+import { normalizedScoreToColorWithAlpha, scoreToColorWithAlpha } from "../lib/colorScale";
+import { resolveDisplayScore } from "../lib/marketScore";
 import { localizeName } from "../lib/localize";
 import useStore from "../store";
 import useTreemapGestures from "../lib/useTreemapGestures";
@@ -50,8 +51,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
 
   const sizeValue = useCallback(
     (entry) => {
-      const normalized =
-        sizeBy === "overall_score" ? entry.normalizedScore : entry.normalizedVolume;
+      const normalized = sizeBy === "market_score" ? entry.normalizedScore : entry.normalizedVolume;
       if (typeof normalized === "number" && Number.isFinite(normalized)) {
         return Math.max(normalized, 0.15);
       }
@@ -91,7 +91,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     const smallestVisible = visible[visible.length - 1];
     const othersSize = sizeValue(smallestVisible);
     const othersScore =
-      grouped.reduce((sum, entry) => sum + entry.overall_score, 0) / grouped.length;
+      grouped.reduce((sum, entry) => sum + (resolveDisplayScore(entry) ?? 0), 0) / grouped.length;
 
     return [
       ...visible,
@@ -101,6 +101,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         displayName: t("treemap.others", { count: grouped.length }),
         party: "",
         overall_score: othersScore,
+        market_score: othersScore,
         media_volume: othersSize,
         normalizedScore: othersSize,
         normalizedVolume: othersSize,
@@ -134,8 +135,11 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     (entry) => {
       const value = entry?.[colorBy];
       if (typeof value === "number" && Number.isFinite(value)) return value;
+      if (typeof entry?.market_score === "number" && Number.isFinite(entry.market_score)) {
+        return entry.market_score;
+      }
       if (typeof entry?.overall_score === "number" && Number.isFinite(entry.overall_score)) {
-        return entry.overall_score;
+        return entry.overall_score * 10;
       }
       return 0;
     },
@@ -143,7 +147,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
   );
 
   const colorRange = useMemo(() => {
-    if (!treemapItems.length) return { min: 0, max: 10 };
+    if (!treemapItems.length) return { min: 0, max: 1 };
     const scores = treemapItems.filter((entry) => !entry._isOthers).map(getColorMetric);
     return {
       min: Math.min(...scores),
@@ -234,12 +238,19 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                 displayName={displayName}
                 isHovered={isHovered}
                 isSelected={isSelected}
-                backgroundColor={normalizedScoreToColorWithAlpha(
-                  getColorMetric(entry),
-                  colorRange.min,
-                  colorRange.max,
-                  isHovered || isSelected ? 0.85 : 0.55
-                )}
+                backgroundColor={
+                  colorBy === "market_score"
+                    ? scoreToColorWithAlpha(
+                        entry.market_score ?? (entry.overall_score ?? 5) * 10,
+                        isHovered || isSelected ? 0.96 : 0.78
+                      )
+                    : normalizedScoreToColorWithAlpha(
+                        getColorMetric(entry),
+                        colorRange.min,
+                        colorRange.max,
+                        isHovered || isSelected ? 0.92 : 0.72
+                      )
+                }
                 onClick={() => {
                   if (isGestureActive()) return;
                   if (entry._isOthers && entry._groupedData) {

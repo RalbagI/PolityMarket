@@ -315,6 +315,43 @@ describe("useAlertState — togglePolitician", () => {
 
     expect(result.current.subscription.politicianIds).toEqual(["pol-a", "pol-b"]);
   });
+
+  it("batches rapid toggles into a single API write when debounce is enabled", async () => {
+    vi.useFakeTimers();
+    globalThis.__POLITYMARKET_ALERT_SYNC_MS__ = 50;
+    try {
+      vi.resetModules();
+      const mod = await import("./useAlertState.js");
+      const debouncedUseAlertState = mod.default;
+
+      storage["politymarket-alert-subscription"] = JSON.stringify({
+        email: "test@example.com",
+        token: "abc",
+        politicianIds: ["pol-a"],
+      });
+      globalThis.fetch = vi.fn().mockResolvedValue({ ok: true, json: () => ({}) });
+
+      const { result } = renderHook(() => debouncedUseAlertState());
+
+      await act(async () => {
+        await result.current.togglePolitician("pol-b");
+        await result.current.togglePolitician("pol-c");
+      });
+
+      expect(globalThis.fetch).not.toHaveBeenCalled();
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(50);
+      });
+
+      expect(globalThis.fetch).toHaveBeenCalledTimes(1);
+      const body = JSON.parse(globalThis.fetch.mock.calls[0][1].body);
+      expect(body.politicianIds).toEqual(["pol-a", "pol-b", "pol-c"]);
+    } finally {
+      delete globalThis.__POLITYMARKET_ALERT_SYNC_MS__;
+      vi.useRealTimers();
+    }
+  });
 });
 
 describe("useAlertState — recovery token from URL", () => {

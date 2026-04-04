@@ -15,12 +15,12 @@ vi.mock("../lib/localize", () => ({
 }));
 
 const makeData = () => [
-  { politician_id: "a", name: "Riser A", displayName: "Riser A", delta: 2.1 },
-  { politician_id: "b", name: "Riser B", displayName: "Riser B", delta: 1.5 },
-  { politician_id: "c", name: "Faller C", displayName: "Faller C", delta: -1.8 },
-  { politician_id: "d", name: "Faller D", displayName: "Faller D", delta: -0.5 },
-  { politician_id: "e", name: "No Change", displayName: "No Change", delta: 0 },
-  { politician_id: "f", name: "Null Delta", displayName: "Null Delta", delta: null },
+  { politician_id: "a", name: "Riser A", displayName: "Riser A", market_delta_points: 2.1 },
+  { politician_id: "b", name: "Riser B", displayName: "Riser B", market_delta_points: 1.5 },
+  { politician_id: "c", name: "Faller C", displayName: "Faller C", market_delta_points: -1.8 },
+  { politician_id: "d", name: "Faller D", displayName: "Faller D", market_delta_points: -0.5 },
+  { politician_id: "e", name: "No Change", displayName: "No Change", market_delta_points: 0 },
+  { politician_id: "f", name: "Null Delta", displayName: "Null Delta", market_delta_points: null },
 ];
 
 describe("TopMoversStrip", () => {
@@ -52,8 +52,8 @@ describe("TopMoversStrip", () => {
 
   it("shows no-changes message when all deltas are null", () => {
     const data = [
-      { politician_id: "a", name: "A", delta: null },
-      { politician_id: "b", name: "B", delta: null },
+      { politician_id: "a", name: "A", market_delta_points: null },
+      { politician_id: "b", name: "B", market_delta_points: null },
     ];
     render(<TopMoversStrip data={data} onSelect={() => {}} />);
     expect(screen.getByText("topMovers.noChanges")).toBeInTheDocument();

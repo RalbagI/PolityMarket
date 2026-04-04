@@ -12,6 +12,7 @@ vi.mock("react-i18next", () => ({
 
 vi.mock("../lib/colorScale", () => ({
   scoreToColor: () => "rgb(100,200,100)",
+  scoreToColorWithAlpha: () => "rgba(100,200,100,0.3)",
 }));
 
 const basePolitician = {
@@ -20,8 +21,12 @@ const basePolitician = {
   party: "TestParty",
   displayParty: "TestParty",
   overall_score: 7.5,
+  market_score: 75,
+  market_tier: "A",
+  market_percentile: 82,
   media_volume: 5,
-  delta: 0.3,
+  market_delta_points: 2.3,
+  market_delta_pct: 3.1,
 };
 
 describe("TreemapTooltip", () => {
@@ -40,20 +45,21 @@ describe("TreemapTooltip", () => {
 
   it("renders score", () => {
     render(<TreemapTooltip politician={basePolitician} position={{ x: 100, y: 100 }} />);
-    expect(screen.getByText(/7\.5/)).toBeInTheDocument();
+    expect(screen.getByText("75")).toBeInTheDocument();
+    expect(screen.getByText("A-Tier")).toBeInTheDocument();
+    expect(screen.getByText("P82")).toBeInTheDocument();
   });
 
   it("renders delta when present", () => {
     render(<TreemapTooltip politician={basePolitician} position={{ x: 100, y: 100 }} />);
-    expect(screen.getByText(/0\.3/)).toBeInTheDocument();
+    expect(screen.getByText(/\+2\.3/)).toBeInTheDocument();
+    expect(screen.getByText(/\(\+3\.1%\)/)).toBeInTheDocument();
   });
 
   it("does not render delta when null", () => {
-    const noDelta = { ...basePolitician, delta: null };
+    const noDelta = { ...basePolitician, market_delta_points: null, market_delta_pct: null };
     render(<TreemapTooltip politician={noDelta} position={{ x: 100, y: 100 }} />);
-    // Delta section should not be present
-    const deltaElements = screen.queryAllByText(/[+-]/);
-    expect(deltaElements.length).toBe(0);
+    expect(screen.queryByText("treemap.tooltip.change")).not.toBeInTheDocument();
   });
 
   it("has pointer-events-none to not block clicks", () => {

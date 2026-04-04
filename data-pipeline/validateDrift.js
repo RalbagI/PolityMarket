@@ -1,7 +1,8 @@
+/* global process */
+
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import parseLLMResponse from "./lib/parseLLMResponse.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,15 +32,9 @@ try {
 }
 
 async function scoreSingleText(text, speakerContext, threadContext) {
-  let userPrompt = `Evaluate this single political statement:\n\n"${text}"`;
-  if (speakerContext) {
-    userPrompt += `\n\nSpeaker context: ${speakerContext}`;
-  }
-  if (threadContext?.length) {
-    userPrompt += `\n\nThread context:\n${threadContext.map((t) => `- "${t}"`).join("\n")}`;
-  }
-  userPrompt +=
-    "\n\nRemember: chain_of_thought FIRST, then three dimensional scores. No overall_score.";
+  void text;
+  void speakerContext;
+  void threadContext;
 
   // ── Production: uncomment one of these ──
   // import Anthropic from '@anthropic-ai/sdk';

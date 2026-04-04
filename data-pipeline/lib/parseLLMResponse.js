@@ -97,6 +97,8 @@ export const dailyEntrySchema = z.object({
 
 /** Nullable dimension field helper */
 const dimField = () => z.number().min(0).max(1).nullable().optional();
+const marketField = () => z.number().min(0).max(100).nullable().optional();
+const marketTierField = () => z.enum(["S", "A", "B", "C"]).nullable().optional();
 
 /**
  * Schema for a fully processed daily entry with 8-dimension sub-scores.
@@ -140,6 +142,13 @@ export const dailyEntrySchema8dim = dailyEntrySchema.extend({
   // Flip-flop sub-fields
   flipflop_contradictions: z.number().int().min(0).nullable().optional(),
   flipflop_promises_checked: z.number().int().min(0).nullable().optional(),
+
+  // Market score presentation layer
+  market_score: marketField(),
+  market_percentile: marketField(),
+  market_tier: marketTierField(),
+  market_delta_points: z.number().nullable().optional(),
+  market_delta_pct: z.number().nullable().optional(),
 });
 
 /**
@@ -172,6 +181,30 @@ export const summaryRowSchema8dim = summaryRowSchema.extend({
   dim_satire_cultural_impact: dimField(),
   dim_legislative_quality: dimField(),
   dim_flipflop_index: dimField(),
+  market_score: marketField(),
+  market_percentile: marketField(),
+  market_tier: marketTierField(),
+  market_delta_points: z.number().nullable().optional(),
+  market_delta_pct: z.number().nullable().optional(),
+});
+
+export const partySummaryRowSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  party: z.string().min(1),
+  wing: z.string().nullable().optional(),
+  member_count: z.number().int().nonnegative(),
+  overall_score: z.number().min(0).max(10),
+  media_volume: z.number().min(0),
+  hostility_avg: z.number().nullable().optional(),
+  policy_avg: z.number().nullable().optional(),
+  amplification_avg: z.number().nullable().optional(),
+  top_politician: z.string().min(1).nullable().optional(),
+  score_stddev: z.number().nullable().optional(),
+  market_score: marketField(),
+  market_percentile: marketField(),
+  market_tier: marketTierField(),
+  market_delta_points: z.number().nullable().optional(),
+  market_delta_pct: z.number().nullable().optional(),
 });
 
 /**
@@ -189,7 +222,9 @@ export default function parseLLMResponse(raw) {
   try {
     parsed = JSON.parse(cleaned);
   } catch (e) {
-    throw new Error(`Invalid JSON from LLM: ${e.message}\nRaw: ${cleaned.slice(0, 200)}`);
+    throw new Error(`Invalid JSON from LLM: ${e.message}\nRaw: ${cleaned.slice(0, 200)}`, {
+      cause: e,
+    });
   }
 
   const result = llmResponseSchema.safeParse(parsed);

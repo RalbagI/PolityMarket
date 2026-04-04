@@ -75,12 +75,13 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
 
   await page.goto("/");
 
-  const topMoverButton = page.getByRole("button", { name: /יואב מבחן: \+1\.2/i });
+  const topMoverButton = page.getByRole("button", { name: /יואב מבחן: \+7\.7/i });
   await expect(topMoverButton).toBeVisible();
 
   await topMoverButton.click();
 
   const detailsPanel = page.getByRole("dialog");
   await expect(detailsPanel).toBeVisible();
-  await expect(detailsPanel.getByText("8.1")).toBeVisible();
+  // Detail panel shows market score (0-100 scale) in the large score display
+  await expect(detailsPanel.locator(".text-3xl").getByText("100")).toBeVisible();
 });

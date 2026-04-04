@@ -14,12 +14,56 @@ import { localizeName } from "./lib/localize";
 import CookieConsent from "./components/CookieConsent";
 import { initAnalytics, logEvent } from "./lib/analytics";
 import useAlertState from "./lib/useAlertState";
+import { annotateMarketTimeline } from "./lib/marketScore";
 
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
 const PartyDetailView = lazy(() => import("./components/PartyDetailView"));
 const CompareView = lazy(() => import("./components/CompareView"));
 const AlertSubscriptionModal = lazy(() => import("./components/AlertSubscriptionModal"));
+
+function derivePartyTimelineFromSummary(summaryRows) {
+  const byDateAndParty = new Map();
+
+  for (const entry of summaryRows) {
+    const key = `${entry.date}::${entry.party}`;
+    if (!byDateAndParty.has(key)) byDateAndParty.set(key, []);
+    byDateAndParty.get(key).push(entry);
+  }
+
+  return [...byDateAndParty.values()]
+    .map((members) => {
+      const sample = members[0];
+      const totalVolume = members.reduce((sum, member) => sum + (member.media_volume || 0), 0);
+      const weightedScore =
+        totalVolume > 0
+          ? members.reduce((sum, member) => sum + member.overall_score * member.media_volume, 0) /
+            totalVolume
+          : members.reduce((sum, member) => sum + member.overall_score, 0) / members.length;
+      const scores = members.map((member) => member.overall_score);
+      const mean = scores.reduce((sum, score) => sum + score, 0) / scores.length;
+      const variance =
+        scores.reduce((sum, score) => sum + (score - mean) ** 2, 0) / Math.max(scores.length, 1);
+      const topMember = members.reduce((best, member) =>
+        (member.media_volume || 0) > (best?.media_volume || 0) ? member : best
+      );
+
+      return {
+        date: sample.date,
+        party: sample.party,
+        wing: sample.wing || null,
+        member_count: members.length,
+        overall_score: parseFloat(weightedScore.toFixed(1)),
+        media_volume: parseFloat(totalVolume.toFixed(1)),
+        hostility_avg: null,
+        policy_avg: null,
+        amplification_avg: null,
+        top_politician: topMember?.politician_id || null,
+        score_stddev: parseFloat(Math.sqrt(variance).toFixed(2)),
+      };
+    })
+    .sort((a, b) => a.date.localeCompare(b.date) || a.party.localeCompare(b.party));
+}
 
 export default function App() {
   const { t } = useTranslation();
@@ -65,33 +109,33 @@ export default function App() {
     loadVolatility();
   }, [loadSummary, loadPartySummary, loadVolatility]);
 
-  const { todayData, yesterdayData, latestDate } = useMemo(() => {
-    if (!summaryData.length) return { todayData: [], yesterdayData: [], latestDate: null };
+  const marketSummaryData = useMemo(
+    () => annotateMarketTimeline(summaryData, { entityKey: "politician_id" }),
+    [summaryData]
+  );
 
-    const allDates = [...new Set(summaryData.map((d) => d.date))].sort();
+  const { todayData, latestDate } = useMemo(() => {
+    if (!marketSummaryData.length) return { todayData: [], latestDate: null };
+
+    const allDates = [...new Set(marketSummaryData.map((d) => d.date))].sort();
     const latest = allDates[allDates.length - 1];
-    const previousDate = allDates[allDates.length - 2];
 
     return {
-      todayData: summaryData.filter((d) => d.date === latest),
-      yesterdayData: previousDate ? summaryData.filter((d) => d.date === previousDate) : [],
+      todayData: marketSummaryData.filter((d) => d.date === latest),
       latestDate: latest,
     };
-  }, [summaryData]);
+  }, [marketSummaryData]);
 
-  // Enrich today data with deltas + pre-localized display names
-  // This ensures NO English names leak to any downstream component
+  // Enrich today data with pre-localized display names.
   const enrichedData = useMemo(() => {
     return todayData.map((entry) => {
-      const prev = yesterdayData.find((y) => y.name === entry.name);
       return {
         ...entry,
         displayName: localizeName(t, entry.name),
         displayParty: t(`parties.${entry.party}`, { defaultValue: entry.party }),
-        delta: prev ? entry.overall_score - prev.overall_score : null,
       };
     });
-  }, [todayData, yesterdayData, t]);
+  }, [todayData, t]);
 
   // Filter state with localStorage persistence
   const filterState = useFilterState(enrichedData);
@@ -104,50 +148,33 @@ export default function App() {
     return normalizeScores(filterState.visible);
   }, [filterState.visible]);
 
+  const rawPartyTimeline = useMemo(() => {
+    if (!summaryData.length) return [];
+    const hasLatestPartyData = latestDate
+      ? partySummaryData.some((entry) => entry.date === latestDate)
+      : false;
+    return hasLatestPartyData ? partySummaryData : derivePartyTimelineFromSummary(summaryData);
+  }, [latestDate, partySummaryData, summaryData]);
+
+  const marketPartySummaryData = useMemo(
+    () => annotateMarketTimeline(rawPartyTimeline, { entityKey: "party" }),
+    [rawPartyTimeline]
+  );
+
   // Party data for party view mode
   const partyTreemapData = useMemo(() => {
     if (!latestDate) return [];
 
-    // Primary source: pipeline-generated party_summary.json for the active date.
-    const todayParties = partySummaryData.filter((p) => p.date === latestDate);
-
-    // Fallback: derive party aggregates from today's politician rows if file is missing/stale.
-    const partyRows =
-      todayParties.length > 0
-        ? todayParties
-        : (() => {
-            if (!todayData.length) return [];
-            const byParty = new Map();
-            for (const entry of todayData) {
-              if (!byParty.has(entry.party)) byParty.set(entry.party, []);
-              byParty.get(entry.party).push(entry);
-            }
-            return [...byParty.entries()].map(([party, members]) => {
-              const totalVolume = members.reduce((sum, m) => sum + m.media_volume, 0);
-              const weightedScore =
-                totalVolume > 0
-                  ? members.reduce((sum, m) => sum + m.overall_score * m.media_volume, 0) /
-                    totalVolume
-                  : members.reduce((sum, m) => sum + m.overall_score, 0) / members.length;
-              return {
-                date: latestDate,
-                party,
-                wing: members[0]?.wing || null,
-                member_count: members.length,
-                overall_score: parseFloat(weightedScore.toFixed(1)),
-                media_volume: parseFloat(totalVolume.toFixed(1)),
-              };
-            });
-          })();
-
-    return partyRows.map((p) => ({
-      ...p,
-      politician_id: `party:${p.party}`,
-      name: p.party,
-      displayName: t(`parties.${p.party}`, { defaultValue: p.party }),
-      _isParty: true,
-    }));
-  }, [partySummaryData, latestDate, todayData, t]);
+    return marketPartySummaryData
+      .filter((p) => p.date === latestDate)
+      .map((p) => ({
+        ...p,
+        politician_id: `party:${p.party}`,
+        name: p.party,
+        displayName: t(`parties.${p.party}`, { defaultValue: p.party }),
+        _isParty: true,
+      }));
+  }, [latestDate, marketPartySummaryData, t]);
 
   const sidebarData = viewMode === "parties" ? partyTreemapData : filterState.visible;
   const sidebarStats = useSidebarStats(sidebarData);
@@ -179,6 +206,26 @@ export default function App() {
 
   const activeDate = selectedDate || latestDate;
   const activeDetail = useStore((s) => (activeDate ? s.detailCache[activeDate] : null));
+  const marketSummaryLookup = useMemo(
+    () =>
+      new Map(marketSummaryData.map((entry) => [`${entry.date}::${entry.politician_id}`, entry])),
+    [marketSummaryData]
+  );
+  const activeDetailWithMarket = useMemo(() => {
+    if (!activeDate || !Array.isArray(activeDetail)) return activeDetail;
+    return activeDetail.map((entry) => {
+      const marketEntry = marketSummaryLookup.get(`${activeDate}::${entry.politician_id}`);
+      if (!marketEntry) return entry;
+      return {
+        ...entry,
+        market_score: marketEntry.market_score,
+        market_percentile: marketEntry.market_percentile,
+        market_tier: marketEntry.market_tier,
+        market_delta_points: marketEntry.market_delta_points,
+        market_delta_pct: marketEntry.market_delta_pct,
+      };
+    });
+  }, [activeDate, activeDetail, marketSummaryLookup]);
 
   if (loadError) {
     return (
@@ -306,13 +353,15 @@ export default function App() {
                 partyName={selectedPolitician}
                 partyData={partyTreemapData.find((p) => p.name === selectedPolitician)}
                 todayData={todayData}
+                partySummaryData={marketPartySummaryData}
               />
             ) : (
               <DetailView
-                todayDetail={activeDetail}
+                todayDetail={activeDetailWithMarket}
                 selectedPolitician={selectedPolitician}
                 selectedDate={activeDate}
                 loading={detailLoading}
+                summaryData={marketSummaryData}
                 isLiked={filterState.likedIds.includes(selectedPoliticianId)}
                 onToggleLike={filterState.toggleLiked}
                 isAlertSubscribed={alertState.isSubscribed(selectedPoliticianId)}

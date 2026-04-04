@@ -18,7 +18,7 @@ export function DisplayOptions({ t }) {
 
   const options = [
     { value: "media_volume", label: t("treemap.options.mediaVolume") },
-    { value: "overall_score", label: t("treemap.options.score") },
+    { value: "market_score", label: t("treemap.options.score") },
   ];
 
   return (
@@ -119,7 +119,7 @@ export function SidebarContent({
                 className="text-2xl font-black"
                 style={{ color: scoreToColor(stats.weightedAvg) }}
               >
-                {stats.weightedAvg.toFixed(1)}
+                {Math.round(stats.weightedAvg)}
               </div>
               <div className="text-xs text-gray-500">{t("sidebar.weightedAverage")}</div>
             </div>
@@ -181,7 +181,8 @@ export function SidebarContent({
             <div
               className="h-2 rounded-full"
               style={{
-                background: "linear-gradient(to left, #0d9488, #22c55e, #eab308, #f59e0b, #dc2626)",
+                background:
+                  "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
               }}
             />
             <div className="flex justify-between mt-1">

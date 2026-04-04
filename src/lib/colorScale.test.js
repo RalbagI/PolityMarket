@@ -13,29 +13,32 @@ function parseRgbChannels(color) {
 
 describe("scoreToColor", () => {
   it("returns a color string for valid scores", () => {
-    const color = scoreToColor(5);
+    const color = scoreToColor(50);
     expect(typeof color).toBe("string");
     expect(color).toMatch(/rgb/);
   });
 
+  it("keeps midpoint scores warm instead of drifting to neutral gray", () => {
+    const [r, g, b] = parseRgbChannels(scoreToColor(50));
+    expect(r).toBeGreaterThan(b);
+    expect(g).toBeGreaterThan(b);
+  });
+
   it("returns red-ish for low scores", () => {
     const color = scoreToColor(0);
-    expect(color).toMatch(/rgb/);
-    // Red channel should be dominant
-    const match = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-    expect(Number(match[1])).toBeGreaterThan(200); // r
+    const [r, g] = parseRgbChannels(color);
+    expect(r).toBeGreaterThan(g);
   });
 
   it("returns green-ish for high scores", () => {
-    const color = scoreToColor(10);
-    expect(color).toMatch(/rgb/);
-    const match = color.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-    expect(Number(match[2])).toBeGreaterThan(100); // g
+    const color = scoreToColor(100);
+    const [r, g] = parseRgbChannels(color);
+    expect(g).toBeGreaterThan(r);
   });
 
-  it("clamps values outside 0-10", () => {
+  it("clamps values outside 0-100", () => {
     expect(() => scoreToColor(-5)).not.toThrow();
-    expect(() => scoreToColor(15)).not.toThrow();
+    expect(() => scoreToColor(150)).not.toThrow();
   });
 });
 
@@ -52,32 +55,35 @@ describe("scoreToColorWithAlpha", () => {
 
   it("handles boundary scores", () => {
     expect(scoreToColorWithAlpha(0, 0.5)).toMatch(/^rgba/);
-    expect(scoreToColorWithAlpha(10, 0.5)).toMatch(/^rgba/);
+    expect(scoreToColorWithAlpha(100, 0.5)).toMatch(/^rgba/);
   });
 });
 
 describe("normalizedScoreToColor", () => {
-  it("maps min of range to red", () => {
-    const color = normalizedScoreToColor(3, 3, 7);
-    const match = String(color).match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-    expect(Number(match[1])).toBeGreaterThan(200); // red channel dominant
+  it("maps relative min of range to the darker volume color", () => {
+    const [r, g, b] = parseRgbChannels(normalizedScoreToColor(3, 3, 7));
+    expect(r).toBeLessThan(b);
+    expect(g).toBeLessThan(b);
   });
 
-  it("maps max of range to green/teal", () => {
-    const color = normalizedScoreToColor(7, 3, 7);
-    const match = String(color).match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
-    expect(Number(match[2])).toBeGreaterThan(100); // green channel
+  it("maps relative max of range to the brighter volume color", () => {
+    const [rMin, gMin, bMin] = parseRgbChannels(normalizedScoreToColor(3, 3, 7));
+    const [rMax, gMax, bMax] = parseRgbChannels(normalizedScoreToColor(7, 3, 7));
+    expect(rMax).toBeGreaterThanOrEqual(rMin);
+    expect(gMax).toBeGreaterThan(gMin);
+    expect(bMax).toBeGreaterThan(bMin);
   });
 
-  it("maps mid of range to yellow/orange", () => {
+  it("maps mid of range to a readable midpoint tint", () => {
     const color = normalizedScoreToColor(5, 3, 7);
     expect(color).toMatch(/rgb/);
   });
 
   it("handles equal min/max without crashing", () => {
     const color = normalizedScoreToColor(5, 5, 5);
-    const [, g] = parseRgbChannels(color);
-    expect(g).toBeGreaterThan(100); // midpoint should not collapse to red
+    const [, g, b] = parseRgbChannels(color);
+    expect(g).toBeGreaterThan(70);
+    expect(b).toBeGreaterThan(90);
   });
 });
 
@@ -88,19 +94,18 @@ describe("normalizedScoreToColorWithAlpha", () => {
     expect(color).toContain("0.55");
   });
 
-  it("lowest score is red-ish, highest is green-ish", () => {
-    const red = normalizedScoreToColorWithAlpha(4.5, 4.5, 6.0, 0.6);
-    const green = normalizedScoreToColorWithAlpha(6.0, 4.5, 6.0, 0.6);
-    // Extract red channel from rgba
-    const rRed = Number(red.match(/rgba\((\d+)/)[1]);
-    const rGreen = Number(green.match(/rgba\((\d+)/)[1]);
-    expect(rRed).toBeGreaterThan(rGreen); // red has more red channel
+  it("lowest relative score is darker than the highest one", () => {
+    const low = normalizedScoreToColorWithAlpha(4.5, 4.5, 6.0, 0.6);
+    const high = normalizedScoreToColorWithAlpha(6.0, 4.5, 6.0, 0.6);
+    const [, , bLow] = low.match(/rgba\((\d+),\s*(\d+),\s*(\d+),/).map(Number);
+    const [, , bHigh] = high.match(/rgba\((\d+),\s*(\d+),\s*(\d+),/).map(Number);
+    expect(bHigh).toBeGreaterThan(bLow);
   });
 
   it("handles equal min/max with midpoint color", () => {
     const color = normalizedScoreToColorWithAlpha(0, 0, 0, 0.5);
     const match = color.match(/rgba\((\d+),\s*(\d+),\s*(\d+),\s*([^)]+)\)/);
-    expect(Number(match?.[2] ?? 0)).toBeGreaterThan(100);
+    expect(Number(match?.[2] ?? 0)).toBeGreaterThan(70);
     expect(color).toContain("0.5");
   });
 });

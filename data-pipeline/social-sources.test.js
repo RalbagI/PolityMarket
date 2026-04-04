@@ -130,7 +130,7 @@ describe("Bluesky response parsing", () => {
   });
 
   it("handles empty response", () => {
-    const posts = (undefined ?? []).map((p) => p);
+    const posts = [];
     expect(posts.length).toBe(0);
   });
 });

@@ -38,6 +38,19 @@ export const WEIGHTS_8DIM = {
 };
 
 /**
+ * Default "no direct coverage" inputs used by the pipeline when sources fall back
+ * to neutral placeholders. This is the raw-score midpoint for the market UI layer.
+ */
+export const NO_SIGNAL_DEFAULTS = Object.freeze({
+  hostility: 0,
+  policyApproval: 0,
+  mediaAmplification: 0,
+  mediaCredibility: 0.5,
+  transparencyEthics: 0.5,
+  agendaSettingScore: -1,
+});
+
+/**
  * Wing-group classification for coalition/opposition bias mitigation.
  * Coalition wings typically face different structural incentives.
  */
@@ -229,6 +242,32 @@ export function applyEMA(rawToday, smoothedYesterday, alpha = 0.8) {
   const smoothed = alpha * rawToday + (1 - alpha) * smoothedYesterday;
   return parseFloat(Math.max(0, Math.min(10, smoothed)).toFixed(1));
 }
+
+/**
+ * Deterministic raw-score midpoint for "no direct coverage" rows.
+ * Rounded to 1 decimal because summary artifacts only persist overall_score at 0.1 precision.
+ */
+export const MARKET_NEUTRAL_RAW_SCORE = (() => {
+  const dim_public_sentiment = computePublicSentiment(
+    NO_SIGNAL_DEFAULTS.hostility,
+    NO_SIGNAL_DEFAULTS.policyApproval,
+    NO_SIGNAL_DEFAULTS.mediaAmplification
+  );
+  return computeOverallScore8dim(
+    {
+      dim_public_sentiment,
+      dim_parliamentary_activity: null,
+      dim_media_credibility: NO_SIGNAL_DEFAULTS.mediaCredibility,
+      dim_transparency_ethics: NO_SIGNAL_DEFAULTS.transparencyEthics,
+      dim_field_activity: null,
+      dim_satire_cultural_impact: null,
+      dim_legislative_quality: null,
+      dim_flipflop_index: null,
+    },
+    undefined,
+    computeAgendaBonus(NO_SIGNAL_DEFAULTS.agendaSettingScore)
+  );
+})();
 
 /**
  * Apply wing-relative normalization to a dimension score.
