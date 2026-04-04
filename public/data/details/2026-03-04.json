@@ -25,11 +25,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "afif-abed",
@@ -57,11 +57,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "ahmad-tibi",
@@ -72,10 +72,10 @@
     "media_volume": 4.6,
     "overall_score": 6.5,
     "chain_of_thought": "Ahmad Tibi קיבל סיקור מעורב היום",
-    "market_score": 81.5,
+    "market_score": 70.2,
     "market_percentile": 86,
     "market_tier": "A",
-    "market_delta_points": 81.5,
+    "market_delta_points": 62.6,
     "market_delta_pct": null
   },
   {
@@ -87,10 +87,10 @@
     "media_volume": 6.4,
     "overall_score": 5.8,
     "chain_of_thought": "Aida Touma-Suleiman קיבל סיקור מעורב היום",
-    "market_score": 68.5,
+    "market_score": 61.9,
     "market_percentile": 72,
-    "market_tier": "A",
-    "market_delta_points": 68.5,
+    "market_tier": "B",
+    "market_delta_points": 54.3,
     "market_delta_pct": null
   },
   {
@@ -119,11 +119,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "alon-schuster",
@@ -134,11 +134,11 @@
     "media_volume": 4.6,
     "overall_score": 5.5,
     "chain_of_thought": "Alon Schuster קיבל סיקור מעורב היום",
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": -36.5,
-    "market_delta_pct": -36.7
+    "market_delta_points": -25.3,
+    "market_delta_pct": -30.3
   },
   {
     "politician_id": "amichai-eliyahu",
@@ -149,11 +149,11 @@
     "media_volume": 5.4,
     "overall_score": 3.5,
     "chain_of_thought": "Amichai Eliyahu קיבל סיקור מעורב היום",
-    "market_score": 3.6,
+    "market_score": 25.1,
     "market_percentile": 9,
     "market_tier": "C",
-    "market_delta_points": -87,
-    "market_delta_pct": -96
+    "market_delta_points": -52.5,
+    "market_delta_pct": -67.7
   },
   {
     "politician_id": "amichai-shikli",
@@ -181,11 +181,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "amir-ohana",
@@ -196,11 +196,11 @@
     "media_volume": 5.3,
     "overall_score": 3.6,
     "chain_of_thought": "Amir Ohana קיבל סיקור מעורב היום",
-    "market_score": 7.1,
+    "market_score": 27,
     "market_percentile": 10,
     "market_tier": "C",
-    "market_delta_points": -48.2,
-    "market_delta_pct": -87.2
+    "market_delta_points": -26.6,
+    "market_delta_pct": -49.6
   },
   {
     "politician_id": "amit-halevi",
@@ -228,11 +228,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "ariel-kallner",
@@ -243,11 +243,11 @@
     "media_volume": 6.7,
     "overall_score": 6.4,
     "chain_of_thought": "Ariel Kallner קיבל סיקור מעורב היום",
-    "market_score": 79.6,
+    "market_score": 69,
     "market_percentile": 84,
     "market_tier": "A",
-    "market_delta_points": 3.1,
-    "market_delta_pct": 4.1
+    "market_delta_points": 1,
+    "market_delta_pct": 1.5
   },
   {
     "politician_id": "aryeh-deri",
@@ -258,11 +258,11 @@
     "media_volume": 2.6,
     "overall_score": 5.3,
     "chain_of_thought": "Aryeh Deri קיבל סיקור מעורב היום",
-    "market_score": 59.3,
+    "market_score": 55.9,
     "market_percentile": 37,
     "market_tier": "B",
-    "market_delta_points": -22.5,
-    "market_delta_pct": -27.5
+    "market_delta_points": -15.7,
+    "market_delta_pct": -21.9
   },
   {
     "politician_id": "avi-dichter",
@@ -273,11 +273,11 @@
     "media_volume": 5.6,
     "overall_score": 5.7,
     "chain_of_thought": "Avi Dichter קיבל סיקור מעורב היום",
-    "market_score": 66.7,
+    "market_score": 60.7,
     "market_percentile": 69,
-    "market_tier": "A",
-    "market_delta_points": -23.9,
-    "market_delta_pct": -26.4
+    "market_tier": "B",
+    "market_delta_points": -16.9,
+    "market_delta_pct": -21.8
   },
   {
     "politician_id": "avi-maoz",
@@ -305,11 +305,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "avichay-buaron",
@@ -320,11 +320,11 @@
     "media_volume": 4,
     "overall_score": 7.7,
     "chain_of_thought": "Avichay Buaron קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 84.4,
     "market_percentile": 97,
-    "market_tier": "S",
-    "market_delta_points": 37.6,
-    "market_delta_pct": 60.3
+    "market_tier": "A",
+    "market_delta_points": 26,
+    "market_delta_pct": 44.5
   },
   {
     "politician_id": "avigdor-lieberman",
@@ -335,11 +335,11 @@
     "media_volume": 6.6,
     "overall_score": 6.3,
     "chain_of_thought": "Avigdor Lieberman קיבל סיקור מעורב היום",
-    "market_score": 77.8,
+    "market_score": 67.8,
     "market_percentile": 81,
     "market_tier": "A",
-    "market_delta_points": 11.9,
-    "market_delta_pct": 18.1
+    "market_delta_points": 7,
+    "market_delta_pct": 11.5
   },
   {
     "politician_id": "ayman-odeh",
@@ -350,10 +350,10 @@
     "media_volume": 6.2,
     "overall_score": 6.6,
     "chain_of_thought": "Ayman Odeh קיבל סיקור מעורב היום",
-    "market_score": 83.3,
+    "market_score": 71.4,
     "market_percentile": 88,
     "market_tier": "A",
-    "market_delta_points": 83.3,
+    "market_delta_points": 52.5,
     "market_delta_pct": null
   },
   {
@@ -365,11 +365,11 @@
     "media_volume": 9.4,
     "overall_score": 3,
     "chain_of_thought": "Benjamin Netanyahu קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 15.5,
     "market_percentile": 4,
     "market_tier": "C",
-    "market_delta_points": -100,
-    "market_delta_pct": -100
+    "market_delta_points": -78.9,
+    "market_delta_pct": -83.6
   },
   {
     "politician_id": "benny-gantz",
@@ -380,11 +380,11 @@
     "media_volume": 7.6,
     "overall_score": 2.8,
     "chain_of_thought": "Benny Gantz קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 11.7,
     "market_percentile": 1,
     "market_tier": "C",
-    "market_delta_points": -40.9,
-    "market_delta_pct": -100
+    "market_delta_points": -32.7,
+    "market_delta_pct": -73.6
   },
   {
     "politician_id": "bezalel-smotrich",
@@ -395,11 +395,11 @@
     "media_volume": 6.3,
     "overall_score": 5.9,
     "chain_of_thought": "Bezalel Smotrich קיבל סיקור מעורב היום",
-    "market_score": 70.4,
+    "market_score": 63.1,
     "market_percentile": 74,
-    "market_tier": "A",
-    "market_delta_points": -22,
-    "market_delta_pct": -23.8
+    "market_tier": "B",
+    "market_delta_points": -15.7,
+    "market_delta_pct": -19.9
   },
   {
     "politician_id": "boaz-bismuth",
@@ -410,11 +410,11 @@
     "media_volume": 7.3,
     "overall_score": 5.1,
     "chain_of_thought": "Boaz Bismuth קיבל סיקור מעורב היום",
-    "market_score": 55.6,
+    "market_score": 53.6,
     "market_percentile": 34,
     "market_tier": "B",
-    "market_delta_points": -5,
-    "market_delta_pct": -8.3
+    "market_delta_points": -3.6,
+    "market_delta_pct": -6.3
   },
   {
     "politician_id": "boaz-toporovsky",
@@ -425,10 +425,10 @@
     "media_volume": 6.5,
     "overall_score": 4.6,
     "chain_of_thought": "Boaz Toporovsky קיבל סיקור מעורב היום",
-    "market_score": 42.9,
+    "market_score": 46.2,
     "market_percentile": 24,
     "market_tier": "B",
-    "market_delta_points": 38.4,
+    "market_delta_points": 24.4,
     "market_delta_pct": null
   },
   {
@@ -440,11 +440,11 @@
     "media_volume": 5.9,
     "overall_score": 2.5,
     "chain_of_thought": "Dan Ilouz קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 5.9,
     "market_percentile": 0,
     "market_tier": "C",
-    "market_delta_points": -57.1,
-    "market_delta_pct": -100
+    "market_delta_points": -48.9,
+    "market_delta_pct": -89.2
   },
   {
     "politician_id": "david-amsalem",
@@ -455,11 +455,11 @@
     "media_volume": 2,
     "overall_score": 3.9,
     "chain_of_thought": "David Amsalem קיבל סיקור מעורב היום",
-    "market_score": 17.9,
+    "market_score": 32.8,
     "market_percentile": 13,
     "market_tier": "C",
-    "market_delta_points": -49.8,
-    "market_delta_pct": -73.6
+    "market_delta_points": -29.2,
+    "market_delta_pct": -47.1
   },
   {
     "politician_id": "david-bitan",
@@ -470,10 +470,10 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "David Bitan קיבל סיקור מעורב היום",
-    "market_score": 66.7,
+    "market_score": 60.7,
     "market_percentile": 69,
-    "market_tier": "A",
-    "market_delta_points": 44,
+    "market_tier": "B",
+    "market_delta_points": 27.6,
     "market_delta_pct": null
   },
   {
@@ -485,11 +485,11 @@
     "media_volume": 5.6,
     "overall_score": 3.7,
     "chain_of_thought": "Debbie Biton קיבל סיקור מעורב היום",
-    "market_score": 10.7,
+    "market_score": 28.9,
     "market_percentile": 11,
     "market_tier": "C",
-    "market_delta_points": -89.3,
-    "market_delta_pct": -89.3
+    "market_delta_points": -57.1,
+    "market_delta_pct": -66.4
   },
   {
     "politician_id": "efrat-rayten",
@@ -500,10 +500,10 @@
     "media_volume": 3.1,
     "overall_score": 4.7,
     "chain_of_thought": "Efrat Rayten קיבל סיקור מעורב היום",
-    "market_score": 46.4,
+    "market_score": 48.1,
     "market_percentile": 25,
     "market_tier": "B",
-    "market_delta_points": 23.7,
+    "market_delta_points": 15,
     "market_delta_pct": null
   },
   {
@@ -532,11 +532,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "elazar-stern",
@@ -547,11 +547,11 @@
     "media_volume": 5.4,
     "overall_score": 5.8,
     "chain_of_thought": "Elazar Stern קיבל סיקור מעורב היום",
-    "market_score": 68.5,
+    "market_score": 61.9,
     "market_percentile": 72,
-    "market_tier": "A",
-    "market_delta_points": 9.7,
-    "market_delta_pct": 16.5
+    "market_tier": "B",
+    "market_delta_points": 5.9,
+    "market_delta_pct": 10.5
   },
   {
     "politician_id": "eli-cohen",
@@ -562,11 +562,11 @@
     "media_volume": 4.8,
     "overall_score": 7.8,
     "chain_of_thought": "Eli Cohen קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 85.6,
     "market_percentile": 99,
     "market_tier": "S",
-    "market_delta_points": 34.1,
-    "market_delta_pct": 51.7
+    "market_delta_points": 24.8,
+    "market_delta_pct": 40.8
   },
   {
     "politician_id": "eli-dalal",
@@ -594,11 +594,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "eliyahu-revivo",
@@ -609,10 +609,10 @@
     "media_volume": 3.9,
     "overall_score": 2.9,
     "chain_of_thought": "Eliyahu Revivo קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 13.6,
     "market_percentile": 3,
     "market_tier": "C",
-    "market_delta_points": -18.2,
+    "market_delta_points": -16.6,
     "market_delta_pct": null
   },
   {
@@ -624,11 +624,11 @@
     "media_volume": 3.8,
     "overall_score": 5.1,
     "chain_of_thought": "Evgeny Sova קיבל סיקור מעורב היום",
-    "market_score": 55.6,
+    "market_score": 53.6,
     "market_percentile": 34,
     "market_tier": "B",
-    "market_delta_points": -44.4,
-    "market_delta_pct": -44.4
+    "market_delta_points": -33.6,
+    "market_delta_pct": -38.5
   },
   {
     "politician_id": "gadi-eisenkot",
@@ -639,10 +639,10 @@
     "media_volume": 6.3,
     "overall_score": 4.6,
     "chain_of_thought": "Gadi Eisenkot קיבל סיקור מעורב היום",
-    "market_score": 42.9,
+    "market_score": 46.2,
     "market_percentile": 24,
     "market_tier": "B",
-    "market_delta_points": 42.9,
+    "market_delta_points": 27.3,
     "market_delta_pct": null
   },
   {
@@ -671,11 +671,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "gideon-saar",
@@ -686,11 +686,11 @@
     "media_volume": 3.2,
     "overall_score": 5.9,
     "chain_of_thought": "Gideon Sa'ar קיבל סיקור מעורב היום",
-    "market_score": 70.4,
+    "market_score": 63.1,
     "market_percentile": 74,
-    "market_tier": "A",
-    "market_delta_points": -27.3,
-    "market_delta_pct": -27.9
+    "market_tier": "B",
+    "market_delta_points": -19.3,
+    "market_delta_pct": -23.4
   },
   {
     "politician_id": "gila-gamliel",
@@ -718,11 +718,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "gilad-kariv",
@@ -733,10 +733,10 @@
     "media_volume": 3.2,
     "overall_score": 5.2,
     "chain_of_thought": "Gilad Kariv קיבל סיקור מעורב היום",
-    "market_score": 57.4,
+    "market_score": 54.8,
     "market_percentile": 35,
     "market_tier": "B",
-    "market_delta_points": 57.4,
+    "market_delta_points": 44.3,
     "market_delta_pct": null
   },
   {
@@ -748,11 +748,11 @@
     "media_volume": 4.2,
     "overall_score": 3.8,
     "chain_of_thought": "Haim Biton קיבל סיקור מעורב היום",
-    "market_score": 14.3,
+    "market_score": 30.8,
     "market_percentile": 12,
     "market_tier": "C",
-    "market_delta_points": -85.7,
-    "market_delta_pct": -85.7
+    "market_delta_points": -54,
+    "market_delta_pct": -63.7
   },
   {
     "politician_id": "haim-katz",
@@ -782,11 +782,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "hamad-amar",
@@ -797,11 +797,11 @@
     "media_volume": 6.2,
     "overall_score": 6.6,
     "chain_of_thought": "Hamad Amar קיבל סיקור מעורב היום",
-    "market_score": 83.3,
+    "market_score": 71.4,
     "market_percentile": 88,
     "market_tier": "A",
-    "market_delta_points": 3.3,
-    "market_delta_pct": 4.1
+    "market_delta_points": 1,
+    "market_delta_pct": 1.4
   },
   {
     "politician_id": "hanoch-milwidsky",
@@ -812,11 +812,11 @@
     "media_volume": 2.6,
     "overall_score": 6.5,
     "chain_of_thought": "Hanoch Milwidsky קיבל סיקור מעורב היום",
-    "market_score": 81.5,
+    "market_score": 70.2,
     "market_percentile": 86,
     "market_tier": "A",
-    "market_delta_points": -10.9,
-    "market_delta_pct": -11.8
+    "market_delta_points": -8.6,
+    "market_delta_pct": -10.9
   },
   {
     "politician_id": "hava-eti-atia",
@@ -844,11 +844,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "hili-tropper",
@@ -859,11 +859,11 @@
     "media_volume": 6.9,
     "overall_score": 5.1,
     "chain_of_thought": "Hili Tropper קיבל סיקור מעורב היום",
-    "market_score": 55.6,
+    "market_score": 53.6,
     "market_percentile": 34,
     "market_tier": "B",
-    "market_delta_points": -17.4,
-    "market_delta_pct": -23.8
+    "market_delta_points": -12,
+    "market_delta_pct": -18.3
   },
   {
     "politician_id": "idit-silman",
@@ -891,11 +891,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "iman-khatib-yasin",
@@ -906,10 +906,10 @@
     "media_volume": 4.4,
     "overall_score": 4.4,
     "chain_of_thought": "Iman Khatib-Yasin קיבל סיקור מעורב היום",
-    "market_score": 35.7,
+    "market_score": 42.3,
     "market_percentile": 19,
     "market_tier": "B",
-    "market_delta_points": 3.9,
+    "market_delta_points": 3.6,
     "market_delta_pct": null
   },
   {
@@ -921,10 +921,10 @@
     "media_volume": 6,
     "overall_score": 4.6,
     "chain_of_thought": "Itamar Ben Gvir קיבל סיקור מעורב היום",
-    "market_score": 42.9,
+    "market_score": 46.2,
     "market_percentile": 24,
     "market_tier": "B",
-    "market_delta_points": 42.9,
+    "market_delta_points": 35.7,
     "market_delta_pct": null
   },
   {
@@ -936,11 +936,11 @@
     "media_volume": 6.4,
     "overall_score": 6.8,
     "chain_of_thought": "Karine Elharrar קיבל סיקור מעורב היום",
-    "market_score": 87,
+    "market_score": 73.8,
     "market_percentile": 91,
-    "market_tier": "S",
-    "market_delta_points": 33.5,
-    "market_delta_pct": 62.6
+    "market_tier": "A",
+    "market_delta_points": 21.4,
+    "market_delta_pct": 40.8
   },
   {
     "politician_id": "keti-shitrit",
@@ -951,11 +951,11 @@
     "media_volume": 6.3,
     "overall_score": 7.2,
     "chain_of_thought": "Keti Shitrit קיבל סיקור מעורב היום",
-    "market_score": 94.4,
+    "market_score": 78.5,
     "market_percentile": 93,
-    "market_tier": "S",
-    "market_delta_points": 48.9,
-    "market_delta_pct": 107.5
+    "market_tier": "A",
+    "market_delta_points": 31.3,
+    "market_delta_pct": 66.3
   },
   {
     "politician_id": "limor-son-har-melech",
@@ -966,10 +966,10 @@
     "media_volume": 7.9,
     "overall_score": 5.6,
     "chain_of_thought": "Limor Son Har-Melech קיבל סיקור מעורב היום",
-    "market_score": 64.8,
+    "market_score": 59.5,
     "market_percentile": 67,
     "market_tier": "B",
-    "market_delta_points": 37.5,
+    "market_delta_points": 23.6,
     "market_delta_pct": null
   },
   {
@@ -981,11 +981,11 @@
     "media_volume": 4.5,
     "overall_score": 6.3,
     "chain_of_thought": "Mansour Abbas קיבל סיקור מעורב היום",
-    "market_score": 77.8,
+    "market_score": 67.8,
     "market_percentile": 81,
     "market_tier": "A",
-    "market_delta_points": 32.3,
-    "market_delta_pct": 71
+    "market_delta_points": 20.6,
+    "market_delta_pct": 43.6
   },
   {
     "politician_id": "matan-kahana",
@@ -996,11 +996,11 @@
     "media_volume": 5.6,
     "overall_score": 4,
     "chain_of_thought": "Matan Kahana קיבל סיקור מעורב היום",
-    "market_score": 21.4,
+    "market_score": 34.7,
     "market_percentile": 15,
     "market_tier": "C",
-    "market_delta_points": -24.1,
-    "market_delta_pct": -53
+    "market_delta_points": -12.5,
+    "market_delta_pct": -26.5
   },
   {
     "politician_id": "matan-yafe",
@@ -1088,11 +1088,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "may-golan",
@@ -1122,11 +1122,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "meir-cohen",
@@ -1137,11 +1137,11 @@
     "media_volume": 3,
     "overall_score": 7.5,
     "chain_of_thought": "Meir Cohen קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 82.1,
     "market_percentile": 96,
-    "market_tier": "S",
-    "market_delta_points": 14.7,
-    "market_delta_pct": 17.2
+    "market_tier": "A",
+    "market_delta_points": 8.1,
+    "market_delta_pct": 10.9
   },
   {
     "politician_id": "meir-porush",
@@ -1152,11 +1152,11 @@
     "media_volume": 5.5,
     "overall_score": 3.2,
     "chain_of_thought": "Meir Porush קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 19.3,
     "market_percentile": 6,
     "market_tier": "C",
-    "market_delta_points": -73,
-    "market_delta_pct": -100
+    "market_delta_points": -46.3,
+    "market_delta_pct": -70.6
   },
   {
     "politician_id": "meirav-ben-ari",
@@ -1167,10 +1167,10 @@
     "media_volume": 6.3,
     "overall_score": 7.5,
     "chain_of_thought": "Meirav Ben Ari קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 82.1,
     "market_percentile": 96,
-    "market_tier": "S",
-    "market_delta_points": 68.2,
+    "market_tier": "A",
+    "market_delta_points": 43.4,
     "market_delta_pct": null
   },
   {
@@ -1182,11 +1182,11 @@
     "media_volume": 6.8,
     "overall_score": 5.8,
     "chain_of_thought": "Merav Cohen קיבל סיקור מעורב היום",
-    "market_score": 68.5,
+    "market_score": 61.9,
     "market_percentile": 72,
-    "market_tier": "A",
-    "market_delta_points": 32.1,
-    "market_delta_pct": null
+    "market_tier": "B",
+    "market_delta_points": 20.4,
+    "market_delta_pct": 49.2
   },
   {
     "politician_id": "michael-biton",
@@ -1197,11 +1197,11 @@
     "media_volume": 6.2,
     "overall_score": 8,
     "chain_of_thought": "Michael Biton קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 88,
     "market_percentile": 99,
     "market_tier": "S",
-    "market_delta_points": 48.2,
-    "market_delta_pct": 93.1
+    "market_delta_points": 36.8,
+    "market_delta_pct": 71.9
   },
   {
     "politician_id": "michael-malchieli",
@@ -1212,11 +1212,11 @@
     "media_volume": 4.2,
     "overall_score": 3.7,
     "chain_of_thought": "Michael Malchieli קיבל סיקור מעורב היום",
-    "market_score": 10.7,
+    "market_score": 28.9,
     "market_percentile": 11,
     "market_tier": "C",
-    "market_delta_points": -85.2,
-    "market_delta_pct": -88.8
+    "market_delta_points": -52.3,
+    "market_delta_pct": -64.4
   },
   {
     "politician_id": "michal-shir-segman",
@@ -1244,11 +1244,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "michal-waldiger",
@@ -1276,11 +1276,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "michel-buskila",
@@ -1308,11 +1308,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "mickey-levy",
@@ -1323,10 +1323,10 @@
     "media_volume": 5.9,
     "overall_score": 4.3,
     "chain_of_thought": "Mickey Levy קיבל סיקור מעורב היום",
-    "market_score": 32.1,
+    "market_score": 40.4,
     "market_percentile": 18,
-    "market_tier": "C",
-    "market_delta_points": 23,
+    "market_tier": "B",
+    "market_delta_points": 15.8,
     "market_delta_pct": null
   },
   {
@@ -1355,11 +1355,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "miri-regev",
@@ -1370,11 +1370,11 @@
     "media_volume": 5.5,
     "overall_score": 4,
     "chain_of_thought": "Miri Regev קיבל סיקור מעורב היום",
-    "market_score": 21.4,
+    "market_score": 34.7,
     "market_percentile": 15,
     "market_tier": "C",
-    "market_delta_points": -42.7,
-    "market_delta_pct": -66.6
+    "market_delta_points": -24.9,
+    "market_delta_pct": -41.8
   },
   {
     "politician_id": "moshe-abutbul",
@@ -1385,11 +1385,11 @@
     "media_volume": 4.3,
     "overall_score": 5,
     "chain_of_thought": "Moshe Abutbul קיבל סיקור מעורב היום",
-    "market_score": 53.7,
+    "market_score": 52.4,
     "market_percentile": 32,
     "market_tier": "B",
-    "market_delta_points": -24.6,
-    "market_delta_pct": -31.4
+    "market_delta_points": -16.8,
+    "market_delta_pct": -24.3
   },
   {
     "politician_id": "moshe-arbel",
@@ -1400,11 +1400,11 @@
     "media_volume": 2.7,
     "overall_score": 5,
     "chain_of_thought": "Moshe Arbel קיבל סיקור מעורב היום",
-    "market_score": 53.7,
+    "market_score": 52.4,
     "market_percentile": 32,
     "market_tier": "B",
-    "market_delta_points": 1.9,
-    "market_delta_pct": 3.7
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.3
   },
   {
     "politician_id": "moshe-gafni",
@@ -1415,11 +1415,11 @@
     "media_volume": 5.1,
     "overall_score": 4.1,
     "chain_of_thought": "Moshe Gafni קיבל סיקור מעורב היום",
-    "market_score": 25,
+    "market_score": 36.6,
     "market_percentile": 17,
-    "market_tier": "C",
-    "market_delta_points": -49.7,
-    "market_delta_pct": -66.5
+    "market_tier": "B",
+    "market_delta_points": -30.2,
+    "market_delta_pct": -45.2
   },
   {
     "politician_id": "moshe-passal",
@@ -1447,11 +1447,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "moshe-saada",
@@ -1462,11 +1462,11 @@
     "media_volume": 2.7,
     "overall_score": 3.2,
     "chain_of_thought": "Moshe Saada קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 19.3,
     "market_percentile": 6,
     "market_tier": "C",
-    "market_delta_points": -90.6,
-    "market_delta_pct": -100
+    "market_delta_points": -58.3,
+    "market_delta_pct": -75.1
   },
   {
     "politician_id": "moshe-solomon",
@@ -1494,11 +1494,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "moshe-tur-paz",
@@ -1509,11 +1509,11 @@
     "media_volume": 6.2,
     "overall_score": 6.1,
     "chain_of_thought": "Moshe Tur-Paz קיבל סיקור מעורב היום",
-    "market_score": 74.1,
+    "market_score": 65.4,
     "market_percentile": 77,
     "market_tier": "A",
-    "market_delta_points": 15.3,
-    "market_delta_pct": 26
+    "market_delta_points": 9.4,
+    "market_delta_pct": 16.8
   },
   {
     "politician_id": "naama-lazimi",
@@ -1524,11 +1524,11 @@
     "media_volume": 5.2,
     "overall_score": 6.4,
     "chain_of_thought": "Naama Lazimi קיבל סיקור מעורב היום",
-    "market_score": 79.6,
+    "market_score": 69,
     "market_percentile": 84,
     "market_tier": "A",
-    "market_delta_points": 20.8,
-    "market_delta_pct": 35.4
+    "market_delta_points": 13,
+    "market_delta_pct": 23.2
   },
   {
     "politician_id": "naftali-bennett",
@@ -1559,11 +1559,11 @@
         }
       }
     ],
-    "market_score": 81.5,
+    "market_score": 70.2,
     "market_percentile": 86,
     "market_tier": "A",
-    "market_delta_points": 1.5,
-    "market_delta_pct": 1.9
+    "market_delta_points": -0.2,
+    "market_delta_pct": -0.3
   },
   {
     "politician_id": "naor-shiri",
@@ -1574,11 +1574,11 @@
     "media_volume": 4.8,
     "overall_score": 2.9,
     "chain_of_thought": "Naor Shiri קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 13.6,
     "market_percentile": 3,
     "market_tier": "C",
-    "market_delta_points": -81.8,
-    "market_delta_pct": -100
+    "market_delta_points": -58,
+    "market_delta_pct": -81
   },
   {
     "politician_id": "nir-barkat",
@@ -1589,11 +1589,11 @@
     "media_volume": 3.4,
     "overall_score": 6.2,
     "chain_of_thought": "Nir Barkat קיבל סיקור מעורב היום",
-    "market_score": 75.9,
+    "market_score": 66.6,
     "market_percentile": 79,
     "market_tier": "A",
-    "market_delta_points": 10,
-    "market_delta_pct": 15.2
+    "market_delta_points": 5.8,
+    "market_delta_pct": 9.5
   },
   {
     "politician_id": "nissim-vaturi",
@@ -1604,11 +1604,11 @@
     "media_volume": 3.1,
     "overall_score": 7.7,
     "chain_of_thought": "Nissim Vaturi קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 84.4,
     "market_percentile": 97,
-    "market_tier": "S",
-    "market_delta_points": 4.1,
-    "market_delta_pct": 4.3
+    "market_tier": "A",
+    "market_delta_points": 3.2,
+    "market_delta_pct": 3.9
   },
   {
     "politician_id": "oded-forer",
@@ -1619,11 +1619,11 @@
     "media_volume": 4.3,
     "overall_score": 4.9,
     "chain_of_thought": "Oded Forer קיבל סיקור מעורב היום",
-    "market_score": 51.9,
+    "market_score": 51.2,
     "market_percentile": 30,
     "market_tier": "B",
-    "market_delta_points": 6.4,
-    "market_delta_pct": 14.1
+    "market_delta_points": 4,
+    "market_delta_pct": 8.5
   },
   {
     "politician_id": "ofer-cassif",
@@ -1634,11 +1634,11 @@
     "media_volume": 5.3,
     "overall_score": 6,
     "chain_of_thought": "Ofer Cassif קיבל סיקור מעורב היום",
-    "market_score": 72.2,
+    "market_score": 64.3,
     "market_percentile": 76,
-    "market_tier": "A",
-    "market_delta_points": -16.7,
-    "market_delta_pct": -18.8
+    "market_tier": "B",
+    "market_delta_points": -12.1,
+    "market_delta_pct": -15.8
   },
   {
     "politician_id": "ofir-katz",
@@ -1668,11 +1668,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "ofir-sofer",
@@ -1683,11 +1683,11 @@
     "media_volume": 5.6,
     "overall_score": 4,
     "chain_of_thought": "Ofir Sofer קיבל סיקור מעורב היום",
-    "market_score": 21.4,
+    "market_score": 34.7,
     "market_percentile": 15,
     "market_tier": "C",
-    "market_delta_points": -44.5,
-    "market_delta_pct": -67.5
+    "market_delta_points": -26.1,
+    "market_delta_pct": -42.9
   },
   {
     "politician_id": "ohad-tal",
@@ -1698,11 +1698,11 @@
     "media_volume": 5.8,
     "overall_score": 4.9,
     "chain_of_thought": "Ohad Tal קיבל סיקור מעורב היום",
-    "market_score": 51.9,
+    "market_score": 51.2,
     "market_percentile": 30,
     "market_tier": "B",
-    "market_delta_points": -29.9,
-    "market_delta_pct": -36.6
+    "market_delta_points": -20.4,
+    "market_delta_pct": -28.5
   },
   {
     "politician_id": "orit-farkash-hacohen",
@@ -1730,11 +1730,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "orit-strock",
@@ -1745,10 +1745,10 @@
     "media_volume": 5.2,
     "overall_score": 4.8,
     "chain_of_thought": "Orit Strock קיבל סיקור מעורב היום",
-    "market_score": 50,
+    "market_score": 43,
     "market_percentile": 27,
     "market_tier": "B",
-    "market_delta_points": 22.7,
+    "market_delta_points": 7.1,
     "market_delta_pct": null
   },
   {
@@ -1760,11 +1760,11 @@
     "media_volume": 2.5,
     "overall_score": 3.4,
     "chain_of_thought": "Osher Shkalim קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 23.2,
     "market_percentile": 8,
     "market_tier": "C",
-    "market_delta_points": -81.8,
-    "market_delta_pct": -100
+    "market_delta_points": -48.4,
+    "market_delta_pct": -67.6
   },
   {
     "politician_id": "pnina-tamano-shata",
@@ -1775,11 +1775,11 @@
     "media_volume": 1.8,
     "overall_score": 6,
     "chain_of_thought": "Pnina Tamano-Shata קיבל סיקור מעורב היום",
-    "market_score": 72.2,
+    "market_score": 64.3,
     "market_percentile": 76,
-    "market_tier": "A",
-    "market_delta_points": -14.9,
-    "market_delta_pct": -17.1
+    "market_tier": "B",
+    "market_delta_points": -10.9,
+    "market_delta_pct": -14.5
   },
   {
     "politician_id": "ram-ben-barak",
@@ -1807,11 +1807,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "ron-katz",
@@ -1822,10 +1822,10 @@
     "media_volume": 5.7,
     "overall_score": 7.2,
     "chain_of_thought": "Ron Katz קיבל סיקור מעורב היום",
-    "market_score": 94.4,
+    "market_score": 78.5,
     "market_percentile": 93,
-    "market_tier": "S",
-    "market_delta_points": 94.4,
+    "market_tier": "A",
+    "market_delta_points": 59.6,
     "market_delta_pct": null
   },
   {
@@ -1856,11 +1856,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "sasson-guetta",
@@ -1888,11 +1888,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "shalom-danino",
@@ -1932,11 +1932,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "sharon-nir",
@@ -1947,10 +1947,10 @@
     "media_volume": 6.8,
     "overall_score": 4,
     "chain_of_thought": "Sharon Nir קיבל סיקור מעורב היום",
-    "market_score": 21.4,
+    "market_score": 34.7,
     "market_percentile": 15,
     "market_tier": "C",
-    "market_delta_points": -1.3,
+    "market_delta_points": 1.6,
     "market_delta_pct": null
   },
   {
@@ -1962,11 +1962,11 @@
     "media_volume": 7.1,
     "overall_score": 6.3,
     "chain_of_thought": "Sharren Haskel קיבל סיקור מעורב היום",
-    "market_score": 77.8,
+    "market_score": 67.8,
     "market_percentile": 81,
     "market_tier": "A",
-    "market_delta_points": 20.7,
-    "market_delta_pct": 36.3
+    "market_delta_points": 13,
+    "market_delta_pct": 23.7
   },
   {
     "politician_id": "shelly-tal-meron",
@@ -1977,11 +1977,11 @@
     "media_volume": 2.2,
     "overall_score": 5.7,
     "chain_of_thought": "Shelly Tal Meron קיבל סיקור מעורב היום",
-    "market_score": 66.7,
+    "market_score": 60.7,
     "market_percentile": 69,
-    "market_tier": "A",
-    "market_delta_points": 25.8,
-    "market_delta_pct": 63.1
+    "market_tier": "B",
+    "market_delta_points": 16.3,
+    "market_delta_pct": 36.7
   },
   {
     "politician_id": "shlomo-karhi",
@@ -1992,11 +1992,11 @@
     "media_volume": 7.1,
     "overall_score": 4.5,
     "chain_of_thought": "Shlomo Karhi קיבל סיקור מעורב היום",
-    "market_score": 39.3,
+    "market_score": 44.3,
     "market_percentile": 21,
     "market_tier": "B",
-    "market_delta_points": -60.7,
-    "market_delta_pct": -60.7
+    "market_delta_points": -45.3,
+    "market_delta_pct": -50.6
   },
   {
     "politician_id": "simcha-rothman",
@@ -2007,11 +2007,11 @@
     "media_volume": 4.7,
     "overall_score": 5.7,
     "chain_of_thought": "Simcha Rothman קיבל סיקור מעורב היום",
-    "market_score": 66.7,
+    "market_score": 60.7,
     "market_percentile": 69,
-    "market_tier": "A",
-    "market_delta_points": -29.2,
-    "market_delta_pct": -30.4
+    "market_tier": "B",
+    "market_delta_points": -20.5,
+    "market_delta_pct": -25.2
   },
   {
     "politician_id": "simon-davidson",
@@ -2022,11 +2022,11 @@
     "media_volume": 1.3,
     "overall_score": 3.1,
     "chain_of_thought": "Simon Davidson קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 17.4,
     "market_percentile": 4,
     "market_tier": "C",
-    "market_delta_points": -65.9,
-    "market_delta_pct": -100
+    "market_delta_points": -43.4,
+    "market_delta_pct": -71.4
   },
   {
     "politician_id": "tally-gotliv",
@@ -2037,11 +2037,11 @@
     "media_volume": 5.6,
     "overall_score": 4.6,
     "chain_of_thought": "Tally Gotliv קיבל סיקור מעורב היום",
-    "market_score": 42.9,
+    "market_score": 46.2,
     "market_percentile": 24,
     "market_tier": "B",
-    "market_delta_points": 6.5,
-    "market_delta_pct": null
+    "market_delta_points": 4.7,
+    "market_delta_pct": 11.3
   },
   {
     "politician_id": "tatiana-mazarsky",
@@ -2052,11 +2052,11 @@
     "media_volume": 2.8,
     "overall_score": 7.4,
     "chain_of_thought": "Tatiana Mazarsky קיבל סיקור מעורב היום",
-    "market_score": 98.1,
+    "market_score": 80.9,
     "market_percentile": 94,
-    "market_tier": "S",
-    "market_delta_points": -1.9,
-    "market_delta_pct": -1.9
+    "market_tier": "A",
+    "market_delta_points": -15.9,
+    "market_delta_pct": -16.4
   },
   {
     "politician_id": "tsega-melaku",
@@ -2067,10 +2067,10 @@
     "media_volume": 5.2,
     "overall_score": 6.2,
     "chain_of_thought": "Tsega Melaku קיבל סיקור מעורב היום",
-    "market_score": 75.9,
+    "market_score": 66.6,
     "market_percentile": 79,
     "market_tier": "A",
-    "market_delta_points": 62.3,
+    "market_delta_points": 39.2,
     "market_delta_pct": null
   },
   {
@@ -2082,11 +2082,11 @@
     "media_volume": 3.8,
     "overall_score": 4.8,
     "chain_of_thought": "Uri Maklev קיבל סיקור מעורב היום",
-    "market_score": 50,
+    "market_score": 71,
     "market_percentile": 27,
-    "market_tier": "B",
-    "market_delta_points": -50,
-    "market_delta_pct": -50
+    "market_tier": "A",
+    "market_delta_points": -21,
+    "market_delta_pct": -22.8
   },
   {
     "politician_id": "uriel-buso",
@@ -2097,11 +2097,11 @@
     "media_volume": 3.8,
     "overall_score": 3.3,
     "chain_of_thought": "Uriel Buso קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 21.3,
     "market_percentile": 7,
     "market_tier": "C",
-    "market_delta_points": -88.9,
-    "market_delta_pct": -100
+    "market_delta_points": -55.1,
+    "market_delta_pct": -72.1
   },
   {
     "politician_id": "vladimir-beliak",
@@ -2112,11 +2112,11 @@
     "media_volume": 3.6,
     "overall_score": 3.9,
     "chain_of_thought": "Vladimir Beliak קיבל סיקור מעורב היום",
-    "market_score": 17.9,
+    "market_score": 32.8,
     "market_percentile": 13,
     "market_tier": "C",
-    "market_delta_points": -44.5,
-    "market_delta_pct": -71.3
+    "market_delta_points": -25.6,
+    "market_delta_pct": -43.8
   },
   {
     "politician_id": "waleed-taha",
@@ -2127,11 +2127,11 @@
     "media_volume": 5.7,
     "overall_score": 5.3,
     "chain_of_thought": "Waleed Taha קיבל סיקור מעורב היום",
-    "market_score": 59.3,
+    "market_score": 55.9,
     "market_percentile": 37,
     "market_tier": "B",
-    "market_delta_points": -4.8,
-    "market_delta_pct": -7.5
+    "market_delta_points": -3.7,
+    "market_delta_pct": -6.2
   },
   {
     "politician_id": "walid-alhawashla",
@@ -2159,11 +2159,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yaakov-asher",
@@ -2174,10 +2174,10 @@
     "media_volume": 6.2,
     "overall_score": 5.3,
     "chain_of_thought": "Yaakov Asher קיבל סיקור מעורב היום",
-    "market_score": 59.3,
+    "market_score": 55.9,
     "market_percentile": 37,
     "market_tier": "B",
-    "market_delta_points": 59.3,
+    "market_delta_points": 45.4,
     "market_delta_pct": null
   },
   {
@@ -2189,11 +2189,11 @@
     "media_volume": 2,
     "overall_score": 4.5,
     "chain_of_thought": "Yaakov Margi קיבל סיקור מעורב היום",
-    "market_score": 39.3,
+    "market_score": 44.3,
     "market_percentile": 21,
     "market_tier": "B",
-    "market_delta_points": -10.7,
-    "market_delta_pct": -21.4
+    "market_delta_points": -5.7,
+    "market_delta_pct": -11.4
   },
   {
     "politician_id": "yaakov-tesler",
@@ -2204,11 +2204,11 @@
     "media_volume": 5.4,
     "overall_score": 7.5,
     "chain_of_thought": "Yaakov Tesler קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 82.1,
     "market_percentile": 96,
-    "market_tier": "S",
-    "market_delta_points": 63.6,
-    "market_delta_pct": null
+    "market_tier": "A",
+    "market_delta_points": 40.6,
+    "market_delta_pct": 97.8
   },
   {
     "politician_id": "yael-ron-ben-moshe",
@@ -2236,11 +2236,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yair-golan",
@@ -2251,11 +2251,11 @@
     "media_volume": 4.6,
     "overall_score": 3.4,
     "chain_of_thought": "Yair Golan קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 23.2,
     "market_percentile": 8,
     "market_tier": "C",
-    "market_delta_points": -74.7,
-    "market_delta_pct": -100
+    "market_delta_points": -43.6,
+    "market_delta_pct": -65.3
   },
   {
     "politician_id": "yair-lapid",
@@ -2266,11 +2266,11 @@
     "media_volume": 6.5,
     "overall_score": 4.8,
     "chain_of_thought": "Yair Lapid קיבל סיקור מעורב היום",
-    "market_score": 50,
+    "market_score": 60.8,
     "market_percentile": 27,
     "market_tier": "B",
-    "market_delta_points": -31.8,
-    "market_delta_pct": -38.9
+    "market_delta_points": -10.8,
+    "market_delta_pct": -15.1
   },
   {
     "politician_id": "yariv-levin",
@@ -2281,11 +2281,11 @@
     "media_volume": 4.5,
     "overall_score": 6.8,
     "chain_of_thought": "Yariv Levin קיבל סיקור מעורב היום",
-    "market_score": 87,
+    "market_score": 73.8,
     "market_percentile": 91,
-    "market_tier": "S",
-    "market_delta_points": 50.6,
-    "market_delta_pct": null
+    "market_tier": "A",
+    "market_delta_points": 32.3,
+    "market_delta_pct": 77.8
   },
   {
     "politician_id": "yaron-levy",
@@ -2313,11 +2313,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yasmin-fridman",
@@ -2345,11 +2345,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yasser-hujirat",
@@ -2377,11 +2377,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yinon-azoulay",
@@ -2392,11 +2392,11 @@
     "media_volume": 2.6,
     "overall_score": 4.4,
     "chain_of_thought": "Yinon Azoulay קיבל סיקור מעורב היום",
-    "market_score": 35.7,
+    "market_score": 42.3,
     "market_percentile": 19,
     "market_tier": "B",
-    "market_delta_points": -16.1,
-    "market_delta_pct": -31.1
+    "market_delta_points": -8.9,
+    "market_delta_pct": -17.4
   },
   {
     "politician_id": "yisrael-katz",
@@ -2407,11 +2407,11 @@
     "media_volume": 4,
     "overall_score": 6.4,
     "chain_of_thought": "Yisrael Katz קיבל סיקור מעורב היום",
-    "market_score": 79.6,
+    "market_score": 69,
     "market_percentile": 84,
     "market_tier": "A",
-    "market_delta_points": 11.9,
-    "market_delta_pct": 17.6
+    "market_delta_points": 7,
+    "market_delta_pct": 11.3
   },
   {
     "politician_id": "yitzhak-goldknopf",
@@ -2422,11 +2422,11 @@
     "media_volume": 4.2,
     "overall_score": 6.6,
     "chain_of_thought": "Yitzhak Goldknopf קיבל סיקור מעורב היום",
-    "market_score": 83.3,
+    "market_score": 71.4,
     "market_percentile": 88,
     "market_tier": "A",
-    "market_delta_points": -0.3,
-    "market_delta_pct": -0.4
+    "market_delta_points": -1.4,
+    "market_delta_pct": -1.9
   },
   {
     "politician_id": "yitzhak-kroizer",
@@ -2454,11 +2454,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yitzhak-pindrus",
@@ -2486,11 +2486,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yitzhak-wasserlauf",
@@ -2501,10 +2501,10 @@
     "media_volume": 3.7,
     "overall_score": 4.4,
     "chain_of_thought": "Yitzhak Wasserlauf קיבל סיקור מעורב היום",
-    "market_score": 35.7,
+    "market_score": 42.3,
     "market_percentile": 19,
     "market_tier": "B",
-    "market_delta_points": 35.7,
+    "market_delta_points": 23.4,
     "market_delta_pct": null
   },
   {
@@ -2516,11 +2516,11 @@
     "media_volume": 3.7,
     "overall_score": 4.9,
     "chain_of_thought": "Yoav Ben-Tzur קיבל סיקור מעורב היום",
-    "market_score": 51.9,
+    "market_score": 51.2,
     "market_percentile": 30,
     "market_tier": "B",
-    "market_delta_points": -3.4,
-    "market_delta_pct": -6.1
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4.5
   },
   {
     "politician_id": "yoav-kish",
@@ -2548,11 +2548,11 @@
         }
       }
     ],
-    "market_score": 74.1,
+    "market_score": 65.4,
     "market_percentile": 77,
     "market_tier": "A",
-    "market_delta_points": 1.1,
-    "market_delta_pct": 1.5
+    "market_delta_points": -0.2,
+    "market_delta_pct": -0.3
   },
   {
     "politician_id": "yoav-segalovitz",
@@ -2563,11 +2563,11 @@
     "media_volume": 3.6,
     "overall_score": 5.6,
     "chain_of_thought": "Yoav Segalovitz קיבל סיקור מעורב היום",
-    "market_score": 64.8,
+    "market_score": 59.5,
     "market_percentile": 67,
     "market_tier": "B",
-    "market_delta_points": -20.5,
-    "market_delta_pct": -24
+    "market_delta_points": -14.5,
+    "market_delta_pct": -19.6
   },
   {
     "politician_id": "yoaz-hendel",
@@ -2595,11 +2595,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yonatan-mishraki",
@@ -2627,11 +2627,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yorai-lahav-hertzano",
@@ -2642,11 +2642,11 @@
     "media_volume": 4,
     "overall_score": 7.2,
     "chain_of_thought": "Yorai Lahav-Hertzano קיבל סיקור מעורב היום",
-    "market_score": 94.4,
+    "market_score": 78.5,
     "market_percentile": 93,
-    "market_tier": "S",
-    "market_delta_points": 28.5,
-    "market_delta_pct": 43.2
+    "market_tier": "A",
+    "market_delta_points": 17.7,
+    "market_delta_pct": 29.1
   },
   {
     "politician_id": "yosef-taieb",
@@ -2674,11 +2674,11 @@
         }
       }
     ],
-    "market_score": 63,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.6,
-    "market_delta_pct": 1
+    "market_delta_points": -0.1,
+    "market_delta_pct": -0.2
   },
   {
     "politician_id": "yuli-edelstein",
@@ -2689,11 +2689,11 @@
     "media_volume": 6.1,
     "overall_score": 2.7,
     "chain_of_thought": "Yuli Edelstein קיבל סיקור מעורב היום",
-    "market_score": 0,
+    "market_score": 9.8,
     "market_percentile": 1,
     "market_tier": "C",
-    "market_delta_points": -81.8,
-    "market_delta_pct": -100
+    "market_delta_points": -61.8,
+    "market_delta_pct": -86.3
   },
   {
     "politician_id": "yulia-malinovsky",
@@ -2704,11 +2704,11 @@
     "media_volume": 2.4,
     "overall_score": 6.6,
     "chain_of_thought": "Yulia Malinovsky קיבל סיקור מעורב היום",
-    "market_score": 83.3,
+    "market_score": 71.4,
     "market_percentile": 88,
     "market_tier": "A",
-    "market_delta_points": 22.7,
-    "market_delta_pct": 37.5
+    "market_delta_points": 14.2,
+    "market_delta_pct": 24.8
   },
   {
     "politician_id": "zeev-elkin",
@@ -2719,10 +2719,10 @@
     "media_volume": 2.9,
     "overall_score": 8.2,
     "chain_of_thought": "Zeev Elkin קיבל סיקור מעורב היום",
-    "market_score": 100,
+    "market_score": 90.4,
     "market_percentile": 100,
     "market_tier": "S",
-    "market_delta_points": 100,
+    "market_delta_points": 71.5,
     "market_delta_pct": null
   },
   {
@@ -2734,11 +2734,11 @@
     "media_volume": 2.2,
     "overall_score": 6.2,
     "chain_of_thought": "Zvi Sukkot קיבל סיקור מעורב היום",
-    "market_score": 75.9,
+    "market_score": 66.6,
     "market_percentile": 79,
     "market_tier": "A",
-    "market_delta_points": 4.7,
-    "market_delta_pct": 6.6
+    "market_delta_points": 2.2,
+    "market_delta_pct": 3.4
   },
   {
     "politician_id": "zvika-fogel",
@@ -2749,10 +2749,10 @@
     "media_volume": 4.5,
     "overall_score": 5.8,
     "chain_of_thought": "Zvika Fogel קיבל סיקור מעורב היום",
-    "market_score": 68.5,
+    "market_score": 61.9,
     "market_percentile": 72,
-    "market_tier": "A",
-    "market_delta_points": 68.5,
+    "market_tier": "B",
+    "market_delta_points": 48.6,
     "market_delta_pct": null
   }
 ]

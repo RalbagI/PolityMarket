@@ -25,11 +25,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "afif-abed",
@@ -57,11 +57,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ahmad-tibi",
@@ -75,11 +75,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין תיעוד עדכני של תכניות או דיונים על אמ",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "aida-touma-suleiman",
@@ -93,11 +93,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין הערות או כותרות ישירות לאיידה טומה-סليمאן במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע מחייב ניתוח נייטרלי, ללא אמפליה או ביקורת פוליטית. אין סימני פד or סארקזם, ולכן הניתוח מתבסס על נוכחות נמוכה ורלוונטיות אפסית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "akram-hasson",
@@ -125,11 +125,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "alon-schuster",
@@ -143,11 +143,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין הערות או כותרות ישירות על אלון שוסטר במקורות המותרים, ולכן אין מידע רלוונטי להערכה של מצבו הפוליטי. כל ההערות המופיעות מתייחסות ל אירועים חיצוניים (התקפות אירן, שאלות פוליטיות כלליות) ולא למדיניות או לתקשור של שוסטר. אין סימני פוליטיקה דרמטית או דיבור שגוי, אך גם אין תובנות חיוביות או שליליות ישירות.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "amichai-eliyahu",
@@ -161,11 +161,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין תיעוד זמין להערכה של מצבה הפוליטי של אמיחאי אלייהו, בשל היעדר חדשות או הערות חברתיות מתוך מקורות המותרים. מצב זה יכול להצביע על נמוך רלוונטיות פומבית, או על היעדר פעילות מודפסת近期. אין סימני פחד או ביקורת פוליטית, ולכן אין צורך בניתוח של דיבור פוליטי לא חוקי או סטיגמה.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "amichai-shikli",
@@ -193,11 +193,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "amir-ohana",
@@ -211,11 +211,11 @@
     "media_volume": 3,
     "overall_score": 7.1,
     "chain_of_thought": "הערה חיובית מפורשת על תרומתו של אמיר עohana לתחום הגנה, עם דגש על תרומתו לשיטות הגנה כמו אירון דומ. אין סטיגמה או פגיעה בזיהוי, ואין דיבור מוסרי או פוליטי מכוון. הפרספקטיב הוא טכני ומבוסס, ללא סטיגמה או פגיעה בזיהוי. אין סטיגמה או פגיעה בזיהוי, ואין דיבור מוסרי או פוליטי מכוון. הפרספקטיב הוא טכני ומבוסס, ללא סטיגמה או פגיעה בזיהוי.",
-    "market_score": 91.1,
+    "market_score": 77.2,
     "market_percentile": 99,
-    "market_tier": "S",
-    "market_delta_points": 29,
-    "market_delta_pct": 46.7
+    "market_tier": "A",
+    "market_delta_points": 18.9,
+    "market_delta_pct": 32.4
   },
   {
     "politician_id": "amit-halevi",
@@ -243,11 +243,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ariel-kallner",
@@ -261,11 +261,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין הערות או כותרות ישירות לאיירל קאלנר במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר עניין במקורות המבוקשים. ללא תוכן להערכה, כל המטרות נמצאות בנקודת האפס.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "aryeh-deri",
@@ -279,11 +279,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין כלusions או תובנות רלוונטיות לגבי אריה דיри בכל המקורות המסופקים. כל ההודעות בReddit מתייחסות לנושא כללי (חנויות קוסר, תרבות רכבת, שאלות פוליטיות כלליות) אך ללא כלipsis או ביקורת על דיри או מדיניותו. אין סימני פדיעות, סארקזם או דיבור שואף ל delegitimization. הניתוח נוגע לאי-התקיים של תוכן רלוונטי.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "avi-dichter",
@@ -297,11 +297,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע זמין על אביו דיכטר במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה לא מוסרית או סרקסם. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או תחושת תומך. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "avi-maoz",
@@ -329,11 +329,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "avichay-buaron",
@@ -347,11 +347,11 @@
     "media_volume": 0,
     "overall_score": 5.2,
     "chain_of_thought": "אין התייחסות ישירה לברון במקורות המותרים, ומאידך, ה заголовок המופיע מתייחס למשתתף אחר (אדראי). נוכחות נמוכה של תוכן פומבי, ללא רמזים לדרמטיקה פוליטית או ביקורת. אין סטיגמה, אכזריות או דיבור delegitimizing. הניתוח מראה נייטרליות מוחלטת בשל חוסר מידע.",
-    "market_score": 57.1,
+    "market_score": 54.7,
     "market_percentile": 4,
     "market_tier": "B",
-    "market_delta_points": -5,
-    "market_delta_pct": -8.1
+    "market_delta_points": -3.6,
+    "market_delta_pct": -6.2
   },
   {
     "politician_id": "avigdor-lieberman",
@@ -365,11 +365,11 @@
     "media_volume": 3,
     "overall_score": 4.5,
     "chain_of_thought": "הכותרת מציגה ביקורת על היעילות של ליברמן כ部长, עם דגש על 'דיבור חזק אך פחות פעולה' בנושא שכר פלסטינים לטרוריסטים. אין דיבור דרמטולוגי או פוליטיקה של פגיעה בזיהוי, אך יש ניסוח ביקורתי שמביע ספק ביכולת הפעולה. אין סטיגמה של סארקזם או פד",
-    "market_score": 39.3,
+    "market_score": 44.9,
     "market_percentile": 3,
     "market_tier": "B",
-    "market_delta_points": -22.8,
-    "market_delta_pct": -36.7
+    "market_delta_points": -13.4,
+    "market_delta_pct": -23
   },
   {
     "politician_id": "ayman-odeh",
@@ -383,11 +383,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות מותאמות לאיימן אודה במקורות המותאמים, מה שמעיד על נוכחות מינימלית בדיבור العام. היעדר תיעוד פומבי מוביל לשליליות נמוכה בדיבור, אך גם לאי-הערכה של תחומי עניין. אין סימני פד",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "benjamin-netanyahu",
@@ -401,11 +401,11 @@
     "media_volume": 6,
     "overall_score": 5.6,
     "chain_of_thought": "ה커פוף לנתניהו כולל תיעודים מעורבים של תקשורת פוליטית וסיבובים תקשורתית. תיעודים כמו הפרסום על הבחירות המוקדמות והאשמה בקשר לiran מציינים תקשורת פוליטית מודерנית, בעוד שדיוקים כמו הפרסום על החקיקה נגדו מציינים תקשורת מתח. לא נמצאו דוגמאות לדייגיטציה פוליטית (PDD) או סרקסם מובהק. התקשורת משלבת תקשורת פוליטית עם תקשורת תקשורתית, מה שמעורר תקשורת מודרנית.",
-    "market_score": 64.3,
+    "market_score": 59.5,
     "market_percentile": 76,
     "market_tier": "B",
-    "market_delta_points": -18.5,
-    "market_delta_pct": -22.3
+    "market_delta_points": -13,
+    "market_delta_pct": -17.9
   },
   {
     "politician_id": "benny-gantz",
@@ -419,11 +419,11 @@
     "media_volume": 6,
     "overall_score": 7.1,
     "chain_of_thought": "הכותרות מציגות תנועות פוליטיות ומדיניות, אך אין ניסוחים מפורטים או אגרסיביים. אין זיהוי דיבור דיליטציה פוליטית או סרק asm. הניתוח מתבסס על נושאים פוליטיים ומדיניות, עם נטייה לפרספקטיבה אובייקטיבית. רמת אгрסיה נמוכה-בינונית, תומכת במדיניות, ותפזרות תקשורת מוגזמת.",
-    "market_score": 91.1,
+    "market_score": 77.2,
     "market_percentile": 99,
-    "market_tier": "S",
-    "market_delta_points": 4.9,
-    "market_delta_pct": 5.7
+    "market_tier": "A",
+    "market_delta_points": 2.3,
+    "market_delta_pct": 3.1
   },
   {
     "politician_id": "bezalel-smotrich",
@@ -437,10 +437,10 @@
     "media_volume": 6,
     "overall_score": 3.4,
     "chain_of_thought": "הarticulation של סموتritch על היחס עם ארה",
-    "market_score": 0,
+    "market_score": 26.1,
     "market_percentile": 1,
     "market_tier": "C",
-    "market_delta_points": -26.7,
+    "market_delta_points": -11.9,
     "market_delta_pct": null
   },
   {
@@ -455,11 +455,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין הערות או חדשות מדויקות על בועז ביסמooth במקורות המותרים, לכן אין מידע להערכה של תחושה או דיבור פוליטי. היעדר כל תקשורת פומבית משמעותית מעיד על נמוך או נעלם מודעות ציבוריים.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "boaz-toporovsky",
@@ -473,11 +473,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני של תכניות או הערות על בועז טופורובסקי במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית או ביקורת תקשורתית מונעת ניתוח רגיש לרגש או דיבור פוליטי. תחושת נייטרליות מובילה, אך ללא מידע מדויק אין יכולת למדוד נטייה פוליטית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "dan-ilouz",
@@ -491,11 +491,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על דן אילוז במקורות המותרים, לכן ניתוח הרגשה מתבסס על היעדר מידע. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פוליטית נמוכה. אין סימני פחד או ביקורת פוליטית, ולכן אין צורך בניתוח PDD או סארקזם.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "david-amsalem",
@@ -509,11 +509,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין תיעודים זמינים לגבי דוד אמסלם במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה דרמטית או סטיגמה. היעדר תיעודים מעורר ספק לגבי נוכחות פומבית ותפוצה תקשורתית. אין סימני אgressיביות או תומכות במדיניות. הניתוח מתבסס על היעדר מידע, ולא על דעות פומביות.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "david-bitan",
@@ -527,11 +527,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על דיויד ביטן במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דיליטציה פוליטית. היעדר תיעוד פומבי מעיד על נמוך רמת תשומת לב או נוכחות מינימלית במרחב הפוליטי.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "debbie-biton",
@@ -545,11 +545,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע זמין על דיבר ביטון במקורות המותרים, ולכן אין אפשרות לניתוח תקשורתי או דיבור פוליטי. היעדר כל תזכורת תקשורתית או מודעות פומבית מצביע על נוכחות נמוכה או חוסר עניין בדיבר ביטון בתקופת ההערכה הנוכחית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "efrat-rayten",
@@ -563,11 +563,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין הערות או כותרות ישירות לEFRAT RAYTEN במקורות המותרים במהלך התקופה הזו. היעדר מידע מחייב ניתוח נייטרלי. אין סימני פחד או תקשורות מודעות, ולכן אין צורך בניתוח של דיבור פוליטי לא חוקי או סטיגמה. היעדר תקשורת פומבית גורם לציון נייטרלי.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "eitan-ginzburg",
@@ -595,11 +595,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "elazar-stern",
@@ -613,10 +613,10 @@
     "media_volume": 3,
     "overall_score": 6.3,
     "chain_of_thought": "אין כלusions או תובנות ישויות מרכזיות על עליזר סטרן במקורות המורכבים, ולכן אין נוכחות של דיבור פוליטי או תקשורת מוסרית. כל התייחסויות המופיעות מתייחסות למאורעות כלליים (המתקפה, תקשורת בינלאומית, איום איראני) ולא למדיניות או תקשורת של סטרן. אין סימני פדיעות, סארקזם או דיבור שואף ל delegitimization. הניתוח מוגבל למאורעות חיצוניים ולא לפעילות פוליטית של סטרן.",
-    "market_score": 76.8,
+    "market_score": 67.8,
     "market_percentile": 94,
     "market_tier": "A",
-    "market_delta_points": 50.1,
+    "market_delta_points": 29.8,
     "market_delta_pct": null
   },
   {
@@ -631,11 +631,11 @@
     "media_volume": 6,
     "overall_score": 6.5,
     "chain_of_thought": "הכותרת הראשונה מציינת את קהילת קהילה כמossad שגריר, מה שיכולים להיחשב כהתקפה על הראיות הלאומית או הלאומית, אך לא בהכרח מציינת פוליטיקה נוכחית. הכותרת השנייה מציגה פעילות דיפלומטית חיובית נגד אירן, אך ללא הקשר למשמעת פוליטית. אין התייחסות למשמעת פוליטית נוכחית או לתקפות פוליטיות. אין זיהוי של PDD או סטיגמה. הפרסום במקורות מוסריים עשוי להגביר את הانتشار, אך אין התייחסות למשמעת פוליטית נוכחית.",
-    "market_score": 80.4,
+    "market_score": 70.1,
     "market_percentile": 96,
     "market_tier": "A",
-    "market_delta_points": 18.3,
-    "market_delta_pct": 29.5
+    "market_delta_points": 11.8,
+    "market_delta_pct": 20.2
   },
   {
     "politician_id": "eli-dalal",
@@ -663,11 +663,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "eliyahu-revivo",
@@ -681,11 +681,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על אלייהו רביבו במקורות המותרים, לכן ניתוח התרשים מתבסס על היעדר מידע. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פוליטית נמוכה. אין סימני פוליטיקה דרמטית או סטיגמה, אך גם אין תובנות חיוביות או שליליות.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "evgeny-sova",
@@ -699,11 +699,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על איביגן סובה, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. הניתוח מתבסס על הקשר ההיסטורי של המפלגה שלו, יסראלי ביתין, אך ללא מידע עדכני אין יכולת למדידת רמת תקווה או ביקורת. אין סימני פדיעות או קולקציוניות מודרניות.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "gadi-eisenkot",
@@ -717,11 +717,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין הערות או כותרות ישירות לאייזنكוט במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומבית משמעותית מעיד על נמוך רמת השפעה או עיכובים בדיבור. אין סימני פחד או תקיפות, אך גם אין תובנות חיוביות או שליליות.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "galit-distel-atbaryan",
@@ -749,11 +749,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "gideon-saar",
@@ -767,11 +767,11 @@
     "media_volume": 5,
     "overall_score": 7,
     "chain_of_thought": "הכותרת מציגה דיווח ניטרלי על הצהרה של סא'אר לגבי תוצאות מלחמה, תוך ציון של תוצאות לא מותאמות. אין רמזים לדייגיטליזציה פוליטית, סארקיזם או ביקורת על אידנטיטי. הפרספקטיב הוא פוליטי-מilitרי, אך ללא עיכובים אגרסיביים או תקשורות מוטות. הפרספקטיב יכול להיחשב כמוניטי-מוניטי, אך ללא רמזים לדרמטיזציה של מוסד או איום על דמוקרטיה.",
-    "market_score": 89.3,
+    "market_score": 76,
     "market_percentile": 98,
-    "market_tier": "S",
-    "market_delta_points": 8.3,
-    "market_delta_pct": 10.2
+    "market_tier": "A",
+    "market_delta_points": 4.7,
+    "market_delta_pct": 6.6
   },
   {
     "politician_id": "gila-gamliel",
@@ -799,11 +799,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "gilad-kariv",
@@ -817,11 +817,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע עדכני על גלעד קאריב במקורות המותרים, ולכן אין אפשרות לזהות טון, פדיעות או דיבור delegitimizing. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או דיבור ציבורי. אין סטיגמה או תקווה מודגשת, מה שגורם לציון נמוך של עלייה במדיה.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "haim-biton",
@@ -835,11 +835,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין מידע זמין על הפרסום או התייחסויות החברתיות של הימן ביטון במקורות המותרים, ולכן לא ניתן לזהות נרטיבים של פוליטיקה הלאותית או סטיגמה. היעדר תקשורת פומבית תורמת לשקיפות נמוכה בדימויו العام.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "haim-katz",
@@ -869,11 +869,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "hamad-amar",
@@ -887,11 +887,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על אמאר במקורות המותרים, מה שמעיד על ניכור נמוך בתקשורת ובשכבות הרחבת מודעות. היעדר תקשורת פומבית או פעילות פוליטית מודרנית גורם לאי-הערכה של מיקומו הפוליטי. אין סימני פוליטיקה פוגעת או סטיגמה מודרנית.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "hanoch-milwidsky",
@@ -905,11 +905,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות מותאמות למחברת המלוד במחזור זה, מה שמעיד על נוכחות מינימלית או נulle בדיבור العام. היעדר תיעוד פומבי מונע ניתוח תקשורתי או דיבור פוליטי, ולכן אין מידע על רמת תקווה, ביקורת או אמפליפיקציה. הניתוח מתבסס על היעדר נתונים.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": 2.1,
-    "market_delta_pct": 3.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "hava-eti-atia",
@@ -937,11 +937,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "hili-tropper",
@@ -955,11 +955,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין הערות או כותרות מותאמות להילי טרופר במקורות המותאמים במחזור זה, מה שמעיד על נוכחות מינימלית בתקשורת או בדיאלוג הפוליטי. היעדר תוכן פומבי מאפשר תרגום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פדיעות או דיבור מוסרי, אך גם אין תובנות חיוביות או שליליות.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "idit-silman",
@@ -987,11 +987,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "iman-khatib-yasin",
@@ -1005,11 +1005,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע עדכני על אימן חתיב-ayasim במקורות המותרים, ולכן אין אפשרות לזהות דיבור פוליטי לא חוקי או סарקזם. היעדר תיעוד תקשורת的 מעורר ספק לגבי נוכחות פומבית או תקשורת מודרנית, מה שגורם לציון נייטרלי בכל המטרות.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "itamar-ben-gvir",
@@ -1023,10 +1023,10 @@
     "media_volume": 7,
     "overall_score": 3.2,
     "chain_of_thought": "הכותרות מציגות ביקורת עזה על בנג'יר, במיוחד בהקשר של שימוש לא חוקי בכוחות משטרה ותפקידים ציבוריים לפרסום פוליטי, ובהקשר של ספק ביכולת המשטרה להבטיח בחירה חופפת. התייחסות למשפט ו至 מועמדות לפרסום עורך משטרה מעורר חשד לאי-חוקיות. הציטוטים של רבניים על תקווה של תקווה של.double standard ותגובה למשטרת ארה",
-    "market_score": 0,
+    "market_score": 22.6,
     "market_percentile": 0,
     "market_tier": "C",
-    "market_delta_points": -3.3,
+    "market_delta_points": -3.5,
     "market_delta_pct": null
   },
   {
@@ -1041,11 +1041,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד תקשורת ישיר לคารין אלחראר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תובנות או מודעות פומביות מונעת מהערכה מדויקת של תחושה או נרטיבים. תובנות עתירות או ביקורת על מדיניות לא נמצאו, ולכן אין צורך בניתוח של פד",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "keti-shitrit",
@@ -1059,11 +1059,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין הערות או חדשות ישירות על קטי שיטריט במקורות המותרים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הפוליטי. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא איום או ביקורת פוליטית. אין סימני פד or סטיגמה, אך גם אין תומכים או מعارضים מפורטים.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "limor-son-har-melech",
@@ -1077,11 +1077,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על ליםור סון הר מלך במקורות המותרים, ולכן לא ניתן לזהות נרטיבים של פוליטיקה דתית או אמפליפיקציה תקשורתית. היעדר תובנות מודעות או תreads חברתיים מוביל לניתוח נייטרלי.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "mansour-abbas",
@@ -1095,11 +1095,11 @@
     "media_volume": 8,
     "overall_score": 4.4,
     "chain_of_thought": "המאמר המופיע מציג קשר מוטען בין אבאס ל Hamas, מה שמייצג דיבור דיליטימציה פוליטית (PDD) שמתבסס על איזון זהות (הקשר לארגון טרור) ותבנית של סכנת ארגון דמוקרטי. הציטוט אינו מכיל ביקורת פוליטית ישירה אלא מנסה לשלול את היכולת של אבאס ל đại표 את הקהילה שלו על בסיס זהות. אין סימני סטיריה או תקשורת סטנדרטית, אך יש רמז לאי-אמינות וסיכון לדרמטיזציה.",
-    "market_score": 35.7,
+    "market_score": 43.2,
     "market_percentile": 1,
     "market_tier": "B",
-    "market_delta_points": -26.4,
-    "market_delta_pct": -42.5
+    "market_delta_points": -15.1,
+    "market_delta_pct": -25.9
   },
   {
     "politician_id": "matan-kahana",
@@ -1113,11 +1113,11 @@
     "media_volume": 1,
     "overall_score": 5.8,
     "chain_of_thought": "אין תיעודים זמינים לגבי מטן כהנא במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיאורים או מודעות סоциальные מונעים ניתוח של טון, פדיעות או דיבור delegitimizing. היעדר תקשורת פומבית תורמת לציון נמוך של אמפליפיקציה תקשורתית.",
-    "market_score": 67.9,
+    "market_score": 61.8,
     "market_percentile": 88,
-    "market_tier": "A",
-    "market_delta_points": 5.8,
-    "market_delta_pct": 9.3
+    "market_tier": "B",
+    "market_delta_points": 3.5,
+    "market_delta_pct": 6
   },
   {
     "politician_id": "matan-yafe",
@@ -1205,11 +1205,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "may-golan",
@@ -1239,11 +1239,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "meir-cohen",
@@ -1257,11 +1257,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין תיעוד עדכני של חדשות או תיאורים חברתיים לכהן, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תוכן מעורר נייטרליות, ללא סטיגמה, פדיעות או דיבור שטחתי. אין סיכוי להעניק דירוגים משמעותיים ללא נתונים.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "meir-porush",
@@ -1275,11 +1275,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות שמתמקדות בporush בתקופת ההערכה הזו. היעדר תיעוד פומבי מעיד על ניכור נמוך או אי-הlevance בתקופת הפעילות הנוכחית. אין סימני פחד או פגיעה בדימויים, ולכן אין צורך בניתוח של PDD או סארקזם. היעדר תיעוד גורם לציון נמוך בכל המטרות.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "meirav-ben-ari",
@@ -1293,11 +1293,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע עדכני על מירב בינה-אריאי במקורות המותרים, ולכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטציה פוליטית. היעדר התייחסויות תקשורתיות או תreads חברתיות מעיד על ניכור נמוך או על כך שהיא לא מרכזית בתקופת ההיבטים הנבחנים. אין סתירה או תמיכה מפורשת, ולכן הערכה של רמת נוכחות תקשורתית נמוכה.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "merav-cohen",
@@ -1311,11 +1311,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין הערות או חדשות מדויקות על מראב קהן במקורות המותרים, לכן אין מידע להערכה של תחושה או דיבור פוליטי. היעדר תיעוד עדכני מצביע על נמוך או נייטרלי ערך תקשורת, אך אין סיבה להערכה מפורשת.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michael-biton",
@@ -1329,11 +1329,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע רלוונטי על מיכאל ביטון במקורות המותרים. ההודעה המוצגת מתייחסת למשה קatz ולא לביטון, ומכיוון שאין כלusions על פעילות פוליטית או דיון ציבורי מפורש, לא ניתן לזהות תנועה רגשית או דיבור פוליטי. הניתוח מתבסס על חוסר מידע.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michael-malchieli",
@@ -1347,11 +1347,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע ישראלי או תקשורת פומבית מוסמכת על מיכאל מקלחלי במקורות המותרים, כולל התייחסויות במדיה החברתי. התייחסות הReddit מתייחסת ל",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michal-shir-segman",
@@ -1379,11 +1379,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michal-waldiger",
@@ -1411,11 +1411,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michel-buskila",
@@ -1443,11 +1443,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "mickey-levy",
@@ -1461,11 +1461,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על מיכי לוי במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע על שיחים פומביים או ביקורות מונחים את הניתוח בנקודת partida של נייטרליות. אין סימני פד or סארקזם, ואין תובנות על תומך או ניגוד. היעדר תקשורת מודרנית מפחית את האמפליפיקציה הפוליטית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "miki-zohar",
@@ -1493,11 +1493,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "miri-regev",
@@ -1511,11 +1511,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני או הערות חברתיות על מירי רגב במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי או חוסר תשומת לב מודרנית. היעדר תקשורת פומבית תורמת לאי-הסכמה או אי-ההערכה מוחלטת, אך ללא מידע נוסף קשה לאמץ דפוסים של פוליטיקה או דיבור מוסרי.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "moshe-abutbul",
@@ -1529,11 +1529,11 @@
     "media_volume": 1,
     "overall_score": 5.8,
     "chain_of_thought": "אין מידע עדכני על מושה אבוטבול במקורות המותרים, ולכן אין אפשרות לזהות דיבור פוליטי לאישות או סарказם. היעדר תיעוד תקשורת的 יכול להצביע על נמוך רמת תשומת לב או נוכחות פוליטית נמוכה. ללא מידע על תובנות או ביקורת, רמת האgressיה והסכמה פוליטית נותרת לא מותאמת.",
-    "market_score": 67.9,
+    "market_score": 61.8,
     "market_percentile": 88,
-    "market_tier": "A",
-    "market_delta_points": 5.8,
-    "market_delta_pct": 9.3
+    "market_tier": "B",
+    "market_delta_points": 3.5,
+    "market_delta_pct": 6
   },
   {
     "politician_id": "moshe-arbel",
@@ -1547,11 +1547,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע עדכני על מושה ארבלי במקורות המותרים, ולכן אין אפשרות לניתוח רמה שלמה. היעדר כלusions חדשות או דיבורות חברתיות מעורר ספק לגבי נוכחות פומבית מובהקת. אין זיהוי של דיבורת פוליטיקה מפקדת או סרקסמטיקה. הניתוח מתבסס על היעדר מידע, ולא על תובנות חדשות.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "moshe-gafni",
@@ -1565,11 +1565,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעודים זמינים לגבי ג'פני במקורות המותרים, לכן לא ניתן לזהות נרטיבים של פוליטיקה דתית או אמירה סטנדרטית. היעדר תיעוד מעורר ספק לגבי נוכחות פומבית ורלוונטיות נוכחיות. אין סימני אכזריות או פדואליזם, אך גם אין תובנות על תומך או ביקור.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "moshe-passal",
@@ -1597,11 +1597,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "moshe-saada",
@@ -1615,11 +1615,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין הערות או חדשות ישירות על מושה סאדה במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב בתקופת ההערכה. היעדר תוכן פוליטי או ביקורתי מונע מהתקיים ניתוח של דיבור delegitimizing או סарק asm. הניתוח מתבסס על היעדר מידע, ולא על תקשורת פומבית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "moshe-solomon",
@@ -1647,11 +1647,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "moshe-tur-paz",
@@ -1665,11 +1665,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין הערות או חדשות ישירות על מושה טור-פז במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב במקורות המבוקרים. ללא תוכן פומבי, לא ניתן לזהות נרטיבים של פדיעות פוליטית, סארק, או דיבור שטח. הניתוח מתבסס על חוסר מידע, ולא על תובנות רגשית או פוליטית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "naama-lazimi",
@@ -1683,11 +1683,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על נאומה לאזימי במקורות המותרים, ולכן אין אפשרות לניתוח רעיוני או דיבור פוליטי. היעדר כל ציטוט או תיעוד פומבי גורם לציון נייטרלי בכל המטרות.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "naftali-bennett",
@@ -1718,11 +1718,11 @@
         }
       }
     ],
-    "market_score": 80.4,
+    "market_score": 70.1,
     "market_percentile": 96,
     "market_tier": "A",
-    "market_delta_points": 1.1,
-    "market_delta_pct": 1.4
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "naor-shiri",
@@ -1736,11 +1736,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע עדכני על נאור שירי במקורות המותרים, ולכן אין אפשרות לזהות טון או דיבור פוליטי. היעדר תיעוד עדכני מעיד על נמוך רלוונטיות תקשורתית או חוסר פעילות פוליטית מוקדמת. אין זיהוי של דיבור פוליטי לא חוקי (PDD) או סарקזם.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "nir-barkat",
@@ -1754,11 +1754,11 @@
     "media_volume": 4,
     "overall_score": 7.1,
     "chain_of_thought": "המאמר מציג את בarkin כמי שמשך את העיר לrenaissance תרבותי חיובי, תוך שימוש בביטוי 'ליאון' שמתאר את כוחו של מנהל העיר. אין רמז לחריגה או פגיעה בדמויות, ואין ניסוח שגוי או סטיגמה. הפרסום מכוון לפרסום תרבותי ומשתלב עם תפקודו כמנהל. אין סטיגמה או פגיעה בדמויות, ואין ניסוח שגוי או סטיגמה. אין ניסוח שגוי או סטיגמה. אין ניסוח שגוי או סטיגמה.",
-    "market_score": 91.1,
+    "market_score": 77.2,
     "market_percentile": 99,
-    "market_tier": "S",
-    "market_delta_points": 29,
-    "market_delta_pct": 46.7
+    "market_tier": "A",
+    "market_delta_points": 18.9,
+    "market_delta_pct": 32.4
   },
   {
     "politician_id": "nissim-vaturi",
@@ -1772,11 +1772,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על ניסים וטורי במקורות המותרים, ולכן לא ניתן ל분석 תון, סארקזם או דיבור דיליטציה פוליטית. היעדר כל תזכורת או הערה על המועמד גורם לציון אפס בכל המטרות.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 5.6,
-    "market_delta_pct": 9.8
+    "market_delta_points": 3.6,
+    "market_delta_pct": 6.6
   },
   {
     "politician_id": "oded-forer",
@@ -1790,11 +1790,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתאימות לoped Forer במקורות המותרים, לכן אין מידע להערכה של תודעה פומבית. היעדר תיעודים מעורר ספק לגבי נוכחות פומבית או תודעה כללית. אין זיהוי של דיבור delegitimization או סарקזם בשל היעדר תוכן.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ofer-cassif",
@@ -1808,11 +1808,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין תיעודים עדכניים או הערות חברתיות שמתמקדות בקאסיף במהלך המחזור הנוכחי. היעדר תיעודים פומביים מצביע על נוכחות מינימלית במרחב הפוליטי או על נחישות נמוכה של המפלגה שלו. אין סימני אgressיביות או ביקורת פוליטית, ולכן הניתוח מתבסס על נוכחות נמוכה ולא על דיבור פוליטי מפורש.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "ofir-katz",
@@ -1842,11 +1842,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ofir-sofer",
@@ -1860,11 +1860,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על אופיר sober או הערות חברתיות רלוונטיות מתוך מקורות המותרים. היעדר כלusions על תקשורת פומבית או ביקורת פומבית גורם לניתוח חסר תקפות. אין סימני פחד או פוליטיקה מוסרית, אך גם אין תובנות על תומך או ביקור. הניתוח מתבסס על היעדר מידע.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ohad-tal",
@@ -1878,11 +1878,11 @@
     "media_volume": 2,
     "overall_score": 6,
     "chain_of_thought": "המאמר מציג את אוחד טאל כחבר כנסת ללא ביקורת או דיבור סמלי. אין רמזים לדרמטיזציה פוליטית או לתקיפות. הפרסום הוא תיאור적 ופactual, אך מכיוון שאין ראיות נוספות על שיחים חברתיים או תreads, קשה להעריך את הانتشار הפוטנציאלי. אין סימני כישלון או הומור.",
-    "market_score": 71.4,
+    "market_score": 64.2,
     "market_percentile": 91,
-    "market_tier": "A",
-    "market_delta_points": 9.3,
-    "market_delta_pct": 15
+    "market_tier": "B",
+    "market_delta_points": 5.9,
+    "market_delta_pct": 10.1
   },
   {
     "politician_id": "orit-farkash-hacohen",
@@ -1910,11 +1910,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "orit-strock",
@@ -1928,11 +1928,11 @@
     "media_volume": 3,
     "overall_score": 5.9,
     "chain_of_thought": "הערה על אובדן חבר במשפחה ללא ספקriminal suspicion מציינת את התרחשות אירונית אך לא מציינת שום ביקורת על הפעילות הפוליטית של סטראך. אין סימני PDD או סарקזם, וההעתקה היא נייטרלית אך רגשית. אין דיבור פוליטי או ביקורת על מדיניות, ולכן אין שום ערך למדיניות או עימות.",
-    "market_score": 69.6,
+    "market_score": 63,
     "market_percentile": 90,
-    "market_tier": "A",
-    "market_delta_points": -6.3,
-    "market_delta_pct": -8.3
+    "market_tier": "B",
+    "market_delta_points": -4.8,
+    "market_delta_pct": -7.1
   },
   {
     "politician_id": "osher-shkalim",
@@ -1946,11 +1946,11 @@
     "media_volume": 1,
     "overall_score": 5.8,
     "chain_of_thought": "אין כלusions או תובנות ישירות על אושר שקלים במקורות המותרים. הפרסום בReddit הוא שאלה כללית על אוכריים קוסריים, ללא התאמה למשהו שמקשר אותו למשהו ששקלים. אין סטיגמה, פדיה או ביקורת פוליטית. הפרסום אינו מתייחס לשקלים או למדיניות שלו, ולכן אין נוכחות פוליטית או תקשורת מוסרית.",
-    "market_score": 67.9,
+    "market_score": 61.8,
     "market_percentile": 88,
-    "market_tier": "A",
-    "market_delta_points": 5.8,
-    "market_delta_pct": 9.3
+    "market_tier": "B",
+    "market_delta_points": 3.5,
+    "market_delta_pct": 6
   },
   {
     "politician_id": "pnina-tamano-shata",
@@ -1964,11 +1964,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין תיעודים ישירים או מentions במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי. היעדר תקשורת פומבית תורמת לאי-הערכה של מיקומה בדיאלוג ציבורי. אין סימני פחד או ביקורת פוליטית מובהקת, אך גם אין תמיכה מפורשת.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "ram-ben-barak",
@@ -1996,11 +1996,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ron-katz",
@@ -2014,11 +2014,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "המונחים המופיעים במקורות הוויכוחים נוגעים למשהו שונה מרון קatz (למשל, מיכאל קatz וקatz כ部长), מה שמעיד על הטעייה או ערבוב שמות. אין מידע ישראלי או פוליטי ישראלי ישירות על רון קatz במקורות המבוקרים, ולכן אין נוכחות פוליטית מובהקת. הניתוח אינו מראה שיחים פוליטיים או תקשורת מודרנית שמתמקדת בקatz. אין סימני PDD או סטיגמה פוליטית מובהקת, אך גם אין תקשורת חיובית או שלילית מובהקת.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "samir-ben-said",
@@ -2048,11 +2048,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "sasson-guetta",
@@ -2080,11 +2080,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "shalom-danino",
@@ -2124,11 +2124,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "sharon-nir",
@@ -2142,11 +2142,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע זמין על שרון ניר במקורות המותרים, ולכן לא ניתן לזהות דיבור פוליטי לא חוקי, סארקזם או נרטיבים מודעים. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או עניין תקשורת的.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "sharren-haskel",
@@ -2160,11 +2160,11 @@
     "media_volume": 1,
     "overall_score": 5.8,
     "chain_of_thought": "אין מידע זמין על שארן חסקל במקורות המותרים, ולכן אין אפשרות לנתח רמת תרבות או דיבור פוליטי. היעדר כל ציטוט או עיתון מדויק מצביע על נוכחות נמוכה או חוסר עניין בתקשורת. אין סימני פחד או דיבור פוליטי מפורש, ולכן אין צורך בניתוח של פחד פוליטי או סטיגמה.",
-    "market_score": 67.9,
+    "market_score": 61.8,
     "market_percentile": 88,
-    "market_tier": "A",
-    "market_delta_points": 5.8,
-    "market_delta_pct": 9.3
+    "market_tier": "B",
+    "market_delta_points": 3.5,
+    "market_delta_pct": 6
   },
   {
     "politician_id": "shelly-tal-meron",
@@ -2178,11 +2178,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין הערות או כותרות ישירות לשללי טאל מירון במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר מידע ישירות עלול להצביע על נחישות נמוכה או נוכחות לא מרכזית, אך אין סימני אgressיביות או ביקורת פוליטית מפורשת. הניתוח מתבסס על היעדר נתונים, ולא על תובנות סטנדרטיות.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "shlomo-karhi",
@@ -2196,11 +2196,11 @@
     "media_volume": 3,
     "overall_score": 5.9,
     "chain_of_thought": "הכותרת מתארת החלטה פוליטית נייטרלית ללא ערך דתי או פוליטי מובהק. אין סימני פדיעות או דיבור שגוי, וההקשר אינו מציית לפורמט של פדיעות פוליטית. הניתוח אינו מראה עלייה או ירידה משמעותית בתקיפות או תקווה.",
-    "market_score": 69.6,
+    "market_score": 63,
     "market_percentile": 90,
-    "market_tier": "A",
-    "market_delta_points": 29.6,
-    "market_delta_pct": 74
+    "market_tier": "B",
+    "market_delta_points": 18.1,
+    "market_delta_pct": 40.3
   },
   {
     "politician_id": "simcha-rothman",
@@ -2214,11 +2214,11 @@
     "media_volume": 3,
     "overall_score": 6.3,
     "chain_of_thought": "המאמר של JNS.org מציג את רותמן כחבר כנסת בрамק של בחירות 2026, אך אין רמזים לרגש או דיבור פוליטי דרמטיזציה. אין תיאור של תקשורת חברתית או ביקורת, ולכן אין נוכחות של אכזריות, פדיעות או דיבור מודרני. הפרסום הוא ניטראלי ומבוסס על תפקוד פוליטי רגיל.",
-    "market_score": 76.8,
+    "market_score": 67.8,
     "market_percentile": 94,
     "market_tier": "A",
-    "market_delta_points": 23.4,
-    "market_delta_pct": 43.8
+    "market_delta_points": 15.4,
+    "market_delta_pct": 29.4
   },
   {
     "politician_id": "simon-davidson",
@@ -2232,11 +2232,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין הערות או כותרות מותאמות לsimon davidson במקורות המותאמים, מה שמעיד על נוכחות מינימלית או חוסר דיון ציבורי. נוכחות נמוכה במקורות המותאמים גורמת לאי-התקיים של ניתוח רגשי או פוליטי. אין סימני פחד או תקשורות מודעות.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "tally-gotliv",
@@ -2250,10 +2250,10 @@
     "media_volume": 2,
     "overall_score": 6,
     "chain_of_thought": "אין כלusions או מentions ישירות על טלי גוטליב בכל המקורות המותרים. כל הפרסומים המובאים מתייחסים לנושא מלחמה בירן, מדיניות ארה",
-    "market_score": 71.4,
+    "market_score": 64.2,
     "market_percentile": 91,
-    "market_tier": "A",
-    "market_delta_points": 51.4,
+    "market_tier": "B",
+    "market_delta_points": 29.6,
     "market_delta_pct": null
   },
   {
@@ -2268,11 +2268,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין הערות או כותרות ישויות מותאמות למטיאנה מזרסקי במקורות המותאמים, מה שמעיד על נוכחות מינימלית בתקשורת או במרחב הרשת. היעדר תוכן פומבי מאפשר סיום נייטרלי ללא אינטראקציות או ביקורת. אין סימני פדיעות, סארקזם או דיבור דיליטציה פוליטית.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "tsega-melaku",
@@ -2286,11 +2286,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין הערות או חדשות ישירות על טסגה מלהכוא במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב תקשורתית. היעדר תוכן פומבי מונע ניתוח רגשי או פוליטי, אך יש להניח נייטרליות מוגזמת בשל היעדר מידע.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "uri-maklev",
@@ -2304,11 +2304,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע עדכני על אורי מקלב במקורות המותרים, ולכן אין אפשרות לזהות טון, פסיפיקציה או דיבור דיפלומטי. היעדר כל סוג של תיעוד פומבי מעיד על נוכחות מינימלית במרחב הפוליטי העדכני.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "uriel-buso",
@@ -2322,11 +2322,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעודים זמינים לגבי אוריאל בוסו, לכן לא ניתן לזהות טון, סארקזם או דיבור דיליטימציה פוליטית. היעדר תיעודים מעיד על נוכחות מינימלית במרחב הפוליטי, מה שגורם לציון hostility_level נמוך. היעדר מידע על מדיניות גורם לציון policy_approval נייטרלי. היעדר תיעודים גם מפחית את האמפליפיקציה המודית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "vladimir-beliak",
@@ -2340,11 +2340,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על Владимיר בלאי במקורות המותרים, ולכן לא ניתן לזהות טון, סарказם, או דיבור דילגיטימציה פוליטית. היעדר התייחסויות публичные מעיד על נמוך רלוונטיות או עניין במשרהו. כל המטרות הדרמטיות והשכיחות המודפסות נמצאות בнуול.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "waleed-taha",
@@ -2358,11 +2358,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד זמין לרעיונות או דיונים על ולייד טהא במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא מוסרי (PDD), סארקזם או נרטיבים מורכבים. היעדר תיעוד פומבי מעיד על נמוך רמת הפעילות הפומבית, אך לא על עמדה פוליטית מוגדרת. תהליך הניתוח מצריך תיעוד נוסף כדי לאמץ את הوضع המדויק.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "walid-alhawashla",
@@ -2390,11 +2390,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yaakov-asher",
@@ -2408,11 +2408,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין הערות או חדשות ישירות על יאakov א sher במקורות המותרים במחזור זה. היעדר תיעוד ישירות מצביע על ניכור נמוך או עיסוק מוגבל בissues של המפלגה. ייתכן שמדיניות המפלגה היא נושה מוגבל או שסמכותה לא מושגת בתקשורת המרכזית. אין סימני פחד או ביקורת פוליטית מובהקת.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 16.1,
-    "market_delta_pct": 32.2
+    "market_tier": "B",
+    "market_delta_points": -5.3,
+    "market_delta_pct": -8
   },
   {
     "politician_id": "yaakov-margi",
@@ -2426,11 +2426,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע עדכני על מועמד זה במקורות המותרים, ולכן אין אפשרות לזהות טון, סарקזם, או דיבור דיליטציה פוליטית. היעדר התייחסויות תקשורתיות או תreads מקורות מעורר חשד לשקיפות נמוכה או נוכחות פוליטית מזערית. אין מידע להערכה של רמת נוכחות תקשורתית או דעה ציבורית.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "yaakov-tesler",
@@ -2444,11 +2444,11 @@
     "media_volume": 2,
     "overall_score": 5.7,
     "chain_of_thought": "אין תיעודים או הערות חברתיות מדויקות על טסלר במקורות המותרים, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תיעודים מחייב ניתוח נייטרלי, ללא רמזים לחרטה, פדואליות או דיבור מוטעה. היעדר תקשורת פומבית משמעותית מעיד על נוכחות מינימלית או עיכובים בפרסום.",
-    "market_score": 66.1,
+    "market_score": 60.7,
     "market_percentile": 82,
-    "market_tier": "A",
-    "market_delta_points": 4,
-    "market_delta_pct": 6.4
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "yael-ron-ben-moshe",
@@ -2476,11 +2476,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yair-golan",
@@ -2494,10 +2494,10 @@
     "media_volume": 3,
     "overall_score": 6.3,
     "chain_of_thought": "המאמר מתמקד בتصريح של גולן על נעלמת Kasau, אך אין רמזים לדייגיטיזציה פוליטית או לתקיפות. אין תיאור של תקשורת חברתית או סטיגמה. הפרספקטיב הוא פוליטי-ממשלתי, אך ללא רמזים לתקיפות או לפרשנות היסטורית. אין סטיגמה או תקשורת סאטירית. הפרספקטיב הוא נייטרלי-ממשלתי.",
-    "market_score": 76.8,
+    "market_score": 67.8,
     "market_percentile": 94,
     "market_tier": "A",
-    "market_delta_points": 56.8,
+    "market_delta_points": 33.2,
     "market_delta_pct": null
   },
   {
@@ -2512,11 +2512,11 @@
     "media_volume": 5,
     "overall_score": 6.8,
     "chain_of_thought": "הכותרות מציגות הצהרות של ליפיד על נושאים רלוונטיים למדינה, אך ללא עיכוב או ביקורת פוליטית מפורשת. הצהרת 'לא תופס' על פלסטינים נחשבת לשקפת פוליטיקה מודרנית, אך לא מציינת פגיעה בזיהוי או בתקנות. אין דיבור על סכנת מוסד או תקפות מינימליסטית. אין סטיגמה או אכזריות מפורשת, אך יש ניסוח שמרני שמאפשר תרומה לדיון פוליטי.",
-    "market_score": 85.7,
+    "market_score": 73.7,
     "market_percentile": 97,
-    "market_tier": "S",
-    "market_delta_points": 15,
-    "market_delta_pct": 21.2
+    "market_tier": "A",
+    "market_delta_points": 9.5,
+    "market_delta_pct": 14.8
   },
   {
     "politician_id": "yariv-levin",
@@ -2530,11 +2530,11 @@
     "media_volume": 3,
     "overall_score": 5.5,
     "chain_of_thought": "הכותרת מציגה דיבור נייטרלי עם ניסוח של 'rumors debunked' שמביע ספק או סירוב לאמינות הטענות. אין רמזים לPDD או סטיגמה זהירה, אך הניתוח אינו מוסר דעה מפורשת. היעדר ציטוטים חברתיים מונע ניתוח דינמי של טון או סטיגמה. הניתוח מתבסס על ניסוח הכתבה כמונח נייטרלי עם נוכחות מינימלית של ספק.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yaron-levy",
@@ -2562,11 +2562,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yasmin-fridman",
@@ -2594,11 +2594,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yasser-hujirat",
@@ -2626,11 +2626,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yinon-azoulay",
@@ -2644,11 +2644,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין מידע זמין על אזהרות או דעות פומביות לגבי ינון עזרויל במקורות המותרים, לכן לא ניתן לזהות דיבור פוליטי לא חוקי (PDD), סארקזם או נרטיבים מורכבים. היעדר תיעוד פומבי מעיד על נמוך רמת חשיבות או נוכחות פומבית נמוכה.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "yisrael-katz",
@@ -2662,11 +2662,11 @@
     "media_volume": 6,
     "overall_score": 5.6,
     "chain_of_thought": "המאמר המוביל מתאר פעולה צבאית משמעותית של קצץ, מה שיכולים לראות כצלול או כמתקף חזק. ההערות במדיה החברתית כוללות תreads עם נושאים שונים: אחד מתייחס למשבר פוליטי פנימי (Michael Katz) אך לא ברור אם זה קצץ עצמו, השני מדווח על הاعلان הרשמי שלו על הפעולה, והשלישי כולל תגובה סאטירית ל舆媒 שמתמקמת בפרטים טריוויאליים במהלך מלחמה. אין זיהוי של דיבור דילגיטימציה פוליטית, אך יש תחושת ביקורת על תפקוד ה舆媒. התגובה הסאטירית מציינת ניגוד בין תחושת אירוסיה למשבר, אך אינה מציינת פוליטיקה של קצץ באופן ישיר.",
-    "market_score": 64.3,
+    "market_score": 59.5,
     "market_percentile": 76,
     "market_tier": "B",
     "market_delta_points": -1.2,
-    "market_delta_pct": -1.8
+    "market_delta_pct": -2
   },
   {
     "politician_id": "yitzhak-goldknopf",
@@ -2680,11 +2680,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין הערות או חדשות ישירות על יitzhak Goldknopf במקורות המותרים, לכן אין מידע להערכה של תון או פוליטיקה. היעדר תקשורת פומבית תורמת לציון נייטרלי בכל המטרות.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "yitzhak-kroizer",
@@ -2712,11 +2712,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yitzhak-pindrus",
@@ -2744,11 +2744,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yitzhak-wasserlauf",
@@ -2762,11 +2762,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין הערות ישירות או כותרות שמתאימות ליצחק וואסערלאוף במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או נוכחות מינימלית במרחב הפוליטי. ללא תוכן מפורש, לא ניתן לזהות תופעה של פוליטיקה של דיליטציה או סטיגמה, אך גם לא קיימת תופעה של תמיכה או ביקורת מפורשת. מצב זה מעיד על נוכחות נמוכה או עיכוב בדיבור הפוליטי.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yoav-ben-tzur",
@@ -2780,11 +2780,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על מוניטין ציבורי של בנטור בתקופת הפעילות הנוכחית. היעדר תיעוד תקשורת או התייחסויות במקורות המותרים מצביע על נמוך או אפס מוניטין ציבורי. אין סימני פחד או תקיפות פוליטיות, אך גם אין תובנות חיוביות או שליליות.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yoav-kish",
@@ -2812,11 +2812,11 @@
         }
       }
     ],
-    "market_score": 73.2,
+    "market_score": 65.4,
     "market_percentile": 93,
     "market_tier": "A",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.1
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yoav-segalovitz",
@@ -2830,11 +2830,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין הערות או חדשות ישירות על יואב סגאלוביץ' במקורות המותרים, מה שמעיד על נוכחות מינימלית או חוסר תשומת לב תקשורתית. היעדר מידע מחייב ניתוח נייטרלי ללא רמזים לחרטה, פוליטיקה, או דיבור מוסרי. הניתוח מתבסס על היעדר נתונים, ולא על טון או נרטיבים.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "yoaz-hendel",
@@ -2862,11 +2862,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yonatan-mishraki",
@@ -2894,11 +2894,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yorai-lahav-hertzano",
@@ -2912,11 +2912,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין תיעוד או הערות שורה שהשתלבו עם יוראי לאהב-הרצ'נו במקורות המותרים, לכן אין מידע להערכה של תון, פוליטיקה או פורסום. כל המטרות הנקודות נוגעות לשליליות או נייטרליות.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yosef-taieb",
@@ -2944,11 +2944,11 @@
         }
       }
     ],
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yuli-edelstein",
@@ -2962,11 +2962,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על יולי אדלstein, מה שמעיד על נוכחות מינימלית במרחב הפוליטי העדכני. היעדר תקשורת פומביתRecent suggets that public discourse is not actively shaping his current standing. No PDD or sarcasm detected due to lack of content.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "yulia-malinovsky",
@@ -2980,11 +2980,11 @@
     "media_volume": 2,
     "overall_score": 4.5,
     "chain_of_thought": "אין מידע עדכני על מילינובסקי במקורות המותרים, ולכן אין אפשרות לניתוח תקשורתי או סוציאלי עדכני. הניתוח חייב להסתמך על היסטוריה פוליטית ועמדות מיניות ידועות, אך ללא תובנות חדשות אין יכולת למדוד רמת נזק או תמיכה. אין סרטיות או דיבור delegitimizing בשל היעדר תוכן.",
-    "market_score": 39.3,
+    "market_score": 44.9,
     "market_percentile": 3,
     "market_tier": "B",
-    "market_delta_points": -22.8,
-    "market_delta_pct": -36.7
+    "market_delta_points": -13.4,
+    "market_delta_pct": -23
   },
   {
     "politician_id": "zeev-elkin",
@@ -2998,11 +2998,11 @@
     "media_volume": 1,
     "overall_score": 5.4,
     "chain_of_thought": "אין תיעוד עדכני של הערות או חדשות על זיו אلكין במקורות המותרים, מה שמעיד על ניכר חוסר תשומת לב תקשורתית או על היעדר נושאים מרכזיים הקשורים אליו. ללא תיאורים או ביקורת, לא ניתן לזהות נרטיבים של פדיעות פוליטית או סטיגמה. הניתוח מתבסס על היעדר מידע, ולא על טון או נרטיבים מפורטים.",
-    "market_score": 60.7,
+    "market_score": 57.1,
     "market_percentile": 16,
     "market_tier": "B",
-    "market_delta_points": -1.4,
-    "market_delta_pct": -2.3
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "zvi-sukkot",
@@ -3016,11 +3016,11 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין הערות או חדשות ישירות על זבי סוקוט במקורות המותרים, ולכן אין מידע להערכה של רמת נזק, תומך במדיניות או פופולריות. היעדר כל תובנה על מודעות או דיון פומבי גורם לאי-הערכה של כל המטרות.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "zvika-fogel",
@@ -3034,10 +3034,10 @@
     "media_volume": 0,
     "overall_score": 5.5,
     "chain_of_thought": "אין מידע זמין על זוויקא פוגל במקורות המותרים, לכן לא ניתן לבצע ניתוח רעיוני או דינמי. היעדר כל תזכורת תקשורתית או התייחסות פומבית מעידה על נוכחות נמוכה או חוסר עניין בדיבור ציבורי. אין צורך בניתוח של אטמוספירה רגשית או דיבור פוליטי מוסרי.",
-    "market_score": 62.5,
+    "market_score": 58.3,
     "market_percentile": 52,
     "market_tier": "B",
-    "market_delta_points": 0.4,
-    "market_delta_pct": 0.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   }
 ]

@@ -22,6 +22,18 @@ const PartyDetailView = lazy(() => import("./components/PartyDetailView"));
 const CompareView = lazy(() => import("./components/CompareView"));
 const AlertSubscriptionModal = lazy(() => import("./components/AlertSubscriptionModal"));
 
+const REQUIRED_MARKET_FIELDS = [
+  "market_score",
+  "market_percentile",
+  "market_tier",
+  "market_delta_points",
+  "market_delta_pct",
+];
+
+function hasRequiredMarketFields(entry) {
+  return REQUIRED_MARKET_FIELDS.every((field) => field in (entry || {}));
+}
+
 function derivePartyTimelineFromSummary(summaryRows) {
   const byDateAndParty = new Map();
 
@@ -109,10 +121,12 @@ export default function App() {
     loadVolatility();
   }, [loadSummary, loadPartySummary, loadVolatility]);
 
-  const marketSummaryData = useMemo(
-    () => annotateMarketTimeline(summaryData, { entityKey: "politician_id" }),
-    [summaryData]
-  );
+  const marketSummaryData = useMemo(() => {
+    if (!summaryData.length) return [];
+    return summaryData.every(hasRequiredMarketFields)
+      ? summaryData
+      : annotateMarketTimeline(summaryData, { entityKey: "politician_id" });
+  }, [summaryData]);
 
   const { todayData, latestDate } = useMemo(() => {
     if (!marketSummaryData.length) return { todayData: [], latestDate: null };
@@ -156,10 +170,12 @@ export default function App() {
     return hasLatestPartyData ? partySummaryData : derivePartyTimelineFromSummary(summaryData);
   }, [latestDate, partySummaryData, summaryData]);
 
-  const marketPartySummaryData = useMemo(
-    () => annotateMarketTimeline(rawPartyTimeline, { entityKey: "party" }),
-    [rawPartyTimeline]
-  );
+  const marketPartySummaryData = useMemo(() => {
+    if (!rawPartyTimeline.length) return [];
+    return rawPartyTimeline.every(hasRequiredMarketFields)
+      ? rawPartyTimeline
+      : annotateMarketTimeline(rawPartyTimeline, { entityKey: "party" });
+  }, [rawPartyTimeline]);
 
   // Party data for party view mode
   const partyTreemapData = useMemo(() => {

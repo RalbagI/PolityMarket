@@ -25,11 +25,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "afif-abed",
@@ -57,11 +57,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ahmad-tibi",
@@ -88,11 +88,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "aida-touma-suleiman",
@@ -119,11 +119,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "akram-hasson",
@@ -151,11 +151,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "alon-schuster",
@@ -194,11 +194,11 @@
         }
       }
     ],
-    "market_score": 71.2,
+    "market_score": 63,
     "market_percentile": 95,
-    "market_tier": "A",
-    "market_delta_points": 5.1,
-    "market_delta_pct": 7.7
+    "market_tier": "B",
+    "market_delta_points": 2.3,
+    "market_delta_pct": 3.8
   },
   {
     "politician_id": "amichai-eliyahu",
@@ -225,11 +225,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -1,
-    "market_delta_pct": -1.6
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "amichai-shikli",
@@ -257,11 +257,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "amir-ohana",
@@ -288,11 +288,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -29.6,
-    "market_delta_pct": -32.5
+    "market_delta_points": -20.1,
+    "market_delta_pct": -26
   },
   {
     "politician_id": "amit-halevi",
@@ -320,11 +320,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ariel-kallner",
@@ -351,11 +351,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 4.8,
-    "market_delta_pct": 7.7
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "aryeh-deri",
@@ -382,11 +382,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "avi-dichter",
@@ -413,11 +413,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "avi-maoz",
@@ -445,11 +445,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "avichay-buaron",
@@ -476,11 +476,11 @@
         }
       }
     ],
-    "market_score": 69.2,
+    "market_score": 61.8,
     "market_percentile": 93,
-    "market_tier": "A",
-    "market_delta_points": 12.1,
-    "market_delta_pct": 21.2
+    "market_tier": "B",
+    "market_delta_points": 7.1,
+    "market_delta_pct": 13
   },
   {
     "politician_id": "avigdor-lieberman",
@@ -507,11 +507,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 28,
-    "market_delta_pct": null
+    "market_tier": "B",
+    "market_delta_points": 15.8,
+    "market_delta_pct": 35.2
   },
   {
     "politician_id": "ayman-odeh",
@@ -538,11 +538,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "benjamin-netanyahu",
@@ -628,11 +628,11 @@
         }
       }
     ],
-    "market_score": 94.2,
+    "market_score": 77.2,
     "market_percentile": 99,
-    "market_tier": "S",
-    "market_delta_points": 29.9,
-    "market_delta_pct": 46.5
+    "market_tier": "A",
+    "market_delta_points": 17.7,
+    "market_delta_pct": 29.7
   },
   {
     "politician_id": "benny-gantz",
@@ -659,11 +659,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -27.6,
-    "market_delta_pct": -30.3
+    "market_delta_points": -18.9,
+    "market_delta_pct": -24.5
   },
   {
     "politician_id": "bezalel-smotrich",
@@ -690,10 +690,10 @@
         }
       }
     ],
-    "market_score": 71.2,
+    "market_score": 63,
     "market_percentile": 95,
-    "market_tier": "A",
-    "market_delta_points": 71.2,
+    "market_tier": "B",
+    "market_delta_points": 36.9,
     "market_delta_pct": null
   },
   {
@@ -721,11 +721,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -1,
-    "market_delta_pct": -1.6
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "boaz-toporovsky",
@@ -752,11 +752,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "dan-ilouz",
@@ -783,11 +783,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "david-amsalem",
@@ -814,11 +814,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -4.6,
-    "market_delta_pct": -7
+    "market_delta_points": -3.6,
+    "market_delta_pct": -5.9
   },
   {
     "politician_id": "david-bitan",
@@ -845,11 +845,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "debbie-biton",
@@ -876,11 +876,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 6.6,
-    "market_delta_pct": 10.9
+    "market_tier": "B",
+    "market_delta_points": 3.6,
+    "market_delta_pct": 6.3
   },
   {
     "politician_id": "efrat-rayten",
@@ -907,11 +907,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "eitan-ginzburg",
@@ -939,11 +939,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "elazar-stern",
@@ -992,11 +992,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -13.3,
-    "market_delta_pct": -17.3
+    "market_delta_points": -9.5,
+    "market_delta_pct": -14
   },
   {
     "politician_id": "eli-cohen",
@@ -1024,11 +1024,11 @@
         }
       }
     ],
-    "market_score": 65.4,
+    "market_score": 59.5,
     "market_percentile": 81,
-    "market_tier": "A",
-    "market_delta_points": -15,
-    "market_delta_pct": -18.7
+    "market_tier": "B",
+    "market_delta_points": -10.6,
+    "market_delta_pct": -15.1
   },
   {
     "politician_id": "eli-dalal",
@@ -1056,11 +1056,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "eliyahu-revivo",
@@ -1087,11 +1087,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "evgeny-sova",
@@ -1118,11 +1118,11 @@
         }
       }
     ],
-    "market_score": 57.7,
+    "market_score": 54.7,
     "market_percentile": 3,
     "market_tier": "B",
-    "market_delta_points": -3,
-    "market_delta_pct": -4.9
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4.2
   },
   {
     "politician_id": "gadi-eisenkot",
@@ -1151,11 +1151,11 @@
         }
       }
     ],
-    "market_score": 100,
+    "market_score": 87.9,
     "market_percentile": 100,
     "market_tier": "S",
-    "market_delta_points": 33.9,
-    "market_delta_pct": 51.3
+    "market_delta_points": 27.2,
+    "market_delta_pct": 44.8
   },
   {
     "politician_id": "galit-distel-atbaryan",
@@ -1183,11 +1183,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "gideon-saar",
@@ -1216,11 +1216,11 @@
         }
       }
     ],
-    "market_score": 71.2,
+    "market_score": 63,
     "market_percentile": 95,
-    "market_tier": "A",
-    "market_delta_points": -18.1,
-    "market_delta_pct": -20.3
+    "market_tier": "B",
+    "market_delta_points": -13,
+    "market_delta_pct": -17.1
   },
   {
     "politician_id": "gila-gamliel",
@@ -1248,11 +1248,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "gilad-kariv",
@@ -1279,11 +1279,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "haim-biton",
@@ -1310,11 +1310,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -2.6,
-    "market_delta_pct": -3.9
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4
   },
   {
     "politician_id": "haim-katz",
@@ -1344,11 +1344,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "hamad-amar",
@@ -1375,11 +1375,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "hanoch-milwidsky",
@@ -1406,11 +1406,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "hava-eti-atia",
@@ -1438,11 +1438,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "hili-tropper",
@@ -1469,11 +1469,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 1.2,
-    "market_delta_pct": 1.8
+    "market_tier": "B",
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "idit-silman",
@@ -1501,11 +1501,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "iman-khatib-yasin",
@@ -1532,11 +1532,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "itamar-ben-gvir",
@@ -1567,10 +1567,10 @@
         }
       }
     ],
-    "market_score": 7.7,
+    "market_score": 31.2,
     "market_percentile": 0,
     "market_tier": "C",
-    "market_delta_points": 7.7,
+    "market_delta_points": 8.6,
     "market_delta_pct": null
   },
   {
@@ -1598,11 +1598,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 6.6,
-    "market_delta_pct": 10.9
+    "market_tier": "B",
+    "market_delta_points": 3.6,
+    "market_delta_pct": 6.3
   },
   {
     "politician_id": "keti-shitrit",
@@ -1629,11 +1629,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "limor-son-har-melech",
@@ -1660,11 +1660,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -1,
-    "market_delta_pct": -1.6
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "mansour-abbas",
@@ -1691,11 +1691,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 25.8,
-    "market_delta_pct": null
+    "market_delta_points": 13.9,
+    "market_delta_pct": 32.2
   },
   {
     "politician_id": "matan-kahana",
@@ -1722,11 +1722,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -4.4,
-    "market_delta_pct": -6.5
+    "market_delta_points": -3.5,
+    "market_delta_pct": -5.7
   },
   {
     "politician_id": "matan-yafe",
@@ -1814,11 +1814,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "may-golan",
@@ -1848,11 +1848,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "meir-cohen",
@@ -1879,11 +1879,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "meir-porush",
@@ -1910,11 +1910,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -1,
-    "market_delta_pct": -1.6
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "meirav-ben-ari",
@@ -1941,11 +1941,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "merav-cohen",
@@ -1972,11 +1972,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michael-biton",
@@ -2003,11 +2003,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michael-malchieli",
@@ -2034,11 +2034,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michal-shir-segman",
@@ -2066,11 +2066,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michal-waldiger",
@@ -2098,11 +2098,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "michel-buskila",
@@ -2130,11 +2130,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "mickey-levy",
@@ -2161,11 +2161,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 6.6,
-    "market_delta_pct": 10.9
+    "market_tier": "B",
+    "market_delta_points": 3.6,
+    "market_delta_pct": 6.3
   },
   {
     "politician_id": "miki-zohar",
@@ -2193,11 +2193,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "miri-regev",
@@ -2224,11 +2224,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "moshe-abutbul",
@@ -2255,11 +2255,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -4.4,
-    "market_delta_pct": -6.5
+    "market_delta_points": -3.5,
+    "market_delta_pct": -5.7
   },
   {
     "politician_id": "moshe-arbel",
@@ -2286,11 +2286,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -1,
-    "market_delta_pct": -1.6
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "moshe-gafni",
@@ -2317,11 +2317,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "moshe-passal",
@@ -2349,11 +2349,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "moshe-saada",
@@ -2380,11 +2380,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 6.6,
-    "market_delta_pct": 10.9
+    "market_tier": "B",
+    "market_delta_points": 3.6,
+    "market_delta_pct": 6.3
   },
   {
     "politician_id": "moshe-solomon",
@@ -2412,11 +2412,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "moshe-tur-paz",
@@ -2443,11 +2443,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "naama-lazimi",
@@ -2474,11 +2474,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "naftali-bennett",
@@ -2509,11 +2509,11 @@
         }
       }
     ],
-    "market_score": 82.7,
+    "market_score": 70.1,
     "market_percentile": 99,
     "market_tier": "A",
-    "market_delta_points": 2.3,
-    "market_delta_pct": 2.9
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "naor-shiri",
@@ -2540,11 +2540,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 6.6,
-    "market_delta_pct": 10.9
+    "market_tier": "B",
+    "market_delta_points": 3.6,
+    "market_delta_pct": 6.3
   },
   {
     "politician_id": "nir-barkat",
@@ -2571,11 +2571,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -29.6,
-    "market_delta_pct": -32.5
+    "market_delta_points": -20.1,
+    "market_delta_pct": -26
   },
   {
     "politician_id": "nissim-vaturi",
@@ -2602,11 +2602,11 @@
         }
       }
     ],
-    "market_score": 71.2,
+    "market_score": 63,
     "market_percentile": 95,
-    "market_tier": "A",
-    "market_delta_points": 8.7,
-    "market_delta_pct": 13.9
+    "market_tier": "B",
+    "market_delta_points": 4.7,
+    "market_delta_pct": 8.1
   },
   {
     "politician_id": "oded-forer",
@@ -2633,11 +2633,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 4.8,
-    "market_delta_pct": 7.7
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "ofer-cassif",
@@ -2664,11 +2664,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -4.6,
-    "market_delta_pct": -7
+    "market_delta_points": -3.6,
+    "market_delta_pct": -5.9
   },
   {
     "politician_id": "ofir-katz",
@@ -2698,11 +2698,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ofir-sofer",
@@ -2729,11 +2729,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ohad-tal",
@@ -2760,11 +2760,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -9.9,
-    "market_delta_pct": -13.9
+    "market_delta_points": -7.1,
+    "market_delta_pct": -11.1
   },
   {
     "politician_id": "orit-farkash-hacohen",
@@ -2792,11 +2792,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "orit-strock",
@@ -2825,11 +2825,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -6.1,
-    "market_delta_pct": -8.8
+    "market_delta_points": -4.7,
+    "market_delta_pct": -7.5
   },
   {
     "politician_id": "osher-shkalim",
@@ -2856,11 +2856,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -6.4,
-    "market_delta_pct": -9.4
+    "market_delta_points": -4.7,
+    "market_delta_pct": -7.6
   },
   {
     "politician_id": "pnina-tamano-shata",
@@ -2887,11 +2887,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -2.6,
-    "market_delta_pct": -3.9
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4
   },
   {
     "politician_id": "ram-ben-barak",
@@ -2919,11 +2919,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "ron-katz",
@@ -2950,11 +2950,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 1.2,
-    "market_delta_pct": 1.8
+    "market_tier": "B",
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "samir-ben-said",
@@ -2984,11 +2984,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "sasson-guetta",
@@ -3016,11 +3016,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "shalom-danino",
@@ -3060,11 +3060,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "sharon-nir",
@@ -3091,11 +3091,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "sharren-haskel",
@@ -3122,11 +3122,11 @@
         }
       }
     ],
-    "market_score": 78.8,
+    "market_score": 67.8,
     "market_percentile": 98,
     "market_tier": "A",
-    "market_delta_points": 10.9,
-    "market_delta_pct": 16.1
+    "market_delta_points": 6,
+    "market_delta_pct": 9.7
   },
   {
     "politician_id": "shelly-tal-meron",
@@ -3153,11 +3153,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "shlomo-karhi",
@@ -3184,11 +3184,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
+    "market_tier": "B",
     "market_delta_points": -2.3,
-    "market_delta_pct": -3.3
+    "market_delta_pct": -3.7
   },
   {
     "politician_id": "simcha-rothman",
@@ -3215,11 +3215,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -15.3,
-    "market_delta_pct": -19.9
+    "market_delta_points": -10.7,
+    "market_delta_pct": -15.8
   },
   {
     "politician_id": "simon-davidson",
@@ -3246,11 +3246,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "tally-gotliv",
@@ -3309,11 +3309,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -7.9,
-    "market_delta_pct": -11.1
+    "market_delta_points": -5.9,
+    "market_delta_pct": -9.2
   },
   {
     "politician_id": "tatiana-mazarsky",
@@ -3340,11 +3340,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -2.6,
-    "market_delta_pct": -3.9
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4
   },
   {
     "politician_id": "tsega-melaku",
@@ -3371,11 +3371,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -2.6,
-    "market_delta_pct": -3.9
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4
   },
   {
     "politician_id": "uri-maklev",
@@ -3402,11 +3402,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "uriel-buso",
@@ -3433,11 +3433,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 2.8,
-    "market_delta_pct": 4.6
+    "market_delta_points": 1.2,
+    "market_delta_pct": 2.1
   },
   {
     "politician_id": "vladimir-beliak",
@@ -3464,11 +3464,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "waleed-taha",
@@ -3495,11 +3495,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "walid-alhawashla",
@@ -3527,11 +3527,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yaakov-asher",
@@ -3558,11 +3558,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": -2.6,
-    "market_delta_pct": -3.9
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4
   },
   {
     "politician_id": "yaakov-margi",
@@ -3589,11 +3589,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yaakov-tesler",
@@ -3620,11 +3620,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 1.2,
-    "market_delta_pct": 1.8
+    "market_tier": "B",
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yael-ron-ben-moshe",
@@ -3652,11 +3652,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yair-golan",
@@ -3683,11 +3683,11 @@
         }
       }
     ],
-    "market_score": 57.7,
+    "market_score": 54.7,
     "market_percentile": 3,
     "market_tier": "B",
-    "market_delta_points": -19.1,
-    "market_delta_pct": -24.9
+    "market_delta_points": -13.1,
+    "market_delta_pct": -19.3
   },
   {
     "politician_id": "yair-lapid",
@@ -3714,11 +3714,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": -18.4,
-    "market_delta_pct": -21.5
+    "market_tier": "B",
+    "market_delta_points": -13,
+    "market_delta_pct": -17.6
   },
   {
     "politician_id": "yariv-levin",
@@ -3748,11 +3748,11 @@
         }
       }
     ],
-    "market_score": 71.2,
+    "market_score": 63,
     "market_percentile": 95,
-    "market_tier": "A",
-    "market_delta_points": 8.7,
-    "market_delta_pct": 13.9
+    "market_tier": "B",
+    "market_delta_points": 4.7,
+    "market_delta_pct": 8.1
   },
   {
     "politician_id": "yaron-levy",
@@ -3780,11 +3780,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yasmin-fridman",
@@ -3812,11 +3812,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yasser-hujirat",
@@ -3844,11 +3844,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yinon-azoulay",
@@ -3875,11 +3875,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yisrael-katz",
@@ -3906,11 +3906,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -2.8,
-    "market_delta_pct": -4.4
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4
   },
   {
     "politician_id": "yitzhak-goldknopf",
@@ -3937,11 +3937,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yitzhak-kroizer",
@@ -3969,11 +3969,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yitzhak-pindrus",
@@ -4001,11 +4001,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yitzhak-wasserlauf",
@@ -4032,11 +4032,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": -1,
-    "market_delta_pct": -1.6
+    "market_delta_points": -1.2,
+    "market_delta_pct": -2.1
   },
   {
     "politician_id": "yoav-ben-tzur",
@@ -4063,11 +4063,11 @@
         }
       }
     ],
-    "market_score": 57.7,
+    "market_score": 54.7,
     "market_percentile": 3,
     "market_tier": "B",
-    "market_delta_points": -4.8,
-    "market_delta_pct": -7.7
+    "market_delta_points": -3.6,
+    "market_delta_pct": -6.2
   },
   {
     "politician_id": "yoav-kish",
@@ -4095,11 +4095,11 @@
         }
       }
     ],
-    "market_score": 75,
+    "market_score": 65.4,
     "market_percentile": 97,
     "market_tier": "A",
-    "market_delta_points": 1.8,
-    "market_delta_pct": 2.5
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yoav-segalovitz",
@@ -4126,11 +4126,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 6.6,
-    "market_delta_pct": 10.9
+    "market_tier": "B",
+    "market_delta_points": 3.6,
+    "market_delta_pct": 6.3
   },
   {
     "politician_id": "yoaz-hendel",
@@ -4158,11 +4158,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yonatan-mishraki",
@@ -4190,11 +4190,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yorai-lahav-hertzano",
@@ -4221,11 +4221,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yosef-taieb",
@@ -4253,11 +4253,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "yuli-edelstein",
@@ -4284,11 +4284,11 @@
         }
       }
     ],
-    "market_score": 57.7,
+    "market_score": 54.7,
     "market_percentile": 3,
     "market_tier": "B",
-    "market_delta_points": -3,
-    "market_delta_pct": -4.9
+    "market_delta_points": -2.4,
+    "market_delta_pct": -4.2
   },
   {
     "politician_id": "yulia-malinovsky",
@@ -4315,11 +4315,11 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 24.2,
-    "market_delta_pct": null
+    "market_delta_points": 13.4,
+    "market_delta_pct": 29.8
   },
   {
     "politician_id": "zeev-elkin",
@@ -4346,11 +4346,11 @@
         }
       }
     ],
-    "market_score": 61.5,
+    "market_score": 57.1,
     "market_percentile": 15,
     "market_tier": "B",
-    "market_delta_points": 0.8,
-    "market_delta_pct": 1.3
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   },
   {
     "politician_id": "zvi-sukkot",
@@ -4377,11 +4377,11 @@
         }
       }
     ],
-    "market_score": 67.3,
+    "market_score": 60.7,
     "market_percentile": 87,
-    "market_tier": "A",
-    "market_delta_points": 4.8,
-    "market_delta_pct": 7.7
+    "market_tier": "B",
+    "market_delta_points": 2.4,
+    "market_delta_pct": 4.1
   },
   {
     "politician_id": "zvika-fogel",
@@ -4408,10 +4408,10 @@
         }
       }
     ],
-    "market_score": 63.5,
+    "market_score": 58.3,
     "market_percentile": 53,
     "market_tier": "B",
-    "market_delta_points": 1,
-    "market_delta_pct": 1.6
+    "market_delta_points": 0,
+    "market_delta_pct": 0
   }
 ]
