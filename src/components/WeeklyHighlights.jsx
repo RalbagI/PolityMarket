@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { TrendingDown, Trophy, Flame } from "lucide-react";
 import useStore from "../store";
 import { localizeName } from "../lib/localize";
+import { resolveDisplayScore } from "../lib/marketScore";
 
 /**
  * Weekly Highlights — story card + top 5 weekly movers.
@@ -32,14 +33,11 @@ export default function WeeklyHighlights({ onSelect }) {
       .map((entry) => {
         const prev = weekAgoMap.get(entry.name);
         if (!prev) return null;
-        const delta = entry.overall_score - prev.overall_score;
-        const pct =
-          prev.overall_score > 0
-            ? ((delta / prev.overall_score) * 100).toFixed(0)
-            : delta > 0
-              ? "+∞"
-              : "0";
-        return { ...entry, delta, pct, prevScore: prev.overall_score };
+        const curScore = resolveDisplayScore(entry) ?? 0;
+        const prevScore = resolveDisplayScore(prev) ?? 0;
+        const delta = curScore - prevScore;
+        const pct = prevScore > 0 ? ((delta / prevScore) * 100).toFixed(0) : delta > 0 ? "+∞" : "0";
+        return { ...entry, delta, pct, prevScore, displayScore: curScore };
       })
       .filter((d) => d && d.delta !== 0);
 
@@ -103,7 +101,7 @@ export default function WeeklyHighlights({ onSelect }) {
                 {isUp ? `+${headline.delta.toFixed(1)}` : headline.delta.toFixed(1)}
               </span>
               <span className="text-xs text-gray-500" dir="ltr">
-                {headline.prevScore.toFixed(1)} → {headline.overall_score.toFixed(1)}
+                {Math.round(headline.prevScore)} → {Math.round(headline.displayScore)}
               </span>
             </div>
 

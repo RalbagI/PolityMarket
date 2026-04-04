@@ -67,9 +67,9 @@ describe("WeeklyHighlights", () => {
     render(<WeeklyHighlights onSelect={() => {}} />);
 
     expect(screen.getByText("סיכום שבועי")).toBeInTheDocument();
-    // Alice rose +3.0 — name appears in headline + risers list
+    // Alice rose +30.0 (overall_score 3→6 × 10) — name appears in headline + risers list
     expect(screen.getAllByText("politicians.Alice").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("+3.0").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("+30.0").length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders top risers and fallers lists", () => {
@@ -95,7 +95,7 @@ describe("WeeklyHighlights", () => {
 
     expect(screen.getByText("עולים השבוע")).toBeInTheDocument();
     expect(screen.getByText("יורדים השבוע")).toBeInTheDocument();
-    expect(screen.getByText("-2.0")).toBeInTheDocument();
+    expect(screen.getByText("-20.0")).toBeInTheDocument();
   });
 
   it("calls onSelect when headline is clicked", () => {

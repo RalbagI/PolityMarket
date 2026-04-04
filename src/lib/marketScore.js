@@ -5,6 +5,7 @@ export const MARKET_SCORE_PRECISION = 1;
 export const MARKET_DELTA_PRECISION = 1;
 export const MARKET_PERCENTILE_PRECISION = 0;
 export const MARKET_PERCENT_DELTA_MIN_BASE = 40;
+export const MARKET_NEUTRAL_DECAY = 0.5;
 
 export const MARKET_TIER_CONFIG = Object.freeze({
   S: { min: 85, label: "Consensus / Peak Momentum" },
@@ -74,12 +75,14 @@ export function getRollingMarketBounds(scores, neutralRaw = MARKET_NEUTRAL_RAW_S
 
   const min = sortedScores[0];
   const max = sortedScores[sortedScores.length - 1];
-  const p5 = quantileSorted(sortedScores, 0.05);
-  const p95 = quantileSorted(sortedScores, 0.95);
+
+  // Use actual min/max with 5% padding so no one lands on exactly 0 or 100
+  const range = max - min || 1;
+  const pad = range * 0.05;
 
   return {
-    low: p5 >= neutralRaw ? min : p5,
-    high: p95 <= neutralRaw ? max : p95,
+    low: min - pad,
+    high: max + pad,
     neutralRaw,
   };
 }
@@ -212,6 +215,7 @@ export function annotateMarketTimeline(
     return {
       ...row,
       market_score: marketScore,
+      _rawIsNeutral: row?.[scoreKey] === neutralRaw,
       market_percentile:
         metrics?.percentiles.get(getEntityId(row, entityKey)) ?? row?.market_percentile ?? null,
       market_tier: getMarketTier(marketScore),
@@ -220,11 +224,34 @@ export function annotateMarketTimeline(
     };
   });
 
+  // Group by entity for smoothing + delta passes
   const annotatedByEntity = new Map();
   for (const row of annotatedRows) {
     const entityId = getEntityId(row, entityKey);
     if (!annotatedByEntity.has(entityId)) annotatedByEntity.set(entityId, []);
     annotatedByEntity.get(entityId).push(row);
+  }
+
+  // Smoothing pass: when today's raw score is neutral, decay from previous
+  // day's market score toward 50 instead of snapping to exactly 50.
+  for (const entityRows of annotatedByEntity.values()) {
+    const sorted = entityRows.slice().sort((a, b) => a[dateKey].localeCompare(b[dateKey]));
+    for (let i = 1; i < sorted.length; i += 1) {
+      const current = sorted[i];
+      const previous = sorted[i - 1];
+      if (
+        current._rawIsNeutral &&
+        Number.isFinite(previous.market_score) &&
+        previous.market_score !== 50
+      ) {
+        const decayed = roundTo(
+          50 + (previous.market_score - 50) * MARKET_NEUTRAL_DECAY,
+          MARKET_SCORE_PRECISION
+        );
+        current.market_score = decayed;
+        current.market_tier = getMarketTier(decayed);
+      }
+    }
   }
 
   const deltaLookup = new Map();
@@ -258,7 +285,7 @@ export function annotateMarketTimeline(
     }
   }
 
-  return annotatedRows.map((row) => ({
+  return annotatedRows.map(({ _rawIsNeutral, ...row }) => ({
     ...row,
     ...(deltaLookup.get(`${row[dateKey]}::${getEntityId(row, entityKey)}`) || {}),
   }));
