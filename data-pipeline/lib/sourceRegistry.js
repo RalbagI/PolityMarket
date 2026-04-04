@@ -157,7 +157,13 @@ export function buildSourceBaselines(historicalEntries = [], windowStartDate = n
     if (windowStartDate && typeof entry.date === "string" && entry.date < windowStartDate) continue;
     const seenSources = new Set();
     for (const evidence of entry.evidence_items) {
-      const sourceId = evidence?.source_id;
+      const sourceMeta = resolveSourceMeta({
+        url: evidence?.url,
+        hint: evidence?.source_name || evidence?.source_id,
+        fallbackName: evidence?.source_name || evidence?.source_id,
+      });
+      if (sourceMeta.use_in_consensus === false) continue;
+      const sourceId = sourceMeta.source_id;
       if (!sourceId || seenSources.has(sourceId)) continue;
       seenSources.add(sourceId);
       if (!buckets.has(sourceId)) {
@@ -202,9 +208,10 @@ export function computeCoverageAndConsensusFeatures(
   for (const evidence of evidenceItems) {
     const sourceMeta = resolveSourceMeta({
       url: evidence?.url,
-      hint: evidence?.source_name,
-      fallbackName: evidence?.source_name,
+      hint: evidence?.source_name || evidence?.source_id,
+      fallbackName: evidence?.source_name || evidence?.source_id,
     });
+    if (sourceMeta.use_in_consensus === false) continue;
     const sourceId = sourceMeta.source_id;
     if (!sourceGroups.has(sourceId)) {
       sourceGroups.set(sourceId, {

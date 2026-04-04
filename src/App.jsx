@@ -44,6 +44,7 @@ export default function App() {
   const panelOpen = useStore((s) => s.panelOpen);
   const selectedPolitician = useStore((s) => s.selectedPolitician);
   const selectedDate = useStore((s) => s.selectedDate);
+  const selectedDetailKey = useStore((s) => s.selectedDetailKey);
   const detailLoading = useStore((s) => s.detailLoading);
   const signalMode = useStore((s) => s.signalMode);
   const setSignalMode = useStore((s) => s.setSignalMode);
@@ -171,12 +172,14 @@ export default function App() {
         const matchedPolitician = todayData.find((p) => p.name === name);
         const partyName = matchedPolitician?.party || name;
         logEvent("select_party", { party_name: partyName });
-        openPanel(partyName, latestDate);
+        openPanel(partyName, latestDate, null);
         return;
       }
 
+      const detailKey =
+        todayData.find((politician) => politician.name === name)?.politician_id ?? name;
       logEvent("select_politician", { politician_name: name });
-      openPanel(name, latestDate);
+      openPanel(name, latestDate, detailKey);
     },
     [latestDate, openPanel, todayData, viewMode]
   );
@@ -189,7 +192,11 @@ export default function App() {
   }, [selectedPolitician, enrichedData]);
 
   const activeDate = selectedDate || latestDate;
-  const activeDetail = useStore((s) => (activeDate ? s.detailCache[activeDate] : null));
+  const activeDetailCacheKey =
+    activeDate ? `${activeDate}::${selectedDetailKey || "__date__"}` : null;
+  const activeDetail = useStore((s) =>
+    activeDetailCacheKey ? s.detailCache[activeDetailCacheKey] : null
+  );
   const marketSummaryLookup = useMemo(
     () =>
       new Map(marketSummaryData.map((entry) => [`${entry.date}::${entry.politician_id}`, entry])),

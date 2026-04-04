@@ -3,6 +3,35 @@ import { create } from "zustand";
 const SUMMARY_CACHE_TTL = 60 * 60 * 1000; // 1 hour stale-while-revalidate for daily data
 const PARTY_SUMMARY_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours, changes at most daily
 const VOLATILITY_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours, generated offline
+const DATE_DETAIL_CACHE_KEY = "__date__";
+
+function buildDetailCacheKey(date, detailKey = DATE_DETAIL_CACHE_KEY) {
+  return `${date}::${detailKey}`;
+}
+
+async function fetchJsonWithFallback(paths) {
+  let lastError = new Error("fetch failed");
+
+  for (const url of paths) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        lastError = new Error(`HTTP ${response.status}`);
+        continue;
+      }
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError;
+}
+
+function normalizeDetailPayload(payload) {
+  if (Array.isArray(payload)) return payload;
+  return payload ? [payload] : [];
+}
 
 const useStore = create((set, get) => ({
   // ── Summary Data Slice (with caching) ──────────────────────────────
@@ -28,9 +57,10 @@ const useStore = create((set, get) => ({
 
     set({ _summaryFetching: true });
     try {
-      const res = await fetch("/data/timeseries_summary.compact.json");
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
+      const data = await fetchJsonWithFallback([
+        "/data/timeseries_summary.compact.json",
+        "/data/timeseries_summary.json",
+      ]);
       set({ summaryData: data, _summaryFetchedAt: Date.now(), loadError: null });
     } catch (err) {
       // Only set error if no cached data — stale-while-revalidate
@@ -75,17 +105,41 @@ const useStore = create((set, get) => ({
   detailCache: {},
   detailLoading: false,
 
-  fetchDetail: async (date) => {
+  fetchDetail: async (detailKeyOrDate, maybeDate) => {
+    const detailKey = maybeDate ? detailKeyOrDate : DATE_DETAIL_CACHE_KEY;
+    const date = maybeDate ?? detailKeyOrDate;
+    const cacheKey = buildDetailCacheKey(date, detailKey);
     const { detailCache } = get();
-    if (detailCache[date]) return;
+    if (detailCache[cacheKey]) return;
+    const dateCacheKey = buildDetailCacheKey(date, DATE_DETAIL_CACHE_KEY);
+    if (detailKey !== DATE_DETAIL_CACHE_KEY && detailCache[dateCacheKey]) {
+      set((state) => ({
+        detailCache: { ...state.detailCache, [cacheKey]: state.detailCache[dateCacheKey] },
+      }));
+      return;
+    }
 
     set({ detailLoading: true });
     try {
-      const res = await fetch(`/data/details-lite/${date}.json`);
-      if (!res.ok) return;
-      const detail = await res.json();
+      const detail = normalizeDetailPayload(
+        await fetchJsonWithFallback(
+          detailKey === DATE_DETAIL_CACHE_KEY
+            ? [`/data/details-lite/${date}.json`, `/data/details/${date}.json`]
+            : [
+                `/data/details-lite/${date}/${encodeURIComponent(detailKey)}.json`,
+                `/data/details-lite/${date}.json`,
+                `/data/details/${date}.json`,
+              ]
+        )
+      );
       set((state) => ({
-        detailCache: { ...state.detailCache, [date]: detail },
+        detailCache: {
+          ...state.detailCache,
+          [cacheKey]: detail,
+          ...(detailKey !== DATE_DETAIL_CACHE_KEY && detail.length > 1
+            ? { [dateCacheKey]: detail }
+            : {}),
+        },
       }));
     } catch {
       // Detail fetch failed
@@ -98,10 +152,18 @@ const useStore = create((set, get) => ({
   panelOpen: false,
   selectedPolitician: null,
   selectedDate: null,
+  selectedDetailKey: null,
 
-  openPanel: (politician, date) => {
-    set({ panelOpen: true, selectedPolitician: politician, selectedDate: date });
-    get().fetchDetail(date);
+  openPanel: (politician, date, detailKey = null) => {
+    set({
+      panelOpen: true,
+      selectedPolitician: politician,
+      selectedDate: date,
+      selectedDetailKey: detailKey,
+    });
+    if (detailKey) {
+      get().fetchDetail(detailKey, date);
+    }
   },
 
   closePanel: () => set({ panelOpen: false }),

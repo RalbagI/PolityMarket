@@ -55,6 +55,7 @@ vi.mock("../store", () => {
           panelOpen: false,
           selectedPolitician: null,
           selectedDate: null,
+          selectedDetailKey: null,
           detailLoading: false,
           detailCache: {},
           openPanel: vi.fn(),

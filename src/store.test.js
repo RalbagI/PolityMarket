@@ -24,6 +24,7 @@ beforeEach(async () => {
     panelOpen: false,
     selectedPolitician: null,
     selectedDate: null,
+    selectedDetailKey: null,
     smaMode: "sma7",
     signalMode: "media_climate",
     treemapSizeBy: "media_volume",
@@ -40,18 +41,29 @@ describe("store — UI slice", () => {
     expect(state.panelOpen).toBe(false);
     expect(state.selectedPolitician).toBe(null);
     expect(state.selectedDate).toBe(null);
+    expect(state.selectedDetailKey).toBe(null);
   });
 
-  it("openPanel sets politician, date, and panelOpen", () => {
+  it("openPanel sets politician, date, detail key, and panelOpen", () => {
     const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: () => [] });
     globalThis.fetch = mockFetch;
 
-    act(() => useStore.getState().openPanel("Netanyahu", "2026-03-22"));
+    act(() => useStore.getState().openPanel("Netanyahu", "2026-03-22", "netanyahu"));
 
     const state = useStore.getState();
     expect(state.panelOpen).toBe(true);
     expect(state.selectedPolitician).toBe("Netanyahu");
     expect(state.selectedDate).toBe("2026-03-22");
+    expect(state.selectedDetailKey).toBe("netanyahu");
+  });
+
+  it("openPanel skips detail fetch when no detail key is provided", () => {
+    const mockFetch = vi.fn();
+    globalThis.fetch = mockFetch;
+
+    act(() => useStore.getState().openPanel("Likud", "2026-03-22", null));
+
+    expect(mockFetch).not.toHaveBeenCalled();
   });
 
   it("closePanel sets panelOpen to false", () => {
@@ -111,6 +123,23 @@ describe("store — loadSummary", () => {
 
     expect(useStore.getState().summaryData).toEqual(mockData);
     expect(useStore.getState().loadError).toBeNull();
+  });
+
+  it("falls back to the full summary artifact when compact is unavailable", async () => {
+    const mockData = [{ name: "Fallback", overall_score: 5 }];
+    globalThis.fetch = vi
+      .fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve(mockData),
+      });
+
+    await act(() => useStore.getState().loadSummary());
+
+    expect(globalThis.fetch).toHaveBeenNthCalledWith(1, "/data/timeseries_summary.compact.json");
+    expect(globalThis.fetch).toHaveBeenNthCalledWith(2, "/data/timeseries_summary.json");
+    expect(useStore.getState().summaryData).toEqual(mockData);
   });
 
   it("sets loadError on fetch failure with no cached data", async () => {
@@ -191,23 +220,41 @@ describe("store — loadPartySummary", () => {
 });
 
 describe("store — fetchDetail", () => {
-  it("fetches and caches detail for a date", async () => {
+  it("fetches and caches detail for a politician/date pair", async () => {
     const detail = [{ politician_id: "test", name: "Test" }];
     globalThis.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      json: () => Promise.resolve(detail),
+      json: () => Promise.resolve(detail[0]),
     });
 
-    await act(() => useStore.getState().fetchDetail("2026-03-22"));
+    await act(() => useStore.getState().fetchDetail("test", "2026-03-22"));
 
-    expect(useStore.getState().detailCache["2026-03-22"]).toEqual(detail);
+    expect(globalThis.fetch).toHaveBeenCalledWith("/data/details-lite/2026-03-22/test.json");
+    expect(useStore.getState().detailCache["2026-03-22::test"]).toEqual(detail);
   });
 
-  it("skips fetch if date is already cached", async () => {
-    useStore.setState({ detailCache: { "2026-03-22": [{ name: "cached" }] } });
+  it("falls back to the date payload when the per-politician lite file is unavailable", async () => {
+    const detail = [{ politician_id: "test", name: "Test" }];
+    globalThis.fetch = vi
+      .fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve(detail),
+      });
+
+    await act(() => useStore.getState().fetchDetail("test", "2026-03-22"));
+
+    expect(globalThis.fetch).toHaveBeenNthCalledWith(1, "/data/details-lite/2026-03-22/test.json");
+    expect(globalThis.fetch).toHaveBeenNthCalledWith(2, "/data/details-lite/2026-03-22.json");
+    expect(useStore.getState().detailCache["2026-03-22::test"]).toEqual(detail);
+  });
+
+  it("skips fetch if politician/date detail is already cached", async () => {
+    useStore.setState({ detailCache: { "2026-03-22::test": [{ name: "cached" }] } });
     globalThis.fetch = vi.fn();
 
-    await act(() => useStore.getState().fetchDetail("2026-03-22"));
+    await act(() => useStore.getState().fetchDetail("test", "2026-03-22"));
     expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 });

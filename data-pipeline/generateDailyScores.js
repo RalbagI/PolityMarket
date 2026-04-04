@@ -2188,7 +2188,20 @@ function writeDetailFile(entries, today) {
     news_headlines: Array.isArray(e.news_headlines) ? e.news_headlines : [],
     social_mentions: Array.isArray(e.social_mentions) ? e.social_mentions : [],
   }));
-  fs.writeFileSync(path.join(DETAILS_LITE_DIR, `${today}.json`), JSON.stringify(detailLiteEntries, null, 2));
+  fs.writeFileSync(
+    path.join(DETAILS_LITE_DIR, `${today}.json`),
+    JSON.stringify(detailLiteEntries, null, 2)
+  );
+  const detailLiteDayDir = path.join(DETAILS_LITE_DIR, today);
+  fs.rmSync(detailLiteDayDir, { recursive: true, force: true });
+  fs.mkdirSync(detailLiteDayDir, { recursive: true });
+  for (const detailEntry of detailLiteEntries) {
+    if (!detailEntry.politician_id) continue;
+    fs.writeFileSync(
+      path.join(detailLiteDayDir, `${detailEntry.politician_id}.json`),
+      JSON.stringify(detailEntry, null, 2)
+    );
+  }
   console.log(`  → Detail: ${detailPath}`);
 }
 
@@ -2268,10 +2281,15 @@ function pruneOldDetails() {
     console.log(`  → Pruned ${pruned} detail files older than ${RETENTION_DAYS} days`);
   }
   if (fs.existsSync(DETAILS_LITE_DIR)) {
-    const liteFiles = fs.readdirSync(DETAILS_LITE_DIR).filter((f) => f.endsWith(".json"));
-    for (const file of liteFiles) {
-      const date = file.replace(".json", "");
-      if (date < cutoffStr) fs.unlinkSync(path.join(DETAILS_LITE_DIR, file));
+    for (const entry of fs.readdirSync(DETAILS_LITE_DIR, { withFileTypes: true })) {
+      const targetPath = path.join(DETAILS_LITE_DIR, entry.name);
+      const date = entry.name.replace(".json", "");
+      if (date >= cutoffStr) continue;
+      if (entry.isDirectory()) {
+        fs.rmSync(targetPath, { recursive: true, force: true });
+      } else if (entry.isFile() && entry.name.endsWith(".json")) {
+        fs.unlinkSync(targetPath);
+      }
     }
   }
 }

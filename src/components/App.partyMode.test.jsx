@@ -46,6 +46,7 @@ vi.mock("../store", () => {
           panelOpen: false,
           selectedPolitician: null,
           selectedDate: null,
+          selectedDetailKey: null,
           detailLoading: false,
           detailCache: {},
           openPanel: openPanelMock,
@@ -176,6 +177,6 @@ describe("App party mode interactions", () => {
     fireEvent.click(screen.getByTestId("switch-parties"));
     fireEvent.click(screen.getByTestId("top-mover"));
 
-    expect(openPanelMock).toHaveBeenCalledWith("TestParty", "2026-03-22");
+    expect(openPanelMock).toHaveBeenCalledWith("TestParty", "2026-03-22", null);
   });
 });

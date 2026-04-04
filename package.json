@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-politician-names-he.js",
+    "prebuild": "node scripts/generate-politician-names-he.js && node scripts/generate-compact-artifacts.js",
     "build": "vite build",
     "lint": "eslint src tests",
     "lint:fix": "eslint src tests --fix",
@@ -24,7 +24,7 @@
     "playwright:install": "playwright install chromium",
     "preview": "vite preview",
     "pipeline": "node data-pipeline/generateDailyScores.js",
-    "pipeline:validate": "node scripts/validate-daily-artifacts.js",
+    "pipeline:validate": "node scripts/generate-compact-artifacts.js && node scripts/validate-daily-artifacts.js",
     "pipeline:backfill": "node scripts/backfill-historical-artifacts.js",
     "pipeline:run": "bash scripts/run-daily-pipeline.sh"
   },

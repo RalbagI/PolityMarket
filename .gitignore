@@ -36,6 +36,8 @@ test-results/
 
 # Drift detection runtime artifacts
 data-pipeline/drift_alerts.json
+public/data/timeseries_summary.compact.json
+public/data/details-lite/
 
 # Infrastructure secrets
 infrastructure/n8n/.env

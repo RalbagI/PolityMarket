@@ -69,7 +69,7 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
     await route.fulfill({ json: [] });
   });
 
-  await page.route("**/data/details-lite/*.json", async (route) => {
+  await page.route("**/data/details-lite/**", async (route) => {
     await route.fulfill({ json: detailFixture });
   });
 
