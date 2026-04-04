@@ -50,6 +50,13 @@ describe("marketScore helpers", () => {
     expect(computeMarketScore(MARKET_NEUTRAL_RAW_SCORE + 2, bounds)).toBe(100);
   });
 
+  it("keeps the observed daily min and max away from exact 0 and 100 when using padded bounds", () => {
+    const bounds = getRollingMarketBounds([4.2, 4.8, 5.7, 6.3, 7.1], MARKET_NEUTRAL_RAW_SCORE);
+
+    expect(computeMarketScore(4.2, bounds)).toBeGreaterThan(0);
+    expect(computeMarketScore(7.1, bounds)).toBeLessThan(100);
+  });
+
   it("assigns tiers from the market score thresholds", () => {
     expect(getMarketTier(90)).toBe("S");
     expect(getMarketTier(70)).toBe("A");
@@ -138,6 +145,31 @@ describe("marketScore helpers", () => {
 
     expect(secondRow.market_delta_points).toBeNull();
     expect(secondRow.market_delta_pct).toBeNull();
+  });
+
+  it("decays neutral raw scores toward 50 instead of snapping immediately to the midpoint", () => {
+    const rows = annotateMarketTimeline([
+      {
+        date: "2026-03-21",
+        politician_id: "drift",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE + 1.8,
+      },
+      {
+        date: "2026-03-22",
+        politician_id: "drift",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE,
+      },
+    ]);
+
+    const firstDay = rows.find((row) => row.date === "2026-03-21" && row.politician_id === "drift");
+    const secondDay = rows.find(
+      (row) => row.date === "2026-03-22" && row.politician_id === "drift"
+    );
+
+    expect(firstDay.market_score).toBeGreaterThan(50);
+    expect(secondDay.market_score).toBeGreaterThan(50);
+    expect(secondDay.market_score).toBeLessThan(firstDay.market_score);
+    expect(secondDay.market_score).not.toBe(50);
   });
 });
 

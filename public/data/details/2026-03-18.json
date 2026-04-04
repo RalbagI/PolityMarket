@@ -25,7 +25,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -57,7 +57,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -75,7 +75,7 @@
     "media_volume": 3.1,
     "overall_score": 3.5,
     "chain_of_thought": "Mock analysis: Ahmad Tibi received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -107,7 +107,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -139,7 +139,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -171,7 +171,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -203,7 +203,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -235,7 +235,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -253,7 +253,7 @@
     "media_volume": 2.5,
     "overall_score": 4,
     "chain_of_thought": "Mock analysis: Amir Ohana received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -285,7 +285,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -317,7 +317,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -335,7 +335,7 @@
     "media_volume": 2,
     "overall_score": 6.7,
     "chain_of_thought": "Mock analysis: Aryeh Deri received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -367,7 +367,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -399,7 +399,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -431,7 +431,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -449,7 +449,7 @@
     "media_volume": 7.1,
     "overall_score": 5.2,
     "chain_of_thought": "Mock analysis: Avigdor Lieberman received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -467,7 +467,7 @@
     "media_volume": 2.7,
     "overall_score": 2.9,
     "chain_of_thought": "Mock analysis: Ayman Odeh received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -485,7 +485,7 @@
     "media_volume": 2.3,
     "overall_score": 3.2,
     "chain_of_thought": "Mock analysis: Benjamin Netanyahu received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 82.8,
+    "market_score": 72.5,
     "market_percentile": 99,
     "market_tier": "A",
     "market_delta_points": null,
@@ -503,9 +503,9 @@
     "media_volume": 3.4,
     "overall_score": 5.7,
     "chain_of_thought": "Mock analysis: Benny Gantz received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 86.2,
+    "market_score": 74.9,
     "market_percentile": 100,
-    "market_tier": "S",
+    "market_tier": "A",
     "market_delta_points": null,
     "market_delta_pct": null
   },
@@ -521,9 +521,9 @@
     "media_volume": 4.6,
     "overall_score": 2.9,
     "chain_of_thought": "Mock analysis: Bezalel Smotrich received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 26.7,
+    "market_score": 38,
     "market_percentile": 3,
-    "market_tier": "C",
+    "market_tier": "B",
     "market_delta_points": null,
     "market_delta_pct": null
   },
@@ -553,7 +553,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -585,7 +585,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -617,7 +617,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -649,7 +649,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -681,7 +681,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -713,7 +713,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -745,7 +745,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -777,7 +777,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -809,9 +809,9 @@
         }
       }
     ],
-    "market_score": 26.7,
+    "market_score": 38,
     "market_percentile": 3,
-    "market_tier": "C",
+    "market_tier": "B",
     "market_delta_points": null,
     "market_delta_pct": null
   },
@@ -827,7 +827,7 @@
     "media_volume": 5.4,
     "overall_score": 4.8,
     "chain_of_thought": "Mock analysis: Eli Cohen received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -859,7 +859,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -891,7 +891,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -923,7 +923,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -941,7 +941,7 @@
     "media_volume": 4,
     "overall_score": 4.5,
     "chain_of_thought": "Mock analysis: Gadi Eisenkot received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -973,7 +973,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -991,7 +991,7 @@
     "media_volume": 3.4,
     "overall_score": 3.5,
     "chain_of_thought": "Mock analysis: Gideon Sa'ar received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 81,
+    "market_score": 71.3,
     "market_percentile": 99,
     "market_tier": "A",
     "market_delta_points": null,
@@ -1023,7 +1023,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1055,7 +1055,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1087,7 +1087,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1121,7 +1121,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1153,7 +1153,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1187,7 +1187,7 @@
         }
       }
     ],
-    "market_score": 58.6,
+    "market_score": 55.9,
     "market_percentile": 7,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1219,7 +1219,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1251,7 +1251,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1283,7 +1283,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1315,7 +1315,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1333,7 +1333,7 @@
     "media_volume": 5.9,
     "overall_score": 6.3,
     "chain_of_thought": "Mock analysis: Itamar Ben Gvir received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 3.3,
+    "market_score": 26.1,
     "market_percentile": 0,
     "market_tier": "C",
     "market_delta_points": null,
@@ -1351,7 +1351,7 @@
     "media_volume": 3.7,
     "overall_score": 7.3,
     "chain_of_thought": "Mock analysis: Karine Elharrar received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1383,7 +1383,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1415,7 +1415,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1433,7 +1433,7 @@
     "media_volume": 7.7,
     "overall_score": 7.3,
     "chain_of_thought": "Mock analysis: Mansour Abbas received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1465,7 +1465,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1557,7 +1557,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1591,7 +1591,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1609,7 +1609,7 @@
     "media_volume": 5,
     "overall_score": 3.8,
     "chain_of_thought": "Mock analysis: Meir Cohen received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1641,7 +1641,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1673,7 +1673,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1705,7 +1705,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1739,7 +1739,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1773,7 +1773,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1805,7 +1805,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1837,7 +1837,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1869,7 +1869,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1901,7 +1901,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1933,7 +1933,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1951,7 +1951,7 @@
     "media_volume": 4.7,
     "overall_score": 6.7,
     "chain_of_thought": "Mock analysis: Miri Regev received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -1983,7 +1983,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2015,7 +2015,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2033,7 +2033,7 @@
     "media_volume": 3.5,
     "overall_score": 5,
     "chain_of_thought": "Mock analysis: Moshe Gafni received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2065,7 +2065,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2097,7 +2097,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2129,7 +2129,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2161,7 +2161,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2193,7 +2193,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2228,7 +2228,7 @@
         }
       }
     ],
-    "market_score": 79.3,
+    "market_score": 70.1,
     "market_percentile": 98,
     "market_tier": "A",
     "market_delta_points": null,
@@ -2260,7 +2260,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2278,7 +2278,7 @@
     "media_volume": 2.3,
     "overall_score": 3.3,
     "chain_of_thought": "Mock analysis: Nir Barkat received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2310,7 +2310,7 @@
         }
       }
     ],
-    "market_score": 56.9,
+    "market_score": 54.7,
     "market_percentile": 7,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2328,7 +2328,7 @@
     "media_volume": 6.8,
     "overall_score": 5.8,
     "chain_of_thought": "Mock analysis: Oded Forer received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2360,7 +2360,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2394,7 +2394,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2426,7 +2426,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2458,7 +2458,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2490,7 +2490,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2508,7 +2508,7 @@
     "media_volume": 2.7,
     "overall_score": 6.2,
     "chain_of_thought": "Mock analysis: Orit Strock received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 75.9,
+    "market_score": 67.8,
     "market_percentile": 97,
     "market_tier": "A",
     "market_delta_points": null,
@@ -2540,7 +2540,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2558,7 +2558,7 @@
     "media_volume": 2.2,
     "overall_score": 5.2,
     "chain_of_thought": "Mock analysis: Pnina Tamano-Shata received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2590,7 +2590,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2624,7 +2624,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2658,7 +2658,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2690,7 +2690,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2734,7 +2734,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2766,7 +2766,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2798,7 +2798,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2830,7 +2830,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2862,7 +2862,7 @@
         }
       }
     ],
-    "market_score": 40,
+    "market_score": 44.9,
     "market_percentile": 4,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2894,7 +2894,7 @@
         }
       }
     ],
-    "market_score": 53.4,
+    "market_score": 52.4,
     "market_percentile": 6,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2926,7 +2926,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -2958,7 +2958,7 @@
         }
       }
     ],
-    "market_score": 20,
+    "market_score": 34.6,
     "market_percentile": 1,
     "market_tier": "C",
     "market_delta_points": null,
@@ -2990,7 +2990,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3022,7 +3022,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3054,7 +3054,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3086,7 +3086,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3118,7 +3118,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3150,7 +3150,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3182,7 +3182,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3215,9 +3215,9 @@
         }
       }
     ],
-    "market_score": 50,
+    "market_score": 66,
     "market_percentile": 5,
-    "market_tier": "B",
+    "market_tier": "A",
     "market_delta_points": null,
     "market_delta_pct": null
   },
@@ -3247,7 +3247,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3279,7 +3279,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3311,7 +3311,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3329,7 +3329,7 @@
     "media_volume": 4.4,
     "overall_score": 4,
     "chain_of_thought": "Mock analysis: Yair Golan received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 20,
+    "market_score": 34.6,
     "market_percentile": 1,
     "market_tier": "C",
     "market_delta_points": null,
@@ -3347,9 +3347,9 @@
     "media_volume": 5,
     "overall_score": 7.4,
     "chain_of_thought": "Mock analysis: Yair Lapid received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 70.7,
+    "market_score": 64.2,
     "market_percentile": 96,
-    "market_tier": "A",
+    "market_tier": "B",
     "market_delta_points": null,
     "market_delta_pct": null
   },
@@ -3365,7 +3365,7 @@
     "media_volume": 4.1,
     "overall_score": 3.8,
     "chain_of_thought": "Mock analysis: Yariv Levin received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3397,7 +3397,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3429,7 +3429,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3461,7 +3461,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3479,7 +3479,7 @@
     "media_volume": 6.3,
     "overall_score": 5.8,
     "chain_of_thought": "Mock analysis: Yinon Azoulay received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3513,9 +3513,9 @@
         }
       }
     ],
-    "market_score": 65.5,
+    "market_score": 60.7,
     "market_percentile": 95,
-    "market_tier": "A",
+    "market_tier": "B",
     "market_delta_points": null,
     "market_delta_pct": null
   },
@@ -3531,7 +3531,7 @@
     "media_volume": 3.1,
     "overall_score": 2.3,
     "chain_of_thought": "Mock analysis: Yitzhak Goldknopf received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3563,7 +3563,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3595,7 +3595,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3627,7 +3627,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3645,7 +3645,7 @@
     "media_volume": 4.3,
     "overall_score": 2.6,
     "chain_of_thought": "Mock analysis: Yoav Ben-Tzur received mixed coverage today. No significant PDD patterns identified.",
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3677,7 +3677,7 @@
         }
       }
     ],
-    "market_score": 72.4,
+    "market_score": 65.4,
     "market_percentile": 96,
     "market_tier": "A",
     "market_delta_points": null,
@@ -3709,7 +3709,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3741,7 +3741,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3773,7 +3773,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3805,7 +3805,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3837,7 +3837,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3869,7 +3869,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3901,7 +3901,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3933,7 +3933,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3965,7 +3965,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,
@@ -3997,7 +3997,7 @@
         }
       }
     ],
-    "market_score": 62.1,
+    "market_score": 58.3,
     "market_percentile": 51,
     "market_tier": "B",
     "market_delta_points": null,

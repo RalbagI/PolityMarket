@@ -42,6 +42,29 @@ function fail(message) {
   process.exit(1);
 }
 
+const REQUIRED_MARKET_FIELDS = [
+  "market_score",
+  "market_percentile",
+  "market_tier",
+  "market_delta_points",
+  "market_delta_pct",
+];
+
+function ensureRequiredMarketFields(rows, label) {
+  for (const row of rows) {
+    for (const field of REQUIRED_MARKET_FIELDS) {
+      if (!(field in row)) {
+        fail(`${label} row for ${row.politician_id || row.party || "unknown"} is missing ${field}`);
+      }
+      if (typeof row[field] === "undefined") {
+        fail(
+          `${label} row for ${row.politician_id || row.party || "unknown"} has undefined ${field}`
+        );
+      }
+    }
+  }
+}
+
 const args = parseArgs(process.argv.slice(2));
 const timezone = process.env.TZ || "Asia/Jerusalem";
 const date = args.date || getDateInTimezone(timezone);
@@ -56,15 +79,19 @@ if (!Number.isFinite(expected) || expected <= 0) {
 
 const summaryPath = path.join(repoRoot, "public/data/timeseries_summary.json");
 const detailPath = path.join(repoRoot, `public/data/details/${date}.json`);
+const partySummaryPath = path.join(repoRoot, "public/data/party_summary.json");
 
 if (!fs.existsSync(summaryPath)) fail(`Missing summary file: ${summaryPath}`);
 if (!fs.existsSync(detailPath)) fail(`Missing detail file for ${date}: ${detailPath}`);
+if (!fs.existsSync(partySummaryPath)) fail(`Missing party summary file: ${partySummaryPath}`);
 
 const summary = readJsonFile(summaryPath);
 const detail = readJsonFile(detailPath);
+const partySummary = readJsonFile(partySummaryPath);
 
 if (!Array.isArray(summary)) fail("timeseries_summary.json is not an array");
 if (!Array.isArray(detail)) fail(`${date}.json detail file is not an array`);
+if (!Array.isArray(partySummary)) fail("party_summary.json is not an array");
 
 if (detail.length !== expected) {
   fail(`Detail entry count mismatch for ${date}: expected ${expected}, got ${detail.length}`);
@@ -94,6 +121,15 @@ for (const id of detailIds) {
   }
 }
 
+const partySummaryForDate = partySummary.filter((row) => row.date === date);
+if (partySummaryForDate.length === 0) {
+  fail(`No party summary rows found for ${date}`);
+}
+
+ensureRequiredMarketFields(summaryForDate, "summary");
+ensureRequiredMarketFields(detail, "detail");
+ensureRequiredMarketFields(partySummaryForDate, "party summary");
+
 console.log(
-  `Validation passed for ${date}: ${expected} summary rows and ${expected} detail rows in ${timezone}`
+  `Validation passed for ${date}: ${expected} summary rows, ${expected} detail rows, and ${partySummaryForDate.length} party rows in ${timezone}`
 );
