@@ -99,6 +99,27 @@ export const dailyEntrySchema = z.object({
 const dimField = () => z.number().min(0).max(1).nullable().optional();
 const marketField = () => z.number().min(0).max(100).nullable().optional();
 const marketTierField = () => z.enum(["S", "A", "B", "C"]).nullable().optional();
+const confidenceField = () => z.number().min(0).max(1).nullable().optional();
+
+const evidenceItemSchema = z.object({
+  source_id: z.string().min(1),
+  source_name: z.string().min(1),
+  source_type: z.enum([
+    "mainstream",
+    "public_broadcaster",
+    "partisan",
+    "satire",
+    "social",
+    "forum",
+    "unknown",
+  ]),
+  url: z.string().optional(),
+  published_at: z.string().nullable().optional(),
+  matched_text: z.string().min(1),
+  entity_snippet: z.string().min(1),
+  quote: z.string().min(1),
+  is_direct_entity_match: z.boolean(),
+});
 
 /**
  * Schema for a fully processed daily entry with 8-dimension sub-scores.
@@ -144,11 +165,41 @@ export const dailyEntrySchema8dim = dailyEntrySchema.extend({
   flipflop_promises_checked: z.number().int().min(0).nullable().optional(),
 
   // Market score presentation layer
+  media_climate_raw: z.number().min(0).max(10).nullable().optional(),
+  media_climate_display: marketField(),
   market_score: marketField(),
   market_percentile: marketField(),
   market_tier: marketTierField(),
   market_delta_points: z.number().nullable().optional(),
   market_delta_pct: z.number().nullable().optional(),
+
+  // Coverage and evidence quality
+  has_direct_coverage: z.boolean().nullable().optional(),
+  signal_strength: confidenceField(),
+  source_diversity: z.number().int().min(0).nullable().optional(),
+  coverage_confidence: confidenceField(),
+
+  // Debiased source features
+  policy_rel_z: z.number().nullable().optional(),
+  inverse_hostility_rel_z: z.number().nullable().optional(),
+  amplification_weighted: z.number().nullable().optional(),
+  cross_source_agreement: confidenceField(),
+  mainstream_share: confidenceField(),
+  social_share: confidenceField(),
+  source_entropy: confidenceField(),
+
+  // Consensus proxy
+  consensus_proxy: marketField(),
+  consensus_ci_low: marketField(),
+  consensus_ci_high: marketField(),
+  consensus_signal_source: z
+    .enum(["direct_poll", "party_poll+media", "media_only"])
+    .nullable()
+    .optional(),
+  consensus_confidence: confidenceField(),
+
+  // Evidence payload
+  evidence_items: z.array(evidenceItemSchema).optional(),
 });
 
 /**
@@ -173,6 +224,8 @@ export const summaryRowSchema = z.object({
  */
 export const summaryRowSchema8dim = summaryRowSchema.extend({
   overall_score_raw: z.number().min(0).max(10).optional(),
+  media_climate_raw: z.number().min(0).max(10).nullable().optional(),
+  media_climate_display: marketField(),
   dim_public_sentiment: dimField(),
   dim_parliamentary_activity: dimField(),
   dim_media_credibility: dimField(),
@@ -186,6 +239,25 @@ export const summaryRowSchema8dim = summaryRowSchema.extend({
   market_tier: marketTierField(),
   market_delta_points: z.number().nullable().optional(),
   market_delta_pct: z.number().nullable().optional(),
+  has_direct_coverage: z.boolean().nullable().optional(),
+  signal_strength: confidenceField(),
+  source_diversity: z.number().int().min(0).nullable().optional(),
+  coverage_confidence: confidenceField(),
+  policy_rel_z: z.number().nullable().optional(),
+  inverse_hostility_rel_z: z.number().nullable().optional(),
+  amplification_weighted: z.number().nullable().optional(),
+  cross_source_agreement: confidenceField(),
+  mainstream_share: confidenceField(),
+  social_share: confidenceField(),
+  source_entropy: confidenceField(),
+  consensus_proxy: marketField(),
+  consensus_ci_low: marketField(),
+  consensus_ci_high: marketField(),
+  consensus_signal_source: z
+    .enum(["direct_poll", "party_poll+media", "media_only"])
+    .nullable()
+    .optional(),
+  consensus_confidence: confidenceField(),
 });
 
 export const partySummaryRowSchema = z.object({
@@ -200,11 +272,32 @@ export const partySummaryRowSchema = z.object({
   amplification_avg: z.number().nullable().optional(),
   top_politician: z.string().min(1).nullable().optional(),
   score_stddev: z.number().nullable().optional(),
+  media_climate_raw: z.number().min(0).max(10).nullable().optional(),
+  media_climate_display: marketField(),
   market_score: marketField(),
   market_percentile: marketField(),
   market_tier: marketTierField(),
   market_delta_points: z.number().nullable().optional(),
   market_delta_pct: z.number().nullable().optional(),
+  has_direct_coverage: z.boolean().nullable().optional(),
+  signal_strength: confidenceField(),
+  source_diversity: z.number().int().min(0).nullable().optional(),
+  coverage_confidence: confidenceField(),
+  policy_rel_z: z.number().nullable().optional(),
+  inverse_hostility_rel_z: z.number().nullable().optional(),
+  amplification_weighted: z.number().nullable().optional(),
+  cross_source_agreement: confidenceField(),
+  mainstream_share: confidenceField(),
+  social_share: confidenceField(),
+  source_entropy: confidenceField(),
+  consensus_proxy: marketField(),
+  consensus_ci_low: marketField(),
+  consensus_ci_high: marketField(),
+  consensus_signal_source: z
+    .enum(["direct_poll", "party_poll+media", "media_only"])
+    .nullable()
+    .optional(),
+  consensus_confidence: confidenceField(),
 });
 
 /**

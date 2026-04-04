@@ -1,27 +1,79 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { TrendingUp, TrendingDown } from "lucide-react";
-import { localizeName } from "../lib/localize";
+import { localizeName, localizeParty } from "../lib/localize";
+import { resolveSignalDisplayScore } from "../lib/signalMode";
 
-export default function TopMoversStrip({ data, onSelect }) {
+const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
+const getEntityName = (entry) => entry?.name || entry?.party;
+
+export default function TopMoversStrip({
+  data,
+  onSelect,
+  summaryData = [],
+  signalMode = "media_climate",
+  entityMode = "politician",
+}) {
   const { t } = useTranslation();
+  const getEntityLabel = (entry) =>
+    entry?.displayName ||
+    (entityMode === "party"
+      ? localizeParty(t, entry?.party || entry?.name)
+      : localizeName(t, entry?.name));
 
   const { risers, fallers } = useMemo(() => {
     if (!data || !data.length) return { risers: [], fallers: [] };
 
-    const withDelta = data.filter(
-      (d) => d.market_delta_points != null && d.market_delta_points !== 0
-    );
-    const sorted = [...withDelta].sort((a, b) => b.market_delta_points - a.market_delta_points);
+    const allDates = [...new Set(summaryData.map((entry) => entry.date))].sort();
+    if (allDates.length >= 2) {
+      const latest = allDates[allDates.length - 1];
+      const previous = allDates[allDates.length - 2];
+      const todayRows = summaryData.filter((entry) => entry.date === latest);
+      const previousByName = new Map(
+        summaryData
+          .filter((entry) => entry.date === previous)
+          .map((entry) => [getEntityKey(entry), resolveSignalDisplayScore(entry, signalMode)])
+      );
+      const withDelta = todayRows
+        .map((entry) => {
+          const current = resolveSignalDisplayScore(entry, signalMode);
+          const previousScore = previousByName.get(getEntityKey(entry));
+          if (!Number.isFinite(current) || !Number.isFinite(previousScore)) return null;
+          const delta = current - previousScore;
+          if (delta === 0) return null;
+          const todayEntry =
+            data.find((candidate) => getEntityKey(candidate) === getEntityKey(entry)) ?? entry;
+          return {
+            ...todayEntry,
+            signal_delta_points: delta,
+          };
+        })
+        .filter(Boolean);
+
+      const sorted = [...withDelta].sort((a, b) => b.signal_delta_points - a.signal_delta_points);
+
+      return {
+        risers: sorted.filter((d) => d.signal_delta_points > 0).slice(0, 3),
+        fallers: sorted
+          .filter((d) => d.signal_delta_points < 0)
+          .slice(-3)
+          .reverse(),
+      };
+    }
+
+    const withDelta = data
+      .filter((d) => d.market_delta_points != null && d.market_delta_points !== 0)
+      .map((entry) => ({ ...entry, signal_delta_points: entry.market_delta_points }));
+    const sorted = [...withDelta].sort((a, b) => b.signal_delta_points - a.signal_delta_points);
 
     return {
-      risers: sorted.filter((d) => d.market_delta_points > 0).slice(0, 3),
+      risers: sorted.filter((d) => d.signal_delta_points > 0).slice(0, 3),
       fallers: sorted
-        .filter((d) => d.market_delta_points < 0)
+        .filter((d) => d.signal_delta_points < 0)
         .slice(-3)
         .reverse(),
     };
-  }, [data]);
+  }, [data, signalMode, summaryData]);
 
   if (!risers.length && !fallers.length) {
     return (
@@ -51,15 +103,15 @@ export default function TopMoversStrip({ data, onSelect }) {
           {risers.map((d) => (
             <button
               key={d.politician_id || d.name}
-              onClick={() => onSelect(d.name)}
+              onClick={() => onSelect(getEntityName(d))}
               className="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors shrink-0"
-              aria-label={`${d.displayName || localizeName(t, d.name)}: +${d.market_delta_points.toFixed(1)}`}
+              aria-label={`${getEntityLabel(d)}: +${d.signal_delta_points.toFixed(1)}`}
             >
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
-                {d.displayName || localizeName(t, d.name)}
+                {getEntityLabel(d)}
               </span>
               <span className="text-xs text-emerald-400 font-bold tabular-nums" dir="ltr">
-                +{d.market_delta_points.toFixed(1)}
+                +{d.signal_delta_points.toFixed(1)}
               </span>
             </button>
           ))}
@@ -79,15 +131,15 @@ export default function TopMoversStrip({ data, onSelect }) {
           {fallers.map((d) => (
             <button
               key={d.politician_id || d.name}
-              onClick={() => onSelect(d.name)}
+              onClick={() => onSelect(getEntityName(d))}
               className="flex items-center gap-1 px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 transition-colors shrink-0"
-              aria-label={`${d.displayName || localizeName(t, d.name)}: ${d.market_delta_points.toFixed(1)}`}
+              aria-label={`${getEntityLabel(d)}: ${d.signal_delta_points.toFixed(1)}`}
             >
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
-                {d.displayName || localizeName(t, d.name)}
+                {getEntityLabel(d)}
               </span>
               <span className="text-xs text-red-400 font-bold tabular-nums" dir="ltr">
-                {d.market_delta_points.toFixed(1)}
+                {d.signal_delta_points.toFixed(1)}
               </span>
             </button>
           ))}

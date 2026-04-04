@@ -171,7 +171,7 @@ export function aggregateParties(entries, today) {
     const stddev = Math.sqrt(scores.reduce((s, v) => s + (v - mean) ** 2, 0) / scores.length);
 
     const topMember = members.reduce((best, m) =>
-      m.media_volume > (best?.media_volume || 0) ? m : best
+      m.media_volume > (best.media_volume ?? 0) ? m : best
     );
 
     return {
@@ -181,6 +181,7 @@ export function aggregateParties(entries, today) {
       member_count: members.length,
       overall_score: parseFloat(weightedScore.toFixed(1)),
       media_volume: parseFloat(totalVolume.toFixed(1)),
+      media_climate_raw: parseFloat(weightedScore.toFixed(1)),
       hostility_avg: parseFloat(
         (members.reduce((s, m) => s + m.hostility_level, 0) / members.length).toFixed(2)
       ),
@@ -192,6 +193,61 @@ export function aggregateParties(entries, today) {
       ),
       top_politician: topMember.politician_id,
       score_stddev: parseFloat(stddev.toFixed(2)),
+      has_direct_coverage: members.some((member) => member.has_direct_coverage),
+      signal_strength: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.signal_strength ?? 0), 0) / members.length
+        ).toFixed(3)
+      ),
+      source_diversity: [
+        ...new Set(
+          members.flatMap((member) => member.evidence_items ?? []).map((e) => e.source_id)
+        ),
+      ].length,
+      coverage_confidence: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.coverage_confidence ?? 0), 0) /
+          members.length
+        ).toFixed(3)
+      ),
+      policy_rel_z: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.policy_rel_z ?? 0), 0) / members.length
+        ).toFixed(3)
+      ),
+      inverse_hostility_rel_z: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.inverse_hostility_rel_z ?? 0), 0) /
+          members.length
+        ).toFixed(3)
+      ),
+      amplification_weighted: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.amplification_weighted ?? 0), 0) /
+          members.length
+        ).toFixed(3)
+      ),
+      cross_source_agreement: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.cross_source_agreement ?? 0), 0) /
+          members.length
+        ).toFixed(3)
+      ),
+      mainstream_share: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.mainstream_share ?? 0), 0) / members.length
+        ).toFixed(3)
+      ),
+      social_share: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.social_share ?? 0), 0) / members.length
+        ).toFixed(3)
+      ),
+      source_entropy: parseFloat(
+        (
+          members.reduce((sum, member) => sum + (member.source_entropy ?? 0), 0) / members.length
+        ).toFixed(3)
+      ),
     };
   });
 }

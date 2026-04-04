@@ -13,10 +13,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { format, parseISO } from "date-fns";
+import { resolveSignalDisplayScore } from "../lib/signalMode";
 
 export default memo(function PoliticianTrendChart({
   politicianName,
   summaryData: summaryDataProp,
+  signalMode = "media_climate",
 }) {
   const { t } = useTranslation();
   const summaryDataFromStore = useStore((s) => s.summaryData);
@@ -26,9 +28,6 @@ export default memo(function PoliticianTrendChart({
 
   const chartData = useMemo(() => {
     if (!summaryData.length || !politicianName) return [];
-
-    const resolveScore = (entry) =>
-      Number.isFinite(entry.market_score) ? entry.market_score : (entry.overall_score ?? 0) * 10;
 
     // Build O(1) lookup by date for the selected politician
     const byDate = new Map();
@@ -41,7 +40,7 @@ export default memo(function PoliticianTrendChart({
 
     const rawScores = dates.map((date) => {
       const entry = byDate.get(date);
-      return entry ? resolveScore(entry) : null;
+      return entry ? resolveSignalDisplayScore(entry, signalMode) : null;
     });
 
     const rawVolumes = dates.map((date) => {
@@ -58,7 +57,7 @@ export default memo(function PoliticianTrendChart({
       score: scores[i],
       volume: rawVolumes[i],
     }));
-  }, [summaryData, politicianName, smaMode]);
+  }, [summaryData, politicianName, signalMode, smaMode]);
 
   if (!chartData.length) {
     return (

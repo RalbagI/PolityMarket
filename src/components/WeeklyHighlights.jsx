@@ -2,16 +2,30 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { TrendingDown, Trophy, Flame } from "lucide-react";
 import useStore from "../store";
-import { localizeName } from "../lib/localize";
-import { resolveDisplayScore } from "../lib/marketScore";
+import { localizeName, localizeParty } from "../lib/localize";
+import { resolveSignalDisplayScore } from "../lib/signalMode";
+
+const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
+const getEntityName = (entry) => entry?.name || entry?.party;
 
 /**
  * Weekly Highlights — story card + top 5 weekly movers.
  * Surfaces the most surprising changes to drive engagement.
  */
-export default function WeeklyHighlights({ onSelect }) {
+export default function WeeklyHighlights({
+  onSelect,
+  signalMode = "media_climate",
+  summaryData: summaryDataProp,
+  entityMode = "politician",
+}) {
   const { t } = useTranslation();
-  const summaryData = useStore((s) => s.summaryData);
+  const summaryDataFromStore = useStore((s) => s.summaryData);
+  const summaryData = summaryDataProp || summaryDataFromStore;
+  const getEntityLabel = (entry) =>
+    entry?.displayName ||
+    (entityMode === "party"
+      ? localizeParty(t, entry?.party || entry?.name)
+      : localizeName(t, entry?.name));
 
   const { headline, risers, fallers, weekStart, weekEnd } = useMemo(() => {
     if (!summaryData.length)
@@ -27,14 +41,15 @@ export default function WeeklyHighlights({ onSelect }) {
     const weekAgoEntries = summaryData.filter((d) => d.date === weekAgoDate);
 
     const weekAgoMap = new Map();
-    for (const e of weekAgoEntries) weekAgoMap.set(e.name, e);
+    for (const e of weekAgoEntries) weekAgoMap.set(getEntityKey(e), e);
 
     const deltas = todayEntries
       .map((entry) => {
-        const prev = weekAgoMap.get(entry.name);
+        const prev = weekAgoMap.get(getEntityKey(entry));
         if (!prev) return null;
-        const curScore = resolveDisplayScore(entry) ?? 0;
-        const prevScore = resolveDisplayScore(prev) ?? 0;
+        const curScore = resolveSignalDisplayScore(entry, signalMode);
+        const prevScore = resolveSignalDisplayScore(prev, signalMode);
+        if (!Number.isFinite(curScore) || !Number.isFinite(prevScore)) return null;
         const delta = curScore - prevScore;
         const pct = prevScore > 0 ? ((delta / prevScore) * 100).toFixed(0) : delta > 0 ? "+∞" : "0";
         return { ...entry, delta, pct, prevScore, displayScore: curScore };
@@ -62,7 +77,7 @@ export default function WeeklyHighlights({ onSelect }) {
       weekStart: weekAgoDate,
       weekEnd: latest,
     };
-  }, [summaryData]);
+  }, [signalMode, summaryData]);
 
   if (!headline) return null;
 
@@ -73,7 +88,7 @@ export default function WeeklyHighlights({ onSelect }) {
         const isUp = headline.delta > 0;
         return (
           <button
-            onClick={() => onSelect(headline.name)}
+            onClick={() => onSelect(getEntityName(headline))}
             className={`w-full text-start rounded-xl border p-4 hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 ${
               isUp
                 ? "bg-gradient-to-l from-emerald-950/40 to-gray-950 border-emerald-800/40"
@@ -88,7 +103,7 @@ export default function WeeklyHighlights({ onSelect }) {
             </div>
 
             <div className="text-lg font-black text-white leading-tight mb-2">
-              {localizeName(t, headline.name)}
+              {getEntityLabel(headline)}
             </div>
 
             <div className="flex items-baseline gap-2 mb-1">
@@ -123,13 +138,13 @@ export default function WeeklyHighlights({ onSelect }) {
         <div className="space-y-1">
           {risers.map((d, i) => (
             <button
-              key={d.politician_id || d.name}
-              onClick={() => onSelect(d.name)}
+              key={getEntityKey(d)}
+              onClick={() => onSelect(getEntityName(d))}
               className="flex items-center gap-2 w-full rounded-lg px-2 py-1 hover:bg-gray-800/60 transition-colors"
             >
               <span className="text-[10px] text-gray-600 w-3 shrink-0 tabular-nums">{i + 1}</span>
               <span className="text-xs text-gray-200 font-medium truncate flex-1 text-start">
-                {localizeName(t, d.name)}
+                {getEntityLabel(d)}
               </span>
               <span className="text-xs text-emerald-400 font-bold tabular-nums shrink-0" dir="ltr">
                 {`+${d.delta.toFixed(1)}`}
@@ -155,13 +170,13 @@ export default function WeeklyHighlights({ onSelect }) {
         <div className="space-y-1">
           {fallers.map((d, i) => (
             <button
-              key={d.politician_id || d.name}
-              onClick={() => onSelect(d.name)}
+              key={getEntityKey(d)}
+              onClick={() => onSelect(getEntityName(d))}
               className="flex items-center gap-2 w-full rounded-lg px-2 py-1 hover:bg-gray-800/60 transition-colors"
             >
               <span className="text-[10px] text-gray-600 w-3 shrink-0 tabular-nums">{i + 1}</span>
               <span className="text-xs text-gray-200 font-medium truncate flex-1 text-start">
-                {localizeName(t, d.name)}
+                {getEntityLabel(d)}
               </span>
               <span className="text-xs text-red-400 font-bold tabular-nums shrink-0" dir="ltr">
                 {d.delta.toFixed(1)}

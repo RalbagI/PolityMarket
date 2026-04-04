@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowLeftRight, Search } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
+import { resolveSignalDisplayScore } from "../lib/signalMode";
 import Avatar from "./Avatar";
 import PoliticianTrendChart from "./PoliticianTrendChart";
 
@@ -27,7 +28,14 @@ const DIM_COLORS = {
   dim_flipflop_index: "#14b8a6",
 };
 
-function PoliticianPicker({ label, selected, onSelect, politicians, t }) {
+function PoliticianPicker({
+  label,
+  selected,
+  onSelect,
+  politicians,
+  t,
+  signalMode = "media_climate",
+}) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -53,7 +61,9 @@ function PoliticianPicker({ label, selected, onSelect, politicians, t }) {
           <div className="text-[10px] text-gray-500">{localizeParty(t, selected.party)}</div>
         </div>
         <div className="text-end shrink-0">
-          <div className="text-lg font-bold text-white">{selected.overall_score.toFixed(1)}</div>
+          <div className="text-lg font-bold text-white">
+            {Math.round(resolveSignalDisplayScore(selected, signalMode) ?? 0)}
+          </div>
         </div>
       </button>
     );
@@ -90,7 +100,9 @@ function PoliticianPicker({ label, selected, onSelect, politicians, t }) {
             <span className="text-xs text-gray-200 truncate flex-1 text-start">
               {localizeName(t, p.name)}
             </span>
-            <span className="text-xs text-gray-500 tabular-nums">{p.overall_score.toFixed(1)}</span>
+            <span className="text-xs text-gray-500 tabular-nums">
+              {Math.round(resolveSignalDisplayScore(p, signalMode) ?? 0)}
+            </span>
           </button>
         ))}
       </div>
@@ -153,7 +165,7 @@ function DimensionCompare({ dimKey, labelKey, a, b, t }) {
   );
 }
 
-export default function CompareView({ todayData }) {
+export default function CompareView({ todayData, signalMode = "media_climate" }) {
   const { t } = useTranslation();
   const [politicianA, setPoliticianA] = useState(null);
   const [politicianB, setPoliticianB] = useState(null);
@@ -195,6 +207,7 @@ export default function CompareView({ todayData }) {
             onSelect={setPoliticianA}
             politicians={todayData}
             t={t}
+            signalMode={signalMode}
           />
         </div>
         <div className="shrink-0">
@@ -207,6 +220,7 @@ export default function CompareView({ todayData }) {
             onSelect={setPoliticianB}
             politicians={todayData}
             t={t}
+            signalMode={signalMode}
           />
         </div>
       </div>
@@ -217,14 +231,14 @@ export default function CompareView({ todayData }) {
           <div className="flex items-center justify-center gap-6 py-3">
             <div className="text-center">
               <div className="text-3xl font-bold text-white">
-                {politicianA.overall_score.toFixed(1)}
+                {Math.round(resolveSignalDisplayScore(politicianA, signalMode) ?? 0)}
               </div>
               <div className="text-[10px] text-gray-500">{localizeName(t, politicianA.name)}</div>
             </div>
             <div className="text-lg text-gray-600 font-light">vs</div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white">
-                {politicianB.overall_score.toFixed(1)}
+                {Math.round(resolveSignalDisplayScore(politicianB, signalMode) ?? 0)}
               </div>
               <div className="text-[10px] text-gray-500">{localizeName(t, politicianB.name)}</div>
             </div>
@@ -253,13 +267,13 @@ export default function CompareView({ todayData }) {
               <div className="text-xs font-medium text-gray-400 mb-2 text-center">
                 {localizeName(t, politicianA.name)}
               </div>
-              <PoliticianTrendChart politicianName={politicianA.name} />
+              <PoliticianTrendChart politicianName={politicianA.name} signalMode={signalMode} />
             </div>
             <div className="rounded-xl bg-gray-900/60 border border-gray-800 p-3">
               <div className="text-xs font-medium text-gray-400 mb-2 text-center">
                 {localizeName(t, politicianB.name)}
               </div>
-              <PoliticianTrendChart politicianName={politicianB.name} />
+              <PoliticianTrendChart politicianName={politicianB.name} signalMode={signalMode} />
             </div>
           </div>
         </>

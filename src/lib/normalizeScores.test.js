@@ -65,6 +65,36 @@ describe("normalizeScores", () => {
     expect(result[1].normalizedScore).toBe(0);
   });
 
+  it("uses market_score when available via signalMode", () => {
+    const input = [
+      { name: "A", market_score: 20, media_volume: 1 },
+      { name: "B", market_score: 80, media_volume: 5 },
+    ];
+    const result = normalizeScores(input, "media_climate");
+    expect(result[0].normalizedScore).toBe(0);
+    expect(result[1].normalizedScore).toBe(1);
+  });
+
+  it("uses consensus_proxy when signalMode is consensus_proxy", () => {
+    const input = [
+      { name: "A", consensus_proxy: 30, market_score: 90, media_volume: 1 },
+      { name: "B", consensus_proxy: 70, market_score: 10, media_volume: 5 },
+    ];
+    const result = normalizeScores(input, "consensus_proxy");
+    expect(result[0].normalizedScore).toBe(0);
+    expect(result[1].normalizedScore).toBe(1);
+  });
+
+  it("falls back to overall_score * 10 when market_score is absent", () => {
+    const input = [
+      { name: "A", overall_score: 3, media_volume: 1 },
+      { name: "B", overall_score: 7, media_volume: 5 },
+    ];
+    const result = normalizeScores(input, "media_climate");
+    expect(result[0].normalizedScore).toBe(0);
+    expect(result[1].normalizedScore).toBe(1);
+  });
+
   it("preserves wing and sector fields", () => {
     const input = [
       { name: "A", overall_score: 5, media_volume: 3, wing: "right", sector: "secular" },

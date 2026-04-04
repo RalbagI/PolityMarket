@@ -56,7 +56,7 @@ describe("summary API contract integration boilerplate", () => {
     ];
 
     server.use(
-      http.get("*/data/timeseries_summary.json", () => {
+      http.get("*/data/timeseries_summary.compact.json", () => {
         return HttpResponse.json(fixture);
       })
     );
@@ -88,7 +88,7 @@ describe("summary API contract integration boilerplate", () => {
     ];
 
     server.use(
-      http.get("*/data/timeseries_summary.json", () => {
+      http.get("*/data/timeseries_summary.compact.json", () => {
         return HttpResponse.json(isolatedFixture);
       })
     );

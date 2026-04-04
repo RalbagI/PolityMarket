@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Users, BarChart3, TrendingUp, TrendingDown, Info, Minus } from "lucide-react";
 import {
@@ -19,23 +19,26 @@ import { getPartyColor } from "../lib/partyColors";
 import { getPartyInfo } from "../lib/partyInfo";
 import useStore from "../store";
 import { getMarketTierBadgeClass, getMarketTierLabel } from "../lib/marketScore";
+import {
+  isLowConfidenceSignal,
+  resolveSignalConfidenceBand,
+  resolveSignalDelta,
+  resolveSignalDeltaPct,
+  resolveSignalDisplayScore,
+  resolveSignalPercentile,
+  resolveSignalTier,
+} from "../lib/signalMode";
 
-function MemberRow({ entry, t }) {
+function MemberRow({ entry, t, signalMode }) {
   const displayName = localizeName(t, entry.name);
-  const displayScore = Number.isFinite(entry.market_score)
-    ? Math.round(entry.market_score)
-    : Math.round((entry.overall_score ?? 0) * 10);
+  const displayScore = Math.round(resolveSignalDisplayScore(entry, signalMode) ?? 0);
   return (
     <div className="flex items-center justify-between py-1.5 border-b border-gray-800/50 last:border-0">
       <span className="text-sm text-gray-300 truncate">{displayName}</span>
       <span
         className="text-sm font-bold tabular-nums shrink-0 ms-2"
         style={{
-          color: scoreToColor(
-            Number.isFinite(entry.market_score)
-              ? entry.market_score
-              : (entry.overall_score ?? 0) * 10
-          ),
+          color: scoreToColor(resolveSignalDisplayScore(entry, signalMode) ?? 0),
         }}
       >
         {displayScore}
@@ -44,12 +47,20 @@ function MemberRow({ entry, t }) {
   );
 }
 
-export default function PartyDetailView({ partyName, partyData, todayData, partySummaryData }) {
+export default function PartyDetailView({
+  partyName,
+  partyData,
+  todayData,
+  partySummaryData,
+  signalMode = "media_climate",
+}) {
   const { t } = useTranslation();
   const summaryData = useStore((s) => s.summaryData);
   const trendSource = partySummaryData?.length ? partySummaryData : summaryData;
-  const resolveScore = (entry) =>
-    Number.isFinite(entry.market_score) ? entry.market_score : (entry.overall_score ?? 0) * 10;
+  const resolveScore = useCallback(
+    (entry) => resolveSignalDisplayScore(entry, signalMode) ?? 0,
+    [signalMode]
+  );
 
   const party = partyData;
   const members = useMemo(() => {
@@ -88,7 +99,7 @@ export default function PartyDetailView({ partyName, partyData, todayData, party
         };
       })
       .filter(Boolean);
-  }, [partyName, trendSource]);
+  }, [partyName, resolveScore, trendSource]);
 
   if (!partyName) {
     return (
@@ -101,16 +112,17 @@ export default function PartyDetailView({ partyName, partyData, todayData, party
   const partyColor = getPartyColor(partyName);
   const displayParty = localizeParty(t, partyName);
   const info = getPartyInfo(partyName);
-  const displayScore = party
-    ? Number.isFinite(party.market_score)
-      ? Math.round(party.market_score)
-      : Math.round((party.overall_score ?? 0) * 10)
-    : null;
-  const tierLabel = party?.market_tier
-    ? t(`market.tiers.${party.market_tier}.label`, {
-        defaultValue: getMarketTierLabel(party.market_tier),
+  const displayScore = party ? Math.round(resolveScore(party)) : null;
+  const signalTier = resolveSignalTier(party, signalMode);
+  const tierLabel = signalTier
+    ? t(`market.tiers.${signalTier}.label`, {
+        defaultValue: getMarketTierLabel(signalTier),
       })
     : "";
+  const signalPercentile = resolveSignalPercentile(party, signalMode);
+  const deltaPoints = resolveSignalDelta(party, signalMode);
+  const deltaPct = resolveSignalDeltaPct(party, signalMode);
+  const confidenceBand = resolveSignalConfidenceBand(party, signalMode);
 
   return (
     <div className="space-y-4">
@@ -128,20 +140,25 @@ export default function PartyDetailView({ partyName, partyData, todayData, party
             <p className="text-xs text-gray-500">
               {party?.member_count || members.length} {t("partyDetail.members")}
             </p>
-            {party?.market_tier && (
+            {signalTier && (
               <span
-                className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getMarketTierBadgeClass(party.market_tier)}`}
+                className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getMarketTierBadgeClass(signalTier)}`}
               >
-                {party.market_tier}-Tier
+                {signalTier}-Tier
               </span>
             )}
-            {Number.isFinite(party?.market_percentile) && (
+            {Number.isFinite(signalPercentile) && (
               <span className="text-xs font-medium text-gray-400">
-                P{Math.round(party.market_percentile)}
+                P{Math.round(signalPercentile)}
+              </span>
+            )}
+            {isLowConfidenceSignal(party, signalMode) && (
+              <span className="text-xs font-medium text-amber-200">
+                {t("signals.lowConfidence")}
               </span>
             )}
           </div>
-          {party?.market_tier && <p className="mt-1 text-xs text-gray-400">{tierLabel}</p>}
+          {signalTier && <p className="mt-1 text-xs text-gray-400">{tierLabel}</p>}
         </div>
         {party && (
           <div className="ms-auto text-end shrink-0">
@@ -151,33 +168,38 @@ export default function PartyDetailView({ partyName, partyData, todayData, party
             >
               {displayScore}
             </div>
-            {Number.isFinite(party.market_delta_points) && (
+            {Number.isFinite(deltaPoints) && (
               <div
                 className={`mt-1 flex items-center justify-end gap-1 text-xs font-semibold ${
-                  party.market_delta_points > 0
+                  deltaPoints > 0
                     ? "text-emerald-400"
-                    : party.market_delta_points < 0
+                    : deltaPoints < 0
                       ? "text-red-400"
                       : "text-gray-400"
                 }`}
               >
-                {party.market_delta_points > 0 ? (
+                {deltaPoints > 0 ? (
                   <TrendingUp className="w-3.5 h-3.5" />
-                ) : party.market_delta_points < 0 ? (
+                ) : deltaPoints < 0 ? (
                   <TrendingDown className="w-3.5 h-3.5" />
                 ) : (
                   <Minus className="w-3.5 h-3.5" />
                 )}
                 <span>
-                  {party.market_delta_points > 0 ? "+" : ""}
-                  {party.market_delta_points.toFixed(1)}
-                  {Number.isFinite(party.market_delta_pct) && (
+                  {deltaPoints > 0 ? "+" : ""}
+                  {deltaPoints.toFixed(1)}
+                  {Number.isFinite(deltaPct) && (
                     <span className="ms-1 text-[11px] text-gray-400">
-                      ({party.market_delta_pct > 0 ? "+" : ""}
-                      {party.market_delta_pct.toFixed(1)}%)
+                      ({deltaPct > 0 ? "+" : ""}
+                      {deltaPct.toFixed(1)}%)
                     </span>
                   )}
                 </span>
+              </div>
+            )}
+            {confidenceBand && (
+              <div className="mt-1 text-[11px] text-gray-500">
+                {confidenceBand.low}–{confidenceBand.high}
               </div>
             )}
             <div className="text-[10px] text-gray-500">{t("partyDetail.avgScore")}</div>
@@ -366,7 +388,7 @@ export default function PartyDetailView({ partyName, partyData, todayData, party
         {members.length > 0 ? (
           <div>
             {members.map((m) => (
-              <MemberRow key={m.politician_id || m.name} entry={m} t={t} />
+              <MemberRow key={m.politician_id || m.name} entry={m} t={t} signalMode={signalMode} />
             ))}
           </div>
         ) : (

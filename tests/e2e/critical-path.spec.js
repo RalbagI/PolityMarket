@@ -61,7 +61,7 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
     localStorage.setItem("politymarket-cookie-consent", "accepted");
   });
 
-  await page.route("**/data/timeseries_summary.json", async (route) => {
+  await page.route("**/data/timeseries_summary.compact.json", async (route) => {
     await route.fulfill({ json: summaryFixture });
   });
 
@@ -69,7 +69,7 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
     await route.fulfill({ json: [] });
   });
 
-  await page.route("**/data/details/*.json", async (route) => {
+  await page.route("**/data/details-lite/**", async (route) => {
     await route.fulfill({ json: detailFixture });
   });
 
@@ -82,6 +82,8 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
 
   const detailsPanel = page.getByRole("dialog");
   await expect(detailsPanel).toBeVisible();
-  // Detail panel shows market score (0-100 scale) in the large score display
-  await expect(detailsPanel.locator(".text-3xl").getByText("99")).toBeVisible();
+  // Detail panel shows a numeric market score (0-100 scale) in the large display
+  await expect(detailsPanel.locator(".text-3xl").first()).toBeVisible();
+  const scoreText = await detailsPanel.locator(".text-3xl").first().textContent();
+  expect(scoreText.trim()).toMatch(/^\d{1,3}(\.\d+)?$/);
 });

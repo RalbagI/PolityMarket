@@ -15,10 +15,15 @@ export function DisplayOptions({ t }) {
   const colorBy = useStore((s) => s.treemapColorBy);
   const setSizeBy = useStore((s) => s.setTreemapSizeBy);
   const setColorBy = useStore((s) => s.setTreemapColorBy);
+  const signalMode = useStore((s) => s.signalMode);
 
   const options = [
     { value: "media_volume", label: t("treemap.options.mediaVolume") },
-    { value: "market_score", label: t("treemap.options.score") },
+    {
+      value: "market_score",
+      label:
+        signalMode === "consensus_proxy" ? t("signals.consensusProxy") : t("signals.mediaClimate"),
+    },
   ];
 
   return (
@@ -75,8 +80,11 @@ export function SidebarContent({
   filterProps,
   viewMode,
   onViewModeChange,
+  signalMode,
+  consensusAvailable = false,
   hideHeader,
 }) {
+  const setSignalMode = useStore((s) => s.setSignalMode);
   const activeFilterCount = filterProps
     ? (filterProps.activeParties?.length || 0) +
       (filterProps.activeWings?.length || 0) +
@@ -121,7 +129,11 @@ export function SidebarContent({
               >
                 {Math.round(stats.weightedAvg)}
               </div>
-              <div className="text-xs text-gray-500">{t("sidebar.weightedAverage")}</div>
+              <div className="text-xs text-gray-500">
+                {signalMode === "consensus_proxy"
+                  ? t("signals.consensusProxy")
+                  : t("signals.mediaClimate")}
+              </div>
             </div>
           </div>
         </>
@@ -152,6 +164,42 @@ export function SidebarContent({
           </button>
         </div>
       )}
+
+      <div className="space-y-2">
+        <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
+          {t("signals.title")}
+        </h3>
+        <div className="flex gap-1 bg-gray-800 rounded-lg p-1">
+          <button
+            onClick={() => setSignalMode("media_climate")}
+            className={`flex-1 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+              signalMode === "media_climate"
+                ? "bg-gray-700 text-white"
+                : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            {t("signals.mediaClimate")}
+          </button>
+          <button
+            onClick={() => {
+              if (consensusAvailable) setSignalMode("consensus_proxy");
+            }}
+            disabled={!consensusAvailable}
+            className={`flex-1 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+              signalMode === "consensus_proxy"
+                ? "bg-gray-700 text-white"
+                : consensusAvailable
+                  ? "text-gray-500 hover:text-gray-300"
+                  : "text-gray-600 cursor-not-allowed"
+            }`}
+          >
+            {t("signals.consensusProxy")}
+          </button>
+        </div>
+        {!consensusAvailable && (
+          <p className="text-[11px] leading-5 text-gray-500">{t("signals.consensusUnavailable")}</p>
+        )}
+      </div>
 
       {/* Display Options — size/color controls */}
       <DisplayOptions t={t} />
@@ -246,13 +294,15 @@ export default function Sidebar({
   filterProps,
   viewMode,
   onViewModeChange,
+  signalMode,
+  consensusAvailable = false,
 }) {
   const { t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
   useFocusTrap(drawerRef, drawerOpen);
 
-  const stats = useSidebarStats(todayData);
+  const stats = useSidebarStats(todayData, signalMode);
 
   return (
     <>
@@ -269,6 +319,8 @@ export default function Sidebar({
           filterProps={filterProps}
           viewMode={viewMode}
           onViewModeChange={onViewModeChange}
+          signalMode={signalMode}
+          consensusAvailable={consensusAvailable}
         />
       </aside>
 
@@ -293,7 +345,9 @@ export default function Sidebar({
               {stats.weightedAvg.toFixed(1)}
             </div>
             <div className="text-[10px] text-gray-500 leading-none truncate max-w-[80px]">
-              {t("sidebar.weightedAverage")}
+              {signalMode === "consensus_proxy"
+                ? t("signals.consensusProxy")
+                : t("signals.mediaClimate")}
             </div>
           </div>
           <button
@@ -333,6 +387,8 @@ export default function Sidebar({
               filterProps={filterProps}
               viewMode={viewMode}
               onViewModeChange={onViewModeChange}
+              signalMode={signalMode}
+              consensusAvailable={consensusAvailable}
             />
           </div>
         </>

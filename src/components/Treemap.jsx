@@ -2,14 +2,14 @@ import { memo, useMemo, useState, useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { hierarchy, treemap, treemapSquarify } from "d3-hierarchy";
 import { normalizedScoreToColorWithAlpha, scoreToColorWithAlpha } from "../lib/colorScale";
-import { resolveDisplayScore } from "../lib/marketScore";
+import { resolveSignalDisplayScore } from "../lib/signalMode";
 import { localizeName } from "../lib/localize";
 import useStore from "../store";
 import useTreemapGestures from "../lib/useTreemapGestures";
 import TreemapTooltip from "./TreemapTooltip";
 import TreemapLeaf from "./TreemapLeaf";
 
-export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
+export default memo(function Treemap({ data, onSelect, selectedPolitician, signalMode }) {
   const { t } = useTranslation();
   const sizeBy = useStore((s) => s.treemapSizeBy);
   const colorBy = useStore((s) => s.treemapColorBy);
@@ -91,7 +91,8 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     const smallestVisible = visible[visible.length - 1];
     const othersSize = sizeValue(smallestVisible);
     const othersScore =
-      grouped.reduce((sum, entry) => sum + (resolveDisplayScore(entry) ?? 0), 0) / grouped.length;
+      grouped.reduce((sum, entry) => sum + (resolveSignalDisplayScore(entry, signalMode) ?? 0), 0) /
+      grouped.length;
 
     return [
       ...visible,
@@ -110,7 +111,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         _groupedData: grouped,
       },
     ];
-  }, [data, size.width, size.height, sizeValue, isMobile, minBlockArea, t, drillDown]);
+  }, [data, size.width, size.height, sizeValue, isMobile, minBlockArea, t, drillDown, signalMode]);
 
   const leaves = useMemo(() => {
     if (!treemapItems.length || virtualW === 0 || virtualH === 0) return [];
@@ -135,15 +136,9 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
     (entry) => {
       const value = entry?.[colorBy];
       if (typeof value === "number" && Number.isFinite(value)) return value;
-      if (typeof entry?.market_score === "number" && Number.isFinite(entry.market_score)) {
-        return entry.market_score;
-      }
-      if (typeof entry?.overall_score === "number" && Number.isFinite(entry.overall_score)) {
-        return entry.overall_score * 10;
-      }
-      return 0;
+      return resolveSignalDisplayScore(entry, signalMode) ?? 0;
     },
-    [colorBy]
+    [colorBy, signalMode]
   );
 
   const colorRange = useMemo(() => {
@@ -241,7 +236,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                 backgroundColor={
                   colorBy === "market_score"
                     ? scoreToColorWithAlpha(
-                        entry.market_score ?? (entry.overall_score ?? 5) * 10,
+                        resolveSignalDisplayScore(entry, signalMode) ?? 50,
                         isHovered || isSelected ? 0.96 : 0.78
                       )
                     : normalizedScoreToColorWithAlpha(
@@ -280,6 +275,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                   if (!isTouchRef.current) setHovered(entry.name);
                   isTouchRef.current = false;
                 }}
+                signalMode={signalMode}
               />
             );
           })}
@@ -290,6 +286,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
         <TreemapTooltip
           politician={data.find((entry) => entry.name === hovered)}
           position={mousePos}
+          signalMode={signalMode}
         />
       )}
     </div>

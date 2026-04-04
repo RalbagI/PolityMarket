@@ -62,7 +62,9 @@ export function getMarketTierBadgeClass(tier) {
 }
 
 export function resolveDisplayScore(entry) {
+  if (Number.isFinite(entry?.media_climate_display)) return Math.round(entry.media_climate_display);
   if (Number.isFinite(entry?.market_score)) return Math.round(entry.market_score);
+  if (Number.isFinite(entry?.media_climate_raw)) return Math.round(entry.media_climate_raw * 10);
   if (Number.isFinite(entry?.overall_score)) return Math.round(entry.overall_score * 10);
   return null;
 }

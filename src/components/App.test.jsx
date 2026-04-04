@@ -32,6 +32,7 @@ vi.mock("../store", () => {
           panelOpen: false,
           selectedPolitician: null,
           selectedDate: null,
+          selectedDetailKey: null,
           detailLoading: false,
           detailCache: {},
           openPanel: vi.fn(),
@@ -45,6 +46,8 @@ vi.mock("../store", () => {
           setTreemapSizeBy: vi.fn(),
           setTreemapColorBy: vi.fn(),
           smaMode: "sma7",
+          signalMode: "media_climate",
+          setSignalMode: vi.fn(),
         };
         return selector(state);
       },

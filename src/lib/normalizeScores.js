@@ -1,3 +1,5 @@
+import { resolveSignalDisplayScore } from "./signalMode";
+
 /**
  * Dynamically re-normalize scores for the visible politician subset.
  * Maps market_score and media_volume to 0-1 relative scale based on
@@ -6,19 +8,18 @@
  * This ensures the treemap fills the viewport meaningfully even when
  * 50+ politicians are filtered out.
  */
-export default function normalizeScores(visiblePoliticians) {
+export default function normalizeScores(visiblePoliticians, signalMode = "media_climate") {
   if (!visiblePoliticians.length) return [];
 
-  const resolveScore = (entry) =>
-    Number.isFinite(entry.market_score) ? entry.market_score : (entry.overall_score ?? 0) * 10;
+  const resolveScore = (entry) => resolveSignalDisplayScore(entry, signalMode) ?? 0;
 
   const scores = visiblePoliticians.map(resolveScore);
   const volumes = visiblePoliticians.map((p) => p.media_volume);
 
-  const minScore = Math.min(...scores);
-  const maxScore = Math.max(...scores);
-  const minVolume = Math.min(...volumes);
-  const maxVolume = Math.max(...volumes);
+  const minScore = scores.reduce((a, b) => (a < b ? a : b), scores[0]);
+  const maxScore = scores.reduce((a, b) => (a > b ? a : b), scores[0]);
+  const minVolume = volumes.reduce((a, b) => (a < b ? a : b), volumes[0]);
+  const maxVolume = volumes.reduce((a, b) => (a > b ? a : b), volumes[0]);
 
   const scoreRange = maxScore - minScore || 1;
   const volumeRange = maxVolume - minVolume || 1;
