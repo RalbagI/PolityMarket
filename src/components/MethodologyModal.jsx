@@ -12,6 +12,7 @@ import {
   Eye,
   Scale,
   FileText,
+  TrendingUp,
 } from "lucide-react";
 import useFocusTrap from "../lib/useFocusTrap";
 
@@ -188,10 +189,55 @@ export default function MethodologyModal({ isOpen, onClose }) {
                     </div>
                   </div>
                   <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-3 mt-3">
-                    <p className="text-xs text-indigo-300 font-mono text-center">
+                    <p className="text-xs text-indigo-300 font-mono text-center whitespace-pre-line">
                       {t("methodology.scoring.formula")}
                     </p>
                   </div>
+                </Section>
+
+                {/* Market display layer */}
+                <Section
+                  icon={TrendingUp}
+                  iconColor="text-amber-400"
+                  title={t("methodology.marketLayer.title")}
+                >
+                  <Paragraph text={t("methodology.marketLayer.description")} />
+                  <div className="bg-gray-800/50 rounded-xl p-4 mt-3 space-y-2.5">
+                    <div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300 font-medium">
+                          {t("methodology.marketLayer.rawTitle")}
+                        </span>
+                        <span className="text-violet-300 font-bold">
+                          {t("methodology.marketLayer.rawRange")}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {t("methodology.marketLayer.rawDescription")}
+                      </p>
+                    </div>
+                    <div className="border-t border-gray-700/50 pt-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-300 font-medium">
+                          {t("methodology.marketLayer.displayTitle")}
+                        </span>
+                        <span className="text-amber-300 font-bold">
+                          {t("methodology.marketLayer.displayRange")}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {t("methodology.marketLayer.displayDescription")}
+                      </p>
+                    </div>
+                  </div>
+                  <BulletList
+                    items={[
+                      t("methodology.marketLayer.percentile"),
+                      t("methodology.marketLayer.tiers"),
+                      t("methodology.marketLayer.delta"),
+                      t("methodology.marketLayer.stability"),
+                    ]}
+                  />
                 </Section>
 
                 {/* Display Options — Size & Color explanation */}
