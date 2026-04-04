@@ -47,26 +47,21 @@ describe("buildBatchedPrompt", () => {
     expect(prompt).toContain("No matched social mentions");
   });
 
-  it("injects contextHint and rolling context for no-data politicians", () => {
+  it("injects a factual no-coverage hint for politicians with no matched evidence", () => {
     const politicians = [makePolitician("empty", "Empty Pol", "Party X")];
     const data = new Map([
       [
         "empty",
         {
-          headlines: ["No direct headlines matched Empty Pol in configured sources this cycle."],
-          socialMentions: [
-            {
-              text: "No direct social mentions matched Empty Pol in configured sources this cycle.",
-            },
-          ],
+          headlines: [],
+          socialMentions: [],
         },
       ],
     ]);
-    const cotMap = new Map([["empty", "ניתוח קודם על פוליטיקאי זה"]]);
 
-    const prompt = buildBatchedPrompt(politicians, data, null, null, true, cotMap);
+    const prompt = buildBatchedPrompt(politicians, data, null, null, true);
     expect(prompt).toContain("Context note:");
-    expect(prompt).toContain("Previous analysis summary:");
+    expect(prompt).toContain("Use neutral defaults, keep chain_of_thought factual and brief");
   });
 });
 

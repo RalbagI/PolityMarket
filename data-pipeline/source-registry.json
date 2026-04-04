@@ -1,0 +1,202 @@
+{
+  "sources": [
+    {
+      "source_id": "google-news",
+      "source_name": "Google News",
+      "source_type": "mainstream",
+      "ideology_bucket": "mixed",
+      "visibility_weight": 0.9,
+      "consensus_weight_cap": 0.9,
+      "use_in_consensus": true,
+      "domains": ["news.google.com"],
+      "aliases": ["Google News"]
+    },
+    {
+      "source_id": "ynet",
+      "source_name": "Ynet",
+      "source_type": "mainstream",
+      "ideology_bucket": "center",
+      "visibility_weight": 1,
+      "consensus_weight_cap": 1,
+      "use_in_consensus": true,
+      "domains": ["ynet.co.il"],
+      "aliases": ["Ynet", "ynet"]
+    },
+    {
+      "source_id": "walla",
+      "source_name": "Walla",
+      "source_type": "mainstream",
+      "ideology_bucket": "center",
+      "visibility_weight": 0.95,
+      "consensus_weight_cap": 0.95,
+      "use_in_consensus": true,
+      "domains": ["walla.co.il"],
+      "aliases": ["וואלה", "Walla"]
+    },
+    {
+      "source_id": "maariv",
+      "source_name": "Maariv",
+      "source_type": "mainstream",
+      "ideology_bucket": "center-right",
+      "visibility_weight": 0.9,
+      "consensus_weight_cap": 0.9,
+      "use_in_consensus": true,
+      "domains": ["maariv.co.il"],
+      "aliases": ["מעריב", "Maariv"]
+    },
+    {
+      "source_id": "israel-hayom",
+      "source_name": "Israel Hayom",
+      "source_type": "partisan",
+      "ideology_bucket": "right",
+      "visibility_weight": 0.82,
+      "consensus_weight_cap": 0.72,
+      "use_in_consensus": true,
+      "domains": ["israelhayom.co.il"],
+      "aliases": ["ישראל היום", "Israel Hayom"]
+    },
+    {
+      "source_id": "globes",
+      "source_name": "Globes",
+      "source_type": "mainstream",
+      "ideology_bucket": "center",
+      "visibility_weight": 0.88,
+      "consensus_weight_cap": 0.88,
+      "use_in_consensus": true,
+      "domains": ["globes.co.il"],
+      "aliases": ["גלובס", "Globes"]
+    },
+    {
+      "source_id": "channel-14",
+      "source_name": "Channel 14",
+      "source_type": "partisan",
+      "ideology_bucket": "right",
+      "visibility_weight": 0.78,
+      "consensus_weight_cap": 0.66,
+      "use_in_consensus": true,
+      "domains": ["c14.co.il"],
+      "aliases": ["ערוץ 14", "Channel 14", "c14"]
+    },
+    {
+      "source_id": "times-of-israel",
+      "source_name": "Times of Israel",
+      "source_type": "mainstream",
+      "ideology_bucket": "center",
+      "visibility_weight": 0.92,
+      "consensus_weight_cap": 0.92,
+      "use_in_consensus": true,
+      "domains": ["timesofisrael.com"],
+      "aliases": ["Times of Israel"]
+    },
+    {
+      "source_id": "channel-13",
+      "source_name": "Channel 13",
+      "source_type": "public_broadcaster",
+      "ideology_bucket": "mixed",
+      "visibility_weight": 0.94,
+      "consensus_weight_cap": 0.94,
+      "use_in_consensus": true,
+      "domains": ["13news.co.il"],
+      "aliases": ["חדשות 13", "Channel 13", "13news"]
+    },
+    {
+      "source_id": "jpost",
+      "source_name": "Jerusalem Post",
+      "source_type": "mainstream",
+      "ideology_bucket": "center-right",
+      "visibility_weight": 0.84,
+      "consensus_weight_cap": 0.84,
+      "use_in_consensus": true,
+      "domains": ["jpost.com"],
+      "aliases": ["Jerusalem Post", "JPost"]
+    },
+    {
+      "source_id": "themarker",
+      "source_name": "TheMarker",
+      "source_type": "mainstream",
+      "ideology_bucket": "center-left",
+      "visibility_weight": 0.86,
+      "consensus_weight_cap": 0.86,
+      "use_in_consensus": true,
+      "domains": ["themarker.com"],
+      "aliases": ["TheMarker", "דה מרקר"]
+    },
+    {
+      "source_id": "kikar",
+      "source_name": "Kikar HaShabbat",
+      "source_type": "partisan",
+      "ideology_bucket": "religious",
+      "visibility_weight": 0.72,
+      "consensus_weight_cap": 0.62,
+      "use_in_consensus": true,
+      "domains": ["kikar.co.il"],
+      "aliases": ["כיכר השבת", "Kikar"]
+    },
+    {
+      "source_id": "i24news",
+      "source_name": "i24NEWS",
+      "source_type": "mainstream",
+      "ideology_bucket": "center",
+      "visibility_weight": 0.82,
+      "consensus_weight_cap": 0.82,
+      "use_in_consensus": true,
+      "domains": ["i24news.tv"],
+      "aliases": ["i24NEWS", "i24news"]
+    },
+    {
+      "source_id": "reddit",
+      "source_name": "Reddit",
+      "source_type": "forum",
+      "ideology_bucket": "mixed",
+      "visibility_weight": 0.55,
+      "consensus_weight_cap": 0.45,
+      "use_in_consensus": true,
+      "domains": ["reddit.com"],
+      "aliases": ["Reddit"]
+    },
+    {
+      "source_id": "telegram",
+      "source_name": "Telegram",
+      "source_type": "social",
+      "ideology_bucket": "mixed",
+      "visibility_weight": 0.6,
+      "consensus_weight_cap": 0.5,
+      "use_in_consensus": true,
+      "domains": ["t.me"],
+      "aliases": ["Telegram", "טלגרם"]
+    },
+    {
+      "source_id": "fxp",
+      "source_name": "FXP",
+      "source_type": "forum",
+      "ideology_bucket": "mixed",
+      "visibility_weight": 0.42,
+      "consensus_weight_cap": 0.32,
+      "use_in_consensus": true,
+      "domains": ["fxp.co.il", "fxp.com", "fxp.co.il", "www.fxp.co.il"],
+      "aliases": ["FXP"]
+    },
+    {
+      "source_id": "bluesky",
+      "source_name": "Bluesky",
+      "source_type": "social",
+      "ideology_bucket": "mixed",
+      "visibility_weight": 0.48,
+      "consensus_weight_cap": 0.35,
+      "use_in_consensus": true,
+      "domains": ["bsky.app", "public.api.bsky.app"],
+      "aliases": ["Bluesky"]
+    },
+    {
+      "source_id": "pipeline",
+      "source_name": "Pipeline Fallback",
+      "source_type": "social",
+      "ideology_bucket": "mixed",
+      "visibility_weight": 0.2,
+      "consensus_weight_cap": 0.1,
+      "use_in_consensus": false,
+      "domains": [],
+      "aliases": ["pipeline"]
+    }
+  ]
+}

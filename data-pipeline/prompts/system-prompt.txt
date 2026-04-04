@@ -53,13 +53,12 @@ You MUST follow this exact sequence — generate your reasoning FIRST in Hebrew,
    For politicians with NO direct coverage this cycle, use this SHORTER format:
 
    ## שורה תחתונה
-   A single witty or honest sentence acknowledging the silence. Vary it! Never repeat the
-   same phrase. Examples: "שקט מוחלט — אפילו הטרולים לקחו יום חופש",
-   "מתחת לרדאר השבוע, וזה אולי בדיוק מה שהוא רוצה"
+   A single factual sentence acknowledging the lack of matched coverage.
+   Do not be witty. Do not invent events. Do not infer hidden motives.
 
    ## מה זה אומר
-   One sentence contextualizing the absence based on their role/position.
-   Tailor it to the politician's actual situation — no generic boilerplate.
+   One sentence explaining that the score defaults to a neutral / low-confidence reading
+   because no direct evidence was matched in the provided data.
 
 2. Then output ALL dimensional scores as specified below
 

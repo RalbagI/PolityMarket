@@ -1,6 +1,8 @@
 import { create } from "zustand";
 
 const SUMMARY_CACHE_TTL = 60 * 60 * 1000; // 1 hour stale-while-revalidate for daily data
+const PARTY_SUMMARY_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours, changes at most daily
+const VOLATILITY_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours, generated offline
 
 const useStore = create((set, get) => ({
   // ── Summary Data Slice (with caching) ──────────────────────────────
@@ -26,7 +28,7 @@ const useStore = create((set, get) => ({
 
     set({ _summaryFetching: true });
     try {
-      const res = await fetch("/data/timeseries_summary.json");
+      const res = await fetch("/data/timeseries_summary.compact.json");
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       set({ summaryData: data, _summaryFetchedAt: Date.now(), loadError: null });
@@ -42,15 +44,30 @@ const useStore = create((set, get) => ({
 
   // ── Party Summary Slice ─────────────────────────────────────────────
   partySummaryData: [],
+  _partySummaryFetchedAt: 0,
+  _partySummaryFetching: false,
 
-  loadPartySummary: async () => {
+  loadPartySummary: async ({ force = false } = {}) => {
+    const state = get();
+    if (state._partySummaryFetching) return;
+    if (
+      !force &&
+      state.partySummaryData.length &&
+      Date.now() - state._partySummaryFetchedAt < PARTY_SUMMARY_CACHE_TTL
+    ) {
+      return;
+    }
+
+    set({ _partySummaryFetching: true });
     try {
       const res = await fetch("/data/party_summary.json");
       if (!res.ok) return;
       const data = await res.json();
-      set({ partySummaryData: data });
+      set({ partySummaryData: data, _partySummaryFetchedAt: Date.now() });
     } catch {
       // Party data unavailable — not critical
+    } finally {
+      set({ _partySummaryFetching: false });
     }
   },
 
@@ -64,7 +81,7 @@ const useStore = create((set, get) => ({
 
     set({ detailLoading: true });
     try {
-      const res = await fetch(`/data/details/${date}.json`);
+      const res = await fetch(`/data/details-lite/${date}.json`);
       if (!res.ok) return;
       const detail = await res.json();
       set((state) => ({
@@ -93,17 +110,35 @@ const useStore = create((set, get) => ({
   smaMode: "sma7",
   setSmaMode: (mode) => set({ smaMode: mode }),
 
+  signalMode: "media_climate",
+  setSignalMode: (mode) => set({ signalMode: mode }),
+
   // ── Volatility Data Slice ──────────────────────────────────────────
   volatilityData: null,
+  _volatilityFetchedAt: 0,
+  _volatilityFetching: false,
 
-  loadVolatility: async () => {
+  loadVolatility: async ({ force = false } = {}) => {
+    const state = get();
+    if (state._volatilityFetching) return;
+    if (
+      !force &&
+      state.volatilityData &&
+      Date.now() - state._volatilityFetchedAt < VOLATILITY_CACHE_TTL
+    ) {
+      return;
+    }
+
+    set({ _volatilityFetching: true });
     try {
       const res = await fetch("/data/volatility_data.json");
       if (!res.ok) return;
       const data = await res.json();
-      set({ volatilityData: data });
+      set({ volatilityData: data, _volatilityFetchedAt: Date.now() });
     } catch {
       // Volatility data unavailable — not critical
+    } finally {
+      set({ _volatilityFetching: false });
     }
   },
 

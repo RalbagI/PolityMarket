@@ -1,4 +1,4 @@
-import { resolveDisplayScore } from "../lib/marketScore";
+import { resolveSignalDelta, resolveSignalDisplayScore } from "../lib/signalMode";
 
 export default function TreemapLeaf({
   leaf,
@@ -10,6 +10,7 @@ export default function TreemapLeaf({
   onTouchEnd,
   onMouseEnter,
   backgroundColor,
+  signalMode,
 }) {
   const d = leaf.data;
   const w = leaf.x1 - leaf.x0;
@@ -27,8 +28,9 @@ export default function TreemapLeaf({
   const showScore = !d._isOthers && !tooSmall && area > 1200 && h > 20;
   const scoreFontSize = Math.min(24, baseNameFontSize * 1.1);
   const scoreLineH = showScore ? scoreFontSize * 1.2 : 0;
-  const displayScore = resolveDisplayScore(d);
-  const deltaValue = Number.isFinite(d.market_delta_points) ? d.market_delta_points : d.delta;
+  const displayScoreRaw = resolveSignalDisplayScore(d, signalMode);
+  const displayScore = Number.isFinite(displayScoreRaw) ? Math.round(displayScoreRaw) : null;
+  const deltaValue = resolveSignalDelta(d, signalMode) ?? d.delta;
 
   const nameAvailH = availH - scoreLineH;
   const roughMaxLines = Math.max(1, Math.floor(nameAvailH / (baseNameFontSize * 1.2 || 1)));

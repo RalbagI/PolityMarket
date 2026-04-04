@@ -16,14 +16,21 @@ beforeEach(async () => {
     loadError: null,
     _summaryFetchedAt: 0,
     _summaryFetching: false,
+    partySummaryData: [],
+    _partySummaryFetchedAt: 0,
+    _partySummaryFetching: false,
     detailCache: {},
     detailLoading: false,
     panelOpen: false,
     selectedPolitician: null,
     selectedDate: null,
     smaMode: "sma7",
+    signalMode: "media_climate",
     treemapSizeBy: "media_volume",
     treemapColorBy: "market_score",
+    volatilityData: null,
+    _volatilityFetchedAt: 0,
+    _volatilityFetching: false,
   });
 });
 
@@ -148,6 +155,32 @@ describe("store — loadSummary", () => {
   });
 });
 
+describe("store — loadPartySummary", () => {
+  it("fetches and stores party summary data", async () => {
+    const mockData = [{ party: "TestParty", overall_score: 5 }];
+    globalThis.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(mockData),
+    });
+
+    await act(() => useStore.getState().loadPartySummary());
+
+    expect(useStore.getState().partySummaryData).toEqual(mockData);
+  });
+
+  it("skips fetch if party summary data is fresh", async () => {
+    useStore.setState({
+      partySummaryData: [{ party: "cached" }],
+      _partySummaryFetchedAt: Date.now(),
+    });
+
+    globalThis.fetch = vi.fn();
+    await act(() => useStore.getState().loadPartySummary());
+
+    expect(globalThis.fetch).not.toHaveBeenCalled();
+  });
+});
+
 describe("store — fetchDetail", () => {
   it("fetches and caches detail for a date", async () => {
     const detail = [{ politician_id: "test", name: "Test" }];
@@ -209,5 +242,17 @@ describe("store — loadVolatility", () => {
 
   it("defaults to null", () => {
     expect(useStore.getState().volatilityData).toBeNull();
+  });
+
+  it("skips fetch if volatility data is fresh", async () => {
+    useStore.setState({
+      volatilityData: { politicians: {} },
+      _volatilityFetchedAt: Date.now(),
+    });
+
+    globalThis.fetch = vi.fn();
+    await act(() => useStore.getState().loadVolatility());
+
+    expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 });

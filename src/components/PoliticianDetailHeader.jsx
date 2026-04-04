@@ -6,12 +6,22 @@ import { localizeName, localizeParty } from "../lib/localize";
 import {
   getMarketTierBadgeClass,
   getMarketTierLabel,
-  resolveDisplayScore,
 } from "../lib/marketScore";
+import {
+  isLowConfidenceSignal,
+  resolveSignalConfidenceBand,
+  resolveSignalDelta,
+  resolveSignalDeltaPct,
+  resolveSignalDisplayScore,
+  resolveSignalPercentile,
+  resolveSignalSource,
+  resolveSignalTier,
+} from "../lib/signalMode";
 
 export default function PoliticianDetailHeader({
   entry,
   selectedDate,
+  signalMode,
   isLiked,
   onToggleLike,
   isAlertSubscribed,
@@ -19,16 +29,19 @@ export default function PoliticianDetailHeader({
 }) {
   const { t } = useTranslation();
 
-  const displayScore = resolveDisplayScore(entry) ?? 0;
-  const displayPercentile = Number.isFinite(entry.market_percentile)
-    ? Math.round(entry.market_percentile)
+  const displayScore = resolveSignalDisplayScore(entry, signalMode) ?? 0;
+  const displayPercentile = Number.isFinite(resolveSignalPercentile(entry, signalMode))
+    ? Math.round(resolveSignalPercentile(entry, signalMode))
     : null;
-  const deltaPoints = Number.isFinite(entry.market_delta_points) ? entry.market_delta_points : null;
-  const deltaPct = Number.isFinite(entry.market_delta_pct) ? entry.market_delta_pct : null;
+  const deltaPoints = resolveSignalDelta(entry, signalMode);
+  const deltaPct = resolveSignalDeltaPct(entry, signalMode);
+  const confidenceBand = resolveSignalConfidenceBand(entry, signalMode);
+  const signalTier = resolveSignalTier(entry, signalMode);
+  const signalSource = resolveSignalSource(entry, signalMode);
   const scoreAccent = scoreToColor(displayScore);
-  const tierLabel = entry.market_tier
-    ? t(`market.tiers.${entry.market_tier}.label`, {
-        defaultValue: getMarketTierLabel(entry.market_tier),
+  const tierLabel = signalTier
+    ? t(`market.tiers.${signalTier}.label`, {
+        defaultValue: getMarketTierLabel(signalTier),
       })
     : "";
 
@@ -43,18 +56,26 @@ export default function PoliticianDetailHeader({
               <span className="inline-block rounded-full border border-gray-700 bg-gray-800 px-2.5 py-0.5 text-xs font-medium text-gray-300">
                 {localizeParty(t, entry.party)}
               </span>
-              {entry.market_tier && (
+              {signalTier && (
                 <span
-                  className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getMarketTierBadgeClass(entry.market_tier)}`}
+                  className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getMarketTierBadgeClass(signalTier)}`}
                 >
-                  {entry.market_tier}-Tier
+                  {signalTier}-Tier
                 </span>
               )}
               {displayPercentile != null && (
                 <span className="text-xs font-medium text-gray-400">P{displayPercentile}</span>
               )}
+              {isLowConfidenceSignal(entry, signalMode) && (
+                <span className="inline-flex items-center rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-0.5 text-xs font-medium text-amber-200">
+                  {t("signals.lowConfidence")}
+                </span>
+              )}
             </div>
-            {entry.market_tier && <div className="mt-1 text-xs text-gray-400">{tierLabel}</div>}
+            {signalTier && <div className="mt-1 text-xs text-gray-400">{tierLabel}</div>}
+            {signalMode === "consensus_proxy" && signalSource && (
+              <div className="mt-1 text-xs text-gray-500">{t(`signals.sources.${signalSource}`)}</div>
+            )}
           </div>
         </div>
 
@@ -119,6 +140,11 @@ export default function PoliticianDetailHeader({
                     </span>
                   )}
                 </span>
+              </div>
+            )}
+            {confidenceBand && (
+              <div className="mt-1 text-[11px] text-gray-500">
+                {confidenceBand.low}–{confidenceBand.high}
               </div>
             )}
             <div className="text-xs text-gray-500">

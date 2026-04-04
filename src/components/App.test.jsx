@@ -45,6 +45,8 @@ vi.mock("../store", () => {
           setTreemapSizeBy: vi.fn(),
           setTreemapColorBy: vi.fn(),
           smaMode: "sma7",
+          signalMode: "media_climate",
+          setSignalMode: vi.fn(),
         };
         return selector(state);
       },

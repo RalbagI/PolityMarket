@@ -18,6 +18,11 @@ import {
   derivePartyTimelineFromSummary,
   getStoredOrAnnotatedMarketTimeline,
 } from "./lib/marketArtifacts";
+import {
+  hasConsensusInRows,
+  SIGNAL_MODE_CONSENSUS_PROXY,
+  SIGNAL_MODE_MEDIA_CLIMATE,
+} from "./lib/signalMode";
 
 const SlidePanel = lazy(() => import("./components/SlidePanel"));
 const DetailView = lazy(() => import("./components/DetailView"));
@@ -36,11 +41,12 @@ export default function App() {
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
   const loadPartySummary = useStore((s) => s.loadPartySummary);
-  const loadVolatility = useStore((s) => s.loadVolatility);
   const panelOpen = useStore((s) => s.panelOpen);
   const selectedPolitician = useStore((s) => s.selectedPolitician);
   const selectedDate = useStore((s) => s.selectedDate);
   const detailLoading = useStore((s) => s.detailLoading);
+  const signalMode = useStore((s) => s.signalMode);
+  const setSignalMode = useStore((s) => s.setSignalMode);
   const openPanel = useStore((s) => s.openPanel);
   const closePanel = useStore((s) => s.closePanel);
 
@@ -65,9 +71,7 @@ export default function App() {
 
   useEffect(() => {
     loadSummary();
-    loadPartySummary();
-    loadVolatility();
-  }, [loadSummary, loadPartySummary, loadVolatility]);
+  }, [loadSummary]);
 
   const marketSummaryData = useMemo(() => {
     return getStoredOrAnnotatedMarketTimeline(summaryData, "politician_id");
@@ -84,6 +88,23 @@ export default function App() {
       latestDate: latest,
     };
   }, [marketSummaryData]);
+
+  const consensusAvailable = useMemo(() => {
+    if (!latestDate) return false;
+    return hasConsensusInRows(marketSummaryData, latestDate);
+  }, [latestDate, marketSummaryData]);
+
+  useEffect(() => {
+    if (viewMode === "parties") {
+      loadPartySummary();
+    }
+  }, [viewMode, loadPartySummary]);
+
+  useEffect(() => {
+    if (!consensusAvailable && signalMode === SIGNAL_MODE_CONSENSUS_PROXY) {
+      setSignalMode(SIGNAL_MODE_MEDIA_CLIMATE);
+    }
+  }, [consensusAvailable, setSignalMode, signalMode]);
 
   // Enrich today data with pre-localized display names.
   const enrichedData = useMemo(() => {
@@ -104,16 +125,22 @@ export default function App() {
 
   // Normalize visible politicians for treemap (dynamic min/max)
   const treemapData = useMemo(() => {
-    return normalizeScores(filterState.visible);
-  }, [filterState.visible]);
+    return normalizeScores(filterState.visible, signalMode);
+  }, [filterState.visible, signalMode]);
 
   const rawPartyTimeline = useMemo(() => {
     if (!summaryData.length) return [];
     const hasLatestPartyData = latestDate
       ? partySummaryData.some((entry) => entry.date === latestDate)
       : false;
-    return hasLatestPartyData ? partySummaryData : derivePartyTimelineFromSummary(summaryData);
-  }, [latestDate, partySummaryData, summaryData]);
+    const hasLatestPartyConsensus = latestDate
+      ? hasConsensusInRows(partySummaryData, latestDate)
+      : false;
+    const shouldUsePartySummary =
+      hasLatestPartyData &&
+      (signalMode !== SIGNAL_MODE_CONSENSUS_PROXY || hasLatestPartyConsensus);
+    return shouldUsePartySummary ? partySummaryData : derivePartyTimelineFromSummary(summaryData);
+  }, [latestDate, partySummaryData, signalMode, summaryData]);
 
   const marketPartySummaryData = useMemo(() => {
     return getStoredOrAnnotatedMarketTimeline(rawPartyTimeline, "party");
@@ -135,7 +162,7 @@ export default function App() {
   }, [latestDate, marketPartySummaryData, t]);
 
   const sidebarData = viewMode === "parties" ? partyTreemapData : filterState.visible;
-  const sidebarStats = useSidebarStats(sidebarData);
+  const sidebarStats = useSidebarStats(sidebarData, signalMode);
 
   const handleSelectPolitician = useCallback(
     (name) => {
@@ -220,6 +247,8 @@ export default function App() {
           logEvent("switch_view_mode", { mode });
           setViewMode(mode);
         }}
+        signalMode={signalMode}
+        consensusAvailable={consensusAvailable}
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
@@ -247,12 +276,18 @@ export default function App() {
                   data={viewMode === "parties" ? partyTreemapData : treemapData}
                   onSelect={handleSelectPolitician}
                   selectedPolitician={selectedPolitician}
+                  signalMode={signalMode}
                 />
               </ErrorBoundary>
             </div>
             {/* Desktop: Weekly highlights sidebar */}
             <div className="hidden md:block w-[280px] shrink-0 border-s border-gray-800 bg-gray-950/80 overflow-y-auto p-3">
-              <WeeklyHighlights onSelect={handleSelectPolitician} />
+              <WeeklyHighlights
+                onSelect={handleSelectPolitician}
+                signalMode={signalMode}
+                summaryData={viewMode === "parties" ? marketPartySummaryData : marketSummaryData}
+                entityMode={viewMode === "parties" ? "party" : "politician"}
+              />
               <div className="mt-3">
                 <button
                   onClick={() => {
@@ -269,7 +304,13 @@ export default function App() {
 
           {/* Top Movers strip — pinned at bottom */}
           <div className="shrink-0 border-t border-gray-800 bg-gray-950">
-            <TopMoversStrip data={enrichedData} onSelect={handleSelectPolitician} />
+            <TopMoversStrip
+              data={viewMode === "parties" ? partyTreemapData : enrichedData}
+              onSelect={handleSelectPolitician}
+              summaryData={viewMode === "parties" ? marketPartySummaryData : marketSummaryData}
+              signalMode={signalMode}
+              entityMode={viewMode === "parties" ? "party" : "politician"}
+            />
           </div>
         </div>
 
@@ -288,6 +329,8 @@ export default function App() {
               logEvent("switch_view_mode", { mode });
               setViewMode(mode);
             }}
+            signalMode={signalMode}
+            consensusAvailable={consensusAvailable}
             hideHeader
           />
         </div>
@@ -312,6 +355,7 @@ export default function App() {
                 partyData={partyTreemapData.find((p) => p.name === selectedPolitician)}
                 todayData={todayData}
                 partySummaryData={marketPartySummaryData}
+                signalMode={signalMode}
               />
             ) : (
               <DetailView
@@ -320,6 +364,7 @@ export default function App() {
                 selectedDate={activeDate}
                 loading={detailLoading}
                 summaryData={marketSummaryData}
+                signalMode={signalMode}
                 isLiked={filterState.likedIds.includes(selectedPoliticianId)}
                 onToggleLike={filterState.toggleLiked}
                 isAlertSubscribed={alertState.isSubscribed(selectedPoliticianId)}
@@ -344,7 +389,7 @@ export default function App() {
               onClose={() => setCompareOpen(false)}
               title={t("compare.title")}
             >
-              <CompareView todayData={enrichedData} />
+              <CompareView todayData={enrichedData} signalMode={signalMode} />
             </SlidePanel>
           </Suspense>
         </ErrorBoundary>

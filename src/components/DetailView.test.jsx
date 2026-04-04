@@ -208,7 +208,7 @@ describe("DetailView dimension section (merged Score Breakdown)", () => {
       />
     );
 
-    expect(screen.getByText("73")).toBeInTheDocument();
+    expect(screen.getAllByText("73").length).toBeGreaterThan(0);
     expect(screen.getByText("A-Tier")).toBeInTheDocument();
     expect(screen.getByText("P88")).toBeInTheDocument();
     expect(screen.getByText("Positive Trend")).toBeInTheDocument();

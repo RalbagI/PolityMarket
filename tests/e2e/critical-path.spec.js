@@ -61,7 +61,7 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
     localStorage.setItem("politymarket-cookie-consent", "accepted");
   });
 
-  await page.route("**/data/timeseries_summary.json", async (route) => {
+  await page.route("**/data/timeseries_summary.compact.json", async (route) => {
     await route.fulfill({ json: summaryFixture });
   });
 
@@ -69,7 +69,7 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
     await route.fulfill({ json: [] });
   });
 
-  await page.route("**/data/details/*.json", async (route) => {
+  await page.route("**/data/details-lite/*.json", async (route) => {
     await route.fulfill({ json: detailFixture });
   });
 

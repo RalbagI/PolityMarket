@@ -15,8 +15,10 @@ vi.mock("../store", () => ({
     const state = {
       treemapSizeBy: "media_volume",
       treemapColorBy: "media_volume",
+      signalMode: "media_climate",
       setTreemapSizeBy: () => {},
       setTreemapColorBy: () => {},
+      setSignalMode: () => {},
     };
     return selector(state);
   },
@@ -225,5 +227,24 @@ describe("Sidebar display options position", () => {
 
     expect(legendBar).toBeTruthy();
     expect(legendBar.style.background).toContain("linear-gradient(to right");
+  });
+});
+
+describe("Sidebar signal availability", () => {
+  it("disables consensus toggle when consensus data is unavailable", () => {
+    render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+        signalMode="media_climate"
+        consensusAvailable={false}
+      />
+    );
+
+    expect(screen.getAllByText("signals.consensusProxy")[0].closest("button")).toBeDisabled();
+    expect(screen.getAllByText("signals.consensusUnavailable")[0]).toBeInTheDocument();
   });
 });

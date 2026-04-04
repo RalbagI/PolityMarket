@@ -98,12 +98,12 @@ describe("CompareView", () => {
     const inputs = screen.getAllByPlaceholderText("חיפוש...");
     expect(inputs.length).toBe(2);
 
-    // Select first politician in picker A (click Alice row — score 7.5)
-    const aliceButtons = screen.getAllByText("7.5");
+    // Select first politician in picker A (click Alice row — display score 75)
+    const aliceButtons = screen.getAllByText("75");
     fireEvent.click(aliceButtons[0]);
 
-    // Select Bob in picker B (click Bob row — score 4.2)
-    const bobButtons = screen.getAllByText("4.2");
+    // Select Bob in picker B (click Bob row — display score 42)
+    const bobButtons = screen.getAllByText("42");
     fireEvent.click(bobButtons[0]);
 
     // Should show overall scores and dimension comparison

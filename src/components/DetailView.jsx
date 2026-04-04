@@ -6,6 +6,11 @@ import AccordionSection from "./AccordionSection";
 import SkeletonLoader from "./SkeletonLoader";
 import PoliticianTrendChart from "./PoliticianTrendChart";
 import PoliticianDetailHeader from "./PoliticianDetailHeader";
+import {
+  hasConsensusSignal,
+  isLowConfidenceSignal,
+  resolveSignalConfidenceBand,
+} from "../lib/signalMode";
 
 const DIM_CONFIG = Object.freeze([
   { field: "dim_public_sentiment", key: "publicSentiment", color: "#6366f1", weight: "25%" },
@@ -92,6 +97,7 @@ export default function DetailView({
   selectedDate,
   loading,
   summaryData,
+  signalMode,
   isLiked,
   onToggleLike,
   isAlertSubscribed,
@@ -128,6 +134,8 @@ export default function DetailView({
   const newsHeadlines = Array.isArray(entry.news_headlines) ? entry.news_headlines : [];
   const socialMentions = Array.isArray(entry.social_mentions) ? entry.social_mentions : [];
   const hasSources = newsHeadlines.length > 0 || socialMentions.length > 0;
+  const confidenceBand = resolveSignalConfidenceBand(entry, "consensus_proxy");
+  const consensusScore = hasConsensusSignal(entry) ? entry.consensus_proxy : null;
 
   const nonNullDims = DIM_CONFIG.filter(
     ({ field }) => entry[field] != null && Number.isFinite(entry[field])
@@ -139,6 +147,7 @@ export default function DetailView({
       <PoliticianDetailHeader
         entry={entry}
         selectedDate={selectedDate}
+        signalMode={signalMode}
         isLiked={isLiked}
         onToggleLike={onToggleLike}
         isAlertSubscribed={isAlertSubscribed}
@@ -241,7 +250,78 @@ export default function DetailView({
 
       {/* Trend over time */}
       <AccordionSection title={t("detailView.section.trend")} icon={TrendingUp} defaultOpen={true}>
-        <PoliticianTrendChart politicianName={selectedPolitician} summaryData={summaryData} />
+        <PoliticianTrendChart
+          politicianName={selectedPolitician}
+          summaryData={summaryData}
+          signalMode={signalMode}
+        />
+      </AccordionSection>
+
+      <AccordionSection
+        title={t("detailView.section.consensusProxy")}
+        icon={TrendingUp}
+        defaultOpen={true}
+      >
+        <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-4">
+          {Number.isFinite(consensusScore) ? (
+            <>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-gray-500">
+                    {t("signals.consensusProxy")}
+                  </div>
+                  <div className="mt-1 text-3xl font-black text-white">
+                    {Math.round(consensusScore)}
+                  </div>
+                  {confidenceBand && (
+                    <div className="mt-1 text-xs text-gray-400">
+                      {t("detailView.consensus.band", {
+                        low: confidenceBand.low,
+                        high: confidenceBand.high,
+                      })}
+                    </div>
+                  )}
+                </div>
+                <div className="text-end">
+                  <div className="text-xs text-gray-500">
+                    {t(`signals.sources.${entry.consensus_signal_source || "media_only"}`)}
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-white">
+                    {Number.isFinite(entry.consensus_confidence)
+                      ? t("detailView.consensus.confidence", {
+                          value: Math.round(entry.consensus_confidence * 100),
+                        })
+                      : t("detailView.consensus.confidenceUnknown")}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 grid gap-2 text-xs text-gray-400 sm:grid-cols-2">
+                <div>
+                  {t("detailView.consensus.coverage", {
+                    count: entry.source_diversity ?? 0,
+                    strength: Number.isFinite(entry.signal_strength)
+                      ? Math.round(entry.signal_strength * 100)
+                      : 0,
+                  })}
+                </div>
+                <div>
+                  {t("detailView.consensus.pollAnchor", {
+                    source: t(`signals.sources.${entry.consensus_signal_source || "media_only"}`),
+                  })}
+                </div>
+              </div>
+              {isLowConfidenceSignal(entry, "consensus_proxy") && (
+                <div className="mt-3 rounded-lg border border-amber-400/20 bg-amber-400/10 px-3 py-2 text-xs text-amber-100">
+                  {t("detailView.consensus.lowConfidence")}
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="rounded-lg border border-gray-800 bg-gray-950/50 px-4 py-3 text-sm text-gray-400">
+              {t("signals.consensusUnavailable")}
+            </div>
+          )}
+        </div>
       </AccordionSection>
 
       {/* Sources — collapsed by default */}

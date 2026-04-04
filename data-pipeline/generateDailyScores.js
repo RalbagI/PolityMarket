@@ -13,6 +13,12 @@ import {
   summaryRowSchema8dim,
 } from "./lib/parseLLMResponse.js";
 import { annotateMarketTimeline } from "../src/lib/marketScore.js";
+import {
+  annotatePartyConsensusTimeline,
+  annotatePoliticianConsensusTimeline,
+  buildConsensusCalibrator,
+  buildPublicPollLookup,
+} from "../src/lib/consensusScore.js";
 import retry from "./lib/retry.js";
 import {
   applyEMA,
@@ -29,6 +35,14 @@ import {
   computeTransparencyEthics,
 } from "./lib/computeScore.js";
 import { fetchParliamentaryData, clearCache as clearOknessetCache } from "./lib/openKnesset.js";
+import { getPublicPollAdapter } from "./lib/publicPolls.js";
+import {
+  buildEvidenceItem,
+  buildSourceBaselines,
+  computeCoverageAndConsensusFeatures,
+  resolveSourceMeta,
+  stripPublisherArtifacts,
+} from "./lib/sourceRegistry.js";
 import {
   aggregateParties,
   detectOutliers,
@@ -799,7 +813,9 @@ const POLITICIANS = [
 
 const DATA_DIR = path.resolve(__dirname, "../public/data");
 const SUMMARY_PATH = path.join(DATA_DIR, "timeseries_summary.json");
+const SUMMARY_COMPACT_PATH = path.join(DATA_DIR, "timeseries_summary.compact.json");
 const DETAILS_DIR = path.join(DATA_DIR, "details");
+const DETAILS_LITE_DIR = path.join(DATA_DIR, "details-lite");
 const RETENTION_DAYS = 90;
 const PIPELINE_TIMEZONE = process.env.TZ || "Asia/Jerusalem";
 const OPENAI_MODEL_HIGH = process.env.OPENAI_MODEL_HIGH || "gpt-5.4";
@@ -990,6 +1006,7 @@ function parseRssItems(xml) {
       title: extractTagValue(block, ["title"]),
       description: extractTagValue(block, ["description", "summary", "content"]),
       link: extractTagValue(block, ["link", "guid"]),
+      publishedAt: extractTagValue(block, ["pubDate", "published", "updated"]),
     }))
     .filter((item) => item.title.length > 0);
 }
@@ -1193,28 +1210,57 @@ function renderSearchTemplate(template, politician) {
   return template.replaceAll("{query}", encodeURIComponent(quotedName));
 }
 
+function truncateForEvidence(value, limit = 280) {
+  return String(value ?? "").replace(/\s+/g, " ").trim().slice(0, limit);
+}
+
+function dedupeEvidenceItems(items) {
+  const seen = new Set();
+  const unique = [];
+  for (const item of items) {
+    const key = [item?.source_id, item?.url, item?.matched_text].join("::");
+    if (!item?.matched_text || seen.has(key)) continue;
+    seen.add(key);
+    unique.push(item);
+  }
+  return unique;
+}
+
 async function fetchRSSHeadlines(politician, sourceConfig) {
   const rssConfig = sourceConfig.rss;
   const searchTerms = buildSearchTerms(politician);
   const headlines = [];
+  const evidenceItems = [];
   const unverifiedHeadlines = [];
   let successfulSources = 0;
   let failedSources = 0;
 
   const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
 
-  function classifyItem(item) {
+  function classifyItem(item, sourceMeta) {
     const combined = `${item.title} ${item.description}`;
     if (isSpamContent(combined, item.link)) return;
     const matchType = includesPolitician(combined, searchTerms);
+    const cleanedTitle = stripPublisherArtifacts(item.title, sourceMeta);
+    const evidenceItem = buildEvidenceItem({
+      sourceMeta,
+      url: item.link,
+      publishedAt: item.publishedAt || null,
+      matchedText: truncateForEvidence(cleanedTitle, 220),
+      entitySnippet: truncateForEvidence(combined, 280),
+      quote: truncateForEvidence(cleanedTitle, 180),
+      isDirectEntityMatch: matchType === "exact",
+    });
     if (matchType === "exact") {
-      headlines.push(item.title);
+      headlines.push(cleanedTitle);
+      evidenceItems.push(evidenceItem);
     } else if (matchType === "partial") {
       unverifiedHeadlines.push({
-        text: item.title,
+        text: cleanedTitle,
         fullName: politician.name,
         hebrewName,
         party: politician.party,
+        evidenceItem,
       });
     }
   }
@@ -1223,8 +1269,9 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
     const url = renderSearchTemplate(template, politician);
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
+      const sourceMeta = resolveSourceMeta({ url, hint: "Google News", fallbackName: "Google News" });
       successfulSources++;
-      for (const item of items) classifyItem(item);
+      for (const item of items) classifyItem(item, sourceMeta);
     } catch (err) {
       failedSources++;
       console.warn(`[RSS] ${politician.name}: failed query feed (${url}) — ${err.message}`);
@@ -1234,8 +1281,9 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   for (const url of rssConfig.globalFeeds ?? []) {
     try {
       const items = await getRssItems(url, rssConfig.maxItemsPerSource);
+      const sourceMeta = resolveSourceMeta({ url });
       successfulSources++;
-      for (const item of items) classifyItem(item);
+      for (const item of items) classifyItem(item, sourceMeta);
     } catch (err) {
       failedSources++;
       console.warn(`[RSS] ${politician.name}: failed global feed (${url}) — ${err.message}`);
@@ -1249,19 +1297,21 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   }
 
   const unique = dedupeStrings(headlines).slice(0, rssConfig.maxHeadlinesPerPolitician);
-  if (unique.length === 0) {
-    unique.push(`No direct headlines matched ${politician.name} in configured sources this cycle.`);
-  }
   console.log(
     `[RSS] Fetched ${unique.length} verified + ${unverifiedHeadlines.length} unverified headlines for ${politician.name}`
   );
-  return { headlines: unique, unverifiedHeadlines };
+  return {
+    headlines: unique,
+    unverifiedHeadlines,
+    evidenceItems: dedupeEvidenceItems(evidenceItems),
+  };
 }
 
 async function fetchSocialMediaMentions(politician, sourceConfig) {
   const socialConfig = sourceConfig.social;
   const searchTerms = buildSearchTerms(politician);
   const matches = [];
+  const evidenceItems = [];
   const unverifiedMentions = [];
   let successfulSources = 0;
   let failedSources = 0;
@@ -1269,12 +1319,17 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
 
   // Helper: process a list of posts, filter spam, and classify matches
-  function processPosts(posts) {
+  function processPosts(posts, sourceHint) {
     for (const post of posts) {
       const combined = `${post.title} ${post.body}`;
       if (isSpamContent(combined, post.permalink)) continue;
       const matchType = includesPolitician(combined, searchTerms);
       if (!matchType) continue;
+      const sourceMeta = resolveSourceMeta({
+        url: post.permalink,
+        hint: sourceHint || post.author,
+        fallbackName: sourceHint || post.author,
+      });
 
       const mentionObj = {
         text: post.body
@@ -1286,9 +1341,18 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
           known_satirist: /satire|parody|meme/i.test(`${post.author} ${combined}`),
         },
       };
+      const evidenceItem = buildEvidenceItem({
+        sourceMeta,
+        url: post.permalink,
+        matchedText: truncateForEvidence(mentionObj.text, 220),
+        entitySnippet: truncateForEvidence(combined, 280),
+        quote: truncateForEvidence(post.body || post.title, 180),
+        isDirectEntityMatch: matchType === "exact",
+      });
 
       if (matchType === "exact") {
         matches.push(mentionObj);
+        evidenceItems.push(evidenceItem);
       } else {
         unverifiedMentions.push({
           text: mentionObj.text,
@@ -1296,6 +1360,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
           hebrewName,
           party: politician.party,
           mentionObj, // preserve for merge-back if verified
+          evidenceItem,
         });
       }
     }
@@ -1306,7 +1371,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
     try {
       const posts = await getRedditPosts(subreddit, socialConfig.maxPostsPerSubreddit);
       successfulSources++;
-      processPosts(posts);
+      processPosts(posts, "Reddit");
     } catch (err) {
       failedSources++;
       console.warn(`[Social] ${politician.name}: failed Reddit (${subreddit}) — ${err.message}`);
@@ -1320,7 +1385,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       try {
         const posts = await getTelegramPosts(channel, telegramConfig.maxMessagesPerChannel || 20);
         successfulSources++;
-        processPosts(posts);
+        processPosts(posts, "Telegram");
       } catch (err) {
         failedSources++;
         console.warn(`[Social] ${politician.name}: failed Telegram (${channel}) — ${err.message}`);
@@ -1335,7 +1400,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       try {
         const threads = await getFxpThreads(forumId, fxpConfig.maxThreadsPerForum || 30);
         successfulSources++;
-        processPosts(threads);
+        processPosts(threads, "FXP");
       } catch (err) {
         failedSources++;
         console.warn(`[Social] ${politician.name}: failed FXP (f=${forumId}) — ${err.message}`);
@@ -1350,7 +1415,7 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
       const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
       const posts = await searchBlueskyPosts(hebrewName, blueskyConfig.maxPostsPerSearch || 10);
       successfulSources++;
-      processPosts(posts);
+      processPosts(posts, "Bluesky");
     } catch (err) {
       // Bluesky is best-effort — don't count as failure
       console.warn(`[Social] ${politician.name}: Bluesky unavailable — ${err.message}`);
@@ -1369,18 +1434,14 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   }
   const unique = [...seenTexts.values()].slice(0, socialConfig.maxMentionsPerPolitician);
 
-  if (unique.length === 0) {
-    unique.push({
-      text: `No direct social mentions matched ${politician.name} in configured sources this cycle.`,
-      thread_context: [],
-      speaker_metadata: { handle: "@pipeline", known_satirist: false },
-    });
-  }
-
   console.log(
     `[Social] Fetched ${unique.length} verified + ${unverifiedMentions.length} unverified mentions for ${politician.name}`
   );
-  return { mentions: unique, unverifiedMentions };
+  return {
+    mentions: unique,
+    unverifiedMentions,
+    evidenceItems: dedupeEvidenceItems(evidenceItems),
+  };
 }
 
 // ── LLM System Prompt ─────────────────────────────────────────────────
@@ -1400,8 +1461,7 @@ export function buildBatchedPrompt(
   politicianDataMap,
   oknessetMap,
   promisesDB,
-  _requireCoT = true,
-  yesterdayCoTMap = new Map()
+  _requireCoT = true
 ) {
   const _oknessetMap = oknessetMap || new Map();
   const _promisesDB = promisesDB || {};
@@ -1472,19 +1532,11 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
 
     const coalitionRole = ["right", "religious"].includes(p.wing) ? "coalition" : "opposition";
 
-    // Context hint for politicians with no real coverage
-    const hasRealHeadlines = data.headlines.some(
-      (h) => !h.startsWith("No direct headlines matched")
-    );
-    const hasRealSocial = data.socialMentions.some(
-      (m) => !String(m?.text || "").includes("No direct social mentions")
-    );
-    const rawPrevCoT = yesterdayCoTMap.get(p.id);
-    const prevCoT = rawPrevCoT ? rawPrevCoT.replace(/[\n\r]/g, " ").replace(/---/g, "") : null;
-    const rollingContext = prevCoT ? `\nPrevious analysis summary: ${prevCoT}` : "";
+    const hasRealHeadlines = data.headlines.length > 0;
+    const hasRealSocial = data.socialMentions.length > 0;
     const contextHint =
       !hasRealHeadlines && !hasRealSocial
-        ? `\nContext note: No direct headlines or social mentions matched this cycle. Use the SHORT chain_of_thought format (## שורה תחתונה + ## מה זה אומר only). Be creative — don't repeat the same boilerplate. Tailor based on: party: ${p.party}, role: ${p.role || "mk"}, wing: ${p.wing}, coalition role: ${coalitionRole}. Do not add external facts or unprovided current events.${rollingContext}`
+        ? `\nContext note: No direct headlines or social mentions matched this cycle. Use neutral defaults, keep chain_of_thought factual and brief, and do not invent current events or narrative detail.`
         : "";
 
     prompt += `
@@ -1720,7 +1772,9 @@ export function reconcileVerifiedMatches(data, headlineLimit, socialLimit) {
   }
   socialMentions = [...seenTexts.values()].slice(0, socialLimit);
 
-  return { headlines, socialMentions };
+  const evidenceItems = dedupeEvidenceItems(data?.evidenceItems ?? []);
+
+  return { headlines, socialMentions, evidenceItems };
 }
 
 export function shouldRetryBatchError(err) {
@@ -1760,8 +1814,6 @@ export function splitPoliticiansIntoBatches(
   const batches = [];
   let current = [];
 
-  // Note: size estimate omits yesterdayCoTMap (~2.4K chars max, <1% of 350K budget).
-  // Conservative: actual prompt may be slightly larger than estimate.
   const exceedsPromptBudget = (batch) => {
     if (!enforceCharBudget) return false;
     return (
@@ -1803,8 +1855,7 @@ async function batchScoreAllPoliticians(
   politicians,
   politicianDataMap,
   oknessetMap,
-  promisesDB,
-  yesterdayCoTMap
+  promisesDB
 ) {
   // Classify by news activity: high-tier gets OPENAI_MODEL_HIGH, low-tier gets OPENAI_MODEL_LOW
   const highTier = [];
@@ -1851,8 +1902,7 @@ async function batchScoreAllPoliticians(
         politicianDataMap,
         oknessetMap,
         promisesDB,
-        requireCoT,
-        yesterdayCoTMap
+        requireCoT
       );
       console.log(`  Prompt size: ${prompt.length} chars`);
 
@@ -1873,6 +1923,31 @@ async function batchScoreAllPoliticians(
   }
 
   return allResults;
+}
+
+function shiftDateString(dateString, days) {
+  const date = new Date(`${dateString}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function loadRecentDetailEntries(referenceDate, windowDays = 90) {
+  const windowStart = shiftDateString(referenceDate, -Math.max(windowDays, 1));
+  if (!fs.existsSync(DETAILS_DIR)) return [];
+
+  return fs
+    .readdirSync(DETAILS_DIR)
+    .filter((file) => /^\d{4}-\d{2}-\d{2}\.json$/.test(file))
+    .map((file) => file.replace(/\.json$/, ""))
+    .filter((date) => date >= windowStart && date < referenceDate)
+    .flatMap((date) => {
+      try {
+        const rows = JSON.parse(fs.readFileSync(path.join(DETAILS_DIR, `${date}.json`), "utf-8"));
+        return Array.isArray(rows) ? rows.map((row) => ({ date, ...row })) : [];
+      } catch {
+        return [];
+      }
+    });
 }
 
 // ── Artifact Writers ─────────────────────────────────────────────────
@@ -1900,6 +1975,8 @@ function appendToSummary(entries, today) {
       role: entry.role,
       overall_score: entry.overall_score,
       overall_score_raw: entry.overall_score_raw ?? entry.overall_score,
+      media_climate_raw: entry.media_climate_raw ?? entry.overall_score_raw ?? entry.overall_score,
+      media_climate_display: entry.media_climate_display ?? entry.market_score ?? null,
       media_volume: entry.media_volume,
       // 8-dimension scores (null for historical entries)
       dim_public_sentiment: entry.dim_public_sentiment ?? null,
@@ -1915,6 +1992,22 @@ function appendToSummary(entries, today) {
       market_tier: entry.market_tier ?? null,
       market_delta_points: entry.market_delta_points ?? null,
       market_delta_pct: entry.market_delta_pct ?? null,
+      has_direct_coverage: entry.has_direct_coverage ?? null,
+      signal_strength: entry.signal_strength ?? null,
+      source_diversity: entry.source_diversity ?? null,
+      coverage_confidence: entry.coverage_confidence ?? null,
+      policy_rel_z: entry.policy_rel_z ?? null,
+      inverse_hostility_rel_z: entry.inverse_hostility_rel_z ?? null,
+      amplification_weighted: entry.amplification_weighted ?? null,
+      cross_source_agreement: entry.cross_source_agreement ?? null,
+      mainstream_share: entry.mainstream_share ?? null,
+      social_share: entry.social_share ?? null,
+      source_entropy: entry.source_entropy ?? null,
+      consensus_proxy: entry.consensus_proxy ?? null,
+      consensus_ci_low: entry.consensus_ci_low ?? null,
+      consensus_ci_high: entry.consensus_ci_high ?? null,
+      consensus_signal_source: entry.consensus_signal_source ?? null,
+      consensus_confidence: entry.consensus_confidence ?? null,
     };
     const validated = summaryRowSchema8dim.safeParse(summaryRow);
     if (!validated.success) {
@@ -1929,11 +2022,48 @@ function appendToSummary(entries, today) {
     (a, b) => a.date.localeCompare(b.date) || a.politician_id.localeCompare(b.politician_id)
   );
   fs.writeFileSync(SUMMARY_PATH, JSON.stringify(summary, null, 2));
+  const compactSummary = summary.map((entry) => ({
+    date: entry.date,
+    politician_id: entry.politician_id,
+    name: entry.name,
+    party: entry.party,
+    wing: entry.wing ?? null,
+    sector: entry.sector ?? null,
+    role: entry.role ?? null,
+    overall_score: entry.overall_score,
+    dim_public_sentiment: entry.dim_public_sentiment ?? null,
+    dim_parliamentary_activity: entry.dim_parliamentary_activity ?? null,
+    dim_media_credibility: entry.dim_media_credibility ?? null,
+    dim_transparency_ethics: entry.dim_transparency_ethics ?? null,
+    dim_field_activity: entry.dim_field_activity ?? null,
+    dim_satire_cultural_impact: entry.dim_satire_cultural_impact ?? null,
+    dim_legislative_quality: entry.dim_legislative_quality ?? null,
+    dim_flipflop_index: entry.dim_flipflop_index ?? null,
+    media_climate_raw: entry.media_climate_raw ?? entry.overall_score_raw ?? entry.overall_score,
+    media_climate_display: entry.media_climate_display ?? entry.market_score ?? null,
+    media_volume: entry.media_volume,
+    market_score: entry.market_score ?? null,
+    market_percentile: entry.market_percentile ?? null,
+    market_tier: entry.market_tier ?? null,
+    market_delta_points: entry.market_delta_points ?? null,
+    market_delta_pct: entry.market_delta_pct ?? null,
+    has_direct_coverage: entry.has_direct_coverage ?? null,
+    signal_strength: entry.signal_strength ?? null,
+    source_diversity: entry.source_diversity ?? null,
+    coverage_confidence: entry.coverage_confidence ?? null,
+    consensus_proxy: entry.consensus_proxy ?? null,
+    consensus_ci_low: entry.consensus_ci_low ?? null,
+    consensus_ci_high: entry.consensus_ci_high ?? null,
+    consensus_signal_source: entry.consensus_signal_source ?? null,
+    consensus_confidence: entry.consensus_confidence ?? null,
+  }));
+  fs.writeFileSync(SUMMARY_COMPACT_PATH, JSON.stringify(compactSummary, null, 2));
   console.log(`  → Summary: ${summary.length} total rows`);
 }
 
 function writeDetailFile(entries, today) {
   fs.mkdirSync(DETAILS_DIR, { recursive: true });
+  fs.mkdirSync(DETAILS_LITE_DIR, { recursive: true });
   const detailEntries = entries.map((e) => ({
     politician_id: e.politician_id,
     name: e.name,
@@ -1950,6 +2080,8 @@ function writeDetailFile(entries, today) {
     media_volume: e.media_volume,
     overall_score: e.overall_score,
     overall_score_raw: e.overall_score_raw ?? e.overall_score,
+    media_climate_raw: e.media_climate_raw ?? e.overall_score_raw ?? e.overall_score,
+    media_climate_display: e.media_climate_display ?? e.market_score ?? null,
     chain_of_thought: e.chain_of_thought,
     // 8-dimension composite scores
     dim_public_sentiment: e.dim_public_sentiment ?? null,
@@ -1992,12 +2124,71 @@ function writeDetailFile(entries, today) {
     market_tier: e.market_tier ?? null,
     market_delta_points: e.market_delta_points ?? null,
     market_delta_pct: e.market_delta_pct ?? null,
+    // Coverage and consensus fields
+    has_direct_coverage: e.has_direct_coverage ?? null,
+    signal_strength: e.signal_strength ?? null,
+    source_diversity: e.source_diversity ?? null,
+    coverage_confidence: e.coverage_confidence ?? null,
+    policy_rel_z: e.policy_rel_z ?? null,
+    inverse_hostility_rel_z: e.inverse_hostility_rel_z ?? null,
+    amplification_weighted: e.amplification_weighted ?? null,
+    cross_source_agreement: e.cross_source_agreement ?? null,
+    mainstream_share: e.mainstream_share ?? null,
+    social_share: e.social_share ?? null,
+    source_entropy: e.source_entropy ?? null,
+    consensus_proxy: e.consensus_proxy ?? null,
+    consensus_ci_low: e.consensus_ci_low ?? null,
+    consensus_ci_high: e.consensus_ci_high ?? null,
+    consensus_signal_source: e.consensus_signal_source ?? null,
+    consensus_confidence: e.consensus_confidence ?? null,
     // Source data
     news_headlines: Array.isArray(e.news_headlines) ? e.news_headlines : [],
     social_mentions: Array.isArray(e.social_mentions) ? e.social_mentions : [],
+    evidence_items: Array.isArray(e.evidence_items) ? e.evidence_items : [],
   }));
   const detailPath = path.join(DETAILS_DIR, `${today}.json`);
   fs.writeFileSync(detailPath, JSON.stringify(detailEntries, null, 2));
+  const detailLiteEntries = entries.map((e) => ({
+    politician_id: e.politician_id,
+    name: e.name,
+    party: e.party,
+    wing: e.wing,
+    sector: e.sector,
+    role: e.role,
+    hostility_level: e.hostility_level,
+    policy_approval: e.policy_approval,
+    media_amplification: e.media_amplification,
+    media_volume: e.media_volume,
+    overall_score: e.overall_score,
+    media_climate_raw: e.media_climate_raw ?? e.overall_score_raw ?? e.overall_score,
+    media_climate_display: e.media_climate_display ?? e.market_score ?? null,
+    chain_of_thought: e.chain_of_thought,
+    dim_public_sentiment: e.dim_public_sentiment ?? null,
+    dim_parliamentary_activity: e.dim_parliamentary_activity ?? null,
+    dim_media_credibility: e.dim_media_credibility ?? null,
+    dim_transparency_ethics: e.dim_transparency_ethics ?? null,
+    dim_field_activity: e.dim_field_activity ?? null,
+    dim_satire_cultural_impact: e.dim_satire_cultural_impact ?? null,
+    dim_legislative_quality: e.dim_legislative_quality ?? null,
+    dim_flipflop_index: e.dim_flipflop_index ?? null,
+    market_score: e.market_score ?? null,
+    market_percentile: e.market_percentile ?? null,
+    market_tier: e.market_tier ?? null,
+    market_delta_points: e.market_delta_points ?? null,
+    market_delta_pct: e.market_delta_pct ?? null,
+    has_direct_coverage: e.has_direct_coverage ?? null,
+    signal_strength: e.signal_strength ?? null,
+    source_diversity: e.source_diversity ?? null,
+    coverage_confidence: e.coverage_confidence ?? null,
+    consensus_proxy: e.consensus_proxy ?? null,
+    consensus_ci_low: e.consensus_ci_low ?? null,
+    consensus_ci_high: e.consensus_ci_high ?? null,
+    consensus_signal_source: e.consensus_signal_source ?? null,
+    consensus_confidence: e.consensus_confidence ?? null,
+    news_headlines: Array.isArray(e.news_headlines) ? e.news_headlines : [],
+    social_mentions: Array.isArray(e.social_mentions) ? e.social_mentions : [],
+  }));
+  fs.writeFileSync(path.join(DETAILS_LITE_DIR, `${today}.json`), JSON.stringify(detailLiteEntries, null, 2));
   console.log(`  → Detail: ${detailPath}`);
 }
 
@@ -2076,6 +2267,13 @@ function pruneOldDetails() {
   if (pruned > 0) {
     console.log(`  → Pruned ${pruned} detail files older than ${RETENTION_DAYS} days`);
   }
+  if (fs.existsSync(DETAILS_LITE_DIR)) {
+    const liteFiles = fs.readdirSync(DETAILS_LITE_DIR).filter((f) => f.endsWith(".json"));
+    for (const file of liteFiles) {
+      const date = file.replace(".json", "");
+      if (date < cutoffStr) fs.unlinkSync(path.join(DETAILS_LITE_DIR, file));
+    }
+  }
 }
 
 // ── Main Pipeline ──────────────────────────────────────────────────────
@@ -2104,12 +2302,24 @@ async function main() {
 
   for (const politician of POLITICIANS) {
     try {
-      const { headlines, unverifiedHeadlines } = await fetchRSSHeadlines(politician, sourceConfig);
-      const { mentions: socialMentions, unverifiedMentions } = await fetchSocialMediaMentions(
+      const {
+        headlines,
+        unverifiedHeadlines,
+        evidenceItems: headlineEvidence,
+      } = await fetchRSSHeadlines(politician, sourceConfig);
+      const {
+        mentions: socialMentions,
+        unverifiedMentions,
+        evidenceItems: socialEvidence,
+      } = await fetchSocialMediaMentions(
         politician,
         sourceConfig
       );
-      politicianDataMap.set(politician.id, { headlines, socialMentions });
+      politicianDataMap.set(politician.id, {
+        headlines,
+        socialMentions,
+        evidenceItems: dedupeEvidenceItems([...(headlineEvidence ?? []), ...(socialEvidence ?? [])]),
+      });
 
       // Collect partial matches for batch verification
       for (const uh of unverifiedHeadlines) {
@@ -2130,11 +2340,12 @@ async function main() {
           politicianId: politician.id,
           type: "social",
           mentionObj: um.mentionObj,
+          evidenceItem: um.evidenceItem,
         });
       }
     } catch (err) {
       console.warn(`  ⚠ Data fetch failed for ${politician.name}: ${err.message}`);
-      politicianDataMap.set(politician.id, { headlines: [], socialMentions: [] });
+      politicianDataMap.set(politician.id, { headlines: [], socialMentions: [], evidenceItems: [] });
       fetchFailures.push({ politicianId: politician.id, message: err.message });
     }
   }
@@ -2172,8 +2383,10 @@ async function main() {
 
       if (item.type === "headline") {
         data.headlines.push(item.text);
+        if (item.evidenceItem) data.evidenceItems = [...(data.evidenceItems ?? []), item.evidenceItem];
       } else if (item.type === "social" && item.mentionObj) {
         data.socialMentions.push(item.mentionObj);
+        if (item.evidenceItem) data.evidenceItems = [...(data.evidenceItems ?? []), item.evidenceItem];
       }
     }
 
@@ -2186,6 +2399,7 @@ async function main() {
       );
       data.headlines = reconciled.headlines;
       data.socialMentions = reconciled.socialMentions;
+      data.evidenceItems = reconciled.evidenceItems;
     }
   } else {
     console.log("\n  No partial entity matches to verify.");
@@ -2215,35 +2429,13 @@ async function main() {
     for (const p of POLITICIANS) oknessetMap.set(p.id, null);
   }
 
-  // ── Phase 1b: Load previous day's CoT for rolling context ──────────
-  const yesterdayCoTMap = new Map();
-  try {
-    const todayStr = new Date().toLocaleDateString("en-CA", { timeZone: PIPELINE_TIMEZONE });
-    const [y, m, d] = todayStr.split("-").map(Number);
-    const utcToday = new Date(Date.UTC(y, m - 1, d));
-    utcToday.setUTCDate(utcToday.getUTCDate() - 1);
-    const yesterdayStr = utcToday.toISOString().slice(0, 10);
-    const yesterdayPath = path.join(DETAILS_DIR, `${yesterdayStr}.json`);
-    const prevData = JSON.parse(fs.readFileSync(yesterdayPath, "utf-8"));
-    if (!Array.isArray(prevData)) throw new Error("previous detail file is not an array");
-    for (const entry of prevData) {
-      if (entry.chain_of_thought && entry.chain_of_thought.length > 20) {
-        yesterdayCoTMap.set(entry.politician_id, entry.chain_of_thought.slice(0, 120));
-      }
-    }
-    console.log(`  Loaded ${yesterdayCoTMap.size} previous CoT summaries for rolling context`);
-  } catch {
-    console.log("  No previous day detail file found — skipping rolling context");
-  }
-
   // ── Phase 2: Batch-score all politicians via OpenAI Codex CLI ───────
   console.log("\nPhase 2: Scoring via OpenAI Codex CLI...");
   const llmResults = await batchScoreAllPoliticians(
     POLITICIANS,
     politicianDataMap,
     oknessetMap,
-    PROMISES_DB,
-    yesterdayCoTMap
+    PROMISES_DB
   );
 
   if (llmResults.length !== POLITICIANS.length) {
@@ -2266,6 +2458,11 @@ async function main() {
       `LLM returned ${resultMap.size} unique IDs, expected ${POLITICIANS.length}. Missing: ${missing.slice(0, 10).join(", ")}${missing.length > 10 ? "..." : ""}`
     );
   }
+
+  const recentDetailEntries = loadRecentDetailEntries(today, 90);
+  const sourceBaselines = buildSourceBaselines(recentDetailEntries, shiftDateString(today, -90));
+  const publicPollAdapter = getPublicPollAdapter();
+  const publicPollLookup = buildPublicPollLookup(publicPollAdapter.polls);
 
   // ── Phase 3: Process results and build entries ──────────────────────
   console.log("\nPhase 3: Processing results...");
@@ -2353,7 +2550,22 @@ async function main() {
       };
 
       const overallScore = computeOverallScore8dim(dims, politician.wing, agenda_bonus);
-      const data = politicianDataMap.get(politician.id) || { headlines: [], socialMentions: [] };
+      const data = politicianDataMap.get(politician.id) || {
+        headlines: [],
+        socialMentions: [],
+        evidenceItems: [],
+      };
+      const evidenceItems = Array.isArray(data.evidenceItems) ? data.evidenceItems : [];
+      const coverageSignals = computeCoverageAndConsensusFeatures(
+        {
+          hostility_level: hostility,
+          policy_approval: policy,
+          media_amplification: amplification,
+          media_volume: parseFloat((amplification * 10).toFixed(1)),
+        },
+        evidenceItems,
+        sourceBaselines
+      );
 
       const entry = {
         date: today,
@@ -2367,6 +2579,7 @@ async function main() {
         policy_approval: policy,
         media_amplification: amplification,
         overall_score: overallScore,
+        media_climate_raw: overallScore,
         chain_of_thought: chainOfThought,
         news_sentiment: parseFloat((((policy + 1) / 2) * 10).toFixed(1)),
         social_sentiment: parseFloat(((1 - hostility) * 10).toFixed(1)),
@@ -2412,9 +2625,22 @@ async function main() {
         // Flip-flop sub-fields
         flipflop_contradictions,
         flipflop_promises_checked,
+        // Coverage confidence and de-biased source features
+        has_direct_coverage: coverageSignals.has_direct_coverage,
+        signal_strength: coverageSignals.signal_strength,
+        source_diversity: coverageSignals.source_diversity,
+        coverage_confidence: coverageSignals.coverage_confidence,
+        policy_rel_z: coverageSignals.policy_rel_z,
+        inverse_hostility_rel_z: coverageSignals.inverse_hostility_rel_z,
+        amplification_weighted: coverageSignals.amplification_weighted,
+        cross_source_agreement: coverageSignals.cross_source_agreement,
+        mainstream_share: coverageSignals.mainstream_share,
+        social_share: coverageSignals.social_share,
+        source_entropy: coverageSignals.source_entropy,
         // Source data
         news_headlines: data.headlines,
         social_mentions: data.socialMentions,
+        evidence_items: evidenceItems,
       };
 
       // Validate with original schema (core fields only) — 8-dim fields are extras
@@ -2466,6 +2692,7 @@ async function main() {
       entry.wing,
       entry.agenda_bonus ?? 0
     );
+    entry.media_climate_raw = entry.overall_score;
   }
 
   // ── Phase 3.4b: EMA Smoothing ─────────────────────────────────────
@@ -2496,6 +2723,7 @@ async function main() {
 
   for (const entry of newEntries) {
     entry.overall_score_raw = entry.overall_score;
+    entry.media_climate_raw = entry.overall_score_raw;
     const prevSmoothed = yesterdayScores.get(entry.politician_id) ?? null;
     entry.overall_score = applyEMA(entry.overall_score_raw, prevSmoothed);
   }
@@ -2511,6 +2739,7 @@ async function main() {
   );
   for (const entry of newEntries) {
     Object.assign(entry, {
+      media_climate_display: todaySummaryById.get(entry.politician_id)?.market_score ?? null,
       market_score: todaySummaryById.get(entry.politician_id)?.market_score ?? null,
       market_percentile: todaySummaryById.get(entry.politician_id)?.market_percentile ?? null,
       market_tier: todaySummaryById.get(entry.politician_id)?.market_tier ?? null,
@@ -2540,6 +2769,8 @@ async function main() {
   );
   for (const entry of partyEntries) {
     Object.assign(entry, {
+      media_climate_raw: entry.overall_score,
+      media_climate_display: todayPartyByName.get(entry.party)?.market_score ?? null,
       market_score: todayPartyByName.get(entry.party)?.market_score ?? null,
       market_percentile: todayPartyByName.get(entry.party)?.market_percentile ?? null,
       market_tier: todayPartyByName.get(entry.party)?.market_tier ?? null,
@@ -2548,6 +2779,73 @@ async function main() {
     });
   }
   console.log(`  → ${partyEntries.length} parties aggregated`);
+
+  // ── Phase 3.5b: Consensus proxy ───────────────────────────────────
+  console.log("\nPhase 3.5b: Annotating consensus proxy...");
+  const historicalPartiesForConsensus = historicalPartySummary.map((row) => ({
+    ...row,
+    media_climate_raw: row.media_climate_raw ?? row.overall_score,
+    media_climate_display: row.media_climate_display ?? row.market_score ?? null,
+  }));
+  const partyConsensusCalibrator = buildConsensusCalibrator(
+    historicalPartiesForConsensus,
+    publicPollLookup,
+    { entityType: "party" }
+  );
+  const consensusPartyTimeline = annotatePartyConsensusTimeline(
+    [...historicalPartiesForConsensus, ...partyEntries],
+    publicPollLookup,
+    partyConsensusCalibrator
+  );
+  const todayConsensusPartyByName = new Map(
+    consensusPartyTimeline.filter((row) => row.date === today).map((row) => [row.party, row])
+  );
+  for (const entry of partyEntries) {
+    Object.assign(entry, {
+      consensus_proxy: todayConsensusPartyByName.get(entry.party)?.consensus_proxy ?? null,
+      consensus_ci_low: todayConsensusPartyByName.get(entry.party)?.consensus_ci_low ?? null,
+      consensus_ci_high: todayConsensusPartyByName.get(entry.party)?.consensus_ci_high ?? null,
+      consensus_signal_source:
+        todayConsensusPartyByName.get(entry.party)?.consensus_signal_source ?? null,
+      consensus_confidence:
+        todayConsensusPartyByName.get(entry.party)?.consensus_confidence ?? null,
+    });
+  }
+
+  const historicalSummaryForConsensus = historicalSummary.map((row) => ({
+    ...row,
+    media_climate_raw: row.media_climate_raw ?? row.overall_score_raw ?? row.overall_score,
+    media_climate_display: row.media_climate_display ?? row.market_score ?? null,
+  }));
+  const politicianConsensusCalibrator = buildConsensusCalibrator(
+    historicalSummaryForConsensus,
+    publicPollLookup,
+    { entityType: "politician" }
+  );
+  const consensusPoliticianTimeline = annotatePoliticianConsensusTimeline(
+    [...historicalSummaryForConsensus, ...newEntries],
+    {
+      partyTimeline: consensusPartyTimeline,
+      pollLookup: publicPollLookup,
+      calibration: politicianConsensusCalibrator,
+    }
+  );
+  const todayConsensusById = new Map(
+    consensusPoliticianTimeline
+      .filter((row) => row.date === today)
+      .map((row) => [row.politician_id, row])
+  );
+  for (const entry of newEntries) {
+    Object.assign(entry, {
+      consensus_proxy: todayConsensusById.get(entry.politician_id)?.consensus_proxy ?? null,
+      consensus_ci_low: todayConsensusById.get(entry.politician_id)?.consensus_ci_low ?? null,
+      consensus_ci_high: todayConsensusById.get(entry.politician_id)?.consensus_ci_high ?? null,
+      consensus_signal_source:
+        todayConsensusById.get(entry.politician_id)?.consensus_signal_source ?? null,
+      consensus_confidence:
+        todayConsensusById.get(entry.politician_id)?.consensus_confidence ?? null,
+    });
+  }
 
   // ── Phase 3.6: Validate ─────────────────────────────────────────────
   console.log("\nPhase 3.6: Validating data quality...");

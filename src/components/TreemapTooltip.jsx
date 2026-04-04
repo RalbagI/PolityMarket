@@ -4,20 +4,32 @@ import { localizeName, localizeParty } from "../lib/localize";
 import { scoreToColor, scoreToColorWithAlpha } from "../lib/colorScale";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { getMarketTierBadgeClass, getMarketTierLabel } from "../lib/marketScore";
+import {
+  isLowConfidenceSignal,
+  resolveSignalDelta,
+  resolveSignalDeltaPct,
+  resolveSignalDisplayScore,
+  resolveSignalPercentile,
+  resolveSignalTier,
+} from "../lib/signalMode";
 
-export default memo(function TreemapTooltip({ politician, position }) {
+export default memo(function TreemapTooltip({ politician, position, signalMode }) {
   const { t } = useTranslation();
   if (!politician) return null;
 
   const d = politician;
-  const scoreValue = Number.isFinite(d.market_score) ? d.market_score : (d.overall_score ?? 0) * 10;
+  const scoreValue = resolveSignalDisplayScore(d, signalMode) ?? 0;
   const scoreColor = scoreToColor(scoreValue);
   const scorePct = Number.isFinite(scoreValue) ? scoreValue : 0;
   const chromeColor = scoreToColorWithAlpha(scoreValue, 0.26);
   const glowColor = scoreToColorWithAlpha(scoreValue, 0.18);
-  const tierLabel = d.market_tier
-    ? t(`market.tiers.${d.market_tier}.label`, {
-        defaultValue: getMarketTierLabel(d.market_tier),
+  const signalTier = resolveSignalTier(d, signalMode);
+  const signalPercentile = resolveSignalPercentile(d, signalMode);
+  const deltaPoints = resolveSignalDelta(d, signalMode);
+  const deltaPct = resolveSignalDeltaPct(d, signalMode);
+  const tierLabel = signalTier
+    ? t(`market.tiers.${signalTier}.label`, {
+        defaultValue: getMarketTierLabel(signalTier),
       })
     : "";
 
@@ -63,20 +75,25 @@ export default memo(function TreemapTooltip({ politician, position }) {
         </div>
         <div className="text-xs text-gray-400">{d.displayParty || localizeParty(t, d.party)}</div>
         <div className="mt-1 flex flex-wrap items-center gap-2">
-          {d.market_tier && (
+          {signalTier && (
             <span
-              className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${getMarketTierBadgeClass(d.market_tier)}`}
+              className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${getMarketTierBadgeClass(signalTier)}`}
             >
-              {d.market_tier}-Tier
+              {signalTier}-Tier
             </span>
           )}
-          {Number.isFinite(d.market_percentile) && (
+          {Number.isFinite(signalPercentile) && (
             <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-medium text-gray-300">
-              P{Math.round(d.market_percentile)}
+              P{Math.round(signalPercentile)}
+            </span>
+          )}
+          {isLowConfidenceSignal(d, signalMode) && (
+            <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2 py-0.5 text-[10px] font-medium text-amber-200">
+              {t("signals.lowConfidence")}
             </span>
           )}
         </div>
-        {d.market_tier && <div className="mt-1 text-[10px] text-gray-400">{tierLabel}</div>}
+        {signalTier && <div className="mt-1 text-[10px] text-gray-400">{tierLabel}</div>}
       </div>
 
       {/* Score bar */}
@@ -106,34 +123,34 @@ export default memo(function TreemapTooltip({ politician, position }) {
       </div>
 
       {/* Delta */}
-      {d.market_delta_points != null && (
+      {deltaPoints != null && (
         <div className="flex items-center justify-between text-xs">
           <span className="text-gray-400">{t("treemap.tooltip.change")}</span>
           <div
             className="flex items-center gap-1 font-bold"
             style={{
               color:
-                d.market_delta_points > 0
+                deltaPoints > 0
                   ? "#4ade80"
-                  : d.market_delta_points < 0
+                  : deltaPoints < 0
                     ? "#f87171"
                     : "#9ca3af",
             }}
           >
-            {d.market_delta_points > 0 ? (
+            {deltaPoints > 0 ? (
               <TrendingUp className="w-3 h-3" />
-            ) : d.market_delta_points < 0 ? (
+            ) : deltaPoints < 0 ? (
               <TrendingDown className="w-3 h-3" />
             ) : (
               <Minus className="w-3 h-3" />
             )}
             <span>
-              {d.market_delta_points > 0 ? "+" : ""}
-              {d.market_delta_points.toFixed(1)}
-              {d.market_delta_pct != null && (
+              {deltaPoints > 0 ? "+" : ""}
+              {deltaPoints.toFixed(1)}
+              {deltaPct != null && (
                 <span className="ms-1 text-[10px] text-gray-400">
-                  ({d.market_delta_pct > 0 ? "+" : ""}
-                  {d.market_delta_pct.toFixed(1)}%)
+                  ({deltaPct > 0 ? "+" : ""}
+                  {deltaPct.toFixed(1)}%)
                 </span>
               )}
             </span>
