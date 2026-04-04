@@ -9,9 +9,7 @@ import {
 describe("subscription identity helpers", () => {
   it("normalizes emails before deriving document ids", () => {
     expect(normalizeEmail("  USER@Test.COM ")).toBe("user@test.com");
-    expect(buildSubscriptionDocId("USER@Test.COM")).toBe(
-      buildSubscriptionDocId("user@test.com")
-    );
+    expect(buildSubscriptionDocId("USER@Test.COM")).toBe(buildSubscriptionDocId("user@test.com"));
   });
 
   it("creates deterministic hashed document ids", () => {
