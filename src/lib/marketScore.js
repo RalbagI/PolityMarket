@@ -13,6 +13,13 @@ export const MARKET_TIER_CONFIG = Object.freeze({
   C: { min: 0, label: "Hostile / Crashing" },
 });
 
+const MARKET_TIER_BADGE_CLASSES = Object.freeze({
+  S: "border-teal-400/40 bg-teal-400/15 text-teal-100",
+  A: "border-emerald-400/40 bg-emerald-400/15 text-emerald-100",
+  B: "border-amber-300/45 bg-amber-300/15 text-amber-100",
+  C: "border-rose-400/40 bg-rose-400/15 text-rose-100",
+});
+
 function roundTo(value, digits) {
   const factor = 10 ** digits;
   return Math.round((value + Number.EPSILON) * factor) / factor;
@@ -47,6 +54,10 @@ export function getMarketTier(score) {
 
 export function getMarketTierLabel(tier) {
   return MARKET_TIER_CONFIG[tier]?.label ?? "";
+}
+
+export function getMarketTierBadgeClass(tier) {
+  return MARKET_TIER_BADGE_CLASSES[tier] ?? "border-white/10 bg-white/5 text-gray-200";
 }
 
 export function resolveDisplayScore(entry) {

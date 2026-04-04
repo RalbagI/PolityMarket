@@ -182,7 +182,7 @@ export function SidebarContent({
               className="h-2 rounded-full"
               style={{
                 background:
-                  "linear-gradient(to right, #166534, #22c55e, #6b7280, #ef4444, #7f1d1d)",
+                  "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
               }}
             />
             <div className="flex justify-between mt-1">

@@ -12,6 +12,7 @@ vi.mock("react-i18next", () => ({
 
 vi.mock("../lib/colorScale", () => ({
   scoreToColor: () => "rgb(100,200,100)",
+  scoreToColorWithAlpha: () => "rgba(100,200,100,0.3)",
 }));
 
 const basePolitician = {

@@ -28,6 +28,7 @@ export default function TreemapLeaf({
   const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
   const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
   const displayScore = resolveDisplayScore(d);
+  const deltaValue = Number.isFinite(d.market_delta_points) ? d.market_delta_points : d.delta;
 
   const nameAvailH = availH - scoreLineH;
   const roughMaxLines = Math.max(1, Math.floor(nameAvailH / (baseNameFontSize * 1.2 || 1)));
@@ -52,7 +53,7 @@ export default function TreemapLeaf({
     .join("")
     .slice(0, 2);
 
-  const showDelta = !tooSmall && d.delta != null && d.delta !== 0;
+  const showDelta = !tooSmall && Number.isFinite(deltaValue) && deltaValue !== 0;
   const deltaFontSize = Math.max(7, Math.min(11, sqrtArea / 8));
 
   return (
@@ -70,12 +71,14 @@ export default function TreemapLeaf({
         top: leaf.y0,
         width: w,
         height: h,
-        backgroundColor,
+        background: `linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 28%, rgba(2,6,23,0.22) 100%), ${backgroundColor}`,
         border:
           isHovered || isSelected
             ? "2px solid rgba(255,255,255,0.8)"
-            : "1px solid rgba(255,255,255,0.1)",
-        borderRadius: 4,
+            : "1px solid rgba(255,255,255,0.16)",
+        borderRadius: 8,
+        boxShadow:
+          "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -18px 28px rgba(2,6,23,0.16), 0 12px 32px rgba(2,6,23,0.12)",
       }}
     >
       {/* Delta badge — absolute positioned, doesn't affect name/score layout */}
@@ -86,15 +89,18 @@ export default function TreemapLeaf({
             position: "absolute",
             top: 2,
             left: 2,
+            padding: "2px 5px",
+            borderRadius: 999,
+            background: "rgba(2, 6, 23, 0.26)",
             fontSize: deltaFontSize,
             fontWeight: 700,
-            color: d.delta > 0 ? "#34d399" : "#f87171",
+            color: deltaValue > 0 ? "#6ee7b7" : "#fda4af",
             textShadow: "0 1px 3px rgba(0,0,0,0.9)",
             lineHeight: 1,
             zIndex: 1,
           }}
         >
-          {d.delta > 0 ? `▲${d.delta.toFixed(1)}` : `▼${Math.abs(d.delta).toFixed(1)}`}
+          {deltaValue > 0 ? `▲${deltaValue.toFixed(1)}` : `▼${Math.abs(deltaValue).toFixed(1)}`}
         </div>
       )}
 

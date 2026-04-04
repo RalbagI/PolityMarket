@@ -18,7 +18,7 @@ import { localizeName, localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 import { getPartyInfo } from "../lib/partyInfo";
 import useStore from "../store";
-import { getMarketTierLabel } from "../lib/marketScore";
+import { getMarketTierBadgeClass, getMarketTierLabel } from "../lib/marketScore";
 
 function MemberRow({ entry, t }) {
   const displayName = localizeName(t, entry.name);
@@ -42,21 +42,6 @@ function MemberRow({ entry, t }) {
       </span>
     </div>
   );
-}
-
-function getTierBadgeClass(tier) {
-  switch (tier) {
-    case "S":
-      return "bg-emerald-500/15 text-emerald-300 border-emerald-500/30";
-    case "A":
-      return "bg-lime-500/15 text-lime-300 border-lime-500/30";
-    case "B":
-      return "bg-gray-700/40 text-gray-200 border-gray-600";
-    case "C":
-      return "bg-red-500/15 text-red-300 border-red-500/30";
-    default:
-      return "bg-gray-800 text-gray-300 border-gray-700";
-  }
 }
 
 export default function PartyDetailView({ partyName, partyData, todayData, partySummaryData }) {
@@ -145,7 +130,7 @@ export default function PartyDetailView({ partyName, partyData, todayData, party
             </p>
             {party?.market_tier && (
               <span
-                className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getTierBadgeClass(party.market_tier)}`}
+                className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${getMarketTierBadgeClass(party.market_tier)}`}
               >
                 {party.market_tier}-Tier
               </span>
@@ -156,7 +141,7 @@ export default function PartyDetailView({ partyName, partyData, todayData, party
               </span>
             )}
           </div>
-          {party?.market_tier && <p className="mt-1 text-xs text-gray-500">{tierLabel}</p>}
+          {party?.market_tier && <p className="mt-1 text-xs text-gray-400">{tierLabel}</p>}
         </div>
         {party && (
           <div className="ms-auto text-end shrink-0">

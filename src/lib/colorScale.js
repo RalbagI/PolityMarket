@@ -1,16 +1,17 @@
 import { scaleLinear } from "d3-scale";
 
 /**
- * Maps market_score (0-100) to a tier-centered color gradient.
+ * Maps market_score (0-100) to a vivid market gradient.
+ * Mid-range stays warm and legible instead of falling into a flat gray.
  */
 const marketColorScale = scaleLinear()
   .domain([0, 35, 50, 65, 85, 100])
-  .range(["#7f1d1d", "#ef4444", "#6b7280", "#86efac", "#22c55e", "#166534"])
+  .range(["#b91c1c", "#ef4444", "#f59e0b", "#84cc16", "#22c55e", "#0d9488"])
   .clamp(true);
 
 const relativeMetricScale = scaleLinear()
   .domain([0, 0.5, 1])
-  .range(["#374151", "#475569", "#60a5fa"])
+  .range(["#1e3a8a", "#2563eb", "#67e8f9"])
   .clamp(true);
 
 /**

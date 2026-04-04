@@ -18,6 +18,12 @@ describe("scoreToColor", () => {
     expect(color).toMatch(/rgb/);
   });
 
+  it("keeps midpoint scores warm instead of drifting to neutral gray", () => {
+    const [r, g, b] = parseRgbChannels(scoreToColor(50));
+    expect(r).toBeGreaterThan(b);
+    expect(g).toBeGreaterThan(b);
+  });
+
   it("returns red-ish for low scores", () => {
     const color = scoreToColor(0);
     const [r, g] = parseRgbChannels(color);

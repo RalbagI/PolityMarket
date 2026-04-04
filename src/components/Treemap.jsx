@@ -242,13 +242,13 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician }) {
                   colorBy === "market_score"
                     ? scoreToColorWithAlpha(
                         entry.market_score ?? (entry.overall_score ?? 5) * 10,
-                        isHovered || isSelected ? 0.85 : 0.55
+                        isHovered || isSelected ? 0.96 : 0.78
                       )
                     : normalizedScoreToColorWithAlpha(
                         getColorMetric(entry),
                         colorRange.min,
                         colorRange.max,
-                        isHovered || isSelected ? 0.85 : 0.55
+                        isHovered || isSelected ? 0.92 : 0.72
                       )
                 }
                 onClick={() => {

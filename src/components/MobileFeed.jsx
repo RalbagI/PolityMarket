@@ -2,21 +2,31 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TrendingUp, TrendingDown, ArrowLeftRight, ChevronDown } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
-import { scoreToColor } from "../lib/colorScale";
+import { scoreToColor, scoreToColorWithAlpha } from "../lib/colorScale";
+import { resolveDisplayScore } from "../lib/marketScore";
 import Avatar from "./Avatar";
 import WeeklyHighlights from "./WeeklyHighlights";
 
 function FeedCard({ entry, onSelect }) {
   const { t } = useTranslation();
-  const color = scoreToColor(entry.overall_score);
+  const scoreValue = Number.isFinite(entry.market_score)
+    ? entry.market_score
+    : (entry.overall_score ?? 0) * 10;
+  const displayScore = Number.isFinite(entry.market_score)
+    ? resolveDisplayScore(entry)
+    : entry.overall_score.toFixed(1);
+  const deltaValue = Number.isFinite(entry.market_delta_points)
+    ? entry.market_delta_points
+    : entry.delta;
+  const color = scoreToColor(scoreValue);
   const deltaColor =
-    entry.delta > 0 ? "text-emerald-400" : entry.delta < 0 ? "text-red-400" : "text-gray-500";
-  const DeltaIcon = entry.delta > 0 ? TrendingUp : entry.delta < 0 ? TrendingDown : null;
+    deltaValue > 0 ? "text-emerald-400" : deltaValue < 0 ? "text-red-400" : "text-gray-500";
+  const DeltaIcon = deltaValue > 0 ? TrendingUp : deltaValue < 0 ? TrendingDown : null;
 
   return (
     <button
       onClick={() => onSelect(entry.name)}
-      className="flex items-center gap-3 w-full rounded-xl bg-gray-900/60 border border-gray-800 p-3 hover:border-gray-700 active:bg-gray-800/60 transition-colors"
+      className="flex items-center gap-3 w-full rounded-xl border border-white/10 bg-gray-900/60 p-3 hover:border-white/20 active:bg-gray-800/60 transition-colors"
     >
       <Avatar name={entry.name} politicianId={entry.politician_id} size={44} />
       <div className="flex-1 min-w-0 text-start">
@@ -28,19 +38,19 @@ function FeedCard({ entry, onSelect }) {
         </div>
       </div>
       <div className="flex items-center gap-2 shrink-0">
-        {entry.delta != null && entry.delta !== 0 && (
+        {deltaValue != null && deltaValue !== 0 && (
           <div className={`flex items-center gap-0.5 ${deltaColor}`}>
             {DeltaIcon && <DeltaIcon className="w-3 h-3" />}
             <span className="text-xs font-bold tabular-nums" dir="ltr">
-              {entry.delta > 0 ? `+${entry.delta.toFixed(1)}` : entry.delta.toFixed(1)}
+              {deltaValue > 0 ? `+${deltaValue.toFixed(1)}` : deltaValue.toFixed(1)}
             </span>
           </div>
         )}
         <div
           className="w-11 h-11 rounded-lg flex items-center justify-center font-bold text-base"
-          style={{ backgroundColor: `${color}22`, color }}
+          style={{ backgroundColor: scoreToColorWithAlpha(scoreValue, 0.16), color }}
         >
-          {entry.overall_score.toFixed(1)}
+          {displayScore}
         </div>
       </div>
     </button>
@@ -54,10 +64,21 @@ export default function MobileFeed({ data, onSelect, onCompare }) {
 
   const sorted = useMemo(() => {
     const arr = [...data];
-    if (sortBy === "score") arr.sort((a, b) => b.overall_score - a.overall_score);
-    else if (sortBy === "delta")
-      arr.sort((a, b) => Math.abs(b.delta || 0) - Math.abs(a.delta || 0));
-    else if (sortBy === "volume") arr.sort((a, b) => b.media_volume - a.media_volume);
+    if (sortBy === "score") {
+      arr.sort(
+        (a, b) =>
+          (Number.isFinite(b.market_score) ? b.market_score : (b.overall_score ?? 0) * 10) -
+          (Number.isFinite(a.market_score) ? a.market_score : (a.overall_score ?? 0) * 10)
+      );
+    } else if (sortBy === "delta") {
+      arr.sort(
+        (a, b) =>
+          Math.abs(
+            (Number.isFinite(b.market_delta_points) ? b.market_delta_points : b.delta) || 0
+          ) -
+          Math.abs((Number.isFinite(a.market_delta_points) ? a.market_delta_points : a.delta) || 0)
+      );
+    } else if (sortBy === "volume") arr.sort((a, b) => b.media_volume - a.media_volume);
     return arr;
   }, [data, sortBy]);
 
