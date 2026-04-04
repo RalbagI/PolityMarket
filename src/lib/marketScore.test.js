@@ -19,22 +19,24 @@ describe("marketScore helpers", () => {
     expect(computeMarketScore(MARKET_NEUTRAL_RAW_SCORE, bounds)).toBe(50);
   });
 
-  it("falls back to the rolling min when p5 collapses above neutral", () => {
+  it("uses min with padding when all scores are above neutral", () => {
     const bounds = getRollingMarketBounds(
       [MARKET_NEUTRAL_RAW_SCORE + 0.2, MARKET_NEUTRAL_RAW_SCORE + 0.5],
       MARKET_NEUTRAL_RAW_SCORE
     );
 
-    expect(bounds.low).toBe(MARKET_NEUTRAL_RAW_SCORE + 0.2);
+    // low = min - 5% of range = (neutral+0.2) - 0.05*0.3
+    expect(bounds.low).toBeCloseTo(MARKET_NEUTRAL_RAW_SCORE + 0.2 - 0.015, 5);
   });
 
-  it("falls back to the rolling max when p95 collapses below neutral", () => {
+  it("uses max with padding when all scores are below neutral", () => {
     const bounds = getRollingMarketBounds(
       [MARKET_NEUTRAL_RAW_SCORE - 0.5, MARKET_NEUTRAL_RAW_SCORE - 0.2],
       MARKET_NEUTRAL_RAW_SCORE
     );
 
-    expect(bounds.high).toBe(MARKET_NEUTRAL_RAW_SCORE - 0.2);
+    // high = max + 5% of range = (neutral-0.2) + 0.05*0.3
+    expect(bounds.high).toBeCloseTo(MARKET_NEUTRAL_RAW_SCORE - 0.2 + 0.015, 5);
   });
 
   it("clamps scores outside the bounds to 0-100", () => {

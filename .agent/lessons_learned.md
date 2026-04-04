@@ -94,3 +94,9 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 
 - **Lesson**: Email-as-identifier subscription systems must require the subscription token for updates, not just email match. Otherwise anyone who knows an email can modify another user's subscription.
 - **Pattern**: Require `token` in update requests, not just email lookup.
+
+### Always format changed files before committing (2026-04-04)
+
+- **Lesson**: Prettier warnings on changed files cause extra amend cycles. Always run `npx prettier --write` on changed files before the first commit.
+- **Pattern**: After editing, format with Prettier before staging.
+- **Prevention**: Add prettier --write step before `git add` in prepare-for-merge workflow.

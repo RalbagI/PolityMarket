@@ -25,8 +25,8 @@ export default function TreemapLeaf({
   const availH = h - pad;
 
   const showScore = !d._isOthers && !tooSmall && area > 1200 && h > 20;
-  const scoreFontSize = Math.min(28, baseNameFontSize * 1.4);
-  const scoreLineH = showScore ? scoreFontSize * 1.3 : 0;
+  const scoreFontSize = Math.min(24, baseNameFontSize * 1.1);
+  const scoreLineH = showScore ? scoreFontSize * 1.2 : 0;
   const displayScore = resolveDisplayScore(d);
   const deltaValue = Number.isFinite(d.market_delta_points) ? d.market_delta_points : d.delta;
 
@@ -39,7 +39,7 @@ export default function TreemapLeaf({
     const totalChars = charsPerLine * roughMaxLines;
     const nameLen = displayName.length;
     if (nameLen <= totalChars) return baseNameFontSize;
-    return Math.max(baseNameFontSize * 0.55, baseNameFontSize * (totalChars / nameLen));
+    return Math.max(baseNameFontSize * 0.65, baseNameFontSize * (totalChars / nameLen));
   })();
 
   const actualLineH = nameFontSize * 1.2;
@@ -87,8 +87,8 @@ export default function TreemapLeaf({
           dir="ltr"
           style={{
             position: "absolute",
-            top: 2,
-            left: 2,
+            bottom: 2,
+            right: 2,
             padding: "2px 5px",
             borderRadius: 999,
             background: "rgba(2, 6, 23, 0.26)",
