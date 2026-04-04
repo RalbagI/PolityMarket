@@ -10,6 +10,11 @@ const translations = JSON.parse(
 const sourceConfig = JSON.parse(
   fs.readFileSync(path.join(__dirname, "../../data-pipeline/sources.config.json"), "utf-8")
 );
+const readme = fs.readFileSync(path.join(__dirname, "../../README.md"), "utf-8");
+const architectureDoc = fs.readFileSync(
+  path.join(__dirname, "../../ai_docs/architecture/ARCH.md"),
+  "utf-8"
+);
 
 const dataSources = translations.methodology.dataSources;
 
@@ -75,5 +80,27 @@ describe("methodology dataSources translations — RTL safety", () => {
 
   it("social field has no carriage return characters", () => {
     expect(dataSources.social).not.toContain("\r");
+  });
+});
+
+describe("methodology docs — scoring consistency", () => {
+  it("documents the active-weight redistribution and EMA flow in the README", () => {
+    expect(readme).toContain("active_weight_i / Σactive_weights");
+    expect(readme).toContain("overall_score = EMA(");
+    expect(readme).toContain("wing-normalizes `dim_parliamentary_activity`");
+  });
+
+  it("does not describe the legacy 3-factor public-sentiment formula as overall_score", () => {
+    expect(architectureDoc).not.toContain(
+      "overall_score = 0.4 * policy_normalized + 0.35 * (1 - hostility) + 0.25 * amplification"
+    );
+    expect(architectureDoc).toContain("raw_overall_score = clamp(");
+    expect(architectureDoc).toContain("dim_public_sentiment");
+  });
+
+  it("explains the scoring pipeline in the Hebrew methodology copy", () => {
+    expect(translations.methodology.scoring.description).toContain("משקלם מחולק יחסית לשאר");
+    expect(translations.methodology.scoring.description).toContain("נרמול יחסי לפי מחנה");
+    expect(translations.methodology.scoring.formula).toContain("EMA");
   });
 });
