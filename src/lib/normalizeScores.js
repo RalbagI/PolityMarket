@@ -16,10 +16,10 @@ export default function normalizeScores(visiblePoliticians, signalMode = "media_
   const scores = visiblePoliticians.map(resolveScore);
   const volumes = visiblePoliticians.map((p) => p.media_volume);
 
-  const minScore = Math.min(...scores);
-  const maxScore = Math.max(...scores);
-  const minVolume = Math.min(...volumes);
-  const maxVolume = Math.max(...volumes);
+  const minScore = scores.reduce((a, b) => (a < b ? a : b), scores[0]);
+  const maxScore = scores.reduce((a, b) => (a > b ? a : b), scores[0]);
+  const minVolume = volumes.reduce((a, b) => (a < b ? a : b), volumes[0]);
+  const maxVolume = volumes.reduce((a, b) => (a > b ? a : b), volumes[0]);
 
   const scoreRange = maxScore - minScore || 1;
   const volumeRange = maxVolume - minVolume || 1;

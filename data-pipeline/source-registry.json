@@ -173,7 +173,7 @@
       "visibility_weight": 0.42,
       "consensus_weight_cap": 0.32,
       "use_in_consensus": true,
-      "domains": ["fxp.co.il", "fxp.com", "fxp.co.il", "www.fxp.co.il"],
+      "domains": ["fxp.co.il", "fxp.com", "www.fxp.co.il"],
       "aliases": ["FXP"]
     },
     {

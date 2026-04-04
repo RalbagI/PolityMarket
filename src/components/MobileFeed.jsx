@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { TrendingUp, TrendingDown, ArrowLeftRight, ChevronDown } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
 import { scoreToColor, scoreToColorWithAlpha } from "../lib/colorScale";
-import { resolveDisplayScore } from "../lib/marketScore";
+import { resolveSignalDisplayScore } from "../lib/signalMode";
 import Avatar from "./Avatar";
 import WeeklyHighlights from "./WeeklyHighlights";
 
@@ -13,7 +13,7 @@ function FeedCard({ entry, onSelect }) {
     ? entry.market_score
     : (entry.overall_score ?? 0) * 10;
   const displayScore = Number.isFinite(entry.market_score)
-    ? resolveDisplayScore(entry)
+    ? resolveSignalDisplayScore(entry)
     : entry.overall_score.toFixed(1);
   const deltaValue = Number.isFinite(entry.market_delta_points)
     ? entry.market_delta_points

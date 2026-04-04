@@ -171,7 +171,7 @@ export function aggregateParties(entries, today) {
     const stddev = Math.sqrt(scores.reduce((s, v) => s + (v - mean) ** 2, 0) / scores.length);
 
     const topMember = members.reduce((best, m) =>
-      m.media_volume > (best?.media_volume || 0) ? m : best
+      m.media_volume > (best.media_volume ?? 0) ? m : best
     );
 
     return {

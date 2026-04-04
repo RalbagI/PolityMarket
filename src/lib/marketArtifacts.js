@@ -47,8 +47,7 @@ export function derivePartyTimelineFromSummary(summaryRows) {
   const average = (members, field, digits = 2) => {
     const validMembers = members.filter((member) => Number.isFinite(member?.[field]));
     if (!validMembers.length) return null;
-    const avg =
-      validMembers.reduce((sum, member) => sum + member[field], 0) / validMembers.length;
+    const avg = validMembers.reduce((sum, member) => sum + member[field], 0) / validMembers.length;
     return parseFloat(avg.toFixed(digits));
   };
 

@@ -76,21 +76,25 @@ async function fetchViaLegacyApi(oknessetId, config, _fetchJson, timeoutMs, wind
     const fromDate = getWindowStartDate(windowDays);
     const toDate = new Date().toISOString().split("T")[0];
 
+    const eid = encodeURIComponent(oknessetId);
+    const eFrom = encodeURIComponent(fromDate);
+    const eTo = encodeURIComponent(toDate);
+
     const [votesResult, memberResult, mmmResult] = await Promise.allSettled([
       retry(
         () =>
           fetchJson(
-            `${baseUrl}vote/?mk_id=${oknessetId}&from_date=${fromDate}&to_date=${toDate}&limit=50`
+            `${baseUrl}vote/?mk_id=${eid}&from_date=${eFrom}&to_date=${eTo}&limit=50`
           ),
         { maxRetries: 2, initialDelay: 500, shouldRetry: isTransientError }
       ),
-      retry(() => fetchJson(`${baseUrl}member/${oknessetId}/`), {
+      retry(() => fetchJson(`${baseUrl}member/${eid}/`), {
         maxRetries: 2,
         initialDelay: 500,
         shouldRetry: isTransientError,
       }),
       retry(
-        () => fetchJson(`${baseUrl}mmm/?request_by=${oknessetId}&from_date=${fromDate}&limit=20`),
+        () => fetchJson(`${baseUrl}mmm/?request_by=${eid}&from_date=${eFrom}&limit=20`),
         { maxRetries: 2, initialDelay: 500, shouldRetry: isTransientError }
       ),
     ]);

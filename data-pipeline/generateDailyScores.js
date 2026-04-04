@@ -7,6 +7,7 @@ import os from "os";
 import { fileURLToPath } from "url";
 import {
   dailyEntrySchema,
+  dailyEntrySchema8dim,
   llmResponseSchema,
   parseLLMResponse8dim,
   partySummaryRowSchema,
@@ -1412,7 +1413,6 @@ async function fetchSocialMediaMentions(politician, sourceConfig) {
   const blueskyConfig = socialConfig.bluesky;
   if (blueskyConfig?.enabled) {
     try {
-      const hebrewName = HEBREW_NAMES[politician.name] || politician.name;
       const posts = await searchBlueskyPosts(hebrewName, blueskyConfig.maxPostsPerSearch || 10);
       successfulSources++;
       processPosts(posts, "Bluesky");
@@ -2448,6 +2448,12 @@ async function main() {
   const resultMap = new Map();
   for (const r of llmResults) {
     if (r.politician_id) {
+      if (resultMap.has(r.politician_id)) {
+        console.warn(
+          `  ⚠ Duplicate politician_id "${r.politician_id}" in LLM results — keeping first occurrence`
+        );
+        continue;
+      }
       resultMap.set(r.politician_id, r);
     }
   }
@@ -2643,8 +2649,8 @@ async function main() {
         evidence_items: evidenceItems,
       };
 
-      // Validate with original schema (core fields only) — 8-dim fields are extras
-      const validation = dailyEntrySchema.safeParse(entry);
+      // Validate with full 8-dim schema
+      const validation = dailyEntrySchema8dim.safeParse(entry);
       if (!validation.success) {
         const errors = validation.error.issues
           .map((i) => `${i.path.join(".")}: ${i.message}`)
@@ -2652,8 +2658,7 @@ async function main() {
         throw new Error(`Entry validation failed: ${errors}`);
       }
 
-      // Merge validated core with the extended 8-dim fields
-      newEntries.push({ ...entry, ...validation.data });
+      newEntries.push(validation.data);
     } catch (err) {
       console.error(`  ✗ Failed to process ${politician.name}: ${err.message}`);
       processFailures.push(politician.name);

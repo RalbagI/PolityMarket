@@ -137,8 +137,7 @@ export default function App() {
       ? hasConsensusInRows(partySummaryData, latestDate)
       : false;
     const shouldUsePartySummary =
-      hasLatestPartyData &&
-      (signalMode !== SIGNAL_MODE_CONSENSUS_PROXY || hasLatestPartyConsensus);
+      hasLatestPartyData && (signalMode !== SIGNAL_MODE_CONSENSUS_PROXY || hasLatestPartyConsensus);
     return shouldUsePartySummary ? partySummaryData : derivePartyTimelineFromSummary(summaryData);
   }, [latestDate, partySummaryData, signalMode, summaryData]);
 

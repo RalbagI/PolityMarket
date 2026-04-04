@@ -111,6 +111,7 @@ const evidenceItemSchema = z.object({
     "satire",
     "social",
     "forum",
+    "unknown",
   ]),
   url: z.string().optional(),
   published_at: z.string().nullable().optional(),

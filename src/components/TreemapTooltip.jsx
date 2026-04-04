@@ -119,7 +119,7 @@ export default memo(function TreemapTooltip({ politician, position, signalMode }
       {/* Media Volume */}
       <div className="flex items-center justify-between text-xs mb-2">
         <span className="text-gray-400">{t("treemap.tooltip.mediaVolume")}</span>
-        <span className="text-white font-medium">{d.media_volume.toFixed(1)}</span>
+        <span className="text-white font-medium">{(d.media_volume ?? 0).toFixed(1)}</span>
       </div>
 
       {/* Delta */}
@@ -129,12 +129,7 @@ export default memo(function TreemapTooltip({ politician, position, signalMode }
           <div
             className="flex items-center gap-1 font-bold"
             style={{
-              color:
-                deltaPoints > 0
-                  ? "#4ade80"
-                  : deltaPoints < 0
-                    ? "#f87171"
-                    : "#9ca3af",
+              color: deltaPoints > 0 ? "#4ade80" : deltaPoints < 0 ? "#f87171" : "#9ca3af",
             }}
           >
             {deltaPoints > 0 ? (

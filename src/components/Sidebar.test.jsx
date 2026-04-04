@@ -247,4 +247,20 @@ describe("Sidebar signal availability", () => {
     expect(screen.getAllByText("signals.consensusProxy")[0].closest("button")).toBeDisabled();
     expect(screen.getAllByText("signals.consensusUnavailable")[0]).toBeInTheDocument();
   });
+
+  it("enables consensus toggle when consensus data is available", () => {
+    render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+        signalMode="media_climate"
+        consensusAvailable={true}
+      />
+    );
+
+    expect(screen.getAllByText("signals.consensusProxy")[0].closest("button")).not.toBeDisabled();
+  });
 });

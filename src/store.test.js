@@ -70,6 +70,15 @@ describe("store — chart settings", () => {
     act(() => useStore.getState().setSmaMode("sma14"));
     expect(useStore.getState().smaMode).toBe("sma14");
   });
+
+  it("defaults signalMode to media_climate", () => {
+    expect(useStore.getState().signalMode).toBe("media_climate");
+  });
+
+  it("setSignalMode updates mode", () => {
+    act(() => useStore.getState().setSignalMode("consensus_proxy"));
+    expect(useStore.getState().signalMode).toBe("consensus_proxy");
+  });
 });
 
 describe("store — treemap settings", () => {

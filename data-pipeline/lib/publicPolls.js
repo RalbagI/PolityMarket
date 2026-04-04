@@ -27,7 +27,8 @@ export function loadPublicPolls(filePath = DEFAULT_POLL_PATH) {
         ...poll,
         value: clamp(poll.value, 0, 100),
       }));
-  } catch {
+  } catch (err) {
+    console.warn(`[publicPolls] Failed to load polls from ${filePath}: ${err.message}`);
     return [];
   }
 }

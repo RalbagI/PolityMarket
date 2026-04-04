@@ -10,6 +10,7 @@ import {
   hasConsensusSignal,
   isLowConfidenceSignal,
   resolveSignalConfidenceBand,
+  SIGNAL_MODE_CONSENSUS_PROXY,
 } from "../lib/signalMode";
 
 const DIM_CONFIG = Object.freeze([
@@ -134,7 +135,7 @@ export default function DetailView({
   const newsHeadlines = Array.isArray(entry.news_headlines) ? entry.news_headlines : [];
   const socialMentions = Array.isArray(entry.social_mentions) ? entry.social_mentions : [];
   const hasSources = newsHeadlines.length > 0 || socialMentions.length > 0;
-  const confidenceBand = resolveSignalConfidenceBand(entry, "consensus_proxy");
+  const confidenceBand = resolveSignalConfidenceBand(entry, SIGNAL_MODE_CONSENSUS_PROXY);
   const consensusScore = hasConsensusSignal(entry) ? entry.consensus_proxy : null;
 
   const nonNullDims = DIM_CONFIG.filter(
@@ -310,7 +311,7 @@ export default function DetailView({
                   })}
                 </div>
               </div>
-              {isLowConfidenceSignal(entry, "consensus_proxy") && (
+              {isLowConfidenceSignal(entry, SIGNAL_MODE_CONSENSUS_PROXY) && (
                 <div className="mt-3 rounded-lg border border-amber-400/20 bg-amber-400/10 px-3 py-2 text-xs text-amber-100">
                   {t("detailView.consensus.lowConfidence")}
                 </div>

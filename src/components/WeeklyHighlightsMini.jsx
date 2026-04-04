@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Flame, ChevronDown, Trophy, TrendingDown } from "lucide-react";
 import useStore from "../store";
 import { localizeName } from "../lib/localize";
-import { resolveDisplayScore } from "../lib/marketScore";
+import { resolveSignalDisplayScore } from "../lib/signalMode";
 
 /**
  * Compact floating weekly highlight for mobile — overlays the treemap.
@@ -31,8 +31,8 @@ export default function WeeklyHighlightsMini({ onSelect }) {
       .map((entry) => {
         const prev = weekAgoMap.get(entry.name);
         if (!prev) return null;
-        const curScore = resolveDisplayScore(entry) ?? 0;
-        const prevScore = resolveDisplayScore(prev) ?? 0;
+        const curScore = resolveSignalDisplayScore(entry) ?? 0;
+        const prevScore = resolveSignalDisplayScore(prev) ?? 0;
         const delta = curScore - prevScore;
         return { ...entry, delta, prevScore, displayScore: curScore };
       })

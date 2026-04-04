@@ -155,7 +155,8 @@ function combineObservations(observations) {
   const weightedValue =
     valid.reduce((sum, observation) => sum + observation.value / observation.variance, 0) /
     precisionSum;
-  const disagreementPenalty = summarizeVariance(valid.map((observation) => observation.value)) * 0.35;
+  const disagreementPenalty =
+    summarizeVariance(valid.map((observation) => observation.value)) * 0.35;
 
   return {
     value: clamp(weightedValue, 0, 100),
@@ -234,12 +235,7 @@ export function buildConsensusCalibrator(
 
 export function estimateConsensusObservation(
   row,
-  {
-    partyPrior = null,
-    directPoll = null,
-    partyPoll = null,
-    calibration = null,
-  } = {}
+  { partyPrior = null, directPoll = null, partyPoll = null, calibration = null } = {}
 ) {
   const signalStrength = clamp(row?.signal_strength ?? 0, 0, 1);
   const sourceDiversity = normalizeCount(row?.source_diversity ?? 0, 6);
@@ -257,10 +253,7 @@ export function estimateConsensusObservation(
       : 1;
 
   const mediaVariance =
-    44 +
-    (1 - signalStrength) * 24 +
-    (1 - sourceDiversity) * 10 +
-    (1 - agreementSignal) * 10;
+    44 + (1 - signalStrength) * 24 + (1 - sourceDiversity) * 10 + (1 - agreementSignal) * 10;
 
   const observations = [
     {
@@ -330,9 +323,7 @@ function annotateSeries(rows, getEntityPrior) {
 
     for (const row of sorted) {
       const prior = getEntityPrior(row);
-      const priorMean = Number.isFinite(prior)
-        ? clamp(state * 0.72 + prior * 0.28, 0, 100)
-        : state;
+      const priorMean = Number.isFinite(prior) ? clamp(state * 0.72 + prior * 0.28, 0, 100) : state;
       const processNoise = 9;
       let predictedState = priorMean;
       let predictedCovariance = covariance + processNoise;
@@ -340,8 +331,7 @@ function annotateSeries(rows, getEntityPrior) {
       if (Number.isFinite(row._consensus_observation)) {
         const variance = clamp(row._consensus_variance ?? 36, 8, 120);
         const gain = predictedCovariance / (predictedCovariance + variance);
-        predictedState =
-          predictedState + gain * (row._consensus_observation - predictedState);
+        predictedState = predictedState + gain * (row._consensus_observation - predictedState);
         predictedCovariance = (1 - gain) * predictedCovariance;
       }
 
@@ -404,7 +394,11 @@ export function annotatePoliticianConsensusTimeline(
 
   const prepared = rows.map((row) => {
     const partyPrior = partyByDate.get(`${row.date}::${row.party}`) ?? null;
-    const directPoll = lookupMostRecentPoll(pollLookup, `politician:${row.politician_id}`, row.date);
+    const directPoll = lookupMostRecentPoll(
+      pollLookup,
+      `politician:${row.politician_id}`,
+      row.date
+    );
     const partyPoll = lookupMostRecentPoll(pollLookup, `party:${row.party}`, row.date);
     const observation = estimateConsensusObservation(row, {
       partyPrior,

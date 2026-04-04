@@ -10,7 +10,8 @@ export default function useSidebarStats(todayData, signalMode = "media_climate")
 
     const totalVolume = todayData.reduce((s, d) => s + d.media_volume, 0);
     const weightedSum = todayData.reduce(
-      (sum, entry) => sum + (resolveSignalDisplayScore(entry, signalMode) ?? 0) * entry.media_volume,
+      (sum, entry) =>
+        sum + (resolveSignalDisplayScore(entry, signalMode) ?? 0) * entry.media_volume,
       0
     );
     const weightedAvg = totalVolume > 0 ? weightedSum / totalVolume : 0;

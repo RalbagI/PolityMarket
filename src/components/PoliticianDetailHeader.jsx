@@ -3,10 +3,7 @@ import { Bell, BellOff, Heart, Minus, TrendingDown, TrendingUp } from "lucide-re
 import Avatar from "./Avatar";
 import { scoreToColor } from "../lib/colorScale";
 import { localizeName, localizeParty } from "../lib/localize";
-import {
-  getMarketTierBadgeClass,
-  getMarketTierLabel,
-} from "../lib/marketScore";
+import { getMarketTierBadgeClass, getMarketTierLabel } from "../lib/marketScore";
 import {
   isLowConfidenceSignal,
   resolveSignalConfidenceBand,
@@ -30,9 +27,8 @@ export default function PoliticianDetailHeader({
   const { t } = useTranslation();
 
   const displayScore = resolveSignalDisplayScore(entry, signalMode) ?? 0;
-  const displayPercentile = Number.isFinite(resolveSignalPercentile(entry, signalMode))
-    ? Math.round(resolveSignalPercentile(entry, signalMode))
-    : null;
+  const rawPercentile = resolveSignalPercentile(entry, signalMode);
+  const displayPercentile = Number.isFinite(rawPercentile) ? Math.round(rawPercentile) : null;
   const deltaPoints = resolveSignalDelta(entry, signalMode);
   const deltaPct = resolveSignalDeltaPct(entry, signalMode);
   const confidenceBand = resolveSignalConfidenceBand(entry, signalMode);
@@ -74,7 +70,9 @@ export default function PoliticianDetailHeader({
             </div>
             {signalTier && <div className="mt-1 text-xs text-gray-400">{tierLabel}</div>}
             {signalMode === "consensus_proxy" && signalSource && (
-              <div className="mt-1 text-xs text-gray-500">{t(`signals.sources.${signalSource}`)}</div>
+              <div className="mt-1 text-xs text-gray-500">
+                {t(`signals.sources.${signalSource}`)}
+              </div>
             )}
           </div>
         </div>

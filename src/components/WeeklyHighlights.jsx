@@ -5,6 +5,9 @@ import useStore from "../store";
 import { localizeName, localizeParty } from "../lib/localize";
 import { resolveSignalDisplayScore } from "../lib/signalMode";
 
+const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
+const getEntityName = (entry) => entry?.name || entry?.party;
+
 /**
  * Weekly Highlights — story card + top 5 weekly movers.
  * Surfaces the most surprising changes to drive engagement.
@@ -18,8 +21,6 @@ export default function WeeklyHighlights({
   const { t } = useTranslation();
   const summaryDataFromStore = useStore((s) => s.summaryData);
   const summaryData = summaryDataProp || summaryDataFromStore;
-  const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
-  const getEntityName = (entry) => entry?.name || entry?.party;
   const getEntityLabel = (entry) =>
     entry?.displayName ||
     (entityMode === "party"
@@ -135,7 +136,7 @@ export default function WeeklyHighlights({
           </span>
         </div>
         <div className="space-y-1">
-              {risers.map((d, i) => (
+          {risers.map((d, i) => (
             <button
               key={getEntityKey(d)}
               onClick={() => onSelect(getEntityName(d))}

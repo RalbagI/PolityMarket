@@ -22,9 +22,7 @@ export function DisplayOptions({ t }) {
     {
       value: "market_score",
       label:
-        signalMode === "consensus_proxy"
-          ? t("signals.consensusProxy")
-          : t("signals.mediaClimate"),
+        signalMode === "consensus_proxy" ? t("signals.consensusProxy") : t("signals.mediaClimate"),
     },
   ];
 

@@ -45,6 +45,10 @@ export function loadSourceRegistry() {
   return sourceRegistryCache;
 }
 
+export function clearSourceRegistryCache() {
+  sourceRegistryCache = null;
+}
+
 function inferSourceFromHint(hint, registry) {
   const normalizedHint = normalizeText(hint);
   if (!normalizedHint) return null;
@@ -77,11 +81,11 @@ export function resolveSourceMeta({ url = "", hint = "", fallbackName = "" } = {
     inferSourceFromHint(fallbackName, registry) ?? {
       source_id: normalizeText(fallbackName || hint || "unknown").replace(/\s+/g, "-") || "unknown",
       source_name: fallbackName || hint || "Unknown",
-      source_type: "mainstream",
+      source_type: "unknown",
       ideology_bucket: "mixed",
-      visibility_weight: 0.5,
-      consensus_weight_cap: 0.5,
-      use_in_consensus: true,
+      visibility_weight: 0.3,
+      consensus_weight_cap: 0.2,
+      use_in_consensus: false,
       domains: [],
       aliases: [],
     }

@@ -153,7 +153,9 @@ export default function PartyDetailView({
               </span>
             )}
             {isLowConfidenceSignal(party, signalMode) && (
-              <span className="text-xs font-medium text-amber-200">{t("signals.lowConfidence")}</span>
+              <span className="text-xs font-medium text-amber-200">
+                {t("signals.lowConfidence")}
+              </span>
             )}
           </div>
           {signalTier && <p className="mt-1 text-xs text-gray-400">{tierLabel}</p>}

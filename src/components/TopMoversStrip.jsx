@@ -4,6 +4,9 @@ import { TrendingUp, TrendingDown } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
 import { resolveSignalDisplayScore } from "../lib/signalMode";
 
+const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
+const getEntityName = (entry) => entry?.name || entry?.party;
+
 export default function TopMoversStrip({
   data,
   onSelect,
@@ -12,8 +15,6 @@ export default function TopMoversStrip({
   entityMode = "politician",
 }) {
   const { t } = useTranslation();
-  const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
-  const getEntityName = (entry) => entry?.name || entry?.party;
   const getEntityLabel = (entry) =>
     entry?.displayName ||
     (entityMode === "party"
