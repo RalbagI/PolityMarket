@@ -82,6 +82,6 @@ test("critical path: load dashboard and open details panel", async ({ page }) =>
 
   const detailsPanel = page.getByRole("dialog");
   await expect(detailsPanel).toBeVisible();
-  // Detail panel shows market score (0-100 scale), not raw overall_score
-  await expect(detailsPanel.getByText("100")).toBeVisible();
+  // Detail panel shows market score (0-100 scale) in the large score display
+  await expect(detailsPanel.locator(".text-3xl").getByText("100")).toBeVisible();
 });
