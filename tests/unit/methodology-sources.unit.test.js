@@ -84,10 +84,11 @@ describe("methodology dataSources translations — RTL safety", () => {
 });
 
 describe("methodology docs — scoring consistency", () => {
-  it("documents the active-weight redistribution and EMA flow in the README", () => {
-    expect(readme).toContain("active_weight_i / Σactive_weights");
-    expect(readme).toContain("overall_score = EMA(");
-    expect(readme).toContain("wing-normalizes `dim_parliamentary_activity`");
+  it("keeps the plain-language README guarantees about scoring and confidence", () => {
+    expect(readme).toContain("AI reads the text. The formula sets the score.");
+    expect(readme).toContain("If some categories have no data on a given day");
+    expect(readme).toContain("gently blended with yesterday's score");
+    expect(readme).toContain("Low confidence means low confidence.");
   });
 
   it("does not describe the legacy 3-factor public-sentiment formula as overall_score", () => {
@@ -99,8 +100,32 @@ describe("methodology docs — scoring consistency", () => {
   });
 
   it("explains the scoring pipeline in the Hebrew methodology copy", () => {
-    expect(translations.methodology.scoring.description).toContain("משקלם מחולק יחסית לשאר");
-    expect(translations.methodology.scoring.description).toContain("נרמול יחסי לפי מחנה");
-    expect(translations.methodology.scoring.formula).toContain("EMA");
+    expect(translations.methodology.scoring.description).toContain("אם תחום מסוים חסר");
+    expect(translations.methodology.scoring.description).toContain("הנוסחה הקבועה");
+    expect(translations.methodology.scoring.formula).toContain("המשקל שלו מתחלק בין שאר התחומים");
+    expect(translations.methodology.scoring.step3).toContain("מחליקה את התוצאה");
+  });
+});
+
+describe("legal copy — safeguard retention", () => {
+  it("keeps the core accuracy disclaimer even in simplified language", () => {
+    const accuracy = translations.legal.accuracy.text;
+    expect(accuracy).toContain("לא מתחייבים");
+    expect(accuracy).toContain("לדיוק");
+    expect(accuracy).toContain("לשלמות");
+    expect(accuracy).toContain("לעדכניות");
+    expect(accuracy).toContain("למהימנות");
+  });
+
+  it("keeps the liability disclaimer categories", () => {
+    const liability = translations.legal.liability.text;
+    expect(liability).toContain("ישיר");
+    expect(liability).toContain("עקיף");
+    expect(liability).toContain("תוצאתי");
+    expect(liability).toContain("עונשי");
+  });
+
+  it("keeps the no-notice change clause", () => {
+    expect(translations.legal.changes.text).toContain("ללא הודעה מוקדמת");
   });
 });
