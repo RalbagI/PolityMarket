@@ -253,10 +253,12 @@ function InsightCard({
         hover:bg-gray-800/40 transition-colors`}
     >
       <Icon className={`w-3.5 h-3.5 shrink-0 ${iconColor}`} />
-      <span className="text-[9px] font-bold uppercase tracking-widest text-gray-500 shrink-0 w-20 truncate text-start">
+      <span className="text-[9px] font-bold uppercase tracking-wide text-gray-500 shrink-0 w-24 truncate text-start">
         {t(labelKey)}
       </span>
-      <span className="text-sm font-bold text-white truncate flex-1 text-start">{label}</span>
+      <span className="text-sm font-bold text-white truncate flex-1 min-w-0 text-start">
+        {label}
+      </span>
       <span className={`text-sm font-bold tabular-nums shrink-0 ${deltaColor}`} dir="ltr">
         {deltaDisplay}
       </span>
