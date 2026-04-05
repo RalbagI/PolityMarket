@@ -211,7 +211,8 @@ describe("Sidebar display options position", () => {
     expect(displayOptionsPos).toBeLessThan(filterBarPos);
   });
 
-  it("renders the market-score legend in positive-to-negative order", () => {
+  it("renders the color legend matching the current colorBy mode", () => {
+    // Store mock has treemapColorBy: "media_volume"
     render(
       <Sidebar
         todayData={makePoliticians()}
@@ -222,7 +223,7 @@ describe("Sidebar display options position", () => {
       />
     );
 
-    const legendLabels = screen.getByText("sidebar.colorLegend.positive").parentElement;
+    const legendLabels = screen.getByText("sidebar.colorLegend.lowVolume").parentElement;
     const legendBar = legendLabels?.previousElementSibling;
 
     expect(legendBar).toBeTruthy();

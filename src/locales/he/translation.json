@@ -402,7 +402,9 @@
     "weightedAverage": "ציון ממוצע משוקלל",
     "colorLegend": {
       "positive": "חיובי",
-      "negative": "שלילי"
+      "negative": "שלילי",
+      "lowVolume": "נפח נמוך",
+      "highVolume": "נפח גבוה"
     },
     "partyBreakdown": "לפי מפלגה",
     "openDrawer": "פתח תפריט צד",

@@ -85,6 +85,7 @@ export function SidebarContent({
   hideHeader,
 }) {
   const setSignalMode = useStore((s) => s.setSignalMode);
+  const colorBy = useStore((s) => s.treemapColorBy);
   const activeFilterCount = filterProps
     ? (filterProps.activeParties?.length || 0) +
       (filterProps.activeWings?.length || 0) +
@@ -224,18 +225,37 @@ export function SidebarContent({
         <p className="text-xs text-gray-500 text-center py-4">{t("filterBar.noResults")}</p>
       ) : (
         <>
-          {/* Color Legend */}
+          {/* Color Legend — switches with treemapColorBy */}
           <div>
             <div
               className="h-2 rounded-full"
               style={{
                 background:
-                  "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
+                  colorBy === "media_volume"
+                    ? "linear-gradient(to right, #1e3a8a, #2563eb, #67e8f9)"
+                    : "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
               }}
             />
             <div className="flex justify-between mt-1">
-              <span className="text-[10px] text-gray-500">{t("sidebar.colorLegend.positive")}</span>
-              <span className="text-[10px] text-gray-500">{t("sidebar.colorLegend.negative")}</span>
+              {colorBy === "media_volume" ? (
+                <>
+                  <span className="text-[10px] text-gray-500">
+                    {t("sidebar.colorLegend.lowVolume")}
+                  </span>
+                  <span className="text-[10px] text-gray-500">
+                    {t("sidebar.colorLegend.highVolume")}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="text-[10px] text-gray-500">
+                    {t("sidebar.colorLegend.positive")}
+                  </span>
+                  <span className="text-[10px] text-gray-500">
+                    {t("sidebar.colorLegend.negative")}
+                  </span>
+                </>
+              )}
             </div>
           </div>
 
