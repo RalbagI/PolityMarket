@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import { resolveSignalDelta, resolveSignalDisplayScore } from "../lib/signalMode";
 
 export default function TreemapLeaf({
@@ -67,7 +68,7 @@ export default function TreemapLeaf({
       onKeyDown={onKeyDown}
       onTouchEnd={onTouchEnd}
       onMouseEnter={onMouseEnter}
-      className="absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
+      className="group absolute overflow-hidden cursor-pointer transition-opacity duration-150 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-gray-950 focus:outline-none"
       style={{
         left: leaf.x0,
         top: leaf.y0,
@@ -103,6 +104,16 @@ export default function TreemapLeaf({
           }}
         >
           {deltaValue > 0 ? `▲${deltaValue.toFixed(1)}` : `▼${Math.abs(deltaValue).toFixed(1)}`}
+        </div>
+      )}
+
+      {/* Drill-down affordance — subtle chevron for interactive tiles */}
+      {!d._isOthers && !tooSmall && area > 3000 && (
+        <div
+          className="absolute bottom-1 start-1 opacity-0 group-hover:opacity-40 transition-opacity duration-200 rtl:rotate-180"
+          aria-hidden="true"
+        >
+          <ChevronRight className="w-3.5 h-3.5 text-white" />
         </div>
       )}
 

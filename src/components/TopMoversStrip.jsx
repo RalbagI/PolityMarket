@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
 import { resolveSignalDisplayScore } from "../lib/signalMode";
+import Sparkline from "./Sparkline";
+import getSparklineData from "../lib/getSparklineData";
 
 const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
 const getEntityName = (entry) => entry?.name || entry?.party;
@@ -100,16 +102,23 @@ export default function TopMoversStrip({
           <span className="text-[10px] text-emerald-500/70 font-medium uppercase tracking-wider shrink-0">
             {t("topMovers.risers")}
           </span>
-          {risers.map((d) => (
+          {risers.map((d, i) => (
             <button
               key={d.politician_id || d.name}
               onClick={() => onSelect(getEntityName(d))}
-              className="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors shrink-0"
+              className="flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors shrink-0 animate-scaleIn"
+              style={{ animationDelay: `${i * 50}ms` }}
               aria-label={`${getEntityLabel(d)}: +${d.signal_delta_points.toFixed(1)}`}
             >
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {getEntityLabel(d)}
               </span>
+              <Sparkline
+                data={getSparklineData(summaryData, getEntityKey(d), signalMode)}
+                width={36}
+                height={14}
+                color="#34d399"
+              />
               <span className="text-xs text-emerald-400 font-bold tabular-nums" dir="ltr">
                 +{d.signal_delta_points.toFixed(1)}
               </span>
@@ -128,16 +137,23 @@ export default function TopMoversStrip({
           <span className="text-[10px] text-red-500/70 font-medium uppercase tracking-wider shrink-0">
             {t("topMovers.fallers")}
           </span>
-          {fallers.map((d) => (
+          {fallers.map((d, i) => (
             <button
               key={d.politician_id || d.name}
               onClick={() => onSelect(getEntityName(d))}
-              className="flex items-center gap-1 px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 transition-colors shrink-0"
+              className="flex items-center gap-1 px-2 py-1 rounded-lg bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 transition-colors shrink-0 animate-scaleIn"
+              style={{ animationDelay: `${(risers.length + i) * 50}ms` }}
               aria-label={`${getEntityLabel(d)}: ${d.signal_delta_points.toFixed(1)}`}
             >
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {getEntityLabel(d)}
               </span>
+              <Sparkline
+                data={getSparklineData(summaryData, getEntityKey(d), signalMode)}
+                width={36}
+                height={14}
+                color="#fb7185"
+              />
               <span className="text-xs text-red-400 font-bold tabular-nums" dir="ltr">
                 {d.signal_delta_points.toFixed(1)}
               </span>

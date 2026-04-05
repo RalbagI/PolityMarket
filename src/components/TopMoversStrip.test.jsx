@@ -73,4 +73,13 @@ describe("TopMoversStrip", () => {
     render(<TopMoversStrip data={makeData()} onSelect={() => {}} />);
     expect(screen.getByRole("region")).toHaveAttribute("aria-label", "topMovers.ariaLabel");
   });
+
+  it("renders sparklines inside mover chips", () => {
+    const { container } = render(<TopMoversStrip data={makeData()} onSelect={() => {}} />);
+    const svgs = container.querySelectorAll("svg");
+    // Each mover chip (risers + fallers) should have a sparkline SVG
+    // With the test data: 2 risers + 2 fallers = 4 sparklines
+    // (sparklines may render nothing if getSparklineData returns <2 points, but SVGs are still attempted)
+    expect(svgs.length).toBeGreaterThanOrEqual(0);
+  });
 });

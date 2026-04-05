@@ -241,8 +241,7 @@ describe("DetailView sources section", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "מקורות" }));
-
+    // Sources section is now defaultOpen=true, no click needed
     expect(screen.getByText("כותרות חדשות")).toBeInTheDocument();
     expect(screen.getByText(/Headline A/)).toBeInTheDocument();
     expect(screen.getByText("אזכורים ברשתות חברתיות")).toBeInTheDocument();
@@ -263,8 +262,7 @@ describe("DetailView sources section", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "מקורות" }));
-
+    // Sources section is now defaultOpen=true, no click needed
     expect(screen.getByText("לא נמצאו מקורות זמינים עבור תאריך זה.")).toBeInTheDocument();
   });
 });

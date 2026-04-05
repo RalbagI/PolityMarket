@@ -766,6 +766,15 @@
     "ariaLabel": "פוליטיקאים עם השינוי הגדול ביותר היום",
     "noChanges": "אין שינויים היום"
   },
+  "dailyInsights": {
+    "title": "תובנות יומיות",
+    "biggestRiser": "העלייה הגדולה ביותר",
+    "biggestFaller": "הירידה הגדולה ביותר",
+    "mostCovered": "הכי מסוקר בתקשורת",
+    "tapToExplore": "לחץ לפרטים",
+    "ariaLabel": "שלוש תובנות יומיות בולטות",
+    "noData": "אין שינויים משמעותיים היום"
+  },
   "weeklyHighlights": {
     "weekInReview": "סיכום שבועי",
     "headlineUp": "{{name}} זינק ב-{{delta}} נקודות (מ-{{from}} ל-{{to}})",
