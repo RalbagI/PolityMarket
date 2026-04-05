@@ -59,6 +59,48 @@ body {
   }
 }
 
+/* Micro-animation: fade + slide up for insight cards */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 0.4s ease-out both;
+}
+
+/* Micro-animation: scale in for mover chips */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scaleIn {
+  animation: scaleIn 0.25s ease-out both;
+}
+
+/* RTL-safe chevron rotation for treemap drill-down affordance */
+[dir="rtl"] .treemap-drilldown-chevron {
+  transform: rotate(180deg);
+}
+
+/* Sparkline draw-in animation */
+@keyframes sparkline-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Performance: skip rendering off-screen cards in large grids */
 .entity-card {
   content-visibility: auto;

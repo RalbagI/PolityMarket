@@ -76,7 +76,8 @@
       "empty": "לא נמצאו מקורות זמינים עבור תאריך זה.",
       "news": "כותרות חדשות",
       "social": "אזכורים ברשתות חברתיות",
-      "sourceLink": "קישור למקור"
+      "sourceLink": "קישור למקור",
+      "searchLink": "חפש בגוגל חדשות"
     },
     "consensus": {
       "band": "טווח משוער: {{low}}–{{high}}",
@@ -765,6 +766,15 @@
     "fallers": "יורדים",
     "ariaLabel": "פוליטיקאים עם השינוי הגדול ביותר היום",
     "noChanges": "אין שינויים היום"
+  },
+  "dailyInsights": {
+    "title": "תובנות יומיות",
+    "biggestRiser": "העלייה הגדולה ביותר",
+    "biggestFaller": "הירידה הגדולה ביותר",
+    "mostCovered": "הכי מסוקר בתקשורת",
+    "tapToExplore": "לחץ לפרטים",
+    "ariaLabel": "שלוש תובנות יומיות בולטות",
+    "noData": "אין שינויים משמעותיים היום"
   },
   "weeklyHighlights": {
     "weekInReview": "סיכום שבועי",

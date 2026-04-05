@@ -3,9 +3,10 @@ import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
 import { getPartyColor } from "../lib/partyColors";
 import Avatar from "./Avatar";
+import Sparkline from "./Sparkline";
 import useStore from "../store";
 
-export default function EntityCard({ entry, delta, isSelected, onSelect }) {
+export default function EntityCard({ entry, delta, isSelected, onSelect, sparklineData }) {
   const { t } = useTranslation();
   const colors = getPartyColor(entry.party);
   const isVolatile =
@@ -98,6 +99,13 @@ export default function EntityCard({ entry, delta, isSelected, onSelect }) {
           }}
         />
       </div>
+
+      {/* Sparkline trend */}
+      {sparklineData && sparklineData.length >= 2 && (
+        <div className="mt-2">
+          <Sparkline data={sparklineData} width={120} height={20} color={colors.accent} />
+        </div>
+      )}
     </div>
   );
 }

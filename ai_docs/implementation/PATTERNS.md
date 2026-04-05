@@ -1,5 +1,5 @@
 ---
-updated_at: "2026-03-18"
+updated_at: "2026-04-05"
 review_cycle_days: 90
 scope: Implementation Patterns
 ---
@@ -48,3 +48,12 @@ Data transformations use `useMemo`.
 - Retries: network errors, 5xx, 429, timeouts
 - No retry: 4xx, validation errors
 - Max 3 retries, 1s initial, 30s cap
+
+## Sparkline Visualization
+
+- Lightweight SVG micro-visualization for trend display (used in DailyInsights, TopMoversStrip, EntityCard)
+- `Sparkline.jsx`: memoized component with `useMemo` for path calculations
+- Computes points from input values, normalizes to viewport, draws polyline + gradient fill
+- Stroke-dasharray animation (`sparkline-draw` keyframe) for 0.6s enter effect
+- Auto-colors: green for rising trend, red for falling, gray for flat
+- Stateless: data is passed in, no external dependencies on signal or entity type

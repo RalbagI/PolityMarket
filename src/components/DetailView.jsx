@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Quote, BarChart3, FileText, ChevronDown, TrendingUp } from "lucide-react";
+import { Quote, BarChart3, FileText, ChevronDown, TrendingUp, ExternalLink } from "lucide-react";
 import AiAnalysisBlock from "./AiAnalysisBlock";
 import { useTranslation } from "react-i18next";
 import AccordionSection from "./AccordionSection";
@@ -325,8 +325,8 @@ export default function DetailView({
         </div>
       </AccordionSection>
 
-      {/* Sources — collapsed by default */}
-      <AccordionSection title={t("detailView.section.sources")} icon={FileText} defaultOpen={false}>
+      {/* Sources — expanded by default for drill-down discoverability */}
+      <AccordionSection title={t("detailView.section.sources")} icon={FileText} defaultOpen={true}>
         {hasSources ? (
           <div className="space-y-4">
             <div>
@@ -337,7 +337,16 @@ export default function DetailView({
                 <ul className="space-y-2">
                   {newsHeadlines.map((headline) => (
                     <li key={headline} className="text-sm text-gray-300 leading-relaxed">
-                      • {headline}
+                      <span>• {headline}</span>
+                      <a
+                        href={`https://news.google.com/search?q=${encodeURIComponent(headline)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={t("detailView.sources.searchLink")}
+                        className="inline-flex items-center gap-0.5 text-xs text-indigo-300 hover:text-indigo-200 ms-2 align-middle"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -361,7 +370,7 @@ export default function DetailView({
                           <a
                             href={sourceUrl}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                             className="text-xs text-indigo-300 hover:text-indigo-200 underline mt-1 inline-block py-1"
                           >
                             {t("detailView.sources.sourceLink")}

@@ -100,6 +100,28 @@ describe("EntityCard", () => {
     const card = container.querySelector("[role='button']");
     expect(card.className).toContain("ring-2");
   });
+
+  it("renders sparkline when sparklineData is provided", () => {
+    const { container } = render(
+      <EntityCard entry={baseEntry} onSelect={() => {}} sparklineData={[50, 55, 60, 58, 62]} />
+    );
+    const svg = container.querySelector("svg");
+    expect(svg).toBeInTheDocument();
+    expect(svg.querySelector("polyline")).toBeInTheDocument();
+  });
+
+  it("does not render sparkline when sparklineData is absent", () => {
+    const { container } = render(<EntityCard entry={baseEntry} onSelect={() => {}} />);
+    // No sparkline SVG (avatar is a mock div, no SVGs from other sources)
+    expect(container.querySelector("svg")).toBeNull();
+  });
+
+  it("does not render sparkline when data has fewer than 2 points", () => {
+    const { container } = render(
+      <EntityCard entry={baseEntry} onSelect={() => {}} sparklineData={[50]} />
+    );
+    expect(container.querySelector("svg")).toBeNull();
+  });
 });
 
 describe("EntityCard — volatility indicator", () => {

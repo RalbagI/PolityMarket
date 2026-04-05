@@ -6,6 +6,7 @@ import Sidebar, { SidebarContent } from "./components/Sidebar";
 import useSidebarStats from "./lib/useSidebarStats";
 import Treemap from "./components/Treemap";
 import TopMoversStrip from "./components/TopMoversStrip";
+import DailyInsights from "./components/DailyInsights";
 import WeeklyHighlights from "./components/WeeklyHighlights";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
@@ -273,10 +274,19 @@ export default function App() {
           </span>
           {latestDate && <span>{t("legendStrip.updated", { date: latestDate })}</span>}
         </div>
-        {/* Treemap — full viewport on both mobile and desktop */}
-        <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] flex flex-col">
+        {/* Primary viewport layout — bounded to the visible viewport on mobile */}
+        <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] min-h-0 flex flex-col">
+          {/* Daily Insights — top 3 auto-computed insights */}
+          <DailyInsights
+            data={viewMode === "parties" ? partyTreemapData : enrichedData}
+            summaryData={viewMode === "parties" ? marketPartySummaryData : marketSummaryData}
+            signalMode={signalMode}
+            onSelect={handleSelectPolitician}
+            entityMode={viewMode === "parties" ? "party" : "politician"}
+          />
+
+          {/* Treemap */}
           <div className="flex-1 min-h-0 flex">
-            {/* Treemap */}
             <div className="flex-1 min-w-0 relative">
               <ErrorBoundary>
                 <Treemap
