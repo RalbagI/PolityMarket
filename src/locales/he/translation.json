@@ -523,7 +523,7 @@
       "description": "המערכת נשענת על שילוב של חדשות ורשתות:",
       "hebrew": "חדשות בעברית — Ynet, וואלה, מעריב, ישראל היום, גלובס, ערוץ 14, ערוץ 13, כיכר השבת, i24NEWS, TheMarker, וחיפוש Google News בעברית.",
       "english": "חדשות באנגלית — Times of Israel, Jerusalem Post, i24NEWS, וחיפוש Google News באנגלית, לכיסוי של סיקור בינלאומי.",
-      "social": "רשתות חברתיות — ערוצי טלגרם ציבוריים (כאן חדשות, אבו עלי אקספרס, גלי צה״ל ועוד), \u200EReddit (r/Israel, r/worldnews, r/IsraelPolitics)\u200E, פורום FXP, ו-Bluesky.",
+      "social": "רשתות חברתיות — ערוצי טלגרם ציבוריים (כאן חדשות, אבו עלי אקספרס, גלי צה״ל ועוד), Reddit (r/Israel, r/worldnews, r/IsraelPolitics), פורום FXP, ו-Bluesky.",
       "frequency": "הנתונים מתעדכנים כל יום בשעה 02:00 בלילה (שעון ישראל). כל פוליטיקאי מנותח לפי הכותרות והאזכורים שלו ב-24 השעות האחרונות."
     },
     "qualityControl": {
