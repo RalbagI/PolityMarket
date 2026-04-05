@@ -1,5 +1,5 @@
 ---
-updated_at: "2026-03-18"
+updated_at: "2026-04-05"
 review_cycle_days: 365
 ---
 
@@ -100,3 +100,9 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: Prettier warnings on changed files cause extra amend cycles. Always run `npx prettier --write` on changed files before the first commit.
 - **Pattern**: After editing, format with Prettier before staging.
 - **Prevention**: Add prettier --write step before `git add` in prepare-for-merge workflow.
+
+### Extracted component files still need explicit Prettier pass (2026-04-05)
+
+- **Lesson**: When splitting a large component into a new file, the new file is easy to miss in the final format pass even if the parent file was already clean.
+- **Pattern**: After extraction/refactor work, run Prettier on every newly created file before validation.
+- **Prevention**: Compare `git diff --name-only` against the Prettier target set before pushing.
