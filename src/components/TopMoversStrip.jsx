@@ -94,7 +94,7 @@ export default function TopMoversStrip({
   if (!risers.length && !fallers.length) {
     return (
       <div
-        className="flex items-center justify-center min-h-[44px] text-xs text-gray-600"
+        className="flex items-center justify-center min-h-[40px] text-xs text-gray-600"
         role="region"
         aria-label={t("topMovers.ariaLabel")}
       >
@@ -105,7 +105,7 @@ export default function TopMoversStrip({
 
   return (
     <div
-      className="flex items-center gap-3 px-3 min-h-[48px] overflow-x-auto"
+      className="flex items-center gap-3 px-3 min-h-[40px] overflow-x-auto"
       role="region"
       aria-label={t("topMovers.ariaLabel")}
     >

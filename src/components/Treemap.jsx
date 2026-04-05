@@ -47,7 +47,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
   }, []);
 
   const isMobile = size.width > 0 && size.width < 640;
-  const minBlockArea = isMobile ? 2400 : 800;
+  const minBlockArea = isMobile ? 2400 : 1200;
 
   const sizeValue = useCallback(
     (entry) => {

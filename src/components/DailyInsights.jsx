@@ -150,7 +150,7 @@ export default function DailyInsights({
 
   return (
     <div
-      className="shrink-0 px-3 py-2 bg-gray-950 border-b border-gray-800/50"
+      className="shrink-0 px-3 py-1.5 bg-gray-950 border-b border-gray-800/50"
       role="region"
       aria-label={t("dailyInsights.ariaLabel")}
     >

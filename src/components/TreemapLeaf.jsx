@@ -19,14 +19,14 @@ export default function TreemapLeaf({
 
   const area = w * h;
   const sqrtArea = Math.sqrt(area);
-  const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / 5));
+  const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / 4.5));
 
-  const tooSmall = area < 400;
-  const pad = Math.max(2, sqrtArea / 20) * 2;
+  const tooSmall = area < 300;
+  const pad = Math.max(2, sqrtArea / 25) * 2;
   const availW = w - pad;
   const availH = h - pad;
 
-  const showScore = !d._isOthers && !tooSmall && area > 1200 && h > 20;
+  const showScore = !d._isOthers && !tooSmall && area > 900 && h > 18;
   const scoreFontSize = Math.min(24, baseNameFontSize * 1.1);
   const scoreLineH = showScore ? scoreFontSize * 1.2 : 0;
   const displayScoreRaw = resolveSignalDisplayScore(d, signalMode);
@@ -48,8 +48,8 @@ export default function TreemapLeaf({
   const actualLineH = nameFontSize * 1.2;
   const maxLines = Math.max(1, Math.floor(nameAvailH / (actualLineH || 1)));
 
-  const showInitials = !tooSmall && area < 1200 && nameFontSize < 5;
-  const showName = !tooSmall && !showInitials && nameFontSize >= 5;
+  const showInitials = !tooSmall && area < 900 && nameFontSize < 4;
+  const showName = !tooSmall && !showInitials && nameFontSize >= 4;
   const initials = displayName
     .split(/\s+/)
     .map((word) => word[0])
