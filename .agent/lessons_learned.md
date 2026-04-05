@@ -109,6 +109,6 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 
 ### RLM marks cause /r corruption in RTL Hebrew text (2026-04-05)
 
-- **Lesson**: Inserting Unicode RLM (Right-to-Left Mark, U+200E) around LTR text (like "Reddit (r/Israel)") in RTL Hebrew context causes display corruption. The `/r` appears garbled/duplicated in the UI.
-- **Pattern**: Let natural RTL handling (via `dir="rtl"` on HTML) display mixed LTR/RTL text. Don't add RLM marks as a workaround.
-- **Prevention**: Test Hebrew methodology page by viewing Reddit subreddit names on production. If `/r` displays corrupted, remove the RLM marks, not add more.
+- **Lesson**: Inserting Unicode LRM (Left-to-Right Mark, U+200E) around LTR text (like "Reddit (r/Israel)") in RTL Hebrew context causes display corruption. The `/r` appears garbled/duplicated in the UI.
+- **Pattern**: Let natural RTL handling (via `dir="rtl"` on HTML) display mixed LTR/RTL text. Don't add directional marks as a workaround.
+- **Prevention**: Test Hebrew methodology page by viewing Reddit subreddit names on production. If `/r` displays corrupted, remove the directional marks, not add more.

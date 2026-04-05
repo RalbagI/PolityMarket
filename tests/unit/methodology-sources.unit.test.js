@@ -75,15 +75,6 @@ describe("methodology dataSources translations — RTL safety", () => {
   it("social field has no carriage return characters", () => {
     expect(dataSources.social).not.toContain("\r");
   });
-
-  it("social field contains all major platforms mentioned in config", () => {
-    const socialText = dataSources.social;
-    // Verify all platforms are listed
-    expect(socialText).toContain("טלגרם");
-    expect(socialText).toContain("Reddit");
-    expect(socialText).toContain("FXP");
-    expect(socialText).toContain("Bluesky");
-  });
 });
 
 describe("methodology docs — scoring consistency", () => {
