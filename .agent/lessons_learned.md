@@ -106,3 +106,9 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: When splitting a large component into a new file, the new file is easy to miss in the final format pass even if the parent file was already clean.
 - **Pattern**: After extraction/refactor work, run Prettier on every newly created file before validation.
 - **Prevention**: Compare `git diff --name-only` against the Prettier target set before pushing.
+
+### RLM marks cause /r corruption in RTL Hebrew text (2026-04-05)
+
+- **Lesson**: Inserting Unicode RLM (Right-to-Left Mark, U+200E) around LTR text (like "Reddit (r/Israel)") in RTL Hebrew context causes display corruption. The `/r` appears garbled/duplicated in the UI.
+- **Pattern**: Let natural RTL handling (via `dir="rtl"` on HTML) display mixed LTR/RTL text. Don't add RLM marks as a workaround.
+- **Prevention**: Test Hebrew methodology page by viewing Reddit subreddit names on production. If `/r` displays corrupted, remove the RLM marks, not add more.
