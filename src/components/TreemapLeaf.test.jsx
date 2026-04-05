@@ -129,4 +129,32 @@ describe("TreemapLeaf", () => {
     expect(container).not.toHaveTextContent(/^650$/);
     expect(container).not.toHaveTextContent("65");
   });
+
+  it("renders name without score for medium tiles (name-only tier)", () => {
+    // area = 40 * 20 = 800 → between 500 and 1200 → name only, no score
+    const { container } = render(
+      <TreemapLeaf
+        leaf={{
+          x0: 0,
+          y0: 0,
+          x1: 40,
+          y1: 20,
+          data: { politician_id: "mid", name: "Mid Tile", market_score: 62, overall_score: 6.2 },
+        }}
+        displayName="Mid Tile"
+        isHovered={false}
+        isSelected={false}
+        onClick={() => {}}
+        onKeyDown={() => {}}
+        onTouchEnd={() => {}}
+        onMouseEnter={() => {}}
+        backgroundColor="rgb(20, 20, 20)"
+      />
+    );
+
+    // Name should be rendered
+    expect(screen.getByText("Mid Tile")).toBeInTheDocument();
+    // Score (62) should NOT be rendered — color encodes it, tooltip on hover
+    expect(container).not.toHaveTextContent("62");
+  });
 });

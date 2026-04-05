@@ -10,11 +10,13 @@ vi.mock("react-i18next", () => ({
   }),
 }));
 
+let mockColorBy = "media_volume";
+
 vi.mock("../store", () => ({
   default: (selector) => {
     const state = {
       treemapSizeBy: "media_volume",
-      treemapColorBy: "media_volume",
+      treemapColorBy: mockColorBy,
       signalMode: "media_climate",
       setTreemapSizeBy: () => {},
       setTreemapColorBy: () => {},
@@ -211,8 +213,8 @@ describe("Sidebar display options position", () => {
     expect(displayOptionsPos).toBeLessThan(filterBarPos);
   });
 
-  it("renders the color legend matching the current colorBy mode", () => {
-    // Store mock has treemapColorBy: "media_volume"
+  it("renders volume color legend when colorBy is media_volume", () => {
+    mockColorBy = "media_volume";
     render(
       <Sidebar
         todayData={makePoliticians()}
@@ -223,11 +225,36 @@ describe("Sidebar display options position", () => {
       />
     );
 
+    expect(screen.getByText("sidebar.colorLegend.lowVolume")).toBeInTheDocument();
+    expect(screen.getByText("sidebar.colorLegend.highVolume")).toBeInTheDocument();
     const legendLabels = screen.getByText("sidebar.colorLegend.lowVolume").parentElement;
     const legendBar = legendLabels?.previousElementSibling;
-
     expect(legendBar).toBeTruthy();
-    expect(legendBar.style.background).toContain("linear-gradient(to right");
+    // JSDOM converts hex to rgb — check for blue channel (30, 58, 138)
+    expect(legendBar.style.background).toContain("rgb(30, 58, 138)");
+  });
+
+  it("renders market-score color legend when colorBy is market_score", () => {
+    mockColorBy = "market_score";
+    render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+      />
+    );
+
+    expect(screen.getByText("sidebar.colorLegend.positive")).toBeInTheDocument();
+    expect(screen.getByText("sidebar.colorLegend.negative")).toBeInTheDocument();
+    const legendLabels = screen.getByText("sidebar.colorLegend.positive").parentElement;
+    const legendBar = legendLabels?.previousElementSibling;
+    expect(legendBar).toBeTruthy();
+    // JSDOM converts hex to rgb — check for teal channel (13, 148, 136)
+    expect(legendBar.style.background).toContain("rgb(13, 148, 136)");
+
+    mockColorBy = "media_volume"; // reset for other tests
   });
 });
 

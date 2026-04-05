@@ -308,14 +308,13 @@ describe("DailyInsights", () => {
   it("deduplicates — no politician appears in two cards", () => {
     // Alice is both biggest riser AND has decent volume, but should only appear once
     render(<DailyInsights data={makeData()} summaryData={makeSummaryData()} onSelect={() => {}} />);
-    // In desktop grid, each entity appears once per card
-    const desktopGrid = document.querySelector(".md\\:grid");
-    if (desktopGrid) {
-      const buttons = desktopGrid.querySelectorAll("button");
-      const names = [...buttons].map((btn) => btn.querySelector(".text-lg")?.textContent);
-      const unique = new Set(names);
-      expect(unique.size).toBe(names.length);
-    }
+    // Desktop compact rows use md:flex layout with text-sm names
+    const desktopRow = document.querySelector(".md\\:flex");
+    expect(desktopRow).toBeTruthy();
+    const buttons = desktopRow.querySelectorAll("button");
+    const names = [...buttons].map((btn) => btn.querySelector(".text-sm")?.textContent);
+    const unique = new Set(names);
+    expect(unique.size).toBe(names.length);
   });
 
   it("renders empty state when no data", () => {
