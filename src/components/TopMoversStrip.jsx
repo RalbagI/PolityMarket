@@ -54,12 +54,19 @@ export default function TopMoversStrip({
 
       const sorted = [...withDelta].sort((a, b) => b.signal_delta_points - a.signal_delta_points);
 
+      const addSparklines = (items) =>
+        items.map((d) => ({
+          ...d,
+          _sparklineData: getSparklineData(summaryData, getEntityKey(d), signalMode),
+        }));
       return {
-        risers: sorted.filter((d) => d.signal_delta_points > 0).slice(0, 3),
-        fallers: sorted
-          .filter((d) => d.signal_delta_points < 0)
-          .slice(-3)
-          .reverse(),
+        risers: addSparklines(sorted.filter((d) => d.signal_delta_points > 0).slice(0, 3)),
+        fallers: addSparklines(
+          sorted
+            .filter((d) => d.signal_delta_points < 0)
+            .slice(-3)
+            .reverse()
+        ),
       };
     }
 
@@ -68,12 +75,19 @@ export default function TopMoversStrip({
       .map((entry) => ({ ...entry, signal_delta_points: entry.market_delta_points }));
     const sorted = [...withDelta].sort((a, b) => b.signal_delta_points - a.signal_delta_points);
 
+    const addSparklines = (items) =>
+      items.map((d) => ({
+        ...d,
+        _sparklineData: getSparklineData(summaryData, getEntityKey(d), signalMode),
+      }));
     return {
-      risers: sorted.filter((d) => d.signal_delta_points > 0).slice(0, 3),
-      fallers: sorted
-        .filter((d) => d.signal_delta_points < 0)
-        .slice(-3)
-        .reverse(),
+      risers: addSparklines(sorted.filter((d) => d.signal_delta_points > 0).slice(0, 3)),
+      fallers: addSparklines(
+        sorted
+          .filter((d) => d.signal_delta_points < 0)
+          .slice(-3)
+          .reverse()
+      ),
     };
   }, [data, signalMode, summaryData]);
 
@@ -113,12 +127,7 @@ export default function TopMoversStrip({
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {getEntityLabel(d)}
               </span>
-              <Sparkline
-                data={getSparklineData(summaryData, getEntityKey(d), signalMode)}
-                width={36}
-                height={14}
-                color="#34d399"
-              />
+              <Sparkline data={d._sparklineData} width={36} height={14} color="#34d399" />
               <span className="text-xs text-emerald-400 font-bold tabular-nums" dir="ltr">
                 +{d.signal_delta_points.toFixed(1)}
               </span>
@@ -148,12 +157,7 @@ export default function TopMoversStrip({
               <span className="text-xs text-gray-200 font-medium truncate max-w-[80px]">
                 {getEntityLabel(d)}
               </span>
-              <Sparkline
-                data={getSparklineData(summaryData, getEntityKey(d), signalMode)}
-                width={36}
-                height={14}
-                color="#fb7185"
-              />
+              <Sparkline data={d._sparklineData} width={36} height={14} color="#fb7185" />
               <span className="text-xs text-red-400 font-bold tabular-nums" dir="ltr">
                 {d.signal_delta_points.toFixed(1)}
               </span>

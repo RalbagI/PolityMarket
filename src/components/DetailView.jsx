@@ -341,7 +341,8 @@ export default function DetailView({
                       <a
                         href={`https://news.google.com/search?q=${encodeURIComponent(headline)}`}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
+                        aria-label={t("detailView.sources.searchLink")}
                         className="inline-flex items-center gap-0.5 text-xs text-indigo-300 hover:text-indigo-200 ms-2 align-middle"
                       >
                         <ExternalLink className="w-3 h-3" />
@@ -369,7 +370,7 @@ export default function DetailView({
                           <a
                             href={sourceUrl}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                             className="text-xs text-indigo-300 hover:text-indigo-200 underline mt-1 inline-block py-1"
                           >
                             {t("detailView.sources.sourceLink")}

@@ -1,8 +1,16 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import EntityCard from "./EntityCard";
+import getSparklineData from "../lib/getSparklineData";
 
-export default function EntityGrid({ todayData, yesterdayData, selectedPolitician, onSelect }) {
+export default function EntityGrid({
+  todayData,
+  yesterdayData,
+  selectedPolitician,
+  onSelect,
+  summaryData = [],
+  signalMode = "media_climate",
+}) {
   const { t } = useTranslation();
 
   const cardsWithDelta = useMemo(() => {
@@ -28,6 +36,11 @@ export default function EntityGrid({ todayData, yesterdayData, selectedPoliticia
             delta={delta}
             isSelected={selectedPolitician === entry.name}
             onSelect={onSelect}
+            sparklineData={getSparklineData(
+              summaryData,
+              entry.politician_id || entry.name,
+              signalMode
+            )}
           />
         ))}
       </div>

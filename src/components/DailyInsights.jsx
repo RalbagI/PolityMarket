@@ -122,7 +122,11 @@ export default function DailyInsights({
       result.push(covered);
     }
 
-    return result;
+    // Precompute sparkline data for each insight
+    return result.map((entry) => ({
+      ...entry,
+      _sparklineData: getSparklineData(summaryData, getEntityKey(entry), signalMode),
+    }));
   }, [data, signalMode, summaryData]);
 
   if (!insights.length) {
@@ -151,7 +155,7 @@ export default function DailyInsights({
             config={INSIGHT_CONFIGS[i]}
             label={getEntityLabel(insight)}
             partyLabel={getEntityPartyLabel(insight)}
-            sparklineData={getSparklineData(summaryData, getEntityKey(insight), signalMode)}
+            sparklineData={insight._sparklineData}
             onSelect={() => onSelect(getEntityName(insight))}
             t={t}
             animationDelay={i * 100}
@@ -167,7 +171,7 @@ export default function DailyInsights({
             config={INSIGHT_CONFIGS[i]}
             label={getEntityLabel(insight)}
             partyLabel={getEntityPartyLabel(insight)}
-            sparklineData={getSparklineData(summaryData, getEntityKey(insight), signalMode)}
+            sparklineData={insight._sparklineData}
             onSelect={() => onSelect(getEntityName(insight))}
             t={t}
             animationDelay={i * 100}

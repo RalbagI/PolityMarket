@@ -74,11 +74,6 @@ export default function Sparkline({ data = [], width = 60, height = 24, color, c
           animation: `sparkline-draw 0.6s ease-out 0.1s forwards`,
         }}
       />
-      <style>{`
-        @keyframes sparkline-draw {
-          to { stroke-dashoffset: 0; }
-        }
-      `}</style>
     </svg>
   );
 }

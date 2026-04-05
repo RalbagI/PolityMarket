@@ -74,12 +74,20 @@ describe("TopMoversStrip", () => {
     expect(screen.getByRole("region")).toHaveAttribute("aria-label", "topMovers.ariaLabel");
   });
 
-  it("renders sparklines inside mover chips", () => {
-    const { container } = render(<TopMoversStrip data={makeData()} onSelect={() => {}} />);
-    const svgs = container.querySelectorAll("svg");
-    // Each mover chip (risers + fallers) should have a sparkline SVG
-    // With the test data: 2 risers + 2 fallers = 4 sparklines
-    // (sparklines may render nothing if getSparklineData returns <2 points, but SVGs are still attempted)
-    expect(svgs.length).toBeGreaterThanOrEqual(0);
+  it("renders sparkline data prop on mover chips", () => {
+    // When summaryData has 2+ dates, sparkline data is precomputed and passed down
+    const summaryData = [
+      { politician_id: "a", name: "Riser A", date: "2026-04-04", market_score: 50 },
+      { politician_id: "a", name: "Riser A", date: "2026-04-05", market_score: 60 },
+      { politician_id: "c", name: "Faller C", date: "2026-04-04", market_score: 70 },
+      { politician_id: "c", name: "Faller C", date: "2026-04-05", market_score: 55 },
+    ];
+    const { container } = render(
+      <TopMoversStrip data={makeData()} summaryData={summaryData} onSelect={() => {}} />
+    );
+    // Sparkline SVGs have aria-hidden="true" and a polyline child
+    const sparklineSvgs = container.querySelectorAll("svg[aria-hidden='true'] polyline");
+    // 2 movers with 2+ data points each → 2 sparklines
+    expect(sparklineSvgs.length).toBe(2);
   });
 });

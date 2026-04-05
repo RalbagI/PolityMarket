@@ -110,7 +110,7 @@ export default function TreemapLeaf({
       {/* Drill-down affordance — subtle chevron for interactive tiles */}
       {!d._isOthers && !tooSmall && area > 3000 && (
         <div
-          className="absolute bottom-1 start-1 opacity-0 group-hover:opacity-40 transition-opacity duration-200 rtl:rotate-180"
+          className="absolute bottom-1 start-1 opacity-0 group-hover:opacity-40 transition-opacity duration-200 treemap-drilldown-chevron"
           aria-hidden="true"
         >
           <ChevronRight className="w-3.5 h-3.5 text-white" />
