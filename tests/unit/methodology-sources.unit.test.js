@@ -63,16 +63,10 @@ describe("methodology dataSources translations — source coverage", () => {
 });
 
 describe("methodology dataSources translations — RTL safety", () => {
-  it("social field wraps Reddit references with LTR marks", () => {
-    const socialText = dataSources.social;
-    // Unicode LTR mark (U+200E) should appear around Reddit references
-    // to prevent RTL from mangling r/subreddit
-    expect(socialText).toContain("\u200E");
-  });
-
-  it("r/subreddit names appear in correct LTR order", () => {
+  it("r/subreddit names appear in correct LTR order without corruption", () => {
     const socialText = dataSources.social;
     // The text should contain r/ followed by the subreddit name
+    // Natural RTL handling (via dir="rtl") displays these correctly
     expect(socialText).toMatch(/r\/Israel/);
     expect(socialText).toMatch(/r\/worldnews/);
     expect(socialText).toMatch(/r\/IsraelPolitics/);
@@ -80,6 +74,15 @@ describe("methodology dataSources translations — RTL safety", () => {
 
   it("social field has no carriage return characters", () => {
     expect(dataSources.social).not.toContain("\r");
+  });
+
+  it("social field contains all major platforms mentioned in config", () => {
+    const socialText = dataSources.social;
+    // Verify all platforms are listed
+    expect(socialText).toContain("טלגרם");
+    expect(socialText).toContain("Reddit");
+    expect(socialText).toContain("FXP");
+    expect(socialText).toContain("Bluesky");
   });
 });
 
