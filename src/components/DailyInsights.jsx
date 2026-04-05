@@ -154,7 +154,7 @@ export default function DailyInsights({
       role="region"
       aria-label={t("dailyInsights.ariaLabel")}
     >
-      <div className="hidden md:grid grid-cols-3 gap-3">
+      <div className="hidden md:grid grid-cols-3 gap-2">
         {insights.map((insight, i) => (
           <InsightCard
             key={getEntityKey(insight)}
@@ -170,7 +170,7 @@ export default function DailyInsights({
         ))}
       </div>
       {/* Mobile: horizontal scroll */}
-      <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-3 -mx-1 px-1 pb-1">
+      <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-2 -mx-1 px-1 pb-1">
         {insights.map((insight, i) => (
           <InsightCard
             key={getEntityKey(insight)}
@@ -208,50 +208,50 @@ function InsightCard({
   return (
     <button
       onClick={onSelect}
-      className={`text-start rounded-xl border p-3 bg-gradient-to-l ${gradient} ${border}
+      className={`text-start rounded-xl border p-2 bg-gradient-to-l ${gradient} ${border}
         hover:scale-[1.02] hover:shadow-lg hover:shadow-black/20
         active:scale-[0.98] transition-all duration-200
         animate-fadeSlideUp
-        ${mobile ? "min-w-[240px] snap-center shrink-0" : ""}
+        ${mobile ? "min-w-[192px] snap-center shrink-0" : ""}
       `}
       style={{ animationDelay: `${animationDelay}ms` }}
     >
       {/* Category label */}
-      <div className="flex items-center gap-1.5 mb-2">
-        <Icon className={`w-4 h-4 ${iconColor}`} />
-        <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+      <div className="flex items-center gap-1 mb-1.5">
+        <Icon className={`w-3.5 h-3.5 ${iconColor}`} />
+        <span className="text-[9px] font-bold uppercase tracking-widest text-gray-500">
           {t(labelKey)}
         </span>
       </div>
 
       {/* Name + Party */}
-      <div className="text-lg font-black text-white leading-tight truncate">{label}</div>
+      <div className="text-base font-black text-white leading-tight truncate">{label}</div>
       {partyLabel && <div className="text-xs text-gray-500 mt-0.5 truncate">{partyLabel}</div>}
 
       {/* Score + Delta + Sparkline */}
-      <div className="flex items-end justify-between mt-2 gap-2">
+      <div className="flex items-end justify-between mt-1.5 gap-1.5">
         <div>
           {isVolume ? (
-            <div className={`text-2xl font-black tabular-nums ${deltaColor}`} dir="ltr">
+            <div className={`text-xl font-black tabular-nums ${deltaColor}`} dir="ltr">
               {(insight.media_volume ?? 0).toFixed(1)}
             </div>
           ) : (
-            <div className={`text-2xl font-black tabular-nums ${deltaColor}`} dir="ltr">
+            <div className={`text-xl font-black tabular-nums ${deltaColor}`} dir="ltr">
               {deltaValue > 0 ? "+" : ""}
               {deltaValue.toFixed(1)}
             </div>
           )}
           {!isVolume && Number.isFinite(insight.displayScore) && (
-            <div className="text-[10px] text-gray-600 mt-0.5" dir="ltr">
+            <div className="text-[9px] text-gray-600 mt-0.5" dir="ltr">
               → {Math.round(insight.displayScore)}
             </div>
           )}
         </div>
-        <Sparkline data={sparklineData} width={60} height={24} />
+        <Sparkline data={sparklineData} width={48} height={20} />
       </div>
 
       {/* Tap to explore hint */}
-      <div className="text-[9px] text-gray-600 mt-2">{t("dailyInsights.tapToExplore")}</div>
+      <div className="text-[8px] text-gray-600 mt-1">{t("dailyInsights.tapToExplore")}</div>
     </button>
   );
 }

@@ -312,7 +312,7 @@ describe("DailyInsights", () => {
     const desktopGrid = document.querySelector(".md\\:grid");
     if (desktopGrid) {
       const buttons = desktopGrid.querySelectorAll("button");
-      const names = [...buttons].map((btn) => btn.querySelector(".text-lg")?.textContent);
+      const names = [...buttons].map((btn) => btn.querySelector(".text-base")?.textContent);
       const unique = new Set(names);
       expect(unique.size).toBe(names.length);
     }
