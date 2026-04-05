@@ -148,7 +148,9 @@ export function MethodologyContent({ t }) {
           {DIMENSIONS.map(({ key, color }) => (
             <div key={key}>
               <div className="flex justify-between text-sm">
-                <span className="font-medium text-gray-300">{t(`methodology.dimensions.${key}`)}</span>
+                <span className="font-medium text-gray-300">
+                  {t(`methodology.dimensions.${key}`)}
+                </span>
                 <span className={`${color} font-bold`}>
                   {t(`methodology.dimensions.${key}Weight`)}
                 </span>
@@ -160,7 +162,9 @@ export function MethodologyContent({ t }) {
           ))}
           <div className="border-t border-gray-700/50 pt-2">
             <div className="flex justify-between text-sm">
-              <span className="font-medium text-gray-400">{t("methodology.dimensions.agendaBonus")}</span>
+              <span className="font-medium text-gray-400">
+                {t("methodology.dimensions.agendaBonus")}
+              </span>
               <span className="text-xs font-medium text-gray-500">±0.5 pt</span>
             </div>
             <p className="mt-0.5 text-xs text-gray-500">
@@ -233,11 +237,7 @@ export function MethodologyContent({ t }) {
         />
       </Section>
 
-      <Section
-        icon={Eye}
-        iconColor="text-emerald-400"
-        title={t("methodology.visualization.title")}
-      >
+      <Section icon={Eye} iconColor="text-emerald-400" title={t("methodology.visualization.title")}>
         <Paragraph text={t("methodology.visualization.description")} />
         <BulletList
           items={[
@@ -286,11 +286,7 @@ export function MethodologyContent({ t }) {
         />
       </Section>
 
-      <Section
-        icon={Database}
-        iconColor="text-cyan-400"
-        title={t("methodology.dataSources.title")}
-      >
+      <Section icon={Database} iconColor="text-cyan-400" title={t("methodology.dataSources.title")}>
         <Paragraph text={t("methodology.dataSources.description")} />
         <BulletList
           items={[
