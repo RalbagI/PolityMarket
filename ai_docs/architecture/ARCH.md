@@ -1,5 +1,5 @@
 ---
-updated_at: "2026-04-04"
+updated_at: "2026-04-05"
 review_cycle_days: 90
 scope: System Architecture
 ---
@@ -62,9 +62,12 @@ Daily Pipeline (02:00 Asia/Jerusalem)
 | src/App.jsx                           | Root layout: sidebar + treemap + chart     |
 | src/store.js                          | Zustand: data, UI state, SWR caching       |
 | src/components/Treemap.jsx            | d3-hierarchy squarified treemap            |
+| src/components/DailyInsights.jsx      | Top 3 auto-computed daily insights cards   |
+| src/components/Sparkline.jsx          | Micro-visualization: SVG trend line        |
 | src/components/MethodologyModal.jsx   | In-app methodology and legal copy          |
 | src/components/Sidebar.jsx            | Stats panel (desktop fixed, mobile drawer) |
 | src/components/SlidePanel.jsx         | Detail panel (slides from inline-end)      |
+| src/lib/getSparklineData.js           | Extract last N signal values per entity    |
 | data-pipeline/generateDailyScores.js  | Daily score pipeline                       |
 | src/lib/marketScore.js                | Market-score normalization + tier helpers  |
 | data-pipeline/lib/parseLLMResponse.js | Zod schema validation                      |
