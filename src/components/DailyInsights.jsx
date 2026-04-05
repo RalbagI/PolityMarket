@@ -154,18 +154,16 @@ export default function DailyInsights({
       role="region"
       aria-label={t("dailyInsights.ariaLabel")}
     >
-      <div className="hidden md:grid grid-cols-3 gap-3">
-        {insights.map((insight, i) => (
+      <div className="hidden md:flex md:flex-col gap-0.5">
+        {insights.map((insight) => (
           <InsightCard
             key={getEntityKey(insight)}
             insight={insight}
             config={INSIGHT_CONFIG_BY_TYPE[insight.insightType]}
             label={getEntityLabel(insight)}
-            partyLabel={getEntityPartyLabel(insight)}
             sparklineData={insight._sparklineData}
             onSelect={() => onSelect(getEntityName(insight))}
             t={t}
-            animationDelay={i * 100}
           />
         ))}
       </div>
@@ -205,53 +203,64 @@ function InsightCard({
   const isVolume = config.type === "coverage";
   const deltaValue = insight.signal_delta_points;
 
+  const deltaDisplay = isVolume
+    ? (insight.media_volume ?? 0).toFixed(1)
+    : `${deltaValue > 0 ? "+" : ""}${deltaValue.toFixed(1)}`;
+
+  /* ── Mobile: full card layout ── */
+  if (mobile) {
+    return (
+      <button
+        onClick={onSelect}
+        className={`text-start rounded-xl border p-3 bg-gradient-to-l ${gradient} ${border}
+          hover:scale-[1.02] hover:shadow-lg hover:shadow-black/20
+          active:scale-[0.98] transition-all duration-200
+          animate-fadeSlideUp min-w-[240px] snap-center shrink-0
+        `}
+        style={{ animationDelay: `${animationDelay}ms` }}
+      >
+        <div className="flex items-center gap-1.5 mb-2">
+          <Icon className={`w-4 h-4 ${iconColor}`} />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            {t(labelKey)}
+          </span>
+        </div>
+        <div className="text-lg font-black text-white leading-tight truncate">{label}</div>
+        {partyLabel && <div className="text-xs text-gray-500 mt-0.5 truncate">{partyLabel}</div>}
+        <div className="flex items-end justify-between mt-2 gap-2">
+          <div>
+            <div className={`text-2xl font-black tabular-nums ${deltaColor}`} dir="ltr">
+              {deltaDisplay}
+            </div>
+            {!isVolume && Number.isFinite(insight.displayScore) && (
+              <div className="text-[10px] text-gray-600 mt-0.5" dir="ltr">
+                → {Math.round(insight.displayScore)}
+              </div>
+            )}
+          </div>
+          <Sparkline data={sparklineData} width={60} height={24} />
+        </div>
+        <div className="text-[9px] text-gray-600 mt-2">{t("dailyInsights.tapToExplore")}</div>
+      </button>
+    );
+  }
+
+  /* ── Desktop: compact horizontal row ── */
   return (
     <button
       onClick={onSelect}
-      className={`text-start rounded-xl border p-3 bg-gradient-to-l ${gradient} ${border}
-        hover:scale-[1.02] hover:shadow-lg hover:shadow-black/20
-        active:scale-[0.98] transition-all duration-200
-        animate-fadeSlideUp
-        ${mobile ? "min-w-[240px] snap-center shrink-0" : ""}
-      `}
-      style={{ animationDelay: `${animationDelay}ms` }}
+      className={`flex items-center gap-2 w-full rounded-lg border px-2 py-1 bg-gradient-to-l ${gradient} ${border}
+        hover:bg-gray-800/40 transition-colors`}
     >
-      {/* Category label */}
-      <div className="flex items-center gap-1.5 mb-2">
-        <Icon className={`w-4 h-4 ${iconColor}`} />
-        <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
-          {t(labelKey)}
-        </span>
-      </div>
-
-      {/* Name + Party */}
-      <div className="text-lg font-black text-white leading-tight truncate">{label}</div>
-      {partyLabel && <div className="text-xs text-gray-500 mt-0.5 truncate">{partyLabel}</div>}
-
-      {/* Score + Delta + Sparkline */}
-      <div className="flex items-end justify-between mt-2 gap-2">
-        <div>
-          {isVolume ? (
-            <div className={`text-2xl font-black tabular-nums ${deltaColor}`} dir="ltr">
-              {(insight.media_volume ?? 0).toFixed(1)}
-            </div>
-          ) : (
-            <div className={`text-2xl font-black tabular-nums ${deltaColor}`} dir="ltr">
-              {deltaValue > 0 ? "+" : ""}
-              {deltaValue.toFixed(1)}
-            </div>
-          )}
-          {!isVolume && Number.isFinite(insight.displayScore) && (
-            <div className="text-[10px] text-gray-600 mt-0.5" dir="ltr">
-              → {Math.round(insight.displayScore)}
-            </div>
-          )}
-        </div>
-        <Sparkline data={sparklineData} width={60} height={24} />
-      </div>
-
-      {/* Tap to explore hint */}
-      <div className="text-[9px] text-gray-600 mt-2">{t("dailyInsights.tapToExplore")}</div>
+      <Icon className={`w-3.5 h-3.5 shrink-0 ${iconColor}`} />
+      <span className="text-[9px] font-bold uppercase tracking-widest text-gray-500 shrink-0 w-20 truncate text-start">
+        {t(labelKey)}
+      </span>
+      <span className="text-sm font-bold text-white truncate flex-1 text-start">{label}</span>
+      <span className={`text-sm font-bold tabular-nums shrink-0 ${deltaColor}`} dir="ltr">
+        {deltaDisplay}
+      </span>
+      <Sparkline data={sparklineData} width={40} height={14} />
     </button>
   );
 }

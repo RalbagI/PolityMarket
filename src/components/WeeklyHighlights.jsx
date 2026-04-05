@@ -82,14 +82,14 @@ export default function WeeklyHighlights({
   if (!headline) return null;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       {/* Story headline */}
       {(() => {
         const isUp = headline.delta > 0;
         return (
           <button
             onClick={() => onSelect(getEntityName(headline))}
-            className={`w-full text-start rounded-xl border p-4 hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 ${
+            className={`w-full text-start rounded-xl border p-3 hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 ${
               isUp
                 ? "bg-gradient-to-l from-emerald-950/40 to-gray-950 border-emerald-800/40"
                 : "bg-gradient-to-l from-red-950/40 to-gray-950 border-red-800/40"
@@ -102,13 +102,13 @@ export default function WeeklyHighlights({
               </span>
             </div>
 
-            <div className="text-lg font-black text-white leading-tight mb-2">
+            <div className="text-base font-bold text-white leading-tight mb-1.5">
               {getEntityLabel(headline)}
             </div>
 
             <div className="flex items-baseline gap-2 mb-1">
               <span
-                className={`text-2xl font-black tabular-nums ${
+                className={`text-xl font-black tabular-nums ${
                   isUp ? "text-emerald-400" : "text-red-400"
                 }`}
                 dir="ltr"
@@ -128,7 +128,7 @@ export default function WeeklyHighlights({
       })()}
 
       {/* Top 5 risers */}
-      <div className="rounded-xl bg-gray-900/60 border border-gray-800 p-3">
+      <div className="rounded-xl bg-gray-900/60 border border-gray-800 p-2.5">
         <div className="flex items-center gap-1.5 mb-2">
           <Trophy className="w-3.5 h-3.5 text-emerald-500" />
           <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500/80">
@@ -160,7 +160,7 @@ export default function WeeklyHighlights({
       </div>
 
       {/* Top 5 fallers */}
-      <div className="rounded-xl bg-gray-900/60 border border-gray-800 p-3">
+      <div className="rounded-xl bg-gray-900/60 border border-gray-800 p-2.5">
         <div className="flex items-center gap-1.5 mb-2">
           <TrendingDown className="w-3.5 h-3.5 text-red-500" />
           <span className="text-[10px] font-bold uppercase tracking-widest text-red-500/80">

@@ -298,7 +298,7 @@ export default function App() {
               </ErrorBoundary>
             </div>
             {/* Desktop: Weekly highlights sidebar */}
-            <div className="hidden md:block w-[280px] shrink-0 border-s border-gray-800 bg-gray-950/80 overflow-y-auto p-3">
+            <div className="hidden md:block w-[220px] shrink-0 border-s border-gray-800 bg-gray-950/80 overflow-y-auto p-2">
               <WeeklyHighlights
                 onSelect={handleSelectPolitician}
                 signalMode={signalMode}
