@@ -31,15 +31,15 @@ export function DisplayOptions({ t }) {
       <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
         {t("treemap.options.title")}
       </h3>
-      <div className="grid grid-cols-2 gap-2">
-        <div>
-          <div className="text-[10px] text-gray-500 mb-1">{t("treemap.options.sizeBy")}</div>
-          <div className="flex gap-1">
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <div className="text-[10px] text-gray-500 shrink-0">{t("treemap.options.sizeBy")}</div>
+          <div className="flex gap-1 flex-wrap">
             {options.map((o) => (
               <button
                 key={o.value}
                 onClick={() => setSizeBy(o.value)}
-                className={`px-2 py-1 rounded text-[10px] font-medium transition-colors ${
+                className={`px-2 py-0.5 rounded text-[10px] font-medium transition-colors ${
                   sizeBy === o.value
                     ? "bg-indigo-600 text-white"
                     : "bg-gray-800 text-gray-500 hover:text-gray-300"
@@ -50,14 +50,14 @@ export function DisplayOptions({ t }) {
             ))}
           </div>
         </div>
-        <div>
-          <div className="text-[10px] text-gray-500 mb-1">{t("treemap.options.colorBy")}</div>
-          <div className="flex gap-1">
+        <div className="flex items-center gap-2">
+          <div className="text-[10px] text-gray-500 shrink-0">{t("treemap.options.colorBy")}</div>
+          <div className="flex gap-1 flex-wrap">
             {options.map((o) => (
               <button
                 key={o.value}
                 onClick={() => setColorBy(o.value)}
-                className={`px-2 py-1 rounded text-[10px] font-medium transition-colors ${
+                className={`px-2 py-0.5 rounded text-[10px] font-medium transition-colors ${
                   colorBy === o.value
                     ? "bg-indigo-600 text-white"
                     : "bg-gray-800 text-gray-500 hover:text-gray-300"
