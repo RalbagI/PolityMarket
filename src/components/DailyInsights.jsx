@@ -39,6 +39,10 @@ const INSIGHT_CONFIGS = [
   },
 ];
 
+const INSIGHT_CONFIG_BY_TYPE = Object.fromEntries(
+  INSIGHT_CONFIGS.map((config) => [config.type, config])
+);
+
 export default function DailyInsights({
   data,
   summaryData = [],
@@ -73,54 +77,57 @@ export default function DailyInsights({
         .map((e) => [getEntityKey(e), resolveSignalDisplayScore(e, signalMode)])
     );
 
-    // Compute deltas
-    const withDelta = todayRows
+    const todayEntries = todayRows
       .map((entry) => {
+        const entityKey = getEntityKey(entry);
         const current = resolveSignalDisplayScore(entry, signalMode);
-        const prev = previousByKey.get(getEntityKey(entry));
-        if (!Number.isFinite(current) || !Number.isFinite(prev)) return null;
-        const delta = current - prev;
+        const prev = previousByKey.get(entityKey);
         // Merge with enriched data (displayName, etc.) if available
-        const enriched = data.find((d) => getEntityKey(d) === getEntityKey(entry)) ?? entry;
-        return { ...enriched, signal_delta_points: delta, displayScore: current };
+        const enriched = data.find((d) => getEntityKey(d) === entityKey) ?? entry;
+        return {
+          ...enriched,
+          signal_delta_points:
+            Number.isFinite(current) && Number.isFinite(prev) ? current - prev : null,
+          displayScore: Number.isFinite(current) ? current : null,
+        };
       })
       .filter(Boolean);
 
-    // Find candidates
-    const sortedByDelta = [...withDelta].sort(
-      (a, b) => b.signal_delta_points - a.signal_delta_points
-    );
-    const sortedByVolume = [...withDelta].sort(
+    const sortedByDelta = todayEntries
+      .filter((entry) => Number.isFinite(entry.signal_delta_points))
+      .sort((a, b) => b.signal_delta_points - a.signal_delta_points);
+    const sortedByVolume = [...todayEntries].sort(
       (a, b) => (b.media_volume ?? 0) - (a.media_volume ?? 0)
     );
 
     const usedKeys = new Set();
     const result = [];
 
+    const pushInsight = (entry, type) => {
+      if (!entry) return;
+      usedKeys.add(getEntityKey(entry));
+      result.push({ ...entry, insightType: type });
+    };
+
     // 1. Biggest riser
-    const riser = sortedByDelta.find(
-      (d) => d.signal_delta_points > 0 && !usedKeys.has(getEntityKey(d))
+    pushInsight(
+      sortedByDelta.find((d) => d.signal_delta_points > 0 && !usedKeys.has(getEntityKey(d))),
+      "riser"
     );
-    if (riser) {
-      usedKeys.add(getEntityKey(riser));
-      result.push(riser);
-    }
 
     // 2. Biggest faller
-    const faller = [...sortedByDelta]
-      .reverse()
-      .find((d) => d.signal_delta_points < 0 && !usedKeys.has(getEntityKey(d)));
-    if (faller) {
-      usedKeys.add(getEntityKey(faller));
-      result.push(faller);
-    }
+    pushInsight(
+      [...sortedByDelta]
+        .reverse()
+        .find((d) => d.signal_delta_points < 0 && !usedKeys.has(getEntityKey(d))),
+      "faller"
+    );
 
     // 3. Most covered (by media_volume)
-    const covered = sortedByVolume.find((d) => !usedKeys.has(getEntityKey(d)));
-    if (covered) {
-      usedKeys.add(getEntityKey(covered));
-      result.push(covered);
-    }
+    pushInsight(
+      sortedByVolume.find((d) => !usedKeys.has(getEntityKey(d))),
+      "coverage"
+    );
 
     // Precompute sparkline data for each insight
     return result.map((entry) => ({
@@ -152,7 +159,7 @@ export default function DailyInsights({
           <InsightCard
             key={getEntityKey(insight)}
             insight={insight}
-            config={INSIGHT_CONFIGS[i]}
+            config={INSIGHT_CONFIG_BY_TYPE[insight.insightType]}
             label={getEntityLabel(insight)}
             partyLabel={getEntityPartyLabel(insight)}
             sparklineData={insight._sparklineData}
@@ -168,7 +175,7 @@ export default function DailyInsights({
           <InsightCard
             key={getEntityKey(insight)}
             insight={insight}
-            config={INSIGHT_CONFIGS[i]}
+            config={INSIGHT_CONFIG_BY_TYPE[insight.insightType]}
             label={getEntityLabel(insight)}
             partyLabel={getEntityPartyLabel(insight)}
             sparklineData={insight._sparklineData}

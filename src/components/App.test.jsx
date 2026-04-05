@@ -131,6 +131,10 @@ vi.mock("./TopMoversStrip", () => ({
   default: () => <div data-testid="top-movers" />,
 }));
 
+vi.mock("./DailyInsights", () => ({
+  default: () => <div data-testid="daily-insights" />,
+}));
+
 // Mock ResizeObserver for Treemap
 class MockResizeObserver {
   constructor(cb) {
@@ -165,6 +169,16 @@ describe("App mobile layout", () => {
   it("renders TopMoversStrip instead of chart toggle", () => {
     render(<App />);
     expect(screen.getByTestId("top-movers")).toBeInTheDocument();
+  });
+
+  it("keeps daily insights inside the viewport-bounded layout container", () => {
+    render(<App />);
+
+    const layoutContainer = screen.getByTestId("daily-insights").parentElement;
+    expect(layoutContainer.className).toContain(
+      "h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))]"
+    );
+    expect(layoutContainer).toContainElement(screen.getByTestId("top-movers"));
   });
 
   it("renders inline sidebar content on mobile", () => {

@@ -143,6 +143,159 @@ describe("DailyInsights", () => {
     expect(screen.getAllByText("Dave").length).toBeGreaterThanOrEqual(1);
   });
 
+  it("keeps category labels aligned when a category has no candidate", () => {
+    const summaryData = [
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        date: "2026-04-04",
+        market_score: 60,
+        media_volume: 2,
+      },
+      {
+        politician_id: "bob",
+        name: "Bob",
+        party: "PartyB",
+        date: "2026-04-04",
+        market_score: 50,
+        media_volume: 4,
+      },
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        date: "2026-04-05",
+        market_score: 60,
+        media_volume: 3,
+      },
+      {
+        politician_id: "bob",
+        name: "Bob",
+        party: "PartyB",
+        date: "2026-04-05",
+        market_score: 40,
+        media_volume: 5,
+      },
+      {
+        politician_id: "carol",
+        name: "Carol",
+        party: "PartyC",
+        date: "2026-04-05",
+        market_score: 52,
+        media_volume: 7,
+      },
+    ];
+    const data = [
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        displayName: "Alice",
+        market_score: 60,
+        media_volume: 3,
+      },
+      {
+        politician_id: "bob",
+        name: "Bob",
+        party: "PartyB",
+        displayName: "Bob",
+        market_score: 40,
+        media_volume: 5,
+      },
+      {
+        politician_id: "carol",
+        name: "Carol",
+        party: "PartyC",
+        displayName: "Carol",
+        market_score: 52,
+        media_volume: 7,
+      },
+    ];
+
+    render(<DailyInsights data={data} summaryData={summaryData} onSelect={() => {}} />);
+
+    expect(screen.queryByText("dailyInsights.biggestRiser")).not.toBeInTheDocument();
+    expect(screen.getAllByText("dailyInsights.biggestFaller").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("dailyInsights.mostCovered").length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("selects most covered from today's rows even without previous-day data", () => {
+    const summaryData = [
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        date: "2026-04-04",
+        market_score: 50,
+        media_volume: 3,
+      },
+      {
+        politician_id: "bob",
+        name: "Bob",
+        party: "PartyB",
+        date: "2026-04-04",
+        market_score: 60,
+        media_volume: 5,
+      },
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        date: "2026-04-05",
+        market_score: 65,
+        media_volume: 4,
+      },
+      {
+        politician_id: "bob",
+        name: "Bob",
+        party: "PartyB",
+        date: "2026-04-05",
+        market_score: 45,
+        media_volume: 6,
+      },
+      {
+        politician_id: "eve",
+        name: "Eve",
+        party: "PartyE",
+        date: "2026-04-05",
+        market_score: 55,
+        media_volume: 12,
+      },
+    ];
+    const data = [
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        displayName: "Alice",
+        market_score: 65,
+        media_volume: 4,
+      },
+      {
+        politician_id: "bob",
+        name: "Bob",
+        party: "PartyB",
+        displayName: "Bob",
+        market_score: 45,
+        media_volume: 6,
+      },
+      {
+        politician_id: "eve",
+        name: "Eve",
+        party: "PartyE",
+        displayName: "Eve",
+        market_score: 55,
+        media_volume: 12,
+      },
+    ];
+
+    render(<DailyInsights data={data} summaryData={summaryData} onSelect={() => {}} />);
+
+    expect(screen.getAllByText("Eve").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("dailyInsights.mostCovered").length).toBeGreaterThanOrEqual(1);
+  });
+
   it("calls onSelect when insight card is clicked", () => {
     const onSelect = vi.fn();
     render(<DailyInsights data={makeData()} summaryData={makeSummaryData()} onSelect={onSelect} />);
