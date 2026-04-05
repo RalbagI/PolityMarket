@@ -47,7 +47,7 @@ export default function QuickAbout({ onOpenFullMethodology }) {
     if (!trigger) return;
 
     const rect = trigger.getBoundingClientRect();
-    const panelWidth = 260;
+    const panelWidth = 320;
     const edgePadding = 12;
     const isRtl = document.documentElement.dir === "rtl";
     const top = rect.bottom + 8;
@@ -183,8 +183,9 @@ export default function QuickAbout({ onOpenFullMethodology }) {
               fixed z-50
               inset-x-3 top-[calc(3.5rem+env(safe-area-inset-top)+0.5rem)]
               md:inset-x-auto
-              max-w-none md:max-w-[260px]
-              bg-gray-900 border border-gray-800 rounded-xl shadow-2xl p-4
+              max-w-none md:max-w-[320px]
+              bg-[linear-gradient(180deg,rgba(17,24,39,0.98),rgba(9,12,18,0.98))]
+              border border-gray-800 rounded-xl shadow-2xl p-4
             "
           >
             <h3 id={titleId} className="text-sm font-bold text-white mb-3">
@@ -193,9 +194,18 @@ export default function QuickAbout({ onOpenFullMethodology }) {
 
             <div className="space-y-2.5">
               {LINES.map(({ icon: Icon, color, key }) => (
-                <div key={key} className="flex items-start gap-2">
+                <div
+                  key={key}
+                  className={`flex items-start gap-2 rounded-lg ${
+                    key === "line1" ? "bg-white/5 px-2.5 py-2" : ""
+                  }`}
+                >
                   <Icon className={`w-4 h-4 shrink-0 mt-0.5 ${color}`} />
-                  <span className="text-xs text-gray-300 leading-relaxed">
+                  <span
+                    className={`leading-relaxed ${
+                      key === "line1" ? "text-sm font-medium text-white" : "text-xs text-gray-300"
+                    }`}
+                  >
                     {t(`quickAbout.${key}`)}
                   </span>
                 </div>

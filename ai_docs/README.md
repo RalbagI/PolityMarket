@@ -7,6 +7,11 @@ review_cycle_days: 90
 
 Source of truth for AI agents working on PolityMarket.
 
+If you want the plain-language explanation first, start with:
+
+- [`../README.md`](../README.md)
+- [`architecture/ARCH.md`](architecture/ARCH.md) → see the "Plain-English summary"
+
 ## Structure
 
 | Directory | Purpose |

@@ -45,6 +45,18 @@ function BulletList({ items }) {
   );
 }
 
+function SummaryCard({ eyebrow, title, text, accentClass }) {
+  return (
+    <div className="rounded-2xl border border-gray-800 bg-gray-950/70 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+      <div className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${accentClass}`}>
+        {eyebrow}
+      </div>
+      <h3 className="mt-2 text-sm font-semibold text-white">{title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-gray-400">{text}</p>
+    </div>
+  );
+}
+
 function LegalSection({ title, text }) {
   return (
     <div className="border-b border-gray-800/50 pb-4 last:border-0 last:pb-0">
@@ -91,7 +103,7 @@ export default function MethodologyModal({ isOpen, onClose }) {
           role="dialog"
           aria-modal="true"
           aria-labelledby="methodology-title"
-          className="bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto"
+          className="bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto"
         >
           {/* Header with tabs */}
           <div className="sticky top-0 z-10 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
@@ -134,6 +146,31 @@ export default function MethodologyModal({ isOpen, onClose }) {
           <div className="px-6 py-6 space-y-8">
             {tab === "methodology" ? (
               <>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    {
+                      key: "overview",
+                      accentClass: "text-indigo-300",
+                    },
+                    {
+                      key: "mediaClimate",
+                      accentClass: "text-emerald-300",
+                    },
+                    {
+                      key: "consensusProxy",
+                      accentClass: "text-amber-300",
+                    },
+                  ].map(({ key, accentClass }) => (
+                    <SummaryCard
+                      key={key}
+                      eyebrow={t(`methodology.quickStart.${key}.eyebrow`)}
+                      title={t(`methodology.quickStart.${key}.title`)}
+                      text={t(`methodology.quickStart.${key}.text`)}
+                      accentClass={accentClass}
+                    />
+                  ))}
+                </div>
+
                 {/* How It Works */}
                 <Section
                   icon={Brain}
@@ -188,8 +225,23 @@ export default function MethodologyModal({ isOpen, onClose }) {
                       </p>
                     </div>
                   </div>
+                  <div className="grid gap-2 mt-4 sm:grid-cols-3">
+                    {["step1", "step2", "step3"].map((stepKey, index) => (
+                      <div
+                        key={stepKey}
+                        className="rounded-xl border border-gray-800 bg-gray-950/60 px-4 py-3"
+                      >
+                        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                          {t("methodology.scoring.stepLabel", { number: index + 1 })}
+                        </div>
+                        <p className="mt-2 text-sm leading-relaxed text-gray-300">
+                          {t(`methodology.scoring.${stepKey}`)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                   <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-3 mt-3">
-                    <p className="text-xs text-indigo-300 font-mono text-center whitespace-pre-line">
+                    <p className="text-sm text-indigo-200 leading-relaxed">
                       {t("methodology.scoring.formula")}
                     </p>
                   </div>
