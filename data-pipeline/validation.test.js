@@ -92,6 +92,8 @@ describe("validateCoTCoverage", () => {
       name: `P${i}`,
       chain_of_thought:
         "ניתוח ארוך מספיק שמכיל מספיק תווים כדי לעבור את הסף של חמישים תווים בעברית",
+      chain_of_thought_en:
+        "An analysis long enough to pass the fifty character threshold in English text here.",
     }));
     expect(validateCoTCoverage(entries)).toEqual([]);
   });
@@ -109,8 +111,9 @@ describe("validateCoTCoverage", () => {
       })),
     ];
     const warnings = validateCoTCoverage(entries);
-    expect(warnings.length).toBe(1);
+    expect(warnings.length).toBe(2);
     expect(warnings[0]).toContain("CoT Coverage");
+    expect(warnings[1]).toContain("CoT-EN Coverage");
   });
 
   it("returns no warning for empty array", () => {

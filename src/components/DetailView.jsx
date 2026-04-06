@@ -157,7 +157,10 @@ export default function DetailView({
 
       {/* AI Analysis — expanded by default */}
       <AccordionSection title={t("detailView.section.aiAnalysis")} icon={Quote} defaultOpen={true}>
-        <AiAnalysisBlock text={entry.chain_of_thought || entry.llm_reasoning} />
+        <AiAnalysisBlock
+          text={entry.chain_of_thought || entry.llm_reasoning}
+          textEn={entry.chain_of_thought_en}
+        />
       </AccordionSection>
 
       {/* Unified 8-dimension breakdown — expanded by default */}

@@ -18,9 +18,9 @@ export function parseChainOfThought(text) {
     const title = part.slice(0, newlineIdx).trim();
     const body = part.slice(newlineIdx + 1).trim();
 
-    if (title === "שורה תחתונה") sections.bottomLine = body;
-    else if (title === "מה קרה") sections.whatHappened = body;
-    else if (title === "מה זה אומר") sections.whatItMeans = body;
+    if (title === "שורה תחתונה" || title === "Bottom Line") sections.bottomLine = body;
+    else if (title === "מה קרה" || title === "What Happened") sections.whatHappened = body;
+    else if (title === "מה זה אומר" || title === "What It Means") sections.whatItMeans = body;
   }
 
   if (!sections.bottomLine && !sections.whatHappened && !sections.whatItMeans) {
