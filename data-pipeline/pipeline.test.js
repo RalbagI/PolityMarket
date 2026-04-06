@@ -329,6 +329,13 @@ describe("system-prompt.txt", () => {
     expect(prompt).toContain("chain_of_thought");
   });
 
+  it("instructs English chain_of_thought_en", () => {
+    expect(prompt).toContain("chain_of_thought_en");
+    expect(prompt).toContain("Bottom Line");
+    expect(prompt).toContain("What Happened");
+    expect(prompt).toContain("What It Means");
+  });
+
   it("includes sarcasm detection", () => {
     expect(prompt.toLowerCase()).toContain("sarcasm");
   });

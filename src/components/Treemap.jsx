@@ -10,7 +10,7 @@ import TreemapTooltip from "./TreemapTooltip";
 import TreemapLeaf from "./TreemapLeaf";
 
 export default memo(function Treemap({ data, onSelect, selectedPolitician, signalMode }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const sizeBy = useStore((s) => s.treemapSizeBy);
   const colorBy = useStore((s) => s.treemapColorBy);
 
@@ -217,7 +217,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
         <div
           ref={innerRef}
           className="relative"
-          dir="rtl"
+          dir={i18n.dir()}
           style={{ width: virtualW, height: virtualH }}
         >
           {leaves.map((leaf) => {

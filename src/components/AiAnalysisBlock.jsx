@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { parseChainOfThought } from "../lib/parseChainOfThought";
 
-export default function AiAnalysisBlock({ text }) {
-  const { t } = useTranslation();
-  const parsed = parseChainOfThought(text);
+export default function AiAnalysisBlock({ text, textEn }) {
+  const { t, i18n } = useTranslation();
+  const activeText = i18n.language === "en" && textEn ? textEn : text;
+  const parsed = parseChainOfThought(activeText);
 
   if (!parsed) {
     return <p className="text-sm text-gray-500">{t("detailView.aiAnalysis.empty")}</p>;

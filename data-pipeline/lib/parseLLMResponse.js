@@ -6,6 +6,7 @@ import { z } from "zod";
  */
 export const llmResponseSchema = z.object({
   chain_of_thought: z.string().min(1).nullable(),
+  chain_of_thought_en: z.string().min(1).nullable().optional(),
   hostility_level: z
     .number()
     .min(0, "hostility_level must be >= 0")
@@ -28,6 +29,7 @@ export const llmResponseSchema = z.object({
 export const llmResponseSchema8dim = z.object({
   // Original 3 dimensions (required)
   chain_of_thought: z.string().min(1).nullable(),
+  chain_of_thought_en: z.string().min(1).nullable().optional(),
   hostility_level: z.number().min(0).max(1),
   policy_approval: z.number().min(-1).max(1),
   media_amplification: z.number().min(0).max(1),
@@ -75,6 +77,7 @@ export const dailyEntrySchema = z.object({
   media_amplification: z.number().min(0).max(1),
   overall_score: z.number().min(0).max(10),
   chain_of_thought: z.string().min(1).nullable(),
+  chain_of_thought_en: z.string().min(1).nullable().optional(),
   news_sentiment: z.number().min(0).max(10),
   social_sentiment: z.number().min(0).max(10),
   media_volume: z.number().min(0).max(10),

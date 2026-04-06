@@ -356,9 +356,7 @@
     "Ra'am": "רע״ם",
     "Raam": "רע״ם",
     "Democrats": "הדמוקרטים",
-    "HaYamin HaMamlakhti": "הימין הממלכתי",
-    "Independent": "עצמאי",
-    "Noam": "נעם"
+    "Independent": "עצמאי"
   },
   "filterBar": {
     "search": {
@@ -845,5 +843,9 @@
     "subscribeFailed": "שגיאה בהרשמה, נסה שוב",
     "subscriptionExists": "כבר קיימת הרשמה עבור אימייל זה. נשלח אליך אימייל לשחזור ההרשמה.",
     "subscriptionExistsEmailFailed": "כבר קיימת הרשמה עבור אימייל זה. לא הצלחנו לשלוח אימייל שחזור, נסה שוב מאוחר יותר."
+  },
+  "languageToggle": {
+    "switchToHebrew": "עבור לעברית",
+    "switchToEnglish": "עבור לאנגלית"
   }
 }

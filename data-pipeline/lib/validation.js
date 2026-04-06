@@ -34,6 +34,13 @@ export function validateChainOfThought(entries) {
     } else if (!HEBREW_RE.test(cot)) {
       warnings.push(`[CoT] ${entry.name}: chain_of_thought contains no Hebrew characters`);
     }
+    // English CoT validation (warning only, not a gate)
+    const cotEn = entry.chain_of_thought_en;
+    if (cotEn != null && cotEn.length < 20) {
+      warnings.push(
+        `[CoT-EN] ${entry.name}: chain_of_thought_en too short (${cotEn.length} chars)`
+      );
+    }
   }
   return warnings;
 }
@@ -48,6 +55,16 @@ export function validateCoTCoverage(entries, minCoverageRatio = 0.8, minCoTLengt
   if (ratio < minCoverageRatio) {
     warnings.push(
       `[CoT Coverage] Only ${withCoT.length}/${entries.length} (${(ratio * 100).toFixed(0)}%) have meaningful CoT (>=${minCoTLength} chars) — expected >=${(minCoverageRatio * 100).toFixed(0)}%`
+    );
+  }
+  // English CoT coverage (informational, not a gate)
+  const withCoTEn = entries.filter(
+    (e) => e.chain_of_thought_en && e.chain_of_thought_en.length >= minCoTLength
+  );
+  const ratioEn = withCoTEn.length / entries.length;
+  if (ratioEn < minCoverageRatio) {
+    warnings.push(
+      `[CoT-EN Coverage] Only ${withCoTEn.length}/${entries.length} (${(ratioEn * 100).toFixed(0)}%) have meaningful English CoT (>=${minCoTLength} chars) — expected >=${(minCoverageRatio * 100).toFixed(0)}%`
     );
   }
   return warnings;

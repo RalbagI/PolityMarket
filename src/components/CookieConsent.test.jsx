@@ -9,6 +9,7 @@ import { COOKIE_CONSENT_KEY } from "../lib/consent";
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key) => key,
+    i18n: { language: "he", dir: () => "rtl", changeLanguage: () => {} },
   }),
 }));
 

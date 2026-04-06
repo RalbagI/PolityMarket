@@ -1,3 +1,5 @@
+import i18n from "i18next";
+
 const DIGRAPH_REPLACEMENTS = [
   [/sh/gi, "ש"],
   [/ch/gi, "ח"],
@@ -92,12 +94,13 @@ export function transliterateToHebrew(text) {
 
 /**
  * Localize politician and party names using i18n translation keys.
- * Falls back to Hebrew transliteration if no translation exists.
+ * Falls back to Hebrew transliteration when in Hebrew, or the raw name otherwise.
  */
 export function localizeName(t, name) {
   const missing = "__missing_politician_name__";
   const translated = t(`politicians.${name}`, { defaultValue: missing });
-  return translated === missing ? transliterateToHebrew(name) : translated;
+  if (translated !== missing) return translated;
+  return i18n.language === "he" ? transliterateToHebrew(name) : name;
 }
 
 export function localizeParty(t, party) {

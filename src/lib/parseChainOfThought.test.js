@@ -69,4 +69,40 @@ describe("parseChainOfThought", () => {
     expect(result.bottomLine).toBe("טקסט כלשהו.");
     expect(result.whatHappened).toBeUndefined();
   });
+
+  it("parses English 3-section structured format", () => {
+    const text = [
+      "## Bottom Line",
+      "Netanyahu under media siege.",
+      "",
+      "## What Happened",
+      "• Critical Haaretz headline",
+      "• Reddit mention",
+      "",
+      "## What It Means",
+      "Public criticism is intensifying.",
+    ].join("\n");
+
+    const result = parseChainOfThought(text);
+    expect(result.isLegacy).toBe(false);
+    expect(result.bottomLine).toBe("Netanyahu under media siege.");
+    expect(result.whatHappened).toContain("• Critical Haaretz headline");
+    expect(result.whatItMeans).toBe("Public criticism is intensifying.");
+  });
+
+  it("parses English 2-section format (no coverage)", () => {
+    const text = [
+      "## Bottom Line",
+      "Complete silence — even the trolls took a day off.",
+      "",
+      "## What It Means",
+      "An MK nobody is talking about.",
+    ].join("\n");
+
+    const result = parseChainOfThought(text);
+    expect(result.isLegacy).toBe(false);
+    expect(result.bottomLine).toBe("Complete silence — even the trolls took a day off.");
+    expect(result.whatHappened).toBeUndefined();
+    expect(result.whatItMeans).toBe("An MK nobody is talking about.");
+  });
 });

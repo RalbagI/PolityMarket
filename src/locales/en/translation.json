@@ -1,0 +1,851 @@
+{
+  "app": {
+    "loading": {
+      "data": "Loading data..."
+    },
+    "error": {
+      "failedToLoadData": "Failed to load data: {{error}}"
+    },
+    "header": {
+      "logo": "PM",
+      "title": "PolityMarket",
+      "subtitle": "What the media is saying now, and what we can cautiously estimate about public support."
+    },
+    "panel": {
+      "defaultTitle": "Details"
+    },
+    "footer": {
+      "text": "PolityMarket \u00b7 Updated daily at 02:00 \u00b7 Based on automated analysis of public coverage"
+    }
+  },
+  "detailView": {
+    "empty": {
+      "selectPolitician": "Select a politician from the leaderboard or click a data point on the chart"
+    },
+    "loading": "Loading details...",
+    "like": "Add to favorites",
+    "unlike": "Remove from favorites",
+    "date": {
+      "fallback": "Today"
+    },
+    "scoreSmoothed": "The score takes recent days into account, so a single headline won\u2019t cause a sharp spike.",
+    "section": {
+      "aiAnalysis": "Today\u2019s Summary",
+      "scoreBreakdown": "How the Score is Built",
+      "dimensions": "8 Dimensions",
+      "trend": "Trend Over Time",
+      "sources": "What We Based This On",
+      "consensusProxy": "Public Support Estimate"
+    },
+    "dimension": {
+      "publicSentiment": "Public Sentiment",
+      "parliamentaryActivity": "Parliamentary Activity",
+      "mediaCredibility": "Media Credibility",
+      "transparencyEthics": "Transparency & Ethics",
+      "fieldActivity": "Field Activity",
+      "satireCulturalImpact": "Cultural Impact",
+      "legislativeQuality": "Legislative Quality",
+      "flipflopIndex": "Promise Keeping",
+      "noData": "No data",
+      "dataConfidence": "{{count}}/{{total}} dimensions",
+      "showSentimentDetail": "Detail",
+      "hideSentimentDetail": "Close"
+    },
+    "aiAnalysis": {
+      "empty": "No analysis available.",
+      "whatHappened": "What happened",
+      "whatItMeans": "What it means"
+    },
+    "metric": {
+      "newsSentiment": "News Sentiment",
+      "socialSentiment": "Social Sentiment",
+      "mediaVolume": "Media Volume"
+    },
+    "breakdown": {
+      "policy": "Policy 40%",
+      "hostility": "Hostility 35%",
+      "volume": "Volume 25%"
+    },
+    "rubrics": {
+      "heading": "Dimensional Metrics",
+      "hostility": "Hostility",
+      "policyApproval": "Policy Approval",
+      "mediaAmplification": "Media Amplification"
+    },
+    "sources": {
+      "empty": "No sources available for this date.",
+      "news": "News Headlines",
+      "social": "Social Media Mentions",
+      "sourceLink": "Link to source",
+      "searchLink": "Search Google News"
+    },
+    "consensus": {
+      "band": "Estimated range: {{low}}\u2013{{high}}",
+      "confidence": "Confidence level: {{value}}%",
+      "confidenceUnknown": "Confidence level: unavailable",
+      "coverage": "Based on {{count}} sources, signal strength {{strength}}%",
+      "pollAnchor": "Calculation basis: {{source}}",
+      "lowConfidence": "There is limited data here, or no strong enough poll to anchor the estimate. Read this number with caution."
+    }
+  },
+  "entityGrid": {
+    "title": "Daily Overview"
+  },
+  "leaderboard": {
+    "title": "Daily Leaderboard",
+    "column": {
+      "rank": "Rank",
+      "politician": "Politician",
+      "party": "Party",
+      "score": "Score",
+      "change": "Change"
+    }
+  },
+  "popularityGauge": {
+    "title": "Popularity Index",
+    "label": {
+      "veryNegative": "Very Negative",
+      "negative": "Negative",
+      "neutral": "Neutral",
+      "positive": "Positive",
+      "veryPositive": "Very Positive"
+    },
+    "comparison": {
+      "yesterday": "Yesterday",
+      "lastWeek": "Last week",
+      "lastMonth": "Last month"
+    }
+  },
+  "shareOfVoice": {
+    "title": "Share of Voice",
+    "description": "Percentage of total political discourse per politician"
+  },
+  "trendlineChart": {
+    "sma": {
+      "raw": "Raw",
+      "7d": "7-day average",
+      "14d": "14-day average"
+    },
+    "axis": {
+      "volume": "Volume",
+      "score": "Market Score"
+    }
+  },
+  "market": {
+    "tiers": {
+      "S": {
+        "label": "Consensus / Peak Momentum"
+      },
+      "A": {
+        "label": "Positive Trend"
+      },
+      "B": {
+        "label": "Average / Noise"
+      },
+      "C": {
+        "label": "Hostility / Decline"
+      }
+    }
+  },
+  "signals": {
+    "title": "What to Show",
+    "mediaClimate": "Media Tone",
+    "consensusProxy": "Public Support",
+    "consensusUnavailable": "The support estimate will appear only after the daily data run is completed.",
+    "lowConfidence": "Low confidence",
+    "sources": {
+      "direct_poll": "Direct poll + coverage",
+      "party_poll+media": "Party poll + coverage",
+      "media_only": "Coverage only",
+      "direct_coverage": "Direct coverage available",
+      "sparse_coverage": "Limited coverage"
+    }
+  },
+  "slidePanel": {
+    "defaultTitle": "Details",
+    "closeButton": {
+      "ariaLabel": "Close panel"
+    }
+  },
+  "errorBoundary": {
+    "message": "Error loading component",
+    "retry": "Try again"
+  },
+  "politicians": {
+    "Benjamin Netanyahu": "Benjamin Netanyahu",
+    "Yariv Levin": "Yariv Levin",
+    "Yoav Gallant": "Yoav Gallant",
+    "Miri Regev": "Miri Regev",
+    "Nir Barkat": "Nir Barkat",
+    "Amir Ohana": "Amir Ohana",
+    "Eli Cohen": "Eli Cohen",
+    "Yisrael Katz": "Yisrael Katz",
+    "Yuli Edelstein": "Yuli Edelstein",
+    "Shlomo Karhi": "Shlomo Karhi",
+    "Zeev Elkin": "Zeev Elkin",
+    "Avi Dichter": "Avi Dichter",
+    "Danny Danon": "Danny Danon",
+    "Ofir Akunis": "Ofir Akunis",
+    "David Bitan": "David Bitan",
+    "Fateen Mulla": "Fateen Mulla",
+    "David Amsalem": "David Amsalem",
+    "Boaz Bismuth": "Boaz Bismuth",
+    "Ariel Kallner": "Ariel Kallner",
+    "Hanoch Milwidsky": "Hanoch Milwidsky",
+    "Tally Gotliv": "Tally Gotliv",
+    "Dan Ilouz": "Dan Ilouz",
+    "Moshe Saada": "Moshe Saada",
+    "Nissim Vaturi": "Nissim Vaturi",
+    "Osher Shkalim": "Osher Shkalim",
+    "George Ilatov": "George Ilatov",
+    "Avichay Buaron": "Avichay Buaron",
+    "Tsega Melaku": "Tsega Melaku",
+    "Shelly Tal Meron": "Shelly Tal Meron",
+    "Ami Daniel": "Ami Daniel",
+    "Eliyahu Revivo": "Eliyahu Revivo",
+    "Keti Shitrit": "Keti Shitrit",
+    "Yair Lapid": "Yair Lapid",
+    "Boaz Toporovsky": "Boaz Toporovsky",
+    "Meir Cohen": "Meir Cohen",
+    "Karine Elharrar": "Karine Elharrar",
+    "Orna Barbivai": "Orna Barbivai",
+    "Mickey Levy": "Mickey Levy",
+    "Yorai Lahav-Hertzano": "Yorai Lahav-Hertzano",
+    "Meirav Ben Ari": "Meirav Ben Ari",
+    "Ron Katz": "Ron Katz",
+    "Simon Davidson": "Simon Davidson",
+    "Debbie Biton": "Debbie Biton",
+    "Idan Roll": "Idan Roll",
+    "Naor Shiri": "Naor Shiri",
+    "Merav Cohen": "Merav Cohen",
+    "Tatiana Mazarsky": "Tatiana Mazarsky",
+    "Vladimir Beliak": "Vladimir Beliak",
+    "Moshe Tur-Paz": "Moshe Tur-Paz",
+    "Nira Shpak": "Nira Shpak",
+    "Yoav Segalovitz": "Yoav Segalovitz",
+    "Elazar Stern": "Elazar Stern",
+    "Tomer Glam": "Tomer Glam",
+    "Ben Simon": "Ben Simon",
+    "Limor Magen Telem": "Limor Magen Telem",
+    "Rachel Azaria": "Rachel Azaria",
+    "Benny Gantz": "Benny Gantz",
+    "Gadi Eisenkot": "Gadi Eisenkot",
+    "Gideon Sa'ar": "Gideon Sa'ar",
+    "Pnina Tamano-Shata": "Pnina Tamano-Shata",
+    "Hili Tropper": "Hili Tropper",
+    "Sharren Haskel": "Sharren Haskel",
+    "Matan Kahana": "Matan Kahana",
+    "Matan Yafe": "Matan Yafe",
+    "Merav Michaeli": "Merav Michaeli",
+    "Orit Farkash-Hacohen": "Orit Farkash-Hacohen",
+    "Alon Schuster": "Alon Schuster",
+    "Michael Biton": "Michael Biton",
+    "Yifat Shasha-Biton": "Yifat Shasha-Biton",
+    "Ze'ev Benjamin Begin": "Ze'ev Benjamin Begin",
+    "Aryeh Deri": "Aryeh Deri",
+    "Yoav Ben-Tzur": "Yoav Ben-Tzur",
+    "Yinon Azoulay": "Yinon Azoulay",
+    "Moshe Arbel": "Moshe Arbel",
+    "Michael Malchieli": "Michael Malchieli",
+    "Haim Biton": "Haim Biton",
+    "Uriel Buso": "Uriel Buso",
+    "Yaakov Margi": "Yaakov Margi",
+    "Yitzhak Cohen": "Yitzhak Cohen",
+    "Moshe Abutbul": "Moshe Abutbul",
+    "Ariel Atias": "Ariel Atias",
+    "Yitzhak Goldknopf": "Yitzhak Goldknopf",
+    "Moshe Gafni": "Moshe Gafni",
+    "Uri Maklev": "Uri Maklev",
+    "Yisrael Eichler": "Yisrael Eichler",
+    "Yaakov Tesler": "Yaakov Tesler",
+    "Meir Porush": "Meir Porush",
+    "Yaakov Asher": "Yaakov Asher",
+    "Bezalel Smotrich": "Bezalel Smotrich",
+    "Orit Strock": "Orit Strock",
+    "Ofir Sofer": "Ofir Sofer",
+    "Simcha Rothman": "Simcha Rothman",
+    "Zvi Sukkot": "Zvi Sukkot",
+    "Ohad Tal": "Ohad Tal",
+    "Limor Son Har-Melech": "Limor Son Har-Melech",
+    "Itamar Ben Gvir": "Itamar Ben Gvir",
+    "Almog Cohen": "Almog Cohen",
+    "Zvika Fogel": "Zvika Fogel",
+    "Yitzhak Wasserlauf": "Yitzhak Wasserlauf",
+    "Limor Widman-Yosef": "Limor Widman-Yosef",
+    "Amichai Eliyahu": "Amichai Eliyahu",
+    "Avigdor Lieberman": "Avigdor Lieberman",
+    "Oded Forer": "Oded Forer",
+    "Evgeny Sova": "Evgeny Sova",
+    "Hamad Amar": "Hamad Amar",
+    "Yulia Malinovsky": "Yulia Malinovsky",
+    "Sharon Nir": "Sharon Nir",
+    "Mansour Abbas": "Mansour Abbas",
+    "Waleed Taha": "Waleed Taha",
+    "Iman Khatib-Yasin": "Iman Khatib-Yasin",
+    "Mazen Ghanaim": "Mazen Ghanaim",
+    "Atta Abu Medeghem": "Atta Abu Medeghem",
+    "Ayman Odeh": "Ayman Odeh",
+    "Ahmad Tibi": "Ahmad Tibi",
+    "Aida Touma-Suleiman": "Aida Touma-Suleiman",
+    "Ofer Cassif": "Ofer Cassif",
+    "Youssef Atauna": "Youssef Atauna",
+    "Naama Lazimi": "Naama Lazimi",
+    "Gilad Kariv": "Gilad Kariv",
+    "Efrat Rayten": "Efrat Rayten",
+    "Yair Golan": "Yair Golan",
+    "Adi Azuz": "Adi Azuz",
+    "Afif Abed": "Afif Abed",
+    "Akram Hasson": "Akram Hasson",
+    "Amichai Shikli": "Amichai Shikli",
+    "Amit Halevi": "Amit Halevi",
+    "Avi Maoz": "Avi Maoz",
+    "Efrat Rayten Marom": "Efrat Rayten Marom",
+    "Eitan Ginzburg": "Eitan Ginzburg",
+    "Eli Dalal": "Eli Dalal",
+    "Galit Distel Atbaryan": "Galit Distel Atbaryan",
+    "Gila Gamliel": "Gila Gamliel",
+    "Haim Katz": "Haim Katz",
+    "Hava Eti Atia": "Hava Eti Atia",
+    "Idit Silman": "Idit Silman",
+    "Matti Sarfatti Harcavi": "Matti Sarfatti Harcavi",
+    "May Golan": "May Golan",
+    "Michal Shir Segman": "Michal Shir Segman",
+    "Michal Waldiger": "Michal Waldiger",
+    "Michel Buskila": "Michel Buskila",
+    "Miki Zohar": "Miki Zohar",
+    "Moshe Passal": "Moshe Passal",
+    "Moshe Solomon": "Moshe Solomon",
+    "Naftali Bennett": "Naftali Bennett",
+    "Ofir Katz": "Ofir Katz",
+    "Ram Ben Barak": "Ram Ben Barak",
+    "Samir Ben Said": "Samir Ben Said",
+    "Sasson Guetta": "Sasson Guetta",
+    "Shalom Danino": "Shalom Danino",
+    "Walid Alhawashla": "Walid Alhawashla",
+    "Yael Ron Ben Moshe": "Yael Ron Ben Moshe",
+    "Yaron Levy": "Yaron Levy",
+    "Yasmin Fridman": "Yasmin Fridman",
+    "Yasser Hujirat": "Yasser Hujirat",
+    "Yitzhak Kroizer": "Yitzhak Kroizer",
+    "Yitzhak Pindrus": "Yitzhak Pindrus",
+    "Yoav Kish": "Yoav Kish",
+    "Yoaz Hendel": "Yoaz Hendel",
+    "Yonatan Mishraki": "Yonatan Mishraki",
+    "Yosef Taieb": "Yosef Taieb",
+    "Ze'ev Elkin": "Ze'ev Elkin"
+  },
+  "parties": {
+    "Likud": "Likud",
+    "Yesh Atid": "Yesh Atid",
+    "National Unity": "National Unity",
+    "HaYamin HaMamlakhti": "HaYamin HaMamlakhti",
+    "Blue and White": "Blue and White",
+    "Yashar": "Yashar! with Eisenkot",
+    "HaMiluimnikim": "HaMiluimnikim",
+    "Bennett 2026": "Bennett 2026",
+    "El HaDegel": "El HaDegel",
+    "Noam": "Noam",
+    "Religious Zionism": "Religious Zionism",
+    "Yisrael Beiteinu": "Yisrael Beiteinu",
+    "Shas": "Shas",
+    "Otzma Yehudit": "Otzma Yehudit",
+    "United Torah Judaism": "United Torah Judaism",
+    "Labor": "Labor",
+    "Hadash-Ta'al": "Hadash\u2013Ta'al",
+    "Hadash-Taal": "Hadash\u2013Ta'al",
+    "Ra'am": "Ra'am",
+    "Raam": "Ra'am",
+    "Democrats": "Democrats",
+    "Independent": "Independent"
+  },
+  "filterBar": {
+    "search": {
+      "placeholder": "Search politician or party...",
+      "clear": "Clear search"
+    },
+    "title": "Filters",
+    "party": "Party",
+    "wing": "Political Wing",
+    "sector": "Sector",
+    "wings": {
+      "right": "Right",
+      "left": "Left",
+      "center": "Center",
+      "arab": "Arab"
+    },
+    "sectors": {
+      "secular": "Secular",
+      "religious": "Religious",
+      "haredi": "Haredi",
+      "arab": "Arab",
+      "druze": "Druze"
+    },
+    "liked": "Favorites",
+    "hidden": "Hidden",
+    "showAll": "Show all",
+    "clearFilters": "Clear filters",
+    "noResults": "No results for the current filter"
+  },
+  "sidebar": {
+    "viewMode": {
+      "politicians": "Politicians",
+      "parties": "Parties"
+    },
+    "partyMode": {
+      "filtersHidden": "{{count}} active filters hidden in party mode",
+      "switchToPoliticians": "Switch to politician mode to manage filters"
+    },
+    "totalTracked": "Politicians tracked",
+    "totalParties": "Parties tracked",
+    "weightedAverage": "Weighted average score",
+    "colorLegend": {
+      "positive": "Positive",
+      "negative": "Negative",
+      "lowVolume": "Low volume",
+      "highVolume": "High volume"
+    },
+    "partyBreakdown": "By party",
+    "openDrawer": "Open sidebar",
+    "closeDrawer": "Close sidebar"
+  },
+  "treemap": {
+    "ariaLabel": "Visual display of politicians by media tone or public support estimate. By default, size is by coverage volume and color is by media tone.",
+    "others": "+{{count}} more",
+    "resetZoom": "Click to reset",
+    "backToAll": "Back to all",
+    "tooltip": {
+      "score": "Active signal",
+      "mediaVolume": "Media volume",
+      "change": "Change from yesterday",
+      "party": "Party"
+    },
+    "options": {
+      "title": "Display",
+      "sizeBy": "Size by",
+      "colorBy": "Color by",
+      "mediaVolume": "Media volume",
+      "score": "Active signal"
+    }
+  },
+  "methodology": {
+    "title": "How It Works",
+    "link": "How it works + legal disclaimer",
+    "quickStart": {
+      "overview": {
+        "eyebrow": "In brief",
+        "title": "What PolityMarket Measures",
+        "text": "This is not a poll or an election forecast. It\u2019s a daily attempt to read the situation from public coverage."
+      },
+      "mediaClimate": {
+        "eyebrow": "Default",
+        "title": "Media Tone",
+        "text": "This is the main indicator on screen. It shows whether today\u2019s coverage appears positive, negative, or mixed."
+      },
+      "consensusProxy": {
+        "eyebrow": "Second look",
+        "title": "Public Support Estimate",
+        "text": "This is a cautious attempt to gauge broader support. If there\u2019s less data or no polls, the confidence level drops."
+      }
+    },
+    "howItWorksLink": "How does it work?",
+    "howItWorks": {
+      "title": "In Brief: How It Works",
+      "description": "PolityMarket tracks daily public coverage of Israeli politicians. Every night the system collects articles, posts, and mentions, organizes them, and produces a daily snapshot.",
+      "description2": "In practice this happens in five simple steps: (1) Collect data from news, Telegram, Reddit, FXP, and Bluesky; (2) Clean noise and irrelevant content; (3) AI reads the material and extracts metrics; (4) A fixed formula computes a 0\u201310 score; (5) The screen shows two views: media tone, and a public support estimate when there\u2019s enough basis."
+    },
+    "scoring": {
+      "title": "How the Score is Built",
+      "description": "Each politician has a base score of 0\u201310. It\u2019s built from 8 domains using a fixed formula. If a particular domain is missing that day, its weight is redistributed among the remaining domains so no one is penalized unfairly. The system then smooths sharp jumps between days. Important: the AI reads the material and returns metrics, but the fixed formula is what determines the final score.",
+      "stepLabel": "Step {{number}}",
+      "step1": "Collect articles, posts, and public activity related to the politician.",
+      "step2": "AI extracts fixed metrics from all the material, such as general tone, presence, and activity.",
+      "step3": "The system combines the metrics using fixed weights and smooths the result against recent days.",
+      "policy": "Policy Approval",
+      "policyDesc": "Measures how much the public approves the politician\u2019s policy positions, on a scale from total opposition to full support.",
+      "hostility": "Hostility (inverse)",
+      "hostilityDesc": "Measures how hostile and aggressive the media coverage is. Less hostile coverage means a higher score.",
+      "amplification": "Media Amplification",
+      "amplificationDesc": "Measures the likelihood that coverage will spread and go viral on social media. A high score means strong media presence.",
+      "formula": "In simple terms: each domain gets a weight. If a domain is missing, its weight is split among the rest. The result is a relatively stable 0\u201310 score that doesn\u2019t flip from every headline."
+    },
+    "marketLayer": {
+      "title": "Why There\u2019s Also a 0\u2013100 Scale",
+      "description": "The internal 0\u201310 score is good for calculation, but not always easy to read. So the screen stretches the differences to a 0\u2013100 scale, making it easier to see who\u2019s trending up, who\u2019s treading water, and who\u2019s weakening.",
+      "rawTitle": "Internal Score",
+      "rawRange": "0\u201310",
+      "rawDescription": "This is the score the system calculates behind the scenes. It\u2019s good for internal comparisons and consistency over time.",
+      "displayTitle": "Display Score",
+      "displayRange": "0\u2013100",
+      "displayDescription": "This is the score you see on screen. 50 is roughly today\u2019s midpoint. This score is designed for easy reading, not to replace the original calculation.",
+      "percentile": "Daily ranking \u2014 each politician and party also gets a relative position compared to everyone else that day.",
+      "tiers": "Tiers \u2014 S, A, B, C are just convenient labels for quick reading. They don\u2019t change the number itself.",
+      "delta": "Daily change \u2014 the arrow shows if the politician went up or down compared to yesterday, and only when there\u2019s a reasonable basis for comparison.",
+      "stability": "Important to remember \u2014 the 0\u2013100 scale is for illustration. The calculation itself stays the same even when the presentation changes."
+    },
+    "dimensions": {
+      "title": "8 Scoring Dimensions",
+      "publicSentiment": "Public Sentiment",
+      "publicSentimentDesc": "A combination of how supportive or critical the coverage is, how much policy approval there is, and how prominent the politician is in the discourse.",
+      "publicSentimentWeight": "25%",
+      "parliamentaryActivity": "Parliamentary Activity",
+      "parliamentaryActivityDesc": "How active the politician is in the Knesset: votes, committees, and bills, based on Open Knesset data.",
+      "parliamentaryActivityWeight": "18%",
+      "mediaCredibility": "Media Credibility",
+      "mediaCredibilityDesc": "How much the politician\u2019s public statements appear to match available facts.",
+      "mediaCredibilityWeight": "12%",
+      "transparencyEthics": "Transparency & Ethics",
+      "transparencyEthicsDesc": "How much the politician is perceived as transparent, accessible, and open to criticism.",
+      "transparencyEthicsWeight": "12%",
+      "fieldActivity": "Field Activity",
+      "fieldActivityDesc": "How much the politician is seen outside the studio: visits, tours, and field events.",
+      "fieldActivityWeight": "10%",
+      "satireCulturalImpact": "Cultural Impact",
+      "satireCulturalImpactDesc": "How present the politician is in popular culture, satire shows, and memes. This is a sign of relevance, not a penalty.",
+      "satireCulturalImpactWeight": "10%",
+      "legislativeQuality": "Legislative Quality",
+      "legislativeQualityDesc": "What the politician\u2019s legislative activity looks like, not just how many times they voted.",
+      "legislativeQualityWeight": "8%",
+      "flipflopIndex": "Promise Keeping Index",
+      "flipflopIndexDesc": "How much the politician sticks to what they promised voters, rather than saying one thing then another.",
+      "flipflopIndexWeight": "5%",
+      "agendaBonus": "Agenda Bonus",
+      "agendaBonusDesc": "Politicians who lead public discourse can receive a small bonus. This is not a separate category, but a modest addition."
+    },
+    "aiAnalysis": {
+      "title": "What the AI Does",
+      "description": "The AI doesn\u2019t just count positive or negative words. It tries to understand context. For example:",
+      "sarcasm": "Detecting when a compliment is actually mockery or cynicism.",
+      "pdd": "Distinguishing between regular criticism and attempts to portray a politician as illegitimate or dangerous.",
+      "nuance": "Understanding irony, Israeli contexts, and implied criticism."
+    },
+    "dataSources": {
+      "title": "Where the Data Comes From",
+      "description": "The system relies on a mix of news and social networks:",
+      "hebrew": "Hebrew news \u2014 Ynet, Walla, Maariv, Israel Hayom, Globes, Channel 14, Channel 13, Kikar HaShabbat, i24NEWS, TheMarker, and Google News search in Hebrew.",
+      "english": "English news \u2014 Times of Israel, Jerusalem Post, i24NEWS, and Google News search in English, for international coverage.",
+      "social": "Social media \u2014 Public Telegram channels (Kan News, Abu Ali Express, Galei Tzahal, and more), Reddit (r/Israel, r/worldnews, r/IsraelPolitics), FXP forum, and Bluesky.",
+      "frequency": "Data is updated daily at 02:00 AM (Israel time). Each politician is analyzed based on their headlines and mentions in the last 24 hours."
+    },
+    "qualityControl": {
+      "title": "How We Try to Reduce Errors",
+      "description": "No system is perfect, but there are several safeguards:",
+      "validation": "Automatic validation \u2014 if data is missing or numbers don\u2019t look reasonable, the result is discarded.",
+      "drift": "Ongoing accuracy checks \u2014 the system is regularly compared against manually reviewed samples.",
+      "retry": "Automatic retry \u2014 if a read fails, the system tries again before giving up.",
+      "deterministic": "Fixed calculation \u2014 the same data will always produce the same score, without the AI\u2019s mood changing."
+    },
+    "visualization": {
+      "title": "How to Read the Map",
+      "description": "Each politician is shown as a block. Its size and color change based on what you\u2019ve chosen to view.",
+      "size": "Block size \u2014 generally, more coverage = a larger block. You can also switch to size by score.",
+      "color": "Block color \u2014 red means a weaker position, yellow is roughly in the middle, and green means a stronger position. In public support mode, colors represent that estimate instead of media tone.",
+      "interaction": "Clicking a block opens a panel with today\u2019s summary, dimension breakdown, support estimate, and source list.",
+      "displayOptions": "Display Options",
+      "displayDescription": "In the sidebar you can switch between several display modes to read the data from different angles:",
+      "sizeByTitle": "Size by",
+      "sizeByVolume": "Volume \u2014 block size by how much the politician was discussed in the last 24 hours. This is the default.",
+      "sizeByScore": "Score \u2014 block size by the 0\u2013100 display score, so higher-scoring politicians appear larger.",
+      "colorByTitle": "Color by",
+      "colorByScore": "Score \u2014 block color by relative position: red is weaker, green is stronger. This is the default.",
+      "colorByVolume": "Volume \u2014 block color by coverage amount: light blue = lots of attention, dark blue = little attention."
+    }
+  },
+  "legal": {
+    "title": "Legal Disclaimer",
+    "general": {
+      "title": "General",
+      "text": "The information, scores, and explanations on PolityMarket are intended for general information, research, and entertainment purposes only. They do not constitute political, legal, financial, academic, or professional advice of any kind."
+    },
+    "accuracy": {
+      "title": "Accuracy and Reliability",
+      "text": "The service is based on automated processing of public sources. We do not guarantee the accuracy, completeness, timeliness, or reliability of the data, scores, or explanations. AI analysis may also contain errors, biases, or inaccurate interpretation of source text."
+    },
+    "aiLimitations": {
+      "title": "AI Limitations",
+      "text": "Analyses are performed by a large language model (LLM). It may miss context, misread sarcasm, or interpret text differently than a human reader. AI models may also reflect linguistic, cultural, or political biases. Scores do not express a personal, editorial, or political position of the service operators."
+    },
+    "noEndorsement": {
+      "title": "No Endorsement",
+      "text": "The service does not support, promote, or oppose any politician, party, or position. A high or low score is not a recommendation, condemnation, or editorial stance. It is merely the result of automated processing of public coverage."
+    },
+    "dataSources": {
+      "title": "Data Sources",
+      "text": "Data is collected from public sources such as news websites, social networks, and RSS feeds. We do not control the content of the sources and are not responsible for their accuracy. A particular source may be temporarily unavailable, which can affect the daily picture."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "text": "The service does not collect personally identifiable information from users. Preferences such as favorites and filters are stored in the browser only (localStorage) and are not sent to servers. No tracking cookies are used."
+    },
+    "liability": {
+      "title": "Limitation of Liability",
+      "text": "The service operators shall not be liable for direct, indirect, special, consequential, or punitive damages resulting from use of the service or reliance on its information, including political decisions, investments, or other actions taken on its basis."
+    },
+    "changes": {
+      "title": "Changes",
+      "text": "We may change the calculation method, data sources, update frequency, or any other part of the service at any time without prior notice."
+    }
+  },
+  "partyDetail": {
+    "members": "Party Members",
+    "avgScore": "Average Market Score",
+    "spread": "Internal Spread",
+    "topPolitician": "Most Prominent",
+    "trend": "Trend (7 days)",
+    "info": "About the Party",
+    "leader": "Leader",
+    "founded": "Founded",
+    "ideology": "Ideology",
+    "wing": "Political Wing",
+    "seats": "Seats",
+    "status": "Status",
+    "keyPositions": "Key Positions",
+    "statuses": {
+      "coalition": "Coalition",
+      "opposition": "Opposition",
+      "extra-parliamentary": "Extra-parliamentary"
+    },
+    "descriptions": {
+      "Likud": "Israel\u2019s dominant right-wing party, in power for most of the past decade \u2014 except for the Bennett\u2013Lapid government (2021\u20132022). Built on Begin\u2019s Revisionist Zionism, it now blends free-market economics with security hawkishness and populism. Under Netanyahu, it reabsorbed Sa\u2019ar and Elkin from HaYamin HaMamlakhti ahead of the 2026 cycle.",
+      "Yesh Atid": "The largest opposition party, founded by journalist Yair Lapid as a centrist alternative. Focuses on middle-class economics, secular civic identity, and rules-based foreign policy. Served as the senior coalition partner in 2021\u20132022 with Lapid as PM.",
+      "Blue and White": "Re-established in 2026 after the dissolution of National Unity, led by former IDF Chief of Staff Benny Gantz. Positions itself as a centrist security alternative to both Likud and Yesh Atid, leaning on Gantz\u2019s military background.",
+      "Yashar": "Founded in 2025 by former IDF Chief of Staff Gadi Eisenkot and MK Matan Kahana after leaving National Unity. Emphasizes professional security leadership and centrist pragmatism over party politics.",
+      "HaMiluimnikim": "A one-MK party founded by Yoaz Hendel in 2025 after leaving National Unity. Represents the reservist ethos \u2014 economic centrism, security hawkishness, and critical distance from both the right-wing coalition and the traditional opposition.",
+      "Religious Zionism": "A hard-line religious-nationalist party led by Finance Minister Smotrich. Supports West Bank annexation, Torah-based governance, and settlement expansion. A key coalition partner with significant influence on fiscal and Judea & Samaria policy.",
+      "Otzma Yehudit": "An ultra-nationalist party led by National Security Minister Ben Gvir. Rooted in the Kahanist movement, it has been mainstreamed into coalition politics since 2022. Supports aggressive policing, Jewish sovereignty on the Temple Mount, and hardline security policy.",
+      "Shas": "The Mizrahi ultra-Orthodox party, one of the largest Haredi factions. Founded by Rabbi Ovadia Yosef, it combines religious conservatism with social welfare support for the Mizrahi working class. A perennial coalition balancer for decades.",
+      "United Torah Judaism": "An Ashkenazi Haredi alliance uniting Agudat Yisrael and Degel HaTorah. Focuses almost exclusively on preserving Haredi lifestyle \u2014 yeshiva study, military exemptions, and religious education funding. A reliable coalition partner for right-wing governments.",
+      "Yisrael Beiteinu": "A secular-nationalist party with strong support among Russian speakers. Under Lieberman, it combines security hawkishness with staunch secularism, opposing both Haredi influence and Arab political power. In opposition since refusing to sit with Haredi parties.",
+      "Democrats": "Founded in 2024 as a merger of Labor and Meretz, led by former IDF deputy chief and MK Yair Golan. Joined by Labor defectors Lazimi, Kariv, and Rayten. Aims to revive social-democratic politics with emphasis on equality, LGBTQ+ rights, and peace support.",
+      "Labor": "Israel\u2019s historic founding party, ruled from 1948 to 1977 and intermittently since. After Merav Michaeli\u2019s departure and key MKs leaving for the Democrats, the party is currently extra-parliamentary and facing an existential crisis ahead of the next elections.",
+      "Hadash-Ta'al": "A joint list of the Arab\u2013Jewish communist Hadash and the Arab-nationalist Ta\u2019al. Represents Arab citizens alongside Jewish left-wing activists. Supports equality, ending the occupation, and full civil rights for Israel\u2019s Arab minority.",
+      "Ra'am": "The political party of the southern branch of the Islamic Movement. Made history in 2021 as the first Arab party to join a coalition, prioritizing pragmatic achievements \u2014 budgets, infrastructure, and fighting crime \u2014 for Arab communities over ideological purity.",
+      "Noam": "A one-MK ultra-conservative party focused on opposing LGBTQ+ rights, liberal curricula, and what it calls \u2018Western cultural erosion.\u2019 Briefly held a deputy minister role in the current coalition before internal friction.",
+      "HaYamin HaMamlakhti": "Originally founded by Gideon Sa\u2019ar after splitting from Likud. After Sa\u2019ar and Elkin returned to Likud in 2025, the remaining MKs \u2014 Sharren Haskel, Michel Buskila, and Akram Hasson \u2014 continue as a coalition faction with a national-liberal, law-and-order platform.",
+      "Bennett 2026": "Former PM Naftali Bennett\u2019s comeback vehicle, registered in April 2025 after years out of politics. Positions itself as a pragmatic right-wing alternative to Netanyahu, leaning on Bennett\u2019s high-tech background and brief PM tenure in 2021\u20132022.",
+      "El HaDegel": "A small Religious Zionist faction led by Matan Yafe, positioned between mainstream Religious Zionism and the Kahanist right. Focuses on settlement support and religious-nationalist values."
+    },
+    "positions": {
+      "Likud": {
+        "0": "Opposition to a Palestinian state",
+        "1": "Judicial reform / reducing Supreme Court powers",
+        "2": "Free-market economic policy",
+        "3": "Maintaining settlement expansion"
+      },
+      "Yesh Atid": {
+        "0": "Two-state solution",
+        "1": "Reducing cost of living",
+        "2": "Mandatory national service for all",
+        "3": "Protecting judicial independence"
+      },
+      "Blue and White": {
+        "0": "Security-first policy on Iran and Gaza",
+        "1": "National unity government",
+        "2": "Moderate judicial reform",
+        "3": "Strengthening the IDF and security establishment"
+      },
+      "Yashar": {
+        "0": "Professional security leadership",
+        "1": "Priority for hostage deal",
+        "2": "National service reform",
+        "3": "Evidence-based decision making"
+      },
+      "HaMiluimnikim": {
+        "0": "Reservist rights and recognition",
+        "1": "Equal burden of service",
+        "2": "Center-right security policy",
+        "3": "Government accountability"
+      },
+      "Religious Zionism": {
+        "0": "West Bank annexation",
+        "1": "Settlement expansion",
+        "2": "Torah values in legislation",
+        "3": "Opposition to the Palestinian Authority"
+      },
+      "Otzma Yehudit": {
+        "0": "Jewish sovereignty on the Temple Mount",
+        "1": "Death penalty for terrorists",
+        "2": "Aggressive law enforcement",
+        "3": "Opposition to any Palestinian state"
+      },
+      "Shas": {
+        "0": "Yeshiva funding and military exemption",
+        "1": "Expanding social welfare",
+        "2": "Religious status quo in public life",
+        "3": "Recognition of Mizrahi culture"
+      },
+      "United Torah Judaism": {
+        "0": "Full military exemption for yeshiva students",
+        "1": "Haredi education autonomy",
+        "2": "Public Shabbat observance",
+        "3": "Housing for large families"
+      },
+      "Yisrael Beiteinu": {
+        "0": "Mandatory service for all \u2014 no exemptions",
+        "1": "Civil marriage legislation",
+        "2": "Tough security and border policy",
+        "3": "Ending Haredi coalition leverage"
+      },
+      "Democrats": {
+        "0": "Two-state solution",
+        "1": "LGBTQ+ and civil rights",
+        "2": "Affordable housing and welfare",
+        "3": "Separation of religion and state"
+      },
+      "Labor": {
+        "0": "Two-state solution",
+        "1": "Workers\u2019 rights and social safety net",
+        "2": "Secular democratic state",
+        "3": "Engagement in the peace process"
+      },
+      "Hadash-Ta'al": {
+        "0": "End the occupation",
+        "1": "Full equality for Arab citizens",
+        "2": "Workers\u2019 rights and social justice",
+        "3": "Against privatization"
+      },
+      "Ra'am": {
+        "0": "Investment in Arab community infrastructure",
+        "1": "Fighting crime in Arab towns",
+        "2": "Pragmatic coalition participation",
+        "3": "Recognition of Bedouin communities"
+      },
+      "Noam": {
+        "0": "Opposition to LGBTQ+ legislation",
+        "1": "Traditional family values in education",
+        "2": "Jewish identity in the public sphere",
+        "3": "Opposition to Reform Judaism recognition"
+      },
+      "HaYamin HaMamlakhti": {
+        "0": "Rule of law and governance reform",
+        "1": "Security hawkishness",
+        "2": "Free-market economics",
+        "3": "Moderate judicial reform"
+      },
+      "Bennett 2026": {
+        "0": "High-tech-driven economic growth",
+        "1": "Pragmatic security policy",
+        "2": "Right-wing alternative to Netanyahu",
+        "3": "Innovation and governance reform"
+      },
+      "El HaDegel": {
+        "0": "Settlement expansion",
+        "1": "Religious-Zionist education",
+        "2": "Land of Israel sovereignty",
+        "3": "Religious-nationalist identity"
+      }
+    },
+    "wings": {
+      "right": "Right",
+      "left": "Left",
+      "center": "Center",
+      "center-right": "Center-right",
+      "arab": "Arab"
+    },
+    "ideologies": {
+      "National-liberal conservatism": "National-liberal conservatism",
+      "Liberal centrism": "Liberal centrism",
+      "National-liberal centrism": "National-liberal centrism",
+      "National centrism": "National centrism",
+      "National-liberal": "National-liberal",
+      "Religious Zionism, national-conservatism": "Religious Zionism, national-conservatism",
+      "Kahanist, ultra-nationalist": "Kahanist, ultra-nationalist",
+      "Ultra-Orthodox, Mizrahi traditionalism": "Ultra-Orthodox, Mizrahi traditionalism",
+      "Ultra-Orthodox, Ashkenazi Haredi": "Ultra-Orthodox, Ashkenazi Haredi",
+      "Secular nationalism": "Secular nationalism",
+      "Social democracy": "Social democracy",
+      "Social democracy, Zionist left": "Social democracy, Zionist left",
+      "Arab\u2013Jewish socialism": "Arab\u2013Jewish socialism",
+      "Islamic conservatism, pragmatism": "Islamic conservatism, pragmatism",
+      "Ultra-conservative, religious right": "Ultra-conservative, religious right",
+      "National-liberal, pragmatic right": "National-liberal, pragmatic right",
+      "Religious Zionism": "Religious Zionism"
+    }
+  },
+  "topMovers": {
+    "risers": "Risers",
+    "fallers": "Fallers",
+    "ariaLabel": "Politicians with the biggest change today",
+    "noChanges": "No changes today"
+  },
+  "dailyInsights": {
+    "title": "Daily Insights",
+    "biggestRiser": "Biggest Riser",
+    "biggestFaller": "Biggest Faller",
+    "mostCovered": "Most Media Coverage",
+    "tapToExplore": "Tap for details",
+    "ariaLabel": "Three notable daily insights",
+    "noData": "No significant changes today"
+  },
+  "weeklyHighlights": {
+    "weekInReview": "Week in Review",
+    "headlineUp": "{{name}} surged by {{delta}} points (from {{from}} to {{to}})",
+    "headlineDown": "{{name}} dropped by {{delta}} points (from {{from}} to {{to}})",
+    "topRisers": "Top risers this week",
+    "topFallers": "Top fallers this week",
+    "noMovers": "No changes"
+  },
+  "compare": {
+    "title": "Head-to-Head Comparison",
+    "pickA": "Pick a politician",
+    "pickB": "Pick a politician",
+    "dimensions": "Dimension Comparison",
+    "back": "Back"
+  },
+  "legendStrip": {
+    "scale": "Score 0\u2013100",
+    "red": "Below average",
+    "green": "Above average",
+    "delta": "Daily change",
+    "updated": "Last updated: {{date}}"
+  },
+  "mobileFeed": {
+    "compare": "Compare",
+    "sort": {
+      "score": "Score",
+      "delta": "Change",
+      "volume": "Media"
+    },
+    "showAll": "Show {{count}} more politicians"
+  },
+  "cookies": {
+    "description": "We store preferences in your browser only \u2014 no tracking cookies or data sent to servers.",
+    "accept": "Accept"
+  },
+  "quickAbout": {
+    "title": "What am I looking at?",
+    "ariaLabel": "About PolityMarket",
+    "line1": "A daily status map of Israeli politics, based on what\u2019s been publicly published.",
+    "line2": "We collect news coverage and public posts, and update the picture every night at 02:00.",
+    "line3": "There are two modes: Media Tone shows how the politician is being discussed right now; Public Support is a broader, more cautious estimate.",
+    "line4": "Bigger block = more attention. Green = relatively strong position. Red = relatively weak position.",
+    "fullMethodologyLink": "Full explanation"
+  },
+  "alerts": {
+    "volatile": "High volatility",
+    "toggleOn": "Enable alerts",
+    "toggleOff": "Disable alerts",
+    "subscribeTitle": "Subscribe to Alerts",
+    "subscribeDescription": "Get notified when a politician\u2019s score changes significantly",
+    "emailPlaceholder": "Email address",
+    "webhookPlaceholder": "Webhook URL (optional)",
+    "submitButton": "Subscribe",
+    "verifyPrompt": "A verification email has been sent to your address",
+    "verified": "Verified",
+    "unsubscribe": "Unsubscribe",
+    "advanced": "Advanced settings",
+    "subscribedPoliticians": "Politicians being tracked",
+    "noSubscriptions": "No politicians selected",
+    "selectAll": "Select all",
+    "deselectAll": "Clear all",
+    "emailRequired": "Email address is required",
+    "emailInvalid": "Invalid email address",
+    "subscribeSuccess": "Subscription successful",
+    "subscribeFailed": "Subscription failed, please try again",
+    "subscriptionExists": "A subscription already exists for this email. A recovery email has been sent.",
+    "subscriptionExistsEmailFailed": "A subscription already exists for this email. We could not send a recovery email, please try again later."
+  },
+  "languageToggle": {
+    "switchToHebrew": "Switch to Hebrew",
+    "switchToEnglish": "Switch to English"
+  }
+}

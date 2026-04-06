@@ -7,6 +7,7 @@ import ShareOfVoice from "./ShareOfVoice";
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key) => key,
+    i18n: { language: "he", dir: () => "rtl", changeLanguage: () => {} },
   }),
 }));
 

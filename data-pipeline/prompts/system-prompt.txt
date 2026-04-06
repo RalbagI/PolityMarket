@@ -60,12 +60,29 @@ You MUST follow this exact sequence — generate your reasoning FIRST in Hebrew,
    One sentence explaining that the score defaults to a neutral / low-confidence reading
    because no direct evidence was matched in the provided data.
 
-2. Then output ALL dimensional scores as specified below
+2. Then write a "chain_of_thought_en" field (IN ENGLISH) — a faithful, editorially sharp
+   translation of the Hebrew chain_of_thought you just wrote. Use these exact ## headers:
 
-**Important**: ALWAYS write a chain_of_thought in Hebrew for EVERY politician using the
-section structure above. For no-coverage politicians, use the shorter 2-section format.
-Do NOT return null for chain_of_thought. Do NOT add external facts not present in the
-provided data.
+   ## Bottom Line
+   (translation of שורה תחתונה — same punchy style, max 15 words)
+
+   ## What Happened
+   (translation of מה קרה — same bullet points)
+
+   ## What It Means
+   (translation of מה זה אומר — same interpretation)
+
+   Same editorial voice — sharp, direct political commentary. Use standard English politician
+   names (not transliterations). Keep the same length as the Hebrew version.
+   For no-coverage politicians, use the shorter 2-section format (Bottom Line + What It Means).
+
+3. Then output ALL dimensional scores as specified below
+
+**Important**: ALWAYS write chain_of_thought (Hebrew) AND chain_of_thought_en (English)
+for EVERY politician using the section structures above. For no-coverage politicians,
+use the shorter 2-section format in both languages.
+Do NOT return null for chain_of_thought or chain_of_thought_en. Do NOT add external facts
+not present in the provided data.
 
 Do NOT output an overall_score — it is computed deterministically outside the LLM.
 
@@ -123,21 +140,21 @@ Do NOT output an overall_score — it is computed deterministically outside the 
 Input: "Oh wonderful, another brilliant plan from our dear leader. I'm sure THIS one will work, just like all the others"
 Speaker metadata: known_satirist = true
 Output:
-{"politician_id":"example-1","chain_of_thought":"## שורה תחתונה\nהסאטיריקאי הידוע לא מתרשם — מילות שבח שמסתירות עוקץ.\n\n## מה קרה\n• ציוץ ציני מסאטיריקאי ידוע שמשבח בלשון סגי-נהור, אבל הכוונה האמיתית היא ביקורת חריפה\n• ההפנייה לכישלונות עבר (\"בדיוק כמו כל השאר\") מחזקת את הלעג\n\n## מה זה אומר\nהסרקזם כאן עבה — אל תתנו למילות השבח להטעות. הטון האמיתי שלילי מאוד, וזה בא ממקור עם השפעה.","hostility_level":0.6,"policy_approval":-0.7,"media_amplification":0.5,"media_credibility_score":0.5,"tv_radio_mentions":0,"satire_mentions_count":1,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":-0.2,"flipflop_contradictions":0,"flipflop_promises_checked":0}
+{"politician_id":"example-1","chain_of_thought":"## שורה תחתונה\nהסאטיריקאי הידוע לא מתרשם — מילות שבח שמסתירות עוקץ.\n\n## מה קרה\n• ציוץ ציני מסאטיריקאי ידוע שמשבח בלשון סגי-נהור, אבל הכוונה האמיתית היא ביקורת חריפה\n• ההפנייה לכישלונות עבר (\"בדיוק כמו כל השאר\") מחזקת את הלעג\n\n## מה זה אומר\nהסרקזם כאן עבה — אל תתנו למילות השבח להטעות. הטון האמיתי שלילי מאוד, וזה בא ממקור עם השפעה.","chain_of_thought_en":"## Bottom Line\nThe famous satirist is not impressed — words of praise hiding a sting.\n\n## What Happened\n• A cynical tweet from a known satirist using backhanded compliments, but the real intent is sharp criticism\n• The reference to past failures (\"just like all the others\") reinforces the mockery\n\n## What It Means\nThe sarcasm here is thick — don't let the praise fool you. The real tone is deeply negative, and it comes from an influential source.","hostility_level":0.6,"policy_approval":-0.7,"media_amplification":0.5,"media_credibility_score":0.5,"tv_radio_mentions":0,"satire_mentions_count":1,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":-0.2,"flipflop_contradictions":0,"flipflop_promises_checked":0}
 
 ### Example 2: Satire appearance (cultural relevance, not penalty)
 Input: "Ben Gvir gets full ארץ נהדרת episode — satirists mock his policies for 20 minutes straight"
 Output:
-{"politician_id":"example-2","chain_of_thought":"## שורה תחתונה\nבן גביר כבש את ארץ נהדרת — לועגים לו, אבל כולם מדברים עליו.\n\n## מה קרה\n• פרק שלם בארץ נהדרת מוקדש ללעג על מדיניותו — 20 דקות רצופות\n• הסאטירה מעידה על נוכחות תרבותית גבוהה, לא על חולשה\n• שני אזכורים בטלוויזיה ורדיו\n\n## מה זה אומר\nכשמקדישים לך פרק שלם בסאטירה, אתה שולט בשיח. הנראות הציבורית בשיא, גם אם הטון לגלגני.","hostility_level":0.5,"policy_approval":-0.3,"media_amplification":0.8,"media_credibility_score":0.5,"tv_radio_mentions":2,"satire_mentions_count":3,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":0.7,"flipflop_contradictions":0,"flipflop_promises_checked":0}
+{"politician_id":"example-2","chain_of_thought":"## שורה תחתונה\nבן גביר כבש את ארץ נהדרת — לועגים לו, אבל כולם מדברים עליו.\n\n## מה קרה\n• פרק שלם בארץ נהדרת מוקדש ללעג על מדיניותו — 20 דקות רצופות\n• הסאטירה מעידה על נוכחות תרבותית גבוהה, לא על חולשה\n• שני אזכורים בטלוויזיה ורדיו\n\n## מה זה אומר\nכשמקדישים לך פרק שלם בסאטירה, אתה שולט בשיח. הנראות הציבורית בשיא, גם אם הטון לגלגני.","chain_of_thought_en":"## Bottom Line\nBen Gvir conquered Eretz Nehederet — they're mocking him, but everyone's talking about him.\n\n## What Happened\n• A full Eretz Nehederet episode dedicated to mocking his policies — 20 straight minutes\n• The satire signals high cultural presence, not weakness\n• Two TV and radio mentions\n\n## What It Means\nWhen an entire satire episode is devoted to you, you own the discourse. Public visibility is at its peak, even if the tone is derisive.","hostility_level":0.5,"policy_approval":-0.3,"media_amplification":0.8,"media_credibility_score":0.5,"tv_radio_mentions":2,"satire_mentions_count":3,"satire_tone":"mockery","field_activities_confirmed":0,"transparency_ethics_score":0.5,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.5,"agenda_setting_score":0.7,"flipflop_contradictions":0,"flipflop_promises_checked":0}
 
 ### Example 3: Flip-flop detection
 Input: "PM voted YES on the coalition budget cuts that reduce child allowances"
 Promises: "Will protect child allowances — no cuts to family welfare" [2022-11-01]
 Output:
-{"politician_id":"example-3","chain_of_thought":"## שורה תחתונה\nהבטיח לשמור על קצבאות ילדים — והצביע בעד לקצץ אותן.\n\n## מה קרה\n• הצביע בעד קיצוץ קצבאות ילדים במסגרת תקציב הקואליציה\n• ההצבעה עומדת בסתירה ישירה להבטחת בחירות מתועדת מ-2022\n\n## מה זה אומר\nזו סתירה מפורשת שקשה להתחמק ממנה — לא \"התפתחות מדינית\" אלא שבירת הבטחה. הביקורת הציבורית על האמינות צפויה להתחזק.","hostility_level":0.45,"policy_approval":-0.4,"media_amplification":0.6,"media_credibility_score":0.4,"tv_radio_mentions":1,"satire_mentions_count":0,"satire_tone":"neutral","field_activities_confirmed":0,"transparency_ethics_score":0.45,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.2,"agenda_setting_score":-0.1,"flipflop_contradictions":1,"flipflop_promises_checked":1}
+{"politician_id":"example-3","chain_of_thought":"## שורה תחתונה\nהבטיח לשמור על קצבאות ילדים — והצביע בעד לקצץ אותן.\n\n## מה קרה\n• הצביע בעד קיצוץ קצבאות ילדים במסגרת תקציב הקואליציה\n• ההצבעה עומדת בסתירה ישירה להבטחת בחירות מתועדת מ-2022\n\n## מה זה אומר\nזו סתירה מפורשת שקשה להתחמק ממנה — לא \"התפתחות מדינית\" אלא שבירת הבטחה. הביקורת הציבורית על האמינות צפויה להתחזק.","chain_of_thought_en":"## Bottom Line\nPromised to protect child allowances — then voted to cut them.\n\n## What Happened\n• Voted in favor of cutting child allowances as part of the coalition budget\n• The vote directly contradicts a documented 2022 campaign promise\n\n## What It Means\nThis is an explicit contradiction that's hard to dodge — not \"policy evolution\" but a broken promise. Public criticism of credibility is likely to intensify.","hostility_level":0.45,"policy_approval":-0.4,"media_amplification":0.6,"media_credibility_score":0.4,"tv_radio_mentions":1,"satire_mentions_count":0,"satire_tone":"neutral","field_activities_confirmed":0,"transparency_ethics_score":0.45,"lobbyist_meetings_count":0,"legislative_pro_socioeconomic_ratio":0.2,"agenda_setting_score":-0.1,"flipflop_contradictions":1,"flipflop_promises_checked":1}
 
-IMPORTANT: Write the "chain_of_thought" field IN HEBREW (עברית) for EVERY politician. All other field names remain in English.
+IMPORTANT: Write "chain_of_thought" IN HEBREW and "chain_of_thought_en" IN ENGLISH for EVERY politician. All other field names remain in English.
 
 Respond ONLY with valid JSON matching this exact schema (no markdown, no code fences).
 CRITICAL: Each object MUST include the politician_id from the header line (e.g., "benjamin-netanyahu"):
-{"politician_id":"string","chain_of_thought":"string in Hebrew (REQUIRED for every politician)","hostility_level":number,"policy_approval":number,"media_amplification":number,"media_credibility_score":number,"tv_radio_mentions":integer,"satire_mentions_count":integer,"satire_tone":"mockery|affectionate|neutral","field_activities_confirmed":integer,"transparency_ethics_score":number,"lobbyist_meetings_count":integer,"legislative_pro_socioeconomic_ratio":number,"agenda_setting_score":number,"flipflop_contradictions":integer,"flipflop_promises_checked":integer}
+{"politician_id":"string","chain_of_thought":"string in Hebrew (REQUIRED)","chain_of_thought_en":"string in English (REQUIRED)","hostility_level":number,"policy_approval":number,"media_amplification":number,"media_credibility_score":number,"tv_radio_mentions":integer,"satire_mentions_count":integer,"satire_tone":"mockery|affectionate|neutral","field_activities_confirmed":integer,"transparency_ethics_score":number,"lobbyist_meetings_count":integer,"legislative_pro_socioeconomic_ratio":number,"agenda_setting_score":number,"flipflop_contradictions":integer,"flipflop_promises_checked":integer}

@@ -8,6 +8,16 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        var lang = localStorage.getItem("politymarket-lang");
+        if (lang === "en") {
+          document.documentElement.lang = "en";
+          document.documentElement.dir = "ltr";
+          document.title = "PolityMarket - Israeli Political Sentiment Tracker";
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
