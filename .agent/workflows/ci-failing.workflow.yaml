@@ -5,9 +5,15 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   description: "Fetch, analyze, and fix failing GitHub Actions CI jobs."
   skills: [github-actions, test]
+
+circuit_breaker:
+  max_retries: 2
+  fingerprint_window_minutes: 30
+  on_trip: exit_with_report
 
 phases:
   - id: 1-fetch-logs

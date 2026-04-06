@@ -4,7 +4,8 @@ workflow:
   mode: exec
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   description: "Sync origin/main into current branch, resolve conflicts, handle compatibility."
 
 phases:

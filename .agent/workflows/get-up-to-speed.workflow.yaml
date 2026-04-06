@@ -4,7 +4,8 @@ workflow:
   mode: read-only
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   description: >-
     Get up to speed on branch context, changes, and
     status with automatic recall of relevant prior

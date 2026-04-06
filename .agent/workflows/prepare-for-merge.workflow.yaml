@@ -5,7 +5,8 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   review_cycle_days: 365
   description: >-
     Single-pass prepare-for-merge for GitHub PRs. Runs all
@@ -13,6 +14,14 @@ metadata:
     and generates PR description. Includes workflow memory
     recall at start and capture at end.
   skills: [sec, github-actions, test]
+
+handoff:
+  to: mts
+  schema:
+    pr_number: int
+    branch: string
+    checks_passing: boolean
+  persist_to: .agent/state/handoff_prepare-for-merge_to_mts.json
 
 constraints:
   post_merge_work: deny
@@ -24,12 +33,21 @@ phases:
     steps:
       - name: recall-prior-lessons
         type: cmd
+        tier: low
         cmd: |
           python3 .agent/bin/workflow-memory.py recall \
             --workflow prepare-for-merge \
             --topic "${TOPIC:-prepare for merge}" \
             --limit 8
         store: RECALL_CONTEXT
+        fail_action: warn
+
+      - name: read-handoff
+        type: cmd
+        tier: low
+        cmd: |
+          cat .agent/state/handoff_handle-review-results_to_prepare-for-merge.json 2>/dev/null || echo "{}"
+        store: UPSTREAM_HANDOFF
         fail_action: warn
 
       - name: snapshot-start
@@ -83,26 +101,31 @@ phases:
     steps:
       - name: eslint
         type: check
+        tier: medium
         check: npx eslint src/
         fail_action: exit
 
       - name: prettier
         type: check
+        tier: medium
         check: npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}"
         fail_action: warn
 
       - name: vitest
         type: check
+        tier: medium
         check: npx vitest run
         fail_action: exit
 
       - name: coverage
         type: check
+        tier: medium
         check: npx vitest run --coverage 2>&1 | tail -20
         fail_action: warn
 
       - name: vite-build
         type: check
+        tier: medium
         check: npx vite build
         fail_action: exit
 
@@ -128,6 +151,7 @@ phases:
 
       - name: create-or-update-pr
         type: doc
+        tier: high
         template: pr-description-v1
         notes: >-
           Agent generates a rich PR description from commits
@@ -195,6 +219,22 @@ phases:
             --topic "${TOPIC:-prepare for merge}" \
             --auto
         store: LEARN_RESULT
+        fail_action: warn
+
+      - name: write-handoff
+        type: cmd
+        cmd: |
+          PR_NUM=$(gh pr list --head "$(git rev-parse --abbrev-ref HEAD)" --json number --jq '.[0].number' 2>/dev/null || echo "0")
+          cat > .agent/state/handoff_prepare-for-merge_to_mts.json << HANDOFF
+          {
+            "from": "prepare-for-merge",
+            "to": "mts",
+            "pr_number": $PR_NUM,
+            "branch": "$(git rev-parse --abbrev-ref HEAD)",
+            "checks_passing": true,
+            "timestamp": "$(date -Iseconds)"
+          }
+          HANDOFF
         fail_action: warn
 
     next_phase: null

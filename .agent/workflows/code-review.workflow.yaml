@@ -5,7 +5,8 @@ workflow:
   agents: 4
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   review_cycle_days: 365
   description: >-
     Security-first code review for React/Vite project.
@@ -13,6 +14,15 @@ metadata:
     changes. Includes automatic recall of relevant prior
     lessons. Report only.
   skills: [sec, test, react-best-practices]
+
+handoff:
+  to: handle-review-results
+  schema:
+    review_mode: string
+    findings: { must_fix: int, should_fix: int, nice_to_have: int }
+    files_reviewed: [string]
+    branch: string
+  persist_to: .agent/state/handoff_code-review_to_handle-review-results.json
 
 constraints:
   post_merge_work: deny
@@ -26,6 +36,7 @@ phases:
     steps:
       - name: recall-prior-lessons
         type: cmd
+        tier: low
         cmd: |
           python3 .agent/bin/workflow-memory.py recall \
             --workflow code-review \
@@ -33,6 +44,14 @@ phases:
             --topic "${TOPIC:-code review}" \
             --limit 6
         store: RECALL_CONTEXT
+        fail_action: warn
+
+      - name: read-handoff
+        type: cmd
+        tier: low
+        cmd: |
+          cat .agent/state/handoff_resolve-issue_to_code-review.json 2>/dev/null || echo "{}"
+        store: UPSTREAM_HANDOFF
         fail_action: warn
 
     next_phase: 1-scope-detect
@@ -82,6 +101,7 @@ phases:
     steps:
       - name: eslint-check
         type: check
+        tier: medium
         check: npx eslint src/
         acceptable_failure: [none]
         fail_action: exit
@@ -236,11 +256,13 @@ phases:
 
       - name: issue-analysis
         type: review
+        tier: high
         review_dimensions: [issue-handling, ui-ux, testing, quality, perf]
         min_confidence: 0.80
 
       - name: architecture-check
         type: review
+        tier: high
         review_dimensions: [patterns, antipatterns, tech-debt, react-hooks]
         min_confidence: 0.75
 
@@ -262,6 +284,23 @@ phases:
         type: doc
         template: code-review-report
         target: stdout
+
+      - name: write-handoff
+        type: cmd
+        cmd: |
+          cat > .agent/state/handoff_code-review_to_handle-review-results.json << HANDOFF
+          {
+            "from": "code-review",
+            "to": "handle-review-results",
+            "review_mode": "${REVIEW_MODE}",
+            "must_fix_count": ${MUST_FIX_COUNT:-0},
+            "should_fix_count": ${SHOULD_FIX_COUNT:-0},
+            "nice_to_have_count": ${NICE_TO_HAVE_COUNT:-0},
+            "branch": "$(git rev-parse --abbrev-ref HEAD)",
+            "timestamp": "$(date -Iseconds)"
+          }
+          HANDOFF
+        fail_action: warn
 
     next_phase: null
 
