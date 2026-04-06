@@ -1664,6 +1664,7 @@ function callClaudeCLI(prompt, model, reasoningEffort = "medium", parseJson = tr
   const thinkingBudget =
     reasoningEffort === "high" || reasoningEffort === "xhigh" ? "32000" : "10000";
 
+  const fd = fs.openSync(tmpOut, "w");
   try {
     execFileSync(
       "claude",
@@ -1684,10 +1685,18 @@ function callClaudeCLI(prompt, model, reasoningEffort = "medium", parseJson = tr
         maxBuffer: 20 * 1024 * 1024,
         timeout: OPENAI_TIMEOUT_MS,
         encoding: "utf-8",
-        stdio: ["pipe", fs.openSync(tmpOut, "w"), "pipe"],
+        stdio: ["pipe", fd, "pipe"],
       }
     );
+  } finally {
+    try {
+      fs.closeSync(fd);
+    } catch {
+      // ignore close errors
+    }
+  }
 
+  try {
     if (!fs.existsSync(tmpOut)) {
       throw new Error("Claude CLI did not produce an output file");
     }
@@ -1706,7 +1715,7 @@ function callClaudeCLI(prompt, model, reasoningEffort = "medium", parseJson = tr
   }
 }
 
-function shouldFallbackToClaude(err) {
+export function shouldFallbackToClaude(err) {
   const msg = String(err?.message || err?.stderr || "").toLowerCase();
   return (
     msg.includes("usage limit") ||

@@ -7,6 +7,7 @@ import {
   parseCodexOutput,
   parseVerificationResponse,
   reconcileVerifiedMatches,
+  shouldFallbackToClaude,
   shouldRetryBatchError,
   splitPoliticiansIntoBatches,
 } from "./generateDailyScores.js";
@@ -360,5 +361,61 @@ describe("splitPoliticiansIntoBatches", () => {
       promisesDB
     );
     expect(batches.map((b) => b.length)).toEqual([1, 1, 1]);
+  });
+});
+
+describe("shouldFallbackToClaude", () => {
+  it("returns true for usage limit errors", () => {
+    expect(shouldFallbackToClaude(new Error("You've hit your usage limit"))).toBe(true);
+  });
+
+  it("returns true for quota exceeded", () => {
+    expect(shouldFallbackToClaude(new Error("insufficient_quota"))).toBe(true);
+    expect(shouldFallbackToClaude(new Error("quota exceeded for this billing period"))).toBe(true);
+  });
+
+  it("returns true for rate limit (429)", () => {
+    expect(shouldFallbackToClaude(new Error("429 Too Many Requests"))).toBe(true);
+    expect(shouldFallbackToClaude(new Error("rate limit reached"))).toBe(true);
+  });
+
+  it("returns true for billing/credits errors", () => {
+    expect(shouldFallbackToClaude(new Error("billing hard limit reached"))).toBe(true);
+    expect(shouldFallbackToClaude(new Error("purchase more credits"))).toBe(true);
+  });
+
+  it("returns true for ENOENT (CLI not found)", () => {
+    expect(shouldFallbackToClaude(new Error("ENOENT: codex not found"))).toBe(true);
+  });
+
+  it("returns false for parse errors", () => {
+    expect(shouldFallbackToClaude(new Error("Unexpected token in JSON"))).toBe(false);
+  });
+
+  it("returns false for generic errors", () => {
+    expect(shouldFallbackToClaude(new Error("something went wrong"))).toBe(false);
+  });
+
+  it("returns false for null/undefined", () => {
+    expect(shouldFallbackToClaude(null)).toBe(false);
+    expect(shouldFallbackToClaude(undefined)).toBe(false);
+  });
+});
+
+describe("shouldRetryBatchError — quota errors", () => {
+  it("does not retry usage limit errors (fallback handles them)", () => {
+    expect(shouldRetryBatchError(new Error("You've hit your usage limit"))).toBe(false);
+  });
+
+  it("does not retry quota errors", () => {
+    expect(shouldRetryBatchError(new Error("quota exceeded"))).toBe(false);
+  });
+
+  it("does not retry billing errors", () => {
+    expect(shouldRetryBatchError(new Error("billing hard limit reached"))).toBe(false);
+  });
+
+  it("does not retry credits errors", () => {
+    expect(shouldRetryBatchError(new Error("purchase more credits"))).toBe(false);
   });
 });
