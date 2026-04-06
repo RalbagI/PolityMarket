@@ -17,7 +17,7 @@ providers:
   openai:
     high: gpt-5.4
     medium: gpt-5.4-mini
-    low: gpt-5.4-mini
+    low: gpt-5.4-mini          # no lighter OpenAI model available; same as medium
 
 # Default provider (used when agent doesn't specify)
 default_provider: anthropic
