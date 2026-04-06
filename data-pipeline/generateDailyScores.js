@@ -822,6 +822,11 @@ const PIPELINE_TIMEZONE = process.env.TZ || "Asia/Jerusalem";
 const OPENAI_MODEL_HIGH = process.env.OPENAI_MODEL_HIGH || "gpt-5.4";
 const OPENAI_MODEL_LOW = process.env.OPENAI_MODEL_LOW || "gpt-5.4-mini";
 const OPENAI_TIMEOUT_MS = parsePositiveInt(process.env.OPENAI_TIMEOUT_MS, 600000);
+// Claude CLI fallback: used when Codex/OpenAI fails (e.g., quota exceeded)
+const LLM_PROVIDER = process.env.LLM_PROVIDER || "codex"; // "codex" | "claude"
+const CLAUDE_MODEL_HIGH = process.env.CLAUDE_MODEL_HIGH || "claude-opus-4-6";
+const CLAUDE_MODEL_LOW = process.env.CLAUDE_MODEL_LOW || "claude-opus-4-6";
+const LLM_FALLBACK_ENABLED = process.env.LLM_FALLBACK_ENABLED !== "false";
 // Smaller batches (20) improve Hebrew CoT JSON reliability on gpt-5.4-mini
 const MAX_BATCH_SIZE = parsePositiveInt(process.env.MAX_BATCH_SIZE, 20);
 const MAX_PROMPT_CHARS = parseNonNegativeInt(process.env.MAX_PROMPT_CHARS, 350000);
@@ -1649,6 +1654,96 @@ function callCodexCLI(prompt, model, reasoningEffort = "medium", parseJson = tru
   }
 }
 
+function callClaudeCLI(prompt, model, reasoningEffort = "medium", parseJson = true) {
+  const tmpOut = path.join(
+    os.tmpdir(),
+    `claude-out-${Date.now()}-${Math.random().toString(36).slice(2)}.txt`
+  );
+
+  // Map Codex reasoning effort to Claude thinking budget
+  const thinkingBudget =
+    reasoningEffort === "high" || reasoningEffort === "xhigh" ? "32000" : "10000";
+
+  try {
+    execFileSync(
+      "claude",
+      [
+        "-p", // print mode — no interactive UI
+        "--model",
+        model,
+        "--output-format",
+        "text",
+        "--max-turns",
+        "1",
+        "--thinking-budget",
+        thinkingBudget,
+      ],
+      {
+        input: prompt,
+        env: { ...process.env },
+        maxBuffer: 20 * 1024 * 1024,
+        timeout: OPENAI_TIMEOUT_MS,
+        encoding: "utf-8",
+        stdio: ["pipe", fs.openSync(tmpOut, "w"), "pipe"],
+      }
+    );
+
+    if (!fs.existsSync(tmpOut)) {
+      throw new Error("Claude CLI did not produce an output file");
+    }
+    const output = fs.readFileSync(tmpOut, "utf-8").trim();
+    if (!output) {
+      throw new Error("Claude CLI produced an empty output file");
+    }
+    console.log(`  Claude [${model}]: ${output.length} chars`);
+    return parseJson ? parseCodexOutput(output) : output;
+  } finally {
+    try {
+      fs.unlinkSync(tmpOut);
+    } catch {
+      // ignore cleanup errors
+    }
+  }
+}
+
+function shouldFallbackToClaude(err) {
+  const msg = String(err?.message || err?.stderr || "").toLowerCase();
+  return (
+    msg.includes("usage limit") ||
+    msg.includes("rate limit") ||
+    msg.includes("quota") ||
+    msg.includes("429") ||
+    msg.includes("insufficient_quota") ||
+    msg.includes("billing") ||
+    msg.includes("credits") ||
+    msg.includes("enoent")
+  );
+}
+
+function callLLM(prompt, model, reasoningEffort = "medium", parseJson = true) {
+  // Direct provider selection
+  if (LLM_PROVIDER === "claude") {
+    const claudeModel =
+      model === OPENAI_MODEL_HIGH ? CLAUDE_MODEL_HIGH : CLAUDE_MODEL_LOW;
+    return callClaudeCLI(prompt, claudeModel, reasoningEffort, parseJson);
+  }
+
+  // Codex with optional Claude fallback
+  try {
+    return callCodexCLI(prompt, model, reasoningEffort, parseJson);
+  } catch (err) {
+    if (LLM_FALLBACK_ENABLED && shouldFallbackToClaude(err)) {
+      const claudeModel =
+        model === OPENAI_MODEL_HIGH ? CLAUDE_MODEL_HIGH : CLAUDE_MODEL_LOW;
+      console.warn(
+        `  ⚠ Codex failed (${err.message.slice(0, 80)}), falling back to Claude [${claudeModel}]...`
+      );
+      return callClaudeCLI(prompt, claudeModel, reasoningEffort, parseJson);
+    }
+    throw err;
+  }
+}
+
 // ── Two-Tier Entity Verification ──────────────────────────────────────
 // Tier 2: LLM disambiguation for partial (single-token) name matches.
 
@@ -1790,6 +1885,15 @@ export function shouldRetryBatchError(err) {
   if (msg.includes("enoent") && msg.includes("codex")) {
     return false;
   }
+  // Don't retry quota/billing errors — callLLM fallback handles these
+  if (
+    msg.includes("usage limit") ||
+    msg.includes("quota") ||
+    msg.includes("billing") ||
+    msg.includes("credits")
+  ) {
+    return false;
+  }
   if (
     msg.includes("authentication") ||
     msg.includes("api key") ||
@@ -1872,8 +1976,12 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
     }
   }
 
+  const providerLabel = LLM_PROVIDER === "claude" ? "Claude" : "Codex";
   console.log(
-    `  Model tiering: ${highTier.length} → ${OPENAI_MODEL_HIGH}, ${lowTier.length} → ${OPENAI_MODEL_LOW}`
+    `  Model tiering [${providerLabel}]: ${highTier.length} → ${OPENAI_MODEL_HIGH}, ${lowTier.length} → ${OPENAI_MODEL_LOW}` +
+      (LLM_FALLBACK_ENABLED && LLM_PROVIDER !== "claude"
+        ? ` (fallback: Claude ${CLAUDE_MODEL_HIGH})`
+        : "")
   );
 
   const allResults = [];
@@ -1908,7 +2016,7 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
       );
       console.log(`  Prompt size: ${prompt.length} chars`);
 
-      const results = await retry(() => callCodexCLI(prompt, model, reasoning), {
+      const results = await retry(() => callLLM(prompt, model, reasoning), {
         maxRetries: 2,
         initialDelay: 5000,
         maxDelay: 30000,

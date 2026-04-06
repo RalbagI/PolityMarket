@@ -47,10 +47,21 @@ export GIT_TERMINAL_PROMPT=0
 # Ensure PATH includes npm global bin (needed for cron which has minimal PATH)
 export PATH="${HOME}/.npm-global/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}"
 
-# Verify Codex CLI is available
-if ! command -v codex &>/dev/null; then
-  echo "Codex CLI (codex) not found in PATH" >&2
-  exit 1
+# Verify LLM CLI is available (Codex or Claude)
+if [[ "${LLM_PROVIDER:-codex}" == "claude" ]]; then
+  if ! command -v claude &>/dev/null; then
+    echo "Claude CLI (claude) not found in PATH" >&2
+    exit 1
+  fi
+  echo "Using Claude CLI as primary LLM provider"
+elif ! command -v codex &>/dev/null; then
+  if command -v claude &>/dev/null; then
+    echo "Codex CLI not found, but Claude CLI available — setting LLM_PROVIDER=claude"
+    export LLM_PROVIDER=claude
+  else
+    echo "Neither Codex CLI nor Claude CLI found in PATH" >&2
+    exit 1
+  fi
 fi
 
 # ── Save current branch and stash any work-in-progress ───────────────
