@@ -1732,8 +1732,7 @@ export function shouldFallbackToClaude(err) {
 function callLLM(prompt, model, reasoningEffort = "medium", parseJson = true) {
   // Direct provider selection
   if (LLM_PROVIDER === "claude") {
-    const claudeModel =
-      model === OPENAI_MODEL_HIGH ? CLAUDE_MODEL_HIGH : CLAUDE_MODEL_LOW;
+    const claudeModel = model === OPENAI_MODEL_HIGH ? CLAUDE_MODEL_HIGH : CLAUDE_MODEL_LOW;
     return callClaudeCLI(prompt, claudeModel, reasoningEffort, parseJson);
   }
 
@@ -1742,8 +1741,7 @@ function callLLM(prompt, model, reasoningEffort = "medium", parseJson = true) {
     return callCodexCLI(prompt, model, reasoningEffort, parseJson);
   } catch (err) {
     if (LLM_FALLBACK_ENABLED && shouldFallbackToClaude(err)) {
-      const claudeModel =
-        model === OPENAI_MODEL_HIGH ? CLAUDE_MODEL_HIGH : CLAUDE_MODEL_LOW;
+      const claudeModel = model === OPENAI_MODEL_HIGH ? CLAUDE_MODEL_HIGH : CLAUDE_MODEL_LOW;
       console.warn(
         `  ⚠ Codex failed (${err.message.slice(0, 80)}), falling back to Claude [${claudeModel}]...`
       );
