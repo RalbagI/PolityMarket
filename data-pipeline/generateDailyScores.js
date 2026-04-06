@@ -1660,9 +1660,8 @@ function callClaudeCLI(prompt, model, reasoningEffort = "medium", parseJson = tr
     `claude-out-${Date.now()}-${Math.random().toString(36).slice(2)}.txt`
   );
 
-  // Map Codex reasoning effort to Claude thinking budget
-  const thinkingBudget =
-    reasoningEffort === "high" || reasoningEffort === "xhigh" ? "32000" : "10000";
+  // Map Codex reasoning effort to Claude --effort level
+  const effort = reasoningEffort === "high" || reasoningEffort === "xhigh" ? "max" : "high";
 
   const fd = fs.openSync(tmpOut, "w");
   try {
@@ -1676,8 +1675,8 @@ function callClaudeCLI(prompt, model, reasoningEffort = "medium", parseJson = tr
         "text",
         "--max-turns",
         "1",
-        "--thinking-budget",
-        thinkingBudget,
+        "--effort",
+        effort,
       ],
       {
         input: prompt,
