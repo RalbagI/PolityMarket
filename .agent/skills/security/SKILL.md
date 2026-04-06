@@ -1,35 +1,24 @@
 ---
 name: security
 description: >
-  Security review and audit for Tipi. Use for auth, secrets, Cloud Functions,
-  Firestore rules, App Check, CSAE compliance, and OWASP Mobile Top 10.
-model: opus
-updated_at: "2026-02-24"
-review_cycle_days: 180
+  Security review and audit for PolityMarket. Use for auth, secrets, Cloud Functions,
+  Firestore rules, App Check, XSS prevention, and OWASP Web Top 10.
 ---
 
-# Tipi Security Skill
+# PolityMarket Security Skill
 
-Expert security reviewer and auditor for Flutter/Firebase, CSAE compliance,
-and DevSecOps practices in the Tipi application.
+Expert security reviewer and auditor for React/Firebase web applications
+and DevSecOps practices in the PolityMarket project.
 
 ## When to Activate
 
 - Implementing authentication or authorization
 - Creating or modifying Cloud Functions or Firestore rules
-- Handling user input, file uploads, or sensitive data
+- Handling user input or sensitive data
 - Working with secrets or credentials
-- Security audits, CSAE/GDPR compliance verification
+- Security audits
 - Integrating third-party APIs
-
-## CSAE Compliance
-
-Reference: `ai_docs/ops/RUNBOOK_CSAE.md`
-
-- Age verification at signup (birthdate collection)
-- Content moderation for user-generated content
-- Reporting mechanisms for inappropriate content
-- Data retention policies for minors
+- Reviewing for XSS, CSRF, or injection vulnerabilities
 
 ## App Check Enforcement (MANDATORY)
 
@@ -44,8 +33,6 @@ export const myFunction = functions.https.onCall(async (data, context) => {
 });
 ```
 
-Reference: `ai_docs/architecture/security-architecture.yaml`
-
 ## Backward Compatibility (BWC) Validation
 
 When reviewing schema or API changes, verify:
@@ -54,13 +41,10 @@ When reviewing schema or API changes, verify:
 - Zod schemas: No fields removed, no optional->required changes
 - Cloud Functions: No existing signature modifications (use V2)
 - New collections: Must include `schemaVersion` in `hasOnly`
-- Automated enforcement: `scripts/lint-firestore-rules.sh`
 
 Reference: `.agent/RULES.md` BWC: Zero-Breaking-Change Policy
 
 ## Secrets Management
-
-Reference: `docs/compliance/cloud-functions-secrets.md`
 
 **NEVER use**: `functions.config()` (deprecated), hardcoded secrets, module-level constants.
 
@@ -85,13 +69,9 @@ export const signedFunction = functions
 Validate all inputs with Zod; sanitize strings before Firestore writes:
 
 ```typescript
-const CreateRoomSchema = z.object({
-  name: z.string().min(1).max(100),
-  center: z.object({
-    lat: z.number().min(-90).max(90),
-    lng: z.number().min(-180).max(180),
-  }),
-  radius: z.number().positive().max(10000),
+const SubscriptionSchema = z.object({
+  email: z.string().email().max(255),
+  webhookUrl: z.string().url().max(2048).optional(),
 });
 
 function sanitizeString(input: string): string {
@@ -101,9 +81,62 @@ function sanitizeString(input: string): string {
 }
 ```
 
-## Firestore Security Rules
+## XSS Prevention (React)
 
-Reference: `ai_docs/implementation/firestore-rules-enhanced.md`
+React escapes JSX by default, but these patterns are dangerous:
+
+```tsx
+// DANGEROUS - direct HTML injection
+<div dangerouslySetInnerHTML={{ __html: userInput }} />
+
+// SAFE - React auto-escapes
+<div>{userInput}</div>
+
+// DANGEROUS - URL injection
+<a href={userInput}>Link</a>  // javascript: protocol possible
+
+// SAFE - validate protocol
+const safeUrl = /^https?:\/\//.test(url) ? url : '#';
+<a href={safeUrl}>Link</a>
+```
+
+Rules:
+- Never use `dangerouslySetInnerHTML` with user-controlled content
+- Validate URL protocols before rendering `href` or `src` attributes
+- Sanitize any content rendered outside React's JSX escaping
+
+## CORS and CSP (Cloud Functions)
+
+```typescript
+// Cloud Functions CORS
+const corsOptions = {
+  origin: ['https://politymarket.web.app'],
+  methods: ['GET', 'POST'],
+};
+
+// CSP headers in firebase.json hosting config
+// Content-Security-Policy: default-src 'self'; script-src 'self'
+```
+
+## Webhook SSRF Prevention
+
+User-supplied webhook URLs must be validated before storage:
+
+```typescript
+function isValidWebhookUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== 'https:') return false;
+    const hostname = parsed.hostname.toLowerCase();
+    if (hostname === 'localhost' || hostname === '127.0.0.1') return false;
+    if (hostname.endsWith('.internal')) return false;
+    if (/^(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.|169\.254\.)/.test(hostname)) return false;
+    return true;
+  } catch { return false; }
+}
+```
+
+## Firestore Security Rules
 
 ### Schema Validation (MANDATORY)
 
@@ -125,54 +158,33 @@ allow read: if exists(/databases/$(database)/documents/users/$(request.auth.uid)
   && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
 ```
 
-### Write-Time Enforcement (TOCTOU Prevention)
-
-Client-side validation is for UX only. Use server-side session tokens:
-
-```javascript
-allow write: if exists(
-  /databases/$(database)/documents/rooms/$(roomId)/validSessions/$(request.auth.uid)
-);
-```
-
-## Authentication & Authorization
-
-- Client (Flutter) validates for user feedback only
-- Server (Cloud Functions) validates for security
-- Firestore Rules enforce at write time
-- Session tokens for complex validations (geofence, etc.)
-
-## Sensitive Data Protection (Flutter)
-
-- Auth tokens: `flutter_secure_storage` (NOT SharedPreferences)
-- Sensitive media: AES-GCM-256 encryption before upload
-- Never log PII or send to analytics
-- Network requests: HTTPS only
-
 ## Vulnerability Patterns
 
 | Pattern | Risk | Mitigation |
 |---------|------|------------|
 | Missing App Check | Unauthorized API access | Add `requireAppCheckV1` |
-| Open Firestore rules | Data exposure | Explicit allow rules |
-| Plaintext SharedPreferences | Local data theft | Use FlutterSecureStorage |
+| Open Firestore rules | Data exposure | Explicit allow rules with `hasOnly` |
+| `dangerouslySetInnerHTML` | XSS attack | Never use with user content |
+| `localStorage` for tokens | XSS token theft | Use httpOnly cookies or in-memory |
 | Missing schema validation | Field injection | Use `keys().hasOnly()` |
-| Client-side geofence check | Bypass location | Server-side session tokens |
+| Unvalidated webhook URLs | SSRF | Validate protocol, reject private IPs |
+| Missing CORS | Cross-origin abuse | Restrict to `politymarket.web.app` |
+| Hardcoded secrets | Credential exposure | Use Cloud Secret Manager |
 
-## OWASP Mobile Top 10
+## OWASP Web Top 10
 
 | Category | Check |
 |----------|-------|
-| M1: Improper Platform Usage | App Check, proper permissions |
-| M2: Insecure Data Storage | Use flutter_secure_storage |
-| M3: Insecure Communication | HTTPS only, cert pinning |
-| M4: Insecure Authentication | Firebase Auth + App Check |
-| M5: Insufficient Cryptography | Use AES-GCM-256 |
-| M6: Insecure Authorization | Firestore Rules + CF validation |
-| M7: Client Code Quality | dart analyze, no secrets |
-| M8: Code Tampering | App Check attestation |
-| M9: Reverse Engineering | ProGuard enabled |
-| M10: Extraneous Functionality | Remove debug endpoints |
+| A01: Broken Access Control | Firestore rules + App Check |
+| A02: Cryptographic Failures | HTTPS only, no secrets in client |
+| A03: Injection | Zod validation, React JSX escaping |
+| A04: Insecure Design | BWC policy, least privilege |
+| A05: Security Misconfiguration | CSP headers, CORS, no debug in prod |
+| A06: Vulnerable Components | `npm audit --omit=dev --audit-level=high` |
+| A07: Auth Failures | Firebase Auth, session management |
+| A08: Data Integrity | Zod schemas, Firestore rules |
+| A09: Logging Failures | Cloud Functions logs via GCP |
+| A10: SSRF | Webhook URL validation |
 
 ## Security Checklist
 
@@ -184,6 +196,7 @@ allow write: if exists(
 - [ ] String sanitization before Firestore writes
 - [ ] Rate limiting on expensive operations
 - [ ] Error messages don't leak internals
+- [ ] CORS restricted to production domain
 
 ### Firestore Rules
 
@@ -192,24 +205,26 @@ allow write: if exists(
 - [ ] Existence checks before `get()` calls
 - [ ] User can only access own data (unless admin)
 
-### Mobile App
+### Web Application
 
-- [ ] No hardcoded secrets in Dart code
-- [ ] Sensitive data in FlutterSecureStorage
-- [ ] HTTPS only, no debug endpoints in production
+- [ ] No `dangerouslySetInnerHTML` with user content
+- [ ] URL protocols validated before rendering
+- [ ] No hardcoded secrets in client-side code
+- [ ] CSP headers configured
+- [ ] No sensitive data in localStorage
+- [ ] HTTPS only
 
 ### Authentication
 
 - [ ] Session timeout implemented
-- [ ] Account deletion fully clears user data
-- [ ] Age verification at signup (CSAE)
+- [ ] Subscription updates require token (not just email)
 
 ## Security Testing Commands
 
 ```bash
-./scripts/check-compliance.sh
+npm audit --omit=dev --audit-level=high
 gitleaks detect --source . --config .gitleaks.toml
-osv-scanner scan --lockfile pubspec.lock
+npx eslint src/ --rule '{"no-eval": "error"}'
 firebase emulators:exec "npm test" --only firestore
 ```
 
@@ -218,14 +233,8 @@ firebase emulators:exec "npm test" --only firestore
 1. Check App Check (all callables have `requireAppCheckV1`)
 2. Review Firestore Rules (schema validation, existence checks)
 3. Audit Secrets (no hardcoded, proper Secret Manager)
-4. Validate Input (sanitization before Firestore writes)
-5. Check Storage (FlutterSecureStorage for sensitive data)
-6. Review Permissions (least privilege)
-7. CSAE Compliance (age verification, content moderation)
-
-## Related Documentation
-
-- `docs/compliance/` - Compliance documentation (read-only)
-- `ai_docs/ops/RUNBOOK_CSAE.md` - CSAE procedures
-- `ai_docs/architecture/security-architecture.yaml` - Security architecture
-- `SECURITY.md` - Security policy
+4. Validate Input (Zod schemas, sanitization before writes)
+5. Review XSS vectors (`dangerouslySetInnerHTML`, URL injection)
+6. Check CORS/CSP configuration
+7. Verify webhook URL validation (SSRF prevention)
+8. Review npm dependencies (`npm audit`)

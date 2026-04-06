@@ -1,6 +1,4 @@
 ---
-updated_at: "2026-01-25"
-review_cycle_days: 365
 name: doc-coauthoring
 description: Standards for co-authoring documentation in the ai_docs/ structure.
 ---

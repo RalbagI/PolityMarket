@@ -1,0 +1,43 @@
+# Model Routing Configuration
+# Maps abstract capability tiers to provider-specific models.
+# Workflows reference tiers (not model names) via `tier:` field.
+# Update this file when switching providers or adopting new models.
+#
+# Tiers:
+#   high   - Complex reasoning, architecture analysis, synthesis, planning
+#   medium - Parallel execution, tool use, code generation, validation
+#   low    - Classification, retrieval, simple parsing, handoff reads
+
+providers:
+  anthropic:
+    high: claude-opus-4-6
+    medium: claude-sonnet-4-6
+    low: claude-haiku-4-5
+
+  openai:
+    high: gpt-5.4
+    medium: gpt-5.4-mini
+    low: gpt-5.4-mini
+
+# Default provider (used when agent doesn't specify)
+default_provider: anthropic
+
+# When to use each tier (reference for workflow authors):
+#
+# high:
+#   - Deep code review (architecture, patterns, antipatterns)
+#   - PR description generation
+#   - Complex implementation planning
+#   - Bug root-cause analysis
+#
+# medium:
+#   - Parallel static analysis (lint, format, test execution)
+#   - Code generation from clear specs
+#   - CI failure triage and targeted fixes
+#   - Build and validation steps
+#
+# low:
+#   - Memory recall and context retrieval
+#   - Handoff file reads
+#   - Scope detection and classification
+#   - Simple status checks

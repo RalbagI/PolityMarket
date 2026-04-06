@@ -5,7 +5,8 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   review_cycle_days: 365
   description: "Audit project structure, instruction files, and workflow health for context-friction signals (report-only)."
   skills: [react-best-practices]

@@ -5,13 +5,27 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   review_cycle_days: 365
   description: >-
     Enforce immediate resolution of all /code-review or
     /monitor-vite findings with context recall before
     execution and memory capture after completion.
   skills: [test, sec, react-best-practices]
+
+handoff:
+  to: prepare-for-merge
+  schema:
+    findings_resolved: { must_fix: int, should_fix: int, nice_to_have: int }
+    tests_passing: boolean
+    branch: string
+  persist_to: .agent/state/handoff_handle-review-results_to_prepare-for-merge.json
+
+circuit_breaker:
+  max_retries: 2
+  fingerprint_window_minutes: 30
+  on_trip: exit_with_report
 
 constraints:
   post_merge_work: deny
@@ -27,12 +41,21 @@ phases:
     steps:
       - name: recall-prior-lessons
         type: cmd
+        tier: low
         cmd: |
           python3 .agent/bin/workflow-memory.py recall \
             --workflow handle-review-results \
             --topic "code review findings resolution" \
             --limit 8
         store: RECALL_CONTEXT
+        fail_action: warn
+
+      - name: read-handoff
+        type: cmd
+        tier: low
+        cmd: |
+          cat .agent/state/handoff_code-review_to_handle-review-results.json 2>/dev/null || echo "{}"
+        store: UPSTREAM_HANDOFF
         fail_action: warn
 
       - name: snapshot-start
@@ -90,16 +113,19 @@ phases:
 
       - name: run-lint
         type: check
+        tier: medium
         check: npx eslint src/
         fail_action: exit
 
       - name: run-tests
         type: check
+        tier: medium
         check: npx vitest run
         fail_action: exit
 
       - name: verify-coverage
         type: check
+        tier: medium
         check: npx vitest run --coverage 2>&1 | tail -20
         fail_action: warn
 
@@ -154,6 +180,20 @@ phases:
             --topic "code review findings resolution" \
             --auto
         store: LEARN_RESULT
+        fail_action: warn
+
+      - name: write-handoff
+        type: cmd
+        cmd: |
+          cat > .agent/state/handoff_handle-review-results_to_prepare-for-merge.json << HANDOFF
+          {
+            "from": "handle-review-results",
+            "to": "prepare-for-merge",
+            "tests_passing": true,
+            "branch": "$(git rev-parse --abbrev-ref HEAD)",
+            "timestamp": "$(date -Iseconds)"
+          }
+          HANDOFF
         fail_action: warn
 
     next_phase: null

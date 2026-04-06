@@ -5,7 +5,8 @@ workflow:
   agents: 1
 
 metadata:
-  updated: "2026-03-30"
+  updated: "2026-04-06"
+  schema_version: "1.1"
   review_cycle_days: 365
   description: >-
     Merge This Shit — final-stage workflow that verifies CI,
@@ -14,11 +15,28 @@ metadata:
     workflow chain after /prepare-for-merge.
   skills: [github-actions]
 
+circuit_breaker:
+  max_retries: 2
+  fingerprint_window_minutes: 30
+  on_trip: exit_with_report
+
 constraints:
   post_merge_work: allow
   can_push: false
 
 phases:
+  - id: 0-read-handoff
+    name: Read Upstream Handoff
+    steps:
+      - name: read-handoff
+        type: cmd
+        tier: low
+        cmd: |
+          cat .agent/state/handoff_prepare-for-merge_to_mts.json 2>/dev/null || echo "{}"
+        store: UPSTREAM_HANDOFF
+        fail_action: warn
+    next_phase: 1-verify-ci
+
   - id: 1-verify-ci
     name: Verify CI
     steps:

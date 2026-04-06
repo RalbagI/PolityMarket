@@ -193,6 +193,48 @@ def build_auto_text(workflow: str, issue: str, topic: str) -> str:
     return normalize_ws("; ".join(parts))
 
 
+def compute_state_fingerprint(workflow: str) -> str:
+    """Compute a fingerprint of current repo state for circuit breaker detection."""
+    branch = safe_git(["rev-parse", "--abbrev-ref", "HEAD"])
+    commit = safe_git(["rev-parse", "HEAD"])
+    changed = safe_git(["diff", "--name-only"])
+    base = f"{workflow}|{branch}|{commit}|{changed}"
+    return hashlib.sha1(base.encode("utf-8")).hexdigest()[:20]
+
+
+def check_circuit_breaker(workflow: str, max_retries: int = 2,
+                          window_minutes: int = 30) -> bool:
+    """Check if the same workflow has run with the same state fingerprint recently.
+    Returns True if circuit breaker should trip (too many retries)."""
+    current_fp = compute_state_fingerprint(workflow)
+    if not SNAPSHOT_FILE.exists():
+        return False
+    cutoff = datetime.now(timezone.utc).timestamp() - (window_minutes * 60)
+    match_count = 0
+    try:
+        for raw in SNAPSHOT_FILE.read_text(encoding="utf-8", errors="ignore").splitlines():
+            if not raw.strip():
+                continue
+            try:
+                item = json.loads(raw)
+            except json.JSONDecodeError:
+                continue
+            if item.get("workflow") != workflow:
+                continue
+            if item.get("phase") != "start":
+                continue
+            ts = parse_iso(str(item.get("timestamp", "")))
+            if ts is None:
+                continue
+            if ts.astimezone(timezone.utc).timestamp() < cutoff:
+                continue
+            if item.get("state_fingerprint") == current_fp:
+                match_count += 1
+    except OSError:
+        return False
+    return match_count >= max_retries
+
+
 def recall(args: argparse.Namespace) -> int:
     query = normalize_ws(" ".join([args.topic or "", args.issue or "", args.workflow or ""]))
     tokens = tokenize(query)
@@ -231,6 +273,8 @@ def snapshot(args: argparse.Namespace) -> int:
     if not changed_output:
         changed_output = safe_git(["diff", "--name-only"])
     changed_files = [line.strip() for line in changed_output.splitlines() if line.strip()]
+    triggered_by = args.triggered_by or ""
+    state_fp = compute_state_fingerprint(args.workflow) if args.phase == "start" else ""
     payload = {
         "timestamp": now_iso(), "workflow": args.workflow,
         "phase": args.phase, "issue": args.issue or "",
@@ -238,6 +282,8 @@ def snapshot(args: argparse.Namespace) -> int:
         "changed_files_count": len(changed_files),
         "changed_files_sample": changed_files[:10],
         "note": normalize_ws(args.note or ""),
+        "triggered_by": triggered_by,
+        "state_fingerprint": state_fp,
     }
     append_jsonl(SNAPSHOT_FILE, payload)
     print(f"snapshot_recorded workflow={args.workflow} phase={args.phase} "
@@ -281,16 +327,69 @@ def learn(args: argparse.Namespace) -> int:
     if fingerprint_exists(fingerprint):
         print(f"learn_skipped reason=duplicate fingerprint={fingerprint}")
         return 0
+    outcome = getattr(args, "outcome", "") or ""
     payload = {
         "timestamp": now_iso(), "workflow": args.workflow,
         "issue": args.issue or "", "topic": args.topic or "",
-        "text": text,
+        "text": text, "outcome": outcome,
         "tags": tokenize(" ".join([args.workflow, args.topic or "", args.issue or ""]))[:8],
         "fingerprint": fingerprint,
     }
     append_jsonl(MEMORY_FILE, payload)
     print(f"learn_recorded fingerprint={fingerprint}")
     print(f"text={text}")
+    return 0
+
+
+def gc(args: argparse.Namespace) -> int:
+    """Garbage collect old memory and snapshot entries."""
+    ensure_state_dir()
+    memory_days = args.memory_days
+    snapshot_days = args.snapshot_days
+    now = datetime.now(timezone.utc)
+
+    def prune_jsonl(path: Path, max_age_days: int) -> int:
+        if not path.exists():
+            return 0
+        cutoff = now.timestamp() - (max_age_days * 86400)
+        lines = path.read_text(encoding="utf-8", errors="ignore").splitlines()
+        kept: list[str] = []
+        pruned = 0
+        for raw in lines:
+            if not raw.strip():
+                continue
+            try:
+                item = json.loads(raw)
+            except json.JSONDecodeError:
+                continue
+            ts = parse_iso(str(item.get("timestamp", "")))
+            if ts is not None and ts.astimezone(timezone.utc).timestamp() < cutoff:
+                pruned += 1
+                continue
+            kept.append(raw)
+        if pruned > 0:
+            path.write_text("\n".join(kept) + "\n" if kept else "", encoding="utf-8")
+        return pruned
+
+    mem_pruned = prune_jsonl(MEMORY_FILE, memory_days)
+    snap_pruned = prune_jsonl(SNAPSHOT_FILE, snapshot_days)
+    print(f"gc_complete memory_pruned={mem_pruned} snapshot_pruned={snap_pruned}")
+    return 0
+
+
+def check_breaker(args: argparse.Namespace) -> int:
+    """Check circuit breaker for a workflow. Exits 1 if tripped."""
+    tripped = check_circuit_breaker(
+        args.workflow, args.max_retries, args.window_minutes
+    )
+    fp = compute_state_fingerprint(args.workflow)
+    if tripped:
+        print(f"CIRCUIT_BREAKER_TRIPPED workflow={args.workflow} fingerprint={fp}")
+        print(f"The same workflow has been retried {args.max_retries}+ times "
+              f"with identical state within {args.window_minutes} minutes.")
+        print("Action: Exiting to prevent infinite loop. Manual intervention required.")
+        return 1
+    print(f"circuit_breaker_ok workflow={args.workflow} fingerprint={fp}")
     return 0
 
 
@@ -311,6 +410,8 @@ def build_parser() -> argparse.ArgumentParser:
     snap_p.add_argument("--topic", default="")
     snap_p.add_argument("--branch", default="")
     snap_p.add_argument("--note", default="")
+    snap_p.add_argument("--triggered-by", default="",
+                        help="Which workflow triggered this one")
 
     learn_p = subparsers.add_parser("learn", help="Persist runtime memory")
     learn_p.add_argument("--workflow", required=True)
@@ -318,6 +419,25 @@ def build_parser() -> argparse.ArgumentParser:
     learn_p.add_argument("--topic", default="")
     learn_p.add_argument("--text", default="")
     learn_p.add_argument("--auto", action="store_true")
+    learn_p.add_argument("--outcome", default="",
+                         choices=["", "success", "failure", "partial"],
+                         help="Outcome of the workflow run")
+
+    gc_p = subparsers.add_parser("gc", help="Garbage collect old entries")
+    gc_p.add_argument("--memory-days", type=int, default=30,
+                      help="Prune memory entries older than N days")
+    gc_p.add_argument("--snapshot-days", type=int, default=90,
+                      help="Prune snapshot entries older than N days")
+
+    cb_p = subparsers.add_parser("check-breaker",
+                                 help="Check circuit breaker for a workflow")
+    cb_p.add_argument("--workflow", required=True)
+    cb_p.add_argument("--max-retries", type=int, default=2)
+    cb_p.add_argument("--window-minutes", type=int, default=30)
+
+    fp_p = subparsers.add_parser("fingerprint",
+                                 help="Compute state fingerprint for a workflow")
+    fp_p.add_argument("--workflow", required=True)
 
     return parser
 
@@ -331,6 +451,14 @@ def main() -> int:
         return snapshot(args)
     if args.command == "learn":
         return learn(args)
+    if args.command == "gc":
+        return gc(args)
+    if args.command == "check-breaker":
+        return check_breaker(args)
+    if args.command == "fingerprint":
+        fp = compute_state_fingerprint(args.workflow)
+        print(f"fingerprint={fp} workflow={args.workflow}")
+        return 0
     parser.error("unsupported command")
     return 2
 

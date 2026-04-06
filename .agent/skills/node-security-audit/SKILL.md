@@ -1,6 +1,4 @@
 ---
-updated_at: "2026-01-25"
-review_cycle_days: 365
 name: node-security-audit
 description: Security auditing for Node.js dependencies and package configurations.
 ---

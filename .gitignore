@@ -23,8 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
-# Workflow runtime state (memory, snapshots)
+# Workflow runtime state (memory, snapshots, handoffs)
 .agent/state/*.jsonl
+.agent/state/*.json
 
 # CI logs
 ci-logs/
