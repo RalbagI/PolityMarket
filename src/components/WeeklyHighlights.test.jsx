@@ -17,6 +17,7 @@ vi.mock("react-i18next", () => ({
       if (key === "weeklyHighlights.headlineDown") return `${options.name} צנח ב-${options.delta}`;
       return dict[key] ?? key;
     },
+    i18n: { language: "he", dir: () => "rtl", changeLanguage: () => {} },
   }),
 }));
 

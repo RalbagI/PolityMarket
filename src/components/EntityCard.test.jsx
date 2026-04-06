@@ -7,6 +7,7 @@ import EntityCard from "./EntityCard";
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key, opts = {}) => opts.defaultValue || key,
+    i18n: { language: "he", dir: () => "rtl", changeLanguage: () => {} },
   }),
 }));
 

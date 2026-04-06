@@ -7,6 +7,7 @@ import Treemap from "./Treemap";
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
     t: (key, fallback) => (typeof fallback === "string" ? fallback : key),
+    i18n: { language: "he", dir: () => "rtl", changeLanguage: () => {} },
   }),
 }));
 

@@ -44,6 +44,7 @@ vi.mock("react-i18next", () => ({
 
       return dictionary[key] !== undefined ? dictionary[key] : key;
     },
+    i18n: { language: "he", dir: () => "rtl", changeLanguage: () => {} },
   }),
 }));
 

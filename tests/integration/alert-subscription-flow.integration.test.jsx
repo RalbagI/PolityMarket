@@ -41,6 +41,7 @@ vi.mock("react-i18next", () => ({
       };
       return dict[key] || opts.defaultValue || key;
     },
+    i18n: { language: "he", dir: () => "rtl", changeLanguage: () => {} },
   }),
 }));
 

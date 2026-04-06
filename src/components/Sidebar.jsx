@@ -8,6 +8,7 @@ import useFocusTrap from "../lib/useFocusTrap";
 import useSidebarStats from "../lib/useSidebarStats";
 import FilterBar from "./FilterBar";
 import QuickAbout from "./QuickAbout";
+import LanguageToggle from "./LanguageToggle";
 import useStore from "../store";
 
 export function DisplayOptions({ t }) {
@@ -111,6 +112,7 @@ export function SidebarContent({
               <div className="ms-1 md:ms-2">
                 <QuickAbout onOpenFullMethodology={onMethodologyClick} />
               </div>
+              <LanguageToggle />
             </div>
             <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
           </div>
@@ -370,6 +372,7 @@ export default function Sidebar({
                 : t("signals.mediaClimate")}
             </div>
           </div>
+          <LanguageToggle />
           <button
             onClick={() => setDrawerOpen(true)}
             className="p-1.5 rounded-lg hover:bg-gray-800 text-gray-400"

@@ -845,5 +845,9 @@
     "subscribeFailed": "שגיאה בהרשמה, נסה שוב",
     "subscriptionExists": "כבר קיימת הרשמה עבור אימייל זה. נשלח אליך אימייל לשחזור ההרשמה.",
     "subscriptionExistsEmailFailed": "כבר קיימת הרשמה עבור אימייל זה. לא הצלחנו לשלוח אימייל שחזור, נסה שוב מאוחר יותר."
+  },
+  "languageToggle": {
+    "switchToHebrew": "עבור לעברית",
+    "switchToEnglish": "Switch to English"
   }
 }
