@@ -31,7 +31,7 @@ jobs:
         run: npm --prefix functions ci --prefer-offline
 
       - name: Deploy Firebase Functions
-        run: npx firebase deploy --only functions --project politymarket --non-interactive
+        run: npx firebase-tools deploy --only functions --project politymarket --non-interactive
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0

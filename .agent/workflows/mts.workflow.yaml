@@ -127,7 +127,7 @@ phases:
 
       - name: deploy
         type: cmd
-        cmd: npx firebase deploy --only hosting,functions,firestore:rules
+        cmd: npx firebase-tools deploy --only hosting,functions,firestore:rules
         fail_action: warn
         notes: >-
           Deploys hosting (frontend), Cloud Functions (API),
