@@ -356,9 +356,7 @@
     "Ra'am": "רע״ם",
     "Raam": "רע״ם",
     "Democrats": "הדמוקרטים",
-    "HaYamin HaMamlakhti": "הימין הממלכתי",
-    "Independent": "עצמאי",
-    "Noam": "נעם"
+    "Independent": "עצמאי"
   },
   "filterBar": {
     "search": {
@@ -848,6 +846,6 @@
   },
   "languageToggle": {
     "switchToHebrew": "עבור לעברית",
-    "switchToEnglish": "Switch to English"
+    "switchToEnglish": "עבור לאנגלית"
   }
 }
