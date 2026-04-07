@@ -933,5 +933,29 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-07T07:39:33.226Z"
+  },
+  {
+    "date": "2026-04-08",
+    "warnings": [
+      "[Outlier] Benjamin Netanyahu: score 6.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yariv Levin: score 3.9 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Amir Ohana: score 4.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Eliyahu Revivo: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Vladimir Beliak: score 5.8 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Benny Gantz: score 6.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Bezalel Smotrich: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Simcha Rothman: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Itamar Ben Gvir: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Avigdor Lieberman: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Mansour Abbas: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gideon Sa'ar: score 5.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yair Golan: score 5.5 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Naftali Bennett: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Party] Shas: all 11 members have identical scores — possible hallucination",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-07T23:15:31.715Z"
   }
 ]
