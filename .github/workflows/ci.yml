@@ -55,6 +55,9 @@ jobs:
       - name: Validate pipeline script integrity
         run: bash scripts/validate-pipeline-script.sh
 
+      - name: Validate pipeline prompt & schema consistency
+        run: npx vitest run data-pipeline/pipeline.prompt-validation.test.js --reporter=verbose
+
       - name: Validate data files
         run: |
           node -e "JSON.parse(require('fs').readFileSync('data-pipeline/golden_dataset.json','utf-8'))"
