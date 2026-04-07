@@ -150,3 +150,13 @@ describe("bilingual header consistency", () => {
     expect(en.whatHappened).toContain("• item");
   });
 });
+
+// ── General News Context Instruction ──────────────────────────────────
+
+describe("general news context instruction", () => {
+  it("prompt instructs how to use General News Context", () => {
+    expect(prompt).toContain("General News Context");
+    expect(prompt).toContain("agenda_setting_score");
+    expect(prompt).toContain("Do not invent connections");
+  });
+});

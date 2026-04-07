@@ -1320,6 +1320,64 @@ async function fetchRSSHeadlines(politician, sourceConfig) {
   };
 }
 
+/**
+ * Collect general (non-politician-specific) headlines from the RSS feed cache.
+ * Called after Phase 1 so rssFeedCache is populated. Zero extra HTTP requests.
+ */
+export function collectGeneralHeadlines(sourceConfig) {
+  const globalFeeds = sourceConfig?.rss?.globalFeeds ?? [];
+  const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+  const seen = new Set();
+  const headlines = [];
+
+  for (const url of globalFeeds) {
+    const items = rssFeedCache.get(url);
+    if (!items) continue;
+    for (const item of items) {
+      const title = normalizeText(item.title);
+      if (!title || seen.has(title)) continue;
+      const pubDate = item.publishedAt ? new Date(item.publishedAt).getTime() : Date.now();
+      if (pubDate < cutoff) continue;
+      if (isSpamContent(title, item.link)) continue;
+      seen.add(title);
+      headlines.push(title);
+    }
+  }
+  return headlines.slice(0, 80);
+}
+
+/**
+ * Generate a concise ~200-word news digest from raw headlines via LLM.
+ * Used as background context for the scoring batches.
+ */
+async function generateNewsDigest(rawHeadlines) {
+  if (rawHeadlines.length === 0) return "";
+
+  const digestPrompt = `You are a senior Israeli news editor. Below are ${rawHeadlines.length} Hebrew/English news headlines from the last 48 hours.
+
+Produce a concise news digest (MAX 200 words) structured as:
+1. **Security & Defense** (if relevant)
+2. **Coalition & Politics** (if relevant)
+3. **Economy** (if relevant)
+4. **Society & Other** (if relevant)
+
+Skip any category with nothing notable. Write in English. Be factual and terse — this context will be injected into a political analysis prompt. Do NOT editorialize.
+
+Headlines:
+${rawHeadlines.map((h, i) => `${i + 1}. ${h}`).join("\n")}
+
+Respond with ONLY the digest text, no markdown fences.`;
+
+  try {
+    const digest = callLLM(digestPrompt, OPENAI_MODEL_HIGH, "high", false);
+    const text = typeof digest === "string" ? digest.trim() : "";
+    return text.slice(0, 2000); // safety truncation
+  } catch (err) {
+    console.warn(`  ⚠ News digest generation failed: ${err.message} — continuing without context`);
+    return "";
+  }
+}
+
 async function fetchSocialMediaMentions(politician, sourceConfig) {
   const socialConfig = sourceConfig.social;
   const searchTerms = buildSearchTerms(politician);
@@ -1473,7 +1531,8 @@ export function buildBatchedPrompt(
   politicianDataMap,
   oknessetMap,
   promisesDB,
-  _requireCoT = true
+  _requireCoT = true,
+  newsDigest = ""
 ) {
   const _oknessetMap = oknessetMap || new Map();
   const _promisesDB = promisesDB || {};
@@ -1489,6 +1548,18 @@ Respond with a raw JSON array of ${politicians.length} objects. No markdown. No 
 
 ---
 `;
+
+  if (newsDigest) {
+    prompt += `
+## General News Context (Israel, last 48 hours)
+Use this context to inform your analysis — especially agenda_setting_score and chain_of_thought.
+Do NOT score this section itself; it provides background for interpreting each politician's data.
+
+${newsDigest}
+
+---
+`;
+  }
 
   for (let i = 0; i < politicians.length; i++) {
     const p = politicians[i];
@@ -1920,7 +1991,8 @@ export function splitPoliticiansIntoBatches(
   maxBatchSize,
   maxPromptChars,
   oknessetMap,
-  promisesDB
+  promisesDB,
+  newsDigest = ""
 ) {
   if (!Array.isArray(politicians) || politicians.length === 0) {
     return [];
@@ -1934,7 +2006,8 @@ export function splitPoliticiansIntoBatches(
   const exceedsPromptBudget = (batch) => {
     if (!enforceCharBudget) return false;
     return (
-      buildBatchedPrompt(batch, politicianDataMap, oknessetMap, promisesDB).length > maxPromptChars
+      buildBatchedPrompt(batch, politicianDataMap, oknessetMap, promisesDB, true, newsDigest)
+        .length > maxPromptChars
     );
   };
 
@@ -1968,7 +2041,13 @@ export function splitPoliticiansIntoBatches(
   return batches;
 }
 
-async function batchScoreAllPoliticians(politicians, politicianDataMap, oknessetMap, promisesDB) {
+async function batchScoreAllPoliticians(
+  politicians,
+  politicianDataMap,
+  oknessetMap,
+  promisesDB,
+  newsDigest = ""
+) {
   // Classify by news activity: high-tier gets OPENAI_MODEL_HIGH, low-tier gets OPENAI_MODEL_LOW
   const highTier = [];
   const lowTier = [];
@@ -2004,7 +2083,8 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
       MAX_BATCH_SIZE,
       MAX_PROMPT_CHARS,
       oknessetMap,
-      promisesDB
+      promisesDB,
+      newsDigest
     );
 
     for (let b = 0; b < batches.length; b++) {
@@ -2018,7 +2098,8 @@ async function batchScoreAllPoliticians(politicians, politicianDataMap, oknesset
         politicianDataMap,
         oknessetMap,
         promisesDB,
-        requireCoT
+        requireCoT,
+        newsDigest
       );
       console.log(`  Prompt size: ${prompt.length} chars`);
 
@@ -2571,13 +2652,26 @@ async function main() {
     for (const p of POLITICIANS) oknessetMap.set(p.id, null);
   }
 
+  // ── Phase 1b: Generate general news context digest ──────────────────
+  console.log("\nPhase 1b: Generating general news context digest...");
+  const generalHeadlines = collectGeneralHeadlines(sourceConfig);
+  console.log(`  Collected ${generalHeadlines.length} general headlines from cached global feeds`);
+  let newsDigest = "";
+  if (generalHeadlines.length >= 5) {
+    newsDigest = await generateNewsDigest(generalHeadlines);
+    console.log(`  News digest: ${newsDigest.length} chars`);
+  } else {
+    console.log("  Skipping digest — too few general headlines");
+  }
+
   // ── Phase 2: Batch-score all politicians via OpenAI Codex CLI ───────
   console.log("\nPhase 2: Scoring via OpenAI Codex CLI...");
   const llmResults = await batchScoreAllPoliticians(
     POLITICIANS,
     politicianDataMap,
     oknessetMap,
-    PROMISES_DB
+    PROMISES_DB,
+    newsDigest
   );
 
   if (llmResults.length !== POLITICIANS.length) {

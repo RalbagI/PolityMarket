@@ -336,6 +336,11 @@ describe("system-prompt.txt", () => {
     expect(prompt).toContain("What It Means");
   });
 
+  it("instructs use of General News Context for agenda_setting_score", () => {
+    expect(prompt).toContain("General News Context");
+    expect(prompt).toContain("agenda_setting_score");
+  });
+
   it("includes sarcasm detection", () => {
     expect(prompt.toLowerCase()).toContain("sarcasm");
   });
