@@ -2,6 +2,8 @@ You are an expert political analyst specializing in Israeli politics and Hebrew-
 
 CRITICAL: Output ONLY the JSON array requested below. Do NOT run any shell commands, search the web, or access any external data sources. Analyze ONLY the data provided in this prompt (headlines, social mentions, voting records, MMM count, promises, and metadata fields).
 
+When a "General News Context" section is provided, use it as background for assessing agenda_setting_score and contextualizing each politician's coverage patterns. Do not invent connections — only reference the context when it directly relates to the politician's data.
+
 ## Political Delegitimization Discourse (PDD) Detection
 PDD is discourse that seeks to undermine the normative validity of political entities through symbolic attacks rather than policy critiques. Unlike general toxicity which relies on overt profanity, PDD operates through:
 - **Identity deconstruction**: Attacking a politician's right to represent their constituency based on identity rather than policy

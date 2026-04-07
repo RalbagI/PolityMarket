@@ -3,6 +3,7 @@ import {
   buildBatchedPrompt,
   buildSearchTerms,
   buildVerificationPrompt,
+  collectGeneralHeadlines,
   includesPolitician,
   parseCodexOutput,
   parseVerificationResponse,
@@ -63,6 +64,25 @@ describe("buildBatchedPrompt", () => {
     const prompt = buildBatchedPrompt(politicians, data, null, null, true);
     expect(prompt).toContain("Context note:");
     expect(prompt).toContain("Use neutral defaults, keep chain_of_thought factual and brief");
+  });
+
+  it("includes news digest when provided", () => {
+    const politicians = [makePolitician("alpha", "Alpha Name", "Party A")];
+    const data = new Map([["alpha", { headlines: ["H1"], socialMentions: [] }]]);
+    const digest = "Security: IDF operations in north. Politics: Coalition debate on budget.";
+
+    const prompt = buildBatchedPrompt(politicians, data, null, null, true, digest);
+    expect(prompt).toContain("## General News Context");
+    expect(prompt).toContain("IDF operations in north");
+    expect(prompt).toContain("Coalition debate on budget");
+  });
+
+  it("omits news digest section when empty", () => {
+    const politicians = [makePolitician("alpha", "Alpha Name", "Party A")];
+    const data = new Map([["alpha", { headlines: ["H1"], socialMentions: [] }]]);
+
+    const prompt = buildBatchedPrompt(politicians, data, null, null, true, "");
+    expect(prompt).not.toContain("## General News Context");
   });
 });
 
