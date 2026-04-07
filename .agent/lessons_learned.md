@@ -112,3 +112,9 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: Inserting Unicode LRM (Left-to-Right Mark, U+200E) around LTR text (like "Reddit (r/Israel)") in RTL Hebrew context causes display corruption. The `/r` appears garbled/duplicated in the UI.
 - **Pattern**: Let natural RTL handling (via `dir="rtl"` on HTML) display mixed LTR/RTL text. Don't add directional marks as a workaround.
 - **Prevention**: Test Hebrew methodology page by viewing Reddit subreddit names on production. If `/r` displays corrupted, remove the directional marks, not add more.
+
+### .env.pipeline not auto-loaded by node (2026-04-07)
+
+- **Lesson**: `run-daily-pipeline.sh` sources `.env.pipeline` into the shell, but running `node data-pipeline/generateDailyScores.js` directly does NOT load it. The pipeline reads `process.env.LLM_PROVIDER` etc. directly — no dotenv. Running the pipeline manually requires `source .env.pipeline && node data-pipeline/generateDailyScores.js`.
+- **Pattern**: Always use `source .env.pipeline &&` prefix when running the pipeline outside the cron shell script.
+- **Prevention**: The nightly cron runs via `run-daily-pipeline.sh` which handles sourcing. Manual runs need explicit sourcing.
