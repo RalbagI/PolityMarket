@@ -3,7 +3,6 @@ import {
   buildBatchedPrompt,
   buildSearchTerms,
   buildVerificationPrompt,
-  collectGeneralHeadlines,
   includesPolitician,
   parseCodexOutput,
   parseVerificationResponse,
