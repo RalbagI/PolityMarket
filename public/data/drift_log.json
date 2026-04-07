@@ -903,5 +903,35 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-06T07:57:33.555Z"
+  },
+  {
+    "date": "2026-04-07",
+    "warnings": [
+      "[Outlier] Benjamin Netanyahu: score 5.9 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yariv Levin: score 3.9 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yisrael Katz: score 4.9 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Nissim Vaturi: score 4.4 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Eliyahu Revivo: score 5.3 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] May Golan: score 5.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Amit Halevi: score 5.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yoav Kish: score 5.2 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Vladimir Beliak: score 6.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Benny Gantz: score 6.0 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Gadi Eisenkot: score 5.1 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Moshe Gafni: score 5.7 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Bezalel Smotrich: score 5.2 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Simcha Rothman: score 5.2 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Itamar Ben Gvir: score 5.3 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Avigdor Lieberman: score 4.9 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Mansour Abbas: score 5.3 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Ofer Cassif: score 4.9 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Gideon Sa'ar: score 5.3 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Yair Golan: score 5.7 outside IQR bounds [4.8, 4.8]",
+      "[Outlier] Naftali Bennett: score 5.3 outside IQR bounds [4.8, 4.8]",
+      "[Party] Shas: all 11 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-07T07:39:33.226Z"
   }
 ]
