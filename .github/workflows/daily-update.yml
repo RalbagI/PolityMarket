@@ -30,6 +30,16 @@ jobs:
       - name: Install functions dependencies
         run: npm --prefix functions ci --prefer-offline
 
+      - name: Verify Firebase project
+        run: |
+          EXPECTED="politymarket"
+          RC_PROJECT=$(node -e "console.log(require('./.firebaserc').projects.default || '')" 2>/dev/null || echo "")
+          if [ -n "$RC_PROJECT" ] && [ "$RC_PROJECT" != "$EXPECTED" ]; then
+            echo "::error::firebaserc default project is '$RC_PROJECT', expected '$EXPECTED'"
+            exit 1
+          fi
+          echo "Firebase project verified: $EXPECTED"
+
       - name: Deploy Firebase Functions
         run: npx firebase-tools deploy --only functions --project politymarket --non-interactive
 

@@ -147,10 +147,18 @@ else
 fi
 
 # ── Deploy to Firebase ───────────────────────────────────────────────
+EXPECTED_PROJECT="politymarket"
+ACTIVE_PROJECT="$(npx firebase-tools use --json 2>/dev/null | node -e "try{const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));console.log(d.result||'')}catch{}" 2>/dev/null || echo "")"
+if [[ -n "${ACTIVE_PROJECT}" && "${ACTIVE_PROJECT}" != "${EXPECTED_PROJECT}" ]]; then
+  echo "FATAL: Firebase active project is '${ACTIVE_PROJECT}', expected '${EXPECTED_PROJECT}'." >&2
+  echo "Run: firebase use ${EXPECTED_PROJECT}" >&2
+  exit 1
+fi
+
 if command -v npx &>/dev/null; then
-  echo "Building and deploying to Firebase..."
+  echo "Building and deploying to Firebase (project: ${EXPECTED_PROJECT})..."
   npx vite build
-  npx firebase deploy --only hosting,functions && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
+  npx firebase-tools deploy --only hosting,functions --project "${EXPECTED_PROJECT}" && echo "Firebase deploy complete." || echo "⚠ Firebase deploy failed (non-blocking)."
 fi
 
 # ── Trigger volatility alerts ─────────────────────────────────────────
