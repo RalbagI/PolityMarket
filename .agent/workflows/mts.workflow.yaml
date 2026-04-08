@@ -125,13 +125,26 @@ phases:
         cmd: cd functions && npm ci
         fail_action: warn
 
+      - name: verify-firebase-project
+        type: cmd
+        cmd: |
+          ACTIVE=$(npx firebase-tools use 2>/dev/null | grep -oP '(?<=Active Project: ).*' || echo "")
+          if [ -n "$ACTIVE" ] && [ "$ACTIVE" != "politymarket" ]; then
+            echo "FATAL: active Firebase project is '$ACTIVE', expected 'politymarket'. Run: firebase use politymarket"; exit 1
+          fi
+        fail_action: exit
+        notes: >-
+          Safety gate: abort deploy if Firebase CLI is pointing at
+          the wrong project (e.g. tipi-83650).
+
       - name: deploy
         type: cmd
-        cmd: npx firebase-tools deploy --only hosting,functions,firestore:rules
+        cmd: npx firebase-tools deploy --only hosting,functions,firestore:rules --project politymarket
         fail_action: warn
         notes: >-
           Deploys hosting (frontend), Cloud Functions (API),
           and Firestore security rules in a single pass.
+          Always uses --project politymarket to prevent cross-project accidents.
 
     next_phase: null
 
