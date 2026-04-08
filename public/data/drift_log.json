@@ -957,5 +957,29 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-07T23:15:31.715Z"
+  },
+  {
+    "date": "2026-04-09",
+    "warnings": [
+      "[Temporal] Gilad Kariv: score 3.8 deviates 1.5 from 7-day avg 5.3 (threshold: 1.5)",
+      "[Outlier] Yariv Levin: score 4.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yisrael Katz: score 6.7 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yoav Kish: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Miri Regev: score 6.3 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yair Lapid: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Benny Gantz: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Aryeh Deri: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Bezalel Smotrich: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Itamar Ben Gvir: score 4.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gilad Kariv: score 3.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gideon Sa'ar: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yair Golan: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Naftali Bennett: score 6.1 outside IQR bounds [4.2, 5.8]",
+      "[Party] United Torah Judaism: all 7 members have identical scores — possible hallucination",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-08T23:13:28.862Z"
   }
 ]
