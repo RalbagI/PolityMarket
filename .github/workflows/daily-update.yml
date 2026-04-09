@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -41,6 +44,8 @@ jobs:
           echo "Firebase project verified: $EXPECTED"
 
       - name: Deploy Firebase Functions
+        id: deploy_functions
+        continue-on-error: true
         run: npx firebase-tools deploy --only functions --project politymarket --non-interactive
 
       - name: Deploy to Firebase Hosting
@@ -50,3 +55,10 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_POLITYMARKET }}
           channelId: live
           projectId: politymarket
+
+      - name: Report functions deploy status
+        if: steps.deploy_functions.outcome == 'failure'
+        run: |
+          echo "::warning::Firebase Functions deploy failed — hosting deploy proceeded independently."
+          echo "Fix: Grant 'Service Account User' role to the CI service account at:"
+          echo "https://console.cloud.google.com/iam-admin/iam?project=politymarket"

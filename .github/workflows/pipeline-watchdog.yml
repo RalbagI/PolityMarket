@@ -1,0 +1,85 @@
+name: Pipeline Watchdog
+
+# Runs at 06:00 AM Israel time (03:00 UTC) — 4 hours after expected pipeline completion
+# If the pipeline didn't commit today's data, this creates a GitHub issue alert.
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 10
+
+      - name: Check if today's pipeline ran
+        id: check
+        run: |
+          TODAY=$(TZ="Asia/Jerusalem" date +%F)
+          echo "Checking for pipeline commit dated: $TODAY"
+
+          # Look for today's pipeline commit in recent history
+          if git log --oneline --since="12 hours ago" --grep="chore(data): daily pipeline update \[$TODAY\]" | grep -q .; then
+            echo "Pipeline commit found for $TODAY"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::No pipeline commit found for $TODAY"
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check data freshness
+        if: steps.check.outputs.found == 'true'
+        run: |
+          TODAY=$(TZ="Asia/Jerusalem" date +%F)
+          # Verify the timeseries file contains today's date
+          if [ -f public/data/timeseries_summary.json ]; then
+            if node -e "const d=JSON.parse(require('fs').readFileSync('public/data/timeseries_summary.json','utf8')); process.exit(JSON.stringify(d).includes('$TODAY') ? 0 : 1)"; then
+              echo "Data freshness confirmed for $TODAY"
+            else
+              echo "::warning::Pipeline commit exists but timeseries data may not contain $TODAY entries"
+            fi
+          fi
+
+      - name: Create alert issue if pipeline missed
+        if: steps.check.outputs.found == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TODAY=$(TZ="Asia/Jerusalem" date +%F)
+
+          # Check if an alert issue already exists for today
+          EXISTING=$(gh issue list --search "Pipeline missed: $TODAY" --state open --json number --jq '.[0].number // empty' 2>/dev/null || echo "")
+          if [ -n "$EXISTING" ]; then
+            echo "Alert issue #$EXISTING already exists for $TODAY — skipping"
+            exit 0
+          fi
+
+          gh issue create \
+            --title "🚨 Pipeline missed: $TODAY" \
+            --label "bug,pipeline" \
+            --body "$(cat <<EOF
+          ## Pipeline Watchdog Alert
+
+          The daily data pipeline did not produce a commit for **$TODAY**.
+
+          ### Expected
+          A commit matching \`chore(data): daily pipeline update [$TODAY]\` should appear on \`main\` by 04:00 AM Israel time.
+
+          ### Troubleshooting
+          1. SSH into the server and check: \`systemctl --user status politymarket-pipeline.timer\`
+          2. Check logs: \`tail -100 ~/PolityMarket/logs/pipeline-$TODAY.log\`
+          3. Check for lock file: \`ls -la ~/PolityMarket/.pipeline.lock\`
+          4. Manual rerun: \`~/PolityMarket/scripts/run-daily-pipeline.sh\`
+
+          _Opened automatically by Pipeline Watchdog_
+          EOF
+          )"
+          echo "::error::Alert issue created — pipeline did not run for $TODAY"
+          exit 1
