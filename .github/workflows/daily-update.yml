@@ -33,7 +33,7 @@ jobs:
       - name: Verify Firebase project
         run: |
           EXPECTED="politymarket"
-          RC_PROJECT=$(node -e "console.log(require('./.firebaserc').projects.default || '')" 2>/dev/null || echo "")
+          RC_PROJECT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('.firebaserc','utf8')).projects.default||'')" 2>/dev/null || echo "")
           if [ -n "$RC_PROJECT" ] && [ "$RC_PROJECT" != "$EXPECTED" ]; then
             echo "::error::firebaserc default project is '$RC_PROJECT', expected '$EXPECTED'"
             exit 1
