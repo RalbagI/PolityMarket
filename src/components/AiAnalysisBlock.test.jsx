@@ -39,6 +39,9 @@ const englishText = [
   "Criticism is intensifying.",
 ].join("\n");
 
+const legacyEnglishText =
+  "Mock analysis: Benjamin Netanyahu received mixed coverage today. No significant PDD patterns identified.";
+
 describe("AiAnalysisBlock", () => {
   it("renders Hebrew text when language is he", () => {
     mockLang = "he";
@@ -72,6 +75,12 @@ describe("AiAnalysisBlock", () => {
     mockLang = "en";
     render(<AiAnalysisBlock text={hebrewText} textEn="" />);
     expect(screen.getByText("detailView.aiAnalysis.notTranslated")).toBeTruthy();
+  });
+
+  it("renders legacy English text when language is en and base text is already English", () => {
+    mockLang = "en";
+    render(<AiAnalysisBlock text={legacyEnglishText} textEn={null} />);
+    expect(screen.getByText((content) => content.includes(legacyEnglishText))).toBeTruthy();
   });
 
   it("never shows Hebrew text when language is en", () => {
