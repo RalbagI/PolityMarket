@@ -56,18 +56,42 @@ describe("AiAnalysisBlock", () => {
     expect(screen.getByText("Netanyahu under siege.")).toBeTruthy();
   });
 
-  it("falls back to Hebrew text when language is en but textEn is null", () => {
+  it("shows not-translated message when language is en but textEn is null", () => {
+    mockLang = "en";
+    render(<AiAnalysisBlock text={hebrewText} textEn={null} />);
+    expect(screen.getByText("detailView.aiAnalysis.notTranslated")).toBeTruthy();
+  });
+
+  it("shows not-translated message when language is en but textEn is undefined", () => {
+    mockLang = "en";
+    render(<AiAnalysisBlock text={hebrewText} />);
+    expect(screen.getByText("detailView.aiAnalysis.notTranslated")).toBeTruthy();
+  });
+
+  it("shows not-translated message when language is en but textEn is empty string", () => {
+    mockLang = "en";
+    render(<AiAnalysisBlock text={hebrewText} textEn="" />);
+    expect(screen.getByText("detailView.aiAnalysis.notTranslated")).toBeTruthy();
+  });
+
+  it("never shows Hebrew text when language is en", () => {
     mockLang = "en";
     render(<AiAnalysisBlock text={hebrewText} textEn={null} />);
     expect(
-      screen.getByText(
+      screen.queryByText(
         /\u05E0\u05EA\u05E0\u05D9\u05D4\u05D5 \u05EA\u05D7\u05EA \u05DE\u05E6\u05D5\u05E8/
       )
-    ).toBeTruthy();
+    ).toBeNull();
   });
 
-  it("renders empty state when no text provided", () => {
+  it("renders empty state when no text provided in he", () => {
     mockLang = "he";
+    render(<AiAnalysisBlock text={null} textEn={null} />);
+    expect(screen.getByText("detailView.aiAnalysis.empty")).toBeTruthy();
+  });
+
+  it("renders empty state when no text provided in en", () => {
+    mockLang = "en";
     render(<AiAnalysisBlock text={null} textEn={null} />);
     expect(screen.getByText("detailView.aiAnalysis.empty")).toBeTruthy();
   });

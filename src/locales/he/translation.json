@@ -53,6 +53,7 @@
     },
     "aiAnalysis": {
       "empty": "אין ניתוח זמין.",
+      "notTranslated": "הסיכום באנגלית אינו זמין לתאריך זה.",
       "whatHappened": "מה קרה",
       "whatItMeans": "מה זה אומר"
     },

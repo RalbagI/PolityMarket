@@ -3,11 +3,19 @@ import { parseChainOfThought } from "../lib/parseChainOfThought";
 
 export default function AiAnalysisBlock({ text, textEn }) {
   const { t, i18n } = useTranslation();
-  const activeText = i18n.language === "en" && textEn ? textEn : text;
+  const isEnglish = i18n.language === "en";
+  const hasEnglish = Boolean(textEn);
+  const activeText = isEnglish && hasEnglish ? textEn : isEnglish ? null : text;
   const parsed = parseChainOfThought(activeText);
 
   if (!parsed) {
-    return <p className="text-sm text-gray-500">{t("detailView.aiAnalysis.empty")}</p>;
+    return (
+      <p className="text-sm text-gray-500">
+        {isEnglish && !hasEnglish && text
+          ? t("detailView.aiAnalysis.notTranslated")
+          : t("detailView.aiAnalysis.empty")}
+      </p>
+    );
   }
 
   if (parsed.isLegacy) {
