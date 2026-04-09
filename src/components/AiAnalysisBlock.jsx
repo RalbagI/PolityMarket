@@ -1,13 +1,24 @@
 import { useTranslation } from "react-i18next";
 import { parseChainOfThought } from "../lib/parseChainOfThought";
 
+const HEBREW_CHAR_REGEX = /[\u0590-\u05FF]/;
+
 export default function AiAnalysisBlock({ text, textEn }) {
   const { t, i18n } = useTranslation();
-  const activeText = i18n.language === "en" && textEn ? textEn : text;
+  const isEnglish = i18n.language === "en";
+  const hasEnglish = Boolean(textEn);
+  const hasHebrewSourceText = HEBREW_CHAR_REGEX.test(text ?? "");
+  const activeText = isEnglish ? (hasEnglish ? textEn : hasHebrewSourceText ? null : text) : text;
   const parsed = parseChainOfThought(activeText);
 
   if (!parsed) {
-    return <p className="text-sm text-gray-500">{t("detailView.aiAnalysis.empty")}</p>;
+    return (
+      <p className="text-sm text-gray-500">
+        {isEnglish && !hasEnglish && hasHebrewSourceText
+          ? t("detailView.aiAnalysis.notTranslated")
+          : t("detailView.aiAnalysis.empty")}
+      </p>
+    );
   }
 
   if (parsed.isLegacy) {

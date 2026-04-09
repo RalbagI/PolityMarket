@@ -53,6 +53,7 @@
     },
     "aiAnalysis": {
       "empty": "No analysis available.",
+      "notTranslated": "English summary is not available for this date.",
       "whatHappened": "What happened",
       "whatItMeans": "What it means"
     },
