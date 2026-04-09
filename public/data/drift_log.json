@@ -981,5 +981,37 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-08T23:13:28.862Z"
+  },
+  {
+    "date": "2026-04-10",
+    "warnings": [
+      "[Outlier] Yisrael Katz: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Boaz Bismuth: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Galit Distel Atbaryan: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yoav Kish: score 6.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Miri Regev: score 6.5 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Idit Silman: score 4.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yair Lapid: score 6.0 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Benny Gantz: score 6.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gadi Eisenkot: score 7.0 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Aryeh Deri: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Moshe Gafni: score 6.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Meir Porush: score 6.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Bezalel Smotrich: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Moshe Solomon: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Itamar Ben Gvir: score 4.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Zvika Fogel: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Avigdor Lieberman: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Mansour Abbas: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gilad Kariv: score 4.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gideon Sa'ar: score 6.8 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Ze'ev Elkin: score 6.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yair Golan: score 6.5 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Naftali Bennett: score 5.9 outside IQR bounds [4.6, 5.1]",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-09T23:15:54.015Z"
   }
 ]
