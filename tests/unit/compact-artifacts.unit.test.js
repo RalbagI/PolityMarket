@@ -43,26 +43,11 @@ describe("generate-compact-artifacts — buildDetailLiteEntry field preservation
 });
 
 describe("generate-compact-artifacts — runtime behavior", () => {
-  it("buildDetailLiteEntry preserves chain_of_thought_en when present", async () => {
-    // Dynamically import the script's exports. The script currently auto-runs
-    // on import, so we can't import it directly without side effects. Instead,
-    // we replicate the function locally to verify the fix is in place by
-    // sourcing the regex above. The behavioral test below is the integration
-    // check.
-    const fullEntry = {
-      politician_id: "test-politician",
-      name: "Test",
-      party: "Test Party",
-      chain_of_thought: "## שורה תחתונה\nטקסט עברי",
-      chain_of_thought_en: "## Bottom Line\nEnglish text",
-      overall_score: 50,
-    };
-
-    // Verify the source contains the line that propagates the field.
+  it("source explicitly propagates chain_of_thought_en", () => {
+    // The script auto-executes on import, so we can't invoke buildDetailLiteEntry
+    // directly without side effects. Verify via source inspection that the
+    // propagation line is present. The on-disk check below covers actual runtime.
     expect(scriptSource).toContain("chain_of_thought_en: entry.chain_of_thought_en");
-
-    // Sanity: the input shape we expect from generateDailyScores includes the field.
-    expect(fullEntry.chain_of_thought_en).toBeTruthy();
   });
 
   it("real lite artifacts on disk include chain_of_thought_en after build", () => {
