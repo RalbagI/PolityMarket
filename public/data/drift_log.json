@@ -1013,5 +1013,25 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-09T23:15:54.015Z"
+  },
+  {
+    "date": "2026-04-11",
+    "warnings": [
+      "[Outlier] Yisrael Katz: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Boaz Bismuth: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Eli Cohen: score 6.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yoav Kish: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Idit Silman: score 3.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Benny Gantz: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gadi Eisenkot: score 7.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Moshe Solomon: score 6.2 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Avigdor Lieberman: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Ze'ev Elkin: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Naftali Bennett: score 6.1 outside IQR bounds [4.2, 5.8]",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-10T23:14:20.391Z"
   }
 ]
