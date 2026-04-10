@@ -78,6 +78,7 @@ function buildDetailLiteEntry(entry) {
     media_climate_raw: entry.media_climate_raw ?? entry.overall_score_raw ?? entry.overall_score,
     media_climate_display: entry.media_climate_display ?? entry.market_score ?? null,
     chain_of_thought: entry.chain_of_thought,
+    chain_of_thought_en: entry.chain_of_thought_en ?? null,
     dim_public_sentiment: entry.dim_public_sentiment ?? null,
     dim_parliamentary_activity: entry.dim_parliamentary_activity ?? null,
     dim_media_credibility: entry.dim_media_credibility ?? null,
@@ -108,7 +109,9 @@ function buildDetailLiteEntry(entry) {
 function generateCompactSummary() {
   const summary = readJsonArray(summaryPath);
   if (!summary.length) {
-    console.warn("[compact-artifacts] timeseries_summary.json missing or empty; skipping summary compaction");
+    console.warn(
+      "[compact-artifacts] timeseries_summary.json missing or empty; skipping summary compaction"
+    );
     return;
   }
   writeJson(compactSummaryPath, summary.map(buildCompactSummaryEntry));

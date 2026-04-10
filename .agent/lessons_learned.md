@@ -118,3 +118,9 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: `run-daily-pipeline.sh` sources `.env.pipeline` into the shell, but running `node data-pipeline/generateDailyScores.js` directly does NOT load it. The pipeline reads `process.env.LLM_PROVIDER` etc. directly — no dotenv. Running the pipeline manually requires `source .env.pipeline && node data-pipeline/generateDailyScores.js`.
 - **Pattern**: Always use `source .env.pipeline &&` prefix when running the pipeline outside the cron shell script.
 - **Prevention**: The nightly cron runs via `run-daily-pipeline.sh` which handles sourcing. Manual runs need explicit sourcing.
+
+### details-lite is regenerated at build time, not committed (2026-04-10)
+
+- **Lesson**: `public/data/details-lite/` is gitignored. The nightly pipeline writes both `details/` and `details-lite/`, but only commits `details/`. CI's `prebuild` re-derives `details-lite/` from `details/` via `scripts/generate-compact-artifacts.js`. That script's `buildDetailLiteEntry` enumerates fields explicitly — any field added to the LLM pipeline must also be added here, or it gets silently dropped on every deploy. This caused all English AI summaries to disappear in production after PR #163, because `chain_of_thought_en` was never in the lite-builder's field list.
+- **Pattern**: When adding a field that flows from `data-pipeline/generateDailyScores.js` to the UI, grep for ALL builders that produce data files: `generateDailyScores.js` (writes `details/` and `details-lite/`) AND `scripts/generate-compact-artifacts.js` (re-builds `details-lite/` from `details/` at CI build time). Both must propagate the field.
+- **Prevention**: `tests/unit/compact-artifacts.unit.test.js` now asserts that every UI-consumed field is enumerated in `buildDetailLiteEntry`. Add new required fields to the `REQUIRED_LITE_FIELDS` list there.
