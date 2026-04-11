@@ -12,7 +12,7 @@ import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
 import { computeInterestScores } from "./utils/interestScore";
-import { rescoreEntries } from "./utils/rescoring";
+import { DIM_KEYS, rescoreEntries } from "./utils/rescoring";
 import { resolveSignalDisplayScore } from "./lib/signalMode";
 import useUserWeights from "./hooks/useUserWeights";
 import WeightsSideSheet from "./components/WeightsSideSheet";
@@ -171,26 +171,30 @@ export default function App() {
   // Alert subscription state
   const alertState = useAlertState();
 
-  // Normalize visible politicians for treemap (dynamic min/max) and compute
-  // interest scores relative to the visible set (so momentum lens answers
-  // "who is moving right now among what you're looking at"). your_score
-  // rescoring only runs when the viewer has actually opted into that lens —
-  // computing it for every filter change when no one is looking at it was
-  // wasted work on mobile.
+  // Interest is relative to the currently visible set, so both the treemap and
+  // the hero insights answer "what matters in what I'm looking at right now?"
+  const interestVisibleData = useMemo(() => {
+    return computeInterestScores(filterState.visible);
+  }, [filterState.visible]);
+
+  // Normalize visible politicians for treemap (dynamic min/max). your_score
+  // rescoring only runs when the viewer has actually opted into that lens.
+  const treemapBaseData = useMemo(() => {
+    return normalizeScores(interestVisibleData, signalMode);
+  }, [interestVisibleData, signalMode]);
+
   const treemapData = useMemo(() => {
-    const interestEnriched = computeInterestScores(
-      normalizeScores(filterState.visible, signalMode)
-    );
-    if (treemapLens !== "your_score") return interestEnriched;
-    return rescoreEntries(interestEnriched, userWeightsApi.weights);
-  }, [filterState.visible, signalMode, treemapLens, userWeightsApi.weights]);
+    if (treemapLens !== "your_score") return treemapBaseData;
+    return rescoreEntries(treemapBaseData, userWeightsApi.weights);
+  }, [treemapBaseData, treemapLens, userWeightsApi.weights]);
 
   // Cheap probe across the visible set (no score recompute) so the lens
   // toggle can enable/disable the your_score button without running the full
   // rescoring pass.
   const yourScoreAvailable = useMemo(() => {
-    return filterState.visible.some((entry) => Number.isFinite(entry?.dim_public_sentiment));
-  }, [filterState.visible]);
+    if (viewMode !== "politicians") return false;
+    return filterState.visible.some((entry) => DIM_KEYS.some((key) => Number.isFinite(entry?.[key])));
+  }, [filterState.visible, viewMode]);
 
   // Fall back to momentum if the user selected your_score but the data can't
   // support it (e.g. compact summary missing dims).
@@ -221,15 +225,15 @@ export default function App() {
   const partyTreemapData = useMemo(() => {
     if (!latestDate) return [];
 
-    return marketPartySummaryData
-      .filter((p) => p.date === latestDate)
-      .map((p) => ({
+    return computeInterestScores(
+      marketPartySummaryData.filter((p) => p.date === latestDate).map((p) => ({
         ...p,
         politician_id: `party:${p.party}`,
         name: p.party,
         displayName: t(`parties.${p.party}`, { defaultValue: p.party }),
         _isParty: true,
-      }));
+      }))
+    );
   }, [latestDate, marketPartySummaryData, t]);
 
   const sidebarData = viewMode === "parties" ? partyTreemapData : filterState.visible;
@@ -353,7 +357,7 @@ export default function App() {
         <div className="h-[calc(100vh-(3.5rem+env(safe-area-inset-top)))] supports-[height:100dvh]:h-[calc(100dvh-(3.5rem+env(safe-area-inset-top)))] md:flex-1 md:min-h-[300px] min-h-0 flex flex-col">
           {/* Daily Insights — top 3 auto-computed insights */}
           <DailyInsights
-            data={viewMode === "parties" ? partyTreemapData : enrichedData}
+            data={viewMode === "parties" ? partyTreemapData : interestVisibleData}
             summaryData={viewMode === "parties" ? marketPartySummaryData : marketSummaryData}
             signalMode={signalMode}
             onSelect={handleSelectPolitician}
@@ -423,6 +427,11 @@ export default function App() {
             }}
             signalMode={signalMode}
             consensusAvailable={consensusAvailable}
+            yourScoreAvailable={yourScoreAvailable}
+            onOpenWeights={() => {
+              logEvent("open_weights");
+              setWeightsOpen(true);
+            }}
             hideHeader
           />
         </div>

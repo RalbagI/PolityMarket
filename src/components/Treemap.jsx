@@ -335,6 +335,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
           politician={data.find((entry) => entry.name === hovered)}
           position={mousePos}
           signalMode={signalMode}
+          lens={lens}
         />
       )}
     </div>

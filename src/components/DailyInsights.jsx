@@ -7,8 +7,10 @@ import Sparkline from "./Sparkline";
 import getSparklineData from "../lib/getSparklineData";
 import useStore from "../store";
 
-const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
-const getEntityName = (entry) => entry?.name || entry?.party;
+const getEntityKey = (entry, entityMode = "politician") =>
+  entityMode === "party" ? entry?.party || entry?.name : entry?.politician_id || entry?.name || entry?.party;
+const getEntityName = (entry, entityMode = "politician") =>
+  entityMode === "party" ? entry?.party || entry?.name : entry?.name || entry?.party;
 
 const INSIGHT_CONFIGS = [
   {
@@ -75,25 +77,21 @@ export default function DailyInsights({
     const allDates = [...new Set(summaryData.map((e) => e.date))].sort();
     if (allDates.length < 2) return [];
 
-    const latest = allDates[allDates.length - 1];
     const previous = allDates[allDates.length - 2];
 
-    const todayRows = summaryData.filter((e) => e.date === latest);
     const previousByKey = new Map(
       summaryData
         .filter((e) => e.date === previous)
-        .map((e) => [getEntityKey(e), resolveSignalDisplayScore(e, signalMode)])
+        .map((e) => [getEntityKey(e, entityMode), resolveSignalDisplayScore(e, signalMode)])
     );
 
-    const todayEntries = todayRows
+    const todayEntries = data
       .map((entry) => {
-        const entityKey = getEntityKey(entry);
+        const entityKey = getEntityKey(entry, entityMode);
         const current = resolveSignalDisplayScore(entry, signalMode);
         const prev = previousByKey.get(entityKey);
-        // Merge with enriched data (displayName, etc.) if available
-        const enriched = data.find((d) => getEntityKey(d) === entityKey) ?? entry;
         return {
-          ...enriched,
+          ...entry,
           signal_delta_points:
             Number.isFinite(current) && Number.isFinite(prev) ? current - prev : null,
           displayScore: Number.isFinite(current) ? current : null,
@@ -117,19 +115,21 @@ export default function DailyInsights({
 
     const pushInsight = (entry, type) => {
       if (!entry) return;
-      usedKeys.add(getEntityKey(entry));
+      usedKeys.add(getEntityKey(entry, entityMode));
       result.push({ ...entry, insightType: type });
     };
 
     // 1. Most watched — highest interest_score (falls back to media volume)
     pushInsight(
-      sortedByInterest.find((d) => !usedKeys.has(getEntityKey(d))),
+      sortedByInterest.find((d) => !usedKeys.has(getEntityKey(d, entityMode))),
       "coverage"
     );
 
     // 2. Fastest rise — biggest positive delta among the rest
     pushInsight(
-      sortedByDelta.find((d) => d.signal_delta_points > 0 && !usedKeys.has(getEntityKey(d))),
+      sortedByDelta.find(
+        (d) => d.signal_delta_points > 0 && !usedKeys.has(getEntityKey(d, entityMode))
+      ),
       "riser"
     );
 
@@ -137,7 +137,7 @@ export default function DailyInsights({
     pushInsight(
       [...sortedByDelta]
         .reverse()
-        .find((d) => d.signal_delta_points < 0 && !usedKeys.has(getEntityKey(d))),
+        .find((d) => d.signal_delta_points < 0 && !usedKeys.has(getEntityKey(d, entityMode))),
       "faller"
     );
 
@@ -146,7 +146,7 @@ export default function DailyInsights({
       const row = entityMode === "politician" ? bottomLineLookup.get(entry?.politician_id) : null;
       return {
         ...entry,
-        _sparklineData: getSparklineData(summaryData, getEntityKey(entry), signalMode),
+        _sparklineData: getSparklineData(summaryData, getEntityKey(entry, entityMode), signalMode),
         _bottomLine: row ? (localeIsEnglish ? row.bottom_line_en : row.bottom_line_he) : null,
       };
     });
@@ -173,13 +173,13 @@ export default function DailyInsights({
       <div className="hidden md:flex md:flex-col gap-0.5">
         {insights.map((insight) => (
           <InsightCard
-            key={getEntityKey(insight)}
+            key={getEntityKey(insight, entityMode)}
             insight={insight}
             config={INSIGHT_CONFIG_BY_TYPE[insight.insightType]}
             label={getEntityLabel(insight)}
             sparklineData={insight._sparklineData}
             bottomLine={insight._bottomLine}
-            onSelect={() => onSelect(getEntityName(insight))}
+            onSelect={() => onSelect(getEntityName(insight, entityMode))}
             t={t}
           />
         ))}
@@ -188,14 +188,14 @@ export default function DailyInsights({
       <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-3 -mx-1 px-1 pb-1">
         {insights.map((insight, i) => (
           <InsightCard
-            key={getEntityKey(insight)}
+            key={getEntityKey(insight, entityMode)}
             insight={insight}
             config={INSIGHT_CONFIG_BY_TYPE[insight.insightType]}
             label={getEntityLabel(insight)}
             partyLabel={getEntityPartyLabel(insight)}
             sparklineData={insight._sparklineData}
             bottomLine={insight._bottomLine}
-            onSelect={() => onSelect(getEntityName(insight))}
+            onSelect={() => onSelect(getEntityName(insight, entityMode))}
             t={t}
             animationDelay={i * 100}
             mobile

@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import TreemapLeaf from "./TreemapLeaf";
 
-function renderLeaf(data) {
+function renderLeaf(data, props = {}) {
   return render(
     <TreemapLeaf
       leaf={{
@@ -22,6 +22,7 @@ function renderLeaf(data) {
       onTouchEnd={() => {}}
       onMouseEnter={() => {}}
       backgroundColor="rgb(20, 20, 20)"
+      {...props}
     />
   );
 }
@@ -36,6 +37,22 @@ describe("TreemapLeaf", () => {
     });
 
     expect(screen.getByText("73")).toBeInTheDocument();
+  });
+
+  it("renders the personalized score when the active lens is your_score", () => {
+    renderLeaf(
+      {
+        politician_id: "personalized",
+        name: "Personalized Leaf",
+        market_score: 21,
+        overall_score: 2.1,
+        your_score: 7.4,
+      },
+      { lens: "your_score" }
+    );
+
+    expect(screen.getByText("74")).toBeInTheDocument();
+    expect(screen.queryByText("21")).not.toBeInTheDocument();
   });
 
   it("renders negative delta badge without duplicate minus sign", () => {

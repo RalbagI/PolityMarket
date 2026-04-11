@@ -19,6 +19,14 @@ export default function TreemapLeaf({
   const w = leaf.x1 - leaf.x0;
   const h = leaf.y1 - leaf.y0;
 
+  const resolveDisplayMetric = () => {
+    if (lens === "your_score") {
+      const yourScore = Number(d?.your_score);
+      return Number.isFinite(yourScore) ? yourScore * 10 : null;
+    }
+    return resolveSignalDisplayScore(d, signalMode);
+  };
+
   const area = w * h;
   const sqrtArea = Math.sqrt(area);
 
@@ -28,12 +36,12 @@ export default function TreemapLeaf({
   const availH = h - pad;
 
   // Three-tier display: name+score (large), name-only (medium), initials (small)
-  const showScore = !d._isOthers && !tooSmall && area > 1200 && h > 18;
+  const displayScoreRaw = resolveDisplayMetric();
+  const displayScore = Number.isFinite(displayScoreRaw) ? Math.round(displayScoreRaw) : null;
+  const showScore = !d._isOthers && !tooSmall && area > 1200 && h > 18 && displayScore != null;
   const baseNameFontSize = Math.min(24, Math.max(0, sqrtArea / (showScore ? 4.5 : 4.0)));
   const scoreFontSize = Math.min(24, baseNameFontSize * 1.1);
   const scoreLineH = showScore ? scoreFontSize * 1.2 : 0;
-  const displayScoreRaw = resolveSignalDisplayScore(d, signalMode);
-  const displayScore = Number.isFinite(displayScoreRaw) ? Math.round(displayScoreRaw) : null;
   const deltaValue = resolveSignalDelta(d, signalMode) ?? d.delta;
 
   const nameAvailH = availH - scoreLineH;
@@ -76,7 +84,9 @@ export default function TreemapLeaf({
     <div
       role="button"
       tabIndex={tooSmall ? -1 : 0}
-      aria-label={d._isOthers ? displayName : `${displayName}: ${displayScore}`}
+      aria-label={
+        d._isOthers || displayScore == null ? displayName : `${displayName}: ${displayScore}`
+      }
       onClick={onClick}
       onKeyDown={onKeyDown}
       onTouchEnd={onTouchEnd}

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { describe, it, expect, vi } from "vitest";
+import { beforeEach, describe, it, expect, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Sidebar from "./Sidebar";
 
@@ -12,20 +12,28 @@ vi.mock("react-i18next", () => ({
 }));
 
 let mockColorBy = "media_volume";
+let mockLens = "market";
 
 vi.mock("../store", () => ({
   default: (selector) => {
     const state = {
       treemapSizeBy: "media_volume",
       treemapColorBy: mockColorBy,
+      treemapLens: mockLens,
       signalMode: "media_climate",
       setTreemapSizeBy: () => {},
       setTreemapColorBy: () => {},
+      setTreemapLens: () => {},
       setSignalMode: () => {},
     };
     return selector(state);
   },
 }));
+
+beforeEach(() => {
+  mockColorBy = "media_volume";
+  mockLens = "market";
+});
 
 vi.mock("../lib/colorScale", () => ({
   scoreToColor: () => "rgb(100,200,100)",
@@ -128,6 +136,24 @@ describe("Sidebar mobile top bar", () => {
 
     fireEvent.click(partiesButton);
     expect(onViewModeChange).toHaveBeenCalledWith("parties");
+  });
+
+  it("wires your-score weights action in mobile drawer", () => {
+    const onOpenWeights = vi.fn();
+    const { getByLabelText } = render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        yourScoreAvailable={true}
+        onOpenWeights={onOpenWeights}
+      />
+    );
+
+    fireEvent.click(getByLabelText("sidebar.openDrawer"));
+    fireEvent.click(screen.getAllByText("weights.openButton").at(-1));
+
+    expect(onOpenWeights).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -256,6 +282,22 @@ describe("Sidebar display options position", () => {
     expect(legendBar.style.background).toContain("rgb(13, 148, 136)");
 
     mockColorBy = "media_volume"; // reset for other tests
+  });
+
+  it("hides market-only display controls when the active lens is momentum", () => {
+    mockLens = "momentum";
+    render(
+      <Sidebar
+        todayData={makePoliticians()}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+      />
+    );
+
+    expect(screen.queryByText("treemap.options.title")).not.toBeInTheDocument();
+    expect(screen.queryByText("sidebar.colorLegend.lowVolume")).not.toBeInTheDocument();
   });
 });
 

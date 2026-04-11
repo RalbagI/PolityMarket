@@ -102,7 +102,8 @@ export function SidebarContent({
     <div className="p-5 space-y-6">
       {!hideHeader && (
         <>
-          {/* App Header */}
+          {/* App Header — LanguageToggle pinned via justify-between so the
+              scrollbar (opposite edge in both LTR/RTL) never clips it. */}
           <div>
             <div className="flex items-center gap-2 mb-1">
               <div className="w-7 h-7 flex items-center justify-center shrink-0">
@@ -112,11 +113,15 @@ export function SidebarContent({
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h1 className="text-lg font-bold text-white tracking-tight">PolityMarket</h1>
-              <div className="ms-1 md:ms-2">
+              <h1 className="flex-1 min-w-0 truncate text-lg font-bold text-white tracking-tight">
+                PolityMarket
+              </h1>
+              <div className="shrink-0">
                 <QuickAbout onOpenFullMethodology={onMethodologyClick} />
               </div>
-              <LanguageToggle />
+              <div className="shrink-0">
+                <LanguageToggle />
+              </div>
             </div>
             <p className="text-xs text-gray-500">{t("app.header.subtitle")}</p>
           </div>
@@ -217,7 +222,7 @@ export function SidebarContent({
               ? t("treemap.lens.yourScoreHint")
               : t("treemap.lens.marketHint")}
         </p>
-        {onOpenWeights && (
+        {onOpenWeights && yourScoreAvailable && (
           <button
             onClick={onOpenWeights}
             className="w-full rounded-md border border-amber-500/30 bg-amber-500/5 px-2 py-1.5 text-[11px] font-medium text-amber-200 transition-colors hover:bg-amber-500/10"
@@ -263,8 +268,8 @@ export function SidebarContent({
         )}
       </div>
 
-      {/* Display Options — size/color controls */}
-      <DisplayOptions t={t} />
+      {/* Display Options — only relevant when the treemap is in market lens */}
+      {lens === "market" && <DisplayOptions t={t} />}
 
       {/* Filters — only in politicians view */}
       {viewMode !== "parties" && filterProps && <FilterBar {...filterProps} />}
@@ -286,39 +291,41 @@ export function SidebarContent({
         <p className="text-xs text-gray-500 text-center py-4">{t("filterBar.noResults")}</p>
       ) : (
         <>
-          {/* Color Legend — switches with treemapColorBy */}
-          <div>
-            <div
-              className="h-2 rounded-full"
-              style={{
-                background:
-                  colorBy === "media_volume"
-                    ? "linear-gradient(to right, #1e3a8a, #2563eb, #67e8f9)"
-                    : "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
-              }}
-            />
-            <div className="flex justify-between mt-1">
-              {colorBy === "media_volume" ? (
-                <>
-                  <span className="text-[10px] text-gray-500">
-                    {t("sidebar.colorLegend.lowVolume")}
-                  </span>
-                  <span className="text-[10px] text-gray-500">
-                    {t("sidebar.colorLegend.highVolume")}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="text-[10px] text-gray-500">
-                    {t("sidebar.colorLegend.positive")}
-                  </span>
-                  <span className="text-[10px] text-gray-500">
-                    {t("sidebar.colorLegend.negative")}
-                  </span>
-                </>
-              )}
+          {/* Color legend — only relevant when market lens honors colorBy */}
+          {lens === "market" && (
+            <div>
+              <div
+                className="h-2 rounded-full"
+                style={{
+                  background:
+                    colorBy === "media_volume"
+                      ? "linear-gradient(to right, #1e3a8a, #2563eb, #67e8f9)"
+                      : "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
+                }}
+              />
+              <div className="flex justify-between mt-1">
+                {colorBy === "media_volume" ? (
+                  <>
+                    <span className="text-[10px] text-gray-500">
+                      {t("sidebar.colorLegend.lowVolume")}
+                    </span>
+                    <span className="text-[10px] text-gray-500">
+                      {t("sidebar.colorLegend.highVolume")}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-[10px] text-gray-500">
+                      {t("sidebar.colorLegend.positive")}
+                    </span>
+                    <span className="text-[10px] text-gray-500">
+                      {t("sidebar.colorLegend.negative")}
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Party Breakdown — only in politicians view (redundant in party mode) */}
           {viewMode !== "parties" && (
@@ -393,7 +400,7 @@ export default function Sidebar({
       <aside
         role="complementary"
         aria-label={t("app.header.subtitle")}
-        className="hidden md:block fixed top-0 inset-inline-start-0 w-[260px] h-screen bg-gray-950 border-e border-gray-800 overflow-y-auto z-30"
+        className="hidden md:block fixed top-0 inset-inline-start-0 w-[260px] h-screen bg-gray-950 border-e border-gray-800 overflow-y-scroll z-30"
       >
         <SidebarContent
           stats={stats}
@@ -475,6 +482,11 @@ export default function Sidebar({
               onViewModeChange={onViewModeChange}
               signalMode={signalMode}
               consensusAvailable={consensusAvailable}
+              yourScoreAvailable={yourScoreAvailable}
+              onOpenWeights={() => {
+                setDrawerOpen(false);
+                onOpenWeights?.();
+              }}
             />
           </div>
         </>

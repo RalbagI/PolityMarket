@@ -144,6 +144,52 @@ describe("DailyInsights", () => {
     expect(screen.getAllByText("Dave").length).toBeGreaterThanOrEqual(1);
   });
 
+  it("prefers interest_score over raw media volume for the Most Watched card", () => {
+    const summaryData = [
+      { politician_id: "alice", name: "Alice", party: "PartyA", date: "2026-04-04", market_score: 50 },
+      { politician_id: "bob", name: "Bob", party: "PartyB", date: "2026-04-04", market_score: 60 },
+      { politician_id: "carol", name: "Carol", party: "PartyC", date: "2026-04-04", market_score: 40 },
+      { politician_id: "alice", name: "Alice", party: "PartyA", date: "2026-04-05", market_score: 55 },
+      { politician_id: "bob", name: "Bob", party: "PartyB", date: "2026-04-05", market_score: 45 },
+      { politician_id: "carol", name: "Carol", party: "PartyC", date: "2026-04-05", market_score: 42 },
+    ];
+    const data = [
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        displayName: "Alice",
+        market_score: 55,
+        media_volume: 4,
+        interest_score: 9,
+      },
+      {
+        politician_id: "bob",
+        name: "Bob",
+        party: "PartyB",
+        displayName: "Bob",
+        market_score: 45,
+        media_volume: 20,
+        interest_score: 0,
+      },
+      {
+        politician_id: "carol",
+        name: "Carol",
+        party: "PartyC",
+        displayName: "Carol",
+        market_score: 42,
+        media_volume: 3,
+        interest_score: 1,
+      },
+    ];
+
+    render(<DailyInsights data={data} summaryData={summaryData} onSelect={() => {}} />);
+
+    const desktopButtons = document.querySelector(".md\\:flex")?.querySelectorAll("button") ?? [];
+    expect(desktopButtons[0]?.textContent).toContain("dailyInsights.mostWatched");
+    expect(desktopButtons[0]?.textContent).toContain("Alice");
+  });
+
   it("keeps category labels aligned when a category has no candidate", () => {
     const summaryData = [
       {

@@ -51,6 +51,21 @@ describe("TreemapTooltip", () => {
     expect(screen.getByText("P82")).toBeInTheDocument();
   });
 
+  it("renders the personalized score and hides market-tier chrome in your_score lens", () => {
+    render(
+      <TreemapTooltip
+        politician={{ ...basePolitician, market_score: 25, your_score: 7.4 }}
+        position={{ x: 100, y: 100 }}
+        lens="your_score"
+      />
+    );
+
+    expect(screen.getByText("weights.title")).toBeInTheDocument();
+    expect(screen.getByText("74")).toBeInTheDocument();
+    expect(screen.queryByText("A-Tier")).not.toBeInTheDocument();
+    expect(screen.queryByText("P82")).not.toBeInTheDocument();
+  });
+
   it("renders delta when present", () => {
     render(<TreemapTooltip politician={basePolitician} position={{ x: 100, y: 100 }} />);
     expect(screen.getByText(/\+2\.3/)).toBeInTheDocument();
@@ -77,5 +92,23 @@ describe("TreemapTooltip", () => {
     );
     const tooltip = container.firstChild;
     expect(tooltip.className).toContain("fixed");
+  });
+
+  it("shows interest breakdown only in momentum lens", () => {
+    const politician = {
+      ...basePolitician,
+      interest_score: 2.5,
+      interest_breakdown: { delta: 1.2, sigma: 0.8, volume: 0.5 },
+    };
+
+    const { rerender } = render(
+      <TreemapTooltip politician={politician} position={{ x: 100, y: 100 }} lens="market" />
+    );
+    expect(screen.queryByText("treemap.tooltip.interestBreakdown")).not.toBeInTheDocument();
+
+    rerender(
+      <TreemapTooltip politician={politician} position={{ x: 100, y: 100 }} lens="momentum" />
+    );
+    expect(screen.getByText("treemap.tooltip.interestBreakdown")).toBeInTheDocument();
   });
 });
