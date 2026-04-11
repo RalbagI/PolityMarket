@@ -11,9 +11,9 @@ import WeeklyHighlights from "./components/WeeklyHighlights";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
-import getSparklineData from "./lib/getSparklineData";
 import { computeInterestScores } from "./utils/interestScore";
 import { rescoreEntries } from "./utils/rescoring";
+import { resolveSignalDisplayScore } from "./lib/signalMode";
 import useUserWeights from "./hooks/useUserWeights";
 import WeightsSideSheet from "./components/WeightsSideSheet";
 import { localizeName } from "./lib/localize";
@@ -122,12 +122,37 @@ export default function App() {
     }
   }, [consensusAvailable, setSignalMode, signalMode]);
 
+  // One-pass index: group every row of marketSummaryData by politician_id and
+  // keep it sorted by date. This replaces an O(n²) filter-per-entry pattern
+  // with a single pass, so the sparkline lookup downstream is O(1).
+  const seriesByPoliticianId = useMemo(() => {
+    const byId = new Map();
+    for (const row of marketSummaryData) {
+      const id = row.politician_id;
+      if (!id) continue;
+      const list = byId.get(id);
+      if (list) list.push(row);
+      else byId.set(id, [row]);
+    }
+    for (const list of byId.values()) {
+      list.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+    }
+    return byId;
+  }, [marketSummaryData]);
+
   // Enrich today data with pre-localized display names, volatility fields,
   // and 14-day trajectory used by momentum-lens sparklines.
   const enrichedData = useMemo(() => {
     const vp = volatilityData?.politicians ?? {};
     return todayData.map((entry) => {
       const v = vp[entry.politician_id];
+      const rows = seriesByPoliticianId.get(entry.politician_id) || [];
+      const recent = rows.slice(-14);
+      const scoreSeries14d = [];
+      for (const row of recent) {
+        const score = resolveSignalDisplayScore(row, signalMode);
+        if (Number.isFinite(score)) scoreSeries14d.push(score);
+      }
       return {
         ...entry,
         displayName: localizeName(t, entry.name),
@@ -135,10 +160,10 @@ export default function App() {
         is_volatile: v?.is_volatile ?? false,
         overall_score_sigma: v?.overall_score_sigma ?? null,
         volatility_direction: v?.direction ?? null,
-        scoreSeries14d: getSparklineData(marketSummaryData, entry.politician_id, signalMode, 14),
+        scoreSeries14d,
       };
     });
-  }, [todayData, volatilityData, marketSummaryData, signalMode, t]);
+  }, [todayData, volatilityData, seriesByPoliticianId, signalMode, t]);
 
   // Filter state with localStorage persistence
   const filterState = useFilterState(enrichedData);
@@ -146,21 +171,26 @@ export default function App() {
   // Alert subscription state
   const alertState = useAlertState();
 
-  // Normalize visible politicians for treemap (dynamic min/max), compute
+  // Normalize visible politicians for treemap (dynamic min/max) and compute
   // interest scores relative to the visible set (so momentum lens answers
-  // "who is moving right now among what you're looking at"), then attach
-  // your_score under the user's dimension weights (opt-in, used by the
-  // your_score lens).
+  // "who is moving right now among what you're looking at"). your_score
+  // rescoring only runs when the viewer has actually opted into that lens —
+  // computing it for every filter change when no one is looking at it was
+  // wasted work on mobile.
   const treemapData = useMemo(() => {
     const interestEnriched = computeInterestScores(
       normalizeScores(filterState.visible, signalMode)
     );
+    if (treemapLens !== "your_score") return interestEnriched;
     return rescoreEntries(interestEnriched, userWeightsApi.weights);
-  }, [filterState.visible, signalMode, userWeightsApi.weights]);
+  }, [filterState.visible, signalMode, treemapLens, userWeightsApi.weights]);
 
+  // Cheap probe across the visible set (no score recompute) so the lens
+  // toggle can enable/disable the your_score button without running the full
+  // rescoring pass.
   const yourScoreAvailable = useMemo(() => {
-    return treemapData.some((entry) => Number.isFinite(entry?.your_score));
-  }, [treemapData]);
+    return filterState.visible.some((entry) => Number.isFinite(entry?.dim_public_sentiment));
+  }, [filterState.visible]);
 
   // Fall back to momentum if the user selected your_score but the data can't
   // support it (e.g. compact summary missing dims).

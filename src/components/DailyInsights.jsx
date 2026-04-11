@@ -60,13 +60,6 @@ export default function DailyInsights({
     return new Map(items.map((item) => [item.politician_id, item]));
   }, [bottomLinesDoc]);
 
-  const getBottomLine = (entry) => {
-    if (entityMode !== "politician") return null;
-    const row = bottomLineLookup.get(entry?.politician_id);
-    if (!row) return null;
-    return localeIsEnglish ? row.bottom_line_en : row.bottom_line_he;
-  };
-
   const getEntityLabel = (entry) =>
     entry?.displayName ||
     (entityMode === "party"
@@ -149,12 +142,14 @@ export default function DailyInsights({
     );
 
     // Precompute sparkline data and locale-gated bottom line for each insight.
-    return result.map((entry) => ({
-      ...entry,
-      _sparklineData: getSparklineData(summaryData, getEntityKey(entry), signalMode),
-      _bottomLine: getBottomLine(entry),
-    }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return result.map((entry) => {
+      const row = entityMode === "politician" ? bottomLineLookup.get(entry?.politician_id) : null;
+      return {
+        ...entry,
+        _sparklineData: getSparklineData(summaryData, getEntityKey(entry), signalMode),
+        _bottomLine: row ? (localeIsEnglish ? row.bottom_line_en : row.bottom_line_he) : null,
+      };
+    });
   }, [data, signalMode, summaryData, bottomLineLookup, localeIsEnglish, entityMode]);
 
   if (!insights.length) {

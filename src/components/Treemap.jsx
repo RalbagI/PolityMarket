@@ -165,13 +165,15 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
   );
 
   const colorRange = useMemo(() => {
-    if (!treemapItems.length) return { min: 0, max: 1 };
+    // Only the "market" lens with a non-market_score colorBy consumes this
+    // range; momentum and your_score branch away before reading it.
+    if (isMomentum || isYourScore || !treemapItems.length) return { min: 0, max: 1 };
     const scores = treemapItems.filter((entry) => !entry._isOthers).map(getColorMetric);
     return {
       min: Math.min(...scores),
       max: Math.max(...scores),
     };
-  }, [treemapItems, getColorMetric]);
+  }, [isMomentum, isYourScore, treemapItems, getColorMetric]);
 
   // Per-scene scale for the momentum delta color: use the max |delta| in the
   // visible set so the brightest red/green always get used. Min floor of 2

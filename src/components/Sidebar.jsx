@@ -181,9 +181,7 @@ export function SidebarContent({
           <button
             onClick={() => setLens("momentum")}
             className={`flex-1 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              lens === "momentum"
-                ? "bg-indigo-600 text-white"
-                : "text-gray-500 hover:text-gray-300"
+              lens === "momentum" ? "bg-indigo-600 text-white" : "text-gray-500 hover:text-gray-300"
             }`}
           >
             {t("treemap.lens.momentum")}

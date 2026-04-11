@@ -87,10 +87,7 @@ describe("rescoreEntry", () => {
 
 describe("rescoreEntries", () => {
   it("adds your_score to every entry that has dim data", () => {
-    const scored = rescoreEntries(
-      [fullDims(0.5), fullDims(0.9), fullDims(null)],
-      BALANCED_WEIGHTS
-    );
+    const scored = rescoreEntries([fullDims(0.5), fullDims(0.9), fullDims(null)], BALANCED_WEIGHTS);
     expect(scored).toHaveLength(3);
     expect(scored[0].your_score).toBeGreaterThan(0);
     expect(scored[1].your_score).toBeGreaterThan(scored[0].your_score);

@@ -209,6 +209,7 @@ const useStore = create((set, get) => ({
   bottomLines: null,
   _bottomLinesFetchedAt: 0,
   _bottomLinesFetching: false,
+  _bottomLinesWarned: false,
 
   loadBottomLines: async ({ force = false } = {}) => {
     const state = get();
@@ -221,13 +222,21 @@ const useStore = create((set, get) => ({
       return;
     }
     set({ _bottomLinesFetching: true });
+    const warnOnce = (message) => {
+      if (get()._bottomLinesWarned) return;
+      set({ _bottomLinesWarned: true });
+      if (typeof console !== "undefined") console.warn(`[bottom_lines] ${message}`);
+    };
     try {
       const res = await fetch("/data/bottom_lines.json");
-      if (!res.ok) return;
+      if (!res.ok) {
+        warnOnce(`fetch failed with HTTP ${res.status} — hero quotes disabled`);
+        return;
+      }
       const data = await res.json();
       set({ bottomLines: data, _bottomLinesFetchedAt: Date.now() });
-    } catch {
-      // Optional enrichment — non-critical
+    } catch (err) {
+      warnOnce(`fetch threw: ${err?.message || err} — hero quotes disabled`);
     } finally {
       set({ _bottomLinesFetching: false });
     }

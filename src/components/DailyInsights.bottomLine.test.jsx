@@ -69,15 +69,29 @@ describe("DailyInsights bottom-line locale gating", () => {
   });
 
   it("renders the Hebrew sentence when UI language is Hebrew", () => {
-    render(<DailyInsights data={makeSummary().slice(1)} summaryData={makeSummary()} onSelect={() => {}} />);
+    render(
+      <DailyInsights
+        data={makeSummary().slice(1)}
+        summaryData={makeSummary()}
+        onSelect={() => {}}
+      />
+    );
     expect(screen.getAllByText("אליס בולטת השבוע עם מהלך מפתיע").length).toBeGreaterThanOrEqual(1);
     expect(screen.queryByText("Alice breaks out this week with a surprising move")).toBeNull();
   });
 
   it("renders only the English sentence when UI language is English (regression for #163)", () => {
     i18nState.language = "en";
-    render(<DailyInsights data={makeSummary().slice(1)} summaryData={makeSummary()} onSelect={() => {}} />);
-    expect(screen.getAllByText("Alice breaks out this week with a surprising move").length).toBeGreaterThanOrEqual(1);
+    render(
+      <DailyInsights
+        data={makeSummary().slice(1)}
+        summaryData={makeSummary()}
+        onSelect={() => {}}
+      />
+    );
+    expect(
+      screen.getAllByText("Alice breaks out this week with a surprising move").length
+    ).toBeGreaterThanOrEqual(1);
     expect(screen.queryByText("אליס בולטת השבוע עם מהלך מפתיע")).toBeNull();
   });
 });

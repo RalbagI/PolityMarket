@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { X, RotateCcw } from "lucide-react";
 import { BALANCED_WEIGHTS, DIM_KEYS, weightsAreBalanced } from "../utils/rescoring";
 import useFocusTrap from "../lib/useFocusTrap";
-import { useRef } from "react";
 
 /**
  * Opt-in side sheet for personalized dim weighting. Uses the 8 real dimensions
