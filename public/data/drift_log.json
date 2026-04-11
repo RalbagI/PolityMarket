@@ -1033,5 +1033,36 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-10T23:14:20.391Z"
+  },
+  {
+    "date": "2026-04-12",
+    "warnings": [
+      "[Temporal] Naftali Bennett: score 7.5 deviates 1.7 from 7-day avg 5.8 (threshold: 1.6)",
+      "[Outlier] Benjamin Netanyahu: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yariv Levin: score 3.9 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Avi Dichter: score 5.8 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Boaz Bismuth: score 6.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Ariel Kallner: score 5.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Amit Halevi: score 5.5 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Eli Cohen: score 5.9 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yoav Kish: score 5.3 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Miri Regev: score 6.0 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Idit Silman: score 3.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Yair Lapid: score 5.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Meirav Ben Ari: score 5.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gadi Eisenkot: score 6.6 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Bezalel Smotrich: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Simcha Rothman: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Moshe Solomon: score 5.1 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Avigdor Lieberman: score 6.4 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Mansour Abbas: score 5.2 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Gideon Sa'ar: score 6.8 outside IQR bounds [4.6, 5.1]",
+      "[Outlier] Naftali Bennett: score 7.5 outside IQR bounds [4.6, 5.1]",
+      "[Party] Hadash-Ta'al: all 5 members have identical scores — possible hallucination",
+      "[Party] Democrats: all 4 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-11T23:20:04.954Z"
   }
 ]
