@@ -418,7 +418,21 @@
       "score": "אות פעיל",
       "mediaVolume": "נפח מדיה",
       "change": "שינוי מאתמול",
-      "party": "מפלגה"
+      "party": "מפלגה",
+      "volatility": "תנודתיות",
+      "volatilityFlag": "פעילות חריגה",
+      "volatilityUp": "זינוק מעלה",
+      "volatilityDown": "נפילה חדה",
+      "interestBreakdown": "פירוק ציון עניין (z-scores)"
+    },
+    "lens": {
+      "label": "תצוגה",
+      "momentum": "תנועה",
+      "momentumHint": "מי זז כרגע",
+      "market": "שוק",
+      "marketHint": "מצב נוכחי",
+      "yourScore": "הציון שלך",
+      "yourScoreHint": "מדורג מחדש לפי הסדרי העדיפויות שלך"
     },
     "options": {
       "title": "תצוגה",
@@ -769,13 +783,58 @@
     "noChanges": "אין שינויים היום"
   },
   "dailyInsights": {
-    "title": "תובנות יומיות",
+    "title": "למה זה חשוב היום",
     "biggestRiser": "העלייה הגדולה ביותר",
     "biggestFaller": "הירידה הגדולה ביותר",
     "mostCovered": "הכי מסוקר בתקשורת",
+    "mostWatched": "הכי במעקב",
+    "fastestRise": "עלייה מהירה",
+    "fastestDrop": "נפילה מהירה",
     "tapToExplore": "לחץ לפרטים",
     "ariaLabel": "שלוש תובנות יומיות בולטות",
     "noData": "אין שינויים משמעותיים היום"
+  },
+  "weights": {
+    "title": "הציון שלך",
+    "intro": "דרג מחדש את כל הפוליטיקאים לפי העדיפויות שלך. הבחירות שלך לא עוזבות את הדפדפן.",
+    "openButton": "התאמה אישית של הציון",
+    "reset": "איפוס למאוזן",
+    "close": "סגור",
+    "note": "ממדים חסרים מחולקים מחדש באופן יחסי, בדיוק כמו בציון המערכתי.",
+    "dims": {
+      "dim_public_sentiment": {
+        "label": "סנטימנט ציבורי",
+        "hint": "עוינות, תמיכה במדיניות, הדהוד בתקשורת"
+      },
+      "dim_parliamentary_activity": {
+        "label": "פעילות פרלמנטרית",
+        "hint": "נוכחות, ועדות, יוזמות חקיקה"
+      },
+      "dim_media_credibility": {
+        "label": "אמינות תקשורתית",
+        "hint": "עד כמה הטענות עומדות בבדיקת עובדות"
+      },
+      "dim_transparency_ethics": {
+        "label": "שקיפות ואתיקה",
+        "hint": "גילוי נאות, פגישות לוביסטים"
+      },
+      "dim_field_activity": {
+        "label": "פעילות בשטח",
+        "hint": "אירועי שטח ומסע בחירות מאומתים"
+      },
+      "dim_satire_cultural_impact": {
+        "label": "השפעה תרבותית",
+        "hint": "אזכורי סאטירה משוקללים לפי טון"
+      },
+      "dim_legislative_quality": {
+        "label": "איכות חקיקה",
+        "hint": "הצבעות חברתיות-כלכליות ובקשות MMM"
+      },
+      "dim_flipflop_index": {
+        "label": "עקביות",
+        "hint": "עד כמה הבטחות תואמות הצבעות בפועל"
+      }
+    }
   },
   "weeklyHighlights": {
     "weekInReview": "סיכום שבועי",

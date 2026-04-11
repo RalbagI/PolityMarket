@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import Sparkline from "./Sparkline";
 import { resolveSignalDelta, resolveSignalDisplayScore } from "../lib/signalMode";
 
 export default function TreemapLeaf({
@@ -12,6 +13,7 @@ export default function TreemapLeaf({
   onMouseEnter,
   backgroundColor,
   signalMode,
+  lens = "market",
 }) {
   const d = leaf.data;
   const w = leaf.x1 - leaf.x0;
@@ -60,6 +62,16 @@ export default function TreemapLeaf({
   const showDelta = !tooSmall && Number.isFinite(deltaValue) && deltaValue !== 0;
   const deltaFontSize = Math.max(7, Math.min(11, sqrtArea / 8));
 
+  // Sparkline + compact score chip for the redesigned medium/large tile layout.
+  // Visible on both lenses when the tile has room; falls back silently when not.
+  const scoreSeries = Array.isArray(d.scoreSeries14d) ? d.scoreSeries14d : null;
+  const hasSpark = !d._isOthers && scoreSeries && scoreSeries.length >= 2;
+  const canShowSpark = hasSpark && !tooSmall && area > 2000 && w > 60 && h > 44;
+  const sparkW = Math.min(Math.max(40, w - pad * 2), 120);
+  const sparkH = Math.min(Math.max(14, h * 0.22), 26);
+  const isVolatile = !d._isOthers && d.is_volatile === true;
+  const showPulse = isVolatile && !tooSmall && area > 900;
+
   return (
     <div
       role="button"
@@ -106,6 +118,26 @@ export default function TreemapLeaf({
         >
           {deltaValue > 0 ? `▲${deltaValue.toFixed(1)}` : `▼${Math.abs(deltaValue).toFixed(1)}`}
         </div>
+      )}
+
+      {/* Pulse badge — single undirected dot for volatile politicians.
+          Tile color already carries direction, this just says "look here". */}
+      {showPulse && (
+        <div
+          aria-label="volatile"
+          className="treemap-pulse"
+          style={{
+            position: "absolute",
+            top: 4,
+            insetInlineEnd: 4,
+            width: 8,
+            height: 8,
+            borderRadius: 999,
+            background: "#fcd34d",
+            boxShadow: "0 0 0 2px rgba(2,6,23,0.45), 0 0 10px rgba(252,211,77,0.9)",
+            zIndex: 2,
+          }}
+        />
       )}
 
       {/* Drill-down affordance — subtle chevron for interactive tiles */}
@@ -159,19 +191,30 @@ export default function TreemapLeaf({
 
           {showScore && (
             <div
-              className="flex items-baseline gap-0.5"
+              className="flex items-end justify-between gap-2"
               dir="ltr"
               style={{ flex: "0 0 auto", marginTop: "auto" }}
             >
               <span
-                className="font-black text-white tabular-nums"
+                className="font-black text-white tabular-nums rounded-md px-1.5 py-0.5"
                 style={{
-                  fontSize: scoreFontSize,
+                  fontSize: Math.max(10, Math.min(scoreFontSize, sqrtArea / 5.5)),
                   textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                  background: "rgba(2, 6, 23, 0.32)",
+                  lineHeight: 1,
                 }}
               >
                 {displayScore}
               </span>
+              {canShowSpark && (
+                <Sparkline
+                  data={scoreSeries}
+                  width={sparkW}
+                  height={sparkH}
+                  color={lens === "momentum" ? "#ffffff" : undefined}
+                  className="opacity-90"
+                />
+              )}
             </div>
           )}
         </div>

@@ -4,6 +4,8 @@ import {
   scoreToColorWithAlpha,
   normalizedScoreToColor,
   normalizedScoreToColorWithAlpha,
+  deltaToColor,
+  deltaToColorWithAlpha,
 } from "./colorScale";
 
 function parseRgbChannels(color) {
@@ -107,5 +109,42 @@ describe("normalizedScoreToColorWithAlpha", () => {
     const match = color.match(/rgba\((\d+),\s*(\d+),\s*(\d+),\s*([^)]+)\)/);
     expect(Number(match?.[2] ?? 0)).toBeGreaterThan(70);
     expect(color).toContain("0.5");
+  });
+});
+
+describe("deltaToColor", () => {
+  it("returns green-dominant color for positive delta", () => {
+    const [r, g] = parseRgbChannels(deltaToColor(4, 5));
+    expect(g).toBeGreaterThan(r);
+  });
+
+  it("returns red-dominant color for negative delta", () => {
+    const [r, g] = parseRgbChannels(deltaToColor(-4, 5));
+    expect(r).toBeGreaterThan(g);
+  });
+
+  it("returns neutral gray for near-zero delta", () => {
+    const [r, g, b] = parseRgbChannels(deltaToColor(0.05, 5));
+    expect(Math.abs(r - g)).toBeLessThan(30);
+    expect(Math.abs(g - b)).toBeLessThan(30);
+  });
+
+  it("treats non-finite delta as neutral zero", () => {
+    expect(() => deltaToColor(NaN, 5)).not.toThrow();
+    expect(() => deltaToColor(undefined, 5)).not.toThrow();
+  });
+
+  it("clamps deltas beyond ±maxAbs", () => {
+    const capped = deltaToColor(50, 5);
+    const extreme = deltaToColor(9999, 5);
+    expect(capped).toBe(extreme);
+  });
+});
+
+describe("deltaToColorWithAlpha", () => {
+  it("returns an rgba string with the provided alpha", () => {
+    const c = deltaToColorWithAlpha(3, 5, 0.77);
+    expect(c).toMatch(/^rgba\(/);
+    expect(c).toContain("0.77");
   });
 });

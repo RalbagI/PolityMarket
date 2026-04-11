@@ -130,6 +130,51 @@ describe("TreemapLeaf", () => {
     expect(container).not.toHaveTextContent("65");
   });
 
+  it("renders the volatile pulse badge when is_volatile is true", () => {
+    const { container } = renderLeaf({
+      politician_id: "hot",
+      name: "Hot Politician",
+      market_score: 60,
+      overall_score: 6,
+      is_volatile: true,
+    });
+    expect(container.querySelector(".treemap-pulse")).toBeInTheDocument();
+  });
+
+  it("omits the pulse badge when is_volatile is false", () => {
+    const { container } = renderLeaf({
+      politician_id: "calm",
+      name: "Calm Politician",
+      market_score: 60,
+      overall_score: 6,
+      is_volatile: false,
+    });
+    expect(container.querySelector(".treemap-pulse")).not.toBeInTheDocument();
+  });
+
+  it("renders a 14-day sparkline svg when scoreSeries14d is provided", () => {
+    const { container } = renderLeaf({
+      politician_id: "trend",
+      name: "Trend Politician",
+      market_score: 70,
+      overall_score: 7,
+      scoreSeries14d: [50, 52, 54, 53, 55, 58, 60, 59, 62, 64, 66, 68, 69, 70],
+    });
+    const polylines = container.querySelectorAll("polyline");
+    expect(polylines.length).toBeGreaterThan(0);
+  });
+
+  it("does not render a sparkline when scoreSeries14d is missing or too short", () => {
+    const { container } = renderLeaf({
+      politician_id: "no-trend",
+      name: "No Trend",
+      market_score: 60,
+      overall_score: 6,
+      scoreSeries14d: [50],
+    });
+    expect(container.querySelectorAll("polyline").length).toBe(0);
+  });
+
   it("renders name without score for medium tiles (name-only tier)", () => {
     // area = 40 * 20 = 800 → between 500 and 1200 → name only, no score
     const { container } = render(

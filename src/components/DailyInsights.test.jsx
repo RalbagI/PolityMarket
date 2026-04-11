@@ -131,9 +131,9 @@ describe("DailyInsights", () => {
 
   it("renders correct category labels", () => {
     render(<DailyInsights data={makeData()} summaryData={makeSummaryData()} onSelect={() => {}} />);
-    expect(screen.getAllByText("dailyInsights.biggestRiser").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("dailyInsights.biggestFaller").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("dailyInsights.mostCovered").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("dailyInsights.fastestRise").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("dailyInsights.fastestDrop").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("dailyInsights.mostWatched").length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders correct politician names", () => {
@@ -216,9 +216,9 @@ describe("DailyInsights", () => {
 
     render(<DailyInsights data={data} summaryData={summaryData} onSelect={() => {}} />);
 
-    expect(screen.queryByText("dailyInsights.biggestRiser")).not.toBeInTheDocument();
-    expect(screen.getAllByText("dailyInsights.biggestFaller").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("dailyInsights.mostCovered").length).toBeGreaterThanOrEqual(1);
+    expect(screen.queryByText("dailyInsights.fastestRise")).not.toBeInTheDocument();
+    expect(screen.getAllByText("dailyInsights.fastestDrop").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("dailyInsights.mostWatched").length).toBeGreaterThanOrEqual(1);
   });
 
   it("selects most covered from today's rows even without previous-day data", () => {
@@ -294,7 +294,7 @@ describe("DailyInsights", () => {
     render(<DailyInsights data={data} summaryData={summaryData} onSelect={() => {}} />);
 
     expect(screen.getAllByText("Eve").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("dailyInsights.mostCovered").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("dailyInsights.mostWatched").length).toBeGreaterThanOrEqual(1);
   });
 
   it("calls onSelect when insight card is clicked", () => {

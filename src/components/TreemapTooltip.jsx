@@ -152,6 +152,41 @@ export default memo(function TreemapTooltip({ politician, position, signalMode }
           </div>
         </div>
       )}
+
+      {/* Volatility — surfaces buried volatility_data signal */}
+      {d.is_volatile && (
+        <div className="mt-2 flex items-center justify-between text-[11px]">
+          <span className="text-gray-400">{t("treemap.tooltip.volatility")}</span>
+          <span className="font-semibold text-amber-300">
+            {t(
+              d.volatility_direction === "up"
+                ? "treemap.tooltip.volatilityUp"
+                : d.volatility_direction === "down"
+                  ? "treemap.tooltip.volatilityDown"
+                  : "treemap.tooltip.volatilityFlag"
+            )}
+            {Number.isFinite(d.overall_score_sigma) && (
+              <span className="ms-1 text-[10px] text-amber-200/70">
+                ±{Math.abs(d.overall_score_sigma).toFixed(1)}σ
+              </span>
+            )}
+          </span>
+        </div>
+      )}
+
+      {/* Interest breakdown — only relevant in momentum lens */}
+      {d.interest_breakdown && Number.isFinite(d.interest_score) && (
+        <div className="mt-2 border-t border-white/5 pt-2">
+          <div className="mb-1 text-[10px] uppercase tracking-wide text-gray-500">
+            {t("treemap.tooltip.interestBreakdown")}
+          </div>
+          <div className="flex items-center justify-between text-[10px] text-gray-300">
+            <span>Δ {d.interest_breakdown.delta.toFixed(1)}</span>
+            <span>σ {d.interest_breakdown.sigma.toFixed(1)}</span>
+            <span>vol {d.interest_breakdown.volume.toFixed(1)}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 });

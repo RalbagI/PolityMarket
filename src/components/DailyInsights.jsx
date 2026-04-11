@@ -5,14 +5,24 @@ import { localizeName, localizeParty } from "../lib/localize";
 import { resolveSignalDisplayScore } from "../lib/signalMode";
 import Sparkline from "./Sparkline";
 import getSparklineData from "../lib/getSparklineData";
+import useStore from "../store";
 
 const getEntityKey = (entry) => entry?.politician_id || entry?.name || entry?.party;
 const getEntityName = (entry) => entry?.name || entry?.party;
 
 const INSIGHT_CONFIGS = [
   {
+    type: "coverage",
+    labelKey: "dailyInsights.mostWatched",
+    Icon: Newspaper,
+    gradient: "from-indigo-950/40 to-gray-950",
+    border: "border-indigo-800/40",
+    iconColor: "text-indigo-400",
+    deltaColor: "text-indigo-300",
+  },
+  {
     type: "riser",
-    labelKey: "dailyInsights.biggestRiser",
+    labelKey: "dailyInsights.fastestRise",
     Icon: TrendingUp,
     gradient: "from-emerald-950/40 to-gray-950",
     border: "border-emerald-800/40",
@@ -21,21 +31,12 @@ const INSIGHT_CONFIGS = [
   },
   {
     type: "faller",
-    labelKey: "dailyInsights.biggestFaller",
+    labelKey: "dailyInsights.fastestDrop",
     Icon: TrendingDown,
     gradient: "from-red-950/40 to-gray-950",
     border: "border-red-800/40",
     iconColor: "text-red-400",
     deltaColor: "text-red-400",
-  },
-  {
-    type: "coverage",
-    labelKey: "dailyInsights.mostCovered",
-    Icon: Newspaper,
-    gradient: "from-indigo-950/40 to-gray-950",
-    border: "border-indigo-800/40",
-    iconColor: "text-indigo-400",
-    deltaColor: "text-indigo-300",
   },
 ];
 
@@ -50,7 +51,21 @@ export default function DailyInsights({
   onSelect,
   entityMode = "politician",
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const bottomLinesDoc = useStore((s) => s.bottomLines);
+  const localeIsEnglish = i18n.language?.startsWith("en");
+
+  const bottomLineLookup = useMemo(() => {
+    const items = Array.isArray(bottomLinesDoc?.bottom_lines) ? bottomLinesDoc.bottom_lines : [];
+    return new Map(items.map((item) => [item.politician_id, item]));
+  }, [bottomLinesDoc]);
+
+  const getBottomLine = (entry) => {
+    if (entityMode !== "politician") return null;
+    const row = bottomLineLookup.get(entry?.politician_id);
+    if (!row) return null;
+    return localeIsEnglish ? row.bottom_line_en : row.bottom_line_he;
+  };
 
   const getEntityLabel = (entry) =>
     entry?.displayName ||
@@ -93,11 +108,15 @@ export default function DailyInsights({
       })
       .filter(Boolean);
 
+    const interestOrVolume = (entry) => {
+      const interest = Number(entry?.interest_score);
+      return Number.isFinite(interest) ? interest : (entry?.media_volume ?? 0);
+    };
     const sortedByDelta = todayEntries
       .filter((entry) => Number.isFinite(entry.signal_delta_points))
       .sort((a, b) => b.signal_delta_points - a.signal_delta_points);
-    const sortedByVolume = [...todayEntries].sort(
-      (a, b) => (b.media_volume ?? 0) - (a.media_volume ?? 0)
+    const sortedByInterest = [...todayEntries].sort(
+      (a, b) => interestOrVolume(b) - interestOrVolume(a)
     );
 
     const usedKeys = new Set();
@@ -109,13 +128,19 @@ export default function DailyInsights({
       result.push({ ...entry, insightType: type });
     };
 
-    // 1. Biggest riser
+    // 1. Most watched — highest interest_score (falls back to media volume)
+    pushInsight(
+      sortedByInterest.find((d) => !usedKeys.has(getEntityKey(d))),
+      "coverage"
+    );
+
+    // 2. Fastest rise — biggest positive delta among the rest
     pushInsight(
       sortedByDelta.find((d) => d.signal_delta_points > 0 && !usedKeys.has(getEntityKey(d))),
       "riser"
     );
 
-    // 2. Biggest faller
+    // 3. Fastest drop — biggest negative delta among the rest
     pushInsight(
       [...sortedByDelta]
         .reverse()
@@ -123,18 +148,14 @@ export default function DailyInsights({
       "faller"
     );
 
-    // 3. Most covered (by media_volume)
-    pushInsight(
-      sortedByVolume.find((d) => !usedKeys.has(getEntityKey(d))),
-      "coverage"
-    );
-
-    // Precompute sparkline data for each insight
+    // Precompute sparkline data and locale-gated bottom line for each insight.
     return result.map((entry) => ({
       ...entry,
       _sparklineData: getSparklineData(summaryData, getEntityKey(entry), signalMode),
+      _bottomLine: getBottomLine(entry),
     }));
-  }, [data, signalMode, summaryData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, signalMode, summaryData, bottomLineLookup, localeIsEnglish, entityMode]);
 
   if (!insights.length) {
     return (
@@ -162,6 +183,7 @@ export default function DailyInsights({
             config={INSIGHT_CONFIG_BY_TYPE[insight.insightType]}
             label={getEntityLabel(insight)}
             sparklineData={insight._sparklineData}
+            bottomLine={insight._bottomLine}
             onSelect={() => onSelect(getEntityName(insight))}
             t={t}
           />
@@ -177,6 +199,7 @@ export default function DailyInsights({
             label={getEntityLabel(insight)}
             partyLabel={getEntityPartyLabel(insight)}
             sparklineData={insight._sparklineData}
+            bottomLine={insight._bottomLine}
             onSelect={() => onSelect(getEntityName(insight))}
             t={t}
             animationDelay={i * 100}
@@ -194,6 +217,7 @@ function InsightCard({
   label,
   partyLabel,
   sparklineData,
+  bottomLine,
   onSelect,
   t,
   animationDelay,
@@ -227,6 +251,9 @@ function InsightCard({
         </div>
         <div className="text-lg font-black text-white leading-tight truncate">{label}</div>
         {partyLabel && <div className="text-xs text-gray-500 mt-0.5 truncate">{partyLabel}</div>}
+        {bottomLine && (
+          <p className="mt-2 text-xs text-gray-300 leading-snug line-clamp-2">{bottomLine}</p>
+        )}
         <div className="flex items-end justify-between mt-2 gap-2">
           <div>
             <div className={`text-2xl font-black tabular-nums ${deltaColor}`} dir="ltr">
@@ -256,9 +283,12 @@ function InsightCard({
       <span className="text-[9px] font-bold uppercase tracking-wide text-gray-500 shrink-0 w-24 truncate text-start">
         {t(labelKey)}
       </span>
-      <span className="text-sm font-bold text-white truncate flex-1 min-w-0 text-start">
-        {label}
-      </span>
+      <div className="flex-1 min-w-0 text-start">
+        <div className="text-sm font-bold text-white truncate">{label}</div>
+        {bottomLine && (
+          <div className="text-[10px] text-gray-400 truncate leading-tight">{bottomLine}</div>
+        )}
+      </div>
       <span className={`text-sm font-bold tabular-nums shrink-0 ${deltaColor}`} dir="ltr">
         {deltaDisplay}
       </span>

@@ -83,10 +83,14 @@ export function SidebarContent({
   onViewModeChange,
   signalMode,
   consensusAvailable = false,
+  yourScoreAvailable = false,
+  onOpenWeights,
   hideHeader,
 }) {
   const setSignalMode = useStore((s) => s.setSignalMode);
   const colorBy = useStore((s) => s.treemapColorBy);
+  const lens = useStore((s) => s.treemapLens);
+  const setLens = useStore((s) => s.setTreemapLens);
   const activeFilterCount = filterProps
     ? (filterProps.activeParties?.length || 0) +
       (filterProps.activeWings?.length || 0) +
@@ -167,6 +171,63 @@ export function SidebarContent({
           </button>
         </div>
       )}
+
+      {/* Lens toggle — momentum (who's moving) vs. market (current state) */}
+      <div className="space-y-2">
+        <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
+          {t("treemap.lens.label")}
+        </h3>
+        <div className="flex gap-1 bg-gray-800 rounded-lg p-1">
+          <button
+            onClick={() => setLens("momentum")}
+            className={`flex-1 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+              lens === "momentum"
+                ? "bg-indigo-600 text-white"
+                : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            {t("treemap.lens.momentum")}
+          </button>
+          <button
+            onClick={() => setLens("market")}
+            className={`flex-1 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+              lens === "market" ? "bg-gray-700 text-white" : "text-gray-500 hover:text-gray-300"
+            }`}
+          >
+            {t("treemap.lens.market")}
+          </button>
+          <button
+            onClick={() => {
+              if (yourScoreAvailable) setLens("your_score");
+            }}
+            disabled={!yourScoreAvailable}
+            className={`flex-1 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+              lens === "your_score"
+                ? "bg-amber-500 text-gray-950"
+                : yourScoreAvailable
+                  ? "text-gray-500 hover:text-gray-300"
+                  : "text-gray-600 cursor-not-allowed"
+            }`}
+          >
+            {t("treemap.lens.yourScore")}
+          </button>
+        </div>
+        <p className="text-[11px] leading-4 text-gray-500">
+          {lens === "momentum"
+            ? t("treemap.lens.momentumHint")
+            : lens === "your_score"
+              ? t("treemap.lens.yourScoreHint")
+              : t("treemap.lens.marketHint")}
+        </p>
+        {onOpenWeights && (
+          <button
+            onClick={onOpenWeights}
+            className="w-full rounded-md border border-amber-500/30 bg-amber-500/5 px-2 py-1.5 text-[11px] font-medium text-amber-200 transition-colors hover:bg-amber-500/10"
+          >
+            {t("weights.openButton")}
+          </button>
+        )}
+      </div>
 
       <div className="space-y-2">
         <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider">
@@ -318,6 +379,8 @@ export default function Sidebar({
   onViewModeChange,
   signalMode,
   consensusAvailable = false,
+  yourScoreAvailable = false,
+  onOpenWeights,
 }) {
   const { t } = useTranslation();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -343,6 +406,8 @@ export default function Sidebar({
           onViewModeChange={onViewModeChange}
           signalMode={signalMode}
           consensusAvailable={consensusAvailable}
+          yourScoreAvailable={yourScoreAvailable}
+          onOpenWeights={onOpenWeights}
         />
       </aside>
 

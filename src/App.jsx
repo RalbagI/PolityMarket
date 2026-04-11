@@ -11,6 +11,11 @@ import WeeklyHighlights from "./components/WeeklyHighlights";
 import MethodologyModal from "./components/MethodologyModal";
 import useFilterState from "./lib/useFilterState";
 import normalizeScores from "./lib/normalizeScores";
+import getSparklineData from "./lib/getSparklineData";
+import { computeInterestScores } from "./utils/interestScore";
+import { rescoreEntries } from "./utils/rescoring";
+import useUserWeights from "./hooks/useUserWeights";
+import WeightsSideSheet from "./components/WeightsSideSheet";
 import { localizeName } from "./lib/localize";
 import CookieConsent from "./components/CookieConsent";
 import { initAnalytics, logEvent } from "./lib/analytics";
@@ -42,6 +47,13 @@ export default function App() {
   const loadError = useStore((s) => s.loadError);
   const loadSummary = useStore((s) => s.loadSummary);
   const loadPartySummary = useStore((s) => s.loadPartySummary);
+  const loadVolatility = useStore((s) => s.loadVolatility);
+  const volatilityData = useStore((s) => s.volatilityData);
+  const loadBottomLines = useStore((s) => s.loadBottomLines);
+  const treemapLens = useStore((s) => s.treemapLens);
+  const setTreemapLens = useStore((s) => s.setTreemapLens);
+  const [weightsOpen, setWeightsOpen] = useState(false);
+  const userWeightsApi = useUserWeights();
   const panelOpen = useStore((s) => s.panelOpen);
   const selectedPolitician = useStore((s) => s.selectedPolitician);
   const selectedDate = useStore((s) => s.selectedDate);
@@ -73,7 +85,9 @@ export default function App() {
 
   useEffect(() => {
     loadSummary();
-  }, [loadSummary]);
+    loadVolatility();
+    loadBottomLines();
+  }, [loadSummary, loadVolatility, loadBottomLines]);
 
   const marketSummaryData = useMemo(() => {
     return getStoredOrAnnotatedMarketTimeline(summaryData, "politician_id");
@@ -108,16 +122,23 @@ export default function App() {
     }
   }, [consensusAvailable, setSignalMode, signalMode]);
 
-  // Enrich today data with pre-localized display names.
+  // Enrich today data with pre-localized display names, volatility fields,
+  // and 14-day trajectory used by momentum-lens sparklines.
   const enrichedData = useMemo(() => {
+    const vp = volatilityData?.politicians ?? {};
     return todayData.map((entry) => {
+      const v = vp[entry.politician_id];
       return {
         ...entry,
         displayName: localizeName(t, entry.name),
         displayParty: t(`parties.${entry.party}`, { defaultValue: entry.party }),
+        is_volatile: v?.is_volatile ?? false,
+        overall_score_sigma: v?.overall_score_sigma ?? null,
+        volatility_direction: v?.direction ?? null,
+        scoreSeries14d: getSparklineData(marketSummaryData, entry.politician_id, signalMode, 14),
       };
     });
-  }, [todayData, t]);
+  }, [todayData, volatilityData, marketSummaryData, signalMode, t]);
 
   // Filter state with localStorage persistence
   const filterState = useFilterState(enrichedData);
@@ -125,10 +146,29 @@ export default function App() {
   // Alert subscription state
   const alertState = useAlertState();
 
-  // Normalize visible politicians for treemap (dynamic min/max)
+  // Normalize visible politicians for treemap (dynamic min/max), compute
+  // interest scores relative to the visible set (so momentum lens answers
+  // "who is moving right now among what you're looking at"), then attach
+  // your_score under the user's dimension weights (opt-in, used by the
+  // your_score lens).
   const treemapData = useMemo(() => {
-    return normalizeScores(filterState.visible, signalMode);
-  }, [filterState.visible, signalMode]);
+    const interestEnriched = computeInterestScores(
+      normalizeScores(filterState.visible, signalMode)
+    );
+    return rescoreEntries(interestEnriched, userWeightsApi.weights);
+  }, [filterState.visible, signalMode, userWeightsApi.weights]);
+
+  const yourScoreAvailable = useMemo(() => {
+    return treemapData.some((entry) => Number.isFinite(entry?.your_score));
+  }, [treemapData]);
+
+  // Fall back to momentum if the user selected your_score but the data can't
+  // support it (e.g. compact summary missing dims).
+  useEffect(() => {
+    if (treemapLens === "your_score" && !yourScoreAvailable) {
+      setTreemapLens("momentum");
+    }
+  }, [treemapLens, yourScoreAvailable, setTreemapLens]);
 
   const rawPartyTimeline = useMemo(() => {
     if (!summaryData.length) return [];
@@ -257,6 +297,11 @@ export default function App() {
         }}
         signalMode={signalMode}
         consensusAvailable={consensusAvailable}
+        yourScoreAvailable={yourScoreAvailable}
+        onOpenWeights={() => {
+          logEvent("open_weights");
+          setWeightsOpen(true);
+        }}
       />
 
       {/* Main content — offset by sidebar on desktop, below top bar on mobile */}
@@ -425,6 +470,12 @@ export default function App() {
           allPoliticians={enrichedData}
         />
       </Suspense>
+
+      <WeightsSideSheet
+        isOpen={weightsOpen}
+        onClose={() => setWeightsOpen(false)}
+        weightsApi={userWeightsApi}
+      />
 
       <CookieConsent />
     </div>
