@@ -146,12 +146,36 @@ describe("DailyInsights", () => {
 
   it("prefers interest_score over raw media volume for the Most Watched card", () => {
     const summaryData = [
-      { politician_id: "alice", name: "Alice", party: "PartyA", date: "2026-04-04", market_score: 50 },
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        date: "2026-04-04",
+        market_score: 50,
+      },
       { politician_id: "bob", name: "Bob", party: "PartyB", date: "2026-04-04", market_score: 60 },
-      { politician_id: "carol", name: "Carol", party: "PartyC", date: "2026-04-04", market_score: 40 },
-      { politician_id: "alice", name: "Alice", party: "PartyA", date: "2026-04-05", market_score: 55 },
+      {
+        politician_id: "carol",
+        name: "Carol",
+        party: "PartyC",
+        date: "2026-04-04",
+        market_score: 40,
+      },
+      {
+        politician_id: "alice",
+        name: "Alice",
+        party: "PartyA",
+        date: "2026-04-05",
+        market_score: 55,
+      },
       { politician_id: "bob", name: "Bob", party: "PartyB", date: "2026-04-05", market_score: 45 },
-      { politician_id: "carol", name: "Carol", party: "PartyC", date: "2026-04-05", market_score: 42 },
+      {
+        politician_id: "carol",
+        name: "Carol",
+        party: "PartyC",
+        date: "2026-04-05",
+        market_score: 42,
+      },
     ];
     const data = [
       {

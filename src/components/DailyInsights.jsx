@@ -8,7 +8,9 @@ import getSparklineData from "../lib/getSparklineData";
 import useStore from "../store";
 
 const getEntityKey = (entry, entityMode = "politician") =>
-  entityMode === "party" ? entry?.party || entry?.name : entry?.politician_id || entry?.name || entry?.party;
+  entityMode === "party"
+    ? entry?.party || entry?.name
+    : entry?.politician_id || entry?.name || entry?.party;
 const getEntityName = (entry, entityMode = "politician") =>
   entityMode === "party" ? entry?.party || entry?.name : entry?.name || entry?.party;
 

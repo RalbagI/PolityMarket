@@ -203,7 +203,10 @@ describe("App mobile layout", () => {
   it("passes your-score controls to the inline mobile sidebar content", () => {
     render(<App />);
 
-    expect(screen.getByTestId("sidebar-content")).toHaveAttribute("data-your-score-available", "yes");
+    expect(screen.getByTestId("sidebar-content")).toHaveAttribute(
+      "data-your-score-available",
+      "yes"
+    );
   });
 
   it("opens the weights sheet from the inline mobile sidebar content", async () => {

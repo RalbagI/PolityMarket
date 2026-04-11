@@ -193,7 +193,9 @@ export default function App() {
   // rescoring pass.
   const yourScoreAvailable = useMemo(() => {
     if (viewMode !== "politicians") return false;
-    return filterState.visible.some((entry) => DIM_KEYS.some((key) => Number.isFinite(entry?.[key])));
+    return filterState.visible.some((entry) =>
+      DIM_KEYS.some((key) => Number.isFinite(entry?.[key]))
+    );
   }, [filterState.visible, viewMode]);
 
   // Fall back to momentum if the user selected your_score but the data can't
@@ -226,13 +228,15 @@ export default function App() {
     if (!latestDate) return [];
 
     return computeInterestScores(
-      marketPartySummaryData.filter((p) => p.date === latestDate).map((p) => ({
-        ...p,
-        politician_id: `party:${p.party}`,
-        name: p.party,
-        displayName: t(`parties.${p.party}`, { defaultValue: p.party }),
-        _isParty: true,
-      }))
+      marketPartySummaryData
+        .filter((p) => p.date === latestDate)
+        .map((p) => ({
+          ...p,
+          politician_id: `party:${p.party}`,
+          name: p.party,
+          displayName: t(`parties.${p.party}`, { defaultValue: p.party }),
+          _isParty: true,
+        }))
     );
   }, [latestDate, marketPartySummaryData, t]);
 
