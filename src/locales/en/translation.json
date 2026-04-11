@@ -562,7 +562,29 @@
       "sizeByScore": "Score \u2014 block size by the 0\u2013100 display score, so higher-scoring politicians appear larger.",
       "colorByTitle": "Color by",
       "colorByScore": "Score \u2014 block color by relative position: red is weaker, green is stronger. This is the default.",
-      "colorByVolume": "Volume \u2014 block color by coverage amount: light blue = lots of attention, dark blue = little attention."
+      "colorByVolume": "Volume \u2014 block color by coverage amount: light blue = lots of attention, dark blue = little attention.",
+      "sparkline": "Sparkline strip \u2014 each tile carries a small 14-day score trend line so you can see whether today's number is a blip or a continuation.",
+      "pulse": "Volatility pulse \u2014 a subtle animated badge appears on tiles flagged as unusually volatile today. The animation respects the system's reduced-motion setting."
+    },
+    "lenses": {
+      "title": "Three Lenses on the Same Board",
+      "description": "The homepage treemap can be read through three lenses. Switching lens changes which politicians stand out, without changing the underlying data.",
+      "momentumTitle": "Momentum (default)",
+      "momentumDescription": "Leads with motion instead of state. A tile's size comes from an interest score \u2014 how much it's moving relative to the rest of the board \u2014 and its color comes from today's signed change. Red is a drop, gray is roughly flat, green is a rise. Because scores cluster tightly around 50, momentum is usually a better answer to 'what should I look at right now?' than the static score.",
+      "momentumFormula": "Interest score \u2248 z(|daily change|) + z(|volatility|) + z(media volume). Tiles with unusual change, swings, or volume grow larger.",
+      "marketTitle": "Market (classic)",
+      "marketDescription": "The original lens. Size and color come from the Size by / Color by dropdowns in the sidebar \u2014 volume or score \u2014 and behave as they always did. Use this when you want to compare absolute standings rather than movement.",
+      "yourScoreTitle": "Your score (opt-in)",
+      "yourScoreDescription": "Recomputes every politician under your own 8-dimension weights and uses the result for both size and color. The recomputation happens in your browser, mirroring the same null-dimension redistribution rule the pipeline uses so missing domains don't punish anyone unfairly. Open the Priorities drawer in the sidebar to set your weights."
+    },
+    "personalization": {
+      "title": "Make It Yours",
+      "description": "Two opt-in layers let you read the board on your terms instead of a generic average.",
+      "heroTitle": "Why This Matters Today",
+      "heroDescription": "A short hero above the treemap ranks today's Most Watched, Fastest Rise, and Fastest Drop by the same interest score the momentum lens uses. When the daily AI analysis contains a short 'bottom line' sentence for a politician, it is surfaced as a one-line quote under their name in the current interface language.",
+      "weightsTitle": "Your Priorities",
+      "weightsDescription": "The Priorities drawer exposes the 8 scoring dimensions as sliders. Raise the ones you care about, lower the ones you don't, and the Your score lens recomputes everyone under those weights. A Balanced preset snaps back to the pipeline defaults, and your choices are saved in your browser only \u2014 nothing is sent anywhere.",
+      "weightsMath": "Rescoring uses the same redistribution math as the server: if a politician is missing a dimension that day, that dimension's weight is spread across the remaining ones so the result still adds up to a full score."
     }
   },
   "legal": {
