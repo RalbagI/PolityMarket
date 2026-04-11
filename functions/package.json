@@ -3,8 +3,9 @@
   "description": "Cloud Functions for PolityMarket daily pipeline",
   "type": "module",
   "scripts": {
+    "build:manifest": "node scripts/generate-manifest.mjs",
     "serve": "firebase emulators:start --only functions",
-    "deploy": "firebase deploy --only functions"
+    "deploy": "npm run build:manifest && firebase deploy --only functions"
   },
   "engines": {
     "node": "22"
