@@ -3,6 +3,7 @@ import { create } from "zustand";
 const SUMMARY_CACHE_TTL = 60 * 60 * 1000; // 1 hour stale-while-revalidate for daily data
 const PARTY_SUMMARY_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours, changes at most daily
 const VOLATILITY_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours, generated offline
+const BOTTOM_LINES_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours, generated offline
 const DATE_DETAIL_CACHE_KEY = "__date__";
 
 function buildDetailCacheKey(date, detailKey = DATE_DETAIL_CACHE_KEY) {
@@ -204,11 +205,51 @@ const useStore = create((set, get) => ({
     }
   },
 
+  // ── Bottom Lines Slice ─────────────────────────────────────────────
+  bottomLines: null,
+  _bottomLinesFetchedAt: 0,
+  _bottomLinesFetching: false,
+  _bottomLinesWarned: false,
+
+  loadBottomLines: async ({ force = false } = {}) => {
+    const state = get();
+    if (state._bottomLinesFetching) return;
+    if (
+      !force &&
+      state.bottomLines &&
+      Date.now() - state._bottomLinesFetchedAt < BOTTOM_LINES_CACHE_TTL
+    ) {
+      return;
+    }
+    set({ _bottomLinesFetching: true });
+    const warnOnce = (message) => {
+      if (get()._bottomLinesWarned) return;
+      set({ _bottomLinesWarned: true });
+      if (typeof console !== "undefined") console.warn(`[bottom_lines] ${message}`);
+    };
+    try {
+      const res = await fetch("/data/bottom_lines.json");
+      if (!res.ok) {
+        warnOnce(`fetch failed with HTTP ${res.status} — hero quotes disabled`);
+        return;
+      }
+      const data = await res.json();
+      set({ bottomLines: data, _bottomLinesFetchedAt: Date.now() });
+    } catch (err) {
+      warnOnce(`fetch threw: ${err?.message || err} — hero quotes disabled`);
+    } finally {
+      set({ _bottomLinesFetching: false });
+    }
+  },
+
   // ── Treemap Settings Slice ─────────────────────────────────────────
-  // sizeBy: what metric determines block SIZE
-  // colorBy: what metric determines block COLOR
+  // lens: semantic mode — "momentum" leads with motion, "market" leads with
+  // current state, "your_score" leads with the viewer's personal weighting.
+  // sizeBy / colorBy: low-level knobs used inside the "market" lens.
+  treemapLens: "momentum", // "momentum" | "market" | "your_score"
   treemapSizeBy: "media_volume", // "media_volume" | "market_score"
   treemapColorBy: "market_score", // "market_score" | "media_volume"
+  setTreemapLens: (v) => set({ treemapLens: v }),
   setTreemapSizeBy: (v) => set({ treemapSizeBy: v }),
   setTreemapColorBy: (v) => set({ treemapColorBy: v }),
 }));

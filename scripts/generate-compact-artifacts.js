@@ -12,6 +12,7 @@ const summaryPath = path.join(dataDir, "timeseries_summary.json");
 const compactSummaryPath = path.join(dataDir, "timeseries_summary.compact.json");
 const detailsDir = path.join(dataDir, "details");
 const detailsLiteDir = path.join(dataDir, "details-lite");
+const bottomLinesPath = path.join(dataDir, "bottom_lines.json");
 
 function readJsonArray(filePath) {
   if (!fs.existsSync(filePath)) return [];
@@ -106,6 +107,60 @@ function buildDetailLiteEntry(entry) {
   };
 }
 
+function extractBottomLine(chainOfThought) {
+  if (!chainOfThought || typeof chainOfThought !== "string") return null;
+  const match = chainOfThought.match(
+    /^##\s*(?:שורה תחתונה|Bottom Line)\s*\n([\s\S]*?)(?=\n##\s|\s*$)/m
+  );
+  if (!match) return null;
+  const body = match[1].trim();
+  if (!body) return null;
+  // Collapse to the first sentence / first line for a punchy hero.
+  const firstLine = body
+    .split(/\n/)
+    .map((line) => line.trim())
+    .find((line) => line.length > 0);
+  return firstLine || null;
+}
+
+function generateBottomLines() {
+  if (!fs.existsSync(detailsLiteDir)) {
+    console.warn("[compact-artifacts] details-lite directory missing; skipping bottom-lines");
+    return;
+  }
+  const dateFiles = fs
+    .readdirSync(detailsLiteDir)
+    .filter((file) => /^\d{4}-\d{2}-\d{2}\.json$/.test(file))
+    .sort();
+  if (!dateFiles.length) return;
+
+  const latestFile = dateFiles[dateFiles.length - 1];
+  const latestDate = latestFile.replace(/\.json$/, "");
+  const entries = readJsonArray(path.join(detailsLiteDir, latestFile));
+
+  const bottomLines = entries
+    .map((entry) => {
+      const he = extractBottomLine(entry.chain_of_thought);
+      const en = extractBottomLine(entry.chain_of_thought_en);
+      if (!he && !en) return null;
+      return {
+        politician_id: entry.politician_id,
+        name: entry.name,
+        party: entry.party,
+        bottom_line_he: he,
+        bottom_line_en: en,
+      };
+    })
+    .filter(Boolean);
+
+  writeJson(bottomLinesPath, {
+    date: latestDate,
+    generated_at: new Date().toISOString(),
+    count: bottomLines.length,
+    bottom_lines: bottomLines,
+  });
+}
+
 function generateCompactSummary() {
   const summary = readJsonArray(summaryPath);
   if (!summary.length) {
@@ -148,4 +203,7 @@ function generateLiteDetails() {
 
 generateCompactSummary();
 generateLiteDetails();
-console.log("[compact-artifacts] generated compact summary and lite detail artifacts");
+generateBottomLines();
+console.log(
+  "[compact-artifacts] generated compact summary, lite detail, and bottom-lines artifacts"
+);

@@ -418,7 +418,21 @@
       "score": "Active signal",
       "mediaVolume": "Media volume",
       "change": "Change from yesterday",
-      "party": "Party"
+      "party": "Party",
+      "volatility": "Volatility",
+      "volatilityFlag": "Unusual activity",
+      "volatilityUp": "Spike up",
+      "volatilityDown": "Spike down",
+      "interestBreakdown": "Interest breakdown (z-scores)"
+    },
+    "lens": {
+      "label": "Lens",
+      "momentum": "Momentum",
+      "momentumHint": "Who's moving right now",
+      "market": "Market",
+      "marketHint": "Current state",
+      "yourScore": "Your score",
+      "yourScoreHint": "Rescored under your priorities"
     },
     "options": {
       "title": "Display",
@@ -769,13 +783,58 @@
     "noChanges": "No changes today"
   },
   "dailyInsights": {
-    "title": "Daily Insights",
+    "title": "Why this matters today",
     "biggestRiser": "Biggest Riser",
     "biggestFaller": "Biggest Faller",
     "mostCovered": "Most Media Coverage",
+    "mostWatched": "Most Watched",
+    "fastestRise": "Fastest Rise",
+    "fastestDrop": "Fastest Drop",
     "tapToExplore": "Tap for details",
     "ariaLabel": "Three notable daily insights",
     "noData": "No significant changes today"
+  },
+  "weights": {
+    "title": "Your score",
+    "intro": "Rescore every politician under your own priorities. Your picks never leave this browser.",
+    "openButton": "Customize your score",
+    "reset": "Reset to Balanced",
+    "close": "Close",
+    "note": "Missing dimensions redistribute proportionally, the same way the editorial score works.",
+    "dims": {
+      "dim_public_sentiment": {
+        "label": "Public sentiment",
+        "hint": "Hostility, approval, media amplification"
+      },
+      "dim_parliamentary_activity": {
+        "label": "Parliamentary activity",
+        "hint": "Attendance, committee work, legislative initiative"
+      },
+      "dim_media_credibility": {
+        "label": "Media credibility",
+        "hint": "How well claims hold up to fact-checking"
+      },
+      "dim_transparency_ethics": {
+        "label": "Transparency & ethics",
+        "hint": "Openness, lobbyist meetings, disclosures"
+      },
+      "dim_field_activity": {
+        "label": "Field activity",
+        "hint": "Confirmed ground-level events and campaigning"
+      },
+      "dim_satire_cultural_impact": {
+        "label": "Cultural impact",
+        "hint": "Satire mentions, weighted by tone"
+      },
+      "dim_legislative_quality": {
+        "label": "Legislative quality",
+        "hint": "Pro-socioeconomic votes, MMM research requests"
+      },
+      "dim_flipflop_index": {
+        "label": "Consistency",
+        "hint": "How well promises line up with later votes"
+      }
+    }
   },
   "weeklyHighlights": {
     "weekInReview": "Week in Review",

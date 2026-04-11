@@ -101,6 +101,27 @@ body {
   }
 }
 
+/* Momentum-lens pulse badge — signals "look here, this is volatile" */
+@keyframes treemap-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+  }
+}
+.treemap-pulse {
+  animation: treemap-pulse 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .treemap-pulse {
+    animation: none;
+  }
+}
+
 /* Performance: skip rendering off-screen cards in large grids */
 .entity-card {
   content-visibility: auto;

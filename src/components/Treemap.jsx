@@ -1,7 +1,11 @@
 import { memo, useMemo, useState, useRef, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { hierarchy, treemap, treemapSquarify } from "d3-hierarchy";
-import { normalizedScoreToColorWithAlpha, scoreToColorWithAlpha } from "../lib/colorScale";
+import {
+  deltaToColorWithAlpha,
+  normalizedScoreToColorWithAlpha,
+  scoreToColorWithAlpha,
+} from "../lib/colorScale";
 import { resolveSignalDisplayScore } from "../lib/signalMode";
 import { localizeName } from "../lib/localize";
 import useStore from "../store";
@@ -11,8 +15,11 @@ import TreemapLeaf from "./TreemapLeaf";
 
 export default memo(function Treemap({ data, onSelect, selectedPolitician, signalMode }) {
   const { t, i18n } = useTranslation();
+  const lens = useStore((s) => s.treemapLens);
   const sizeBy = useStore((s) => s.treemapSizeBy);
   const colorBy = useStore((s) => s.treemapColorBy);
+  const isMomentum = lens === "momentum";
+  const isYourScore = lens === "your_score";
 
   const containerRef = useRef(null);
   const scrollRef = useRef(null);
@@ -51,6 +58,22 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
 
   const sizeValue = useCallback(
     (entry) => {
+      if (isMomentum) {
+        // In momentum lens, size is proportional to interest_score but floored so
+        // nobody disappears entirely. interest_score is a z-score and can be
+        // negative — shift into [0.2, ∞) via exp.
+        const z = Number.isFinite(entry?.interest_score) ? entry.interest_score : 0;
+        return Math.max(0.2, Math.exp(z * 0.6));
+      }
+      if (isYourScore) {
+        // Size proportional to your_score (0-10) with a floor so low-scoring
+        // politicians remain visible. Fall back to media_volume when the entry
+        // has no dimensional data.
+        const ys = Number(entry?.your_score);
+        if (Number.isFinite(ys)) return Math.max(0.2, ys);
+        const vol = Number(entry?.media_volume);
+        return Number.isFinite(vol) && vol > 0 ? vol : 0.5;
+      }
       const normalized = sizeBy === "market_score" ? entry.normalizedScore : entry.normalizedVolume;
       if (typeof normalized === "number" && Number.isFinite(normalized)) {
         return Math.max(normalized, 0.15);
@@ -59,7 +82,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
       if (typeof raw === "number" && Number.isFinite(raw) && raw > 0) return raw;
       return 1;
     },
-    [sizeBy]
+    [isMomentum, isYourScore, sizeBy]
   );
 
   const treemapItems = useMemo(() => {
@@ -142,13 +165,26 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
   );
 
   const colorRange = useMemo(() => {
-    if (!treemapItems.length) return { min: 0, max: 1 };
+    // Only the "market" lens with a non-market_score colorBy consumes this
+    // range; momentum and your_score branch away before reading it.
+    if (isMomentum || isYourScore || !treemapItems.length) return { min: 0, max: 1 };
     const scores = treemapItems.filter((entry) => !entry._isOthers).map(getColorMetric);
     return {
       min: Math.min(...scores),
       max: Math.max(...scores),
     };
-  }, [treemapItems, getColorMetric]);
+  }, [isMomentum, isYourScore, treemapItems, getColorMetric]);
+
+  // Per-scene scale for the momentum delta color: use the max |delta| in the
+  // visible set so the brightest red/green always get used. Min floor of 2
+  // keeps tiny deltas visually neutral on quiet days.
+  const deltaMaxAbs = useMemo(() => {
+    if (!isMomentum || !treemapItems.length) return 5;
+    const abs = treemapItems
+      .filter((e) => !e._isOthers)
+      .map((e) => Math.abs(Number(e.market_delta_points) || 0));
+    return Math.max(2, ...abs);
+  }, [isMomentum, treemapItems]);
 
   const isTouchRef = useRef(false);
 
@@ -234,18 +270,30 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
                 isHovered={isHovered}
                 isSelected={isSelected}
                 backgroundColor={
-                  colorBy === "market_score"
-                    ? scoreToColorWithAlpha(
-                        resolveSignalDisplayScore(entry, signalMode) ?? 50,
-                        isHovered || isSelected ? 0.96 : 0.78
+                  isMomentum
+                    ? deltaToColorWithAlpha(
+                        Number(entry.market_delta_points) || 0,
+                        deltaMaxAbs,
+                        isHovered || isSelected ? 0.96 : 0.8
                       )
-                    : normalizedScoreToColorWithAlpha(
-                        getColorMetric(entry),
-                        colorRange.min,
-                        colorRange.max,
-                        isHovered || isSelected ? 0.92 : 0.72
-                      )
+                    : isYourScore
+                      ? scoreToColorWithAlpha(
+                          (Number(entry.your_score) || 0) * 10,
+                          isHovered || isSelected ? 0.96 : 0.82
+                        )
+                      : colorBy === "market_score"
+                        ? scoreToColorWithAlpha(
+                            resolveSignalDisplayScore(entry, signalMode) ?? 50,
+                            isHovered || isSelected ? 0.96 : 0.78
+                          )
+                        : normalizedScoreToColorWithAlpha(
+                            getColorMetric(entry),
+                            colorRange.min,
+                            colorRange.max,
+                            isHovered || isSelected ? 0.92 : 0.72
+                          )
                 }
+                lens={lens}
                 onClick={() => {
                   if (isGestureActive()) return;
                   if (entry._isOthers && entry._groupedData) {
@@ -287,6 +335,7 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
           politician={data.find((entry) => entry.name === hovered)}
           position={mousePos}
           signalMode={signalMode}
+          lens={lens}
         />
       )}
     </div>

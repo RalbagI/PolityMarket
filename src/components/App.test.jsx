@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "../App";
 
 vi.mock("react-i18next", () => ({
@@ -21,6 +21,7 @@ vi.mock("../store", () => {
       party: "TestParty",
       overall_score: 5.5,
       media_volume: 3,
+      dim_public_sentiment: 0.6,
     },
   ];
   return {
@@ -42,6 +43,10 @@ vi.mock("../store", () => {
           loadPartySummary: vi.fn(),
           loadVolatility: vi.fn(),
           volatilityData: null,
+          loadBottomLines: vi.fn(),
+          bottomLines: null,
+          treemapLens: "market",
+          setTreemapLens: vi.fn(),
           treemapSizeBy: "media_volume",
           treemapColorBy: "media_volume",
           setTreemapSizeBy: vi.fn(),
@@ -113,7 +118,15 @@ vi.mock("../lib/normalizeScores", () => ({
 // Mock heavy child components — this test focuses on <main> layout structure
 vi.mock("./Sidebar", () => ({
   default: () => <div data-testid="sidebar" />,
-  SidebarContent: () => <div data-testid="sidebar-content" />,
+  SidebarContent: ({ yourScoreAvailable, onOpenWeights }) => (
+    <button
+      data-testid="sidebar-content"
+      data-your-score-available={yourScoreAvailable ? "yes" : "no"}
+      onClick={() => onOpenWeights?.()}
+    >
+      sidebar content
+    </button>
+  ),
 }));
 
 vi.mock("../lib/useSidebarStats", () => ({
@@ -185,5 +198,21 @@ describe("App mobile layout", () => {
   it("renders inline sidebar content on mobile", () => {
     render(<App />);
     expect(screen.getByTestId("sidebar-content")).toBeInTheDocument();
+  });
+
+  it("passes your-score controls to the inline mobile sidebar content", () => {
+    render(<App />);
+
+    expect(screen.getByTestId("sidebar-content")).toHaveAttribute(
+      "data-your-score-available",
+      "yes"
+    );
+  });
+
+  it("opens the weights sheet from the inline mobile sidebar content", async () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByTestId("sidebar-content"));
+    expect(await screen.findByText("weights.title")).toBeInTheDocument();
   });
 });

@@ -13,18 +13,24 @@ import {
   resolveSignalTier,
 } from "../lib/signalMode";
 
-export default memo(function TreemapTooltip({ politician, position, signalMode }) {
+export default memo(function TreemapTooltip({ politician, position, signalMode, lens = "market" }) {
   const { t } = useTranslation();
   if (!politician) return null;
 
   const d = politician;
-  const scoreValue = resolveSignalDisplayScore(d, signalMode) ?? 0;
+  const isYourScore = lens === "your_score";
+  const yourScore = Number(d?.your_score);
+  const rawScoreValue =
+    isYourScore && Number.isFinite(yourScore)
+      ? yourScore * 10
+      : resolveSignalDisplayScore(d, signalMode);
+  const scoreValue = Number.isFinite(rawScoreValue) ? rawScoreValue : 0;
   const scoreColor = scoreToColor(scoreValue);
-  const scorePct = Number.isFinite(scoreValue) ? scoreValue : 0;
+  const scorePct = Math.max(0, Math.min(100, scoreValue));
   const chromeColor = scoreToColorWithAlpha(scoreValue, 0.26);
   const glowColor = scoreToColorWithAlpha(scoreValue, 0.18);
-  const signalTier = resolveSignalTier(d, signalMode);
-  const signalPercentile = resolveSignalPercentile(d, signalMode);
+  const signalTier = isYourScore ? null : resolveSignalTier(d, signalMode);
+  const signalPercentile = isYourScore ? null : resolveSignalPercentile(d, signalMode);
   const deltaPoints = resolveSignalDelta(d, signalMode);
   const deltaPct = resolveSignalDeltaPct(d, signalMode);
   const tierLabel = signalTier
@@ -87,7 +93,7 @@ export default memo(function TreemapTooltip({ politician, position, signalMode }
               P{Math.round(signalPercentile)}
             </span>
           )}
-          {isLowConfidenceSignal(d, signalMode) && (
+          {!isYourScore && isLowConfidenceSignal(d, signalMode) && (
             <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2 py-0.5 text-[10px] font-medium text-amber-200">
               {t("signals.lowConfidence")}
             </span>
@@ -99,9 +105,11 @@ export default memo(function TreemapTooltip({ politician, position, signalMode }
       {/* Score bar */}
       <div className="mb-3">
         <div className="flex items-center justify-between text-xs mb-1">
-          <span className="text-gray-400">{t("treemap.tooltip.score")}</span>
+          <span className="text-gray-400">
+            {isYourScore ? t("weights.title") : t("treemap.tooltip.score")}
+          </span>
           <span className="font-bold" style={{ color: scoreColor }}>
-            {Math.round(scoreValue)}
+            {Number.isFinite(rawScoreValue) ? Math.round(scoreValue) : "—"}
           </span>
         </div>
         <div className="w-full h-2 rounded-full bg-slate-950/70">
@@ -149,6 +157,41 @@ export default memo(function TreemapTooltip({ politician, position, signalMode }
                 </span>
               )}
             </span>
+          </div>
+        </div>
+      )}
+
+      {/* Volatility — surfaces buried volatility_data signal */}
+      {d.is_volatile && (
+        <div className="mt-2 flex items-center justify-between text-[11px]">
+          <span className="text-gray-400">{t("treemap.tooltip.volatility")}</span>
+          <span className="font-semibold text-amber-300">
+            {t(
+              d.volatility_direction === "up"
+                ? "treemap.tooltip.volatilityUp"
+                : d.volatility_direction === "down"
+                  ? "treemap.tooltip.volatilityDown"
+                  : "treemap.tooltip.volatilityFlag"
+            )}
+            {Number.isFinite(d.overall_score_sigma) && (
+              <span className="ms-1 text-[10px] text-amber-200/70">
+                ±{Math.abs(d.overall_score_sigma).toFixed(1)}σ
+              </span>
+            )}
+          </span>
+        </div>
+      )}
+
+      {/* Interest breakdown — only relevant in momentum lens */}
+      {lens === "momentum" && d.interest_breakdown && Number.isFinite(d.interest_score) && (
+        <div className="mt-2 border-t border-white/5 pt-2">
+          <div className="mb-1 text-[10px] uppercase tracking-wide text-gray-500">
+            {t("treemap.tooltip.interestBreakdown")}
+          </div>
+          <div className="flex items-center justify-between text-[10px] text-gray-300">
+            <span>Δ {d.interest_breakdown.delta.toFixed(1)}</span>
+            <span>σ {d.interest_breakdown.sigma.toFixed(1)}</span>
+            <span>vol {d.interest_breakdown.volume.toFixed(1)}</span>
           </div>
         </div>
       )}

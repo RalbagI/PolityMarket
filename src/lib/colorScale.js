@@ -14,6 +14,11 @@ const relativeMetricScale = scaleLinear()
   .range(["#1e3a8a", "#2563eb", "#67e8f9"])
   .clamp(true);
 
+const deltaColorScale = scaleLinear()
+  .domain([-1, -0.5, -0.15, 0, 0.15, 0.5, 1])
+  .range(["#b91c1c", "#ef4444", "#9ca3af", "#6b7280", "#9ca3af", "#22c55e", "#15803d"])
+  .clamp(true);
+
 /**
  * Normalize a relative metric into 0-1 for local min/max visual encoding.
  */
@@ -59,4 +64,14 @@ export function normalizedScoreToColorWithAlpha(score, min, max, alpha = 0.6) {
  */
 export function scoreToColorWithAlpha(score, alpha = 0.6) {
   return colorToRgba(scoreToColor(score), alpha);
+}
+
+export function deltaToColor(delta, maxAbs = 5) {
+  const value = Number.isFinite(delta) ? delta : 0;
+  const denom = Number.isFinite(maxAbs) && maxAbs > 0 ? maxAbs : 1;
+  return deltaColorScale(Math.max(-1, Math.min(1, value / denom)));
+}
+
+export function deltaToColorWithAlpha(delta, maxAbs = 5, alpha = 0.78) {
+  return colorToRgba(deltaToColor(delta, maxAbs), alpha);
 }
