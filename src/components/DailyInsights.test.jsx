@@ -464,4 +464,14 @@ describe("DailyInsights", () => {
     render(<DailyInsights data={makeData()} summaryData={makeSummaryData()} onSelect={() => {}} />);
     expect(screen.getByRole("region")).toHaveAttribute("aria-label", "dailyInsights.ariaLabel");
   });
+
+  it("renders mobile scroll container with snap and overflow classes", () => {
+    const { container } = render(
+      <DailyInsights data={makeData()} summaryData={makeSummaryData()} onSelect={() => {}} />
+    );
+    const mobileScroll = container.querySelector(".md\\:hidden.overflow-x-auto");
+    expect(mobileScroll).toBeTruthy();
+    expect(mobileScroll.className).toContain("snap-x");
+    expect(mobileScroll.className).toContain("snap-mandatory");
+  });
 });
