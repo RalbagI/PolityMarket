@@ -200,7 +200,7 @@ export default function DailyInsights({
       {/* Mobile: horizontal scroll */}
       <div
         ref={mobileScrollRef}
-        className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-2 -mx-1 px-1 pb-1"
+        className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-2 pb-1 scrollbar-hide"
       >
         {insights.map((insight, i) => (
           <InsightCard
@@ -250,7 +250,7 @@ function InsightCard({
         className={`text-start rounded-lg border p-2.5 bg-gradient-to-l ${gradient} ${border}
           hover:scale-[1.02] hover:shadow-lg hover:shadow-black/20
           active:scale-[0.98] transition-all duration-200
-          animate-fadeSlideUp min-w-[190px] snap-center shrink-0
+          animate-fadeSlideUp w-[calc(100%-8px)] shrink-0 snap-center
         `}
         style={{ animationDelay: `${animationDelay}ms` }}
       >
