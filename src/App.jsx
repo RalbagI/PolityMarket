@@ -20,6 +20,7 @@ import { localizeName } from "./lib/localize";
 import CookieConsent from "./components/CookieConsent";
 import { initAnalytics, logEvent } from "./lib/analytics";
 import useAlertState from "./lib/useAlertState";
+import useBackButton from "./hooks/useBackButton";
 import {
   derivePartyTimelineFromSummary,
   getStoredOrAnnotatedMarketTimeline,
@@ -63,6 +64,10 @@ export default function App() {
   const setSignalMode = useStore((s) => s.setSignalMode);
   const openPanel = useStore((s) => s.openPanel);
   const closePanel = useStore((s) => s.closePanel);
+
+  // Intercept browser back button so it closes the detail panel instead of
+  // navigating away from the webapp (critical on mobile).
+  useBackButton(panelOpen, closePanel);
 
   // Lock scroll on the outer container when panel is open (mobile)
   const scrollContainerRef = useRef(null);
