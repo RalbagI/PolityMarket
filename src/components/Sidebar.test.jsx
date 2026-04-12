@@ -322,7 +322,7 @@ describe("SidebarContent compact mode", () => {
         signalMode="media_climate"
         hideHeader
         compact
-      />,
+      />
     );
     expect(container.textContent).not.toContain("sidebar.partyBreakdown");
     expect(container.textContent).not.toContain("methodology.link");
@@ -342,7 +342,7 @@ describe("SidebarContent compact mode", () => {
         signalMode="media_climate"
         hideHeader
         compact
-      />,
+      />
     );
     expect(screen.getByText("treemap.lens.label")).toBeInTheDocument();
     expect(screen.getByText("signals.title")).toBeInTheDocument();
@@ -362,7 +362,7 @@ describe("SidebarContent compact mode", () => {
         onCompare={onCompare}
         hideHeader
         compact
-      />,
+      />
     );
     const btn = screen.getByText("compare.title");
     expect(btn).toBeInTheDocument();
@@ -382,7 +382,7 @@ describe("SidebarContent compact mode", () => {
         signalMode="media_climate"
         hideHeader
         compact
-      />,
+      />
     );
     expect(screen.queryByText("compare.title")).not.toBeInTheDocument();
   });
