@@ -94,6 +94,16 @@ Daily changes are calculated by comparing today's score to yesterday's, so you c
 - **Public Support Estimate** is a second mode. It tries to filter some of the daily noise and get closer to broader public standing.
 - **Confidence matters.** The support estimate is stronger when there are direct polls or broad source coverage, and weaker when it relies mostly on media evidence.
 
+### Treemap Lenses
+
+The homepage treemap can be read through three lenses. The active lens changes which politicians stand out without changing the underlying data.
+
+- **Momentum (default)** leads with motion instead of state. A tile's size comes from an interest score, roughly `z(|daily change|) + z(|volatility|) + z(media volume)`, and its color comes from today's signed change — red for a drop, gray for flat, green for a rise. Because base scores cluster tightly around 50, momentum is usually a better answer to "what should I look at right now?" than the static score.
+- **Market (classic)** is the original lens. Size and color come from the Size by / Color by dropdowns in the sidebar.
+- **Your score (opt-in)** recomputes every politician under your own 8-dimension weights, set from the Priorities drawer in the sidebar. The recomputation happens in the browser and uses the same null-dimension redistribution rule as [data-pipeline/lib/computeScore.js](data-pipeline/lib/computeScore.js), so missing domains don't punish anyone unfairly. Your weights are saved to localStorage and never sent to a server.
+
+Above the treemap, a "Why this matters today" hero ranks Most Watched / Fastest Rise / Fastest Drop by the same interest score, and surfaces each politician's locale-gated "bottom line" sentence from the daily AI analysis.
+
 ## Docs
 
 - [ai_docs/architecture/ARCH.md](ai_docs/architecture/ARCH.md)

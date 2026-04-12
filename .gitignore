@@ -47,6 +47,7 @@ infrastructure/n8n/.env
 
 # Firebase
 .firebase/
+functions/functions.yaml
 .claude/worktrees/
 logs/
 .pipeline.lock

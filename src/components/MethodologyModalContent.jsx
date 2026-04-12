@@ -6,7 +6,9 @@ import {
   Cpu,
   Database,
   Eye,
+  Layers,
   Scale,
+  Sliders,
   TrendingUp,
 } from "lucide-react";
 
@@ -86,6 +88,40 @@ const LEGAL_KEYS = [
   "privacy",
   "liability",
   "changes",
+];
+
+const LENS_CARDS = [
+  {
+    titleKey: "methodology.lenses.momentumTitle",
+    descKey: "methodology.lenses.momentumDescription",
+    titleClass: "text-indigo-300",
+  },
+  {
+    titleKey: "methodology.lenses.marketTitle",
+    descKey: "methodology.lenses.marketDescription",
+    titleClass: "text-violet-300",
+    topBorder: true,
+  },
+  {
+    titleKey: "methodology.lenses.yourScoreTitle",
+    descKey: "methodology.lenses.yourScoreDescription",
+    titleClass: "text-emerald-300",
+    topBorder: true,
+  },
+];
+
+const PERSONALIZATION_ITEMS = [
+  {
+    titleKey: "methodology.personalization.heroTitle",
+    descKey: "methodology.personalization.heroDescription",
+    titleClass: "text-amber-200",
+  },
+  {
+    titleKey: "methodology.personalization.weightsTitle",
+    descKey: "methodology.personalization.weightsDescription",
+    titleClass: "text-emerald-200",
+    topBorder: true,
+  },
 ];
 
 const DISPLAY_OPTION_ROWS = [
@@ -237,12 +273,31 @@ export function MethodologyContent({ t }) {
         />
       </Section>
 
+      <Section icon={Layers} iconColor="text-sky-400" title={t("methodology.lenses.title")}>
+        <Paragraph text={t("methodology.lenses.description")} />
+        <div className="mt-3 space-y-2.5 rounded-xl bg-gray-800/50 p-4">
+          {LENS_CARDS.map(({ titleKey, descKey, titleClass, topBorder }) => (
+            <div key={titleKey} className={topBorder ? "border-t border-gray-700/50 pt-2" : ""}>
+              <div className={`text-sm font-semibold ${titleClass}`}>{t(titleKey)}</div>
+              <p className="mt-0.5 text-xs leading-relaxed text-gray-400">{t(descKey)}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-3 rounded-lg border border-indigo-500/20 bg-indigo-500/10 p-3">
+          <p className="text-sm leading-relaxed text-indigo-200">
+            {t("methodology.lenses.momentumFormula")}
+          </p>
+        </div>
+      </Section>
+
       <Section icon={Eye} iconColor="text-emerald-400" title={t("methodology.visualization.title")}>
         <Paragraph text={t("methodology.visualization.description")} />
         <BulletList
           items={[
             t("methodology.visualization.size"),
             t("methodology.visualization.color"),
+            t("methodology.visualization.sparkline"),
+            t("methodology.visualization.pulse"),
             t("methodology.visualization.interaction"),
           ]}
         />
@@ -272,6 +327,27 @@ export function MethodologyContent({ t }) {
               </div>
             ))}
           </div>
+        </div>
+      </Section>
+
+      <Section
+        icon={Sliders}
+        iconColor="text-amber-300"
+        title={t("methodology.personalization.title")}
+      >
+        <Paragraph text={t("methodology.personalization.description")} />
+        <div className="mt-3 space-y-2.5 rounded-xl bg-gray-800/50 p-4">
+          {PERSONALIZATION_ITEMS.map(({ titleKey, descKey, titleClass, topBorder }) => (
+            <div key={titleKey} className={topBorder ? "border-t border-gray-700/50 pt-2" : ""}>
+              <div className={`text-sm font-semibold ${titleClass}`}>{t(titleKey)}</div>
+              <p className="mt-0.5 text-xs leading-relaxed text-gray-400">{t(descKey)}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-3 rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-3">
+          <p className="text-sm leading-relaxed text-emerald-200">
+            {t("methodology.personalization.weightsMath")}
+          </p>
         </div>
       </Section>
 

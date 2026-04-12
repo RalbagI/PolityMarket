@@ -53,4 +53,19 @@ describe("MethodologyModal", () => {
     unmount();
     expect(document.body.style.overflow).toBe("");
   });
+
+  it("renders the lenses and personalization sections", () => {
+    render(<MethodologyModal isOpen={true} onClose={() => {}} />);
+    expect(screen.getByText("methodology.lenses.title")).toBeInTheDocument();
+    expect(screen.getByText("methodology.lenses.momentumTitle")).toBeInTheDocument();
+    expect(screen.getByText("methodology.lenses.marketTitle")).toBeInTheDocument();
+    expect(screen.getByText("methodology.lenses.yourScoreTitle")).toBeInTheDocument();
+    expect(screen.getByText("methodology.lenses.momentumFormula")).toBeInTheDocument();
+    expect(screen.getByText("methodology.personalization.title")).toBeInTheDocument();
+    expect(screen.getByText("methodology.personalization.heroTitle")).toBeInTheDocument();
+    expect(screen.getByText("methodology.personalization.weightsTitle")).toBeInTheDocument();
+    expect(screen.getByText("methodology.personalization.weightsMath")).toBeInTheDocument();
+    expect(screen.getByText("methodology.visualization.sparkline")).toBeInTheDocument();
+    expect(screen.getByText("methodology.visualization.pulse")).toBeInTheDocument();
+  });
 });
