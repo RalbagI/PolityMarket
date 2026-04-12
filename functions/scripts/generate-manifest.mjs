@@ -14,6 +14,7 @@ const binaryPath = path.join(
   "firebase-functions.js",
 );
 
+// DEP0040: punycode deprecation from firebase-functions internals — suppress during manifest generation only
 const result = spawnSync(
   process.execPath,
   ["--disable-warning=DEP0040", binaryPath, "."],

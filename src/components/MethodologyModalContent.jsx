@@ -90,6 +90,40 @@ const LEGAL_KEYS = [
   "changes",
 ];
 
+const LENS_CARDS = [
+  {
+    titleKey: "methodology.lenses.momentumTitle",
+    descKey: "methodology.lenses.momentumDescription",
+    titleClass: "text-indigo-300",
+  },
+  {
+    titleKey: "methodology.lenses.marketTitle",
+    descKey: "methodology.lenses.marketDescription",
+    titleClass: "text-violet-300",
+    topBorder: true,
+  },
+  {
+    titleKey: "methodology.lenses.yourScoreTitle",
+    descKey: "methodology.lenses.yourScoreDescription",
+    titleClass: "text-emerald-300",
+    topBorder: true,
+  },
+];
+
+const PERSONALIZATION_ITEMS = [
+  {
+    titleKey: "methodology.personalization.heroTitle",
+    descKey: "methodology.personalization.heroDescription",
+    titleClass: "text-amber-200",
+  },
+  {
+    titleKey: "methodology.personalization.weightsTitle",
+    descKey: "methodology.personalization.weightsDescription",
+    titleClass: "text-emerald-200",
+    topBorder: true,
+  },
+];
+
 const DISPLAY_OPTION_ROWS = [
   {
     titleKey: "methodology.visualization.sizeByTitle",
@@ -242,25 +276,7 @@ export function MethodologyContent({ t }) {
       <Section icon={Layers} iconColor="text-sky-400" title={t("methodology.lenses.title")}>
         <Paragraph text={t("methodology.lenses.description")} />
         <div className="mt-3 space-y-2.5 rounded-xl bg-gray-800/50 p-4">
-          {[
-            {
-              titleKey: "methodology.lenses.momentumTitle",
-              descKey: "methodology.lenses.momentumDescription",
-              titleClass: "text-indigo-300",
-            },
-            {
-              titleKey: "methodology.lenses.marketTitle",
-              descKey: "methodology.lenses.marketDescription",
-              titleClass: "text-violet-300",
-              topBorder: true,
-            },
-            {
-              titleKey: "methodology.lenses.yourScoreTitle",
-              descKey: "methodology.lenses.yourScoreDescription",
-              titleClass: "text-emerald-300",
-              topBorder: true,
-            },
-          ].map(({ titleKey, descKey, titleClass, topBorder }) => (
+          {LENS_CARDS.map(({ titleKey, descKey, titleClass, topBorder }) => (
             <div key={titleKey} className={topBorder ? "border-t border-gray-700/50 pt-2" : ""}>
               <div className={`text-sm font-semibold ${titleClass}`}>{t(titleKey)}</div>
               <p className="mt-0.5 text-xs leading-relaxed text-gray-400">{t(descKey)}</p>
@@ -321,22 +337,12 @@ export function MethodologyContent({ t }) {
       >
         <Paragraph text={t("methodology.personalization.description")} />
         <div className="mt-3 space-y-2.5 rounded-xl bg-gray-800/50 p-4">
-          <div>
-            <div className="text-sm font-semibold text-amber-200">
-              {t("methodology.personalization.heroTitle")}
+          {PERSONALIZATION_ITEMS.map(({ titleKey, descKey, titleClass, topBorder }) => (
+            <div key={titleKey} className={topBorder ? "border-t border-gray-700/50 pt-2" : ""}>
+              <div className={`text-sm font-semibold ${titleClass}`}>{t(titleKey)}</div>
+              <p className="mt-0.5 text-xs leading-relaxed text-gray-400">{t(descKey)}</p>
             </div>
-            <p className="mt-0.5 text-xs leading-relaxed text-gray-400">
-              {t("methodology.personalization.heroDescription")}
-            </p>
-          </div>
-          <div className="border-t border-gray-700/50 pt-2">
-            <div className="text-sm font-semibold text-emerald-200">
-              {t("methodology.personalization.weightsTitle")}
-            </div>
-            <p className="mt-0.5 text-xs leading-relaxed text-gray-400">
-              {t("methodology.personalization.weightsDescription")}
-            </p>
-          </div>
+          ))}
         </div>
         <div className="mt-3 rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-3">
           <p className="text-sm leading-relaxed text-emerald-200">
