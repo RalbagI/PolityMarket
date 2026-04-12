@@ -1064,5 +1064,25 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-11T23:20:04.954Z"
+  },
+  {
+    "date": "2026-04-13",
+    "warnings": [
+      "[Temporal] Ahmad Tibi: score 6.4 deviates 1.5 from 7-day avg 4.9 (threshold: 1.5)",
+      "[Outlier] Avi Dichter: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Eli Cohen: score 6.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Miri Regev: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gadi Eisenkot: score 6.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Aryeh Deri: score 3.6 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Avigdor Lieberman: score 6.6 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Ahmad Tibi: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gideon Sa'ar: score 6.7 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yair Golan: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Naftali Bennett: score 7.1 outside IQR bounds [4.2, 5.8]",
+      "[Party] United Torah Judaism: all 7 members have identical scores — possible hallucination",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-12T23:14:14.585Z"
   }
 ]
