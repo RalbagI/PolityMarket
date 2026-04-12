@@ -85,7 +85,9 @@ export function SidebarContent({
   consensusAvailable = false,
   yourScoreAvailable = false,
   onOpenWeights,
+  onCompare,
   hideHeader,
+  compact,
 }) {
   const setSignalMode = useStore((s) => s.setSignalMode);
   const colorBy = useStore((s) => s.treemapColorBy);
@@ -290,88 +292,104 @@ export function SidebarContent({
       {stats.total === 0 ? (
         <p className="text-xs text-gray-500 text-center py-4">{t("filterBar.noResults")}</p>
       ) : (
-        <>
-          {/* Color legend — only relevant when market lens honors colorBy */}
-          {lens === "market" && (
-            <div>
-              <div
-                className="h-2 rounded-full"
-                style={{
-                  background:
-                    colorBy === "media_volume"
-                      ? "linear-gradient(to right, #1e3a8a, #2563eb, #67e8f9)"
-                      : "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
-                }}
-              />
-              <div className="flex justify-between mt-1">
-                {colorBy === "media_volume" ? (
-                  <>
-                    <span className="text-[10px] text-gray-500">
-                      {t("sidebar.colorLegend.lowVolume")}
-                    </span>
-                    <span className="text-[10px] text-gray-500">
-                      {t("sidebar.colorLegend.highVolume")}
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <span className="text-[10px] text-gray-500">
-                      {t("sidebar.colorLegend.positive")}
-                    </span>
-                    <span className="text-[10px] text-gray-500">
-                      {t("sidebar.colorLegend.negative")}
-                    </span>
-                  </>
-                )}
+        !compact && (
+          <>
+            {/* Color legend — only relevant when market lens honors colorBy */}
+            {lens === "market" && (
+              <div>
+                <div
+                  className="h-2 rounded-full"
+                  style={{
+                    background:
+                      colorBy === "media_volume"
+                        ? "linear-gradient(to right, #1e3a8a, #2563eb, #67e8f9)"
+                        : "linear-gradient(to right, #0d9488, #22c55e, #facc15, #f97316, #dc2626)",
+                  }}
+                />
+                <div className="flex justify-between mt-1">
+                  {colorBy === "media_volume" ? (
+                    <>
+                      <span className="text-[10px] text-gray-500">
+                        {t("sidebar.colorLegend.lowVolume")}
+                      </span>
+                      <span className="text-[10px] text-gray-500">
+                        {t("sidebar.colorLegend.highVolume")}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-[10px] text-gray-500">
+                        {t("sidebar.colorLegend.positive")}
+                      </span>
+                      <span className="text-[10px] text-gray-500">
+                        {t("sidebar.colorLegend.negative")}
+                      </span>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Party Breakdown — only in politicians view (redundant in party mode) */}
-          {viewMode !== "parties" && (
-            <div>
-              <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
-                {t("sidebar.partyBreakdown")}
-              </h3>
-              <div className="space-y-1.5">
-                {stats.parties.map(({ party, count, color }) => (
-                  <div key={party} className="flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="w-2.5 h-2.5 rounded-sm"
-                        style={{ backgroundColor: color.accent }}
-                      />
-                      <span className="text-gray-300">{localizeParty(t, party)}</span>
+            {/* Party Breakdown — only in politicians view (redundant in party mode) */}
+            {viewMode !== "parties" && (
+              <div>
+                <h3 className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">
+                  {t("sidebar.partyBreakdown")}
+                </h3>
+                <div className="space-y-1.5">
+                  {stats.parties.map(({ party, count, color }) => (
+                    <div key={party} className="flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-2">
+                        <div
+                          className="w-2.5 h-2.5 rounded-sm"
+                          style={{ backgroundColor: color.accent }}
+                        />
+                        <span className="text-gray-300">{localizeParty(t, party)}</span>
+                      </div>
+                      <span className="text-gray-500 font-mono">{count}</span>
                     </div>
-                    <span className="text-gray-500 font-mono">{count}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-        </>
+            )}
+          </>
+        )
+      )}
+
+      {/* Compare button */}
+      {onCompare && (
+        <button
+          onClick={onCompare}
+          className="flex items-center justify-center gap-1.5 w-full px-3 py-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 hover:bg-indigo-500/20 transition-colors text-xs text-indigo-300 font-medium"
+        >
+          {t("compare.title")}
+        </button>
       )}
 
       {/* Methodology Link */}
-      <button
-        onClick={onMethodologyClick}
-        className="w-full text-xs text-indigo-400 hover:text-indigo-300 underline underline-offset-2 text-start transition-colors"
-      >
-        {t("methodology.link")}
-      </button>
+      {!compact && (
+        <button
+          onClick={onMethodologyClick}
+          className="w-full text-xs text-indigo-400 hover:text-indigo-300 underline underline-offset-2 text-start transition-colors"
+        >
+          {t("methodology.link")}
+        </button>
+      )}
 
       {/* TalkPoint attribution */}
-      <div className="text-xs text-gray-500">
-        by{" "}
-        <a
-          href="https://tipi.zone/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-indigo-400 hover:text-indigo-300 transition-colors"
-        >
-          {TALKPOINT_LABEL}
-        </a>
-      </div>
+      {!compact && (
+        <div className="text-xs text-gray-500">
+          by{" "}
+          <a
+            href="https://tipi.zone/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+          >
+            {TALKPOINT_LABEL}
+          </a>
+        </div>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { beforeEach, describe, it, expect, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Sidebar from "./Sidebar";
+import Sidebar, { SidebarContent } from "./Sidebar";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -298,6 +298,93 @@ describe("Sidebar display options position", () => {
 
     expect(screen.queryByText("treemap.options.title")).not.toBeInTheDocument();
     expect(screen.queryByText("sidebar.colorLegend.lowVolume")).not.toBeInTheDocument();
+  });
+});
+
+const mockStats = {
+  total: 5,
+  weightedAvg: 55,
+  parties: [{ party: "TestParty", count: 5, color: { accent: "#3b82f6" } }],
+};
+
+const mockT = (key) => key;
+
+describe("SidebarContent compact mode", () => {
+  it("hides party breakdown, color legend, methodology link, and attribution in compact mode", () => {
+    const { container } = render(
+      <SidebarContent
+        stats={mockStats}
+        t={mockT}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+        signalMode="media_climate"
+        hideHeader
+        compact
+      />,
+    );
+    expect(container.textContent).not.toContain("sidebar.partyBreakdown");
+    expect(container.textContent).not.toContain("methodology.link");
+    expect(container.textContent).not.toContain("tipi.zone");
+    expect(container.textContent).not.toContain("sidebar.colorLegend");
+  });
+
+  it("still renders lens toggle and signal mode in compact mode", () => {
+    render(
+      <SidebarContent
+        stats={mockStats}
+        t={mockT}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+        signalMode="media_climate"
+        hideHeader
+        compact
+      />,
+    );
+    expect(screen.getByText("treemap.lens.label")).toBeInTheDocument();
+    expect(screen.getByText("signals.title")).toBeInTheDocument();
+  });
+
+  it("renders compare button when onCompare is provided", () => {
+    const onCompare = vi.fn();
+    render(
+      <SidebarContent
+        stats={mockStats}
+        t={mockT}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+        signalMode="media_climate"
+        onCompare={onCompare}
+        hideHeader
+        compact
+      />,
+    );
+    const btn = screen.getByText("compare.title");
+    expect(btn).toBeInTheDocument();
+    fireEvent.click(btn);
+    expect(onCompare).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not render compare button when onCompare is not provided", () => {
+    render(
+      <SidebarContent
+        stats={mockStats}
+        t={mockT}
+        onMethodologyClick={() => {}}
+        filterProps={baseFilterProps}
+        viewMode="politicians"
+        onViewModeChange={() => {}}
+        signalMode="media_climate"
+        hideHeader
+        compact
+      />,
+    );
+    expect(screen.queryByText("compare.title")).not.toBeInTheDocument();
   });
 });
 

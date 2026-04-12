@@ -414,7 +414,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Mobile: Sidebar content inline below treemap — scroll down to discover */}
+        {/* Mobile: compact controls below treemap — full sidebar lives in the hamburger drawer */}
         <div className="md:hidden border-t border-gray-800">
           <SidebarContent
             stats={sidebarStats}
@@ -436,7 +436,12 @@ export default function App() {
               logEvent("open_weights");
               setWeightsOpen(true);
             }}
+            onCompare={() => {
+              logEvent("open_compare");
+              setCompareOpen(true);
+            }}
             hideHeader
+            compact
           />
         </div>
       </main>
