@@ -96,13 +96,13 @@ Daily changes are calculated by comparing today's score to yesterday's, so you c
 
 ### Treemap Lenses
 
-The homepage treemap can be read through three lenses. The active lens changes which politicians stand out without changing the underlying data.
+The homepage treemap has three viewing modes. Each one highlights different politicians — the data underneath stays exactly the same.
 
-- **Momentum (default)** leads with motion instead of state. A tile's size comes from an interest score, roughly `z(|daily change|) + z(|volatility|) + z(media volume)`, and its color comes from today's signed change — red for a drop, gray for flat, green for a rise. Because base scores cluster tightly around 50, momentum is usually a better answer to "what should I look at right now?" than the static score.
-- **Market (classic)** is the original lens. Size and color come from the Size by / Color by dropdowns in the sidebar.
-- **Your score (opt-in)** recomputes every politician under your own 8-dimension weights, set from the Priorities drawer in the sidebar. The recomputation happens in the browser and uses the same null-dimension redistribution rule as [data-pipeline/lib/computeScore.js](data-pipeline/lib/computeScore.js), so missing domains don't punish anyone unfairly. Your weights are saved to localStorage and never sent to a server.
+- **Momentum (default)** — who's moving right now? Bigger tiles = more action (score change + volatility + media buzz). Color shows direction: red = dropping, green = rising. Since most scores hover around 50, this is usually the fastest way to spot what's interesting.
+- **Market (classic)** — the original view. Size and color follow the sidebar's Size by / Color by controls.
+- **Your score (opt-in)** — rescores every politician using your personal 8-dimension weights, set from the Priorities panel in the sidebar. The math runs in the browser using the same fair-play rule as [data-pipeline/lib/computeScore.js](data-pipeline/lib/computeScore.js) (missing dimensions redistribute, nobody gets an unfair zero). Your weights stay in localStorage and are never sent to a server.
 
-Above the treemap, a "Why this matters today" hero ranks Most Watched / Fastest Rise / Fastest Drop by the same interest score, and surfaces each politician's locale-gated "bottom line" sentence from the daily AI analysis.
+Above the treemap, a daily briefing ranks Most Watched / Fastest Rise / Fastest Drop, and surfaces each politician's AI-generated one-line takeaway when available.
 
 ## Docs
 
