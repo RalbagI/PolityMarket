@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { TrendingUp, TrendingDown, Newspaper } from "lucide-react";
 import { localizeName, localizeParty } from "../lib/localize";
@@ -154,6 +154,17 @@ export default function DailyInsights({
     });
   }, [data, signalMode, summaryData, bottomLineLookup, localeIsEnglish, entityMode]);
 
+  const mobileScrollRef = useRef(null);
+  const isRTL = i18n.dir() === "rtl";
+
+  useEffect(() => {
+    const el = mobileScrollRef.current;
+    if (!el || !insights.length) return;
+    if (typeof el.scrollTo === "function") {
+      el.scrollTo({ left: isRTL ? el.scrollWidth : 0, behavior: "instant" });
+    }
+  }, [insights, isRTL]);
+
   if (!insights.length) {
     return (
       <div
@@ -187,7 +198,10 @@ export default function DailyInsights({
         ))}
       </div>
       {/* Mobile: horizontal scroll */}
-      <div className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-3 -mx-1 px-1 pb-1">
+      <div
+        ref={mobileScrollRef}
+        className="flex md:hidden overflow-x-auto snap-x snap-mandatory gap-2 -mx-1 px-1 pb-1"
+      >
         {insights.map((insight, i) => (
           <InsightCard
             key={getEntityKey(insight, entityMode)}
@@ -233,27 +247,27 @@ function InsightCard({
     return (
       <button
         onClick={onSelect}
-        className={`text-start rounded-xl border p-3 bg-gradient-to-l ${gradient} ${border}
+        className={`text-start rounded-lg border p-2.5 bg-gradient-to-l ${gradient} ${border}
           hover:scale-[1.02] hover:shadow-lg hover:shadow-black/20
           active:scale-[0.98] transition-all duration-200
-          animate-fadeSlideUp min-w-[240px] snap-center shrink-0
+          animate-fadeSlideUp min-w-[190px] snap-center shrink-0
         `}
         style={{ animationDelay: `${animationDelay}ms` }}
       >
-        <div className="flex items-center gap-1.5 mb-2">
+        <div className="flex items-center gap-1.5 mb-1.5">
           <Icon className={`w-4 h-4 ${iconColor}`} />
           <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
             {t(labelKey)}
           </span>
         </div>
-        <div className="text-lg font-black text-white leading-tight truncate">{label}</div>
+        <div className="text-base font-black text-white leading-tight truncate">{label}</div>
         {partyLabel && <div className="text-xs text-gray-500 mt-0.5 truncate">{partyLabel}</div>}
         {bottomLine && (
-          <p className="mt-2 text-xs text-gray-300 leading-snug line-clamp-2">{bottomLine}</p>
+          <p className="mt-1.5 text-xs text-gray-300 leading-snug line-clamp-2">{bottomLine}</p>
         )}
-        <div className="flex items-end justify-between mt-2 gap-2">
+        <div className="flex items-end justify-between mt-1.5 gap-2">
           <div>
-            <div className={`text-2xl font-black tabular-nums ${deltaColor}`} dir="ltr">
+            <div className={`text-xl font-black tabular-nums ${deltaColor}`} dir="ltr">
               {deltaDisplay}
             </div>
             {!isVolume && Number.isFinite(insight.displayScore) && (
@@ -262,9 +276,9 @@ function InsightCard({
               </div>
             )}
           </div>
-          <Sparkline data={sparklineData} width={60} height={24} />
+          <Sparkline data={sparklineData} width={48} height={18} />
         </div>
-        <div className="text-[9px] text-gray-600 mt-2">{t("dailyInsights.tapToExplore")}</div>
+        <div className="text-[9px] text-gray-600 mt-1.5">{t("dailyInsights.tapToExplore")}</div>
       </button>
     );
   }
