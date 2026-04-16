@@ -148,6 +148,15 @@ fi
 
 # ── Deploy to Firebase ───────────────────────────────────────────────
 EXPECTED_PROJECT="politymarket"
+
+# Fail-closed: verify .firebaserc says politymarket (must match, not just "not wrong")
+RC_PROJECT="$(node -e "try{console.log(JSON.parse(require('fs').readFileSync('.firebaserc','utf8')).projects.default||'')}catch{console.log('')}" 2>/dev/null || echo "")"
+if [[ "${RC_PROJECT}" != "${EXPECTED_PROJECT}" ]]; then
+  echo "FATAL: .firebaserc default project is '${RC_PROJECT}', expected '${EXPECTED_PROJECT}'." >&2
+  exit 1
+fi
+
+# Also check active Firebase CLI project (fail-closed on mismatch)
 ACTIVE_PROJECT="$(npx firebase-tools use --json 2>/dev/null | node -e "try{const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));console.log(d.result||'')}catch{}" 2>/dev/null || echo "")"
 if [[ -n "${ACTIVE_PROJECT}" && "${ACTIVE_PROJECT}" != "${EXPECTED_PROJECT}" ]]; then
   echo "FATAL: Firebase active project is '${ACTIVE_PROJECT}', expected '${EXPECTED_PROJECT}'." >&2

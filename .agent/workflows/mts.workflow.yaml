@@ -128,14 +128,23 @@ phases:
       - name: verify-firebase-project
         type: cmd
         cmd: |
-          ACTIVE=$(npx firebase-tools use 2>/dev/null | grep -oP '(?<=Active Project: ).*' || echo "")
-          if [ -n "$ACTIVE" ] && [ "$ACTIVE" != "politymarket" ]; then
-            echo "FATAL: active Firebase project is '$ACTIVE', expected 'politymarket'. Run: firebase use politymarket"; exit 1
+          EXPECTED="politymarket"
+          # Fail-closed: .firebaserc MUST say politymarket
+          RC_PROJECT=$(node -e "try{console.log(JSON.parse(require('fs').readFileSync('.firebaserc','utf8')).projects.default||'')}catch{console.log('')}" 2>/dev/null || echo "")
+          if [ "$RC_PROJECT" != "$EXPECTED" ]; then
+            echo "FATAL: .firebaserc default project is '$RC_PROJECT', expected '$EXPECTED'."; exit 1
           fi
+          # Active CLI project must not be wrong
+          ACTIVE=$(npx firebase-tools use 2>/dev/null | grep -oP '(?<=Active Project: ).*' || echo "")
+          if [ -n "$ACTIVE" ] && [ "$ACTIVE" != "$EXPECTED" ]; then
+            echo "FATAL: active Firebase project is '$ACTIVE', expected '$EXPECTED'. Run: firebase use $EXPECTED"; exit 1
+          fi
+          echo "Firebase project verification passed: $EXPECTED"
         fail_action: exit
         notes: >-
-          Safety gate: abort deploy if Firebase CLI is pointing at
-          the wrong project (e.g. tipi-83650).
+          Fail-closed safety gate: abort deploy unless .firebaserc
+          positively confirms politymarket. Prevents cross-project
+          deployments into tipi-83650.
 
       - name: deploy
         type: cmd
