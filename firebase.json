@@ -1,6 +1,9 @@
 {
   "hosting": {
     "public": "dist",
+    "predeploy": [
+      "bash scripts/predeploy-hosting-guard.sh"
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",

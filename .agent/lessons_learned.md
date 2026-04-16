@@ -1,5 +1,5 @@
 ---
-updated_at: "2026-04-05"
+updated_at: "2026-04-16"
 review_cycle_days: 365
 ---
 
@@ -124,6 +124,12 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: `public/data/details-lite/` is gitignored. The nightly pipeline writes both `details/` and `details-lite/`, but only commits `details/`. CI's `prebuild` re-derives `details-lite/` from `details/` via `scripts/generate-compact-artifacts.js`. That script's `buildDetailLiteEntry` enumerates fields explicitly — any field added to the LLM pipeline must also be added here, or it gets silently dropped on every deploy. This caused all English AI summaries to disappear in production after PR #163, because `chain_of_thought_en` was never in the lite-builder's field list.
 - **Pattern**: When adding a field that flows from `data-pipeline/generateDailyScores.js` to the UI, grep for ALL builders that produce data files: `generateDailyScores.js` (writes `details/` and `details-lite/`) AND `scripts/generate-compact-artifacts.js` (re-builds `details-lite/` from `details/` at CI build time). Both must propagate the field.
 - **Prevention**: `tests/unit/compact-artifacts.unit.test.js` now asserts that every UI-consumed field is enumerated in `buildDetailLiteEntry`. Add new required fields to the `REQUIRED_LITE_FIELDS` list there.
+
+### Cross-project Firebase deploy contamination (2026-04-16)
+
+- **Lesson**: PolityMarket deploy commands (daily pipeline, `/mts` workflow) deployed to `tipi-83650` instead of `politymarket`, replacing tipi.zone with PolityMarket content. Previous fix (commit 5b850d2) added `--project politymarket` but guards were fail-open and bypassed on parse failures.
+- **Pattern**: All Firebase deploy commands MUST use `--project politymarket` explicitly. Pre-deploy guards must be **fail-closed** (block unless `.firebaserc` positively says `politymarket`). Added `predeploy` hook in `firebase.json` and hardened guards in `run-daily-pipeline.sh` and `mts.workflow.yaml`.
+- **Prevention**: `scripts/predeploy-hosting-guard.sh` wired as a Firebase predeploy hook. Also validates `dist/index.html` does not contain Tipi references.
 
 ### Post-review edits still need a final Prettier pass before prepare-for-merge (2026-04-11)
 

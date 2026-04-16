@@ -1,5 +1,5 @@
 ---
-updated_at: "2026-03-19"
+updated_at: "2026-04-16"
 review_cycle_days: 90
 scope: Deployment & CI/CD
 ---
@@ -11,7 +11,23 @@ scope: Deployment & CI/CD
 - Project: `politymarket`
 - URL: https://politymarket.web.app
 - Deploy: `firebase deploy --only hosting`
-- Config: `firebase.json` (CSP headers, cache rules)
+- Config: `firebase.json` (CSP headers, cache rules, predeploy hooks)
+
+### Predeploy Guard (Fail-Closed)
+
+`scripts/predeploy-hosting-guard.sh` runs as a Firebase predeploy hook
+(configured in `firebase.json`). It blocks every deploy unless it can
+positively confirm the target is `politymarket`:
+
+1. **`.firebaserc` check** -- default project must equal `politymarket`.
+2. **Active project check** -- `GCLOUD_PROJECT` (set by Firebase CLI
+   during predeploy) or `firebase use --json` must match. Catches
+   `--project` overrides.
+3. **Content check** -- `dist/index.html` must exist and must NOT
+   contain Tipi references (`tipi.zone`, `tipi-83650`).
+
+The daily pipeline (`scripts/run-daily-pipeline.sh`) also performs its
+own fail-closed `.firebaserc` + active-project checks before deploying.
 
 ## CI Pipeline (GitHub Actions)
 
