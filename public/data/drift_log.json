@@ -1182,5 +1182,27 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-15T23:20:52.733Z"
+  },
+  {
+    "date": "2026-04-17",
+    "warnings": [
+      "[Temporal] Tally Gotliv: score 3.0 deviates 1.8 from 7-day avg 4.8 (threshold: 1.7)",
+      "[Outlier] Benjamin Netanyahu: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yariv Levin: score 3.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Nir Barkat: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Yisrael Katz: score 6.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Shlomo Karhi: score 3.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Hanoch Milwidsky: score 4.1 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Tally Gotliv: score 3.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Moshe Saada: score 6.0 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gila Gamliel: score 5.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Galit Distel Atbaryan: score 3.9 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Itamar Ben Gvir: score 3.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Samir Ben Said: score 3.8 outside IQR bounds [4.2, 5.8]",
+      "[Outlier] Gideon Sa'ar: score 6.4 outside IQR bounds [4.2, 5.8]",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 1/135 (1%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-16T23:17:21.173Z"
   }
 ]
