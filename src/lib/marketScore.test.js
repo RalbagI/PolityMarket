@@ -5,6 +5,7 @@ import {
   computeMarketScore,
   getMarketTier,
   getRollingMarketBounds,
+  MARKET_DELTA_PCT_CAP,
   resolveDisplayScore,
 } from "./marketScore";
 
@@ -145,6 +146,44 @@ describe("marketScore helpers", () => {
 
     expect(secondRow.market_delta_points).toBeNull();
     expect(secondRow.market_delta_pct).toBeNull();
+  });
+
+  it("caps delta percentage to ±MARKET_DELTA_PCT_CAP", () => {
+    // anchor provides the low end so volatile's day-1 score lands well above 40
+    // volatile jumps from near-neutral to high, producing a raw delta % > 20%
+    const rows = annotateMarketTimeline([
+      {
+        date: "2026-03-21",
+        politician_id: "volatile",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.1,
+      },
+      {
+        date: "2026-03-21",
+        politician_id: "anchor",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE - 2,
+      },
+      {
+        date: "2026-03-22",
+        politician_id: "volatile",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE + 3,
+      },
+      {
+        date: "2026-03-22",
+        politician_id: "anchor",
+        overall_score: MARKET_NEUTRAL_RAW_SCORE - 2,
+      },
+    ]);
+
+    const dayTwo = rows.find(
+      (row) => row.date === "2026-03-22" && row.politician_id === "volatile"
+    );
+
+    // Points delta is uncapped
+    expect(Math.abs(dayTwo.market_delta_points)).toBeGreaterThan(0);
+    // Percentage delta must be present and capped to ±MARKET_DELTA_PCT_CAP
+    expect(dayTwo.market_delta_pct).not.toBeNull();
+    expect(dayTwo.market_delta_pct).toBeLessThanOrEqual(MARKET_DELTA_PCT_CAP);
+    expect(dayTwo.market_delta_pct).toBeGreaterThanOrEqual(-MARKET_DELTA_PCT_CAP);
   });
 
   it("decays neutral raw scores toward 50 instead of snapping immediately to the midpoint", () => {

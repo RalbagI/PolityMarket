@@ -6,6 +6,7 @@ export const MARKET_DELTA_PRECISION = 1;
 export const MARKET_PERCENTILE_PRECISION = 0;
 export const MARKET_PERCENT_DELTA_MIN_BASE = 40;
 export const MARKET_NEUTRAL_DECAY = 0.5;
+export const MARKET_DELTA_PCT_CAP = 20;
 
 export const MARKET_TIER_CONFIG = Object.freeze({
   S: { min: 85, label: "Consensus / Peak Momentum" },
@@ -277,7 +278,14 @@ export function annotateMarketTimeline(
       );
       const deltaPct =
         previous.market_score >= MARKET_PERCENT_DELTA_MIN_BASE
-          ? roundTo((deltaPoints / previous.market_score) * 100, MARKET_DELTA_PRECISION)
+          ? roundTo(
+              clamp(
+                (deltaPoints / previous.market_score) * 100,
+                -MARKET_DELTA_PCT_CAP,
+                MARKET_DELTA_PCT_CAP
+              ),
+              MARKET_DELTA_PRECISION
+            )
           : null;
 
       deltaLookup.set(`${current[dateKey]}::${getEntityId(current, entityKey)}`, {

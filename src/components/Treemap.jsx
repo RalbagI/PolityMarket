@@ -76,10 +76,10 @@ export default memo(function Treemap({ data, onSelect, selectedPolitician, signa
       }
       const normalized = sizeBy === "market_score" ? entry.normalizedScore : entry.normalizedVolume;
       if (typeof normalized === "number" && Number.isFinite(normalized)) {
-        return Math.max(normalized, 0.15);
+        return Math.sqrt(Math.max(normalized, 0.15));
       }
       const raw = entry[sizeBy];
-      if (typeof raw === "number" && Number.isFinite(raw) && raw > 0) return raw;
+      if (typeof raw === "number" && Number.isFinite(raw) && raw > 0) return Math.sqrt(raw);
       return 1;
     },
     [isMomentum, isYourScore, sizeBy]
