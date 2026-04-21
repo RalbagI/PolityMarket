@@ -45,7 +45,51 @@ export PIPELINE_MAX_FETCH_FAILURES="${PIPELINE_MAX_FETCH_FAILURES:-0}"
 export GIT_TERMINAL_PROMPT=0
 
 # Ensure PATH includes npm global bin (needed for cron which has minimal PATH)
-export PATH="${HOME}/.npm-global/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}"
+# /home/linuxbrew/.linuxbrew/bin is added so `gh` is found under systemd-user,
+# whose default PATH is otherwise minimal.
+export PATH="${HOME}/.npm-global/bin:${HOME}/.local/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:${PATH}"
+
+# ── Resolve GitHub auth token for unattended git fetch/pull/push ─────
+# A systemd user service cannot reach the desktop GNOME keyring, so the global
+# `gh auth git-credential` helper returns empty and git falls back to a disabled
+# terminal prompt — failing every network git op. Resolve a token once and wire
+# it through GIT_ASKPASS for every subsequent git invocation.
+resolve_github_token() {
+  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+    printf '%s' "${GITHUB_TOKEN}"
+    return 0
+  fi
+  if command -v gh &>/dev/null; then
+    local tok
+    if tok="$(gh auth token 2>/dev/null)" && [[ -n "${tok}" ]]; then
+      printf '%s' "${tok}"
+      return 0
+    fi
+  fi
+  return 1
+}
+
+RESOLVED_TOKEN="$(resolve_github_token || true)"
+if [[ -z "${RESOLVED_TOKEN}" ]]; then
+  echo "FATAL: No GitHub token available for unattended git operations." >&2
+  echo "  Fix: add GITHUB_TOKEN=<pat> to ${ENV_FILE} (or run 'gh auth login' in a" >&2
+  echo "  session that shares the keyring with the systemd user manager)." >&2
+  exit 1
+fi
+export GITHUB_TOKEN="${RESOLVED_TOKEN}"
+unset RESOLVED_TOKEN
+
+ASKPASS_FILE="$(mktemp)"
+cat > "${ASKPASS_FILE}" <<'EOF'
+#!/usr/bin/env bash
+case "$1" in
+  *Username*) printf '%s\n' "x-access-token" ;;
+  *Password*) printf '%s\n' "${GITHUB_TOKEN}" ;;
+  *) printf '\n' ;;
+esac
+EOF
+chmod 700 "${ASKPASS_FILE}"
+export GIT_ASKPASS="${ASKPASS_FILE}"
 
 # Verify LLM CLI is available (Codex or Claude)
 if [[ "${LLM_PROVIDER:-codex}" == "claude" ]]; then
@@ -90,6 +134,7 @@ cleanup() {
     git stash pop 2>/dev/null || echo "⚠ Could not auto-restore stash — run 'git stash pop' manually."
   fi
   rm -f "${LOCK_FILE}"
+  rm -f "${ASKPASS_FILE:-}"
 }
 trap cleanup EXIT
 
@@ -125,26 +170,7 @@ fi
 
 git commit -m "chore(data): daily pipeline update [${RUN_DATE}]"
 
-if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-  ASKPASS_FILE="$(mktemp)"
-  cat > "${ASKPASS_FILE}" <<'EOF'
-#!/usr/bin/env bash
-case "$1" in
-  *Username*) printf '%s\n' "x-access-token" ;;
-  *Password*) printf '%s\n' "${GITHUB_TOKEN}" ;;
-  *) printf '\n' ;;
-esac
-EOF
-  chmod 700 "${ASKPASS_FILE}"
-  if GIT_ASKPASS="${ASKPASS_FILE}" git push origin main; then
-    rm -f "${ASKPASS_FILE}"
-  else
-    rm -f "${ASKPASS_FILE}"
-    exit 1
-  fi
-else
-  git push origin main
-fi
+git push origin main
 
 # ── Deploy to Firebase ───────────────────────────────────────────────
 EXPECTED_PROJECT="politymarket"

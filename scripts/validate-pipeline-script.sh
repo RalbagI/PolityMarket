@@ -83,6 +83,32 @@ else
   echo "  ✓ lock file mechanism present"
 fi
 
+# 7. Verify unattended git auth is wired up
+# The systemd user service can't reach the desktop keyring, so the pipeline
+# must resolve a token up-front and export GIT_ASKPASS before any git network
+# operation. See: 2026-04-21 pipeline-miss incident.
+echo "→ Checking unattended git auth wiring..."
+AUTH_ERRORS=0
+if ! grep -q 'resolve_github_token' "${PIPELINE_SCRIPT}"; then
+  echo "FAIL: pipeline script missing resolve_github_token helper"
+  AUTH_ERRORS=$((AUTH_ERRORS + 1))
+fi
+if ! grep -q 'export GIT_ASKPASS=' "${PIPELINE_SCRIPT}"; then
+  echo "FAIL: pipeline script does not export GIT_ASKPASS for unattended git ops"
+  AUTH_ERRORS=$((AUTH_ERRORS + 1))
+fi
+# Ensure the askpass export appears before the first git network operation.
+ASKPASS_LINE=$(grep -n 'export GIT_ASKPASS=' "${PIPELINE_SCRIPT}" | head -n 1 | cut -d: -f1 || echo "")
+FIRST_NET_LINE=$(grep -nE '^[[:space:]]*git (fetch|pull|push)\b' "${PIPELINE_SCRIPT}" | head -n 1 | cut -d: -f1 || echo "")
+if [[ -n "${ASKPASS_LINE}" && -n "${FIRST_NET_LINE}" && "${ASKPASS_LINE}" -ge "${FIRST_NET_LINE}" ]]; then
+  echo "FAIL: GIT_ASKPASS export must precede the first git fetch/pull/push"
+  AUTH_ERRORS=$((AUTH_ERRORS + 1))
+fi
+if [[ ${AUTH_ERRORS} -eq 0 ]]; then
+  echo "  ✓ unattended git auth wiring present"
+fi
+ERRORS=$((ERRORS + AUTH_ERRORS))
+
 echo ""
 if [[ ${ERRORS} -gt 0 ]]; then
   echo "FAILED: ${ERRORS} issue(s) found in pipeline script"
