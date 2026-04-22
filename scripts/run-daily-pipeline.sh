@@ -76,20 +76,6 @@ if [[ -z "${RESOLVED_TOKEN}" ]]; then
   echo "  session that shares the keyring with the systemd user manager)." >&2
   exit 1
 fi
-export GITHUB_TOKEN="${RESOLVED_TOKEN}"
-unset RESOLVED_TOKEN
-
-ASKPASS_FILE="$(mktemp)"
-cat > "${ASKPASS_FILE}" <<'EOF'
-#!/usr/bin/env bash
-case "$1" in
-  *Username*) printf '%s\n' "x-access-token" ;;
-  *Password*) printf '%s\n' "${GITHUB_TOKEN}" ;;
-  *) printf '\n' ;;
-esac
-EOF
-chmod 700 "${ASKPASS_FILE}"
-export GIT_ASKPASS="${ASKPASS_FILE}"
 
 # Verify LLM CLI is available (Codex or Claude)
 if [[ "${LLM_PROVIDER:-codex}" == "claude" ]]; then
@@ -134,9 +120,29 @@ cleanup() {
     git stash pop 2>/dev/null || echo "⚠ Could not auto-restore stash — run 'git stash pop' manually."
   fi
   rm -f "${LOCK_FILE}"
-  rm -f "${ASKPASS_FILE:-}"
+  if [[ -n "${ASKPASS_FILE:-}" ]]; then
+    rm -f "${ASKPASS_FILE}"
+  fi
 }
 trap cleanup EXIT
+
+# Install the askpass helper after the cleanup trap is armed so a failure here
+# can't leak the file. Bake the token directly into the helper (chmod 700, owner
+# only) and drop the env vars so npm/node/npx/curl subprocesses never inherit
+# the token.
+ASKPASS_FILE="$(mktemp)"
+chmod 600 "${ASKPASS_FILE}"
+cat > "${ASKPASS_FILE}" <<EOF
+#!/usr/bin/env bash
+case "\$1" in
+  *Username*) printf '%s\n' "x-access-token" ;;
+  *Password*) printf '%s\n' "${RESOLVED_TOKEN}" ;;
+  *) printf '\n' ;;
+esac
+EOF
+chmod 700 "${ASKPASS_FILE}"
+export GIT_ASKPASS="${ASKPASS_FILE}"
+unset RESOLVED_TOKEN GITHUB_TOKEN
 
 # ── Sync with origin/main ────────────────────────────────────────────
 git fetch --quiet origin main

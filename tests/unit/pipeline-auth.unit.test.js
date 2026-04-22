@@ -67,4 +67,25 @@ describe("run-daily-pipeline.sh — unattended git auth wiring", () => {
     expect(firstNetLine).toBeTruthy();
     expect(resolveLine).toBeLessThan(firstNetLine);
   });
+
+  it("drops the token from the shell env after wiring GIT_ASKPASS so subprocesses don't inherit it", () => {
+    // Guard against regressing to `export GITHUB_TOKEN=...`, which would leak
+    // the token into every child (npm ci, node, npx, curl).
+    const askpassLine = firstLineMatching(/^\s*export\s+GIT_ASKPASS=/);
+    const unsetLine = firstLineMatching(/^\s*unset\s+.*\bGITHUB_TOKEN\b/);
+    expect(askpassLine).toBeTruthy();
+    expect(unsetLine).toBeTruthy();
+    expect(unsetLine).toBeGreaterThan(askpassLine);
+    // The script must never `export GITHUB_TOKEN=` (only assign it locally).
+    expect(script).not.toMatch(/^\s*export\s+GITHUB_TOKEN=/m);
+  });
+
+  it("installs the askpass file only after the cleanup trap is armed", () => {
+    // Closes the leak window where an early failure left the helper in /tmp.
+    const trapLine = firstLineMatching(/^\s*trap\s+cleanup\s+EXIT\b/);
+    const askpassCreate = firstLineMatching(/^\s*ASKPASS_FILE="\$\(mktemp\)"/);
+    expect(trapLine).toBeTruthy();
+    expect(askpassCreate).toBeTruthy();
+    expect(askpassCreate).toBeGreaterThan(trapLine);
+  });
 });
