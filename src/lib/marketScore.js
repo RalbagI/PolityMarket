@@ -7,6 +7,11 @@ export const MARKET_PERCENTILE_PRECISION = 0;
 export const MARKET_PERCENT_DELTA_MIN_BASE = 40;
 export const MARKET_NEUTRAL_DECAY = 0.5;
 export const MARKET_DELTA_PCT_CAP = 20;
+// Max calendar-day gap that still produces a delta in pipeline / backfill runs.
+// Sized to absorb one missed day (the 2026-04-21 incident): Tue → Thu has a
+// 2-day gap and must still emit a delta. Two consecutive misses would be a
+// standing-outage signal and not the momentum story the treemap is telling.
+export const PIPELINE_MAX_DELTA_DAYS = 2;
 
 export const MARKET_TIER_CONFIG = Object.freeze({
   S: { min: 85, label: "Consensus / Peak Momentum" },
@@ -125,11 +130,12 @@ function toUtcDayNumber(dateString) {
   return Date.UTC(Number(year), Number(month) - 1, Number(day)) / 86400000;
 }
 
-function isNextCalendarDay(previousDate, currentDate) {
+function calendarDayGap(previousDate, currentDate) {
   const previousDay = toUtcDayNumber(previousDate);
   const currentDay = toUtcDayNumber(currentDate);
-  if (!Number.isFinite(previousDay) || !Number.isFinite(currentDay)) return false;
-  return currentDay - previousDay === 1;
+  if (!Number.isFinite(previousDay) || !Number.isFinite(currentDay)) return null;
+  const gap = currentDay - previousDay;
+  return gap > 0 ? gap : null;
 }
 
 function buildPercentileMap(rowsForDate, entityKey, scoreKey) {
@@ -179,6 +185,11 @@ export function annotateMarketTimeline(
     scoreKey = "overall_score",
     neutralRaw = MARKET_NEUTRAL_RAW_SCORE,
     windowDays = MARKET_WINDOW_DAYS,
+    // Max calendar-day gap that still produces a delta. Default 1 preserves the
+    // strict day-over-day contract. Callers that span pipeline misses (daily
+    // generate, backfill) pass a small cap so a single skipped day doesn't wipe
+    // every delta and turn the momentum treemap gray — see 2026-04-22 incident.
+    maxDeltaDays = 1,
   } = {}
 ) {
   if (!Array.isArray(rows) || rows.length === 0) return [];
@@ -264,7 +275,8 @@ export function annotateMarketTimeline(
       const current = sortedRows[index];
       const previous = sortedRows[index - 1];
 
-      if (!isNextCalendarDay(previous?.[dateKey], current?.[dateKey])) {
+      const gap = calendarDayGap(previous?.[dateKey], current?.[dateKey]);
+      if (gap === null || gap > maxDeltaDays) {
         continue;
       }
 

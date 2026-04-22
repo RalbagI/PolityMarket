@@ -1,5 +1,5 @@
 ---
-updated_at: "2026-04-16"
+updated_at: "2026-04-22"
 review_cycle_days: 365
 ---
 
@@ -130,6 +130,12 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 - **Lesson**: PolityMarket deploy commands (daily pipeline, `/mts` workflow) deployed to `tipi-83650` instead of `politymarket`, replacing tipi.zone with PolityMarket content. Previous fix (commit 5b850d2) added `--project politymarket` but guards were fail-open and bypassed on parse failures.
 - **Pattern**: All Firebase deploy commands MUST use `--project politymarket` explicitly. Pre-deploy guards must be **fail-closed** (block unless `.firebaserc` positively says `politymarket`). Added `predeploy` hook in `firebase.json` and hardened guards in `run-daily-pipeline.sh` and `mts.workflow.yaml`.
 - **Prevention**: `scripts/predeploy-hosting-guard.sh` wired as a Firebase predeploy hook. Also validates `dist/index.html` does not contain Tipi references.
+
+### Systemd-user git auth needs explicit token, not gh keyring (2026-04-22)
+
+- **Lesson**: The nightly pipeline failed silently on 2026-04-21 because `git fetch` ran unauthenticated. The global helper `gh auth git-credential` reads from the GNOME keyring, which isn't reachable from a systemd user service after a user-manager restart. With `GIT_TERMINAL_PROMPT=0`, git exits 128 immediately instead of prompting.
+- **Pattern**: For any git network op in an unattended HTTPS-remote script: resolve a token once (`$GITHUB_TOKEN` → `gh auth token` fallback), bake it into a chmod-700 askpass helper, and set `GIT_ASKPASS` inline per git command (`GIT_ASKPASS=... git fetch`). NEVER `export GIT_ASKPASS` — any subprocess that inherits the path can `cat` the helper and recover the PAT. `unset GITHUB_TOKEN` after the helper exists so npm/node/npx/curl don't inherit it either. Gate the whole thing on an `is_https_remote` check so SSH deploy-key setups stay compatible. Fail fast with an actionable message when HTTPS + no token.
+- **Prevention**: Auth helpers extracted to `scripts/lib/pipeline-auth.sh` and exercised by both `scripts/validate-pipeline-script.sh` (static) and `tests/unit/pipeline-auth.unit.test.js` + `tests/unit/pipeline-auth-runtime.unit.test.js` (runtime). The validator flags bare `git fetch/pull/push` at line start and `export GIT_ASKPASS=`.
 
 ### Post-review edits still need a final Prettier pass before prepare-for-merge (2026-04-11)
 

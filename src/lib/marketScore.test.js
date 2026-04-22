@@ -6,6 +6,7 @@ import {
   getMarketTier,
   getRollingMarketBounds,
   MARKET_DELTA_PCT_CAP,
+  PIPELINE_MAX_DELTA_DAYS,
   resolveDisplayScore,
 } from "./marketScore";
 
@@ -128,7 +129,7 @@ describe("marketScore helpers", () => {
     expect(lowDayTwo.market_delta_pct).toBeNull();
   });
 
-  it("suppresses deltas when the previous sample is not the prior calendar day", () => {
+  it("suppresses deltas when the previous sample is not the prior calendar day (strict default)", () => {
     const rows = annotateMarketTimeline([
       {
         date: "2026-03-16",
@@ -146,6 +147,97 @@ describe("marketScore helpers", () => {
 
     expect(secondRow.market_delta_points).toBeNull();
     expect(secondRow.market_delta_pct).toBeNull();
+  });
+
+  it("computes deltas across a single-day gap when maxDeltaDays allows it", () => {
+    // Simulates the 2026-04-22 incident: pipeline miss on 2026-04-21, so the
+    // momentum delta on 2026-04-22 must be derived against 2026-04-20.
+    const rows = annotateMarketTimeline(
+      [
+        {
+          date: "2026-04-20",
+          politician_id: "momentum",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.3,
+        },
+        {
+          date: "2026-04-22",
+          politician_id: "momentum",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.9,
+        },
+      ],
+      { maxDeltaDays: 3 }
+    );
+
+    const afterGap = rows.find(
+      (row) => row.date === "2026-04-22" && row.politician_id === "momentum"
+    );
+
+    expect(typeof afterGap.market_delta_points).toBe("number");
+    expect(afterGap.market_delta_points).toBeGreaterThan(0);
+  });
+
+  it("pins PIPELINE_MAX_DELTA_DAYS to the one-missed-day contract", () => {
+    // Locks in the boundary: one missed day (gap = 2) computes; two missed days
+    // (gap = 3) does not. If someone bumps this constant, they must also update
+    // this test with a deliberate justification.
+    expect(PIPELINE_MAX_DELTA_DAYS).toBe(2);
+
+    const oneMissed = annotateMarketTimeline(
+      [
+        {
+          date: "2026-04-20",
+          politician_id: "one-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.3,
+        },
+        {
+          date: "2026-04-22",
+          politician_id: "one-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.6,
+        },
+      ],
+      { maxDeltaDays: PIPELINE_MAX_DELTA_DAYS }
+    );
+    expect(typeof oneMissed.at(-1).market_delta_points).toBe("number");
+
+    const twoMissed = annotateMarketTimeline(
+      [
+        {
+          date: "2026-04-19",
+          politician_id: "two-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.3,
+        },
+        {
+          date: "2026-04-22",
+          politician_id: "two-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.6,
+        },
+      ],
+      { maxDeltaDays: PIPELINE_MAX_DELTA_DAYS }
+    );
+    expect(twoMissed.at(-1).market_delta_points).toBeNull();
+  });
+
+  it("still suppresses deltas when the gap exceeds maxDeltaDays", () => {
+    const rows = annotateMarketTimeline(
+      [
+        {
+          date: "2026-03-01",
+          politician_id: "stale",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.2,
+        },
+        {
+          date: "2026-03-10",
+          politician_id: "stale",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.8,
+        },
+      ],
+      { maxDeltaDays: 3 }
+    );
+
+    const staleRow = rows.find((row) => row.date === "2026-03-10" && row.politician_id === "stale");
+
+    expect(staleRow.market_delta_points).toBeNull();
+    expect(staleRow.market_delta_pct).toBeNull();
   });
 
   it("caps delta percentage to ±MARKET_DELTA_PCT_CAP", () => {

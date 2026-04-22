@@ -13,7 +13,7 @@ import {
   partySummaryRowSchema,
   summaryRowSchema8dim,
 } from "./lib/parseLLMResponse.js";
-import { annotateMarketTimeline } from "../src/lib/marketScore.js";
+import { annotateMarketTimeline, PIPELINE_MAX_DELTA_DAYS } from "../src/lib/marketScore.js";
 import {
   annotatePartyConsensusTimeline,
   annotatePoliticianConsensusTimeline,
@@ -2974,6 +2974,7 @@ async function main() {
 
   const annotatedSummaryTimeline = annotateMarketTimeline([...historicalSummary, ...newEntries], {
     entityKey: "politician_id",
+    maxDeltaDays: PIPELINE_MAX_DELTA_DAYS,
   });
   const todaySummaryById = new Map(
     annotatedSummaryTimeline
@@ -3005,7 +3006,7 @@ async function main() {
   const historicalPartySummary = existingPartySummary.filter((row) => row.date !== today);
   const annotatedPartyTimeline = annotateMarketTimeline(
     [...historicalPartySummary, ...partyEntries],
-    { entityKey: "party" }
+    { entityKey: "party", maxDeltaDays: PIPELINE_MAX_DELTA_DAYS }
   );
   const todayPartyByName = new Map(
     annotatedPartyTimeline.filter((row) => row.date === today).map((row) => [row.party, row])

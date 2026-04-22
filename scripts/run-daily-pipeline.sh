@@ -19,7 +19,10 @@ if [[ -f "${LOCK_FILE}" ]]; then
   rm -f "${LOCK_FILE}"
 fi
 echo $$ > "${LOCK_FILE}"
-trap 'rm -f "${LOCK_FILE}"' INT TERM
+# Cover EXIT (not just INT/TERM) so any early `exit 1` (missing env file,
+# missing token, LLM CLI not on PATH) still drops the lock. Replaced by the
+# fuller `trap cleanup EXIT` once the rest of the cleanup state is set up.
+trap 'rm -f "${LOCK_FILE}"' INT TERM EXIT
 
 # ── Load environment ─────────────────────────────────────────────────
 ENV_FILE="${PIPELINE_ENV_FILE:-${REPO_ROOT}/.env.pipeline}"
@@ -45,7 +48,31 @@ export PIPELINE_MAX_FETCH_FAILURES="${PIPELINE_MAX_FETCH_FAILURES:-0}"
 export GIT_TERMINAL_PROMPT=0
 
 # Ensure PATH includes npm global bin (needed for cron which has minimal PATH)
-export PATH="${HOME}/.npm-global/bin:${HOME}/.local/bin:/usr/local/bin:${PATH}"
+# /home/linuxbrew/.linuxbrew/bin is added so `gh` is found under systemd-user,
+# whose default PATH is otherwise minimal.
+export PATH="${HOME}/.npm-global/bin:${HOME}/.local/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:${PATH}"
+
+# ── Resolve GitHub auth token for unattended git fetch/pull/push ─────
+# A systemd user service cannot reach the desktop GNOME keyring, so the global
+# `gh auth git-credential` helper returns empty and git falls back to a disabled
+# terminal prompt — failing every network git op. For HTTPS remotes we resolve
+# a token and wire it inline onto each git network command via GIT_ASKPASS.
+# SSH remotes skip the flow entirely and rely on ssh-agent / SSH keys.
+# shellcheck source=scripts/lib/pipeline-auth.sh
+source "${SCRIPT_DIR}/lib/pipeline-auth.sh"
+
+RESOLVED_TOKEN=""
+if is_https_remote; then
+  RESOLVED_TOKEN="$(resolve_github_token || true)"
+  if [[ -z "${RESOLVED_TOKEN}" ]]; then
+    echo "FATAL: No GitHub token available for unattended git operations." >&2
+    echo "  Fix: add GITHUB_TOKEN=<pat> to ${ENV_FILE} (or run 'gh auth login' in a" >&2
+    echo "  session that shares the keyring with the systemd user manager)." >&2
+    exit 1
+  fi
+else
+  echo "Remote is not HTTPS — skipping token-based auth wiring (using SSH keys)."
+fi
 
 # Verify LLM CLI is available (Codex or Claude)
 if [[ "${LLM_PROVIDER:-codex}" == "claude" ]]; then
@@ -90,16 +117,30 @@ cleanup() {
     git stash pop 2>/dev/null || echo "⚠ Could not auto-restore stash — run 'git stash pop' manually."
   fi
   rm -f "${LOCK_FILE}"
+  if [[ -n "${ASKPASS_FILE:-}" ]]; then
+    rm -f "${ASKPASS_FILE}"
+  fi
 }
 trap cleanup EXIT
 
+# Install the askpass helper after the cleanup trap is armed so a failure here
+# can't leak the file. The token is baked into the helper (chmod 700, owner-
+# only); we deliberately do NOT export GIT_ASKPASS — a subprocess could read
+# $GIT_ASKPASS and cat the helper to recover the token. Instead, every git
+# network op below sets GIT_ASKPASS inline so only the git child sees it.
+ASKPASS_FILE=""
+if [[ -n "${RESOLVED_TOKEN}" ]]; then
+  ASKPASS_FILE="$(create_askpass_helper "${RESOLVED_TOKEN}")"
+fi
+unset RESOLVED_TOKEN GITHUB_TOKEN
+
 # ── Sync with origin/main ────────────────────────────────────────────
-git fetch --quiet origin main
+GIT_ASKPASS="${ASKPASS_FILE}" git fetch --quiet origin main
 LOCAL_HEAD="$(git rev-parse HEAD)"
 REMOTE_HEAD="$(git rev-parse origin/main)"
 if [[ "${LOCAL_HEAD}" != "${REMOTE_HEAD}" ]]; then
   echo "Syncing local main with origin/main..."
-  git pull --ff-only origin main || git reset --hard origin/main
+  GIT_ASKPASS="${ASKPASS_FILE}" git pull --ff-only origin main || git reset --hard origin/main
 fi
 
 # ── Install dependencies (catches new deps from merged PRs) ──────────
@@ -125,26 +166,7 @@ fi
 
 git commit -m "chore(data): daily pipeline update [${RUN_DATE}]"
 
-if [[ -n "${GITHUB_TOKEN:-}" ]]; then
-  ASKPASS_FILE="$(mktemp)"
-  cat > "${ASKPASS_FILE}" <<'EOF'
-#!/usr/bin/env bash
-case "$1" in
-  *Username*) printf '%s\n' "x-access-token" ;;
-  *Password*) printf '%s\n' "${GITHUB_TOKEN}" ;;
-  *) printf '\n' ;;
-esac
-EOF
-  chmod 700 "${ASKPASS_FILE}"
-  if GIT_ASKPASS="${ASKPASS_FILE}" git push origin main; then
-    rm -f "${ASKPASS_FILE}"
-  else
-    rm -f "${ASKPASS_FILE}"
-    exit 1
-  fi
-else
-  git push origin main
-fi
+GIT_ASKPASS="${ASKPASS_FILE}" git push origin main
 
 # ── Deploy to Firebase ───────────────────────────────────────────────
 EXPECTED_PROJECT="politymarket"
