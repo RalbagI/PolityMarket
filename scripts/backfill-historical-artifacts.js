@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { aggregateParties } from "../data-pipeline/lib/validation.js";
-import { annotateMarketTimeline } from "../src/lib/marketScore.js";
+import { annotateMarketTimeline, PIPELINE_MAX_DELTA_DAYS } from "../src/lib/marketScore.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -208,9 +208,10 @@ for (const date of targetDates) {
   }
 }
 
-const annotatedSummary = annotateMarketTimeline(summary, { entityKey: "politician_id" }).sort(
-  compareByDateThenPoliticianId
-);
+const annotatedSummary = annotateMarketTimeline(summary, {
+  entityKey: "politician_id",
+  maxDeltaDays: PIPELINE_MAX_DELTA_DAYS,
+}).sort(compareByDateThenPoliticianId);
 writeJson(summaryPath, annotatedSummary);
 
 const summaryMarketLookup = new Map(
@@ -245,6 +246,7 @@ for (const date of allDates) {
 
 const annotatedPartySummary = annotateMarketTimeline(rebuiltPartySummary, {
   entityKey: "party",
+  maxDeltaDays: PIPELINE_MAX_DELTA_DAYS,
 }).sort(compareByDateThenParty);
 writeJson(partySummaryPath, annotatedPartySummary);
 
