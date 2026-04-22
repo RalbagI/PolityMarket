@@ -8,9 +8,10 @@ export const MARKET_PERCENT_DELTA_MIN_BASE = 40;
 export const MARKET_NEUTRAL_DECAY = 0.5;
 export const MARKET_DELTA_PCT_CAP = 20;
 // Max calendar-day gap that still produces a delta in pipeline / backfill runs.
-// Lets a single skipped day (2026-04-21 incident) still emit a valid 2-day delta
-// so the momentum treemap keeps its colors instead of collapsing to gray.
-export const PIPELINE_MAX_DELTA_DAYS = 3;
+// Sized to absorb one missed day (the 2026-04-21 incident): Tue → Thu has a
+// 2-day gap and must still emit a delta. Two consecutive misses would be a
+// standing-outage signal and not the momentum story the treemap is telling.
+export const PIPELINE_MAX_DELTA_DAYS = 2;
 
 export const MARKET_TIER_CONFIG = Object.freeze({
   S: { min: 85, label: "Consensus / Peak Momentum" },

@@ -134,8 +134,8 @@ New entries appended by /prepare-for-merge and /resolve-issue workflows.
 ### Systemd-user git auth needs explicit token, not gh keyring (2026-04-22)
 
 - **Lesson**: The nightly pipeline failed silently on 2026-04-21 because `git fetch` ran unauthenticated. The global helper `gh auth git-credential` reads from the GNOME keyring, which isn't reachable from a systemd user service after a user-manager restart. With `GIT_TERMINAL_PROMPT=0`, git exits 128 immediately instead of prompting.
-- **Pattern**: For any git network op in an unattended script, resolve a token up-front (`$GITHUB_TOKEN`, fallback to `gh auth token`) and export `GIT_ASKPASS` so it covers fetch/pull/push — not just push. Fail fast with an actionable message if no token is resolvable, so the operator learns from the log instead of from missing data the next morning.
-- **Prevention**: `scripts/validate-pipeline-script.sh` now asserts `resolve_github_token` + `export GIT_ASKPASS` are present and wired before the first git network call. `tests/unit/pipeline-auth.unit.test.js` guards the same invariants in CI.
+- **Pattern**: For any git network op in an unattended HTTPS-remote script: resolve a token once (`$GITHUB_TOKEN` → `gh auth token` fallback), bake it into a chmod-700 askpass helper, and set `GIT_ASKPASS` inline per git command (`GIT_ASKPASS=... git fetch`). NEVER `export GIT_ASKPASS` — any subprocess that inherits the path can `cat` the helper and recover the PAT. `unset GITHUB_TOKEN` after the helper exists so npm/node/npx/curl don't inherit it either. Gate the whole thing on an `is_https_remote` check so SSH deploy-key setups stay compatible. Fail fast with an actionable message when HTTPS + no token.
+- **Prevention**: Auth helpers extracted to `scripts/lib/pipeline-auth.sh` and exercised by both `scripts/validate-pipeline-script.sh` (static) and `tests/unit/pipeline-auth.unit.test.js` + `tests/unit/pipeline-auth-runtime.unit.test.js` (runtime). The validator flags bare `git fetch/pull/push` at line start and `export GIT_ASKPASS=`.
 
 ### Post-review edits still need a final Prettier pass before prepare-for-merge (2026-04-11)
 

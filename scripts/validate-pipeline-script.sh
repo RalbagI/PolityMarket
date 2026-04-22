@@ -85,23 +85,28 @@ fi
 
 # 7. Verify unattended git auth is wired up
 # The systemd user service can't reach the desktop keyring, so the pipeline
-# must resolve a token up-front and export GIT_ASKPASS before any git network
-# operation. See: 2026-04-21 pipeline-miss incident.
+# must resolve a token up-front and scope GIT_ASKPASS per-command (NOT export
+# it — subprocesses would otherwise read the helper path and recover the PAT).
+# See: 2026-04-21 pipeline-miss + 2026-04-22 code-review follow-up.
 echo "→ Checking unattended git auth wiring..."
 AUTH_ERRORS=0
 if ! grep -q 'resolve_github_token' "${PIPELINE_SCRIPT}"; then
-  echo "FAIL: pipeline script missing resolve_github_token helper"
+  echo "FAIL: pipeline script missing resolve_github_token reference"
   AUTH_ERRORS=$((AUTH_ERRORS + 1))
 fi
-if ! grep -q 'export GIT_ASKPASS=' "${PIPELINE_SCRIPT}"; then
-  echo "FAIL: pipeline script does not export GIT_ASKPASS for unattended git ops"
+if ! grep -q 'create_askpass_helper' "${PIPELINE_SCRIPT}"; then
+  echo "FAIL: pipeline script must use create_askpass_helper from scripts/lib/pipeline-auth.sh"
   AUTH_ERRORS=$((AUTH_ERRORS + 1))
 fi
-# Ensure the askpass export appears before the first git network operation.
-ASKPASS_LINE=$(grep -n 'export GIT_ASKPASS=' "${PIPELINE_SCRIPT}" | head -n 1 | cut -d: -f1 || echo "")
-FIRST_NET_LINE=$(grep -nE '^[[:space:]]*git (fetch|pull|push)\b' "${PIPELINE_SCRIPT}" | head -n 1 | cut -d: -f1 || echo "")
-if [[ -n "${ASKPASS_LINE}" && -n "${FIRST_NET_LINE}" && "${ASKPASS_LINE}" -ge "${FIRST_NET_LINE}" ]]; then
-  echo "FAIL: GIT_ASKPASS export must precede the first git fetch/pull/push"
+if grep -qE '^[[:space:]]*export[[:space:]]+GIT_ASKPASS=' "${PIPELINE_SCRIPT}"; then
+  echo "FAIL: GIT_ASKPASS must not be exported — scope it inline per git command so subprocesses can't read the helper path"
+  AUTH_ERRORS=$((AUTH_ERRORS + 1))
+fi
+# Any bare `git fetch/pull/push` at line start is a leak (no GIT_ASKPASS prefix).
+BARE_NET=$(grep -nE '^[[:space:]]*git[[:space:]]+(fetch|pull|push)\b' "${PIPELINE_SCRIPT}" || true)
+if [[ -n "${BARE_NET}" ]]; then
+  echo "FAIL: bare git fetch/pull/push without inline GIT_ASKPASS prefix:"
+  echo "${BARE_NET}" | sed 's/^/    /'
   AUTH_ERRORS=$((AUTH_ERRORS + 1))
 fi
 if [[ ${AUTH_ERRORS} -eq 0 ]]; then

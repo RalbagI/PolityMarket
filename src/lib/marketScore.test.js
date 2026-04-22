@@ -6,6 +6,7 @@ import {
   getMarketTier,
   getRollingMarketBounds,
   MARKET_DELTA_PCT_CAP,
+  PIPELINE_MAX_DELTA_DAYS,
   resolveDisplayScore,
 } from "./marketScore";
 
@@ -173,6 +174,47 @@ describe("marketScore helpers", () => {
 
     expect(typeof afterGap.market_delta_points).toBe("number");
     expect(afterGap.market_delta_points).toBeGreaterThan(0);
+  });
+
+  it("pins PIPELINE_MAX_DELTA_DAYS to the one-missed-day contract", () => {
+    // Locks in the boundary: one missed day (gap = 2) computes; two missed days
+    // (gap = 3) does not. If someone bumps this constant, they must also update
+    // this test with a deliberate justification.
+    expect(PIPELINE_MAX_DELTA_DAYS).toBe(2);
+
+    const oneMissed = annotateMarketTimeline(
+      [
+        {
+          date: "2026-04-20",
+          politician_id: "one-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.3,
+        },
+        {
+          date: "2026-04-22",
+          politician_id: "one-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.6,
+        },
+      ],
+      { maxDeltaDays: PIPELINE_MAX_DELTA_DAYS }
+    );
+    expect(typeof oneMissed.at(-1).market_delta_points).toBe("number");
+
+    const twoMissed = annotateMarketTimeline(
+      [
+        {
+          date: "2026-04-19",
+          politician_id: "two-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.3,
+        },
+        {
+          date: "2026-04-22",
+          politician_id: "two-gap",
+          overall_score: MARKET_NEUTRAL_RAW_SCORE + 0.6,
+        },
+      ],
+      { maxDeltaDays: PIPELINE_MAX_DELTA_DAYS }
+    );
+    expect(twoMissed.at(-1).market_delta_points).toBeNull();
   });
 
   it("still suppresses deltas when the gap exceeds maxDeltaDays", () => {
