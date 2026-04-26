@@ -1482,5 +1482,35 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-25T23:14:15.407Z"
+  },
+  {
+    "date": "2026-04-27",
+    "warnings": [
+      "[Outlier] Benjamin Netanyahu: score 4.1 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Nir Barkat: score 6.2 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Yuli Edelstein: score 6.2 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Keti Shitrit: score 6.5 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Gila Gamliel: score 5.4 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Galit Distel Atbaryan: score 5.5 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Miki Zohar: score 3.7 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Yair Lapid: score 7.0 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Mickey Levy: score 6.4 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Ram Ben Barak: score 5.6 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Benny Gantz: score 7.2 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Gadi Eisenkot: score 6.4 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Matan Kahana: score 6.1 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Bezalel Smotrich: score 5.8 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Ofir Sofer: score 5.5 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Simcha Rothman: score 5.6 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Itamar Ben Gvir: score 4.2 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Avigdor Lieberman: score 6.9 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Mansour Abbas: score 5.6 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Ahmad Tibi: score 5.6 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Gilad Kariv: score 4.2 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Gideon Sa'ar: score 5.8 outside IQR bounds [4.5, 5.3]",
+      "[Outlier] Naftali Bennett: score 7.0 outside IQR bounds [4.5, 5.3]",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-26T23:14:49.745Z"
   }
 ]
