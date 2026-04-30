@@ -1620,5 +1620,40 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-04-29T23:45:47.923Z"
+  },
+  {
+    "date": "2026-05-01",
+    "warnings": [
+      "[Temporal] Benny Gantz: score 4.9 deviates 1.9 from 7-day avg 6.8 (threshold: 1.7)",
+      "[Outlier] Nir Barkat: score 6.1 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Amir Ohana: score 6.2 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Yisrael Katz: score 6.3 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Yuli Edelstein: score 6.5 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Avi Dichter: score 6.1 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Tally Gotliv: score 4.0 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Gila Gamliel: score 5.9 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Miki Zohar: score 3.3 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Yair Lapid: score 6.5 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Vladimir Beliak: score 6.5 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Yoav Segalovitz: score 6.4 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Ram Ben Barak: score 6.5 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Pnina Tamano-Shata: score 6.4 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Gadi Eisenkot: score 6.8 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Matan Kahana: score 6.7 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Michael Malchieli: score 5.9 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Moshe Gafni: score 3.8 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Bezalel Smotrich: score 6.2 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Simcha Rothman: score 6.4 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Zvi Sukkot: score 4.3 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Itamar Ben Gvir: score 4.3 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Yasser Hujirat: score 6.3 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Ahmad Tibi: score 6.0 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Ofer Cassif: score 5.9 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Ze'ev Elkin: score 6.3 outside IQR bounds [4.3, 5.9]",
+      "[Outlier] Avi Maoz: score 6.0 outside IQR bounds [4.3, 5.9]",
+      "[Party] HaYamin HaMamlakhti: all 3 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-04-30T23:16:42.034Z"
   }
 ]
