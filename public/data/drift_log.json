@@ -1704,5 +1704,31 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-05-02T23:18:11.397Z"
+  },
+  {
+    "date": "2026-05-04",
+    "warnings": [
+      "[Outlier] Amir Ohana: score 6.3 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Yuli Edelstein: score 5.8 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Boaz Bismuth: score 5.6 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Nissim Vaturi: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Eli Cohen: score 5.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Yair Lapid: score 6.6 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Karine Elharrar: score 5.6 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Pnina Tamano-Shata: score 6.1 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Hili Tropper: score 6.1 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Gadi Eisenkot: score 6.6 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Aryeh Deri: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Meir Porush: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Orit Strock: score 5.6 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Zvi Sukkot: score 5.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Avigdor Lieberman: score 6.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Gideon Sa'ar: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Yair Golan: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Naftali Bennett: score 6.6 outside IQR bounds [4.3, 5.5]",
+      "[Party] Otzma Yehudit: all 6 members have identical scores — possible hallucination",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-05-03T23:21:34.523Z"
   }
 ]
