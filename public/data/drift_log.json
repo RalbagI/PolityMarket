@@ -1845,5 +1845,37 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-05-06T23:16:42.404Z"
+  },
+  {
+    "date": "2026-05-08",
+    "warnings": [
+      "[Temporal] Idit Silman: score 3.1 deviates 1.8 from 7-day avg 4.9 (threshold: 1.6)",
+      "[Outlier] Yariv Levin: score 3.6 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Tally Gotliv: score 3.1 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Amit Halevi: score 5.7 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Eli Cohen: score 6.0 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Miki Zohar: score 3.4 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Haim Katz: score 6.3 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Miri Regev: score 4.1 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Idit Silman: score 3.1 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Yair Lapid: score 6.4 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Meirav Ben Ari: score 6.0 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Elazar Stern: score 5.8 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Hili Tropper: score 5.7 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Gadi Eisenkot: score 6.6 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Yoaz Hendel: score 3.5 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Meir Porush: score 5.9 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Bezalel Smotrich: score 4.3 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Simcha Rothman: score 6.4 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Ohad Tal: score 3.4 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Avigdor Lieberman: score 6.6 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Ayman Odeh: score 3.8 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Ahmad Tibi: score 3.9 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Naama Lazimi: score 5.9 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Yair Golan: score 6.0 outside IQR bounds [4.5, 5.7]",
+      "[Outlier] Naftali Bennett: score 6.3 outside IQR bounds [4.5, 5.7]",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-05-07T23:15:34.780Z"
   }
 ]
