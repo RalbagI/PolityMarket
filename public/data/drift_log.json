@@ -1913,5 +1913,37 @@
       "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
     ],
     "timestamp": "2026-05-08T23:18:36.436Z"
+  },
+  {
+    "date": "2026-05-10",
+    "warnings": [
+      "[Outlier] Yariv Levin: score 3.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Yuli Edelstein: score 5.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Shlomo Karhi: score 4.3 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Tally Gotliv: score 2.3 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Moshe Saada: score 4.2 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Eli Cohen: score 6.0 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Haim Katz: score 6.3 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Idit Silman: score 2.6 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Yair Lapid: score 6.2 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Eitan Ginzburg: score 6.2 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Gadi Eisenkot: score 6.5 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Yoaz Hendel: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Yosef Taieb: score 5.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Meir Porush: score 5.8 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Ofir Sofer: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Zvi Sukkot: score 5.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Ohad Tal: score 2.7 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Michal Waldiger: score 5.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Limor Son Har-Melech: score 6.2 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Avigdor Lieberman: score 7.0 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Mansour Abbas: score 6.6 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Ahmad Tibi: score 3.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Naama Lazimi: score 5.9 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Avi Maoz: score 6.4 outside IQR bounds [4.3, 5.5]",
+      "[Outlier] Naftali Bennett: score 6.3 outside IQR bounds [4.3, 5.5]",
+      "[DimConsistency] dim_parliamentary_activity: only 0/135 (0%) entries have non-null values — expected ≥80%"
+    ],
+    "timestamp": "2026-05-09T23:17:03.697Z"
   }
 ]
