@@ -2,6 +2,15 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 
 describe("immutable E2E source build without cloud artifact transport", () => {
+  it("retains CodeQL analysis and security results without source database or dependency archives", () => {
+    const workflow = readFileSync(".github/workflows/codeql.yml", "utf8");
+    expect(workflow).toContain("github/codeql-action/init@v4");
+    expect(workflow).toContain("github/codeql-action/analyze@v4");
+    expect(workflow).toContain("security-events: write");
+    expect(workflow).toMatch(/dependency-caching:\s*false/);
+    expect(workflow).toMatch(/upload-database:\s*false/);
+    expect(workflow).not.toMatch(/upload:\s*false/);
+  });
   it("builds inside the E2E shard and keeps all native test/build gates", () => {
     const workflow = readFileSync(".github/workflows/ci.yml", "utf8");
     const e2e = workflow.slice(workflow.indexOf("  e2e_tests:"));
