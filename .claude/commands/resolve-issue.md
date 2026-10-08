@@ -1,48 +1,24 @@
-End-to-end issue resolution workflow. Accepts a GitHub issue number or free-text task description.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = resolve-issue -->
+Run central AI Helpers workflow `resolve-issue`.
 
-Usage: /resolve-issue #42 or /resolve-issue task: add dark mode toggle
+Direct command: `/resolve-issue [args]`
 
-Input: $ARGUMENTS
+Description: Resolve a GitHub/GitLab issue or free-text task end to end with project-specific builder rules, tests selected before editing, atomic commits, coverage, and memory capture.
 
-Follow the workflow defined in `.agent/workflows/resolve-issue.workflow.yaml`. Execute each phase in order:
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 0: Recall Context
-- Check `.agent/lessons_learned.md` for relevant prior lessons
-- Note any lessons that apply to the current issue/task
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "resolve-issue"
+```
 
-## Phase 1: Branch Setup
-- Run `git status -sb` to verify clean state
-- If on `main`, create a feature branch: `issue-{ID}-{slug}` from `origin/main`
-- If already on a feature branch, stay on it
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
 
-## Phase 2: Fetch Issue Details
-- If a GitHub issue number was provided, fetch it: `gh issue view {NUMBER} --comments`
-- Extract acceptance criteria and requirements
-- If free-text task was provided, use that as the task description
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
 
-## Phase 3: Implement Solution
-- Analyze the issue/task requirements
-- Implement the fix/feature with minimal, focused changes
-
-## Phase 3.5: Write Tests
-- Write tests for ALL new/changed behavior using vitest + @testing-library/react
-- Test files go next to the source file (e.g., `Foo.jsx` → `Foo.test.jsx`)
-- Cover: rendering, user interactions, edge cases, responsive behavior
-- For component changes: test DOM output, event handlers, conditional rendering
-- For utility changes: test pure function inputs/outputs
-- Run tests: `npx vitest run --coverage --reporter=verbose` — all must pass
-- Run lint: `npx eslint src/` — must pass clean
-
-## Phase 4: Commit Changes
-- Stage relevant files (prefer specific files over `git add .`)
-- Write a descriptive commit message referencing the issue if applicable
-
-## Phase 5: Verify Final State
-- Confirm `git status --porcelain` is empty (clean working tree)
-
-## Phase 6: Capture Memory
-- Note any lessons learned for `.agent/lessons_learned.md` if applicable
-
-## Important Rules
-- Do NOT push. Use `/prepare-for-merge` to finalize.
-- After completing, ALWAYS ask: "Would you like me to run `/code-review` to validate the changes?"
+- `content/workflows/universal/resolve-issue.workflow.yaml`

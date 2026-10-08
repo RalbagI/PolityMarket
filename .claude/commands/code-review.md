@@ -1,43 +1,24 @@
-Security-first code review workflow. Evaluates branch delta from origin/main plus any local uncommitted changes. This is a READ-ONLY workflow — do not modify any files.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = code-review -->
+Run central AI Helpers workflow `code-review`.
 
-Usage: /code-review
+Direct command: `/code-review [args]`
 
-Follow the workflow defined in `.agent/workflows/code-review.workflow.yaml`. Execute each phase:
+Description: Security-first, multi-lane read-only review for the current branch. It combines Tipi's scope/static-sentinel discipline with Traidan's architecture, IPC, hot-path, and verificat...
 
-## Phase 0: Recall Context
-- Check `.agent/lessons_learned.md` for relevant prior lessons about code review findings
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 1: Scope Detection
-- Detect uncommitted changes: `git diff --name-only --cached`, `git diff --name-only`, `git ls-files --others --exclude-standard`
-- Check if a PR exists: `gh pr view 2>/dev/null`
-- Determine review mode: QUICK (uncommitted only), FULL (PR only), BOTH, or NONE
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "code-review"
+```
 
-## Phase 2: Static Analysis (run in parallel)
-- ESLint: `npx eslint src/` — MUST pass
-- Prettier: `npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}"`
-- Secrets scan: search for `api_key`, `secret`, `password`, `token` assignments in src/
-- Debug console.log scan: find leftover console statements in src/
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
 
-## Phase 3: Security Checks (run in parallel)
-- `npm audit --omit=dev --audit-level=high`
-- Check no `.env` or credential files are tracked in git
-- Review changed code for XSS, injection, unsafe HTML patterns
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
 
-## Phase 4: Project-Specific Checks
-- Build check: `npx vite build`
-- File size check: flag any changed source files in src/ over 400 lines
-
-## Phase 5: Deep Code Review
-- Collect all changes: committed vs origin/main, staged, unstaged, untracked
-- Review for: issue handling, UI/UX, testing quality, performance
-- Review for: patterns, antipatterns, tech debt, React hooks correctness
-
-## Phase 6: Report
-Categorize all findings into:
-- **MUST FIX**: security issues, crashes, blockers
-- **SHOULD FIX**: quality, performance, accessibility issues
-- **NICE TO HAVE**: style, naming, minor optimizations
-
-## Important Rules
-- This is READ-ONLY. Do NOT modify any files.
-- After completing, ALWAYS ask: "Would you like me to run `/handle-review-results` to resolve the findings?"
+- `content/workflows/universal/code-review.workflow.yaml`

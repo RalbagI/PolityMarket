@@ -1,32 +1,24 @@
-Fetch, analyze, and fix failing GitHub Actions CI jobs on the current branch.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = ci-failing -->
+Run central AI Helpers workflow `ci-failing`.
 
-Usage: /ci-failing
+Direct command: `/ci-failing [args]`
 
-Follow the workflow defined in `.agent/workflows/ci-failing.workflow.yaml`. Execute each phase:
+Description: Fetch failed GitHub Actions or GitLab CI jobs, classify the real logs, make the smallest safe fix, run the relevant project gates, commit, push, and leave a clean tree.
 
-## Phase 1: Fetch Logs
-- Find failed runs: `gh run list --branch $(git branch --show-current) --limit 5`
-- Download logs from the most recent failed run using `gh run view {ID} --log-failed`
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 2: Triage Failures
-Categorize each failure:
-- **transient**: timeout, network, runner failure — may just need a re-run
-- **lint_failure**: eslint/prettier errors
-- **test_failure**: vitest assertion errors
-- **build_failure**: vite build errors
-- **dependency**: npm install/audit failures
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "ci-failing"
+```
 
-## Phase 3: Fix Issues
-- Apply minimal, targeted fixes for each category
-- Run `npx eslint src/ --fix` for lint issues
-- Run `npx vitest run` to verify tests pass
-- Run `npx vite build` to verify build succeeds
-- Check coverage: `npx vitest run --coverage`
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
 
-## Phase 4: Commit & Push
-- Stage and commit with message: `fix(ci): resolve failing jobs`
-- Push to remote
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
 
-## Phase 5: Cleanup
-- Remove any downloaded log files (`rm -rf ci-logs/`)
-- Verify clean git state
+- `content/workflows/universal/ci-failing.workflow.yaml`

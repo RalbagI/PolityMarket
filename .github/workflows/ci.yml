@@ -11,6 +11,9 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 env:
   NODE_VERSION: "20"
 
@@ -21,11 +24,13 @@ jobs:
     timeout-minutes: 6
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -51,6 +56,9 @@ jobs:
             exit 1
           fi
           echo "No hardcoded secrets found"
+
+      - name: Reject cloud CI archive and project cache storage
+        run: node scripts/validate-ci-storage.js
 
       - name: Validate pipeline script integrity
         run: bash scripts/validate-pipeline-script.sh
@@ -80,11 +88,13 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -95,14 +105,6 @@ jobs:
       - name: Run unit tests
         run: npm run test:unit
 
-      - name: Upload unit coverage
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: coverage-unit
-          path: coverage/unit/
-          retention-days: 14
-
   component_tests:
     name: Component Tests (Behavior-Focused)
     runs-on: ubuntu-latest
@@ -110,11 +112,13 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -124,14 +128,6 @@ jobs:
 
       - name: Run component tests
         run: npm run test:component
-
-      - name: Upload component coverage
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: coverage-component
-          path: coverage/component/
-          retention-days: 14
 
   integration_tests:
     name: Integration/API Tests (20%) - Shard ${{ matrix.shard }}/${{ matrix.total }}
@@ -147,11 +143,13 @@ jobs:
       COVERAGE_DIR: coverage/integration-shard-${{ matrix.shard }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -162,14 +160,6 @@ jobs:
       - name: Run integration tests (sharded)
         run: npm run test:integration:coverage -- --shard=${{ matrix.shard }}/${{ matrix.total }}
 
-      - name: Upload integration coverage shard
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: coverage-integration-shard-${{ matrix.shard }}
-          path: ${{ env.COVERAGE_DIR }}/
-          retention-days: 14
-
   build:
     name: Build Artifact
     runs-on: ubuntu-latest
@@ -177,11 +167,13 @@ jobs:
     timeout-minutes: 6
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -198,13 +190,6 @@ jobs:
             exit 1
           fi
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: build-dist
-          path: dist/
-          retention-days: 7
-
   e2e_tests:
     name: E2E Critical Path (10%) - Shard ${{ matrix.shard }}/${{ matrix.total }}
     runs-on: ubuntu-latest
@@ -217,11 +202,13 @@ jobs:
         total: [2]
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps --prefer-offline
@@ -229,11 +216,8 @@ jobs:
       - name: Create isolated test environment
         run: cp .env.test.example .env.test
 
-      - name: Download build artifact
-        uses: actions/download-artifact@v8
-        with:
-          name: build-dist
-          path: dist/
+      - name: Build exact immutable checkout for this E2E shard
+        run: npm run build
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
@@ -242,13 +226,3 @@ jobs:
         run: PLAYWRIGHT_BASE_URL=http://127.0.0.1:4173 npm run test:e2e -- --project=chromium --shard=${{ matrix.shard }}/${{ matrix.total }}
         env:
           CI_SKIP_BUILD: "true"
-
-      - name: Upload Playwright report and traces
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: playwright-artifacts-shard-${{ matrix.shard }}
-          path: |
-            playwright-report/
-            test-results/
-          retention-days: 14

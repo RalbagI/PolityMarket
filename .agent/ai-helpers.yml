@@ -1,0 +1,34 @@
+project:
+  id: polity_market
+repo: RalbagI/PolityMarket
+default_branch: main
+forge: github
+enabled_packs: [universal, common]
+enabled_workflows:
+  - resolve-issue
+  - code-review
+  - claude-code-review
+  - codex-code-review
+  - delegate-code-review
+  - handle-review-results
+  - prepare-for-merge
+  - lgtm
+  - ci-failing
+  - orchestrator
+  - sync-default-branch
+enabled_commands: []
+enabled_skills:
+  - polity-market-builder
+  - testing
+  - forge-ci
+  - security
+  - codebase-cleanup
+local_context:
+  - README.md
+  - package.json
+  - .github/workflows
+mcp_profile: polity_market
+central:
+  repo: https://gitlab.com/TalkPoint/AI_Helpers.git
+  ref: main
+  min_version: 0.3.0

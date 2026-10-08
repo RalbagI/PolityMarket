@@ -254,8 +254,8 @@ describe("data persistence", () => {
       // Test the logic conceptually
       const cutoff = new Date();
       cutoff.setDate(cutoff.getDate() - 90);
-      const oldDate = "2025-01-01";
-      const recentDate = "2026-03-24";
+      const oldDate = new Date(cutoff.getTime() - 86400000).toISOString().split("T")[0];
+      const recentDate = new Date(cutoff.getTime() + 86400000).toISOString().split("T")[0];
       expect(oldDate < cutoff.toISOString().split("T")[0]).toBe(true);
       expect(recentDate < cutoff.toISOString().split("T")[0]).toBe(false);
     });

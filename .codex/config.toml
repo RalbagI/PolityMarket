@@ -1,0 +1,7 @@
+# AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; config = mcp
+
+[mcp_servers.firebase]
+command = "firebase"
+args = ["mcp"]
+required = false
+default_tools_approval_mode = "prompt"
