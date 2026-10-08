@@ -16,6 +16,8 @@ enabled_workflows:
   - ci-failing
   - orchestrator
   - sync-default-branch
+  - context-health
+  - get-up-to-speed
 enabled_commands: []
 enabled_skills:
   - polity-market-builder
