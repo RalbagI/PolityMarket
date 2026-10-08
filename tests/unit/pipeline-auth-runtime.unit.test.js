@@ -1,4 +1,3 @@
-/* global process */
 // Runtime tests for scripts/lib/pipeline-auth.sh.
 //
 // These spawn real bash subprocesses against the sourceable auth lib so typos
