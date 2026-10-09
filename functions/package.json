@@ -13,7 +13,7 @@
   "main": "index.js",
   "dependencies": {
     "firebase-admin": "^13.8.0",
-    "firebase-functions": "^7.2.5"
+    "firebase-functions": "^7.3.0"
   },
   "overrides": {
     "path-to-regexp": "0.1.13",
