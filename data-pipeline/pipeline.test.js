@@ -7,7 +7,7 @@
  * - Data persistence: appendToSummary, writeDetailFile, writePartySummary, pruneOldDetails
  */
 
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import fs from "fs";
 import path from "path";
 import {
@@ -18,6 +18,7 @@ import {
   renderSearchTemplate,
   parsePositiveInt,
   getCurrentDateString,
+  pruneOldDetails,
 } from "./generateDailyScores.js";
 
 // ── normalizeText ─────────────────────────────────────────────────────
@@ -249,15 +250,29 @@ describe("data persistence", () => {
   });
 
   describe("pruneOldDetails", () => {
-    it("concept: would remove files older than retention period", () => {
-      // The function uses global DETAILS_DIR constant
-      // Test the logic conceptually
+    it("prunes only actual detail files older than the ninety-day cutoff", () => {
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date("2026-10-09T12:00:00Z"));
       const cutoff = new Date();
       cutoff.setDate(cutoff.getDate() - 90);
       const oldDate = new Date(cutoff.getTime() - 86400000).toISOString().split("T")[0];
       const recentDate = new Date(cutoff.getTime() + 86400000).toISOString().split("T")[0];
-      expect(oldDate < cutoff.toISOString().split("T")[0]).toBe(true);
-      expect(recentDate < cutoff.toISOString().split("T")[0]).toBe(false);
+      const boundaryDate = cutoff.toISOString().split("T")[0];
+      const removed = [];
+      vi.spyOn(fs, "existsSync").mockReturnValue(true);
+      vi.spyOn(fs, "readdirSync").mockImplementation((_directory, options) =>
+        options?.withFileTypes
+          ? []
+          : [`${oldDate}.json`, `${boundaryDate}.json`, `${recentDate}.json`, "notes.txt"]
+      );
+      vi.spyOn(fs, "unlinkSync").mockImplementation((file) => removed.push(path.basename(file)));
+      try {
+        pruneOldDetails();
+        expect(removed).toEqual([`${oldDate}.json`]);
+      } finally {
+        vi.restoreAllMocks();
+        vi.useRealTimers();
+      }
     });
   });
 });
