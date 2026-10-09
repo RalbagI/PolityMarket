@@ -54,7 +54,7 @@ jobs:
           languages: ${{ matrix.language }}
           dependency-caching: false
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         if: steps.code_scanning.outputs.enabled == 'true'
         with:
           node-version: "20"
