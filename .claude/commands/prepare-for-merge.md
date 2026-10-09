@@ -1,37 +1,32 @@
-Single-pass prepare-for-merge workflow. Runs all checks, syncs with main, pushes, and creates/updates a PR.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = prepare-for-merge -->
+Run central AI Helpers workflow `prepare-for-merge`.
 
-Usage: /prepare-for-merge
+Direct command: `/prepare-for-merge [args]`
 
-Follow the workflow defined in `.agent/workflows/prepare-for-merge.workflow.yaml`. Execute each phase:
+Description: Final branch readiness workflow. It preserves the old non-read-only prepare-for-merge behavior: preflight, mandatory docs audit, full project gates through the project script, r...
 
-## Phase 0: Recall Context
-- Check `.agent/lessons_learned.md` for relevant prior lessons
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 1: Pre-flight Checks
-- Verify NOT on main branch (exit if on main)
-- Sync with main: `git fetch origin main` then `git rebase origin/main`
-  - If rebase conflicts arise, resolve them (read conflicting files, choose correct content, `git add`, `git rebase --continue`)
-  - After rebase, force-push with `--force-with-lease` since history was rewritten
-- Install deps: `npm ci --legacy-peer-deps`
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "prepare-for-merge"
+```
 
-## Phase 2: Validate (run in parallel where possible)
-- ESLint: `npx eslint src/` — MUST pass
-- Prettier: `npx prettier --check "src/**/*.{js,jsx,ts,tsx,css,json}"`
-- Tests: `npx vitest run` — MUST pass
-- Coverage: `npx vitest run --coverage`
-- Build: `npx vite build` — MUST pass
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
 
-## Phase 3: Push & PR
-- Push: `git push --force-with-lease -u origin $(git rev-parse --abbrev-ref HEAD)`
-- Gather context: commits since origin/main, diff stat
-- Create or update PR via `gh pr create` with a rich description generated from commits and diff
+Prepare-for-merge completion guard:
+- `scripts/prepare-for-merge.sh` is only the gate runner; do not
+  stop when it finishes.
+- Continue through the central rich MR-description phase and post a
+  comprehensive MR description before reporting success.
+- A commit-list-only MR description is invalid; update it before
+  starting `/lgtm`.
 
-## Phase 4: Self-Improvement
-- If any auto-fixes were applied (format, lint, coverage), record a lesson in `.agent/lessons_learned.md`
-- Commit and push lessons if updated
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
 
-## Phase 5: Final Verification
-- Confirm clean git state
-
-## Important Rules
-- After completing, ALWAYS ask: "Would you like me to run `/mts` to merge, cleanup, and deploy?"
+- `content/workflows/universal/prepare-for-merge.workflow.yaml`

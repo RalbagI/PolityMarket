@@ -1,28 +1,24 @@
-Sync origin/main into the current feature branch, resolving any conflicts.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = sync-main -->
+Run central AI Helpers workflow `sync-main`.
 
-Usage: /sync-main
+Direct command: `/sync-main [args]`
 
-Follow the workflow defined in `.agent/workflows/sync-main.workflow.yaml`. Execute each phase:
+Description: Merge the project default branch into the current feature branch, resolve conflicts, run a scoped smoke check, commit the merge, and leave a clean tree. It preserves both old na...
 
-## Phase 1: Verify State
-- Run `git status -sb` to verify working tree is clean
-- Fetch latest main: `git fetch origin main`
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 2: Merge Main
-- Merge: `git merge origin/main --no-edit`
-- If merge succeeds cleanly, proceed to verification
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "sync-main"
+```
 
-## Phase 3: Resolve Conflicts (if any)
-- Identify conflicts: `git status --short | grep '^UU'`
-- For each conflicted file, examine conflict markers and resolve intelligently
-- After resolving, run `npx vitest run` to verify tests pass
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
 
-## Phase 4: Commit Merge
-- Stage resolved files
-- Commit: `chore: sync main into branch`
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
 
-## Phase 5: Final Verification
-- Confirm clean git state
-
-## Important Rules
-- Do NOT push. Use `/prepare-for-merge` to finalize.
+- `content/workflows/universal/sync-default-branch.workflow.yaml`

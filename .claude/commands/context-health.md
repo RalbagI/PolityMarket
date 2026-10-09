@@ -1,24 +1,24 @@
-Audit project structure, instruction files, and workflow health for context-friction signals. This is READ-ONLY — generates a report only.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = context-health -->
+Run central AI Helpers workflow `context-health`.
 
-Usage: /context-health
+Direct command: `/context-health [args]`
 
-Follow the workflow defined in `.agent/workflows/context-health.workflow.yaml`.
+Description: Audit AI helper wiring without loading workflow bodies into the project repo.
 
-## Phase 1: Run Context Audit
-- Verify `.agent/` directory exists
-- Count workflow files in `.agent/workflows/`
-- Count source files in `src/`
-- Check data pipeline directory
-- List config files (package.json, vite.config.js, eslint config, etc.)
-- Check `.agent/lessons_learned.md` status and line count
-- Check workflow memory state in `.agent/state/workflow_memory.jsonl`
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 2: Report Summary
-Generate a structured report with:
-- **Scope**: workflow count, source file count, config file coverage
-- **Findings**: any missing or stale config, gaps in workflow coverage, outdated lessons
-- **Recommendations**: suggested fixes for any context friction found
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "context-health"
+```
 
-## Important Rules
-- This is READ-ONLY. Do NOT modify any files.
-- Report findings with clear severity: critical, warning, info
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
+
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
+
+- `content/workflows/universal/context-health.workflow.yaml`

@@ -1,0 +1,32 @@
+{
+  "profile": "polity_market",
+  "schema": 1,
+  "enabledServers": [
+    "firebase"
+  ],
+  "optionalServers": [],
+  "servers": {
+    "firebase": {
+      "enabled": true,
+      "description": "Preserves the existing PolityMarket Firebase CLI MCP command without changing its tools or credentials.",
+      "command": "firebase",
+      "args": [
+        "mcp"
+      ],
+      "prerequisites": [
+        "Existing Firebase CLI on PATH and its existing authenticated project context."
+      ],
+      "auth": {
+        "type": "firebase-cli",
+        "required": true,
+        "env": [],
+        "status_hint": "Uses existing Firebase CLI credentials; this admission grants no new provider permissions."
+      },
+      "risk": "Existing Firebase project read/write tools; writes require the owner's scoped instruction. Do not run production data updates or paid calls for CI tests.",
+      "enabledClients": [
+        "agent",
+        "claude"
+      ]
+    }
+  }
+}

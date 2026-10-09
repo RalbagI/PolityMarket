@@ -1,34 +1,24 @@
-Resolve all findings from a previous `/code-review` or `/monitor-vite` run. Addresses MUST FIX, SHOULD FIX, and NICE TO HAVE items.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = handle-review-results -->
+Run central AI Helpers workflow `handle-review-results`.
 
-Usage: /handle-review-results
+Direct command: `/handle-review-results [args]`
 
-Follow the workflow defined in `.agent/workflows/handle-review-results.workflow.yaml`. Execute each phase:
+Description: Resolve the current review report with no silent deferrals. It preserves Traidan's stale-report pruning and relevance validation, plus Tipi's targeted proof, memory capture, and...
 
-## Phase 0: Recall Context
-- Check `.agent/lessons_learned.md` for relevant prior lessons about resolving review findings
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 1: Gather Findings
-- Analyze the latest `/code-review` or `/monitor-vite` output from this conversation
-- Extract and count all MUST FIX, SHOULD FIX, and NICE TO HAVE items
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "handle-review-results"
+```
 
-## Phase 2: Resolve Findings
-- Address ALL MUST FIX items first (these are blockers)
-- Address ALL SHOULD FIX items next
-- Address ALL NICE TO HAVE items — do not skip any unless technically impossible
-- After fixing, verify:
-  - `npx eslint src/` passes
-  - `npx vitest run` passes
-  - `npx vitest run --coverage` shows adequate coverage
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
 
-## Phase 3: Commit Resolutions
-- Stage changed files
-- Commit with message: `fix: resolve code review findings`
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
 
-## Phase 4: Verify State
-- Confirm `git status --porcelain` is empty (clean working tree)
-
-## Phase 5: Capture Memory
-- Note any lessons learned for `.agent/lessons_learned.md` if applicable
-
-## Important Rules
-- After completing, ALWAYS ask: "Would you like me to run `/prepare-for-merge` to push and create a PR?"
+- `content/workflows/universal/handle-review-results.workflow.yaml`

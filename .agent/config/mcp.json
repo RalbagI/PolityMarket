@@ -1,8 +1,12 @@
 {
+  "_generated": "AUTOGEN: do not edit; source = AI_Helpers",
+  "profile": "polity_market",
   "mcpServers": {
     "firebase": {
       "command": "firebase",
-      "args": ["mcp"]
+      "args": [
+        "mcp"
+      ]
     }
   }
 }

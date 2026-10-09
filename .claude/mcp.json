@@ -2,7 +2,9 @@
   "mcpServers": {
     "firebase": {
       "command": "firebase",
-      "args": ["mcp"]
+      "args": [
+        "mcp"
+      ]
     }
   }
 }

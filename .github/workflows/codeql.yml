@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '22 3 * * 1'
+    - cron: "22 3 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -52,12 +52,12 @@ jobs:
         uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
+          dependency-caching: false
 
       - uses: actions/setup-node@v6
         if: steps.code_scanning.outputs.enabled == 'true'
         with:
-          node-version: '20'
-          cache: npm
+          node-version: "20"
 
       - name: Install dependencies
         if: steps.code_scanning.outputs.enabled == 'true'
@@ -74,3 +74,5 @@ jobs:
       - name: Perform CodeQL analysis
         if: steps.code_scanning.outputs.enabled == 'true'
         uses: github/codeql-action/analyze@v4
+        with:
+          upload-database: false

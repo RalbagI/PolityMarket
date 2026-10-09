@@ -51,3 +51,9 @@ functions/functions.yaml
 .claude/worktrees/
 logs/
 .pipeline.lock
+
+# Central workflow runtime artifacts stay private
+.agent/state/
+.agent/tmp/
+.agent/checkpoints/*.md
+!.agent/checkpoints/.gitkeep

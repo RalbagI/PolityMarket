@@ -1,4 +1,3 @@
-/* global process */
 // Runtime tests for scripts/lib/pipeline-auth.sh.
 //
 // These spawn real bash subprocesses against the sourceable auth lib so typos
@@ -24,10 +23,20 @@ const minimalPath = "/usr/bin:/bin";
 
 function runBash(body, env = {}) {
   return spawnSync("bash", ["-c", `set -euo pipefail\nsource "${libPath}"\n${body}`], {
-    env: { ...process.env, ...env },
+    env: {
+      GH_TOKEN: "",
+      GITHUB_TOKEN: "",
+      GH_CONFIG_DIR: isolatedGh,
+      ...env,
+      PATH: `${isolatedGh}:${env.PATH || minimalPath}`,
+    },
     encoding: "utf8",
   });
 }
+
+const isolatedGh = fs.mkdtempSync(path.join(os.tmpdir(), "pipeline-auth-fixture-"));
+fs.writeFileSync(path.join(isolatedGh, "gh"), "#!/bin/sh\nexit 1\n", { mode: 0o700 });
+afterAll(() => fs.rmSync(isolatedGh, { recursive: true, force: true }));
 
 describe("scripts/lib/pipeline-auth.sh — resolve_github_token", () => {
   it("prefers $GITHUB_TOKEN when present", () => {

@@ -1,32 +1,24 @@
-Get up to speed on the current branch context, changes, and status. Optional topic argument narrows focus.
+<!-- AUTOGEN: do not edit; source = AI_Helpers; project = polity_market; workflow = get-up-to-speed -->
+Run central AI Helpers workflow `get-up-to-speed`.
 
-Usage: /get-up-to-speed [topic]
+Direct command: `/get-up-to-speed [args]`
 
-Input: $ARGUMENTS
+Description: Load the smallest useful branch, issue, architecture, docs, and memory context. This is a read-only orientation workflow and must not mutate files.
 
-Follow the workflow defined in `.agent/workflows/get-up-to-speed.workflow.yaml`. This is READ-ONLY — do not modify files.
+Fail closed if central helpers cannot be found or validated.
 
-## Phase 0: Recall Context
-- Check `.agent/lessons_learned.md` for relevant prior lessons
+```bash
+bash scripts/sync-ai-workflows.sh --context --agent claude --workflow "get-up-to-speed"
+```
 
-## Phase 1: Branch Metadata
-- Current branch: `git rev-parse --abbrev-ref HEAD`
-- Extract issue ID from branch name if present (e.g., `issue-42-fix-bug` → #42)
-- Show recent commits: `git log --oneline --graph --decorate -10`
+Argument forwarding:
+- workflow_input: $ARGUMENTS
+- Preserve the user's command arguments exactly and pass them to the
+  central workflow as ARGS/TOPIC.
+- If this agent leaves a placeholder unresolved, ignore the literal
+  placeholder and use the text the user typed after the slash command.
 
-## Phase 2: Issue Details
-- If an issue ID was found, fetch it: `gh issue view {ID} --comments`
-- If a topic argument was provided, search for related code in `src/` and `data-pipeline/`
+Read only the files listed in that context plan. This stub is a pointer
+only; the workflow source is central:
 
-## Phase 3: Code Changes
-- Show diff stats vs origin/main: `git diff origin/main --stat`
-- List changed files: `git diff origin/main --name-only`
-- If a topic was provided, prioritize files matching that topic
-
-## Output
-Provide a structured summary:
-- Branch name and linked issue
-- Recent commit history
-- Issue description/requirements
-- Changed files and scope of changes
-- If topic was provided, focus the summary on that topic
+- `content/workflows/universal/get-up-to-speed.workflow.yaml`
